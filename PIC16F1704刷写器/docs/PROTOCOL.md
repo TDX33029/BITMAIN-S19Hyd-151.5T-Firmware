@@ -43,14 +43,29 @@ STM32F103 固件内置**双模式**协议解析引擎：
 | 编码 | 指令宏 | 说明 | 负载内容 |
 | :---: | :--- | :--- | :--- |
 | `0x01` | `CMD_PING` | 测试串口连接与握手 | 请求：无，应答："PONG" (4字节) |
-| `0x02` | `CMD_DETECT` | 检测 PIC16F1704 芯片状态 | 应答：`pic_chip_info_t` (DevID, Rev, Configs, UserID) |
+| `0x02` | `CMD_DETECT` | 检测 PIC16F1704 芯片状态 | 应答：`pic_chip_info_t` (见下) |
 | `0x03` | `CMD_ERASE` | 整片擦除 Flash 与配置字 | 状态 0x00 表示擦除完成 |
 | `0x04` | `CMD_WRITE_ROW` | 写入一行 Flash (32个14位字，64字节) | 请求：Addr=起始字地址, Payload=64字节 |
-| `0x05` | `CMD_READ_FLASH` | 读取指定长度的 Flash 字 | 请求：Addr=起始字地址, Len=读取字数；应答：数据字节 |
+| `0x05` | `CMD_READ_FLASH` | 读取指定长度的 Flash 字 | 请求：Addr=起始字地址, **Len=读取字数**(无负载)；应答：数据字节 |
 | `0x06` | `CMD_WRITE_CFG` | 写入配置字 (CONFIG1/2 或 UserID) | 请求：Payload=[Addr (2B), Value (2B)] |
 | `0x07` | `CMD_READ_CFG` | 读取配置字与芯片 ID | 应答：配置字详细数据 |
 | `0x08` | `CMD_RESET_TARGET` | 释放复位，启动目标 PIC 运行 | 状态 0x00 表示已释放 |
 | `0x09` | `CMD_ONEKEY_BURN` | 触发一键烧录内置默认固件 | 状态 0x00 表示自动擦除、烧录与校验成功 |
+
+### DETECT / READ_CFG 应答负载 (pic_chip_info_t)
+
+| 偏移 | 字段 | 说明 |
+| :--- | :--- | :--- |
+| 0 | `dev_id` (u16) | 原始器件ID字（含版本号，PIC16F1704=0x3043） |
+| 2 | `rev_id` (u16) | 版本号（低5位） |
+| 4 | `config1` (u16) | CONFIG1 @0x8007 |
+| 6 | `config2` (u16) | CONFIG2 @0x8008 |
+| 8..15 | `userid[4]` (u16×4) | User ID @0x8000..0x8003 |
+| 16 | `is_valid` (u8/bool) | 是否 F1704/05/08/09 家族 |
+| 17 | `cp_on` (u8) | **v2 新增**：CONFIG1.CP=0 时代码保护开启 |
+| 18 | `lvp_on` (u8) | **v2 新增**：CONFIG2.LVP=1 时允许低压进模 |
+
+> v1 固件应答 17 字节（无最后两字段）；上位机按实际长度自适应。
 
 ---
 

@@ -100,12 +100,19 @@ class PIC16F1704Programmer:
                 pass
         return None
 
-    def _send_cmd(self, cmd: int, addr: int = 0, payload: bytes = b'') -> Tuple[int, bytes]:
+    def _send_cmd(self, cmd: int, addr: int = 0, payload: bytes = b'',
+                  len_override: Optional[int] = None) -> Tuple[int, bytes]:
+        """
+        Send a request frame and read the CRC-checked response.
+        len_override: put a value into the header Len field while sending an
+        empty payload (used by CMD_READ_FLASH where Len carries a word count).
+        """
         if not self.ser or not self.ser.is_open:
             raise ConnectionError("Serial port not connected.")
 
         self.seq = (self.seq + 1) & 0xFF
-        header = struct.pack('<2sBBHH', SYNC_REQ, cmd, self.seq, addr, len(payload))
+        hdr_len = len(payload) if len_override is None else len_override
+        header = struct.pack('<2sBBHH', SYNC_REQ, cmd, self.seq, addr, hdr_len)
         data_to_crc = header + payload
         crc = calc_crc16(data_to_crc)
         frame = data_to_crc + struct.pack('<H', crc)
@@ -147,18 +154,31 @@ class PIC16F1704Programmer:
         except Exception:
             return False
 
+    # DS40001683B Table 3-1: full Device-ID word -> part name
+    CHIP_NAMES = {
+        0x3043: "PIC16F1704",  0x3045: "PIC16LF1704",
+        0x3042: "PIC16F1708",  0x3044: "PIC16LF1708",
+        0x3055: "PIC16F1705",  0x3057: "PIC16LF1705",
+        0x3054: "PIC16F1709",  0x3056: "PIC16LF1709",
+    }
+
     def detect_chip(self) -> Dict:
         status, payload = self._send_cmd(CMD_DETECT)
-        if status != STATUS_OK or len(payload) < 18:
+        if status != STATUS_OK or len(payload) < 17:
             return {'connected': False, 'status': status}
-
-        dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid = struct.unpack('<HHHHHHHH?', payload[:17])
-        chip_name = "Unknown"
-        if (dev_id & 0x3FE0) == 0x3040:
-            chip_name = "PIC16F1704"
-        elif (dev_id & 0x3FE0) == 0x3050:
-            chip_name = "PIC16F1705"
-
+        # Firmware v2 replies 19 bytes (adds cp_on/lvp_on); v1 replies 17/18.
+        if len(payload) >= 19:
+            dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid, cp_on, lvp_on = \
+                struct.unpack('<HHHHHHHH??', payload[:19])
+        else:
+            dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid = \
+                struct.unpack('<HHHHHHHH?', payload[:17])
+            cp_on = lvp_on = None
+        chip_name = self.CHIP_NAMES.get(dev_id, None)
+        if chip_name is None:
+            chip_name = ("PIC16F170x" if (dev_id & 0x3FE0) == 0x3040
+                         else ("PIC16F17xx" if (dev_id & 0x3FE0) in (0x3060, 0x3040)
+                               else "Unknown"))
         return {
             'connected': True,
             'is_valid': is_valid,
@@ -167,7 +187,9 @@ class PIC16F1704Programmer:
             'rev_id': rev_id,
             'config1': cfg1,
             'config2': cfg2,
-            'userids': [u0, u1, u2, u3]
+            'userids': [u0, u1, u2, u3],
+            'cp_on': cp_on,
+            'lvp_on': lvp_on,
         }
 
     def bulk_erase(self) -> bool:
@@ -182,13 +204,13 @@ class PIC16F1704Programmer:
         return status == STATUS_OK
 
     def read_flash(self, start_addr: int, count: int) -> List[int]:
-        # Up to 64 words per read packet
+        # Up to 64 words per read packet (Len field carries the word count)
         result = []
         curr = start_addr
         rem = count
         while rem > 0:
             batch = min(rem, 64)
-            status, payload = self._send_cmd(CMD_READ_FLASH, addr=curr, payload=b'', addr_len_hack=batch)
+            status, payload = self._send_cmd(CMD_READ_FLASH, addr=curr, len_override=batch)
             if status != STATUS_OK:
                 raise RuntimeError(f"Read flash failed at address {curr:#06x}")
             for i in range(batch):
@@ -197,18 +219,6 @@ class PIC16F1704Programmer:
             curr += batch
             rem -= batch
         return result
-
-    def _send_cmd_read_hack(self, cmd: int, addr: int, count: int) -> Tuple[int, bytes]:
-        self.seq = (self.seq + 1) & 0xFF
-        header = struct.pack('<2sBBHH', SYNC_REQ, cmd, self.seq, addr, count)
-        crc = calc_crc16(header)
-        self.ser.write(header + struct.pack('<H', crc))
-
-        rsp_hdr = self.ser.read(7)
-        sync, r_cmd, r_seq, status, r_len = struct.unpack('<2sBBBH', rsp_hdr)
-        rsp_payload = self.ser.read(r_len)
-        rx_crc = struct.unpack('<H', self.ser.read(2))[0]
-        return status, rsp_payload
 
     def write_config_word(self, addr: int, val: int) -> bool:
         payload = struct.pack('<HH', addr, val & 0x3FFF)
@@ -248,6 +258,8 @@ class PIC16F1704Programmer:
         if not chip.get('connected'):
             raise RuntimeError("Target PIC not detected! Please check ICSP wiring, 3.3V power, and GND.")
         print(f"[*] Detected: {chip['chip_name']} (DevID: {chip['dev_id']:#06x}, Rev: {chip['rev_id']:#04x})")
+        if chip.get('cp_on'):
+            print("[*] Chip is code-protected (CP=ON); Bulk Erase will clear it.")
 
         # 2. Bulk Erase
         if progress_cb: progress_cb(10, 100, "Erasing target Flash & Configuration...")
@@ -272,13 +284,16 @@ class PIC16F1704Programmer:
             if progress_cb and r % 8 == 0:
                 progress_cb(pct, 100, f"Writing Flash row {r+1}/{total_rows} ({pct}%)...")
 
-        # 4. Write Configuration Words
-        if progress_cb: progress_cb(72, 100, "Writing Configuration words...")
-        self.write_config_word(0x8007, configs['config1'])
-        self.write_config_word(0x8008, configs['config2'])
+        # 4. Write Configuration Words (skip when the HEX carries none)
+        if configs.get('has_config'):
+            if progress_cb: progress_cb(72, 100, "Writing Configuration words...")
+            self.write_config_word(0x8007, configs['config1'])
+            self.write_config_word(0x8008, configs['config2'])
 
-        for i in range(4):
-            self.write_config_word(0x8000 + i, configs[f'userid{i}'])
+            for i in range(4):
+                self.write_config_word(0x8000 + i, configs[f'userid{i}'])
+        else:
+            print("[WARN] HEX has no CONFIG words: chip left with erased config!")
 
         # 5. Verify Flash & Config
         if verify:
@@ -286,7 +301,9 @@ class PIC16F1704Programmer:
             for r in range(total_rows):
                 row_addr = r * 32
                 expected_row = flash_words[row_addr : row_addr + 32]
-                read_row = self._send_cmd_read_hack(CMD_READ_FLASH, row_addr, 32)[1]
+                status, read_row = self._send_cmd(CMD_READ_FLASH, addr=row_addr, len_override=32)
+                if status != STATUS_OK:
+                    raise RuntimeError(f"Read back failed at row {row_addr:#06x}")
 
                 for i in range(32):
                     actual_val = (read_row[i*2] | (read_row[i*2+1] << 8)) & 0x3FFF
@@ -323,7 +340,9 @@ class PIC16F1704Programmer:
         total_rows = 128
         for r in range(total_rows):
             row_addr = r * 32
-            _, payload = self._send_cmd_read_hack(CMD_READ_FLASH, row_addr, 32)
+            status, payload = self._send_cmd(CMD_READ_FLASH, addr=row_addr, len_override=32)
+            if status != STATUS_OK:
+                raise RuntimeError(f"Read failed at row {row_addr:#06x}")
             for i in range(32):
                 w = (payload[i*2] | (payload[i*2+1] << 8)) & 0x3FFF
                 flash_words.append(w)

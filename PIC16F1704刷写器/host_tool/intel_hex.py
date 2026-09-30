@@ -66,19 +66,42 @@ class IntelHex:
         """
         Extract Flash program memory (0x0000 - 0x0FFF, 4096 words)
         and Configuration space (0x8000 - 0x8008).
+
+        Config-space conventions (DS40001683B section 7.0):
+          - Standard INHX32 (MPLAB X): config/UserID words live in the
+            0x10000 extended-linear-address segment, byte addr = 2 * word_addr
+            (UserID @0x10000-0x10007, CONFIG1 @0x1000E, CONFIG2 @0x10010).
+          - Some third-party tools store them at plain byte 0x8000/0x800E.
+        Both are tried; 'has_config' reports whether CONFIG words were found.
         """
         flash_words = []
         for w_addr in range(4096):
             flash_words.append(self.get_word(w_addr))
 
-        configs = {
-            'userid0': self.get_word(0x8000),
-            'userid1': self.get_word(0x8001),
-            'userid2': self.get_word(0x8002),
-            'userid3': self.get_word(0x8003),
-            'config1': self.get_word(0x8007),
-            'config2': self.get_word(0x8008),
-        }
+        def cfg_word(word_addr: int) -> Optional[int]:
+            base = 0x10000 + word_addr * 2
+            lo = self.data.get(base)
+            if lo is not None:
+                hi = self.data.get(base + 1, 0x3F)
+                return (lo | (hi << 8)) & 0x3FFF
+            lo = self.data.get(word_addr * 2)
+            if lo is not None:
+                hi = self.data.get(word_addr * 2 + 1, 0x3F)
+                return (lo | (hi << 8)) & 0x3FFF
+            return None
+
+        raw = {k: cfg_word(a) for k, a in (
+            ('userid0', 0x8000), ('userid1', 0x8001),
+            ('userid2', 0x8002), ('userid3', 0x8003),
+            ('config1', 0x8007), ('config2', 0x8008))}
+
+        has_config = raw['config1'] is not None or raw['config2'] is not None
+        if not has_config:
+            print("[WARN] HEX file contains no CONFIG words "
+                  "(CONFIG1/CONFIG2). Chip config will be left erased!")
+
+        configs = {k: (0x3FFF if v is None else v) for k, v in raw.items()}
+        configs['has_config'] = has_config
         return flash_words, configs
 
     def save_hex(self, filename: str, flash_words: list, configs: dict) -> None:
