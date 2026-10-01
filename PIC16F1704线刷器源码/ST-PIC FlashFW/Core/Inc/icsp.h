@@ -35,16 +35,22 @@
 /*
  * STM32F103C8T6 引脚映射:
  *  PA0 -> PIC_MCLR / VPP  (推挽输出)
- *  PA1 -> PIC_DAT  / PGD  (双向: 推挽输出 / 输入上拉)
- *  PA2 -> PIC_CLK  / PGC  (推挽输出)
+ *  PA1 -> PIC_DAT  / PGD  (双向: 推挽输出 / 浮空高阻输入)
+ *  PA2 -> PIC_CLK  / PGC  (双向: 推挽输出 / 浮空高阻输入)
  *  PA3 -> PIC_VDD_EN      (推挽输出, 可选目标供电使能)
  *  PC13 -> LED_STATUS     (推挽输出, 板载LED低电平有效)
  *  PB9  -> KEY_TRIG       (输入上拉, 脱机一键烧录触发)
  *
- * 目标 PIC16F1704 (14脚封装):
- *  Pin 1  VDD      Pin 4  RA3/MCLR/VPP   Pin 10 RB7/ICSPDAT
- *  Pin 11 RB6/ICSPCLK   Pin 14 VSS
- *  注意: ICSPDAT/ICSPCLK 固定在 RB7/RB6 (10/11脚), 与封装无关。
+ * 目标 PIC16F1704 (14脚封装 DIP-14 / SOIC-14 / TSSOP-14):
+ *  Pin 1  VDD (3.3V)
+ *  Pin 4  RA3/MCLR/VPP  <--> STM32 PA0
+ *  Pin 12 RA1/ICSPCLK   <--> STM32 PA2 (CLK)
+ *  Pin 13 RA0/ICSPDAT   <--> STM32 PA1 (DAT)
+ *  Pin 14 VSS (GND)
+ *  注意: 官方手册规范 (DS40001683B / DS40001715D Table 2):
+ *       14脚封装只有 PORTA 和 PORTC, 没有 PORTB!
+ *       Pin 13 才是 RA0/ICSPDAT, Pin 12 才是 RA1/ICSPCLK!
+ *       Pin 10 是 RC0 (算力板 I2C SCL), 绝对不能误当成 ICSPDAT 连接!
  */
 
 #define ICSP_PORT           GPIOA
@@ -165,6 +171,8 @@ void icsp_delay_ms(uint32_t ms);
 
 /* 底层引脚控制 */
 void icsp_gpio_init(void);
+void icsp_pins_release_hiz(void);
+void icsp_pins_claim_outputs(void);
 void icsp_dat_set_output(void);
 void icsp_dat_set_input(void);
 void icsp_send_bits(uint32_t data, uint8_t nbits);

@@ -52,23 +52,33 @@ void icsp_delay_ms(uint32_t ms)
 /* ========================================================================= */
 /*                              GPIO 初始化                                  */
 /* ========================================================================= */
+void icsp_pins_release_hiz(void)
+{
+    /* PA1(DAT), PA2(CLK) 设为浮空输入 (CNF=01, MODE=00 -> 0x4), 高阻态绝不拉低总线 */
+    GPIOA->CRL = (GPIOA->CRL & ~0x00000FF0U) | 0x00000440U;
+}
+
+void icsp_pins_claim_outputs(void)
+{
+    /* PA1(DAT), PA2(CLK) 设为推挽输出 50MHz (CNF=00, MODE=11 -> 0x3) */
+    GPIOA->CRL = (GPIOA->CRL & ~0x00000FF0U) | 0x00000330U;
+}
+
 void icsp_gpio_init(void)
 {
     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_IOPCEN;
 
     /*
      * PA0: 推挽输出 50MHz (MCLR)  -> CRL[3:0]   = 0x3
-     * PA1: 推挽输出 50MHz (DAT)   -> CRL[7:4]   = 0x3
-     * PA2: 推挽输出 50MHz (CLK)   -> CRL[11:8]  = 0x3
+     * PA1: 浮空输入 (DAT)         -> CRL[7:4]   = 0x4 (空闲高阻态, 避免拉死目标PIC总线)
+     * PA2: 浮空输入 (CLK)         -> CRL[11:8]  = 0x4 (空闲高阻态, 避免拉死目标PIC总线)
      * PA3: 推挽输出 50MHz (VDD_EN)-> CRL[15:12] = 0x3
      */
     GPIOA->CRL &= ~0x0000FFFFU;
-    GPIOA->CRL |=  0x00003333U;
+    GPIOA->CRL |=  0x00003443U;
 
-    /* 默认态: MCLR=1(运行), CLK=0, DAT=0, VDD_EN=1(使能目标供电) */
+    /* 默认态: MCLR=1(释放运行), VDD_EN=1(使能目标供电), DAT/CLK 保持高阻浮空 */
     MCLR_HIGH();
-    CLK_LOW();
-    DAT_LOW();
     GPIOA->BSRR = (1U << PIN_VDD_EN);
 
     /* PC13 (状态LED): 推挽输出 2MHz -> CRH[23:20] = 0x2 */
@@ -172,13 +182,19 @@ uint16_t icsp_read_payload(void)
  */
 icsp_status_t icsp_enter_progmode(void)
 {
+    /* 1. 先拉低 MCLR, 让目标 PIC 立即进入硬件复位状态 (复位下所有引脚转为高阻输入, 防止冲突) */
+    MCLR_LOW();
+    icsp_delay_us(50U);
+
+    /* 2. 在目标 PIC 已经处于复位态后, 将 PA1(DAT) 和 PA2(CLK) 切换为推挽输出 0V */
+    icsp_pins_claim_outputs();
     CLK_LOW();
     DAT_LOW();
-    icsp_dat_set_output();
 
-    MCLR_LOW();
+    /* 3. 等待 >= TENTH (250us) */
     icsp_delay_us(ICSP_TENTH_US);
 
+    /* 4. 发送 32bit 进模密钥 "MCHP" (LSb 先发) + 第 33 个时钟 */
     icsp_send_bits(ICSP_LVP_KEY_BYTE0, 8);  /* 'P' */
     icsp_send_bits(ICSP_LVP_KEY_BYTE1, 8);  /* 'H' */
     icsp_send_bits(ICSP_LVP_KEY_BYTE2, 8);  /* 'C' */
@@ -191,11 +207,10 @@ icsp_status_t icsp_enter_progmode(void)
 
 void icsp_exit_progmode(void)
 {
-    CLK_LOW();
-    DAT_LOW();
-    icsp_dat_set_output();
+    /* 1. 退出前先将 CLK 和 DAT 引脚释放为浮空输入高阻态, 避免在目标 PIC 运行时拉低目标总线 */
+    icsp_pins_release_hiz();
 
-    /* 释放复位: MCLR 拉高, 目标 PIC 开始运行 */
+    /* 2. 释放复位: MCLR 拉高, 目标 PIC 开始正常运行 */
     MCLR_HIGH();
     icsp_delay_ms(ICSP_EXIT_MS);
 }

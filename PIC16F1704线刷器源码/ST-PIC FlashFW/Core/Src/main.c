@@ -117,8 +117,8 @@ static void App_Init(void)
     uprintf("-------------------------------------------------------\r\n");
     uprintf("   Wiring to target PIC16F1704 (14-pin):               \r\n");
     uprintf("     PA0 -> Pin 4  RA3/MCLR/VPP                        \r\n");
-    uprintf("     PA1 -> Pin 10 RB7/ICSPDAT                         \r\n");
-    uprintf("     PA2 -> Pin 11 RB6/ICSPCLK                         \r\n");
+    uprintf("     PA1 -> Pin 13 RA0/ICSPDAT (DO NOT wire Pin 10!)   \r\n");
+    uprintf("     PA2 -> Pin 12 RA1/ICSPCLK (DO NOT wire Pin 11!)   \r\n");
     uprintf("     PA3 -> VDD_EN (optional target power control)     \r\n");
     uprintf("     3V3 -> Pin 1  VDD     GND -> Pin 14 VSS           \r\n");
     uprintf("-------------------------------------------------------\r\n");
