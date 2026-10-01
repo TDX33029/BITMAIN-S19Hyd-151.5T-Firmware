@@ -195,33 +195,33 @@ class PIC16F1704Programmer:
 
     def detect_chip(self) -> Dict:
         status, payload = self._send_cmd(CMD_DETECT)
-        if status != STATUS_OK or len(payload) < 17:
-            return {'connected': False, 'status': status}
-        # Firmware v2 replies 19 bytes (adds cp_on/lvp_on); v1 replies 17/18.
-        if len(payload) >= 19:
-            dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid, cp_on, lvp_on = \
-                struct.unpack('<HHHHHHHH???', payload[:19])
-        else:
-            dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid = \
-                struct.unpack('<HHHHHHHH?', payload[:17])
-            cp_on = lvp_on = None
-        chip_name = self.CHIP_NAMES.get(dev_id, None)
-        if chip_name is None:
-            chip_name = ("PIC16F170x" if (dev_id & 0x3FE0) == 0x3040
-                         else ("PIC16F17xx" if (dev_id & 0x3FE0) in (0x3060, 0x3040)
-                               else "Unknown"))
-        return {
-            'connected': True,
-            'is_valid': is_valid,
-            'chip_name': chip_name,
-            'dev_id': dev_id,
-            'rev_id': rev_id,
-            'config1': cfg1,
-            'config2': cfg2,
-            'userids': [u0, u1, u2, u3],
-            'cp_on': cp_on,
-            'lvp_on': lvp_on,
-        }
+        if len(payload) >= 17:
+            if len(payload) >= 19:
+                dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid, cp_on, lvp_on = \
+                    struct.unpack('<HHHHHHHH???', payload[:19])
+            else:
+                dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid = \
+                    struct.unpack('<HHHHHHHH?', payload[:17])
+                cp_on = lvp_on = None
+            chip_name = self.CHIP_NAMES.get(dev_id, None)
+            if chip_name is None:
+                chip_name = ("PIC16F170x" if (dev_id & 0x3FE0) == 0x3040
+                             else ("PIC16F17xx" if (dev_id & 0x3FE0) in (0x3060, 0x3040)
+                                   else "Unknown"))
+            return {
+                'connected': (status == STATUS_OK),
+                'status': status,
+                'is_valid': is_valid,
+                'chip_name': chip_name,
+                'dev_id': dev_id,
+                'rev_id': rev_id,
+                'config1': cfg1,
+                'config2': cfg2,
+                'userids': [u0, u1, u2, u3],
+                'cp_on': cp_on,
+                'lvp_on': lvp_on,
+            }
+        return {'connected': False, 'status': status}
 
     def bulk_erase(self) -> bool:
         status, _ = self._send_cmd(CMD_ERASE)
@@ -458,8 +458,27 @@ def main():
                 print(f"    CONFIG1:    {info['config1']:#06x}")
                 print(f"    CONFIG2:    {info['config2']:#06x}")
                 print(f"    User IDs:   {['0x%04X' % u for u in info['userids']]}")
+                if info.get('cp_on'):
+                    print("    [WARN] Code Protection (CP) is ON: flash read is hardware-masked to 0x0000.")
+                if info.get('lvp_on') is False:
+                    print("    [WARN] Low-Voltage Programming (LVP) is OFF: HVP programmer required if locked.")
             else:
-                print("[-] Target PIC not detected or not responding.")
+                dev_id = info.get('dev_id', None)
+                if dev_id is not None:
+                    print(f"[-] Target PIC not detected! (raw DevID={dev_id:#06x}, CFG1={info.get('config1', 0):#06x}, CFG2={info.get('config2', 0):#06x})")
+                    if dev_id == 0x3FFF:
+                        print("    [排查指引] DevID=0x3FFF (数据线全高电平/芯片未响应):")
+                        print("      1. 请检查 Pin 12(CLK) 与 Pin 13(DAT) 是否接反或虚焊；")
+                        print("      2. 确认芯片 Pin 1(VDD) 供电达到 3.3V 且 GND 牢固共地；")
+                        print("      3. 检查 MCLR (Pin 4) 是否接至 PA0；")
+                        print("      4. 该芯片若为原厂出厂片, 可能熔丝中已被锁死 LVP=0 (禁用低压编程, 需换新片或用高压HVP)。")
+                    elif dev_id == 0x0000:
+                        print("    [排查指引] DevID=0x0000 (数据线全低电平/接地):")
+                        print("      1. 请检查 DAT 或 CLK 引脚是否与 GND 短路或粘锡；")
+                        print("      2. 确保没有误接到 Pin 10(RC0) 或 Pin 11(RA2)；")
+                        print("      3. 检查 MCLR (Pin 4) 复位线是否正常连接到 PA0。")
+                else:
+                    print("[-] Target PIC not detected or not responding.")
 
         elif args.erase:
             print("[*] Erasing PIC16F1704...")

@@ -127,14 +127,14 @@
 #define CMD_BEGIN_PROG              0x08U   /* 内部定时编程               */
 #define CMD_BULK_ERASE              0x09U   /* 整片擦除(程序+配置+UserID) */
 
-/* 时序常量 (us), 取规范上限的1.2~2.5倍裕量 */
-#define ICSP_TENTH_US               350U    /* MCLR低后密钥前保持 >=250us  */
-#define ICSP_TCK_US                 1U      /* 时钟半周期 >=100ns          */
-#define ICSP_TDLY_US                2U      /* 命令/数据间延时 >=1us       */
-#define ICSP_TPINT_WORD_MS          4U      /* 行写(32闩锁) >=2.5ms       */
-#define ICSP_TPINT_CFG_MS           6U      /* 配置字写 >=5ms              */
-#define ICSP_TERAB_MS               12U     /* 整片擦除 >=5ms              */
-#define ICSP_EXIT_MS                15U     /* 退出后让PIC起振运行         */
+/* 时序常量 (us), 适应飞线与板载杂散电容 */
+#define ICSP_TENTH_US               1000U   /* MCLR低后密钥前保持 >=250us, 留1ms给复位电容放电 */
+#define ICSP_TCK_US                 2U      /* 时钟半周期 2us -> 250kHz, 增强飞线抗干扰能力   */
+#define ICSP_TDLY_US                5U      /* 命令/数据间延时 >=1us (设5us提高建立时间裕量)    */
+#define ICSP_TPINT_WORD_MS          5U      /* 行写(32闩锁) >=2.5ms (留5ms裕量)              */
+#define ICSP_TPINT_CFG_MS           8U      /* 配置字写 >=5ms (留8ms裕量)                     */
+#define ICSP_TERAB_MS               15U     /* 整片擦除 >=5ms (留15ms裕量)                    */
+#define ICSP_EXIT_MS                20U     /* 退出后让PIC起振运行                            */
 
 /* ========================================================================= */
 /*                             状态 / 返回码                                 */

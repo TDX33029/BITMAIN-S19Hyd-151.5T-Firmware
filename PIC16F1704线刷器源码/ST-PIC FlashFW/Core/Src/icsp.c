@@ -132,15 +132,19 @@ uint32_t icsp_read_bits(uint8_t nbits)
     icsp_dat_set_input();
     icsp_delay_us(ICSP_TCK_US);
 
-    /* 设备在第一个下降沿后输出数据, 上升沿采样 (DS40001683B §4.3.4) */
+    /* 
+     * 读时序 (DS40001683B Figure 8-5 / Figure 8-7):
+     * 时钟脉冲 CLK HIGH -> LOW, PIC 在时钟边沿后建立数据 TCO,
+     * 在时钟为低电平时采样数据线, 最稳定且兼容各种走线寄生电容
+     */
     for (uint8_t i = 0U; i < nbits; i++) {
         CLK_HIGH();
+        icsp_delay_us(ICSP_TCK_US);
+        CLK_LOW();
         icsp_delay_us(ICSP_TCK_US);
         if (DAT_READ()) {
             val |= (1UL << i);
         }
-        CLK_LOW();
-        icsp_delay_us(ICSP_TCK_US);
     }
 
     icsp_dat_set_output();

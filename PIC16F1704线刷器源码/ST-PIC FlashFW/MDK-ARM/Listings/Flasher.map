@@ -634,64 +634,64 @@ Image Symbol Table
     i.emit_num                               0x0800100c   Section        0  uprintf.o(i.emit_num)
     emit_num                                 0x0800100d   Thumb Code   118  uprintf.o(i.emit_num)
     i.handle_binary_packet                   0x08001084   Section        0  protocol.o(i.handle_binary_packet)
-    handle_binary_packet                     0x08001085   Thumb Code   412  protocol.o(i.handle_binary_packet)
+    handle_binary_packet                     0x08001085   Thumb Code   410  protocol.o(i.handle_binary_packet)
     i.handle_cli_command                     0x08001230   Section        0  protocol.o(i.handle_cli_command)
-    handle_cli_command                       0x08001231   Thumb Code  1934  protocol.o(i.handle_cli_command)
-    i.icsp_bulk_erase                        0x08001b7c   Section        0  icsp.o(i.icsp_bulk_erase)
-    i.icsp_burn_default_firmware             0x08001ba0   Section        0  icsp.o(i.icsp_burn_default_firmware)
-    i.icsp_dat_set_input                     0x08001c88   Section        0  icsp.o(i.icsp_dat_set_input)
-    i.icsp_dat_set_output                    0x08001ca8   Section        0  icsp.o(i.icsp_dat_set_output)
-    i.icsp_delay_init                        0x08001cc0   Section        0  icsp.o(i.icsp_delay_init)
-    i.icsp_delay_ms                          0x08001d04   Section        0  icsp.o(i.icsp_delay_ms)
-    i.icsp_delay_us                          0x08001d1c   Section        0  icsp.o(i.icsp_delay_us)
-    i.icsp_detect_chip                       0x08001d4c   Section        0  icsp.o(i.icsp_detect_chip)
-    i.icsp_devid_name                        0x08001df4   Section        0  icsp.o(i.icsp_devid_name)
-    i.icsp_enter_progmode                    0x08001ed4   Section        0  icsp.o(i.icsp_enter_progmode)
-    i.icsp_exit_progmode                     0x08001f30   Section        0  icsp.o(i.icsp_exit_progmode)
-    i.icsp_gpio_init                         0x08001f48   Section        0  icsp.o(i.icsp_gpio_init)
-    i.icsp_inc_pointer                       0x08001fc4   Section        0  icsp.o(i.icsp_inc_pointer)
-    i.icsp_load_config                       0x08001fdc   Section        0  icsp.o(i.icsp_load_config)
-    i.icsp_load_payload                      0x08001fec   Section        0  icsp.o(i.icsp_load_payload)
-    i.icsp_pins_claim_outputs                0x08002004   Section        0  icsp.o(i.icsp_pins_claim_outputs)
-    i.icsp_pins_release_hiz                  0x0800201c   Section        0  icsp.o(i.icsp_pins_release_hiz)
-    i.icsp_read_bits                         0x08002034   Section        0  icsp.o(i.icsp_read_bits)
-    i.icsp_read_configs                      0x08002090   Section        0  icsp.o(i.icsp_read_configs)
-    i.icsp_read_flash                        0x0800211e   Section        0  icsp.o(i.icsp_read_flash)
-    i.icsp_read_payload                      0x08002166   Section        0  icsp.o(i.icsp_read_payload)
-    i.icsp_read_word                         0x08002176   Section        0  icsp.o(i.icsp_read_word)
-    i.icsp_reset_pointer                     0x08002184   Section        0  icsp.o(i.icsp_reset_pointer)
-    i.icsp_send_bits                         0x08002190   Section        0  icsp.o(i.icsp_send_bits)
-    i.icsp_send_cmd                          0x080021e8   Section        0  icsp.o(i.icsp_send_cmd)
-    i.icsp_status_to_protocol                0x080021fe   Section        0  protocol.o(i.icsp_status_to_protocol)
-    icsp_status_to_protocol                  0x080021ff   Thumb Code    42  protocol.o(i.icsp_status_to_protocol)
-    i.icsp_verify_flash                      0x08002228   Section        0  icsp.o(i.icsp_verify_flash)
-    i.icsp_write_config_word                 0x080022a2   Section        0  icsp.o(i.icsp_write_config_word)
-    i.icsp_write_row                         0x080022f4   Section        0  icsp.o(i.icsp_write_row)
-    i.main                                   0x08002388   Section        0  main.o(i.main)
-    i.parse_uint                             0x08002514   Section        0  protocol.o(i.parse_uint)
-    parse_uint                               0x08002515   Thumb Code   130  protocol.o(i.parse_uint)
-    i.print_chip_info                        0x08002598   Section        0  protocol.o(i.print_chip_info)
-    print_chip_info                          0x08002599   Thumb Code    92  protocol.o(i.print_chip_info)
-    i.print_ihex_record                      0x080026c4   Section        0  protocol.o(i.print_ihex_record)
-    print_ihex_record                        0x080026c5   Thumb Code   104  protocol.o(i.print_ihex_record)
-    i.protocol_crc16                         0x0800274c   Section        0  protocol.o(i.protocol_crc16)
-    i.protocol_init                          0x08002790   Section        0  protocol.o(i.protocol_init)
-    i.protocol_process                       0x080027b4   Section        0  protocol.o(i.protocol_process)
-    i.send_binary_response                   0x08002994   Section        0  protocol.o(i.send_binary_response)
-    send_binary_response                     0x08002995   Thumb Code   116  protocol.o(i.send_binary_response)
-    i.starts_with_ci                         0x08002a08   Section        0  protocol.o(i.starts_with_ci)
-    starts_with_ci                           0x08002a09   Thumb Code    70  protocol.o(i.starts_with_ci)
-    i.uart_init                              0x08002a50   Section        0  uart.o(i.uart_init)
-    i.uart_read_byte                         0x08002b0c   Section        0  uart.o(i.uart_read_byte)
-    i.uart_write_byte                        0x08002b44   Section        0  uart.o(i.uart_write_byte)
-    i.uart_write_bytes                       0x08002b60   Section        0  uart.o(i.uart_write_bytes)
-    i.uprintf                                0x08002b7c   Section        0  uprintf.o(i.uprintf)
-    .constdata                               0x08002dac   Section     1024  default_firmware.o(.constdata)
-    .constdata                               0x080031ac   Section       24  system_stm32f1xx.o(.constdata)
-    .constdata                               0x080031c4   Section       18  stm32f1xx_hal_rcc.o(.constdata)
-    aPLLMULFactorTable                       0x080031c4   Data          16  stm32f1xx_hal_rcc.o(.constdata)
-    aPredivFactorTable                       0x080031d4   Data           2  stm32f1xx_hal_rcc.o(.constdata)
-    .conststring                             0x080031d8   Section      315  protocol.o(.conststring)
+    handle_cli_command                       0x08001231   Thumb Code  2040  protocol.o(i.handle_cli_command)
+    i.icsp_bulk_erase                        0x08001bac   Section        0  icsp.o(i.icsp_bulk_erase)
+    i.icsp_burn_default_firmware             0x08001bd0   Section        0  icsp.o(i.icsp_burn_default_firmware)
+    i.icsp_dat_set_input                     0x08001cb8   Section        0  icsp.o(i.icsp_dat_set_input)
+    i.icsp_dat_set_output                    0x08001cd8   Section        0  icsp.o(i.icsp_dat_set_output)
+    i.icsp_delay_init                        0x08001cf0   Section        0  icsp.o(i.icsp_delay_init)
+    i.icsp_delay_ms                          0x08001d34   Section        0  icsp.o(i.icsp_delay_ms)
+    i.icsp_delay_us                          0x08001d4c   Section        0  icsp.o(i.icsp_delay_us)
+    i.icsp_detect_chip                       0x08001d7c   Section        0  icsp.o(i.icsp_detect_chip)
+    i.icsp_devid_name                        0x08001e24   Section        0  icsp.o(i.icsp_devid_name)
+    i.icsp_enter_progmode                    0x08001f04   Section        0  icsp.o(i.icsp_enter_progmode)
+    i.icsp_exit_progmode                     0x08001f60   Section        0  icsp.o(i.icsp_exit_progmode)
+    i.icsp_gpio_init                         0x08001f78   Section        0  icsp.o(i.icsp_gpio_init)
+    i.icsp_inc_pointer                       0x08001ff4   Section        0  icsp.o(i.icsp_inc_pointer)
+    i.icsp_load_config                       0x0800200c   Section        0  icsp.o(i.icsp_load_config)
+    i.icsp_load_payload                      0x0800201c   Section        0  icsp.o(i.icsp_load_payload)
+    i.icsp_pins_claim_outputs                0x08002034   Section        0  icsp.o(i.icsp_pins_claim_outputs)
+    i.icsp_pins_release_hiz                  0x0800204c   Section        0  icsp.o(i.icsp_pins_release_hiz)
+    i.icsp_read_bits                         0x08002064   Section        0  icsp.o(i.icsp_read_bits)
+    i.icsp_read_configs                      0x080020c0   Section        0  icsp.o(i.icsp_read_configs)
+    i.icsp_read_flash                        0x0800214e   Section        0  icsp.o(i.icsp_read_flash)
+    i.icsp_read_payload                      0x08002196   Section        0  icsp.o(i.icsp_read_payload)
+    i.icsp_read_word                         0x080021a6   Section        0  icsp.o(i.icsp_read_word)
+    i.icsp_reset_pointer                     0x080021b4   Section        0  icsp.o(i.icsp_reset_pointer)
+    i.icsp_send_bits                         0x080021c0   Section        0  icsp.o(i.icsp_send_bits)
+    i.icsp_send_cmd                          0x08002218   Section        0  icsp.o(i.icsp_send_cmd)
+    i.icsp_status_to_protocol                0x0800222e   Section        0  protocol.o(i.icsp_status_to_protocol)
+    icsp_status_to_protocol                  0x0800222f   Thumb Code    42  protocol.o(i.icsp_status_to_protocol)
+    i.icsp_verify_flash                      0x08002258   Section        0  icsp.o(i.icsp_verify_flash)
+    i.icsp_write_config_word                 0x080022d2   Section        0  icsp.o(i.icsp_write_config_word)
+    i.icsp_write_row                         0x08002324   Section        0  icsp.o(i.icsp_write_row)
+    i.main                                   0x080023b8   Section        0  main.o(i.main)
+    i.parse_uint                             0x08002544   Section        0  protocol.o(i.parse_uint)
+    parse_uint                               0x08002545   Thumb Code   130  protocol.o(i.parse_uint)
+    i.print_chip_info                        0x080025c8   Section        0  protocol.o(i.print_chip_info)
+    print_chip_info                          0x080025c9   Thumb Code    92  protocol.o(i.print_chip_info)
+    i.print_ihex_record                      0x080026f4   Section        0  protocol.o(i.print_ihex_record)
+    print_ihex_record                        0x080026f5   Thumb Code   104  protocol.o(i.print_ihex_record)
+    i.protocol_crc16                         0x0800277c   Section        0  protocol.o(i.protocol_crc16)
+    i.protocol_init                          0x080027c0   Section        0  protocol.o(i.protocol_init)
+    i.protocol_process                       0x080027e4   Section        0  protocol.o(i.protocol_process)
+    i.send_binary_response                   0x080029c4   Section        0  protocol.o(i.send_binary_response)
+    send_binary_response                     0x080029c5   Thumb Code   116  protocol.o(i.send_binary_response)
+    i.starts_with_ci                         0x08002a38   Section        0  protocol.o(i.starts_with_ci)
+    starts_with_ci                           0x08002a39   Thumb Code    70  protocol.o(i.starts_with_ci)
+    i.uart_init                              0x08002a80   Section        0  uart.o(i.uart_init)
+    i.uart_read_byte                         0x08002b3c   Section        0  uart.o(i.uart_read_byte)
+    i.uart_write_byte                        0x08002b74   Section        0  uart.o(i.uart_write_byte)
+    i.uart_write_bytes                       0x08002b90   Section        0  uart.o(i.uart_write_bytes)
+    i.uprintf                                0x08002bac   Section        0  uprintf.o(i.uprintf)
+    .constdata                               0x08002ddc   Section     1024  default_firmware.o(.constdata)
+    .constdata                               0x080031dc   Section       24  system_stm32f1xx.o(.constdata)
+    .constdata                               0x080031f4   Section       18  stm32f1xx_hal_rcc.o(.constdata)
+    aPLLMULFactorTable                       0x080031f4   Data          16  stm32f1xx_hal_rcc.o(.constdata)
+    aPredivFactorTable                       0x08003204   Data           2  stm32f1xx_hal_rcc.o(.constdata)
+    .conststring                             0x08003208   Section      511  protocol.o(.conststring)
     .data                                    0x20000000   Section        4  main.o(.data)
     heartbeat_last                           0x20000000   Data           4  main.o(.data)
     .data                                    0x20000004   Section        4  icsp.o(.data)
@@ -823,48 +823,48 @@ Image Symbol Table
     __scatterload_copy                       0x08000f95   Thumb Code    14  handlers.o(i.__scatterload_copy)
     __scatterload_null                       0x08000fa3   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x08000fa5   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    icsp_bulk_erase                          0x08001b7d   Thumb Code    34  icsp.o(i.icsp_bulk_erase)
-    icsp_burn_default_firmware               0x08001ba1   Thumb Code   228  icsp.o(i.icsp_burn_default_firmware)
-    icsp_dat_set_input                       0x08001c89   Thumb Code    26  icsp.o(i.icsp_dat_set_input)
-    icsp_dat_set_output                      0x08001ca9   Thumb Code    18  icsp.o(i.icsp_dat_set_output)
-    icsp_delay_init                          0x08001cc1   Thumb Code    48  icsp.o(i.icsp_delay_init)
-    icsp_delay_ms                            0x08001d05   Thumb Code    24  icsp.o(i.icsp_delay_ms)
-    icsp_delay_us                            0x08001d1d   Thumb Code    34  icsp.o(i.icsp_delay_us)
-    icsp_detect_chip                         0x08001d4d   Thumb Code   168  icsp.o(i.icsp_detect_chip)
-    icsp_devid_name                          0x08001df5   Thumb Code   108  icsp.o(i.icsp_devid_name)
-    icsp_enter_progmode                      0x08001ed5   Thumb Code    86  icsp.o(i.icsp_enter_progmode)
-    icsp_exit_progmode                       0x08001f31   Thumb Code    20  icsp.o(i.icsp_exit_progmode)
-    icsp_gpio_init                           0x08001f49   Thumb Code   108  icsp.o(i.icsp_gpio_init)
-    icsp_inc_pointer                         0x08001fc5   Thumb Code    24  icsp.o(i.icsp_inc_pointer)
-    icsp_load_config                         0x08001fdd   Thumb Code    16  icsp.o(i.icsp_load_config)
-    icsp_load_payload                        0x08001fed   Thumb Code    24  icsp.o(i.icsp_load_payload)
-    icsp_pins_claim_outputs                  0x08002005   Thumb Code    18  icsp.o(i.icsp_pins_claim_outputs)
-    icsp_pins_release_hiz                    0x0800201d   Thumb Code    18  icsp.o(i.icsp_pins_release_hiz)
-    icsp_read_bits                           0x08002035   Thumb Code    88  icsp.o(i.icsp_read_bits)
-    icsp_read_configs                        0x08002091   Thumb Code   142  icsp.o(i.icsp_read_configs)
-    icsp_read_flash                          0x0800211f   Thumb Code    72  icsp.o(i.icsp_read_flash)
-    icsp_read_payload                        0x08002167   Thumb Code    16  icsp.o(i.icsp_read_payload)
-    icsp_read_word                           0x08002177   Thumb Code    14  icsp.o(i.icsp_read_word)
-    icsp_reset_pointer                       0x08002185   Thumb Code    10  icsp.o(i.icsp_reset_pointer)
-    icsp_send_bits                           0x08002191   Thumb Code    82  icsp.o(i.icsp_send_bits)
-    icsp_send_cmd                            0x080021e9   Thumb Code    22  icsp.o(i.icsp_send_cmd)
-    icsp_verify_flash                        0x08002229   Thumb Code   122  icsp.o(i.icsp_verify_flash)
-    icsp_write_config_word                   0x080022a3   Thumb Code    82  icsp.o(i.icsp_write_config_word)
-    icsp_write_row                           0x080022f5   Thumb Code   146  icsp.o(i.icsp_write_row)
-    main                                     0x08002389   Thumb Code   206  main.o(i.main)
-    protocol_crc16                           0x0800274d   Thumb Code    68  protocol.o(i.protocol_crc16)
-    protocol_init                            0x08002791   Thumb Code    20  protocol.o(i.protocol_init)
-    protocol_process                         0x080027b5   Thumb Code   456  protocol.o(i.protocol_process)
-    uart_init                                0x08002a51   Thumb Code   160  uart.o(i.uart_init)
-    uart_read_byte                           0x08002b0d   Thumb Code    44  uart.o(i.uart_read_byte)
-    uart_write_byte                          0x08002b45   Thumb Code    22  uart.o(i.uart_write_byte)
-    uart_write_bytes                         0x08002b61   Thumb Code    26  uart.o(i.uart_write_bytes)
-    uprintf                                  0x08002b7d   Thumb Code   552  uprintf.o(i.uprintf)
-    default_fw_words                         0x08002dac   Data        1024  default_firmware.o(.constdata)
-    AHBPrescTable                            0x080031ac   Data          16  system_stm32f1xx.o(.constdata)
-    APBPrescTable                            0x080031bc   Data           8  system_stm32f1xx.o(.constdata)
-    Region$$Table$$Base                      0x08003314   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003334   Number         0  anon$$obj.o(Region$$Table)
+    icsp_bulk_erase                          0x08001bad   Thumb Code    34  icsp.o(i.icsp_bulk_erase)
+    icsp_burn_default_firmware               0x08001bd1   Thumb Code   228  icsp.o(i.icsp_burn_default_firmware)
+    icsp_dat_set_input                       0x08001cb9   Thumb Code    26  icsp.o(i.icsp_dat_set_input)
+    icsp_dat_set_output                      0x08001cd9   Thumb Code    18  icsp.o(i.icsp_dat_set_output)
+    icsp_delay_init                          0x08001cf1   Thumb Code    48  icsp.o(i.icsp_delay_init)
+    icsp_delay_ms                            0x08001d35   Thumb Code    24  icsp.o(i.icsp_delay_ms)
+    icsp_delay_us                            0x08001d4d   Thumb Code    34  icsp.o(i.icsp_delay_us)
+    icsp_detect_chip                         0x08001d7d   Thumb Code   168  icsp.o(i.icsp_detect_chip)
+    icsp_devid_name                          0x08001e25   Thumb Code   108  icsp.o(i.icsp_devid_name)
+    icsp_enter_progmode                      0x08001f05   Thumb Code    86  icsp.o(i.icsp_enter_progmode)
+    icsp_exit_progmode                       0x08001f61   Thumb Code    20  icsp.o(i.icsp_exit_progmode)
+    icsp_gpio_init                           0x08001f79   Thumb Code   108  icsp.o(i.icsp_gpio_init)
+    icsp_inc_pointer                         0x08001ff5   Thumb Code    24  icsp.o(i.icsp_inc_pointer)
+    icsp_load_config                         0x0800200d   Thumb Code    16  icsp.o(i.icsp_load_config)
+    icsp_load_payload                        0x0800201d   Thumb Code    24  icsp.o(i.icsp_load_payload)
+    icsp_pins_claim_outputs                  0x08002035   Thumb Code    18  icsp.o(i.icsp_pins_claim_outputs)
+    icsp_pins_release_hiz                    0x0800204d   Thumb Code    18  icsp.o(i.icsp_pins_release_hiz)
+    icsp_read_bits                           0x08002065   Thumb Code    88  icsp.o(i.icsp_read_bits)
+    icsp_read_configs                        0x080020c1   Thumb Code   142  icsp.o(i.icsp_read_configs)
+    icsp_read_flash                          0x0800214f   Thumb Code    72  icsp.o(i.icsp_read_flash)
+    icsp_read_payload                        0x08002197   Thumb Code    16  icsp.o(i.icsp_read_payload)
+    icsp_read_word                           0x080021a7   Thumb Code    14  icsp.o(i.icsp_read_word)
+    icsp_reset_pointer                       0x080021b5   Thumb Code    10  icsp.o(i.icsp_reset_pointer)
+    icsp_send_bits                           0x080021c1   Thumb Code    82  icsp.o(i.icsp_send_bits)
+    icsp_send_cmd                            0x08002219   Thumb Code    22  icsp.o(i.icsp_send_cmd)
+    icsp_verify_flash                        0x08002259   Thumb Code   122  icsp.o(i.icsp_verify_flash)
+    icsp_write_config_word                   0x080022d3   Thumb Code    82  icsp.o(i.icsp_write_config_word)
+    icsp_write_row                           0x08002325   Thumb Code   146  icsp.o(i.icsp_write_row)
+    main                                     0x080023b9   Thumb Code   206  main.o(i.main)
+    protocol_crc16                           0x0800277d   Thumb Code    68  protocol.o(i.protocol_crc16)
+    protocol_init                            0x080027c1   Thumb Code    20  protocol.o(i.protocol_init)
+    protocol_process                         0x080027e5   Thumb Code   456  protocol.o(i.protocol_process)
+    uart_init                                0x08002a81   Thumb Code   160  uart.o(i.uart_init)
+    uart_read_byte                           0x08002b3d   Thumb Code    44  uart.o(i.uart_read_byte)
+    uart_write_byte                          0x08002b75   Thumb Code    22  uart.o(i.uart_write_byte)
+    uart_write_bytes                         0x08002b91   Thumb Code    26  uart.o(i.uart_write_bytes)
+    uprintf                                  0x08002bad   Thumb Code   552  uprintf.o(i.uprintf)
+    default_fw_words                         0x08002ddc   Data        1024  default_firmware.o(.constdata)
+    AHBPrescTable                            0x080031dc   Data          16  system_stm32f1xx.o(.constdata)
+    APBPrescTable                            0x080031ec   Data           8  system_stm32f1xx.o(.constdata)
+    Region$$Table$$Base                      0x08003408   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003428   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000014   Data           4  system_stm32f1xx.o(.data)
     uwTick                                   0x20000018   Data           4  stm32f1xx_hal.o(.data)
     uwTickPrio                               0x2000001c   Data           4  stm32f1xx_hal.o(.data)
@@ -879,9 +879,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003358, Max: 0x00020000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000344c, Max: 0x00020000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003334, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003428, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -942,79 +942,79 @@ Memory Map of the image
     0x0800100c   0x0800100c   0x00000076   Code   RO          514    i.emit_num          uprintf.o
     0x08001082   0x08001082   0x00000002   PAD
     0x08001084   0x08001084   0x000001ac   Code   RO          426    i.handle_binary_packet  protocol.o
-    0x08001230   0x08001230   0x0000094c   Code   RO          427    i.handle_cli_command  protocol.o
-    0x08001b7c   0x08001b7c   0x00000022   Code   RO          160    i.icsp_bulk_erase   icsp.o
-    0x08001b9e   0x08001b9e   0x00000002   PAD
-    0x08001ba0   0x08001ba0   0x000000e8   Code   RO          161    i.icsp_burn_default_firmware  icsp.o
-    0x08001c88   0x08001c88   0x00000020   Code   RO          162    i.icsp_dat_set_input  icsp.o
-    0x08001ca8   0x08001ca8   0x00000018   Code   RO          163    i.icsp_dat_set_output  icsp.o
-    0x08001cc0   0x08001cc0   0x00000044   Code   RO          164    i.icsp_delay_init   icsp.o
-    0x08001d04   0x08001d04   0x00000018   Code   RO          165    i.icsp_delay_ms     icsp.o
-    0x08001d1c   0x08001d1c   0x00000030   Code   RO          166    i.icsp_delay_us     icsp.o
-    0x08001d4c   0x08001d4c   0x000000a8   Code   RO          167    i.icsp_detect_chip  icsp.o
-    0x08001df4   0x08001df4   0x000000e0   Code   RO          168    i.icsp_devid_name   icsp.o
-    0x08001ed4   0x08001ed4   0x0000005c   Code   RO          169    i.icsp_enter_progmode  icsp.o
-    0x08001f30   0x08001f30   0x00000018   Code   RO          170    i.icsp_exit_progmode  icsp.o
-    0x08001f48   0x08001f48   0x0000007c   Code   RO          171    i.icsp_gpio_init    icsp.o
-    0x08001fc4   0x08001fc4   0x00000018   Code   RO          172    i.icsp_inc_pointer  icsp.o
-    0x08001fdc   0x08001fdc   0x00000010   Code   RO          173    i.icsp_load_config  icsp.o
-    0x08001fec   0x08001fec   0x00000018   Code   RO          174    i.icsp_load_payload  icsp.o
-    0x08002004   0x08002004   0x00000018   Code   RO          175    i.icsp_pins_claim_outputs  icsp.o
-    0x0800201c   0x0800201c   0x00000018   Code   RO          176    i.icsp_pins_release_hiz  icsp.o
-    0x08002034   0x08002034   0x0000005c   Code   RO          177    i.icsp_read_bits    icsp.o
-    0x08002090   0x08002090   0x0000008e   Code   RO          178    i.icsp_read_configs  icsp.o
-    0x0800211e   0x0800211e   0x00000048   Code   RO          179    i.icsp_read_flash   icsp.o
-    0x08002166   0x08002166   0x00000010   Code   RO          180    i.icsp_read_payload  icsp.o
-    0x08002176   0x08002176   0x0000000e   Code   RO          181    i.icsp_read_word    icsp.o
-    0x08002184   0x08002184   0x0000000a   Code   RO          182    i.icsp_reset_pointer  icsp.o
-    0x0800218e   0x0800218e   0x00000002   PAD
-    0x08002190   0x08002190   0x00000058   Code   RO          183    i.icsp_send_bits    icsp.o
-    0x080021e8   0x080021e8   0x00000016   Code   RO          184    i.icsp_send_cmd     icsp.o
-    0x080021fe   0x080021fe   0x0000002a   Code   RO          428    i.icsp_status_to_protocol  protocol.o
-    0x08002228   0x08002228   0x0000007a   Code   RO          185    i.icsp_verify_flash  icsp.o
-    0x080022a2   0x080022a2   0x00000052   Code   RO          186    i.icsp_write_config_word  icsp.o
-    0x080022f4   0x080022f4   0x00000092   Code   RO          187    i.icsp_write_row    icsp.o
-    0x08002386   0x08002386   0x00000002   PAD
-    0x08002388   0x08002388   0x0000018c   Code   RO           18    i.main              main.o
-    0x08002514   0x08002514   0x00000082   Code   RO          429    i.parse_uint        protocol.o
-    0x08002596   0x08002596   0x00000002   PAD
-    0x08002598   0x08002598   0x0000012c   Code   RO          430    i.print_chip_info   protocol.o
-    0x080026c4   0x080026c4   0x00000088   Code   RO          431    i.print_ihex_record  protocol.o
-    0x0800274c   0x0800274c   0x00000044   Code   RO          432    i.protocol_crc16    protocol.o
-    0x08002790   0x08002790   0x00000024   Code   RO          433    i.protocol_init     protocol.o
-    0x080027b4   0x080027b4   0x000001e0   Code   RO          434    i.protocol_process  protocol.o
-    0x08002994   0x08002994   0x00000074   Code   RO          435    i.send_binary_response  protocol.o
-    0x08002a08   0x08002a08   0x00000046   Code   RO          436    i.starts_with_ci    protocol.o
-    0x08002a4e   0x08002a4e   0x00000002   PAD
-    0x08002a50   0x08002a50   0x000000bc   Code   RO          355    i.uart_init         uart.o
-    0x08002b0c   0x08002b0c   0x00000038   Code   RO          356    i.uart_read_byte    uart.o
-    0x08002b44   0x08002b44   0x0000001c   Code   RO          357    i.uart_write_byte   uart.o
-    0x08002b60   0x08002b60   0x0000001a   Code   RO          358    i.uart_write_bytes  uart.o
-    0x08002b7a   0x08002b7a   0x00000002   PAD
-    0x08002b7c   0x08002b7c   0x00000230   Code   RO          515    i.uprintf           uprintf.o
-    0x08002dac   0x08002dac   0x00000400   Data   RO          547    .constdata          default_firmware.o
-    0x080031ac   0x080031ac   0x00000018   Data   RO          663    .constdata          system_stm32f1xx.o
-    0x080031c4   0x080031c4   0x00000012   Data   RO          887    .constdata          stm32f1xx_hal_rcc.o
-    0x080031d6   0x080031d6   0x00000002   PAD
-    0x080031d8   0x080031d8   0x0000013b   Data   RO          438    .conststring        protocol.o
-    0x08003313   0x08003313   0x00000001   PAD
-    0x08003314   0x08003314   0x00000020   Data   RO         1770    Region$$Table       anon$$obj.o
+    0x08001230   0x08001230   0x0000097c   Code   RO          427    i.handle_cli_command  protocol.o
+    0x08001bac   0x08001bac   0x00000022   Code   RO          160    i.icsp_bulk_erase   icsp.o
+    0x08001bce   0x08001bce   0x00000002   PAD
+    0x08001bd0   0x08001bd0   0x000000e8   Code   RO          161    i.icsp_burn_default_firmware  icsp.o
+    0x08001cb8   0x08001cb8   0x00000020   Code   RO          162    i.icsp_dat_set_input  icsp.o
+    0x08001cd8   0x08001cd8   0x00000018   Code   RO          163    i.icsp_dat_set_output  icsp.o
+    0x08001cf0   0x08001cf0   0x00000044   Code   RO          164    i.icsp_delay_init   icsp.o
+    0x08001d34   0x08001d34   0x00000018   Code   RO          165    i.icsp_delay_ms     icsp.o
+    0x08001d4c   0x08001d4c   0x00000030   Code   RO          166    i.icsp_delay_us     icsp.o
+    0x08001d7c   0x08001d7c   0x000000a8   Code   RO          167    i.icsp_detect_chip  icsp.o
+    0x08001e24   0x08001e24   0x000000e0   Code   RO          168    i.icsp_devid_name   icsp.o
+    0x08001f04   0x08001f04   0x0000005c   Code   RO          169    i.icsp_enter_progmode  icsp.o
+    0x08001f60   0x08001f60   0x00000018   Code   RO          170    i.icsp_exit_progmode  icsp.o
+    0x08001f78   0x08001f78   0x0000007c   Code   RO          171    i.icsp_gpio_init    icsp.o
+    0x08001ff4   0x08001ff4   0x00000018   Code   RO          172    i.icsp_inc_pointer  icsp.o
+    0x0800200c   0x0800200c   0x00000010   Code   RO          173    i.icsp_load_config  icsp.o
+    0x0800201c   0x0800201c   0x00000018   Code   RO          174    i.icsp_load_payload  icsp.o
+    0x08002034   0x08002034   0x00000018   Code   RO          175    i.icsp_pins_claim_outputs  icsp.o
+    0x0800204c   0x0800204c   0x00000018   Code   RO          176    i.icsp_pins_release_hiz  icsp.o
+    0x08002064   0x08002064   0x0000005c   Code   RO          177    i.icsp_read_bits    icsp.o
+    0x080020c0   0x080020c0   0x0000008e   Code   RO          178    i.icsp_read_configs  icsp.o
+    0x0800214e   0x0800214e   0x00000048   Code   RO          179    i.icsp_read_flash   icsp.o
+    0x08002196   0x08002196   0x00000010   Code   RO          180    i.icsp_read_payload  icsp.o
+    0x080021a6   0x080021a6   0x0000000e   Code   RO          181    i.icsp_read_word    icsp.o
+    0x080021b4   0x080021b4   0x0000000a   Code   RO          182    i.icsp_reset_pointer  icsp.o
+    0x080021be   0x080021be   0x00000002   PAD
+    0x080021c0   0x080021c0   0x00000058   Code   RO          183    i.icsp_send_bits    icsp.o
+    0x08002218   0x08002218   0x00000016   Code   RO          184    i.icsp_send_cmd     icsp.o
+    0x0800222e   0x0800222e   0x0000002a   Code   RO          428    i.icsp_status_to_protocol  protocol.o
+    0x08002258   0x08002258   0x0000007a   Code   RO          185    i.icsp_verify_flash  icsp.o
+    0x080022d2   0x080022d2   0x00000052   Code   RO          186    i.icsp_write_config_word  icsp.o
+    0x08002324   0x08002324   0x00000092   Code   RO          187    i.icsp_write_row    icsp.o
+    0x080023b6   0x080023b6   0x00000002   PAD
+    0x080023b8   0x080023b8   0x0000018c   Code   RO           18    i.main              main.o
+    0x08002544   0x08002544   0x00000082   Code   RO          429    i.parse_uint        protocol.o
+    0x080025c6   0x080025c6   0x00000002   PAD
+    0x080025c8   0x080025c8   0x0000012c   Code   RO          430    i.print_chip_info   protocol.o
+    0x080026f4   0x080026f4   0x00000088   Code   RO          431    i.print_ihex_record  protocol.o
+    0x0800277c   0x0800277c   0x00000044   Code   RO          432    i.protocol_crc16    protocol.o
+    0x080027c0   0x080027c0   0x00000024   Code   RO          433    i.protocol_init     protocol.o
+    0x080027e4   0x080027e4   0x000001e0   Code   RO          434    i.protocol_process  protocol.o
+    0x080029c4   0x080029c4   0x00000074   Code   RO          435    i.send_binary_response  protocol.o
+    0x08002a38   0x08002a38   0x00000046   Code   RO          436    i.starts_with_ci    protocol.o
+    0x08002a7e   0x08002a7e   0x00000002   PAD
+    0x08002a80   0x08002a80   0x000000bc   Code   RO          355    i.uart_init         uart.o
+    0x08002b3c   0x08002b3c   0x00000038   Code   RO          356    i.uart_read_byte    uart.o
+    0x08002b74   0x08002b74   0x0000001c   Code   RO          357    i.uart_write_byte   uart.o
+    0x08002b90   0x08002b90   0x0000001a   Code   RO          358    i.uart_write_bytes  uart.o
+    0x08002baa   0x08002baa   0x00000002   PAD
+    0x08002bac   0x08002bac   0x00000230   Code   RO          515    i.uprintf           uprintf.o
+    0x08002ddc   0x08002ddc   0x00000400   Data   RO          547    .constdata          default_firmware.o
+    0x080031dc   0x080031dc   0x00000018   Data   RO          663    .constdata          system_stm32f1xx.o
+    0x080031f4   0x080031f4   0x00000012   Data   RO          887    .constdata          stm32f1xx_hal_rcc.o
+    0x08003206   0x08003206   0x00000002   PAD
+    0x08003208   0x08003208   0x000001ff   Data   RO          438    .conststring        protocol.o
+    0x08003407   0x08003407   0x00000001   PAD
+    0x08003408   0x08003408   0x00000020   Data   RO         1770    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003334, Size: 0x00000cb0, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003428, Size: 0x00000cb0, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08003334   0x00000004   Data   RW           19    .data               main.o
-    0x20000004   0x08003338   0x00000004   Data   RW          188    .data               icsp.o
-    0x20000008   0x0800333c   0x00000004   Data   RW          361    .data               uart.o
-    0x2000000c   0x08003340   0x00000008   Data   RW          439    .data               protocol.o
-    0x20000014   0x08003348   0x00000004   Data   RW          664    .data               system_stm32f1xx.o
-    0x20000018   0x0800334c   0x00000009   Data   RW          723    .data               stm32f1xx_hal.o
-    0x20000021   0x08003355   0x00000003   PAD
+    0x20000000   0x08003428   0x00000004   Data   RW           19    .data               main.o
+    0x20000004   0x0800342c   0x00000004   Data   RW          188    .data               icsp.o
+    0x20000008   0x08003430   0x00000004   Data   RW          361    .data               uart.o
+    0x2000000c   0x08003434   0x00000008   Data   RW          439    .data               protocol.o
+    0x20000014   0x0800343c   0x00000004   Data   RW          664    .data               system_stm32f1xx.o
+    0x20000018   0x08003440   0x00000009   Data   RW          723    .data               stm32f1xx_hal.o
+    0x20000021   0x08003449   0x00000003   PAD
     0x20000024        -       0x00000100   Zero   RW          360    .bss                uart.o
     0x20000124        -       0x0000038a   Zero   RW          437    .bss                protocol.o
-    0x200004ae   0x08003355   0x00000002   PAD
+    0x200004ae   0x08003449   0x00000002   PAD
     0x200004b0        -       0x00000800   Zero   RW            1    STACK               startup_stm32f103xb.o
 
 
@@ -1028,7 +1028,7 @@ Image component sizes
          0          0       1024          0          0        751   default_firmware.o
       2012        214          0          4          0      17377   icsp.o
       1668       1056          0          4          0     384788   main.o
-      4264       1716        315          8        906      11864   protocol.o
+      4312       1722        511          8        906      11868   protocol.o
         36          8        236          0       2048        820   startup_stm32f103xb.o
        152         32          0          9          0       5481   stm32f1xx_hal.o
        272         22          0          0          0      28930   stm32f1xx_hal_cortex.o
@@ -1040,7 +1040,7 @@ Image component sizes
        690          8          0          0          0       3282   uprintf.o
 
     ----------------------------------------------------------------------
-     11278       3198       1652         36       3212     493217   Object Totals
+     11326       3204       1848         36       3212     493221   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         18          0          3          3          2          0   (incl. Padding)
 
@@ -1083,15 +1083,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     11456       3214       1652         36       3212     489833   Grand Totals
-     11456       3214       1652         36       3212     489833   ELF Image Totals
-     11456       3214       1652         36          0          0   ROM Totals
+     11504       3220       1848         36       3212     489837   Grand Totals
+     11504       3220       1848         36       3212     489837   ELF Image Totals
+     11504       3220       1848         36          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                13108 (  12.80kB)
+    Total RO  Size (Code + RO Data)                13352 (  13.04kB)
     Total RW  Size (RW Data + ZI Data)              3248 (   3.17kB)
-    Total ROM Size (Code + RO Data + RW Data)      13144 (  12.84kB)
+    Total ROM Size (Code + RO Data + RW Data)      13388 (  13.07kB)
 
 ==============================================================================
 

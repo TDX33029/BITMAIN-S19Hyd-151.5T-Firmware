@@ -92,13 +92,9 @@ static void handle_binary_packet(const protocol_header_t *req, const uint8_t *pa
         case PROTOCOL_CMD_DETECT: {
             pic_chip_info_t info;
             icsp_status_t st = icsp_detect_chip(&info);
-            if (st == ICSP_OK) {
-                rsp_len = (uint16_t)sizeof(info);
-                memcpy(rsp_payload, &info, rsp_len);
-                status = PROTOCOL_STATUS_OK;
-            } else {
-                status = PROTOCOL_STATUS_ERR_CHIP;
-            }
+            rsp_len = (uint16_t)sizeof(info);
+            memcpy(rsp_payload, &info, rsp_len);
+            status = (st == ICSP_OK) ? PROTOCOL_STATUS_OK : PROTOCOL_STATUS_ERR_CHIP;
             break;
         }
 
@@ -308,7 +304,13 @@ static void handle_cli_command(char *cmdline)
         if (st == ICSP_OK) {
             print_chip_info(&chip);
         } else {
-            uprintf("[ERR] PIC Not Found or Incompatible! Check wiring and power. Code=%d\r\n", st);
+            uprintf("[ERR] PIC Not Found! raw DevID=0x%04X, CFG1=0x%04X, CFG2=0x%04X (Code=%d)\r\n",
+                    chip.dev_id, chip.config1, chip.config2, st);
+            if (chip.dev_id == 0x3FFFU) {
+                uprintf("      Diagnosis: DevID=0x3FFF -> DAT line floating HIGH (target not responding or LVP disabled).\r\n");
+            } else if (chip.dev_id == 0x0000U) {
+                uprintf("      Diagnosis: DevID=0x0000 -> DAT line grounded LOW (pin shorted or CLK not clocking).\r\n");
+            }
         }
     } else if (ci_equal(cmdline, "ERASE")) {
         uprintf("Erasing PIC16F1704 Flash & Config memory...\r\n");

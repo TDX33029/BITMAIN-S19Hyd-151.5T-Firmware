@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Flasher.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Flasher.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Oct 02 01:06:09 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Oct 02 01:22:39 2026
 <BR><P>
 <H3>Maximum Stack Usage =        648 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -851,7 +851,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_cli_command
 </UL>
 
-<P><STRONG><a name="[59]"></a>handle_binary_packet</STRONG> (Thumb, 412 bytes, Stack size 56 bytes, protocol.o(i.handle_binary_packet))
+<P><STRONG><a name="[59]"></a>handle_binary_packet</STRONG> (Thumb, 410 bytes, Stack size 56 bytes, protocol.o(i.handle_binary_packet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = handle_binary_packet &rArr; send_binary_response &rArr; protocol_crc16
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_binary_response
@@ -869,7 +869,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_process
 </UL>
 
-<P><STRONG><a name="[65]"></a>handle_cli_command</STRONG> (Thumb, 1934 bytes, Stack size 160 bytes, protocol.o(i.handle_cli_command))
+<P><STRONG><a name="[65]"></a>handle_cli_command</STRONG> (Thumb, 2040 bytes, Stack size 160 bytes, protocol.o(i.handle_cli_command))
 <BR><BR>[Stack]<UL><LI>Max Depth = 616<LI>Call Chain = handle_cli_command &rArr; print_ihex_record &rArr; uprintf &rArr; emit_num &rArr; emit_char
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;starts_with_ci
