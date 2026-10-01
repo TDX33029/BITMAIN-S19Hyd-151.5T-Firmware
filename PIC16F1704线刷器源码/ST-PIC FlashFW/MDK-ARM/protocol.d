@@ -1,7 +1,7 @@
 .\protocol.o: ..\Core\Src\protocol.c
 .\protocol.o: ../Core/Inc/protocol.h
-.\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\protocol.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\protocol.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\protocol.o: ../Core/Inc/icsp.h
 .\protocol.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 .\protocol.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
@@ -16,7 +16,7 @@
 .\protocol.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 .\protocol.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 .\protocol.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-.\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\protocol.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\protocol.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 .\protocol.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 .\protocol.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -30,4 +30,4 @@
 .\protocol.o: ../Core/Inc/uart.h
 .\protocol.o: ../Core/Inc/uprintf.h
 .\protocol.o: ../Core/Inc/default_firmware.h
-.\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\protocol.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\string.h

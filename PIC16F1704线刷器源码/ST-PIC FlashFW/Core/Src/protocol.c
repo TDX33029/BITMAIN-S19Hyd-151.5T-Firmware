@@ -427,20 +427,23 @@ void protocol_process(void)
                 }
             } else if (bin_rx_idx == sizeof(protocol_header_t)) {
                 protocol_header_t *hdr = (protocol_header_t *)(void *)bin_rx_buf;
-                if ((hdr->len > PROTOCOL_MAX_PAYLOAD) || (hdr->len == 0U)) {
+                /* READ_FLASH 指令中 hdr->len 表示待读取字数, 上行请求无负载数据 */
+                uint16_t payload_len = (hdr->cmd == PROTOCOL_CMD_READ_FLASH) ? 0U : hdr->len;
+                if (payload_len > PROTOCOL_MAX_PAYLOAD) {
                     bin_rx_idx = 0U;
                 } else {
                     bin_expected_len =
-                        (uint16_t)(sizeof(protocol_header_t) + hdr->len + 2U);
+                        (uint16_t)(sizeof(protocol_header_t) + payload_len + 2U);
                 }
             } else if ((bin_rx_idx > sizeof(protocol_header_t)) &&
                        (bin_rx_idx == bin_expected_len)) {
                 /* 完整帧到达, 校验CRC */
                 protocol_header_t *hdr = (protocol_header_t *)(void *)bin_rx_buf;
+                uint16_t payload_len = (hdr->cmd == PROTOCOL_CMD_READ_FLASH) ? 0U : hdr->len;
                 uint16_t rx_crc = (uint16_t)(bin_rx_buf[bin_expected_len - 2U] |
                                              (bin_rx_buf[bin_expected_len - 1U] << 8));
                 uint16_t calc_crc = protocol_crc16(bin_rx_buf,
-                        (uint16_t)(sizeof(protocol_header_t) + hdr->len));
+                        (uint16_t)(sizeof(protocol_header_t) + payload_len));
 
                 if (rx_crc == calc_crc) {
                     handle_binary_packet(hdr, bin_rx_buf + sizeof(protocol_header_t));
