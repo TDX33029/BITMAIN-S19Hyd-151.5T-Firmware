@@ -43,6 +43,14 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from requests.adapters import HTTPAdapter
 from requests.auth import HTTPDigestAuth
 
+try:
+    import serial
+    import serial.tools.list_ports
+    HAS_PYSERIAL = True
+except ImportError:
+    serial = None
+    HAS_PYSERIAL = False
+
 
 # Telegram Credentials
 TELEGRAM_TOKEN = "8938811502:AAHSMmrELHYz8OrFmlD8YeaogjmZ7X7-7NE"
@@ -188,6 +196,317 @@ class MijiaPlugDriver:
             return False
 
 
+class FanControllerDriver:
+    """
+    Automatic Serial Port Detector & Controller for CoolerHD 6-Channel 12025 Fan Controller.
+    - Scans all available serial ports (COMx on Windows, /dev/ttyUSB* or /dev/ttyACM* on Linux).
+    - Detects periodic telemetry: "1980,2010,2005,1990,2020,2040\r\n"
+    - Continuously updates 6-channel RPM values (id 1-6).
+    - Sends fan regulation command: "SELECT <id> <speed>\r\n" (fallback "SET <id> <speed>\r\n").
+    - Auto-reconnects on device hotplug or disconnect.
+    """
+
+    def __init__(self, preferred_port: Optional[str] = None, baudrate: int = 115200):
+        self.preferred_port = preferred_port
+        self.baudrate = baudrate
+        self.ser: Optional[Any] = None
+        self.current_port: str = ""
+        self.connected: bool = False
+        self.is_scanning: bool = False
+        self.rpms: List[int] = [0, 0, 0, 0, 0, 0]
+        self.target_rpms: List[int] = [2000, 2000, 2000, 2000, 2000, 2000]
+        self.last_seen_time: float = 0.0
+        self.lock = threading.RLock()
+        self.running: bool = True
+        self.cached_ports: List[Dict[str, Any]] = []
+        self.last_ports_scan_time: float = 0.0
+
+        self.worker_thread = threading.Thread(target=self._run_loop, daemon=True)
+        self.worker_thread.start()
+
+    @staticmethod
+    def _parse_telemetry_line(line: str) -> Optional[List[int]]:
+        """Parse telemetry string like '1980,2010,2005,1990,2020,2040' into 6 ints."""
+        if not line:
+            return None
+        line = line.strip()
+        if line.startswith("$RPM,"):
+            line = line[5:]
+        parts = [p.strip() for p in line.split(",") if p.strip()]
+        if len(parts) == 6:
+            try:
+                vals = [int(p) for p in parts]
+                if all(0 <= v <= 10000 for v in vals):
+                    return vals
+            except ValueError:
+                return None
+        return None
+
+    @staticmethod
+    def _is_bluetooth_port(port_obj) -> bool:
+        """Check if a serial port is a virtual Bluetooth port that causes 30s connection hangs."""
+        hwid = (getattr(port_obj, "hwid", "") or "").upper()
+        desc = (getattr(port_obj, "description", "") or "").upper()
+        name = (getattr(port_obj, "device", "") or "").upper()
+        return "BTHENUM" in hwid or "BLUETOOTH" in desc or "蓝牙" in desc or "BTHENUM" in name
+
+    @staticmethod
+    def _is_usb_serial_port(port_obj) -> bool:
+        """Identify physical USB serial adapters (CH340/1A86, CP210x, FTDI, etc.)."""
+        hwid = (getattr(port_obj, "hwid", "") or "").upper()
+        desc = (getattr(port_obj, "description", "") or "").upper()
+        return "USB" in hwid or "1A86" in hwid or "CH340" in desc or "CP210" in desc or "FTDI" in desc
+
+    @staticmethod
+    def get_available_ports() -> List[Dict[str, str]]:
+        """List all non-bluetooth hardware serial ports available on system."""
+        if not HAS_PYSERIAL or not serial:
+            return []
+        try:
+            ports = list(serial.tools.list_ports.comports())
+            res = []
+            for p in ports:
+                # Exclude virtual bluetooth serial ports that cause blocking
+                if FanControllerDriver._is_bluetooth_port(p):
+                    continue
+                is_usb = FanControllerDriver._is_usb_serial_port(p)
+                res.append({
+                    "port": p.device,
+                    "description": p.description or p.device,
+                    "is_usb": is_usb
+                })
+            # Prioritize USB serial ports (e.g. CH340 on COM6)
+            res.sort(key=lambda x: (not x["is_usb"], x["port"]))
+            return res
+        except Exception:
+            return []
+
+    def _open_and_validate_port(self, port_name: str) -> bool:
+        """Directly open a serial port and verify telemetry stream within 1.5 seconds."""
+        if not HAS_PYSERIAL or not serial:
+            return False
+        new_ser = None
+        try:
+            # Open with non-blocking read timeout (0.5s)
+            new_ser = serial.Serial(port_name, self.baudrate, timeout=0.5, write_timeout=1.0)
+            new_ser.reset_input_buffer()
+
+            # The MCU sends telemetry every 0.5s: "f1,f2,f3,f4,f5,f6\r\n"
+            t0 = time.time()
+            while time.time() - t0 < 1.6:
+                if new_ser.in_waiting > 0:
+                    line = new_ser.readline().decode("utf-8", errors="ignore").strip()
+                    if line:
+                        vals = self._parse_telemetry_line(line)
+                        if vals is not None:
+                            with self.lock:
+                                if self.ser and self.ser != new_ser:
+                                    try:
+                                        self.ser.close()
+                                    except Exception:
+                                        pass
+                                self.ser = new_ser
+                                self.current_port = port_name
+                                self.rpms = vals
+                                self.last_seen_time = time.time()
+                                self.connected = True
+                                self.is_scanning = False
+                            return True
+                else:
+                    time.sleep(0.03)
+
+            # If user explicitly preferred this port, keep connection open and probe with STATUS\r\n
+            if self.preferred_port and self.preferred_port == port_name:
+                try:
+                    new_ser.write(b"STATUS\r\n")
+                    time.sleep(0.1)
+                except Exception:
+                    pass
+                with self.lock:
+                    if self.ser and self.ser != new_ser:
+                        try:
+                            self.ser.close()
+                        except Exception:
+                            pass
+                    self.ser = new_ser
+                    self.current_port = port_name
+                    self.connected = True
+                    self.last_seen_time = time.time()
+                    self.is_scanning = False
+                return True
+        except Exception as e:
+            pass
+
+        if new_ser:
+            try:
+                new_ser.close()
+            except Exception:
+                pass
+        return False
+
+    def select_port(self, port_name: str):
+        """User explicitly selects a port (e.g. 'COM7', '/dev/ttyUSB0', or 'AUTO'). Immediate connect."""
+        p = port_name.strip() if port_name else "AUTO"
+        with self.lock:
+            self.preferred_port = p
+            if self.ser:
+                try:
+                    self.ser.close()
+                except Exception:
+                    pass
+            self.ser = None
+            self.connected = False
+            self.current_port = ""
+            self.last_seen_time = 0.0
+
+        # If a concrete port was selected, immediately attempt connection in worker
+        if p != "AUTO":
+            self._open_and_validate_port(p)
+
+    def is_alive(self, timeout_sec: float = 4.0) -> bool:
+        """Returns True if controller is actively connected and received telemetry within timeout."""
+        with self.lock:
+            if not self.connected or not self.ser or not self.ser.is_open:
+                return False
+            if self.last_seen_time <= 0:
+                return False
+            return (time.time() - self.last_seen_time) < timeout_sec
+
+    def _run_loop(self):
+        """Background thread handling fast connect, data stream reading, and auto-reconnect."""
+        while self.running:
+            if not HAS_PYSERIAL:
+                time.sleep(3)
+                continue
+
+            # State A: Not connected -> scan / connect
+            if not self.connected or not self.ser or not self.ser.is_open:
+                with self.lock:
+                    self.connected = False
+                    self.is_scanning = True
+
+                pref = self.preferred_port
+                connected_any = False
+                # 1. User preferred port (e.g. COM7)
+                if pref and pref != "AUTO":
+                    if self._open_and_validate_port(pref):
+                        connected_any = True
+                        print(f"🌀 [FanController] Connected directly to preferred port {pref}")
+
+                # 2. Auto-scan all available hardware USB ports (filtering out bluetooth)
+                if not connected_any:
+                    avail_ports = self.get_available_ports()
+                    for p_info in avail_ports:
+                        port_device = p_info["port"]
+                        if self._open_and_validate_port(port_device):
+                            connected_any = True
+                            print(f"🌀 [FanController] Auto-identified & connected to CoolerHD on {port_device}")
+                            break
+
+                if not connected_any:
+                    with self.lock:
+                        self.current_port = ""
+                        self.connected = False
+                        self.is_scanning = False
+                    time.sleep(1.0)
+                    continue
+
+            # State B: Connected -> continuously stream RPM telemetry
+            try:
+                if self.ser and self.ser.is_open:
+                    if self.ser.in_waiting > 0:
+                        raw_line = self.ser.readline().decode("utf-8", errors="ignore").strip()
+                        if raw_line:
+                            vals = self._parse_telemetry_line(raw_line)
+                            if vals is not None:
+                                with self.lock:
+                                    self.rpms = vals
+                                    self.last_seen_time = time.time()
+                                    self.connected = True
+                                    self.is_scanning = False
+                    else:
+                        time.sleep(0.04)
+                else:
+                    raise IOError("Serial port not open")
+            except Exception as e:
+                print(f"⚠️ [FanController] Serial stream lost on {self.current_port}: {e}, reconnecting...")
+                try:
+                    if self.ser:
+                        self.ser.close()
+                except Exception:
+                    pass
+                with self.lock:
+                    self.ser = None
+                    self.connected = False
+                    self.current_port = ""
+                    self.is_scanning = False
+                time.sleep(0.5)
+
+    def set_speed(self, fan_id: Any, speed: int) -> bool:
+        """
+        Send speed regulation command to the fan controller.
+        Usage: 'SET <id> <speed>\r\n'
+        - fan_id: 1~6, or 'ALL'/0 for all fans.
+        - speed: target RPM (600~2400 RPM, or 0 for stop).
+        """
+        if not self.connected or not self.ser or not self.ser.is_open:
+            return False
+
+        try:
+            target_str = "ALL" if str(fan_id).upper() in ("0", "ALL") else str(int(fan_id))
+            speed = int(speed)
+            if speed > 0:
+                speed = max(600, min(2400, speed))
+            else:
+                speed = 0
+
+            cmd = f"SET {target_str} {speed}\r\n"
+
+            with self.lock:
+                self.ser.write(cmd.encode("utf-8"))
+                self.ser.flush()
+
+                # Update target RPM state
+                if target_str == "ALL":
+                    self.target_rpms = [speed] * 6
+                else:
+                    idx = int(target_str) - 1
+                    if 0 <= idx < 6:
+                        self.target_rpms[idx] = speed
+            return True
+        except Exception as e:
+            sys.stderr.write(f"[FanController Send Error] {e}\n")
+            return False
+
+    def get_status(self) -> Dict[str, Any]:
+        """Return thread-safe snapshot of fan speeds, port selection and connection state."""
+        with self.lock:
+            alive = False
+            if self.connected and self.ser and self.ser.is_open and self.last_seen_time > 0:
+                alive = (time.time() - self.last_seen_time) < 4.0
+
+            now_t = time.time()
+            lost_sec = (now_t - self.last_seen_time) if self.last_seen_time > 0 else 999.0
+
+            # Cache ports list for 4 seconds to avoid blocking comports() call on every single request
+            if not self.cached_ports or (now_t - self.last_ports_scan_time > 4.0):
+                self.cached_ports = self.get_available_ports()
+                self.last_ports_scan_time = now_t
+
+            return {
+                "installed": HAS_PYSERIAL,
+                "connected": alive,
+                "scanning": self.is_scanning,
+                "port": self.current_port if alive else "",
+                "preferred_port": self.preferred_port or "AUTO",
+                "available_ports": self.cached_ports,
+                "rpms": list(self.rpms) if alive else [0, 0, 0, 0, 0, 0],
+                "targets": list(self.target_rpms),
+                "last_seen": self.last_seen_time,
+                "lost_seconds": round(lost_sec, 1),
+            }
+
+
 class MonitorStateManager:
     """Central state & background poller with persistent HTTP and UDP sessions."""
 
@@ -201,6 +520,8 @@ class MonitorStateManager:
         interval: float = 1.0,
         wrn_temp: float = 75.0,
         stop_temp: float = 78.0,
+        fan_start_temp: float = 50.0,
+        fan_max_temp: float = 70.0,
     ):
         self.miner_url = miner_url.rstrip("/")
         self.username = username
@@ -223,6 +544,9 @@ class MonitorStateManager:
         # Plug Driver
         self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did="2051114902")
 
+        # Fan Controller Driver (CoolerHD 6-Channel 12025 Fan Controller on Serial)
+        self.fan_driver = FanControllerDriver(preferred_port=os.getenv("FAN_SERIAL_PORT", "AUTO"))
+
         # 1-Hour buffers (3600 seconds)
         self.window_seconds = 3600.0
         self.time_buffer: Deque[float] = deque()
@@ -239,6 +563,24 @@ class MonitorStateManager:
         self.high_reject_alerted = False
         self.last_reject_alert_time = 0.0
         self.reject_alert_cooldown = 300.0  # Cooldown 5 minutes between alerts
+
+        # Dynamic Hotspot Closed-Loop Fan Regulation Parameters (600~2400 RPM)
+        self.fan_start_temp = float(fan_start_temp)  # 起转温度(对应 600 RPM)
+        self.fan_max_temp = float(fan_max_temp)      # 最大转速温度(对应 2400 RPM)
+        self.fan_control_mode = "AUTO"               # "AUTO" (线性温控) or "MANUAL" (手动设定)
+        self.manual_target_rpm = 1800                # 手动模式目标转速
+        self.auto_fan_enabled = True
+        self.last_auto_fan_rpm = 0
+        self.last_auto_fan_time = 0.0
+
+        # Smart Plug State & 5-minute Auto-Idle Fan Control
+        self.plug_off_timestamp: Optional[float] = None
+        self.plug_off_duration: float = 0.0
+        self.plug_idle_cooldown_reached: bool = False
+
+        # Fan Disconnection Protection (Power off if disconnected > 120s while running)
+        self.fan_disconnect_start_time: Optional[float] = None
+        self.fan_disconnect_duration: float = 0.0
 
         # Latest Snapshot
         self.latest_data: Dict[str, Any] = {
@@ -258,6 +600,23 @@ class MonitorStateManager:
             "chip_max": 0.0,
             "chip_avg": 0.0,
             "plug": {"online": False, "switch_on": False, "power_w": 0.0, "plug_temp": 0},
+            "plug_off_duration": 0.0,
+            "fan_mode": "AUTO",
+            "fan_control_mode": self.fan_control_mode,
+            "manual_target_rpm": self.manual_target_rpm,
+            "fan_disconnect_duration": 0.0,
+            "fans": {
+                "installed": HAS_PYSERIAL,
+                "connected": False,
+                "scanning": True,
+                "port": "",
+                "rpms": [0, 0, 0, 0, 0, 0],
+                "targets": [2000, 2000, 2000, 2000, 2000, 2000],
+                "last_seen": 0.0,
+            },
+            "fan_start_temp": self.fan_start_temp,
+            "fan_max_temp": self.fan_max_temp,
+            "auto_fan_rpm": 600,
             "wrn_temp": self.wrn_temp,
             "stop_temp": self.stop_temp,
             "interval": self.interval,
@@ -294,7 +653,15 @@ class MonitorStateManager:
             pass
         self.session = self._create_miner_session()
 
-    def set_settings(self, interval: Optional[float] = None, wrn: Optional[float] = None, stop: Optional[float] = None, paused: Optional[bool] = None):
+    def set_settings(
+        self,
+        interval: Optional[float] = None,
+        wrn: Optional[float] = None,
+        stop: Optional[float] = None,
+        paused: Optional[bool] = None,
+        fan_start: Optional[float] = None,
+        fan_max: Optional[float] = None,
+    ):
         with self.lock:
             if interval is not None:
                 self.interval = max(0.5, float(interval))
@@ -308,6 +675,12 @@ class MonitorStateManager:
             if paused is not None:
                 self.paused = bool(paused)
                 self.latest_data["paused"] = self.paused
+            if fan_start is not None:
+                self.fan_start_temp = float(fan_start)
+                self.latest_data["fan_start_temp"] = self.fan_start_temp
+            if fan_max is not None:
+                self.fan_max_temp = float(fan_max)
+                self.latest_data["fan_max_temp"] = self.fan_max_temp
 
     def set_plug_switch(self, state: bool) -> bool:
         """Switch plug power state."""
@@ -315,6 +688,36 @@ class MonitorStateManager:
         st = self.plug.query_status()
         with self.lock:
             self.latest_data["plug"] = st
+        return res
+
+    def set_fan_mode(self, mode: str, speed: Optional[int] = None) -> bool:
+        """Switch between AUTO (closed-loop temperature) and MANUAL (user fixed speed)."""
+        with self.lock:
+            m = mode.upper().strip()
+            if m in ("AUTO", "MANUAL"):
+                self.fan_control_mode = m
+                self.latest_data["fan_control_mode"] = self.fan_control_mode
+            if speed is not None:
+                self.manual_target_rpm = max(600, min(2400, int(speed)))
+                self.latest_data["manual_target_rpm"] = self.manual_target_rpm
+
+        if self.fan_control_mode == "MANUAL":
+            res = self.fan_driver.set_speed("ALL", self.manual_target_rpm)
+            fan_st = self.fan_driver.get_status()
+            with self.lock:
+                self.latest_data["fans"] = fan_st
+            return res
+        return True
+
+    def set_fan_speed(self, fan_id: Any, speed: int) -> bool:
+        """Regulate 12025 fan speed via SET <id> <speed>."""
+        with self.lock:
+            self.manual_target_rpm = max(600, min(2400, int(speed)))
+            self.latest_data["manual_target_rpm"] = self.manual_target_rpm
+        res = self.fan_driver.set_speed(fan_id, speed)
+        fan_st = self.fan_driver.get_status()
+        with self.lock:
+            self.latest_data["fans"] = fan_st
         return res
 
     def reset_protection_lock(self):
@@ -541,6 +944,111 @@ class MonitorStateManager:
                             self.chip_max_buffer.popleft()
                             self.chip_avg_buffer.popleft()
 
+                    # 5. Safety Interlock 2: While running (plug is ON), if fan controller disconnects > 2min (120s), emergency power off!
+                    is_plug_on = plug_data.get("online", False) and plug_data.get("switch_on", False)
+                    now_t = time.time()
+                    fan_connected = self.fan_driver.is_alive(timeout_sec=4.0)
+
+                    if is_plug_on:
+                        if fan_connected:
+                            self.fan_disconnect_start_time = None
+                            self.fan_disconnect_duration = 0.0
+                        else:
+                            if self.fan_disconnect_start_time is None:
+                                self.fan_disconnect_start_time = now_t
+                            self.fan_disconnect_duration = now_t - self.fan_disconnect_start_time
+
+                            # If fan lost > 120s (2 minutes), emergency shut down!
+                            if self.fan_disconnect_duration >= 120.0 and not self.cutoff_triggered:
+                                self.cutoff_triggered = True
+                                self.plug.set_switch(False)
+                                msg = (
+                                    f"🚨 <b>[AntMinerTab-Web 紧急风扇调速器失联断电告警]</b>\n\n"
+                                    f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
+                                    f"<b>级别</b>: <b>CRITICAL (风扇控速器通信中断超过 2 分钟)</b>\n"
+                                    f"<b>失联时长</b>: <b>{int(self.fan_disconnect_duration)} 秒</b>\n"
+                                    f"<b>芯片热点温度</b>: <b>{chip_max:.1f}°C</b>\n"
+                                    f"<b>动作执行</b>: 为防止水冷排无风散热导致矿机烧损，米家智能插座已立即<b>硬件切断电源</b>！\n"
+                                    f"<b>保护机制</b>: 保护锁已死锁，<b>绝不自动恢复</b>，请检查 CoolerHD 调速器串口连接！\n"
+                                    f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                                )
+                                send_telegram_async(msg)
+                    else:
+                        self.fan_disconnect_start_time = None
+                        self.fan_disconnect_duration = 0.0
+
+                    # 6. Smart Plug Off & 5-minute Auto-Idle (600 RPM) Fan Control
+                    if not is_plug_on:
+                        if self.plug_off_timestamp is None:
+                            self.plug_off_timestamp = now_t
+                        self.plug_off_duration = now_t - self.plug_off_timestamp
+                    else:
+                        self.plug_off_timestamp = None
+                        self.plug_off_duration = 0.0
+                        self.plug_idle_cooldown_reached = False
+
+                    # 7. Fan Speed Regulation: AUTO (Linear Temp) vs MANUAL (User Fixed Target)
+                    auto_target_rpm = 600
+                    display_fan_mode = self.fan_control_mode
+
+                    if not is_plug_on and self.plug_off_duration >= 300.0:
+                        # 插座断电已达 5 分钟：强制调整至最低转速 (600 RPM) 怠速静音
+                        auto_target_rpm = 600
+                        display_fan_mode = "IDLE_600"
+                        if self.fan_driver.connected:
+                            if (not self.plug_idle_cooldown_reached) or abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                                self.plug_idle_cooldown_reached = True
+                                self.last_auto_fan_rpm = auto_target_rpm
+                                self.last_auto_fan_time = now_t
+                                self.fan_driver.set_speed("ALL", auto_target_rpm)
+                    elif not is_plug_on:
+                        # 插座关闭未满 5 分钟：保持吹风排走余热
+                        display_fan_mode = "COOLDOWN_5M"
+                        if chip_max > self.fan_start_temp:
+                            ratio = (chip_max - self.fan_start_temp) / max(1.0, self.fan_max_temp - self.fan_start_temp)
+                            calc_rpm = 600.0 + ratio * (2400.0 - 600.0)
+                            auto_target_rpm = max(600, min(2400, int(round(calc_rpm / 10.0) * 10)))
+                        else:
+                            auto_target_rpm = max(600, self.last_auto_fan_rpm or 600)
+
+                        if self.fan_driver.connected:
+                            if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                                self.last_auto_fan_rpm = auto_target_rpm
+                                self.last_auto_fan_time = now_t
+                                self.fan_driver.set_speed("ALL", auto_target_rpm)
+                    elif self.fan_control_mode == "MANUAL":
+                        # 手动模式：执行用户手输目标值
+                        auto_target_rpm = self.manual_target_rpm
+                        display_fan_mode = "MANUAL"
+                        if self.fan_driver.connected:
+                            if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                                self.last_auto_fan_rpm = auto_target_rpm
+                                self.last_auto_fan_time = now_t
+                                self.fan_driver.set_speed("ALL", auto_target_rpm)
+                    elif miner_ok and chip_max > 0:
+                        # 自动模式：按热点温度线性调速 (600~2400)
+                        display_fan_mode = "AUTO"
+                        t_start = self.fan_start_temp
+                        t_max = max(t_start + 1.0, self.fan_max_temp)
+                        if chip_max <= t_start:
+                            auto_target_rpm = 600
+                        elif chip_max >= t_max:
+                            auto_target_rpm = 2400
+                        else:
+                            ratio = (chip_max - t_start) / (t_max - t_start)
+                            calc_rpm = 600.0 + ratio * (2400.0 - 600.0)
+                            auto_target_rpm = int(round(calc_rpm / 10.0) * 10)
+                            auto_target_rpm = max(600, min(2400, auto_target_rpm))
+
+                        if self.fan_driver.connected:
+                            if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                                self.last_auto_fan_rpm = auto_target_rpm
+                                self.last_auto_fan_time = now_t
+                                self.fan_driver.set_speed("ALL", auto_target_rpm)
+                    else:
+                        auto_target_rpm = 600
+                        display_fan_mode = self.fan_control_mode
+
                     self.latest_data = {
                         "timestamp": datetime.now().strftime("%H:%M:%S"),
                         "time_epoch": now_epoch,
@@ -559,6 +1067,15 @@ class MonitorStateManager:
                         "pcb_temps": temp_pcb,
                         "chip_temps": temp_chip,
                         "plug": plug_data,
+                        "plug_off_duration": round(self.plug_off_duration, 1),
+                        "fan_mode": display_fan_mode,
+                        "fan_control_mode": self.fan_control_mode,
+                        "manual_target_rpm": self.manual_target_rpm,
+                        "fan_disconnect_duration": round(self.fan_disconnect_duration, 1),
+                        "fans": self.fan_driver.get_status(),
+                        "fan_start_temp": self.fan_start_temp,
+                        "fan_max_temp": self.fan_max_temp,
+                        "auto_fan_rpm": auto_target_rpm,
                         "wrn_temp": self.wrn_temp,
                         "stop_temp": self.stop_temp,
                         "interval": self.interval,
@@ -581,6 +1098,15 @@ class MonitorStateManager:
             data = dict(self.latest_data)
             now_epoch = time.time()
             data["now_epoch"] = now_epoch
+            data["fans"] = self.fan_driver.get_status()
+            data["fan_start_temp"] = self.fan_start_temp
+            data["fan_max_temp"] = self.fan_max_temp
+            data["auto_fan_rpm"] = self.latest_data.get("auto_fan_rpm", 600)
+            data["fan_mode"] = self.latest_data.get("fan_mode", "AUTO")
+            data["fan_control_mode"] = self.fan_control_mode
+            data["manual_target_rpm"] = self.manual_target_rpm
+            data["fan_disconnect_duration"] = self.latest_data.get("fan_disconnect_duration", 0.0)
+            data["plug_off_duration"] = self.latest_data.get("plug_off_duration", 0.0)
             data["curves"] = {
                 "x": list(self.time_buffer),
                 "inlet": list(self.inlet_buffer),
@@ -750,6 +1276,16 @@ HTML_PAGE = """<!DOCTYPE html>
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-y: auto;
+  }
+  .panel::-webkit-scrollbar {
+    width: 4px;
+  }
+  .panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .panel::-webkit-scrollbar-thumb {
+    background: #2d313b;
   }
   .panel-header {
     display: flex;
@@ -936,7 +1472,7 @@ HTML_PAGE = """<!DOCTYPE html>
   </div>
   <div class="card">
     <div class="card-title">Plug Switch</div>
-    <button id="plugSwitchBtn" class="btn-switch-on">ON</button>
+    <button id="plugSwitchBtn" class="btn-switch-off">OFF</button>
     <div class="card-sub" id="valPlugTemp">Plug: --°C</div>
   </div>
 </div>
@@ -963,12 +1499,16 @@ HTML_PAGE = """<!DOCTYPE html>
       <span style="color:#868c9c">BOARD SENSORS (#1)</span>
     </div>
 
-    <!-- Threshold Inputs -->
-    <div class="thresh-row">
-      <span>WRN:</span>
-      <input type="number" id="wrnSpin" min="40" max="90" step="1" value="75"> °C
-      <span style="margin-left:6px">STOP:</span>
-      <input type="number" id="stopSpin" min="45" max="95" step="1" value="78"> °C
+    <!-- Threshold Inputs (Fan Start & Fan Max on the left of WRN & STOP) -->
+    <div class="thresh-row" style="flex-wrap: wrap; row-gap: 6px;">
+      <span title="风扇起转 600 RPM 温度 (以芯片热点最高温为对象)" style="color:#00c49f;">FAN 600:</span>
+      <input type="number" id="fanStartSpin" min="30" max="80" step="1" value="50" style="width:50px;"> °C
+      <span title="风扇最大 2400 RPM 温度 (以芯片热点最高温为对象)" style="margin-left:6px; color:#00c49f;">FAN 2400:</span>
+      <input type="number" id="fanMaxSpin" min="40" max="90" step="1" value="70" style="width:50px;"> °C
+      <span title="持续超温预警断电保护温度" style="margin-left:8px;">WRN:</span>
+      <input type="number" id="wrnSpin" min="40" max="90" step="1" value="75" style="width:50px;"> °C
+      <span title="即刻急停断电保护温度" style="margin-left:6px;">STOP:</span>
+      <input type="number" id="stopSpin" min="45" max="95" step="1" value="78" style="width:50px;"> °C
     </div>
 
     <div class="alert-banner" id="alertBanner"></div>
@@ -981,6 +1521,68 @@ HTML_PAGE = """<!DOCTYPE html>
     <!-- Chip Die Sensors -->
     <div class="sec-title" style="color:#f4a261; margin-top:6px">Chip Die Core Sensors</div>
     <div id="chipBarsContainer"></div>
+
+    <!-- 12025 Fan Controller (CoolerHD) -->
+    <div class="sec-title" style="color:#00c49f; margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+      <span>CoolerHD 12025 Fan Speeds</span>
+      <span id="fanPortBadge" style="font-size:10px; color:#868c9c; font-weight:normal;">[ SCANNING... ]</span>
+    </div>
+
+    <!-- Serial Port Selector & Auto/Manual Mode Switch Toolbar -->
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; padding:4px 6px; background:#16181d; border:1px solid #2d313b; font-size:11px; flex-wrap:wrap; gap:6px;">
+      <!-- Serial Port Dropdown & Connect/Scan -->
+      <div style="display:flex; align-items:center; gap:4px;">
+        <span style="color:#868c9c; font-size:10px; font-weight:bold;">PORT:</span>
+        <select id="fanSerialSelect" style="background:#22252e; border:1px solid #2d313b; color:#ffffff; font-family:inherit; font-size:10px; padding:2px 4px; border-radius:0; max-width:130px;">
+          <option value="AUTO">AUTO (Scan All)</option>
+        </select>
+        <button id="fanScanBtn" style="padding:2px 6px; font-size:10px; background:#22252e; border:1px solid #2d313b; color:#868c9c; cursor:pointer;" title="Rescan available serial ports">SCAN</button>
+        <button id="fanConnectBtn" style="padding:2px 6px; font-size:10px; background:#1b382c; border:1px solid #00c49f; color:#00c49f; cursor:pointer;" title="Connect selected port">CONNECT</button>
+      </div>
+
+      <!-- Auto / Manual Toggle Mode Switch -->
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="color:#868c9c; font-size:10px; font-weight:bold;">MODE:</span>
+        <div style="display:inline-flex; border:1px solid #2d313b;">
+          <button id="fanModeAutoBtn" style="padding:2px 8px; font-size:10px; font-weight:bold; cursor:pointer; background:#00c49f; color:#131417; border:none;">AUTO</button>
+          <button id="fanModeManualBtn" style="padding:2px 8px; font-size:10px; font-weight:bold; cursor:pointer; background:#22252e; color:#868c9c; border:none;">MANUAL</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fan Safety Warning Banner (Displayed when fan disconnected while running or attempting to start) -->
+    <div id="fanSafetyBanner" style="display:none; padding:4px 6px; margin-bottom:6px; font-size:10px; font-weight:bold; background:#3b171c; border:1px solid #e76f51; color:#e76f51;"></div>
+
+    <div id="fanBarsContainer"></div>
+
+    <!-- Fan Speed Regulation (SET <id> <speed>) -->
+    <div style="margin-top:6px; padding:6px 8px; background:#16181d; border:1px solid #2d313b;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; font-size:10px; color:#868c9c; font-weight:bold;">
+        <span id="fanCtrlTitle">FAN SPEED REGULATION (600-2400 RPM)</span>
+        <span id="fanCtrlStatus" style="color:#00c49f;">AUTO: 600 RPM</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+        <select id="fanTargetSelect" style="background:#22252e; border:1px solid #2d313b; color:#ffffff; font-family:inherit; font-size:11px; padding:2px 4px; font-weight:bold; border-radius:0;">
+          <option value="ALL">All Fans (1-6)</option>
+          <option value="1">Fan 1</option>
+          <option value="2">Fan 2</option>
+          <option value="3">Fan 3</option>
+          <option value="4">Fan 4</option>
+          <option value="5">Fan 5</option>
+          <option value="6">Fan 6</option>
+        </select>
+        <input type="number" id="fanSpeedInput" min="600" max="2400" step="50" value="1800" style="width:68px; padding:2px 4px; background:#22252e; border:1px solid #2d313b; color:#ffd166; font-weight:bold; font-size:11px; border-radius:0;">
+        <span style="font-size:11px; color:#868c9c;">RPM</span>
+        <button id="applyFanSpeedBtn" style="padding:3px 8px; font-size:11px; background:#1b382c; border:1px solid #00c49f; color:#00c49f; cursor:pointer;">APPLY</button>
+      </div>
+      <div style="display:flex; gap:4px; margin-top:5px;">
+        <button class="fan-quick-btn" data-rpm="0" style="flex:1; padding:2px 0; font-size:10px; background:#3b1e24; border:1px solid #e76f51; color:#e76f51; cursor:pointer;">STOP</button>
+        <button class="fan-quick-btn" data-rpm="600" style="flex:1; padding:2px 0; font-size:10px; background:#22252e; border:1px solid #2d313b; color:#868c9c; cursor:pointer;">600</button>
+        <button class="fan-quick-btn" data-rpm="1200" style="flex:1; padding:2px 0; font-size:10px; background:#22252e; border:1px solid #2d313b; color:#868c9c; cursor:pointer;">1200</button>
+        <button class="fan-quick-btn" data-rpm="1800" style="flex:1; padding:2px 0; font-size:10px; background:#22252e; border:1px solid #2d313b; color:#868c9c; cursor:pointer;">1800</button>
+        <button class="fan-quick-btn" data-rpm="2400" style="flex:1; padding:2px 0; font-size:10px; background:#1f3347; border:1px solid #00a8e8; color:#00a8e8; cursor:pointer;">2400</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1006,7 +1608,9 @@ HTML_PAGE = """<!DOCTYPE html>
 
 <script>
   let isPaused = false;
-  let currentPlugState = true;
+  let currentPlugState = false;
+  let currentFanConnected = false;
+  let currentFanMode = "AUTO";
   let curvesData = { x: [], inlet: [], outlet: [], chip_max: [], chip_avg: [] };
   let currentServerNow = Date.now() / 1000;
 
@@ -1034,6 +1638,7 @@ HTML_PAGE = """<!DOCTYPE html>
   // Initialize Bars
   const pcbContainer = document.getElementById("pcbBarsContainer");
   const chipContainer = document.getElementById("chipBarsContainer");
+  const fanContainer = document.getElementById("fanBarsContainer");
 
   for (let i = 1; i <= 6; i++) {
     pcbContainer.innerHTML += `
@@ -1047,6 +1652,12 @@ HTML_PAGE = """<!DOCTYPE html>
         <span class="bar-label">Chip-${i}</span>
         <div class="bar-track"><div class="bar-fill" id="chipFill${i}"></div></div>
         <span class="bar-val" id="chipVal${i}">--.-°C</span>
+      </div>`;
+    fanContainer.innerHTML += `
+      <div class="sensor-bar-row">
+        <span class="bar-label">Fan-${i}</span>
+        <div class="bar-track"><div class="bar-fill" id="fanFill${i}" style="background:#00c49f;"></div></div>
+        <span class="bar-val" id="fanVal${i}">-- RPM</span>
       </div>`;
   }
 
@@ -1124,6 +1735,7 @@ HTML_PAGE = """<!DOCTYPE html>
       document.getElementById("valPlugPower").innerText = "OFFLINE";
       pBtn.className = "btn-switch-off";
       pBtn.innerText = "OFFLINE";
+      currentPlugState = false;
     }
 
     // 3. Water Banner
@@ -1153,6 +1765,16 @@ HTML_PAGE = """<!DOCTYPE html>
 
     // 5. Sync Server-Authoritative Settings across all viewing devices
     // (Focus-aware: do not interrupt user if actively editing that specific input)
+    const fanStartInput = document.getElementById("fanStartSpin");
+    if (document.activeElement !== fanStartInput && d.fan_start_temp !== undefined) {
+      fanStartInput.value = d.fan_start_temp;
+    }
+
+    const fanMaxInput = document.getElementById("fanMaxSpin");
+    if (document.activeElement !== fanMaxInput && d.fan_max_temp !== undefined) {
+      fanMaxInput.value = d.fan_max_temp;
+    }
+
     const wrnInput = document.getElementById("wrnSpin");
     if (document.activeElement !== wrnInput && d.wrn_temp !== undefined) {
       wrnInput.value = d.wrn_temp;
@@ -1184,7 +1806,106 @@ HTML_PAGE = """<!DOCTYPE html>
       updateBar("chip", i + 1, cVal, 85, wrn);
     }
 
-    // 7. Curves data
+    // 7. CoolerHD 12025 Fan Speeds & Control State
+    if (d.fans) {
+      currentFanConnected = Boolean(d.fans.connected);
+
+      const fanBadge = document.getElementById("fanPortBadge");
+      if (fanBadge) {
+        if (d.fans.connected) {
+          fanBadge.innerText = `[ CONNECTED: ${d.fans.port} ]`;
+          fanBadge.style.color = "#00c49f";
+        } else if (d.fans.scanning) {
+          fanBadge.innerText = "[ SCANNING... ]";
+          fanBadge.style.color = "#868c9c";
+        } else {
+          fanBadge.innerText = "[ DISCONNECTED ]";
+          fanBadge.style.color = "#e76f51";
+        }
+      }
+
+      // Update Serial Port Dropdown Options (without disrupting active user click)
+      const portSelect = document.getElementById("fanSerialSelect");
+      if (portSelect && document.activeElement !== portSelect && d.fans.available_ports) {
+        const ports = d.fans.available_ports;
+        let optHtml = '<option value="AUTO">AUTO (Scan All)</option>';
+        ports.forEach(p => {
+          const desc = p.description ? ` (${p.description})` : "";
+          optHtml += `<option value="${p.port}">${p.port}${desc}</option>`;
+        });
+        if (portSelect.getAttribute("data-ports-len") !== String(ports.length)) {
+          const curVal = portSelect.value || d.fans.preferred_port || "AUTO";
+          portSelect.innerHTML = optHtml;
+          portSelect.setAttribute("data-ports-len", String(ports.length));
+          portSelect.value = curVal;
+        }
+      }
+
+      // Update Auto / Manual Mode Switch Toggle Buttons
+      const isAuto = (d.fan_control_mode !== "MANUAL");
+      currentFanMode = isAuto ? "AUTO" : "MANUAL";
+      const autoBtn = document.getElementById("fanModeAutoBtn");
+      const manualBtn = document.getElementById("fanModeManualBtn");
+      const titleSpan = document.getElementById("fanCtrlTitle");
+      if (autoBtn && manualBtn) {
+        if (isAuto) {
+          autoBtn.style.background = "#00c49f";
+          autoBtn.style.color = "#131417";
+          manualBtn.style.background = "#22252e";
+          manualBtn.style.color = "#868c9c";
+          if (titleSpan) titleSpan.innerText = "FAN SPEED REGULATION (AUTO - 600~2400 RPM)";
+        } else {
+          autoBtn.style.background = "#22252e";
+          autoBtn.style.color = "#868c9c";
+          manualBtn.style.background = "#f4a261";
+          manualBtn.style.color = "#131417";
+          if (titleSpan) titleSpan.innerText = "FAN SPEED REGULATION (MANUAL TARGET)";
+        }
+      }
+
+      // Fan Disconnection Safety Alarm Banner
+      const safetyBanner = document.getElementById("fanSafetyBanner");
+      if (safetyBanner) {
+        if (d.plug && d.plug.switch_on && (!d.fans.connected || d.fan_disconnect_duration > 0)) {
+          const dur = d.fan_disconnect_duration || 0;
+          const rem = Math.max(0, Math.round(120 - dur));
+          safetyBanner.style.display = "block";
+          safetyBanner.innerText = `🚨 警告: 风扇控速器通信中断 (${Math.round(dur)}s / 120s)! 矿机运行中失联满 2 分钟将紧急断电! (剩余 ${rem}s)`;
+        } else if (!d.fans.connected) {
+          safetyBanner.style.display = "block";
+          safetyBanner.innerText = "🔒 安全锁定: 风扇控速器未连接！建立连接前严禁启动矿机电源。";
+        } else {
+          safetyBanner.style.display = "none";
+        }
+      }
+
+      const rpms = d.fans.rpms || [];
+      for (let i = 0; i < 6; i++) {
+        const rVal = rpms[i] !== undefined ? rpms[i] : 0;
+        updateFanBar(i + 1, rVal, 2400);
+      }
+
+      const ctrlStatus = document.getElementById("fanCtrlStatus");
+      if (ctrlStatus && ctrlStatus.getAttribute("data-busy") !== "1") {
+        const autoRpm = d.auto_fan_rpm || 600;
+        if (!isAuto) {
+          ctrlStatus.innerText = `MANUAL: ${d.manual_target_rpm || autoRpm} RPM`;
+          ctrlStatus.style.color = "#f4a261";
+        } else if (d.fan_mode === "IDLE_600") {
+          ctrlStatus.innerText = "PLUG OFF: IDLE (600 RPM)";
+          ctrlStatus.style.color = "#868c9c";
+        } else if (d.fan_mode === "COOLDOWN_5M") {
+          const remSec = Math.max(0, Math.round(300 - (d.plug_off_duration || 0)));
+          ctrlStatus.innerText = `PLUG OFF: Cool ${remSec}s (${autoRpm} RPM)`;
+          ctrlStatus.style.color = "#f4a261";
+        } else {
+          ctrlStatus.innerText = `AUTO: ${autoRpm} RPM`;
+          ctrlStatus.style.color = "#00c49f";
+        }
+      }
+    }
+
+    // 8. Curves data
     if (d.curves) {
       curvesData = d.curves;
       drawCanvasPlot();
@@ -1202,6 +1923,25 @@ HTML_PAGE = """<!DOCTYPE html>
     if (val >= wrn || val >= 78) color = "#e76f51";
     else if (val >= 68) color = "#f4a261";
     else if (val >= 55) color = "#00a8e8";
+
+    fill.style.backgroundColor = color;
+    text.style.color = color;
+  }
+
+  function updateFanBar(idx, val, maxRange = 2400) {
+    const fill = document.getElementById(`fanFill${idx}`);
+    const text = document.getElementById(`fanVal${idx}`);
+    if (!fill || !text) return;
+
+    const rpm = Math.max(0, Math.round(Number(val) || 0));
+    const pct = Math.min(100, Math.max(0, (rpm / maxRange) * 100));
+    fill.style.width = `${pct}%`;
+    text.innerText = rpm > 0 ? `${rpm} RPM` : `0 RPM`;
+
+    let color = "#00c49f";
+    if (rpm === 0) color = "#e76f51";
+    else if (rpm < 600) color = "#f4a261";
+    else if (rpm >= 2300) color = "#00a8e8";
 
     fill.style.backgroundColor = color;
     text.style.color = color;
@@ -1526,6 +2266,22 @@ HTML_PAGE = """<!DOCTYPE html>
     });
   });
 
+  document.getElementById("fanStartSpin").addEventListener("change", async e => {
+    await fetch("/api/settings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fan_start_temp: parseFloat(e.target.value) })
+    });
+  });
+
+  document.getElementById("fanMaxSpin").addEventListener("change", async e => {
+    await fetch("/api/settings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fan_max_temp: parseFloat(e.target.value) })
+    });
+  });
+
   document.getElementById("wrnSpin").addEventListener("change", async e => {
     await fetch("/api/settings", {
       method: "POST",
@@ -1563,6 +2319,118 @@ HTML_PAGE = """<!DOCTYPE html>
     await fetch("/api/reset_lock", { method: "POST" });
   });
 
+  // Fan Speed Regulation Listeners (SET <id> <speed>)
+  document.getElementById("applyFanSpeedBtn").addEventListener("click", async () => {
+    const fanId = document.getElementById("fanTargetSelect").value;
+    const speed = parseInt(document.getElementById("fanSpeedInput").value) || 0;
+    const statusElem = document.getElementById("fanCtrlStatus");
+    statusElem.setAttribute("data-busy", "1");
+    statusElem.innerText = "SENDING...";
+    statusElem.style.color = "#ffd166";
+    try {
+      const res = await fetch("/api/fan/set", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fan_id: fanId, speed: speed })
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        statusElem.innerText = `OK (${speed} RPM)`;
+        statusElem.style.color = "#00c49f";
+      } else {
+        statusElem.innerText = "FAILED / OFFLINE";
+        statusElem.style.color = "#e76f51";
+      }
+    } catch (e) {
+      statusElem.innerText = "ERROR";
+      statusElem.style.color = "#e76f51";
+    }
+    setTimeout(() => {
+      statusElem.setAttribute("data-busy", "0");
+    }, 3000);
+  });
+
+  document.querySelectorAll(".fan-quick-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const rpm = btn.getAttribute("data-rpm");
+      document.getElementById("fanSpeedInput").value = rpm;
+      document.getElementById("applyFanSpeedBtn").click();
+    });
+  });
+
+  // Fan Serial Port Scan & Connect Listeners
+  document.getElementById("fanScanBtn").addEventListener("click", async () => {
+    const sel = document.getElementById("fanSerialSelect");
+    sel.disabled = true;
+    try {
+      const res = await fetch("/api/fan/ports");
+      const data = await res.json();
+      if (data && data.ports) {
+        let optHtml = '<option value="AUTO">AUTO (Scan All)</option>';
+        data.ports.forEach(p => {
+          const desc = p.description ? ` (${p.description})` : "";
+          optHtml += `<option value="${p.port}">${p.port}${desc}</option>`;
+        });
+        sel.innerHTML = optHtml;
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      sel.disabled = false;
+    }
+  });
+
+  document.getElementById("fanConnectBtn").addEventListener("click", async () => {
+    const port = document.getElementById("fanSerialSelect").value;
+    const badge = document.getElementById("fanPortBadge");
+    if (badge) {
+      badge.innerText = `[ CONNECTING ${port}... ]`;
+      badge.style.color = "#ffd166";
+    }
+    try {
+      await fetch("/api/fan/select_port", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ port: port })
+      });
+      // Immediately trigger status refresh
+      setTimeout(fetchStatus, 300);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
+  document.getElementById("fanSerialSelect").addEventListener("change", async (e) => {
+    try {
+      await fetch("/api/fan/select_port", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ port: e.target.value })
+      });
+      setTimeout(fetchStatus, 300);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
+  // Fan Mode (AUTO / MANUAL) Toggle Buttons
+  document.getElementById("fanModeAutoBtn").addEventListener("click", async () => {
+    await fetch("/api/fan/mode", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "AUTO" })
+    });
+  });
+
+  document.getElementById("fanModeManualBtn").addEventListener("click", async () => {
+    const spd = parseInt(document.getElementById("fanSpeedInput").value) || 1800;
+    await fetch("/api/fan/mode", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "MANUAL", speed: spd })
+    });
+  });
+
   // Plug Switch & Password Modal
   const modal = document.getElementById("pwdModal");
   const pwdInput = document.getElementById("pwdInput");
@@ -1576,6 +2444,11 @@ HTML_PAGE = """<!DOCTYPE html>
         body: JSON.stringify({ state: false })
       });
     } else {
+      // 安全联锁规则 1: 建立连接前不允许电源启动！
+      if (!currentFanConnected) {
+        alert("🚨 安全锁定拦截！\\n\\n风扇控速器尚未连接或处于失联状态。\\n为了防止矿机水冷无风散热导致高温烧毁，在风扇控速器建立连接前，严格禁止电源启动！\\n\\n请先插入风扇调速器并在面板上方选择端口点击 CONNECT 连接。");
+        return;
+      }
       pwdErr.style.display = "none";
       pwdInput.value = "";
       modal.style.display = "flex";
@@ -1595,10 +2468,12 @@ HTML_PAGE = """<!DOCTYPE html>
       if (res.ok && data.ok) {
         modal.style.display = "none";
       } else {
+        pwdErr.innerText = data.msg || "Incorrect password! Try again.";
         pwdErr.style.display = "block";
         pwdInput.select();
       }
     } catch (e) {
+      pwdErr.innerText = "Network / Request Error";
       pwdErr.style.display = "block";
       pwdInput.select();
     }
@@ -1794,6 +2669,13 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             payload = self.server.state_manager.get_api_payload()
             self.wfile.write(json.dumps(payload).encode("utf-8"))
+        elif parsed.path == "/api/fan/ports":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            ports = self.server.state_manager.fan_driver.get_available_ports()
+            self.wfile.write(json.dumps({"ok": True, "ports": ports}).encode("utf-8"))
         else:
             self.send_response(404)
             self.end_headers()
@@ -1819,6 +2701,14 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
             state = req_data.get("state", False)
             pwd = str(req_data.get("password", ""))
             if state:
+                # 安全联锁规则 1: 建立连接前不允许电源启动！
+                if not self.server.state_manager.fan_driver.is_alive(timeout_sec=4.0):
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(b'{"ok":false,"msg":"Safety Lock: Fan controller is NOT connected! Power ON is forbidden."}')
+                    return
+
                 expected_power_pwd = self.get_power_password()
                 if not hmac.compare_digest(pwd, expected_power_pwd):
                     self.send_response(403)
@@ -1839,6 +2729,8 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
                 wrn=req_data.get("wrn_temp"),
                 stop=req_data.get("stop_temp"),
                 paused=req_data.get("paused"),
+                fan_start=req_data.get("fan_start_temp"),
+                fan_max=req_data.get("fan_max_temp"),
             )
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
@@ -1858,6 +2750,32 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(b'{"ok":true}')
+
+        elif parsed.path == "/api/fan/set":
+            fan_id = req_data.get("fan_id", "ALL")
+            speed = req_data.get("speed", 2000)
+            res = self.server.state_manager.set_fan_speed(fan_id, speed)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"ok": res, "fan_id": fan_id, "speed": speed}).encode("utf-8"))
+
+        elif parsed.path == "/api/fan/select_port":
+            port = req_data.get("port", "AUTO")
+            self.server.state_manager.fan_driver.select_port(str(port))
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"ok": True, "port": port}).encode("utf-8"))
+
+        elif parsed.path == "/api/fan/mode":
+            mode = req_data.get("mode", "AUTO")
+            speed = req_data.get("speed")
+            res = self.server.state_manager.set_fan_mode(mode, speed)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"ok": res, "mode": mode, "speed": speed}).encode("utf-8"))
         else:
             self.send_response(404)
             self.end_headers()
@@ -1876,11 +2794,15 @@ def main():
     resolved_config_path = config.get("_path", get_config_path(args.config))
     login_password = config["login_password"]
     power_password = config["power_password"]
+    fan_start_temp = float(config.get("fan_start_temp", 50.0))
+    fan_max_temp = float(config.get("fan_max_temp", 70.0))
 
     print("=" * 72)
     print(" 🚀 AntMinerTab Web Server Starting...")
     print(f" Target Miner: http://10.8.1.86")
     print(f" Target Plug:  10.8.1.110 (Mijia Smart Plug 3)")
+    print(f" Fan Device:   CoolerHD 12025 Fan Controller (Auto Serial 115200)")
+    print(f" Fan Curve:    Linear 600 RPM @ {fan_start_temp:.0f}°C -> 2400 RPM @ {fan_max_temp:.0f}°C (Chip Hotspot)")
     print(f" Telegram Bot: @s332854BOT (7775553661)")
     print("=" * 72)
     print(f" Config File:   {resolved_config_path}")
@@ -1893,7 +2815,7 @@ def main():
     print(f" LAN Access:       http://<host-ip>:{args.port}")
     print("=" * 72)
 
-    state_mgr = MonitorStateManager()
+    state_mgr = MonitorStateManager(fan_start_temp=fan_start_temp, fan_max_temp=fan_max_temp)
 
     server = ThreadingHTTPServer((args.host, args.port), AntMinerWebHandler)
     server.state_manager = state_mgr

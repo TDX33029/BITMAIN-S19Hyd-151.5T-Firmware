@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"coolerhd\startup_stm32f103xb.o"
+"coolerhd\main.o"
+"coolerhd\stm32f1xx_it.o"
+"coolerhd\stm32f1xx_hal_msp.o"
+"coolerhd\fan.o"
+"coolerhd\led.o"
+"coolerhd\uart_protocol.o"
+"coolerhd\stm32f1xx_hal_gpio_ex.o"
+"coolerhd\stm32f1xx_hal_tim.o"
+"coolerhd\stm32f1xx_hal_tim_ex.o"
+"coolerhd\stm32f1xx_hal.o"
+"coolerhd\stm32f1xx_hal_rcc.o"
+"coolerhd\stm32f1xx_hal_rcc_ex.o"
+"coolerhd\stm32f1xx_hal_gpio.o"
+"coolerhd\stm32f1xx_hal_dma.o"
+"coolerhd\stm32f1xx_hal_cortex.o"
+"coolerhd\stm32f1xx_hal_pwr.o"
+"coolerhd\stm32f1xx_hal_flash.o"
+"coolerhd\stm32f1xx_hal_flash_ex.o"
+"coolerhd\stm32f1xx_hal_exti.o"
+"coolerhd\stm32f1xx_hal_uart.o"
+"coolerhd\system_stm32f1xx.o"
+--strict --scatter "CoolerHD\CoolerHD.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "CoolerHD.map" -o CoolerHD\CoolerHD.axf

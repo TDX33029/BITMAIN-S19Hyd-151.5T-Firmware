@@ -1,0 +1,3812 @@
+PROTEL NETLIST 2.0
+[
+DESIGNATOR
+U1
+FOOTPRINT
+LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL
+PARTTYPE
+STM32F103C8T6
+DESCRIPTION
+CPU内核:ARM Cortex-M3;CPU最大主频:72MHz;CPU位数:32 Bit;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+STM32F103C8T6
+Designator
+U1
+Device
+STM32F103C8T6
+Unique ID
+gge4
+Name
+STM32F103C8T6
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+主流增强型ARM Cortex-M3 MCU，具有64 KB Flash、72 MHz CPU、电机控制、USB和CAN
+Supplier Part
+C8734
+Manufacturer
+ST(意法半导体)
+Manufacturer Part
+STM32F103C8T6
+Supplier Footprint
+LQFP-48(7x7)
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/STM32F103C8T6/9243.html
+Supplier
+LCSC
+3D Model Title
+LQFP-48_L7.0-W7.0-H1.4-LS9.0-P0.50
+CPU Core
+ARM Cortex-M3
+CPU Maximum Speed
+72MHz
+Core Size
+32 Bit
+Program Storage Size
+64KB
+Program Memory Type
+FLASH
+RAM Size
+20KB
+EEPROM
+-
+Number of I/O
+37
+ADC (Bit)
+12bit
+Oscillator Type
+内置
+Voltage - Supply
+2V~3.6V
+Operating Temperature
+-40℃~+85℃
+Description
+CPU内核:ARM Cortex-M3;CPU最大主频:72MHz;CPU位数:32 Bit;
+
+*
+]
+[
+DESIGNATOR
+R1
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R1
+Symbol
+电阻
+Device
+Res_0402
+Unique ID
+gge5
+Name
+10K
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Value
+10K
+Description
+
+
+*
+]
+[
+DESIGNATOR
+X1
+FOOTPRINT
+CRYSTAL-TH_L11.1-W4.7-P4.88
+PARTTYPE
+YG8MLBBE2X
+DESCRIPTION
+晶振类型:直插晶振;频率:8MHz;常温频差:±10ppm;负载电容:20pF;频率稳定度:±30ppm;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+YG8MLBBE2X
+Designator
+X1
+Device
+YG8MLBBE2X
+Unique ID
+gge6
+Name
+8MHz
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+49S 8M 20PF 10PPM
+Supplier Part
+C42441034
+Manufacturer
+YJX(雅晶鑫)
+Manufacturer Part
+YG8MLBBE2X
+Supplier Footprint
+HC-49S
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/YG8MLBBE2X/44488494.html
+Supplier
+LCSC
+3D Model Title
+CRYSTAL-TH_L11.1-W4.7-P4.88
+Type
+直插晶振
+Value
+8MHz
+Normal temperature Frequency Tolerance
+±10ppm
+Load Capacitance
+20pF
+Frequency Stability
+±30ppm
+Equivalent Series Resistance(ESR)
+80Ω
+Operating Temperature
+-20℃~+70℃
+Description
+晶振类型:直插晶振;频率:8MHz;常温频差:±10ppm;负载电容:20pF;频率稳定度:±30ppm;
+
+*
+]
+[
+DESIGNATOR
+C1
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C1
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge7
+Name
+22pF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Value
+22pF
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C2
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C2
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge8
+Name
+22pF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Value
+22pF
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C3
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C3
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge9
+Name
+100nF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C4
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C4
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge10
+Name
+100nF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C5
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C5
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge11
+Name
+100nF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C6
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C6
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge12
+Name
+100nF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C7
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C7
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge13
+Name
+100nF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+H1
+FOOTPRINT
+HDR-TH_4P-P2.54-V-M
+PARTTYPE
+HDR-M_2.54_1x4P
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+PZ254V-11-04P
+Designator
+H1
+Device
+HDR-M_2.54_1x4P
+Unique ID
+gge14
+Name
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Part
+C492403
+Supplier Footprint
+插件
+3D Model Title
+HDR-TH_4P-P2.54-M-LI-1X4P
+Description
+
+
+*
+]
+[
+DESIGNATOR
+CN1
+FOOTPRINT
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+PARTTYPE
+744-81-04TB1B
+DESCRIPTION
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+744-81-04TB1B
+Designator
+CN1
+Device
+744-81-04TB1B
+Unique ID
+gge15
+Name
+744-81-04TB1B
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+1x4P 间距:2.54mm
+Supplier Part
+C402774
+Manufacturer
+PINREX(频锐科技)
+Manufacturer Part
+744-81-04TB1B
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://atta.szlcsc.com/upload/public/pdf/source/20190710/C402774_2D1BDD3A9A0C47AEB49B0A95580EBDEA.pdf
+Supplier
+LCSC
+3D Model Title
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+Pins Structure
+1x4P
+Pitch
+2.54mm
+Mounting Style
+-
+Reference Series
+-
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Contact Material
+黄铜
+Description
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+
+*
+]
+[
+DESIGNATOR
+CN2
+FOOTPRINT
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+PARTTYPE
+744-81-04TB1B
+DESCRIPTION
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+744-81-04TB1B
+Designator
+CN2
+Device
+744-81-04TB1B
+Name
+744-81-04TB1B
+Unique ID
+gge15_0
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+1x4P 间距:2.54mm
+Supplier Part
+C402774
+Manufacturer
+PINREX(频锐科技)
+Manufacturer Part
+744-81-04TB1B
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://atta.szlcsc.com/upload/public/pdf/source/20190710/C402774_2D1BDD3A9A0C47AEB49B0A95580EBDEA.pdf
+Supplier
+LCSC
+3D Model Title
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+Pins Structure
+1x4P
+Pitch
+2.54mm
+Mounting Style
+-
+Reference Series
+-
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Contact Material
+黄铜
+Description
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+
+*
+]
+[
+DESIGNATOR
+CN3
+FOOTPRINT
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+PARTTYPE
+744-81-04TB1B
+DESCRIPTION
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+744-81-04TB1B
+Designator
+CN3
+Device
+744-81-04TB1B
+Name
+744-81-04TB1B
+Unique ID
+gge15_1
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+1x4P 间距:2.54mm
+Supplier Part
+C402774
+Manufacturer
+PINREX(频锐科技)
+Manufacturer Part
+744-81-04TB1B
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://atta.szlcsc.com/upload/public/pdf/source/20190710/C402774_2D1BDD3A9A0C47AEB49B0A95580EBDEA.pdf
+Supplier
+LCSC
+3D Model Title
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+Pins Structure
+1x4P
+Pitch
+2.54mm
+Mounting Style
+-
+Reference Series
+-
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Contact Material
+黄铜
+Description
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+
+*
+]
+[
+DESIGNATOR
+CN4
+FOOTPRINT
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+PARTTYPE
+744-81-04TB1B
+DESCRIPTION
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+744-81-04TB1B
+Designator
+CN4
+Device
+744-81-04TB1B
+Name
+744-81-04TB1B
+Unique ID
+gge15_2
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+1x4P 间距:2.54mm
+Supplier Part
+C402774
+Manufacturer
+PINREX(频锐科技)
+Manufacturer Part
+744-81-04TB1B
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://atta.szlcsc.com/upload/public/pdf/source/20190710/C402774_2D1BDD3A9A0C47AEB49B0A95580EBDEA.pdf
+Supplier
+LCSC
+3D Model Title
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+Pins Structure
+1x4P
+Pitch
+2.54mm
+Mounting Style
+-
+Reference Series
+-
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Contact Material
+黄铜
+Description
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+
+*
+]
+[
+DESIGNATOR
+CN5
+FOOTPRINT
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+PARTTYPE
+744-81-04TB1B
+DESCRIPTION
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+744-81-04TB1B
+Designator
+CN5
+Device
+744-81-04TB1B
+Name
+744-81-04TB1B
+Unique ID
+gge15_3
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+1x4P 间距:2.54mm
+Supplier Part
+C402774
+Manufacturer
+PINREX(频锐科技)
+Manufacturer Part
+744-81-04TB1B
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://atta.szlcsc.com/upload/public/pdf/source/20190710/C402774_2D1BDD3A9A0C47AEB49B0A95580EBDEA.pdf
+Supplier
+LCSC
+3D Model Title
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+Pins Structure
+1x4P
+Pitch
+2.54mm
+Mounting Style
+-
+Reference Series
+-
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Contact Material
+黄铜
+Description
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+
+*
+]
+[
+DESIGNATOR
+CN6
+FOOTPRINT
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+PARTTYPE
+744-81-04TB1B
+DESCRIPTION
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+744-81-04TB1B
+Designator
+CN6
+Device
+744-81-04TB1B
+Name
+744-81-04TB1B
+Unique ID
+gge15_4
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+1x4P 间距:2.54mm
+Supplier Part
+C402774
+Manufacturer
+PINREX(频锐科技)
+Manufacturer Part
+744-81-04TB1B
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://atta.szlcsc.com/upload/public/pdf/source/20190710/C402774_2D1BDD3A9A0C47AEB49B0A95580EBDEA.pdf
+Supplier
+LCSC
+3D Model Title
+CONN-TH_4P-P2.54-V-M_744-81-04TXXX
+Pins Structure
+1x4P
+Pitch
+2.54mm
+Mounting Style
+-
+Reference Series
+-
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Contact Material
+黄铜
+Description
+插针结构:1x4P;间距:2.54mm;安装方式:-;参考系列:-;总PIN数:4P;排数:1;每排PIN数:4;行距:-;触头材质:黄铜;
+
+*
+]
+[
+DESIGNATOR
+P1
+FOOTPRINT
+CONN-TH_2P-P9.50_WJ45C-B-2P
+PARTTYPE
+WJ45C-B-9.5-02P-13-00A
+DESCRIPTION
+隔板类型:两面;间距:9.5mm;结构:1x2P;安装方式:直针;引脚位置:中脚;排数:1;每排PIN数:2;额定电流:32A;额定电压:750V;线规 - AWG:12~22;线规 - 平方毫米:4;工作温度:-40℃~+105℃;颜色:黑色;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+WJ45C-B-2P
+Designator
+P1
+Device
+WJ45C-B-9.5-02P-13-00A
+Unique ID
+gge16
+Name
+WJ45C-B-9.5-02P-13-00A
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+9.5mm 1x2P 每排P数:2 排数:1 直针 中脚
+Supplier Part
+C8397
+Manufacturer
+KANGNEX(康奈克斯电气)
+Manufacturer Part
+WJ45C-B-9.5-02P-13-00A
+Supplier Footprint
+插件,P=9.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/WJ45C-B-9.5-02P-13-00A/8891.html
+Supplier
+LCSC
+3D Model Title
+CONN-TH_DB9.50-LI-2P-WJ45C
+Barrier Type
+两面
+Pitch
+9.5mm
+Number of Positions or Pins
+1x2P
+Mounting Type
+直针
+Pin Location
+中脚
+Number of Pins
+2P
+Number of Rows
+1
+Number of PINs Per Row
+2
+Current Rating
+32A
+Voltage Rating (Max)
+750V
+Wire Gauge - AWG
+12~22
+Wire Gauge - mm2
+4
+Operating Temperature
+-40℃~+105℃
+Color
+黑色
+Description
+隔板类型:两面;间距:9.5mm;结构:1x2P;安装方式:直针;引脚位置:中脚;排数:1;每排PIN数:2;额定电流:32A;额定电压:750V;线规 - AWG:12~22;线规 - 平方毫米:4;工作温度:-40℃~+105℃;颜色:黑色;
+
+*
+]
+[
+DESIGNATOR
+U2
+FOOTPRINT
+SOP-16_L10.0-W3.9-P1.27-LS6.0-BL
+PARTTYPE
+CH340C
+DESCRIPTION
+应用功能:收发器;USB协议版本:USB 2.0;通道数:-;数据速率:2Mbps;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+CH340C
+Designator
+U2
+Device
+CH340C
+Unique ID
+gge17
+Name
+CH340C
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+USB转串口芯片
+Supplier Part
+C84681
+Manufacturer
+WCH(南京沁恒)
+Manufacturer Part
+CH340C
+Supplier Footprint
+SOP-16
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/CH340C/85852.html
+Supplier
+LCSC
+3D Model Title
+SOP-16_L9.9-W3.9-H1.5-LS6.0-P1.27
+Applications Function
+收发器
+USB Protocol
+USB 2.0
+Number of Channels
+-
+Voltage - Supply
+3.3V；5V
+Data Rate
+2Mbps
+Operating Temperature
+-20℃~+70℃
+Current - Supply
+7mA
+Quiescent Supply Current
+50uA
+Features
+可编程波特率；内置时钟发生器；上电复位
+Description
+应用功能:收发器;USB协议版本:USB 2.0;通道数:-;数据速率:2Mbps;
+
+*
+]
+[
+DESIGNATOR
+USB1
+FOOTPRINT
+USB-B-TH_HX-TYPE-BF-90
+PARTTYPE
+HX TYPE-BF 90
+DESCRIPTION
+连接器类型:Type-B;协议标准:USB 2.0;公母:母;安装方式:弯插;触点数量:4P;端口数量:1;额定电流 - 电源:1.5A;工作温度:-30℃~+80℃;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+HX TYPE-BF 90
+Designator
+USB1
+Device
+HX TYPE-BF 90
+Unique ID
+gge18
+Name
+HX TYPE-BF 90
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+Type-B 母 弯插
+Supplier Part
+C25168816
+Manufacturer
+hanxia(韩下)
+Manufacturer Part
+HX TYPE-BF 90
+Supplier Footprint
+弯插
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/HX%2520TYPE-BF%252090/26898558.html
+Supplier
+LCSC
+3D Model Title
+USB-B-TH_HX-TYPE-BF-90
+Connector Type
+Type-B
+Protocol Standard
+USB 2.0
+Gender
+母
+Mounting Type
+弯插
+Number of Contacts
+4P
+Number of Ports
+1
+Current Rating-Power
+1.5A
+Voltage Rating
+30V
+Connect-Disconnect Life
+3千次
+Supplementary Features
+-
+Center Height
+-
+Length
+16.3mm
+Detection color
+白色
+Operating Temperature
+-30℃~+80℃
+Description
+连接器类型:Type-B;协议标准:USB 2.0;公母:母;安装方式:弯插;触点数量:4P;端口数量:1;额定电流 - 电源:1.5A;工作温度:-30℃~+80℃;
+
+*
+]
+[
+DESIGNATOR
+C8
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C8
+Symbol
+Capacitance
+Device
+CAP_0402
+Name
+100nF
+Unique ID
+gge13_0
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R3
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R3
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge5_1
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R4
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R4
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge5_2
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R5
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R5
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge5_3
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R6
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R6
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge5_4
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R7
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R7
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge5_5
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R8
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R8
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge5_6
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R10
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R10
+Symbol
+电阻
+Device
+Res_0402
+Value
+1K
+Name
+1K
+Unique ID
+gge19
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R11
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R11
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge20
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+Q2
+FOOTPRINT
+SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR
+PARTTYPE
+S8050(0.5A)
+DESCRIPTION
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+S8050(0.5A)
+Designator
+Q2
+Device
+S8050(0.5A)
+Name
+S8050(0.5A)
+Unique ID
+gge21
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+电流:0.5A 电压:25V
+Supplier Part
+C3014350
+Manufacturer
+EIC
+Manufacturer Part
+S8050(0.5A)
+Supplier Footprint
+SOT-23
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/S8050(0.5A)/3524496.html
+Supplier
+LCSC
+3D Model Title
+SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95
+type
+NPN
+Current - Collector(Ic)
+500mA
+Collector - Emitter Voltage VCEO
+25V
+Pd - Power Dissipation
+300mW
+DC Current Gain
+120
+Transition frequency(fT)
+150MHz
+Current - Collector Cutoff
+100nA
+Vce Saturation(VCE(sat))
+600mV
+Emitter-Base Voltage(Vebo)
+5V
+Number
+1个NPN
+Description
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+
+*
+]
+[
+DESIGNATOR
+R2
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R2
+Symbol
+电阻
+Device
+Res_0402
+Value
+1K
+Name
+1K
+Unique ID
+gge22
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R9
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R9
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge23
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+Q1
+FOOTPRINT
+SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR
+PARTTYPE
+S8050(0.5A)
+DESCRIPTION
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+S8050(0.5A)
+Designator
+Q1
+Device
+S8050(0.5A)
+Name
+S8050(0.5A)
+Unique ID
+gge24
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+电流:0.5A 电压:25V
+Supplier Part
+C3014350
+Manufacturer
+EIC
+Manufacturer Part
+S8050(0.5A)
+Supplier Footprint
+SOT-23
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/S8050(0.5A)/3524496.html
+Supplier
+LCSC
+3D Model Title
+SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95
+type
+NPN
+Current - Collector(Ic)
+500mA
+Collector - Emitter Voltage VCEO
+25V
+Pd - Power Dissipation
+300mW
+DC Current Gain
+120
+Transition frequency(fT)
+150MHz
+Current - Collector Cutoff
+100nA
+Vce Saturation(VCE(sat))
+600mV
+Emitter-Base Voltage(Vebo)
+5V
+Number
+1个NPN
+Description
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+
+*
+]
+[
+DESIGNATOR
+R12
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R12
+Symbol
+电阻
+Device
+Res_0402
+Value
+1K
+Name
+1K
+Unique ID
+gge25
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R13
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R13
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge26
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+Q3
+FOOTPRINT
+SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR
+PARTTYPE
+S8050(0.5A)
+DESCRIPTION
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+S8050(0.5A)
+Designator
+Q3
+Device
+S8050(0.5A)
+Name
+S8050(0.5A)
+Unique ID
+gge27
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+电流:0.5A 电压:25V
+Supplier Part
+C3014350
+Manufacturer
+EIC
+Manufacturer Part
+S8050(0.5A)
+Supplier Footprint
+SOT-23
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/S8050(0.5A)/3524496.html
+Supplier
+LCSC
+3D Model Title
+SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95
+type
+NPN
+Current - Collector(Ic)
+500mA
+Collector - Emitter Voltage VCEO
+25V
+Pd - Power Dissipation
+300mW
+DC Current Gain
+120
+Transition frequency(fT)
+150MHz
+Current - Collector Cutoff
+100nA
+Vce Saturation(VCE(sat))
+600mV
+Emitter-Base Voltage(Vebo)
+5V
+Number
+1个NPN
+Description
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+
+*
+]
+[
+DESIGNATOR
+R16
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R16
+Symbol
+电阻
+Device
+Res_0402
+Value
+1K
+Name
+1K
+Unique ID
+gge28
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R17
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R17
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge29
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R14
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R14
+Symbol
+电阻
+Device
+Res_0402
+Value
+1K
+Name
+1K
+Unique ID
+gge30
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R15
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R15
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge31
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R18
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R18
+Symbol
+电阻
+Device
+Res_0402
+Value
+1K
+Name
+1K
+Unique ID
+gge32
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R19
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R19
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge33
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+Q5
+FOOTPRINT
+SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR
+PARTTYPE
+S8050(0.5A)
+DESCRIPTION
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+S8050(0.5A)
+Designator
+Q5
+Device
+S8050(0.5A)
+Name
+S8050(0.5A)
+Unique ID
+gge34
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+电流:0.5A 电压:25V
+Supplier Part
+C3014350
+Manufacturer
+EIC
+Manufacturer Part
+S8050(0.5A)
+Supplier Footprint
+SOT-23
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/S8050(0.5A)/3524496.html
+Supplier
+LCSC
+3D Model Title
+SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95
+type
+NPN
+Current - Collector(Ic)
+500mA
+Collector - Emitter Voltage VCEO
+25V
+Pd - Power Dissipation
+300mW
+DC Current Gain
+120
+Transition frequency(fT)
+150MHz
+Current - Collector Cutoff
+100nA
+Vce Saturation(VCE(sat))
+600mV
+Emitter-Base Voltage(Vebo)
+5V
+Number
+1个NPN
+Description
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+
+*
+]
+[
+DESIGNATOR
+Q4
+FOOTPRINT
+SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR
+PARTTYPE
+S8050(0.5A)
+DESCRIPTION
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+S8050(0.5A)
+Designator
+Q4
+Device
+S8050(0.5A)
+Name
+S8050(0.5A)
+Unique ID
+gge35
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+电流:0.5A 电压:25V
+Supplier Part
+C3014350
+Manufacturer
+EIC
+Manufacturer Part
+S8050(0.5A)
+Supplier Footprint
+SOT-23
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/S8050(0.5A)/3524496.html
+Supplier
+LCSC
+3D Model Title
+SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95
+type
+NPN
+Current - Collector(Ic)
+500mA
+Collector - Emitter Voltage VCEO
+25V
+Pd - Power Dissipation
+300mW
+DC Current Gain
+120
+Transition frequency(fT)
+150MHz
+Current - Collector Cutoff
+100nA
+Vce Saturation(VCE(sat))
+600mV
+Emitter-Base Voltage(Vebo)
+5V
+Number
+1个NPN
+Description
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+
+*
+]
+[
+DESIGNATOR
+Q6
+FOOTPRINT
+SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR
+PARTTYPE
+S8050(0.5A)
+DESCRIPTION
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+S8050(0.5A)
+Designator
+Q6
+Device
+S8050(0.5A)
+Name
+S8050(0.5A)
+Unique ID
+gge36
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+电流:0.5A 电压:25V
+Supplier Part
+C3014350
+Manufacturer
+EIC
+Manufacturer Part
+S8050(0.5A)
+Supplier Footprint
+SOT-23
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/S8050(0.5A)/3524496.html
+Supplier
+LCSC
+3D Model Title
+SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95
+type
+NPN
+Current - Collector(Ic)
+500mA
+Collector - Emitter Voltage VCEO
+25V
+Pd - Power Dissipation
+300mW
+DC Current Gain
+120
+Transition frequency(fT)
+150MHz
+Current - Collector Cutoff
+100nA
+Vce Saturation(VCE(sat))
+600mV
+Emitter-Base Voltage(Vebo)
+5V
+Number
+1个NPN
+Description
+晶体管类型:NPN;集电极电流(Ic):500mA;集射极击穿电压(Vceo):25V;耗散功率(Pd):300mW;直流电流增益(hFE):120;
+
+*
+]
+[
+DESIGNATOR
+SW1
+FOOTPRINT
+Key_SMD_3x4x2
+PARTTYPE
+Key_SMD_3x4x2
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+SW1
+Symbol
+轻触按键x2
+Device
+Key_SMD_3x4x2
+Unique ID
+gge37
+Name
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+SMD
+3D Model Title
+SW-SMD_L4.0-W2.9-H2-LS5.0
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R20
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R20
+Symbol
+电阻
+Device
+Res_0402
+Name
+4.7K
+Unique ID
+gge5_7
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Value
+4.7K
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C9
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C9
+Symbol
+Capacitance
+Device
+CAP_0402
+Unique ID
+gge38
+Name
+100nF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Description
+
+
+*
+]
+[
+DESIGNATOR
+STATE1
+FOOTPRINT
+LED_0603
+PARTTYPE
+LED_0603-R
+DESCRIPTION
+
+Component Kind
+Standard
+Designator
+STATE1
+Symbol
+LED_R
+Device
+LED_0603-R
+Convert to PCB
+yes
+Add into BOM
+yes
+Supplier Footprint
+0603
+3D Model Title
+LED-0603_R
+Supplier Part
+
+JLCPCB Part Class
+
+Description
+
+Unique ID
+gge39
+Name
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+STATE2
+FOOTPRINT
+LED_0603
+PARTTYPE
+LED_0603-R
+DESCRIPTION
+
+Component Kind
+Standard
+Designator
+STATE2
+Symbol
+LED_R
+Device
+LED_0603-R
+Convert to PCB
+yes
+Add into BOM
+yes
+Supplier Footprint
+0603
+3D Model Title
+LED-0603_R
+Supplier Part
+
+JLCPCB Part Class
+
+Description
+
+Unique ID
+gge40
+Name
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+3V3
+FOOTPRINT
+LED_0603
+PARTTYPE
+LED_0603-R
+DESCRIPTION
+
+Component Kind
+Standard
+Designator
+3V3
+Symbol
+LED_R
+Device
+LED_0603-R
+Convert to PCB
+yes
+Add into BOM
+yes
+Supplier Footprint
+0603
+3D Model Title
+LED-0603_R
+Supplier Part
+
+JLCPCB Part Class
+
+Description
+
+Unique ID
+gge41
+Name
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+ERROR
+FOOTPRINT
+LED_0603
+PARTTYPE
+LED_0603-R
+DESCRIPTION
+
+Component Kind
+Standard
+Designator
+ERROR
+Symbol
+LED_R
+Device
+LED_0603-R
+Convert to PCB
+yes
+Add into BOM
+yes
+Supplier Footprint
+0603
+3D Model Title
+LED-0603_R
+Supplier Part
+
+JLCPCB Part Class
+
+Description
+
+Unique ID
+gge42
+Name
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+R21
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R21
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge43
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R22
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R22
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge44
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R23
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R23
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge45
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+R24
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R24
+Symbol
+电阻
+Device
+Res_0402
+Value
+4.7K
+Name
+4.7K
+Unique ID
+gge46
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Description
+
+
+*
+]
+[
+DESIGNATOR
+C10
+FOOTPRINT
+CAP-TH_BD10.0-P5.00-D0.6-FD
+PARTTYPE
+EKM2GM330G18OTBVZC
+DESCRIPTION
+容值:33uF;精度:±20%;额定电压:400V;纹波电流:-;等效串联电阻(ESR):-;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+EKM2GM330G18OTBVZC
+Designator
+C10
+Device
+EKM2GM330G18OTBVZC
+Unique ID
+gge47
+Name
+470uF
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Value
+470uF
+Supplier Part
+
+LCSC Part Name
+33uF ±20% 400V
+Manufacturer
+Yunxing(云星)
+Manufacturer Part
+EKM2GM330G18OTBVZC
+Supplier Footprint
+插件,D10.2xL18mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/EKM2GM330G18OTBVZC/3204873.html
+Supplier
+LCSC
+3D Model Title
+CAP-TH_BD10.0-P5.00-D0.6-FD
+Tolerance
+±20%
+Voltage Rating
+400V
+Ripple Current
+-
+Equivalent Series Resistance(ESR)
+-
+Pin Spacing
+-
+Diameter
+10.2mm
+Height - Seated (Max)
+18mm
+Lifetime
+3000hrs@105℃
+Operating Temperature
+-40℃~+105℃
+Description
+容值:33uF;精度:±20%;额定电压:400V;纹波电流:-;等效串联电阻(ESR):-;
+
+*
+]
+[
+DESIGNATOR
+U16
+FOOTPRINT
+SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BR
+PARTTYPE
+LMR54410FDBVR
+DESCRIPTION
+功能类型:降压型;输出类型:可调;输入电压:4V~36V;输出电压:800mV~28V;输出电流:1A;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+LMR54410FDBVR
+Designator
+U16
+Device
+LMR54410FDBVR
+Unique ID
+gge212
+Name
+LMR54410FDBVR
+Reuse Block
+
+Group ID
+
+Channel ID
+
+LCSC Part Name
+LMR54410FDBVR
+Supplier Part
+C3193115
+Manufacturer
+TI(德州仪器)
+Manufacturer Part
+LMR54410FDBVR
+Supplier Footprint
+SOT-23-6
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://www.ti.com/cn/lit/gpn/lmr54410
+Supplier
+LCSC
+3D Model Title
+SOT-23-6_L2.9-W1.6-H1.5-LS2.8-P0.95
+Function
+降压型
+Output Type
+可调
+Input Voltage
+4V~36V
+Output Voltage
+800mV~28V
+Output Current
+1A
+Switching Frequency
+1.1MHz
+Operating Temperature
+-40℃~+125℃
+Synchronous Rectification
+是
+Number of Outputs
+1
+Topology
+降压式
+Switch tube (built-in/external)
+内置
+Description
+功能类型:降压型;输出类型:可调;输入电压:4V~36V;输出电压:800mV~28V;输出电流:1A;
+
+*
+]
+[
+DESIGNATOR
+C140
+FOOTPRINT
+C0603
+PARTTYPE
+CAP_0805
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C140
+Symbol
+Capacitance
+Device
+CAP_0805
+Supplier Footprint
+0805
+3D Model Title
+C0805_L2.0-W1.3-H1.3
+Value
+10uF
+Name
+10uF
+Description
+
+Unique ID
+gge213
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+C142
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0603
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C142
+Symbol
+Capacitance
+Device
+CAP_0603
+Supplier Footprint
+0603
+3D Model Title
+C0603_L1.6-W0.8-H0.8
+Value
+100nF
+Name
+100nF
+Description
+
+Unique ID
+gge215
+Sim Model
+
+Sim Model Title
+
+Sim Model Path
+
+NGSpice Model
+
+NGSpice Model Title
+
+NGspice Model Path
+
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+C143
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C143
+Symbol
+Capacitance
+Device
+CAP_0402
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Name
+100nF
+Description
+
+Unique ID
+gge217
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+C144
+FOOTPRINT
+C0603
+PARTTYPE
+CAP_0805
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C144
+Symbol
+Capacitance
+Device
+CAP_0805
+Supplier Footprint
+0805
+3D Model Title
+C0805_L2.0-W1.3-H1.3
+Value
+10uF
+Name
+10uF
+Description
+
+Unique ID
+gge220
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+C141
+FOOTPRINT
+C0402
+PARTTYPE
+CAP_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+C141
+Symbol
+Capacitance
+Device
+CAP_0402
+Supplier Footprint
+0402
+3D Model Title
+C0402_L1.0-W0.5-H0.5
+Value
+100nF
+Name
+100nF
+Description
+
+Unique ID
+gge217_0
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+U17
+FOOTPRINT
+IND-SMD_L4.4-W4.2-A
+PARTTYPE
+IHLP1616BZERR47M5A
+DESCRIPTION
+电感值:470nH;精度:±20%;额定电流:9.3A;饱和电流(Isat):6.9A;
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Symbol
+IHLP1616BZERR47M5A
+Designator
+U17
+Device
+IHLP1616BZERR47M5A
+Unique ID
+gge216
+Name
+8.2uH
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Value
+8.2uH
+Supplier Part
+
+LCSC Part Name
+470nH ±20% 6.9A
+Manufacturer
+VISHAY(威世)
+Manufacturer Part
+IHLP1616BZERR47M5A
+Supplier Footprint
+1616
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/IHLP1616BZERR47M5A/3521946.html
+Supplier
+LCSC
+3D Model Title
+IND-SMD_L4.4-W4.2-H1.2_PSPMAA0412
+Tolerance
+±20%
+Current Rating
+9.3A
+Current - Saturation(Isat)
+6.9A
+DC Resistance(DCR)
+12.2mΩ
+Ratings
+AEC-Q200
+Description
+电感值:470nH;精度:±20%;额定电流:9.3A;饱和电流(Isat):6.9A;
+
+*
+]
+[
+DESIGNATOR
+R49
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R49
+Symbol
+电阻
+Device
+Res_0402
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Value
+2K
+Name
+2K
+Description
+
+Unique ID
+gge218
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+[
+DESIGNATOR
+R50
+FOOTPRINT
+R0402
+PARTTYPE
+Res_0402
+DESCRIPTION
+
+Component Kind
+Standard
+Add into BOM
+yes
+Convert to PCB
+yes
+Designator
+R50
+Symbol
+电阻
+Device
+Res_0402
+Supplier Footprint
+0402
+3D Model Title
+R0402_L1.0-W0.5-H0.4
+Value
+1.5K
+Name
+1.5K
+Description
+
+Unique ID
+gge219
+Reuse Block
+
+Group ID
+
+Channel ID
+
+
+*
+]
+(
+3V3 
+U1-1 STM32F103C8T6-VBAT Passive 
+U1-9 STM32F103C8T6-VDDA Passive 
+U1-24 STM32F103C8T6-VDD_1 Passive 
+U1-36 STM32F103C8T6-VDD_2 Passive 
+U1-48 STM32F103C8T6-VDD_3 Passive 
+C3-2 CAP_0402-2 Input   
+C4-2 CAP_0402-2 Input   
+C5-2 CAP_0402-2 Input   
+C6-2 CAP_0402-2 Input   
+C7-2 CAP_0402-2 Input   
+H1-1 HDR-M_2.54_1x4P-1 Passive 
+U2-4 CH340C-V3 Passive 
+U2-16 CH340C-VCC Passive 
+C8-2 CAP_0402-2 Input   
+R3-2 Res_0402-2 Input   
+R4-2 Res_0402-2 Input   
+R5-2 Res_0402-2 Input   
+R6-2 Res_0402-2 Input   
+R7-2 Res_0402-2 Input   
+R8-2 Res_0402-2 Input   
+R11-2 Res_0402-2 Input   
+R9-2 Res_0402-2 Input   
+R13-2 Res_0402-2 Input   
+R17-2 Res_0402-2 Input   
+R15-2 Res_0402-2 Input   
+R19-2 Res_0402-2 Input   
+R20-1 Res_0402-1 Input   
+R23-1 Res_0402-1 Input   
+C144-1 CAP_0805-1 Input   
+C141-1 CAP_0402-1 Input   
+U17-1 IHLP1616BZERR47M5A-1 Passive 
+R50-1 Res_0402-1 Input   
+)
+(
+PD0-OSC_IN 
+U1-5 STM32F103C8T6-PD0-OSC_IN Passive 
+X1-2 YG8MLBBE2X-2 Passive 
+C1-2 CAP_0402-2 Input   
+)
+(
+PD1-OSC_OUT 
+U1-6 STM32F103C8T6-PD1-OSC_OUT Passive 
+X1-1 YG8MLBBE2X-1 Passive 
+C2-2 CAP_0402-2 Input   
+)
+(
+NRST 
+U1-7 STM32F103C8T6-NRST Passive 
+SW1-1 Key_SMD_3x4x2-1 Input   
+R20-2 Res_0402-2 Input   
+C9-2 CAP_0402-2 Input   
+)
+(
+GND 
+U1-8 STM32F103C8T6-VSSA Passive 
+U1-23 STM32F103C8T6-VSS_1 Passive 
+U1-35 STM32F103C8T6-VSS_2 Passive 
+U1-47 STM32F103C8T6-VSS_3 Passive 
+R1-2 Res_0402-2 Input   
+C1-1 CAP_0402-1 Input   
+C2-1 CAP_0402-1 Input   
+C3-1 CAP_0402-1 Input   
+C4-1 CAP_0402-1 Input   
+C5-1 CAP_0402-1 Input   
+C6-1 CAP_0402-1 Input   
+C7-1 CAP_0402-1 Input   
+H1-2 HDR-M_2.54_1x4P-2 Passive 
+CN1-1 744-81-04TB1B-1 Passive 
+CN2-1 744-81-04TB1B-1 Passive 
+CN3-1 744-81-04TB1B-1 Passive 
+CN4-1 744-81-04TB1B-1 Passive 
+CN5-1 744-81-04TB1B-1 Passive 
+CN6-1 744-81-04TB1B-1 Passive 
+P1-2 WJ45C-B-9.5-02P-13-00A-2 Passive 
+U2-1 CH340C-GND Passive 
+USB1-4 HX TYPE-BF 90-GND Passive 
+USB1-5 HX TYPE-BF 90-GND Passive 
+USB1-6 HX TYPE-BF 90-GND Passive 
+C8-1 CAP_0402-1 Input   
+Q2-2 S8050(0.5A)-E Passive 
+Q1-2 S8050(0.5A)-E Passive 
+Q3-2 S8050(0.5A)-E Passive 
+Q5-2 S8050(0.5A)-E Passive 
+Q4-2 S8050(0.5A)-E Passive 
+Q6-2 S8050(0.5A)-E Passive 
+SW1-2 Key_SMD_3x4x2-2 Input   
+C9-1 CAP_0402-1 Input   
+STATE1-1 LED_0603-R-C Input   
+STATE2-1 LED_0603-R-C Input   
+3V3-1 LED_0603-R-C Input   
+ERROR-1 LED_0603-R-C Input   
+C10-2 EKM2GM330G18OTBVZC-2 Input   
+U16-2 LMR54410FDBVR-GND Passive 
+C140-1 CAP_0805-1 Input   
+C142-1 CAP_0603-1 Input   
+C144-2 CAP_0805-2 Input   
+C141-2 CAP_0402-2 Input   
+R49-2 Res_0402-2 Input   
+)
+(
+PWM-GEN5 
+U1-10 STM32F103C8T6-PA0-WKUP Passive 
+R14-1 Res_0402-1 Input   
+)
+(
+PWM-GEN6 
+U1-11 STM32F103C8T6-PA1 Passive 
+R18-1 Res_0402-1 Input   
+)
+(
+PWM-TACH1 
+U1-12 STM32F103C8T6-PA2 Passive 
+CN1-4 744-81-04TB1B-4 Passive 
+R3-1 Res_0402-1 Input   
+)
+(
+PWM-TACH2 
+U1-13 STM32F103C8T6-PA3 Passive 
+CN2-4 744-81-04TB1B-4 Passive 
+R4-1 Res_0402-1 Input   
+)
+(
+PA4 
+U1-14 STM32F103C8T6-PA4 Passive 
+)
+(
+PA5 
+U1-15 STM32F103C8T6-PA5 Passive 
+)
+(
+PWM-TACH3 
+U1-16 STM32F103C8T6-PA6 Passive 
+CN3-4 744-81-04TB1B-4 Passive 
+R8-1 Res_0402-1 Input   
+)
+(
+PWM-TACH4 
+U1-17 STM32F103C8T6-PA7 Passive 
+CN4-4 744-81-04TB1B-4 Passive 
+R5-1 Res_0402-1 Input   
+)
+(
+PWM-TACH5 
+U1-18 STM32F103C8T6-PB0 Passive 
+CN5-4 744-81-04TB1B-4 Passive 
+R6-1 Res_0402-1 Input   
+)
+(
+PWM-TACH6 
+U1-19 STM32F103C8T6-PB1 Passive 
+CN6-4 744-81-04TB1B-4 Passive 
+R7-1 Res_0402-1 Input   
+)
+(
+PB2 
+U1-20 STM32F103C8T6-PB2 Passive 
+)
+(
+PB10 
+U1-21 STM32F103C8T6-PB10 Passive 
+)
+(
+PB11 
+U1-22 STM32F103C8T6-PB11 Passive 
+)
+(
+PB12 
+U1-25 STM32F103C8T6-PB12 Passive 
+)
+(
+PB13 
+U1-26 STM32F103C8T6-PB13 Passive 
+)
+(
+PB14 
+U1-27 STM32F103C8T6-PB14 Passive 
+)
+(
+PB15 
+U1-28 STM32F103C8T6-PB15 Passive 
+)
+(
+PWM-GEN1 
+U1-29 STM32F103C8T6-PA8 Passive 
+R10-1 Res_0402-1 Input   
+)
+(
+PWM-GEN2 
+U1-30 STM32F103C8T6-PA9 Passive 
+R2-1 Res_0402-1 Input   
+)
+(
+PWM-GEN3 
+U1-31 STM32F103C8T6-PA10 Passive 
+R12-1 Res_0402-1 Input   
+)
+(
+PWM-GEN4 
+U1-32 STM32F103C8T6-PA11 Passive 
+R16-1 Res_0402-1 Input   
+)
+(
+PA12 
+U1-33 STM32F103C8T6-PA12 Passive 
+)
+(
+SWDIO 
+U1-34 STM32F103C8T6-PA13 Passive 
+H1-4 HDR-M_2.54_1x4P-4 Passive 
+)
+(
+SWCLK 
+U1-37 STM32F103C8T6-PA14 Passive 
+H1-3 HDR-M_2.54_1x4P-3 Passive 
+)
+(
+PA15 
+U1-38 STM32F103C8T6-PA15 Passive 
+)
+(
+PB3 
+U1-39 STM32F103C8T6-PB3 Passive 
+R21-1 Res_0402-1 Input   
+)
+(
+PB4 
+U1-40 STM32F103C8T6-PB4 Passive 
+R22-1 Res_0402-1 Input   
+)
+(
+PB5 
+U1-41 STM32F103C8T6-PB5 Passive 
+R24-1 Res_0402-1 Input   
+)
+(
+RXD 
+U1-42 STM32F103C8T6-PB6 Passive 
+U2-3 CH340C-RXD Passive 
+)
+(
+TXD 
+U1-43 STM32F103C8T6-PB7 Passive 
+U2-2 CH340C-TXD Passive 
+)
+(
+BOOT0 
+U1-44 STM32F103C8T6-BOOT0 Passive 
+R1-1 Res_0402-1 Input   
+)
+(
+PB8 
+U1-45 STM32F103C8T6-PB8 Passive 
+)
+(
+PB9 
+U1-46 STM32F103C8T6-PB9 Passive 
+)
+(
+12V 
+CN1-2 744-81-04TB1B-2 Passive 
+CN2-2 744-81-04TB1B-2 Passive 
+CN3-2 744-81-04TB1B-2 Passive 
+CN4-2 744-81-04TB1B-2 Passive 
+CN5-2 744-81-04TB1B-2 Passive 
+CN6-2 744-81-04TB1B-2 Passive 
+P1-1 WJ45C-B-9.5-02P-13-00A-1 Passive 
+C10-1 EKM2GM330G18OTBVZC-1 Input   
+U16-4 LMR54410FDBVR-EN Passive 
+U16-5 LMR54410FDBVR-VIN Passive 
+C140-2 CAP_0805-2 Input   
+C142-2 CAP_0603-2 Input   
+)
+(
+PWM-GENO1 
+CN1-3 744-81-04TB1B-3 Passive 
+R11-1 Res_0402-1 Input   
+Q2-3 S8050(0.5A)-C Passive 
+)
+(
+PWM-GENO2 
+CN2-3 744-81-04TB1B-3 Passive 
+R9-1 Res_0402-1 Input   
+Q1-3 S8050(0.5A)-C Passive 
+)
+(
+PWM-GENO3 
+CN3-3 744-81-04TB1B-3 Passive 
+R13-1 Res_0402-1 Input   
+Q3-3 S8050(0.5A)-C Passive 
+)
+(
+PWM-GENO4 
+CN4-3 744-81-04TB1B-3 Passive 
+R17-1 Res_0402-1 Input   
+Q5-3 S8050(0.5A)-C Passive 
+)
+(
+PWM-GENO5 
+CN5-3 744-81-04TB1B-3 Passive 
+R15-1 Res_0402-1 Input   
+Q4-3 S8050(0.5A)-C Passive 
+)
+(
+PWM-GENO6 
+CN6-3 744-81-04TB1B-3 Passive 
+R19-1 Res_0402-1 Input   
+Q6-3 S8050(0.5A)-C Passive 
+)
+(
+D+ 
+U2-5 CH340C-D+ Passive 
+USB1-3 HX TYPE-BF 90-D+ Passive 
+)
+(
+D- 
+U2-6 CH340C-D- Passive 
+USB1-2 HX TYPE-BF 90-D- Passive 
+)
+(
+$1N156 
+R10-2 Res_0402-2 Input   
+Q2-1 S8050(0.5A)-B Passive 
+)
+(
+$1N162 
+R2-2 Res_0402-2 Input   
+Q1-1 S8050(0.5A)-B Passive 
+)
+(
+$1N167 
+R12-2 Res_0402-2 Input   
+Q3-1 S8050(0.5A)-B Passive 
+)
+(
+$1N182 
+R16-2 Res_0402-2 Input   
+Q5-1 S8050(0.5A)-B Passive 
+)
+(
+$1N180 
+R14-2 Res_0402-2 Input   
+Q4-1 S8050(0.5A)-B Passive 
+)
+(
+$1N181 
+R18-2 Res_0402-2 Input   
+Q6-1 S8050(0.5A)-B Passive 
+)
+(
+$1N188 
+STATE1-2 LED_0603-R-A Input   
+R21-2 Res_0402-2 Input   
+)
+(
+$1N189 
+STATE2-2 LED_0603-R-A Input   
+R22-2 Res_0402-2 Input   
+)
+(
+$1N190 
+3V3-2 LED_0603-R-A Input   
+R23-2 Res_0402-2 Input   
+)
+(
+$1N191 
+ERROR-2 LED_0603-R-A Input   
+R24-2 Res_0402-2 Input   
+)
+(
+$1N211 
+U16-1 LMR54410FDBVR-CB Passive 
+C143-2 CAP_0402-2 Input   
+)
+(
+FB 
+U16-3 LMR54410FDBVR-FB Passive 
+R49-1 Res_0402-1 Input   
+R50-2 Res_0402-2 Input   
+)
+(
+$1N206 
+U16-6 LMR54410FDBVR-SW Passive 
+C143-1 CAP_0402-1 Input   
+U17-2 IHLP1616BZERR47M5A-2 Passive 
+)
