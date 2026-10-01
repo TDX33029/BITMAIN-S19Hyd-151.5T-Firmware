@@ -274,6 +274,21 @@ static void print_chip_info(const pic_chip_info_t *chip)
     }
 }
 
+static void print_ihex_record(uint8_t len, uint16_t addr, uint8_t type, const uint8_t *data)
+{
+    uint8_t chk = len + (uint8_t)(addr >> 8) + (uint8_t)(addr & 0xFF) + type;
+    for (uint8_t i = 0; i < len; i++) {
+        chk += data[i];
+    }
+    chk = (uint8_t)(0x100 - chk);
+
+    uprintf(":%02X%04X%02X", len, addr, type);
+    for (uint8_t i = 0; i < len; i++) {
+        uprintf("%02X", data[i]);
+    }
+    uprintf("%02X\r\n", chk);
+}
+
 static void handle_cli_command(char *cmdline)
 {
     int len = (int)strlen(cmdline);
@@ -340,6 +355,55 @@ static void handle_cli_command(char *cmdline)
         } else {
             uprintf("[ERR] Read Flash Failed! Code=%d\r\n", st);
         }
+    } else if (ci_equal(cmdline, "DUMP")) {
+        pic_chip_info_t chip;
+        if (icsp_detect_chip(&chip) != ICSP_OK) {
+            uprintf("[ERR] PIC Not Found or Incompatible! Check wiring and power.\r\n");
+            return;
+        }
+        if (chip.cp_on) {
+            uprintf("[WARN] Code Protection (CP) is ON! Flash read will be masked (0x0000) by chip hardware.\r\n");
+        }
+        uprintf("; === BEGIN INTEL HEX DUMP (PIC16F1704) ===\r\n");
+        uint16_t row_buf[32];
+        uint8_t hex_bytes[16];
+
+        for (uint16_t w_addr = 0; w_addr < PIC16F1704_FLASH_WORDS; w_addr += 32) {
+            if (icsp_read_flash(w_addr, row_buf, 32) != ICSP_OK) {
+                uprintf("[ERR] Read Flash failed at 0x%04X\r\n", w_addr);
+                break;
+            }
+            for (uint8_t chunk = 0; chunk < 4; chunk++) {
+                uint16_t byte_addr = (uint16_t)((w_addr + chunk * 8U) * 2U);
+                for (uint8_t i = 0; i < 8; i++) {
+                    uint16_t w = row_buf[chunk * 8U + i] & 0x3FFFU;
+                    hex_bytes[i * 2U] = (uint8_t)(w & 0xFFU);
+                    hex_bytes[i * 2U + 1U] = (uint8_t)((w >> 8) & 0x3FU);
+                }
+                print_ihex_record(16, byte_addr, 0, hex_bytes);
+            }
+        }
+
+        /* Config space @ Extended Linear 0x00010000 */
+        uprintf(":020000040001F9\r\n");
+        /* User IDs 0x8000-0x8003 -> Offset 0x0000 */
+        for (uint8_t i = 0; i < 4; i++) {
+            hex_bytes[i * 2U] = (uint8_t)(chip.userid[i] & 0xFFU);
+            hex_bytes[i * 2U + 1U] = (uint8_t)((chip.userid[i] >> 8) & 0x3FU);
+        }
+        print_ihex_record(8, 0x0000, 0, hex_bytes);
+
+        /* CONFIG1 & CONFIG2 (0x8007, 0x8008) -> Offset 0x000E */
+        hex_bytes[0] = (uint8_t)(chip.config1 & 0xFFU);
+        hex_bytes[1] = (uint8_t)((chip.config1 >> 8) & 0x3FU);
+        hex_bytes[2] = (uint8_t)(chip.config2 & 0xFFU);
+        hex_bytes[3] = (uint8_t)((chip.config2 >> 8) & 0x3FU);
+        print_ihex_record(4, 0x000E, 0, hex_bytes);
+
+        /* EOF */
+        uprintf(":00000001FF\r\n");
+        uprintf("; === END INTEL HEX DUMP ===\r\n");
+        icsp_exit_progmode();
     } else if (ci_equal(cmdline, "CFG")) {
         pic_chip_info_t chip;
         if (icsp_read_configs(&chip) == ICSP_OK) {
@@ -371,6 +435,7 @@ static void handle_cli_command(char *cmdline)
         uprintf("  ID / DETECT       - Read PIC16F1704 Device ID & Configs\r\n");
         uprintf("  ERASE             - Bulk erase PIC Flash & Config\r\n");
         uprintf("  READ <addr> [n]   - Read n words (max 64), e.g. READ 0 16\r\n");
+        uprintf("  DUMP              - Dump entire 4K Flash & Config as Intel HEX\r\n");
         uprintf("  CFG               - Read Configuration words & User ID\r\n");
         uprintf("  ONEKEY / BURN     - Flash embedded firmware & verify\r\n");
         uprintf("  RESET             - Release MCLR and let PIC run\r\n");

@@ -82,11 +82,31 @@ class PIC16F1704Programmer:
 
     @staticmethod
     def list_ports() -> List[str]:
-        return [p.device for p in serial.tools.list_ports.comports()]
+        all_ports = list(serial.tools.list_ports.comports())
+        # 优先将 USB 转串口 (如 CH340 / CP2102 / FTDI) 排在最前, 蓝牙虚拟串口排在最后
+        sorted_ports = sorted(
+            all_ports,
+            key=lambda p: (
+                1 if ('BTHENUM' in (p.hwid or '') or '蓝牙' in (p.description or '')) else 0,
+                0 if ('USB' in (p.hwid or '') or '1A86' in (p.hwid or '') or 'CH340' in (p.description or '')) else 1
+            )
+        )
+        return [p.device for p in sorted_ports]
 
     @classmethod
     def auto_detect_port(cls) -> Optional[str]:
-        for p in serial.tools.list_ports.comports():
+        # 优先扫描 USB 串口, 过滤可能导致底层驱动阻塞数十秒的蓝牙虚拟串口 (BTHENUM)
+        all_ports = list(serial.tools.list_ports.comports())
+        sorted_ports = sorted(
+            all_ports,
+            key=lambda p: (
+                1 if ('BTHENUM' in (p.hwid or '') or '蓝牙' in (p.description or '')) else 0,
+                0 if ('USB' in (p.hwid or '') or '1A86' in (p.hwid or '') or 'CH340' in (p.description or '')) else 1
+            )
+        )
+        for p in sorted_ports:
+            if 'BTHENUM' in (p.hwid or '') or '蓝牙' in (p.description or ''):
+                continue
             try:
                 prog = cls(p.device, timeout=0.3)
                 prog.ser = serial.Serial(p.device, 115200, timeout=0.3)
@@ -111,7 +131,18 @@ class PIC16F1704Programmer:
             raise ConnectionError("Serial port not connected.")
 
         self.seq = (self.seq + 1) & 0xFF
-        hdr_len = len(payload) if len_override is None else len_override
+        # 兼容性处理: 下位机固件状态机对空载荷帧(len=0)的处理在旧版本中可能丢包,
+        # 且 CMD_READ_FLASH 携带读取字数时下位机帧长度计算以 len 字段为准。
+        if len(payload) == 0:
+            if len_override is not None:
+                payload = bytes(len_override)
+                hdr_len = len_override
+            else:
+                payload = b'\x00'
+                hdr_len = 1
+        else:
+            hdr_len = len(payload) if len_override is None else len_override
+
         header = struct.pack('<2sBBHH', SYNC_REQ, cmd, self.seq, addr, hdr_len)
         data_to_crc = header + payload
         crc = calc_crc16(data_to_crc)
@@ -169,7 +200,7 @@ class PIC16F1704Programmer:
         # Firmware v2 replies 19 bytes (adds cp_on/lvp_on); v1 replies 17/18.
         if len(payload) >= 19:
             dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid, cp_on, lvp_on = \
-                struct.unpack('<HHHHHHHH??', payload[:19])
+                struct.unpack('<HHHHHHHH???', payload[:19])
         else:
             dev_id, rev_id, cfg1, cfg2, u0, u1, u2, u3, is_valid = \
                 struct.unpack('<HHHHHHHH?', payload[:17])
@@ -330,11 +361,15 @@ class PIC16F1704Programmer:
         return True
 
     def dump_hex(self, output_path: str, progress_cb: Optional[Callable[[int, int, str], None]] = None) -> None:
-        """Dump entire 4096 words Flash and Config words to an Intel HEX file."""
+        """Dump entire 4096 words Flash and Config words to an Intel HEX (.hex) or Binary (.bin) file."""
         if progress_cb: progress_cb(5, 100, "Connecting and detecting chip...")
         chip = self.detect_chip()
         if not chip.get('connected'):
-            raise RuntimeError("Target PIC not detected.")
+            raise RuntimeError("Target PIC not detected or not responding! Please check ICSP wiring and power.")
+
+        if chip.get('cp_on'):
+            print("\n[WARN] ⚠️ 目标 PIC 启用了代码保护 (Code Protection, CP=ON)！")
+            print("       受硬件保护限制, 读取出的程序内存将被芯片屏蔽为全 0x0000。")
 
         flash_words = []
         total_rows = 128
@@ -351,6 +386,9 @@ class PIC16F1704Programmer:
             if progress_cb and r % 8 == 0:
                 progress_cb(pct, 100, f"Reading Flash {pct}%...")
 
+        if all(w == 0x3FFF for w in flash_words):
+            print("[INFO] 提示: 读取到的 Flash 内存全为 0x3FFF, 芯片处于空白/已擦除状态。")
+
         if progress_cb: progress_cb(92, 100, "Reading Configuration words...")
         cfg = self.read_configs()
         configs = {
@@ -362,10 +400,23 @@ class PIC16F1704Programmer:
             'config2': cfg['config2']
         }
 
-        hex_file = IntelHex()
-        hex_file.save_hex(output_path, flash_words, configs)
+        # 根据扩展名保存为 .bin 或 .hex
+        if output_path.lower().endswith('.bin'):
+            raw_bytes = bytearray()
+            for w in flash_words:
+                raw_bytes.extend(struct.pack('<H', w & 0x3FFF))
+            with open(output_path, 'wb') as f:
+                f.write(raw_bytes)
+            print(f"[+] Raw binary dump saved to {output_path} ({len(raw_bytes)} bytes)")
+        else:
+            hex_file = IntelHex()
+            hex_file.save_hex(output_path, flash_words, configs)
+            print(f"[+] Intel HEX dump saved to {output_path}")
+
         self.reset_target()
         if progress_cb: progress_cb(100, 100, f"Dump saved to {output_path}")
+
+    dump_firmware = dump_hex
 
 def main():
     parser = argparse.ArgumentParser(description="AntMiner PIC16F1704 Flasher Tool (STM32F103)")
@@ -390,7 +441,9 @@ def main():
 
     print("[*] Connecting to STM32 PIC Programmer...")
     try:
-        prog.connect()
+        if not prog.connect():
+            print(f"[-] Ping handshake failed with programmer on {prog.port}! Please verify firmware and connection.")
+            sys.exit(1)
         print(f"[+] Connected successfully on {prog.port}!")
     except Exception as e:
         print(f"[-] Connection error: {e}")

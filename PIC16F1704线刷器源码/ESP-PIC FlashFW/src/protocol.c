@@ -278,17 +278,19 @@ void protocol_process(void) {
                 bin_rx_idx = 0;
             } else if (bin_rx_idx == sizeof(protocol_header_t)) {
                 protocol_header_t *hdr = (protocol_header_t *)bin_rx_buf;
-                if (hdr->len > PROTOCOL_MAX_PAYLOAD) {
+                uint16_t payload_len = (hdr->cmd == PROTOCOL_CMD_READ_FLASH) ? 0U : hdr->len;
+                if (payload_len > PROTOCOL_MAX_PAYLOAD) {
                     /* Corrupted frame, reset */
                     bin_rx_idx = 0;
                 } else {
-                    bin_expected_len = sizeof(protocol_header_t) + hdr->len + 2; // + CRC
+                    bin_expected_len = sizeof(protocol_header_t) + payload_len + 2; // + CRC
                 }
             } else if (bin_rx_idx > sizeof(protocol_header_t) && bin_rx_idx == bin_expected_len) {
                 /* Complete packet received, verify CRC */
                 protocol_header_t *hdr = (protocol_header_t *)bin_rx_buf;
+                uint16_t payload_len = (hdr->cmd == PROTOCOL_CMD_READ_FLASH) ? 0U : hdr->len;
                 uint16_t rx_crc = bin_rx_buf[bin_expected_len - 2] | (bin_rx_buf[bin_expected_len - 1] << 8);
-                uint16_t calc_crc = protocol_crc16(bin_rx_buf, sizeof(protocol_header_t) + hdr->len);
+                uint16_t calc_crc = protocol_crc16(bin_rx_buf, sizeof(protocol_header_t) + payload_len);
 
                 if (rx_crc == calc_crc) {
                     handle_binary_packet(hdr, bin_rx_buf + sizeof(protocol_header_t));

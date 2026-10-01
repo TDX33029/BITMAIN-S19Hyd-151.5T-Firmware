@@ -87,7 +87,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x6ABE235E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x6ABE235E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x6ABE235E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6ABE235E)
-F (..\Core\Src\protocol.c)(0x6ABE65F1)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I"D:\Program Files\Keil5\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-D__UVISION_VERSION="542" -DSTM32F10X_MD -DSTM32F103xB -DUSE_HAL_DRIVER-o .\protocol.o --omf_browse .\protocol.crf --depend .\protocol.d)
+F (..\Core\Src\protocol.c)(0x6ABE6A9E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I"D:\Program Files\Keil5\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-D__UVISION_VERSION="542" -DSTM32F10X_MD -DSTM32F103xB -DUSE_HAL_DRIVER-o .\protocol.o --omf_browse .\protocol.crf --depend .\protocol.d)
 I (../Core/Inc/protocol.h)(0x6ABE235D)
 I (D:\Program Files\Keil5\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\Program Files\Keil5\ARM\ARMCC\include\stdbool.h)(0x6025237C)

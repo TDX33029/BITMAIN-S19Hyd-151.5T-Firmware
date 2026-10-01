@@ -79,6 +79,7 @@ STM32F103 固件内置**双模式**协议解析引擎：
 | `ID` 或 `DETECT` | `[OK] PIC Detected: DevID=0x3043 Rev=0x03` | 识别 PIC16F1704 芯片 ID |
 | `ERASE` | `[OK] Bulk Erase Completed Successfully!` | 整片擦除目标芯片 |
 | `READ 0 16` | `Address 0x0000 (16 words): ...` | 读取从 0 开始的 16 个字 |
+| `DUMP` | `:10000000... :00000001FF` | 完整导出 4K 程序 Flash 及配置字为标准 Intel HEX |
 | `CFG` | `CONFIG1: 0x3F84, CONFIG2: 0x1C13` | 查看配置字状态 |
 | `ONEKEY` | `[SUCCESS] S19 PIC Firmware Flashed & Verified!` | 一键执行烧录、校验和启动 |
 | `RESET` | `[OK] Released MCLR. Target PIC is running.` | 释放复位，启动 PIC |

@@ -334,7 +334,7 @@ class PIC16F1704GUI:
         out_path = filedialog.asksaveasfilename(
             title="保存固件导出文件",
             defaultextension=".hex",
-            filetypes=[("Intel HEX Files", "*.hex")]
+            filetypes=[("Intel HEX Files (*.hex)", "*.hex"), ("Binary Files (*.bin)", "*.bin"), ("All Files (*.*)", "*.*")]
         )
         if not out_path:
             return

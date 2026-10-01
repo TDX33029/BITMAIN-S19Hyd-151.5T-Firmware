@@ -79,14 +79,17 @@ class IntelHex:
             flash_words.append(self.get_word(w_addr))
 
         def cfg_word(word_addr: int) -> Optional[int]:
-            base = 0x10000 + word_addr * 2
+            # 标准 INHX32 绝对字节地址: word_addr * 2 (例如 0x8007*2 = 0x1000E)
+            base = word_addr * 2
             lo = self.data.get(base)
             if lo is not None:
                 hi = self.data.get(base + 1, 0x3F)
                 return (lo | (hi << 8)) & 0x3FFF
-            lo = self.data.get(word_addr * 2)
+            # 兼容低 16 位相对地址: (word_addr & 0x7FFF) * 2 (例如 0x000E)
+            base = (word_addr & 0x7FFF) * 2
+            lo = self.data.get(base)
             if lo is not None:
-                hi = self.data.get(word_addr * 2 + 1, 0x3F)
+                hi = self.data.get(base + 1, 0x3F)
                 return (lo | (hi << 8)) & 0x3FFF
             return None
 
