@@ -1,8 +1,8 @@
 .\uprintf.o: ..\Core\Src\uprintf.c
 .\uprintf.o: ../Core/Inc/uprintf.h
-.\uprintf.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\uprintf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\uprintf.o: ../Core/Inc/uart.h
-.\uprintf.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\uprintf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\uprintf.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 .\uprintf.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 .\uprintf.o: ../Drivers/CMSIS/Include/core_cm3.h
@@ -16,7 +16,7 @@
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 .\uprintf.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-.\uprintf.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\uprintf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -27,4 +27,4 @@
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 .\uprintf.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
-.\uprintf.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\uprintf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
