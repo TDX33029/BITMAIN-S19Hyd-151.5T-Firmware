@@ -8,7 +8,9 @@ Type=simple
 User=root
 # Change WorkingDirectory to your deployed directory on Ubuntu, e.g., /opt/AntMiner
 WorkingDirectory=/opt/AntMiner
-ExecStart=/usr/bin/python3 /opt/AntMiner/antminer_monitor.py --watch --interval 1.0
+# --config pins the plug token/passwords file explicitly; without it the daemon would
+# depend on CWD resolution and could start with an empty token.
+ExecStart=/usr/bin/python3 /opt/AntMiner/antminer_monitor.py --config /opt/AntMiner/config.json --watch --interval 1.0
 Restart=always
 RestartSec=5s
 

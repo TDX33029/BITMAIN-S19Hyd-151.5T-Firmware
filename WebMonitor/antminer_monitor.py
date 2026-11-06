@@ -21,6 +21,7 @@ Features:
 import argparse
 import hashlib
 import json
+import os
 import socket
 import sys
 import threading
@@ -32,6 +33,9 @@ from typing import Any, Deque, Dict, List, Optional
 import requests
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+from mijia_plug import (MijiaPlugDriver, load_plug_config, parse_chains,
+                        board_thresholds, parse_board_thresholds)
 from requests.adapters import HTTPAdapter
 from requests.auth import HTTPDigestAuth
 
@@ -118,126 +122,6 @@ def render_horizontal_bar(val: float, max_range: float = 85.0, width: int = 12) 
     return f"[{bar}] {c}{val:4.1f}°C{Colors.RESET}"
 
 
-class MijiaPlugDriver:
-    """Robust native miIO UDP client with persistent socket & timestamp sync."""
-
-    def __init__(self, ip: str = "10.8.1.110", token_hex: str = "458a4ef63ff154e2136a1342395c630f", did: str = "2051114902"):
-        self.ip = ip
-        self.did = str(did)
-        self.token = bytes.fromhex(token_hex)
-        self.key = hashlib.md5(self.token).digest()
-        self.iv = hashlib.md5(self.key + self.token).digest()
-
-        self.device_id: Optional[bytes] = None
-        self.stamp_offset: Optional[int] = None
-        self._msg_id = 0
-
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.sock.settimeout(1.5)
-
-    def _encrypt(self, plaintext: bytes) -> bytes:
-        pad_len = 16 - (len(plaintext) % 16)
-        padded = plaintext + bytes([pad_len] * pad_len)
-        cipher = Cipher(algorithms.AES(self.key), modes.CBC(self.iv), backend=default_backend())
-        encryptor = cipher.encryptor()
-        return encryptor.update(padded) + encryptor.finalize()
-
-    def _decrypt(self, ciphertext: bytes) -> bytes:
-        cipher = Cipher(algorithms.AES(self.key), modes.CBC(self.iv), backend=default_backend())
-        decryptor = cipher.decryptor()
-        padded = decryptor.update(ciphertext) + decryptor.finalize()
-        return padded[:-padded[-1]]
-
-    def _handshake(self):
-        hello = bytes.fromhex("21310020ffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-        self.sock.sendto(hello, (self.ip, 54321))
-        data, _ = self.sock.recvfrom(1024)
-        self.device_id = data[8:12]
-        dev_stamp = int.from_bytes(data[12:16], "big")
-        self.stamp_offset = dev_stamp - int(time.time())
-
-    def _send_cmd(self, method: str, params: Any) -> Dict[str, Any]:
-        for attempt in range(2):
-            try:
-                if self.device_id is None or self.stamp_offset is None:
-                    self._handshake()
-
-                self._msg_id += 1
-                now_stamp = (int(time.time()) + self.stamp_offset) & 0xFFFFFFFF
-                payload = json.dumps({"id": self._msg_id, "method": method, "params": params}, separators=(",", ":")).encode("utf-8")
-                encrypted = self._encrypt(payload)
-
-                packet_len = 32 + len(encrypted)
-                header = bytearray(32)
-                header[0:2] = b"\x21\x31"
-                header[2:4] = packet_len.to_bytes(2, "big")
-                header[8:12] = self.device_id
-                header[12:16] = now_stamp.to_bytes(4, "big")
-                header[16:32] = self.token
-                header[16:32] = hashlib.md5(header[:16] + self.token + encrypted).digest()
-
-                self.sock.sendto(header + encrypted, (self.ip, 54321))
-                res, _ = self.sock.recvfrom(4096)
-                decrypted = self._decrypt(res[32:])
-                return json.loads(decrypted.decode("utf-8"))
-            except Exception:
-                self.device_id = None
-                self.stamp_offset = None
-                if attempt == 1:
-                    raise
-        raise TimeoutError("miIO communication failed after retry")
-
-    def query_status(self) -> Dict[str, Any]:
-        try:
-            props = [
-                {"did": self.did, "siid": 2, "piid": 1},   # Switch Status (bool)
-                {"did": self.did, "siid": 11, "piid": 2},  # Electric Power (W)
-                {"did": self.did, "siid": 12, "piid": 2},  # Internal Temp (°C)
-            ]
-            res_json = self._send_cmd("get_properties", props)
-
-            switch_on = False
-            power_w = 0.0
-            temp_c = 0
-
-            for item in res_json.get("result", []):
-                siid = item.get("siid")
-                piid = item.get("piid")
-                val = item.get("value")
-                if siid == 2 and piid == 1:
-                    switch_on = bool(val)
-                elif siid == 11 and piid == 2:
-                    power_w = float(val) if val is not None else 0.0
-                elif siid == 12 and piid == 2:
-                    temp_c = int(val) if val is not None else 0
-
-            return {
-                "online": True,
-                "switch_on": switch_on,
-                "power_w": power_w,
-                "plug_temp": temp_c,
-            }
-        except Exception as e:
-            return {
-                "online": False,
-                "error": str(e),
-                "switch_on": False,
-                "power_w": 0.0,
-                "plug_temp": 0,
-            }
-
-    def set_switch(self, state: bool) -> bool:
-        try:
-            props = [{"did": self.did, "siid": 2, "piid": 1, "value": bool(state)}]
-            res = self._send_cmd("set_properties", props)
-            for item in res.get("result", []):
-                if item.get("code") == 0:
-                    return True
-            return False
-        except Exception:
-            return False
-
-
 class AntminerMonitor:
     def __init__(
         self,
@@ -245,7 +129,9 @@ class AntminerMonitor:
         username: str = "root",
         password: str = "dl.general",
         plug_ip: str = "10.8.1.110",
-        plug_token: str = "458a4ef63ff154e2136a1342395c630f",
+        plug_token: str = "",
+        plug_did: str = "2051114902",
+        board_overrides: Optional[List[Dict[str, Any]]] = None,
         wrn_temp: float = 75.0,
         stop_temp: float = 78.0,
         interval: float = 1.0,
@@ -257,6 +143,8 @@ class AntminerMonitor:
         self.password = password
         self.wrn_temp = wrn_temp
         self.stop_temp = stop_temp
+        # Per-board absolute limits from config.json; empty = built-in offsets apply.
+        self.board_overrides = list(board_overrides or [])
         self.interval = interval
         self.timeout = timeout
         self.history_len = history_len
@@ -268,7 +156,23 @@ class AntminerMonitor:
         self.max_hold_failures: int = 5
 
         # Plug Driver
-        self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did="2051114902")
+        self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did=plug_did)
+
+        # Overheat state
+        self.overheat_wrn_seconds = 0.0
+        self.cutoff_triggered = False
+        self._wrn_last_time: Optional[float] = None
+
+        # Reject Ratio Alarm State
+        self.high_reject_alerted = False
+        self.last_reject_alert_time = 0.0
+        self.reject_alert_cooldown = 300.0  # Cooldown 5 minutes between alerts
+
+        # History queues for sparklines
+        self.history_hashrate: Deque[float] = deque(maxlen=self.history_len)
+        self.history_inlet: Deque[float] = deque(maxlen=self.history_len)
+        self.history_outlet: Deque[float] = deque(maxlen=self.history_len)
+        self.history_chip_max: Deque[float] = deque(maxlen=self.history_len)
 
     def _create_miner_session(self) -> requests.Session:
         s = requests.Session()
@@ -294,21 +198,6 @@ class AntminerMonitor:
         except Exception:
             pass
         self.session = self._create_miner_session()
-
-        # Overheat state
-        self.overheat_wrn_seconds = 0
-        self.cutoff_triggered = False
-
-        # Reject Ratio Alarm State
-        self.high_reject_alerted = False
-        self.last_reject_alert_time = 0.0
-        self.reject_alert_cooldown = 300.0  # Cooldown 5 minutes between alerts
-
-        # History queues for sparklines
-        self.history_hashrate: Deque[float] = deque(maxlen=self.history_len)
-        self.history_inlet: Deque[float] = deque(maxlen=self.history_len)
-        self.history_outlet: Deque[float] = deque(maxlen=self.history_len)
-        self.history_chip_max: Deque[float] = deque(maxlen=self.history_len)
 
     def fetch_metrics(self) -> Dict[str, Any]:
         """Fetch miner & plug metrics."""
@@ -341,10 +230,16 @@ class AntminerMonitor:
             st0 = raw_stats.get("STATS", [{}])[0]
             rate_5s_ghs = float(st0.get("rate_5s", 0.0))
 
-            chain0 = st0.get("chain", [{}])[0]
-            temp_pic = [float(x) for x in chain0.get("temp_pic", [])]
-            temp_pcb = [float(x) for x in chain0.get("temp_pcb", [])]
-            temp_chip = [float(x) for x in chain0.get("temp_chip", [])]
+            # This board reports one entry per hash board (chain_num=2 on the S19 Hydro).
+            # Reading only chain[0] hid the second board entirely: observed Chain1 at
+            # 71°C while Chain2 sat at 81°C, so the STOP threshold never fired.
+            chain_temps, water_pic = parse_chains(st0)
+            temp_pic = water_pic
+            temp_pcb = []
+            temp_chip = []
+            for ct in chain_temps:
+                temp_pcb.extend(ct["pcb"])
+                temp_chip.extend(ct["chip"])
 
             total_diffa = 0.0
             total_diffr = 0.0
@@ -372,6 +267,7 @@ class AntminerMonitor:
                 "temp_pic": temp_pic,
                 "temp_pcb": temp_pcb,
                 "temp_chip": temp_chip,
+                "chain_temps": chain_temps,
             }
         except Exception as e:
             self.consecutive_miner_failures += 1
@@ -392,10 +288,12 @@ class AntminerMonitor:
             temp_pic = self.last_valid_metrics["temp_pic"]
             temp_pcb = self.last_valid_metrics["temp_pcb"]
             temp_chip = self.last_valid_metrics["temp_chip"]
+            chain_temps = self.last_valid_metrics.get("chain_temps", [])
             miner_ok = True
             is_recovering = True
         else:
             miner_ok = False
+            chain_temps = []
 
         rate_5s_ths = rate_5s_ghs / 1000.0
 
@@ -409,6 +307,19 @@ class AntminerMonitor:
         chip_max = max(temp_chip) if temp_chip else 0.0
         chip_avg = (sum(temp_chip) / len(temp_chip)) if temp_chip else 0.0
 
+        # Per-board protection. Boards run at different temperatures by design, so chain 2
+        # gets a configurable allowance instead of forcing one global threshold.
+        # hot = the board with the smallest remaining margin to its own STOP threshold.
+        hot = None
+        for i, ct in enumerate(chain_temps):
+            warn_at = board_thresholds(self.wrn_temp, i, "wrn", self.board_overrides)
+            stop_at = board_thresholds(self.stop_temp, i, "stop", self.board_overrides)
+            margin = stop_at - ct["chip_max"]
+            if hot is None or margin < hot["margin"]:
+                hot = {"index": ct["index"], "chip_max": ct["chip_max"],
+                       "warn_at": warn_at, "stop_at": stop_at, "margin": margin}
+        board_hot = hot
+
         # Push to history
         self.history_hashrate.append(rate_5s_ths)
         if inlet_t > 0:
@@ -421,7 +332,7 @@ class AntminerMonitor:
         # Protection evaluation
         self._evaluate_protection(chip_max, chip_avg, inlet_t, outlet_t, delta_t, plug_data, miner_ok=miner_ok,
                                   reject_ratio=reject_ratio, total_accepted=total_accepted, total_rejected=total_rejected,
-                                  rate_5s_ghs=rate_5s_ghs)
+                                  rate_5s_ghs=rate_5s_ghs, board_hot=board_hot)
 
         return {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -438,6 +349,16 @@ class AntminerMonitor:
             "chip_avg": chip_avg,
             "pcb_temps": temp_pcb,
             "chip_temps": temp_chip,
+            "chains": [
+                {"index": ct["index"], "chip_max": ct["chip_max"], "chip_avg": ct["chip_avg"],
+                 "warn_at": board_thresholds(self.wrn_temp, i, "wrn", self.board_overrides),
+                 "stop_at": board_thresholds(self.stop_temp, i, "stop", self.board_overrides)}
+                for i, ct in enumerate(chain_temps)
+            ],
+            "hot_board": ({
+                "index": board_hot["index"], "chip_max": board_hot["chip_max"],
+                "warn_at": board_hot["warn_at"], "stop_at": board_hot["stop_at"],
+            } if board_hot else None),
             "plug": plug_data,
             "cutoff_triggered": self.cutoff_triggered,
             "overheat_wrn_seconds": self.overheat_wrn_seconds,
@@ -450,15 +371,32 @@ class AntminerMonitor:
         }
 
     def _evaluate_protection(self, chip_max: float, chip_avg: float, tin: float, tout: float, dt: float, plug_data: dict, miner_ok: bool = True,
-                             reject_ratio: float = 0.0, total_accepted: int = 0, total_rejected: int = 0, rate_5s_ghs: float = 0.0):
-        """Dual threshold overheat cutoff logic and reject ratio alert."""
+                             reject_ratio: float = 0.0, total_accepted: int = 0, total_rejected: int = 0, rate_5s_ghs: float = 0.0,
+                             board_hot: Optional[dict] = None):
+        """Dual threshold overheat cutoff logic and reject ratio alert.
+
+        ``board_hot`` names the hash board closest to its own limits, with that board's
+        per-channel thresholds. Falling back to the global thresholds keeps behaviour sane
+        if the stats payload has no chain data.
+        """
+        if board_hot:
+            eff_wrn = board_hot["warn_at"]
+            eff_stop = board_hot["stop_at"]
+            eff_max = board_hot["chip_max"]
+            board_label = f"Chain {board_hot['index']}"
+        else:
+            eff_wrn = self.wrn_temp
+            eff_stop = self.stop_temp
+            eff_max = chip_max
+            board_label = "All chains"
+
         if self.cutoff_triggered:
             # Enforce off
             if plug_data.get("switch_on", False):
                 self.plug.set_switch(False)
             return
 
-        if chip_max >= self.stop_temp:
+        if eff_max >= eff_stop:
             # Immediate cutoff
             self.cutoff_triggered = True
             self.plug.set_switch(False)
@@ -466,34 +404,46 @@ class AntminerMonitor:
                 f"🚨 <b>[AntMinerTab-CLI 紧急急停断电告警]</b>\n\n"
                 f"<b>设备</b>: Antminer S19 Hydro ({self.base_url})\n"
                 f"<b>级别</b>: <b>CRITICAL (达到急停温度 STOP TEMP)</b>\n"
-                f"<b>芯片温度</b>: <b>{chip_max:.1f}°C</b> (急停阈值: {self.stop_temp:.0f}°C)\n"
+                f"<b>触发板号</b>: <b>{board_label}</b>\n"
+                f"<b>芯片温度</b>: <b>{eff_max:.1f}°C</b> (该板急停阈值: {eff_stop:.0f}°C)\n"
                 f"<b>水冷回路</b>: 进水 {tin:.1f}°C | 出水 {tout:.1f}°C (ΔT: +{dt:.1f}°C)\n"
-                f"<b>动作执行</b>: 米家智能插座(10.8.1.110)已立即<b>硬件切断电源</b>！\n"
+                f"<b>动作执行</b>: 米家智能插座已立即<b>硬件切断电源</b>！\n"
                 f"<b>保护机制</b>: 保护锁已激活，<b>绝不自动恢复</b>，请现场检查水冷！\n"
                 f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
             )
             send_telegram_async(msg)
 
-        elif chip_max >= self.wrn_temp:
-            # WRN temp countdown (30 seconds)
-            self.overheat_wrn_seconds += 1
-            if self.overheat_wrn_seconds >= 30:
+        elif eff_max >= eff_wrn:
+            # WRN temp countdown, accumulated from wall-clock time so that a non-1.0s
+            # --interval (or a slow poll) still means 30 real seconds of overheat.
+            now_wrn = time.time()
+            last = getattr(self, "_wrn_last_time", None)
+            if last is None:
+                self.overheat_wrn_seconds = 0.0
+            else:
+                self.overheat_wrn_seconds += max(0.0, now_wrn - last)
+            self._wrn_last_time = now_wrn
+            if self.overheat_wrn_seconds >= 30.0:
                 self.cutoff_triggered = True
                 self.plug.set_switch(False)
                 msg = (
                     f"⚠️ <b>[AntMinerTab-CLI 超温持续超时断电告警]</b>\n\n"
                     f"<b>设备</b>: Antminer S19 Hydro ({self.base_url})\n"
                     f"<b>级别</b>: <b>WARNING 超时关机 (WRN TEMP 维持超30秒)</b>\n"
-                    f"<b>芯片最高温</b>: <b>{chip_max:.1f}°C</b> (预警阈值: {self.wrn_temp:.0f}°C)\n"
+                    f"<b>触发板号</b>: <b>{board_label}</b>\n"
+                    f"<b>芯片最高温</b>: <b>{eff_max:.1f}°C</b> (该板预警阈值: {eff_wrn:.0f}°C)\n"
                     f"<b>芯片平均温</b>: {chip_avg:.1f}°C\n"
                     f"<b>水冷回路</b>: 进水 {tin:.1f}°C | 出水 {tout:.1f}°C (ΔT: +{dt:.1f}°C)\n"
-                    f"<b>动作执行</b>: 米家智能插座(10.8.1.110)已执行<b>断电保护</b>！\n"
+                    f"<b>动作执行</b>: 米家智能插座已执行<b>断电保护</b>！\n"
                     f"<b>保护机制</b>: 保护锁已激活，<b>绝不自动恢复</b>！\n"
                     f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
                 )
                 send_telegram_async(msg)
         elif miner_ok:
-            self.overheat_wrn_seconds = 0
+            self.overheat_wrn_seconds = 0.0
+            # Drop the timing baseline too, so the next overheat episode starts at 0s
+            # instead of instantly re-accumulating the elapsed time since the last sample.
+            self._wrn_last_time = None
 
         # Reject ratio telegram alert (>10%) with cooldown and recovery
         now_time = time.time()
@@ -606,8 +556,9 @@ def main():
     parser.add_argument("--url", default="http://10.8.1.86", help="Miner Web URL")
     parser.add_argument("--user", default="root", help="Digest Auth User")
     parser.add_argument("--pwd", default="dl.general", help="Digest Auth Password")
-    parser.add_argument("--plug-ip", default="10.8.1.110", help="Mijia Plug IP")
-    parser.add_argument("--plug-token", default="458a4ef63ff154e2136a1342395c630f", help="Mijia Plug Token")
+    parser.add_argument("--config", default=None, help="Path to config.json (default: ./config.json or script directory)")
+    parser.add_argument("--plug-ip", default=None, help="Mijia Plug IP (default: from config.json)")
+    parser.add_argument("--plug-token", default=None, help="Mijia Plug Token (default: from config.json)")
     parser.add_argument("--wrn-temp", type=float, default=75.0, help="Warning Temp threshold for 30s cutoff (°C)")
     parser.add_argument("--stop-temp", type=float, default=78.0, help="Emergency Stop Temp threshold for instant cutoff (°C)")
     parser.add_argument("--watch", "-w", action="store_true", help="Continuous monitoring TUI mode")
@@ -616,12 +567,23 @@ def main():
 
     args = parser.parse_args()
 
+    # Plug identity lives in config.json so a re-tokenized plug needs no code change.
+    cfg = load_plug_config(args.config)
+    plug_ip = args.plug_ip or cfg["plug_ip"]
+    plug_token = args.plug_token or cfg["plug_token"]
+    plug_did = cfg["plug_did"]
+    if not plug_token:
+        sys.stderr.write("[ERROR] plug_token is empty. Set it in config.json or pass --plug-token.\n")
+        sys.exit(1)
+
     monitor = AntminerMonitor(
         base_url=args.url,
         username=args.user,
         password=args.pwd,
-        plug_ip=args.plug_ip,
-        plug_token=args.plug_token,
+        plug_ip=plug_ip,
+        plug_token=plug_token,
+        plug_did=plug_did,
+        board_overrides=cfg.get("board_thresholds") or [],
         wrn_temp=args.wrn_temp,
         stop_temp=args.stop_temp,
         interval=args.interval,

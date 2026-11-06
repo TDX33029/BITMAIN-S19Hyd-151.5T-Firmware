@@ -30,8 +30,24 @@ sudo apt install -y \
 echo "[3/4] Granting execution permissions..."
 chmod +x antminer_gui.py antminer_monitor.py antminer_web.py
 
-# 4. Verification
-echo "[4/4] Verifying Python module availability..."
+# 4. Ensure config.json exists (plug token & passwords live here; it is not in git)
+if [ ! -f config.json ]; then
+    echo "    config.json not found - creating from config.example.json..."
+    cp config.example.json config.json
+    chmod 600 config.json
+    echo ""
+    echo "    !! You must edit config.json before the monitor can control the plug:"
+    echo "       plug_token  - the 32-hex miIO token of the Mijia Smart Plug"
+    echo "       plug_ip     - the plug's static IP (default 10.8.1.110)"
+    echo "       plug_did    - the plug's device id"
+    echo ""
+else
+    chmod 600 config.json
+    echo "    Found existing config.json (permissions set to 600)."
+fi
+
+# 5. Verification
+echo "[5/5] Verifying Python module availability and plug config..."
 python3 -c "
 import requests
 import cryptography
@@ -42,6 +58,19 @@ print('  ✓ cryptography: OK')
 print('  ✓ PyQt5: OK')
 print('  ✓ pyqtgraph: OK')
 "
+python3 -c "
+import json, sys
+try:
+    cfg = json.load(open('config.json', encoding='utf-8'))
+except Exception as e:
+    sys.exit('  ✗ config.json unreadable: %s' % e)
+tok = str(cfg.get('plug_token', '')).strip()
+if not tok:
+    sys.exit('  ✗ plug_token is EMPTY in config.json - set it before starting the service')
+if len(tok) != 32:
+    sys.exit('  ✗ plug_token should be 32 hex chars, got %d' % len(tok))
+print('  ✓ plug config: ip=%s did=%s token=set' % (cfg.get('plug_ip'), cfg.get('plug_did')))
+" || echo "    (Fix the above before running antminer_monitor.py)"
 
 echo "=========================================================="
 echo " ✅ Installation Successful!"
@@ -51,4 +80,8 @@ echo "   python3 antminer_gui.py"
 echo ""
 echo " To run Headless Terminal / Server Monitor (with auto-protection & Telegram):"
 echo "   python3 antminer_monitor.py --watch"
+echo ""
+echo " To install as a systemd service:"
+echo "   sudo cp antminer.service /etc/systemd/system/"
+echo "   sudo systemctl daemon-reload && sudo systemctl enable --now antminer"
 echo "=========================================================="
