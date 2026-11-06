@@ -65,26 +65,13 @@ from requests.adapters import HTTPAdapter
 from requests.auth import HTTPDigestAuth
 
 
-# Telegram Bot Credentials
-TELEGRAM_TOKEN = "8938811502:AAHSMmrELHYz8OrFmlD8YeaogjmZ7X7-7NE"
-TELEGRAM_CHAT_ID = 7775553661
+def send_alert(message: str):
+    """Surface an alert in the local console.
 
-
-def send_telegram_async(message: str):
-    """Send asynchronous HTML message to Telegram without blocking UI thread."""
-    def _worker():
-        try:
-            url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-            payload = {
-                "chat_id": TELEGRAM_CHAT_ID,
-                "text": message,
-                "parse_mode": "HTML",
-            }
-            requests.post(url, json=payload, timeout=8)
-        except Exception as e:
-            sys.stderr.write(f"[Telegram Alert Error] {e}\n")
-
-    threading.Thread(target=_worker, daemon=True).start()
+    Outbound push notifications were removed: the Telegram bot session expired, so alerts
+    were being dropped while the program still reported them as sent.
+    """
+    sys.stderr.write(f"[ALERT] {message}\n")
 
 
 # Industrial Color Palette
@@ -1078,6 +1065,9 @@ class MainWindow(QMainWindow):
         )
         self.worker.data_received.connect(self._on_data_received)
         self.worker.connection_changed.connect(self._on_connection_changed)
+        # Record whether the plug ACKed an OFF command, so a latched cutoff can tell
+        # "power is off" apart from "command was lost and must be re-sent".
+        self.worker.plug_switch_completed.connect(self._on_plug_switch_completed)
         self.worker.start()
 
         # Seed the per-board spin boxes from config, then keep the worker in sync on edit.
@@ -1131,20 +1121,27 @@ class MainWindow(QMainWindow):
             # Turning OFF is immediate without password
             self.worker.request_plug_switch(False)
 
+    def _on_plug_switch_completed(self, ok: bool, target_state: bool):
+        """Track whether the plug acknowledged the last switch command."""
+        if target_state:
+            return  # only the OFF path is safety-critical
+        self._cutoff_off_confirmed = bool(ok)
+        if ok:
+            self._cutoff_alerted = False
+        else:
+            send_alert("Plug did NOT acknowledge the OFF command; will keep retrying.")
+
     def _on_reset_cutoff_lock(self):
         self.cutoff_triggered = False
         self.overheat_wrn_seconds = 0
+        self._cutoff_off_confirmed = False
+        self._cutoff_since = None
+        self._last_cutoff_push = 0.0
+        self._cutoff_alerted = False
         self.cutoff_alert_label.hide()
         self.reset_cutoff_btn.hide()
 
-        # Send Telegram notification about manual lock reset
-        rst_msg = (
-            "ℹ️ <b>[AntMinerTab 保护锁复位通知]</b>\n\n"
-            "用户已在监控面板手动复位了超温断电安全保护锁。\n"
-            "系统已恢复正常监控状态，如需通电请点击开关并输入授权密码。\n"
-            f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-        )
-        send_telegram_async(rst_msg)
+        send_alert("Protection lock reset manually from the desktop panel.")
 
     def _on_connection_changed(self, connected: bool, message: str):
         if connected:
@@ -1310,33 +1307,42 @@ class MainWindow(QMainWindow):
             bar.set_temperature(val, is_overheat=(val >= board_wrn))
 
         if self.cutoff_triggered:
-            self.cutoff_alert_label.setText("EMERGENCY CUTOFF ACTIVE: Plug cut off.\nManual reset required.")
+            # Retry on a timer until the plug ACKs. "Only retry while plug looks ON" is
+            # wrong: a failed miIO poll also reports switch_on=False, so the retry got
+            # skipped exactly when the original OFF command had been lost.
+            if not getattr(self, "_cutoff_off_confirmed", False):
+                if now - getattr(self, "_last_cutoff_push", 0.0) >= 5.0:
+                    self._last_cutoff_push = now
+                    self.worker.request_plug_switch(False)
+                if getattr(self, "_cutoff_since", None) is None:
+                    self._cutoff_since = now
+                if (now - self._cutoff_since) >= 60.0 and not getattr(self, "_cutoff_alerted", False):
+                    self._cutoff_alerted = True
+                    send_alert("CRITICAL: plug has NOT acknowledged the OFF command for 60s. "
+                               "The miner may still be powered - check the plug manually.")
+            self.cutoff_alert_label.setText(
+                "EMERGENCY CUTOFF ACTIVE: plug OFF confirmed.\nManual reset required."
+                if getattr(self, "_cutoff_off_confirmed", False) else
+                "CUTOFF SENT - NOT CONFIRMED. Re-sending every 5s.\nThe miner may STILL BE POWERED!")
             self.cutoff_alert_label.show()
             self.reset_cutoff_btn.show()
-            if plug.get("switch_on", False):
-                self.worker.request_plug_switch(False)
         else:
             if is_over_stop:
                 # 1. Immediate unconditional cutoff on STOP TEMP
                 self.cutoff_triggered = True
+                self._cutoff_since = now
+                self._last_cutoff_push = now
+                self._cutoff_off_confirmed = False
+                self._cutoff_alerted = False
                 self.worker.request_plug_switch(False)
                 self.cutoff_alert_label.setText(f"STOP TEMP REACHED ({board_label}): {eff_max:.1f}°C >= {eff_stop:.0f}°C!\nPOWER CUT OFF IMMEDIATELY.")
                 self.cutoff_alert_label.show()
                 self.reset_cutoff_btn.show()
 
-                # Dispatch Telegram Critical Alarm
-                alert_msg = (
-                    f"🚨 <b>[AntMinerTab 紧急急停断电告警]</b>\n\n"
-                    f"<b>设备</b>: Antminer S19 Hydro (10.8.1.86)\n"
-                    f"<b>级别</b>: <b>CRITICAL (达到急停温度 STOP TEMP)</b>\n"
-                    f"<b>触发板号</b>: <b>{board_label}</b>\n"
-                    f"<b>芯片温度</b>: <b>{eff_max:.1f}°C</b> (该板急停阈值: {eff_stop:.0f}°C)\n"
-                    f"<b>水冷回路</b>: 进水 {tin:.1f}°C | 出水 {tout:.1f}°C (升温 ΔT: +{dt:.1f}°C)\n"
-                    f"<b>执行动作</b>: 米家智能插座(10.8.1.110)已立即<b>硬件切断电源</b>！\n"
-                    f"<b>保护机制</b>: 保护锁已死锁，<b>绝不自动恢复</b>，请现场检查水冷泵及管路！\n"
-                    f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                send_alert(
+                    f"CUTOFF [STOP] board={board_label} chip={eff_max:.1f}C >= {eff_stop:.0f}C | "
+                    f"inlet={tin:.1f}C outlet={tout:.1f}C | OFF command dispatched"
                 )
-                send_telegram_async(alert_msg)
 
             elif is_over_wrn:
                 # 2. WRN TEMP: Cutoff if maintained for >30 seconds
@@ -1347,61 +1353,37 @@ class MainWindow(QMainWindow):
 
                 if self.overheat_wrn_seconds >= 30:
                     self.cutoff_triggered = True
+                    self._cutoff_since = now
+                    self._last_cutoff_push = now
+                    self._cutoff_off_confirmed = False
+                    self._cutoff_alerted = False
                     self.worker.request_plug_switch(False)
                     self.cutoff_alert_label.setText(f"WRN TEMP MAINTAINED >30s ({board_label} {eff_max:.1f}°C)!\nPOWER CUT OFF EXECUTED.")
                     self.reset_cutoff_btn.show()
 
-                    # Dispatch Telegram Warning Timeout Alarm
-                    alert_msg = (
-                        f"⚠️ <b>[AntMinerTab 超温持续超时断电告警]</b>\n\n"
-                        f"<b>设备</b>: Antminer S19 Hydro (10.8.1.86)\n"
-                        f"<b>级别</b>: <b>WARNING 超时关机 (WRN TEMP 维持超30秒)</b>\n"
-                        f"<b>触发板号</b>: <b>{board_label}</b>\n"
-                        f"<b>芯片最高温</b>: <b>{eff_max:.1f}°C</b> (该板预警阈值: {eff_wrn:.0f}°C)\n"
-                        f"<b>芯片平均温</b>: {chip_avg:.1f}°C\n"
-                        f"<b>水冷回路</b>: 进水 {tin:.1f}°C | 出水 {tout:.1f}°C (升温 ΔT: +{dt:.1f}°C)\n"
-                        f"<b>执行动作</b>: 米家智能插座(10.8.1.110)已执行<b>断电保护</b>！\n"
-                        f"<b>保护机制</b>: 保护锁已激活，<b>绝不自动恢复</b>，请检查进出水温与散热！\n"
-                        f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                    send_alert(
+                        f"CUTOFF [WRN 30s] board={board_label} chip={eff_max:.1f}C >= {eff_wrn:.0f}C | "
+                        f"avg={chip_avg:.1f}C | OFF command dispatched"
                     )
-                    send_telegram_async(alert_msg)
             elif data.get("miner_online", False):
                 # Temperature safe: reset warning countdown only when miner is verified online
                 self.overheat_wrn_seconds = 0
                 self.cutoff_alert_label.hide()
 
-        # High Reject Ratio Telegram Alert (>10%) with Cooldown & Auto-Recovery
+        # High Reject Ratio Alert (>10%) with Cooldown & Auto-Recovery
         miner_online = data.get("miner_online", False)
         total_shares = accepted + rejected
         if miner_online and total_shares >= 10 and reject_ratio > 10.0:
             if (not self.high_reject_alerted) or (now - self.last_reject_alert_time >= self.reject_alert_cooldown):
                 self.high_reject_alerted = True
                 self.last_reject_alert_time = now
-                msg = (
-                    f"⚠️ <b>[AntMinerTab 矿池高拒绝率告警]</b>\n\n"
-                    f"<b>设备</b>: Antminer S19 Hydro (10.8.1.86)\n"
-                    f"<b>当前拒绝率</b>: <b>{reject_ratio:.2f}%</b> (告警阈值: 10.00%)\n"
-                    f"<b>有效份额 (Accepted)</b>: {accepted:,}\n"
-                    f"<b>拒绝份额 (Rejected)</b>: {rejected:,}\n"
-                    f"<b>总份额数 (Total)</b>: {total_shares:,}\n"
-                    f"<b>实时算力</b>: {hashrate:,.1f} GH/s\n"
-                    f"<b>状态分析</b>: 矿机提交份额被矿池拒绝比例已超 10%，请检查矿池网络延迟与算力板状态！\n"
-                    f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                send_alert(
+                    f"POOL REJECT RATIO {reject_ratio:.2f}% > 10.00% "
+                    f"(accepted {accepted:,}, rejected {rejected:,}, hashrate {hashrate:,.1f} GH/s)"
                 )
-                send_telegram_async(msg)
         elif miner_online and self.high_reject_alerted and reject_ratio <= 5.0 and total_shares >= 15:
             self.high_reject_alerted = False
-            recovery_msg = (
-                f"✅ <b>[AntMinerTab 矿池拒绝率恢复正常]</b>\n\n"
-                f"<b>设备</b>: Antminer S19 Hydro (10.8.1.86)\n"
-                f"<b>当前拒绝率</b>: <b>{reject_ratio:.2f}%</b>\n"
-                f"<b>有效份额 (Accepted)</b>: {accepted:,}\n"
-                f"<b>拒绝份额 (Rejected)</b>: {rejected:,}\n"
-                f"<b>实时算力</b>: {hashrate:,.1f} GH/s\n"
-                f"<b>状态</b>: 矿机提交份额已稳定接收，拒绝率已恢复至正常水平。\n"
-                f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-            )
-            send_telegram_async(recovery_msg)
+            send_alert(f"POOL REJECT RATIO RECOVERED to {reject_ratio:.2f}%")
 
         # 4. Update 1-Hour Rolling Buffers
         if tin > 0 or tout > 0 or chip_max > 0:

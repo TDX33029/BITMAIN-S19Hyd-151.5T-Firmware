@@ -57,26 +57,15 @@ except ImportError:
     HAS_PYSERIAL = False
 
 
-# Telegram Credentials
-TELEGRAM_TOKEN = "8938811502:AAHSMmrELHYz8OrFmlD8YeaogjmZ7X7-7NE"
-TELEGRAM_CHAT_ID = 7775553661
+# Alerts are surfaced in the dashboard; outbound push notifications were removed because
+# the Telegram bot session expired and the alerts were being silently dropped.
+def send_alert(message: str):
+    """Record an alert on the local console.
 
-
-def send_telegram_async(message: str):
-    """Send asynchronous HTML message to Telegram without blocking."""
-    def _worker():
-        try:
-            url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-            payload = {
-                "chat_id": TELEGRAM_CHAT_ID,
-                "text": message,
-                "parse_mode": "HTML",
-            }
-            requests.post(url, json=payload, timeout=8)
-        except Exception as e:
-            sys.stderr.write(f"[Telegram Alert Error] {e}\n")
-
-    threading.Thread(target=_worker, daemon=True).start()
+    Kept as a single choke point so every protection path reports through the same place
+    (and so the dashboard/banner text stays the authoritative record).
+    """
+    sys.stderr.write(f"[ALERT] {message.splitlines()[0] if message else ''}\n")
 
 
 class FanControllerDriver:
@@ -463,6 +452,15 @@ class MonitorStateManager:
         # Protection State
         self.overheat_wrn_seconds = 0
         self.cutoff_triggered = False
+        # A latched cutoff is only "done" once the plug ACKs the OFF command. Until then the
+        # command is re-sent periodically: a single send on a flaky link is exactly what
+        # gets lost, and a failed poll reports switch_on=False, which made the old
+        # "retry only if switch_on" guard into dead code precisely when it was needed.
+        self.plug_off_confirmed = False
+        self.cutoff_unconfirmed_since: Optional[float] = None
+        self._last_cutoff_push = 0.0
+        self._cutoff_unconfirmed_alerted = False
+        self.CUTOFF_RETRY_INTERVAL = 5.0
 
         # Reject Ratio Alarm State
         self.high_reject_alerted = False
@@ -529,6 +527,8 @@ class MonitorStateManager:
             "stop_temp": self.stop_temp,
             "interval": self.interval,
             "cutoff_triggered": False,
+            "plug_off_confirmed": False,
+            "cutoff_unconfirmed_seconds": 0.0,
             "overheat_wrn_seconds": 0,
         }
 
@@ -685,20 +685,35 @@ class MonitorStateManager:
             self.latest_data["fans"] = fan_st
         return res
 
+    def _warn_cutoff_unconfirmed(self):
+        """Raise a persistent alert when the plug never ACKs the power-off command.
+
+        The dashboard banner is the only notification channel (Telegram was removed), so
+        the unconfirmed state is also exposed through /api/status for the UI.
+        """
+        since = self.cutoff_unconfirmed_since
+        if since is None:
+            return
+        waited = time.time() - since
+        if waited >= 60.0 and not self._cutoff_unconfirmed_alerted:
+            self._cutoff_unconfirmed_alerted = True
+            send_alert(
+                f"CRITICAL: plug has NOT acknowledged the OFF command for {waited:.0f}s. "
+                f"The miner may still be powered. Check the plug manually."
+            )
+
     def reset_protection_lock(self):
         with self.lock:
             self.cutoff_triggered = False
             self.overheat_wrn_seconds = 0
+            self.plug_off_confirmed = False
+            self.cutoff_unconfirmed_since = None
+            self._last_cutoff_push = 0.0
+            self._cutoff_unconfirmed_alerted = False
             self.latest_data["cutoff_triggered"] = False
             self.latest_data["overheat_wrn_seconds"] = 0
 
-        rst_msg = (
-            "ℹ️ <b>[AntMinerTab-Web 保护锁复位通知]</b>\n\n"
-            "用户已在 Web 监控页面手动复位了超温断电安全保护锁。\n"
-            "系统已恢复正常监控，如需通电请点击开关并输入授权密码。\n"
-            f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-        )
-        send_telegram_async(rst_msg)
+        send_alert("Protection lock reset manually from the web dashboard.")
 
     def clear_history(self):
         """Clear all historical curve data points."""
@@ -916,83 +931,68 @@ class MonitorStateManager:
                     board_label = "All chains"
 
                 # 3. Dual Cutoff Protection Logic
+                # Decisions are made under the lock, but the miIO call itself is made
+                # *outside* it: a dead link can block set_switch() for ~9s, and holding the
+                # state lock that long would stall every HTTP request thread.
                 is_over_wrn = (eff_max >= eff_wrn)
                 is_over_stop = (eff_max >= eff_stop)
+                cutoff_push_reason: Optional[str] = None
+                cutoff_push_detail = ""
 
                 with self.lock:
-                    if self.cutoff_triggered:
-                        if plug_data.get("switch_on", False):
-                            self.plug.set_switch(False)
-                    else:
+                    if not self.cutoff_triggered:
                         if is_over_stop:
                             self.cutoff_triggered = True
-                            self.plug.set_switch(False)
-                            msg = (
-                                f"🚨 <b>[AntMinerTab-Web 紧急急停断电告警]</b>\n\n"
-                                f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
-                                f"<b>级别</b>: <b>CRITICAL (达到急停温度 STOP TEMP)</b>\n"
-                                f"<b>触发板号</b>: <b>{board_label}</b>\n"
-                                f"<b>芯片温度</b>: <b>{eff_max:.1f}°C</b> (该板急停阈值: {eff_stop:.0f}°C)\n"
-                                f"<b>水冷回路</b>: 进水 {inlet_t:.1f}°C | 出水 {outlet_t:.1f}°C (ΔT: +{delta_t:.1f}°C)\n"
-                                f"<b>动作执行</b>: 米家智能插座已立即<b>硬件切断电源</b>！\n"
-                                f"<b>保护机制</b>: 保护锁已死锁，<b>绝不自动恢复</b>，请现场检查水冷管路！\n"
-                                f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-                            )
-                            send_telegram_async(msg)
-
+                            self.cutoff_unconfirmed_since = time.time()
+                            self._last_cutoff_push = 0.0
+                            cutoff_push_reason = "STOP"
+                            cutoff_push_detail = (
+                                f"芯片温度 {eff_max:.1f}°C 达到该板急停阈值 {eff_stop:.0f}°C")
                         elif is_over_wrn:
                             self.overheat_wrn_seconds = min(30.0, self.overheat_wrn_seconds + dt)
                             if self.overheat_wrn_seconds >= 30.0:
                                 self.cutoff_triggered = True
-                                self.plug.set_switch(False)
-                                msg = (
-                                    f"⚠️ <b>[AntMinerTab-Web 超温持续超时断电告警]</b>\n\n"
-                                    f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
-                                    f"<b>级别</b>: <b>WARNING 超时关机 (WRN TEMP 维持超30秒)</b>\n"
-                                    f"<b>触发板号</b>: <b>{board_label}</b>\n"
-                                    f"<b>芯片最高温</b>: <b>{eff_max:.1f}°C</b> (该板预警阈值: {eff_wrn:.0f}°C)\n"
-                                    f"<b>芯片平均温</b>: {chip_avg:.1f}°C\n"
-                                    f"<b>水冷回路</b>: 进水 {inlet_t:.1f}°C | 出水 {outlet_t:.1f}°C (ΔT: +{delta_t:.1f}°C)\n"
-                                    f"<b>动作执行</b>: 米家智能插座已执行<b>断电保护</b>！\n"
-                                    f"<b>保护机制</b>: 保护锁已激活，<b>绝不自动恢复</b>，请检查进出水温与散热！\n"
-                                    f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-                                )
-                                send_telegram_async(msg)
+                                self.cutoff_unconfirmed_since = time.time()
+                                self._last_cutoff_push = 0.0
+                                cutoff_push_reason = "WRN"
+                                cutoff_push_detail = (
+                                    f"芯片温度持续 30s 超过该板预警阈值 {eff_wrn:.0f}°C")
                         elif miner_ok:
                             self.overheat_wrn_seconds = 0
 
-                    # 4. High Reject Ratio Telegram Alert (>10%) with Cooldown & Auto-Recovery
+                    if self.cutoff_triggered and not self.plug_off_confirmed:
+                        # Re-send on a timer, not "only if the plug looks on". A failed
+                        # miIO poll reports switch_on=False, so the old guard silently
+                        # skipped the retry exactly when the command had been lost.
+                        if time.time() - self._last_cutoff_push >= self.CUTOFF_RETRY_INTERVAL:
+                            cutoff_push_reason = cutoff_push_reason or "RETRY"
+                            self._last_cutoff_push = time.time()
+
+                if cutoff_push_reason:
+                    confirmed = self.plug.set_switch(False)   # network I/O, outside the lock
+                    with self.lock:
+                        self.plug_off_confirmed = bool(confirmed)
+                        if confirmed:
+                            self.cutoff_unconfirmed_since = None
+                    send_alert(
+                        f"CUTOFF [{cutoff_push_reason}] {cutoff_push_detail} | board={board_label} "
+                        f"| plug OFF {'CONFIRMED' if confirmed else 'NOT CONFIRMED - will retry'}"
+                    )
+                    if not confirmed:
+                        self._warn_cutoff_unconfirmed()
+
+                    # 4. High Reject Ratio Alert (>10%) with Cooldown & Auto-Recovery
                     now_time = time.time()
                     total_shares = total_accepted + total_rejected
                     if miner_ok and total_shares >= 10 and reject_ratio > 10.0:
                         if (not self.high_reject_alerted) or (now_time - self.last_reject_alert_time >= self.reject_alert_cooldown):
                             self.high_reject_alerted = True
                             self.last_reject_alert_time = now_time
-                            msg = (
-                                f"⚠️ <b>[AntMinerTab-Web 矿池高拒绝率告警]</b>\n\n"
-                                f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
-                                f"<b>当前拒绝率</b>: <b>{reject_ratio:.2f}%</b> (告警阈值: 10.00%)\n"
-                                f"<b>有效份额 (Accepted)</b>: {total_accepted:,}\n"
-                                f"<b>拒绝份额 (Rejected)</b>: {total_rejected:,}\n"
-                                f"<b>总份额数 (Total)</b>: {total_shares:,}\n"
-                                f"<b>实时算力</b>: {rate_5s_ghs:,.1f} GH/s\n"
-                                f"<b>状态分析</b>: 矿机提交份额被矿池拒绝比例已超 10%，可能存在矿池网络延迟过高、Stratum连接抖动或硬件微错误，请检查网络！\n"
-                                f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-                            )
-                            send_telegram_async(msg)
+                            send_alert(f"POOL REJECT RATIO {reject_ratio:.2f}% > 10.00% "
+                                       f"(accepted {total_accepted}, rejected {total_rejected})")
                     elif miner_ok and self.high_reject_alerted and reject_ratio <= 5.0 and total_shares >= 15:
                         self.high_reject_alerted = False
-                        recovery_msg = (
-                            f"✅ <b>[AntMinerTab-Web 矿池拒绝率恢复正常]</b>\n\n"
-                            f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
-                            f"<b>当前拒绝率</b>: <b>{reject_ratio:.2f}%</b>\n"
-                            f"<b>有效份额 (Accepted)</b>: {total_accepted:,}\n"
-                            f"<b>拒绝份额 (Rejected)</b>: {total_rejected:,}\n"
-                            f"<b>实时算力</b>: {rate_5s_ghs:,.1f} GH/s\n"
-                            f"<b>状态</b>: 矿机提交份额已稳定接收，拒绝率已恢复至正常水平。\n"
-                            f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-                        )
-                        send_telegram_async(recovery_msg)
+                        send_alert(f"POOL REJECT RATIO RECOVERED to {reject_ratio:.2f}%")
 
                     # Append to the 4-Hour display buffers (throttled to one point per 10s).
                     # Protection uses chip_max directly below, not these samples, so the
@@ -1156,6 +1156,10 @@ class MonitorStateManager:
                         "interval": self.interval,
                         "paused": self.paused,
                         "cutoff_triggered": self.cutoff_triggered,
+                        "plug_off_confirmed": self.plug_off_confirmed,
+                        "cutoff_unconfirmed_seconds": (
+                            round(time.time() - self.cutoff_unconfirmed_since, 1)
+                            if self.cutoff_unconfirmed_since else 0.0),
                         "overheat_wrn_seconds": self.overheat_wrn_seconds,
                     }
 
@@ -1858,8 +1862,22 @@ HTML_PAGE = """<!DOCTYPE html>
     const rstBtn = document.getElementById("resetLockBtn");
 
     if (d.cutoff_triggered) {
-      alertBox.innerText = "EMERGENCY CUTOFF ACTIVE: Plug cut off.\\nManual reset required.";
+      // Distinguish "the plug confirmed it is off" from "we sent the command but never
+      // got an ACK". The second is the dangerous one: the miner may still be running.
+      if (d.plug_off_confirmed) {
+        alertBox.innerText = "EMERGENCY CUTOFF ACTIVE: plug OFF confirmed. Manual reset required.";
+        alertBox.style.background = "#3b171c";
+        alertBox.style.borderColor = "#752834";
+      } else {
+        const waited = d.cutoff_unconfirmed_seconds || 0;
+        alertBox.innerText =
+          `CUTOFF SENT - NOT YET CONFIRMED (${waited.toFixed(0)}s). ` +
+          `Re-sending every 5s. The miner may STILL BE POWERED - check the plug!`;
+        alertBox.style.background = "#4a1a06";
+        alertBox.style.borderColor = "#e76f51";
+      }
       alertBox.style.display = "block";
+      alertBox.style.whiteSpace = "pre-line";
       rstBtn.style.display = "block";
     } else if (d.overheat_wrn_seconds > 0) {
       const rem = Math.max(0, 30 - d.overheat_wrn_seconds);
