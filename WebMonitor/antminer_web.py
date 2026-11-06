@@ -981,187 +981,187 @@ class MonitorStateManager:
                     if not confirmed:
                         self._warn_cutoff_unconfirmed()
 
-                    # 4. High Reject Ratio Alert (>10%) with Cooldown & Auto-Recovery
-                    now_time = time.time()
-                    total_shares = total_accepted + total_rejected
-                    if miner_ok and total_shares >= 10 and reject_ratio > 10.0:
-                        if (not self.high_reject_alerted) or (now_time - self.last_reject_alert_time >= self.reject_alert_cooldown):
-                            self.high_reject_alerted = True
-                            self.last_reject_alert_time = now_time
-                            send_alert(f"POOL REJECT RATIO {reject_ratio:.2f}% > 10.00% "
-                                       f"(accepted {total_accepted}, rejected {total_rejected})")
-                    elif miner_ok and self.high_reject_alerted and reject_ratio <= 5.0 and total_shares >= 15:
-                        self.high_reject_alerted = False
-                        send_alert(f"POOL REJECT RATIO RECOVERED to {reject_ratio:.2f}%")
+                # 4. High Reject Ratio Alert (>10%) with Cooldown & Auto-Recovery
+                now_time = time.time()
+                total_shares = total_accepted + total_rejected
+                if miner_ok and total_shares >= 10 and reject_ratio > 10.0:
+                    if (not self.high_reject_alerted) or (now_time - self.last_reject_alert_time >= self.reject_alert_cooldown):
+                        self.high_reject_alerted = True
+                        self.last_reject_alert_time = now_time
+                        send_alert(f"POOL REJECT RATIO {reject_ratio:.2f}% > 10.00% "
+                                   f"(accepted {total_accepted}, rejected {total_rejected})")
+                elif miner_ok and self.high_reject_alerted and reject_ratio <= 5.0 and total_shares >= 15:
+                    self.high_reject_alerted = False
+                    send_alert(f"POOL REJECT RATIO RECOVERED to {reject_ratio:.2f}%")
 
-                    # Append to the 4-Hour display buffers (throttled to one point per 10s).
-                    # Protection uses chip_max directly below, not these samples, so the
-                    # reduced chart resolution never delays a cutoff decision.
-                    now_epoch = time.time()
-                    due = (self._last_temp_sample is None or
-                           now_epoch - self._last_temp_sample >= self.temp_sample_seconds)
-                    if due and (inlet_t > 0 or outlet_t > 0 or chip_max > 0):
-                        self._last_temp_sample = now_epoch
-                        self.time_buffer.append(now_epoch)
-                        self.inlet_buffer.append(inlet_t)
-                        self.outlet_buffer.append(outlet_t)
-                        self.chip_max_buffer.append(chip_max)
-                        self.chip_avg_buffer.append(chip_avg)
+                # Append to the 4-Hour display buffers (throttled to one point per 10s).
+                # Protection uses chip_max directly above, not these samples, so the
+                # reduced chart resolution never delays a cutoff decision.
+                now_epoch = time.time()
+                due = (self._last_temp_sample is None or
+                       now_epoch - self._last_temp_sample >= self.temp_sample_seconds)
+                if due and (inlet_t > 0 or outlet_t > 0 or chip_max > 0):
+                    self._last_temp_sample = now_epoch
+                    self.time_buffer.append(now_epoch)
+                    self.inlet_buffer.append(inlet_t)
+                    self.outlet_buffer.append(outlet_t)
+                    self.chip_max_buffer.append(chip_max)
+                    self.chip_avg_buffer.append(chip_avg)
 
-                        cutoff_epoch = now_epoch - self.window_seconds
-                        while self.time_buffer and self.time_buffer[0] < cutoff_epoch:
-                            self.time_buffer.popleft()
-                            self.inlet_buffer.popleft()
-                            self.outlet_buffer.popleft()
-                            self.chip_max_buffer.popleft()
-                            self.chip_avg_buffer.popleft()
+                    cutoff_epoch = now_epoch - self.window_seconds
+                    while self.time_buffer and self.time_buffer[0] < cutoff_epoch:
+                        self.time_buffer.popleft()
+                        self.inlet_buffer.popleft()
+                        self.outlet_buffer.popleft()
+                        self.chip_max_buffer.popleft()
+                        self.chip_avg_buffer.popleft()
 
-                    # Hashrate / share histogram buckets (fixed 30s, independent of the
-                    # temperature sampling rate so the bars line up on the time axis).
-                    # Only fed from real reads: the held-over "recovering" values would
-                    # otherwise re-count shares that were already in the previous bucket.
-                    if miner_fetch_success:
-                        self._update_share_buckets(now_epoch, rate_5s_ghs,
-                                                   total_accepted, total_rejected)
+                # Hashrate / share histogram buckets (fixed 30s, independent of the
+                # temperature sampling rate so the bars line up on the time axis).
+                # Only fed from real reads: the held-over "recovering" values would
+                # otherwise re-count shares that were already in the previous bucket.
+                if miner_fetch_success:
+                    self._update_share_buckets(now_epoch, rate_5s_ghs,
+                                               total_accepted, total_rejected)
 
-                    # 5. Safety Interlock 2: While running (plug is ON), if fan controller disconnects > 2min (120s), emergency power off!
-                    # A failed poll is NOT proof that the plug is off: this socket's WiFi link
-                    # drops most packets, so "unreadable" must be treated as UNKNOWN, never as OFF.
-                    # plug_last_known_on / plug_unknown_since are maintained by _plug_poll_loop.
-                    plug_state_known = bool(plug_data.get("online", False))
+                # 5. Safety Interlock 2: While running (plug is ON), if fan controller disconnects > 2min (120s), emergency power off!
+                # A failed poll is NOT proof that the plug is off: this socket's WiFi link
+                # drops most packets, so "unreadable" must be treated as UNKNOWN, never as OFF.
+                # plug_last_known_on / plug_unknown_since are maintained by _plug_poll_loop.
+                plug_state_known = bool(plug_data.get("online", False))
 
-                    # Assume ON when we have never had a reading: keeps fans on the temp curve.
-                    is_plug_on = True if self.plug_last_known_on is None else self.plug_last_known_on
-                    now_t = time.time()
+                # Assume ON when we have never had a reading: keeps fans on the temp curve.
+                is_plug_on = True if self.plug_last_known_on is None else self.plug_last_known_on
+                now_t = time.time()
 
-                    # No fan-disconnect interlock by design: losing the fan controller always
-                    # shows up as rising chip temperature, which the WRN/STOP thresholds already
-                    # handle. A second, time-based cutoff only caused false power-offs on hosts
-                    # where no fan controller is attached at all.
+                # No fan-disconnect interlock by design: losing the fan controller always
+                # shows up as rising chip temperature, which the WRN/STOP thresholds already
+                # handle. A second, time-based cutoff only caused false power-offs on hosts
+                # where no fan controller is attached at all.
 
-                    # 6. Smart Plug Off & 5-minute Auto-Idle (600 RPM) Fan Control
-                    # Only a *confirmed* OFF reading may start the idle countdown. If the plug
-                    # is unreadable we keep spinning the fans on the temperature curve instead
-                    # of gambling that the miner has no power.
-                    plug_confirmed_off = plug_state_known and not is_plug_on
-                    if plug_confirmed_off:
-                        if self.plug_off_timestamp is None:
-                            self.plug_off_timestamp = now_t
-                        self.plug_off_duration = now_t - self.plug_off_timestamp
+                # 6. Smart Plug Off & 5-minute Auto-Idle (600 RPM) Fan Control
+                # Only a *confirmed* OFF reading may start the idle countdown. If the plug
+                # is unreadable we keep spinning the fans on the temperature curve instead
+                # of gambling that the miner has no power.
+                plug_confirmed_off = plug_state_known and not is_plug_on
+                if plug_confirmed_off:
+                    if self.plug_off_timestamp is None:
+                        self.plug_off_timestamp = now_t
+                    self.plug_off_duration = now_t - self.plug_off_timestamp
+                else:
+                    self.plug_off_timestamp = None
+                    self.plug_off_duration = 0.0
+                    self.plug_idle_cooldown_reached = False
+
+                # 7. Fan Speed Regulation: AUTO (Linear Temp) vs MANUAL (User Fixed Target)
+                auto_target_rpm = 600
+                display_fan_mode = self.fan_control_mode
+
+                if plug_confirmed_off and self.plug_off_duration >= 300.0:
+                    # 插座断电已达 5 分钟：强制调整至最低转速 (600 RPM) 怠速静音
+                    auto_target_rpm = 600
+                    display_fan_mode = "IDLE_600"
+                    if self.fan_driver.connected:
+                        if (not self.plug_idle_cooldown_reached) or abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                            self.plug_idle_cooldown_reached = True
+                            self.last_auto_fan_rpm = auto_target_rpm
+                            self.last_auto_fan_time = now_t
+                            self.fan_driver.set_speed("ALL", auto_target_rpm)
+                elif plug_confirmed_off:
+                    # 插座关闭未满 5 分钟：保持吹风排走余热
+                    display_fan_mode = "COOLDOWN_5M"
+                    if chip_max > self.fan_start_temp:
+                        ratio = (chip_max - self.fan_start_temp) / max(1.0, self.fan_max_temp - self.fan_start_temp)
+                        calc_rpm = 600.0 + ratio * (2400.0 - 600.0)
+                        auto_target_rpm = max(600, min(2400, int(round(calc_rpm / 10.0) * 10)))
                     else:
-                        self.plug_off_timestamp = None
-                        self.plug_off_duration = 0.0
-                        self.plug_idle_cooldown_reached = False
+                        auto_target_rpm = max(600, self.last_auto_fan_rpm or 600)
 
-                    # 7. Fan Speed Regulation: AUTO (Linear Temp) vs MANUAL (User Fixed Target)
+                    if self.fan_driver.connected:
+                        if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                            self.last_auto_fan_rpm = auto_target_rpm
+                            self.last_auto_fan_time = now_t
+                            self.fan_driver.set_speed("ALL", auto_target_rpm)
+                elif self.fan_control_mode == "MANUAL":
+                    # 手动模式：执行用户手输目标值
+                    auto_target_rpm = self.manual_target_rpm
+                    display_fan_mode = "MANUAL"
+                    if self.fan_driver.connected:
+                        if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                            self.last_auto_fan_rpm = auto_target_rpm
+                            self.last_auto_fan_time = now_t
+                            self.fan_driver.set_speed("ALL", auto_target_rpm)
+                elif miner_ok and chip_max > 0:
+                    # 自动模式：按热点温度线性调速 (600~2400)
+                    display_fan_mode = "AUTO"
+                    t_start = self.fan_start_temp
+                    t_max = max(t_start + 1.0, self.fan_max_temp)
+                    if chip_max <= t_start:
+                        auto_target_rpm = 600
+                    elif chip_max >= t_max:
+                        auto_target_rpm = 2400
+                    else:
+                        ratio = (chip_max - t_start) / (t_max - t_start)
+                        calc_rpm = 600.0 + ratio * (2400.0 - 600.0)
+                        auto_target_rpm = int(round(calc_rpm / 10.0) * 10)
+                        auto_target_rpm = max(600, min(2400, auto_target_rpm))
+
+                    if self.fan_driver.connected:
+                        if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
+                            self.last_auto_fan_rpm = auto_target_rpm
+                            self.last_auto_fan_time = now_t
+                            self.fan_driver.set_speed("ALL", auto_target_rpm)
+                else:
                     auto_target_rpm = 600
                     display_fan_mode = self.fan_control_mode
 
-                    if plug_confirmed_off and self.plug_off_duration >= 300.0:
-                        # 插座断电已达 5 分钟：强制调整至最低转速 (600 RPM) 怠速静音
-                        auto_target_rpm = 600
-                        display_fan_mode = "IDLE_600"
-                        if self.fan_driver.connected:
-                            if (not self.plug_idle_cooldown_reached) or abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
-                                self.plug_idle_cooldown_reached = True
-                                self.last_auto_fan_rpm = auto_target_rpm
-                                self.last_auto_fan_time = now_t
-                                self.fan_driver.set_speed("ALL", auto_target_rpm)
-                    elif plug_confirmed_off:
-                        # 插座关闭未满 5 分钟：保持吹风排走余热
-                        display_fan_mode = "COOLDOWN_5M"
-                        if chip_max > self.fan_start_temp:
-                            ratio = (chip_max - self.fan_start_temp) / max(1.0, self.fan_max_temp - self.fan_start_temp)
-                            calc_rpm = 600.0 + ratio * (2400.0 - 600.0)
-                            auto_target_rpm = max(600, min(2400, int(round(calc_rpm / 10.0) * 10)))
-                        else:
-                            auto_target_rpm = max(600, self.last_auto_fan_rpm or 600)
-
-                        if self.fan_driver.connected:
-                            if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
-                                self.last_auto_fan_rpm = auto_target_rpm
-                                self.last_auto_fan_time = now_t
-                                self.fan_driver.set_speed("ALL", auto_target_rpm)
-                    elif self.fan_control_mode == "MANUAL":
-                        # 手动模式：执行用户手输目标值
-                        auto_target_rpm = self.manual_target_rpm
-                        display_fan_mode = "MANUAL"
-                        if self.fan_driver.connected:
-                            if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
-                                self.last_auto_fan_rpm = auto_target_rpm
-                                self.last_auto_fan_time = now_t
-                                self.fan_driver.set_speed("ALL", auto_target_rpm)
-                    elif miner_ok and chip_max > 0:
-                        # 自动模式：按热点温度线性调速 (600~2400)
-                        display_fan_mode = "AUTO"
-                        t_start = self.fan_start_temp
-                        t_max = max(t_start + 1.0, self.fan_max_temp)
-                        if chip_max <= t_start:
-                            auto_target_rpm = 600
-                        elif chip_max >= t_max:
-                            auto_target_rpm = 2400
-                        else:
-                            ratio = (chip_max - t_start) / (t_max - t_start)
-                            calc_rpm = 600.0 + ratio * (2400.0 - 600.0)
-                            auto_target_rpm = int(round(calc_rpm / 10.0) * 10)
-                            auto_target_rpm = max(600, min(2400, auto_target_rpm))
-
-                        if self.fan_driver.connected:
-                            if abs(auto_target_rpm - self.last_auto_fan_rpm) >= 20 or (now_t - self.last_auto_fan_time >= 8.0):
-                                self.last_auto_fan_rpm = auto_target_rpm
-                                self.last_auto_fan_time = now_t
-                                self.fan_driver.set_speed("ALL", auto_target_rpm)
-                    else:
-                        auto_target_rpm = 600
-                        display_fan_mode = self.fan_control_mode
-
-                    self.latest_data = {
-                        "timestamp": datetime.now().strftime("%H:%M:%S"),
-                        "time_epoch": now_epoch,
-                        "latency_ms": latency_ms,
-                        "miner_online": miner_ok,
-                        "miner_recovering": is_recovering,
-                        "hashrate_ghs": rate_5s_ghs,
-                        "accepted_shares": total_accepted,
-                        "rejected_shares": total_rejected,
-                        "reject_ratio": reject_ratio,
-                        "water_inlet": inlet_t,
-                        "water_outlet": outlet_t,
-                        "water_delta": delta_t,
-                        "chip_max": chip_max,
-                        "chip_avg": chip_avg,
-                        "pcb_temps": temp_pcb,
-                        "chip_temps": temp_chip,
-                        "chains": [
-                            {"index": ct["index"], "chip_max": ct["chip_max"], "chip_avg": ct["chip_avg"],
-                             "warn_at": board_thresholds(wrn_thresh, i, "wrn", self.board_overrides),
-                             "stop_at": board_thresholds(stop_thresh, i, "stop", self.board_overrides)}
-                            for i, ct in enumerate(chain_temps)
-                        ],
-                        "hot_board": ({k: v for k, v in hot_board.items() if k != "margin"} if hot_board else None),
-                        "plug": plug_data,
-                        "plug_state_known": plug_state_known,
-                        "plug_unknown_seconds": round(now_t - self.plug_unknown_since, 1) if self.plug_unknown_since else 0.0,
-                        "plug_off_duration": round(self.plug_off_duration, 1),
-                        "fan_mode": display_fan_mode,
-                        "fan_control_mode": self.fan_control_mode,
-                        "manual_target_rpm": self.manual_target_rpm,
-                        "fans": self.fan_driver.get_status(),
-                        "fan_start_temp": self.fan_start_temp,
-                        "fan_max_temp": self.fan_max_temp,
-                        "auto_fan_rpm": auto_target_rpm,
-                        "wrn_temp": self.wrn_temp,
-                        "stop_temp": self.stop_temp,
-                        "board_thresholds": self.board_overrides,
-                        "interval": self.interval,
-                        "paused": self.paused,
-                        "cutoff_triggered": self.cutoff_triggered,
-                        "plug_off_confirmed": self.plug_off_confirmed,
-                        "cutoff_unconfirmed_seconds": (
-                            round(time.time() - self.cutoff_unconfirmed_since, 1)
-                            if self.cutoff_unconfirmed_since else 0.0),
-                        "overheat_wrn_seconds": self.overheat_wrn_seconds,
-                    }
+                self.latest_data = {
+                    "timestamp": datetime.now().strftime("%H:%M:%S"),
+                    "time_epoch": now_epoch,
+                    "latency_ms": latency_ms,
+                    "miner_online": miner_ok,
+                    "miner_recovering": is_recovering,
+                    "hashrate_ghs": rate_5s_ghs,
+                    "accepted_shares": total_accepted,
+                    "rejected_shares": total_rejected,
+                    "reject_ratio": reject_ratio,
+                    "water_inlet": inlet_t,
+                    "water_outlet": outlet_t,
+                    "water_delta": delta_t,
+                    "chip_max": chip_max,
+                    "chip_avg": chip_avg,
+                    "pcb_temps": temp_pcb,
+                    "chip_temps": temp_chip,
+                    "chains": [
+                        {"index": ct["index"], "chip_max": ct["chip_max"], "chip_avg": ct["chip_avg"],
+                         "warn_at": board_thresholds(wrn_thresh, i, "wrn", self.board_overrides),
+                         "stop_at": board_thresholds(stop_thresh, i, "stop", self.board_overrides)}
+                        for i, ct in enumerate(chain_temps)
+                    ],
+                    "hot_board": ({k: v for k, v in hot_board.items() if k != "margin"} if hot_board else None),
+                    "plug": plug_data,
+                    "plug_state_known": plug_state_known,
+                    "plug_unknown_seconds": round(now_t - self.plug_unknown_since, 1) if self.plug_unknown_since else 0.0,
+                    "plug_off_duration": round(self.plug_off_duration, 1),
+                    "fan_mode": display_fan_mode,
+                    "fan_control_mode": self.fan_control_mode,
+                    "manual_target_rpm": self.manual_target_rpm,
+                    "fans": self.fan_driver.get_status(),
+                    "fan_start_temp": self.fan_start_temp,
+                    "fan_max_temp": self.fan_max_temp,
+                    "auto_fan_rpm": auto_target_rpm,
+                    "wrn_temp": self.wrn_temp,
+                    "stop_temp": self.stop_temp,
+                    "board_thresholds": self.board_overrides,
+                    "interval": self.interval,
+                    "paused": self.paused,
+                    "cutoff_triggered": self.cutoff_triggered,
+                    "plug_off_confirmed": self.plug_off_confirmed,
+                    "cutoff_unconfirmed_seconds": (
+                        round(time.time() - self.cutoff_unconfirmed_since, 1)
+                        if self.cutoff_unconfirmed_since else 0.0),
+                    "overheat_wrn_seconds": self.overheat_wrn_seconds,
+                }
 
             # Sleep slice
             sleep_step = 0.05
