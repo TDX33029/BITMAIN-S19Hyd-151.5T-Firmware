@@ -1,4 +1,17 @@
 {
   "login_password": "YOUR_LOGIN_PASSWORD_HERE",
-  "power_password": "YOUR_POWER_ON_PASSWORD_HERE"
+  "power_password": "YOUR_POWER_ON_PASSWORD_HERE",
+  "plug_ip": "10.8.1.110",
+  "plug_did": "2051114902",
+  "plug_token": "YOUR_32_HEX_MIIO_TOKEN_HERE",
+  "board_thresholds": [
+    {
+      "wrn": 75,
+      "stop": 78
+    },
+    {
+      "wrn": 85,
+      "stop": 88
+    }
+  ]
 }

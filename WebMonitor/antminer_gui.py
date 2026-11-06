@@ -29,6 +29,7 @@ Features:
 import bisect
 import hashlib
 import json
+import os
 import socket
 import sys
 import threading
@@ -41,6 +42,8 @@ import pyqtgraph as pg
 import requests
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+from mijia_plug import MijiaPlugDriver, load_plug_config, parse_chains, board_thresholds
 from PyQt5.QtCore import QMutex, QPointF, Qt, QThread, pyqtSignal
 from PyQt5.QtGui import QColor, QFont, QPainter, QPalette
 from PyQt5.QtWidgets import (
@@ -96,6 +99,11 @@ ACCENT_RED = "#e76f51"
 ACCENT_ORANGE = "#e67e22"
 TEXT_WHITE = "#e0e2e8"
 TEXT_MUTED = "#868c9c"
+
+# Fallback base limits for a board left on "auto". Chain 2 is derived from these via
+# BOARD_THRESHOLD_OFFSETS, so these are a base rather than a global switch.
+DEFAULT_WRN_TEMP = 75.0
+DEFAULT_STOP_TEMP = 78.0
 
 # Cross-platform fonts for Linux (Ubuntu 22.04), Windows and macOS
 MONO_FONTS = ["Ubuntu Mono", "DejaVu Sans Mono", "Liberation Mono", "Consolas", "Courier New", "monospace"]
@@ -206,126 +214,6 @@ class PasswordDialog(QDialog):
             self.pwd_edit.setFocus()
 
 
-class MijiaPlugDriver:
-    """Robust native miIO UDP client with persistent socket & timestamp sync."""
-
-    def __init__(self, ip: str = "10.8.1.110", token_hex: str = "458a4ef63ff154e2136a1342395c630f", did: str = "2051114902"):
-        self.ip = ip
-        self.did = str(did)
-        self.token = bytes.fromhex(token_hex)
-        self.key = hashlib.md5(self.token).digest()
-        self.iv = hashlib.md5(self.key + self.token).digest()
-
-        self.device_id: Optional[bytes] = None
-        self.stamp_offset: Optional[int] = None
-        self._msg_id = 0
-
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.sock.settimeout(1.5)
-
-    def _encrypt(self, plaintext: bytes) -> bytes:
-        pad_len = 16 - (len(plaintext) % 16)
-        padded = plaintext + bytes([pad_len] * pad_len)
-        cipher = Cipher(algorithms.AES(self.key), modes.CBC(self.iv), backend=default_backend())
-        encryptor = cipher.encryptor()
-        return encryptor.update(padded) + encryptor.finalize()
-
-    def _decrypt(self, ciphertext: bytes) -> bytes:
-        cipher = Cipher(algorithms.AES(self.key), modes.CBC(self.iv), backend=default_backend())
-        decryptor = cipher.decryptor()
-        padded = decryptor.update(ciphertext) + decryptor.finalize()
-        return padded[:-padded[-1]]
-
-    def _handshake(self):
-        hello = bytes.fromhex("21310020ffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-        self.sock.sendto(hello, (self.ip, 54321))
-        data, _ = self.sock.recvfrom(1024)
-        self.device_id = data[8:12]
-        dev_stamp = int.from_bytes(data[12:16], "big")
-        self.stamp_offset = dev_stamp - int(time.time())
-
-    def _send_cmd(self, method: str, params: Any) -> Dict[str, Any]:
-        for attempt in range(2):
-            try:
-                if self.device_id is None or self.stamp_offset is None:
-                    self._handshake()
-
-                self._msg_id += 1
-                now_stamp = (int(time.time()) + self.stamp_offset) & 0xFFFFFFFF
-                payload = json.dumps({"id": self._msg_id, "method": method, "params": params}, separators=(",", ":")).encode("utf-8")
-                encrypted = self._encrypt(payload)
-
-                packet_len = 32 + len(encrypted)
-                header = bytearray(32)
-                header[0:2] = b"\x21\x31"
-                header[2:4] = packet_len.to_bytes(2, "big")
-                header[8:12] = self.device_id
-                header[12:16] = now_stamp.to_bytes(4, "big")
-                header[16:32] = self.token
-                header[16:32] = hashlib.md5(header[:16] + self.token + encrypted).digest()
-
-                self.sock.sendto(header + encrypted, (self.ip, 54321))
-                res, _ = self.sock.recvfrom(4096)
-                decrypted = self._decrypt(res[32:])
-                return json.loads(decrypted.decode("utf-8"))
-            except Exception:
-                self.device_id = None
-                self.stamp_offset = None
-                if attempt == 1:
-                    raise
-        raise TimeoutError("miIO communication failed after retry")
-
-    def query_status(self) -> Dict[str, Any]:
-        try:
-            props = [
-                {"did": self.did, "siid": 2, "piid": 1},   # Switch Status (bool)
-                {"did": self.did, "siid": 11, "piid": 2},  # Electric Power (W)
-                {"did": self.did, "siid": 12, "piid": 2},  # Internal Temp (°C)
-            ]
-            res_json = self._send_cmd("get_properties", props)
-
-            switch_on = False
-            power_w = 0.0
-            temp_c = 0
-
-            for item in res_json.get("result", []):
-                siid = item.get("siid")
-                piid = item.get("piid")
-                val = item.get("value")
-                if siid == 2 and piid == 1:
-                    switch_on = bool(val)
-                elif siid == 11 and piid == 2:
-                    power_w = float(val) if val is not None else 0.0
-                elif siid == 12 and piid == 2:
-                    temp_c = int(val) if val is not None else 0
-
-            return {
-                "online": True,
-                "switch_on": switch_on,
-                "power_w": power_w,
-                "plug_temp": temp_c,
-            }
-        except Exception as e:
-            return {
-                "online": False,
-                "error": str(e),
-                "switch_on": False,
-                "power_w": 0.0,
-                "plug_temp": 0,
-            }
-
-    def set_switch(self, state: bool) -> bool:
-        try:
-            props = [{"did": self.did, "siid": 2, "piid": 1, "value": bool(state)}]
-            res = self._send_cmd("set_properties", props)
-            for item in res.get("result", []):
-                if item.get("code") == 0:
-                    return True
-            return False
-        except Exception:
-            return False
-
-
 class RealTimeAxisItem(pg.AxisItem):
     """X-Axis showing authentic local wall-clock time (HH:MM:SS / HH:MM)."""
 
@@ -425,7 +313,9 @@ class DataWorker(QThread):
         username: str = "root",
         password: str = "dl.general",
         plug_ip: str = "10.8.1.110",
-        plug_token: str = "458a4ef63ff154e2136a1342395c630f",
+        plug_token: str = "",
+        plug_did: str = "2051114902",
+        board_overrides: Optional[List[Dict[str, Any]]] = None,
         interval: float = 1.0,
     ):
         super().__init__()
@@ -445,7 +335,8 @@ class DataWorker(QThread):
         self.max_hold_failures: int = 5
 
         # Persistent Plug Driver
-        self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did="2051114902")
+        self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did=plug_did)
+        self.board_overrides = list(board_overrides or [])
 
     def _create_miner_session(self) -> requests.Session:
         s = requests.Session()
@@ -504,6 +395,7 @@ class DataWorker(QThread):
                 temp_pic = []
                 temp_pcb = []
                 temp_chip = []
+                chain_temps = []
 
                 # Handle pending switch request
                 self.mutex.lock()
@@ -530,10 +422,16 @@ class DataWorker(QThread):
                     st0 = raw_stats.get("STATS", [{}])[0]
                     rate_5s_ghs = float(st0.get("rate_5s", 0.0))
 
-                    chain0 = st0.get("chain", [{}])[0]
-                    temp_pic = [float(x) for x in chain0.get("temp_pic", [])]
-                    temp_pcb = [float(x) for x in chain0.get("temp_pcb", [])]
-                    temp_chip = [float(x) for x in chain0.get("temp_chip", [])]
+                    # One chain entry per hash board (chain_num=2 here). Reading only
+                    # chain[0] hid the second board: Chain1 read 71°C while Chain2 was at
+                    # 81°C, so the STOP threshold never fired.
+                    chain_temps, water_pic = parse_chains(st0)
+                    temp_pic = water_pic
+                    temp_pcb = []
+                    temp_chip = []
+                    for ct in chain_temps:
+                        temp_pcb.extend(ct["pcb"])
+                        temp_chip.extend(ct["chip"])
 
                     total_diffa = 0.0
                     total_diffr = 0.0
@@ -561,6 +459,7 @@ class DataWorker(QThread):
                         "temp_pic": temp_pic,
                         "temp_pcb": temp_pcb,
                         "temp_chip": temp_chip,
+                        "chain_temps": chain_temps,
                     }
                 except Exception as e:
                     miner_err = str(e)
@@ -580,10 +479,12 @@ class DataWorker(QThread):
                     temp_pic = self.last_valid_metrics["temp_pic"]
                     temp_pcb = self.last_valid_metrics["temp_pcb"]
                     temp_chip = self.last_valid_metrics["temp_chip"]
+                    chain_temps = self.last_valid_metrics.get("chain_temps", [])
                     miner_ok = True
                     is_recovering = True
                 else:
                     miner_ok = False
+                    chain_temps = []
 
                 # 2. Query Mijia Plug Data
                 plug_data = self.plug.query_status()
@@ -609,6 +510,12 @@ class DataWorker(QThread):
                     "water_delta": delta_t,
                     "pcb_temps": temp_pcb,
                     "chip_temps": temp_chip,
+                    "chains": [
+                        {"index": ct["index"], "chip_max": ct["chip_max"], "chip_avg": ct["chip_avg"],
+                         "warn_at": board_thresholds(DEFAULT_WRN_TEMP, i, "wrn", self.board_overrides),
+                         "stop_at": board_thresholds(DEFAULT_STOP_TEMP, i, "stop", self.board_overrides)}
+                        for i, ct in enumerate(chain_temps)
+                    ],
                     "chip_max": max(temp_chip) if temp_chip else 0.0,
                     "chip_avg": (sum(temp_chip) / len(temp_chip)) if temp_chip else 0.0,
                     "plug": plug_data,
@@ -1059,37 +966,44 @@ class MainWindow(QMainWindow):
         sensors_layout.setContentsMargins(12, 10, 12, 10)
         sensors_layout.setSpacing(4)
 
-        # Dual Thresholds Row: WRN TEMP (default 75°C) & STOP TEMP (default 78°C)
-        thresh_row = QHBoxLayout()
-        thresh_row.setSpacing(6)
+        # Per-board power-cutoff limits. Chain 2 runs hotter by design, so it gets its own
+        # pair; leaving a value on "auto" falls back to the built-in base + offset.
+        def _board_row(title: str, color: str, wrn_default: Optional[int], stop_default: Optional[int]):
+            row = QHBoxLayout()
+            row.setSpacing(6)
+            lbl = QLabel(title)
+            lbl.setFont(QFont("Consolas", 8, QFont.Bold))
+            lbl.setStyleSheet(f"color: {color};")
 
-        wrn_lbl = QLabel("WRN TEMP:")
-        wrn_lbl.setFont(QFont("Consolas", 8, QFont.Bold))
-        wrn_lbl.setStyleSheet(f"color: {TEXT_MUTED};")
+            w = QSpinBox()
+            w.setRange(0, 115)
+            w.setSuffix("°C")
+            w.setFixedWidth(64)
+            w.setSpecialValueText("auto")
+            w.setValue(wrn_default if wrn_default is not None else 0)
 
-        self.wrn_spin = QSpinBox()
-        self.wrn_spin.setRange(40, 90)
-        self.wrn_spin.setValue(75)
-        self.wrn_spin.setSuffix("°C")
-        self.wrn_spin.setFixedWidth(64)
+            s = QSpinBox()
+            s.setRange(0, 125)
+            s.setSuffix("°C")
+            s.setFixedWidth(64)
+            s.setSpecialValueText("auto")
+            s.setValue(stop_default if stop_default is not None else 0)
 
-        stop_lbl = QLabel("STOP TEMP:")
-        stop_lbl.setFont(QFont("Consolas", 8, QFont.Bold))
-        stop_lbl.setStyleSheet(f"color: {TEXT_MUTED};")
+            stop_lbl = QLabel("STOP:")
+            stop_lbl.setFont(QFont("Consolas", 8, QFont.Bold))
+            stop_lbl.setStyleSheet(f"color: {TEXT_MUTED};")
 
-        self.stop_spin = QSpinBox()
-        self.stop_spin.setRange(45, 95)
-        self.stop_spin.setValue(78)
-        self.stop_spin.setSuffix("°C")
-        self.stop_spin.setFixedWidth(64)
+            row.addWidget(lbl)
+            row.addWidget(w)
+            row.addSpacing(6)
+            row.addWidget(stop_lbl)
+            row.addWidget(s)
+            row.addStretch()
+            sensors_layout.addLayout(row)
+            return w, s
 
-        thresh_row.addWidget(wrn_lbl)
-        thresh_row.addWidget(self.wrn_spin)
-        thresh_row.addSpacing(6)
-        thresh_row.addWidget(stop_lbl)
-        thresh_row.addWidget(self.stop_spin)
-        thresh_row.addStretch()
-        sensors_layout.addLayout(thresh_row)
+        self.b1_wrn_spin, self.b1_stop_spin = _board_row("CH1 WRN:", ACCENT_YELLOW, None, None)
+        self.b2_wrn_spin, self.b2_stop_spin = _board_row("CH2 WRN:", ACCENT_ORANGE, 85, 88)
 
         # Overheat Alert Banner
         self.cutoff_alert_label = QLabel("")
@@ -1116,27 +1030,17 @@ class MainWindow(QMainWindow):
         self.reset_cutoff_btn.hide()
         sensors_layout.addWidget(self.reset_cutoff_btn)
 
-        # PCB Section
-        pcb_hdr = QLabel("PCB Surface Sensors")
-        pcb_hdr.setFont(QFont("Segoe UI", 9, QFont.Bold))
-        pcb_hdr.setStyleSheet(f"color: {ACCENT_BLUE}; margin-top: 4px;")
-        sensors_layout.addWidget(pcb_hdr)
-
-        self.pcb_bars: List[TempSensorBar] = []
-        for i in range(6):
-            bar = TempSensorBar(f"PCB-{i+1}", max_temp=80.0)
-            self.pcb_bars.append(bar)
-            sensors_layout.addWidget(bar)
-
-        # Chip Die Section
-        chip_hdr = QLabel("Chip Die Core Sensors")
+        # Chip Die Section (this miner has 2 hash boards, 6 die sensors each)
+        chip_hdr = QLabel("Chip Die Core Sensors (Chain 1 / Chain 2)")
         chip_hdr.setFont(QFont("Segoe UI", 9, QFont.Bold))
         chip_hdr.setStyleSheet(f"color: {ACCENT_YELLOW}; margin-top: 6px;")
         sensors_layout.addWidget(chip_hdr)
 
         self.chip_bars: List[TempSensorBar] = []
-        for i in range(6):
-            bar = TempSensorBar(f"Chip-{i+1}", max_temp=85.0)
+        for i in range(12):
+            board = i // 6 + 1
+            slot = i % 6 + 1
+            bar = TempSensorBar(f"CH{board}-{slot}", max_temp=90.0)
             self.chip_bars.append(bar)
             sensors_layout.addWidget(bar)
 
@@ -1164,10 +1068,42 @@ class MainWindow(QMainWindow):
         self.latest_water_str = "Inlet: --.-°C | Outlet: --.-°C (ΔT: --.-°C)"
 
     def _init_worker(self):
-        self.worker = DataWorker(interval=1.0)
+        plug_cfg = load_plug_config()
+        self.worker = DataWorker(
+            plug_ip=plug_cfg["plug_ip"],
+            plug_token=plug_cfg["plug_token"],
+            plug_did=plug_cfg["plug_did"],
+            board_overrides=plug_cfg.get("board_thresholds") or [],
+            interval=1.0,
+        )
         self.worker.data_received.connect(self._on_data_received)
         self.worker.connection_changed.connect(self._on_connection_changed)
         self.worker.start()
+
+        # Seed the per-board spin boxes from config, then keep the worker in sync on edit.
+        overrides = plug_cfg.get("board_thresholds") or []
+        for idx, (w, s) in enumerate(((self.b1_wrn_spin, self.b1_stop_spin),
+                                      (self.b2_wrn_spin, self.b2_stop_spin))):
+            entry = overrides[idx] if idx < len(overrides) else {}
+            w.setValue(int(entry.get("wrn") or 0))
+            s.setValue(int(entry.get("stop") or 0))
+        self.b1_wrn_spin.valueChanged.connect(self._on_board_thresholds_changed)
+        self.b1_stop_spin.valueChanged.connect(self._on_board_thresholds_changed)
+        self.b2_wrn_spin.valueChanged.connect(self._on_board_thresholds_changed)
+        self.b2_stop_spin.valueChanged.connect(self._on_board_thresholds_changed)
+
+    def _on_board_thresholds_changed(self):
+        """Push per-board overrides to the worker (0 in the spin box means 'auto')."""
+        if not hasattr(self, "worker") or self.worker is None:
+            return
+        overrides = []
+        for w, s in ((self.b1_wrn_spin, self.b1_stop_spin),
+                     (self.b2_wrn_spin, self.b2_stop_spin)):
+            overrides.append({
+                "wrn": (w.value() or None),
+                "stop": (s.value() or None),
+            })
+        self.worker.board_overrides = overrides
 
     def _on_interval_changed(self, val: float):
         self.worker.set_interval(val)
@@ -1341,25 +1277,37 @@ class MainWindow(QMainWindow):
         self.latest_water_str = f"Inlet: {tin:4.1f}°C  |  Outlet: {tout:4.1f}°C  (ΔT: {dt_sign}°C)"
         self.water_stat_label.setText(self.latest_water_str)
 
-        # 3. Dual Cutoff Protection Logic (WRN TEMP & STOP TEMP)
-        wrn_thresh = float(self.wrn_spin.value())
-        stop_thresh = float(self.stop_spin.value())
+        # 3. Dual Cutoff Protection Logic (WRN TEMP & STOP TEMP), evaluated per hash board
+        wrn_thresh = DEFAULT_WRN_TEMP
+        stop_thresh = DEFAULT_STOP_TEMP
         chip_max = data.get("chip_max", 0.0)
         chip_avg = data.get("chip_avg", 0.0)
 
-        is_over_wrn = (chip_max >= wrn_thresh)
-        is_over_stop = (chip_max >= stop_thresh)
+        # Boards run at different temperatures by design: each gets its own limits, and the
+        # board with the smallest remaining margin decides whether to trip.
+        chains_data = data.get("chains", [])
+        hot = None
+        for c in chains_data:
+            margin = c["stop_at"] - c["chip_max"]
+            if hot is None or margin < hot["margin"]:
+                hot = {**c, "margin": margin}
+        if hot:
+            eff_max, eff_wrn, eff_stop = hot["chip_max"], hot["warn_at"], hot["stop_at"]
+            board_label = f"Chain {hot['index']}"
+        else:
+            eff_max, eff_wrn, eff_stop = chip_max, wrn_thresh, stop_thresh
+            board_label = "All chains"
 
-        # Update Sensor Gauges
-        pcb_temps = data.get("pcb_temps", [])
-        for i, bar in enumerate(self.pcb_bars):
-            val = pcb_temps[i] if i < len(pcb_temps) else 0.0
-            bar.set_temperature(val, is_overheat=(val >= wrn_thresh))
+        is_over_wrn = (eff_max >= eff_wrn)
+        is_over_stop = (eff_max >= eff_stop)
 
+        # Update Sensor Gauges (per board: each has its own warn threshold)
+        chain_temps = data.get("chains", [])
         chip_temps = data.get("chip_temps", [])
         for i, bar in enumerate(self.chip_bars):
             val = chip_temps[i] if i < len(chip_temps) else 0.0
-            bar.set_temperature(val, is_overheat=(val >= wrn_thresh))
+            board_wrn = chain_temps[i // 6]["warn_at"] if i // 6 < len(chain_temps) else wrn_thresh
+            bar.set_temperature(val, is_overheat=(val >= board_wrn))
 
         if self.cutoff_triggered:
             self.cutoff_alert_label.setText("EMERGENCY CUTOFF ACTIVE: Plug cut off.\nManual reset required.")
@@ -1372,7 +1320,7 @@ class MainWindow(QMainWindow):
                 # 1. Immediate unconditional cutoff on STOP TEMP
                 self.cutoff_triggered = True
                 self.worker.request_plug_switch(False)
-                self.cutoff_alert_label.setText(f"STOP TEMP REACHED: {chip_max:.1f}°C >= {stop_thresh:.0f}°C!\nPOWER CUT OFF IMMEDIATELY.")
+                self.cutoff_alert_label.setText(f"STOP TEMP REACHED ({board_label}): {eff_max:.1f}°C >= {eff_stop:.0f}°C!\nPOWER CUT OFF IMMEDIATELY.")
                 self.cutoff_alert_label.show()
                 self.reset_cutoff_btn.show()
 
@@ -1381,7 +1329,8 @@ class MainWindow(QMainWindow):
                     f"🚨 <b>[AntMinerTab 紧急急停断电告警]</b>\n\n"
                     f"<b>设备</b>: Antminer S19 Hydro (10.8.1.86)\n"
                     f"<b>级别</b>: <b>CRITICAL (达到急停温度 STOP TEMP)</b>\n"
-                    f"<b>芯片温度</b>: <b>{chip_max:.1f}°C</b> (急停阈值: {stop_thresh:.0f}°C)\n"
+                    f"<b>触发板号</b>: <b>{board_label}</b>\n"
+                    f"<b>芯片温度</b>: <b>{eff_max:.1f}°C</b> (该板急停阈值: {eff_stop:.0f}°C)\n"
                     f"<b>水冷回路</b>: 进水 {tin:.1f}°C | 出水 {tout:.1f}°C (升温 ΔT: +{dt:.1f}°C)\n"
                     f"<b>执行动作</b>: 米家智能插座(10.8.1.110)已立即<b>硬件切断电源</b>！\n"
                     f"<b>保护机制</b>: 保护锁已死锁，<b>绝不自动恢复</b>，请现场检查水冷泵及管路！\n"
@@ -1393,13 +1342,13 @@ class MainWindow(QMainWindow):
                 # 2. WRN TEMP: Cutoff if maintained for >30 seconds
                 self.overheat_wrn_seconds += 1
                 rem = max(0, 30 - self.overheat_wrn_seconds)
-                self.cutoff_alert_label.setText(f"WRN TEMP: {chip_max:.1f}°C >= {wrn_thresh:.0f}°C! Cutoff in {rem}s")
+                self.cutoff_alert_label.setText(f"WRN TEMP ({board_label}): {eff_max:.1f}°C >= {eff_wrn:.0f}°C! Cutoff in {rem}s")
                 self.cutoff_alert_label.show()
 
                 if self.overheat_wrn_seconds >= 30:
                     self.cutoff_triggered = True
                     self.worker.request_plug_switch(False)
-                    self.cutoff_alert_label.setText(f"WRN TEMP MAINTAINED >30s ({chip_max:.1f}°C)!\nPOWER CUT OFF EXECUTED.")
+                    self.cutoff_alert_label.setText(f"WRN TEMP MAINTAINED >30s ({board_label} {eff_max:.1f}°C)!\nPOWER CUT OFF EXECUTED.")
                     self.reset_cutoff_btn.show()
 
                     # Dispatch Telegram Warning Timeout Alarm
@@ -1407,7 +1356,8 @@ class MainWindow(QMainWindow):
                         f"⚠️ <b>[AntMinerTab 超温持续超时断电告警]</b>\n\n"
                         f"<b>设备</b>: Antminer S19 Hydro (10.8.1.86)\n"
                         f"<b>级别</b>: <b>WARNING 超时关机 (WRN TEMP 维持超30秒)</b>\n"
-                        f"<b>芯片最高温</b>: <b>{chip_max:.1f}°C</b> (预警阈值: {wrn_thresh:.0f}°C)\n"
+                        f"<b>触发板号</b>: <b>{board_label}</b>\n"
+                        f"<b>芯片最高温</b>: <b>{eff_max:.1f}°C</b> (该板预警阈值: {eff_wrn:.0f}°C)\n"
                         f"<b>芯片平均温</b>: {chip_avg:.1f}°C\n"
                         f"<b>水冷回路</b>: 进水 {tin:.1f}°C | 出水 {tout:.1f}°C (升温 ΔT: +{dt:.1f}°C)\n"
                         f"<b>执行动作</b>: 米家智能插座(10.8.1.110)已执行<b>断电保护</b>！\n"

@@ -10,10 +10,12 @@ Targets:
 Features:
 - Binds to 0.0.0.0:20000, accessible via localhost (127.0.0.1:20000), LAN, and Tailscale (tailscale_ip:20000).
 - Pure square industrial design (0px border-radius, dark theme matching AntMinerTab desktop GUI).
-- Web-based 1-Hour dynamic temperature curve rendered with high-DPI smooth HTML5 Canvas:
+- Web-based 4-Hour dynamic temperature/hashrate curve rendered with high-DPI smooth HTML5 Canvas:
   * 100% Responsive: Automatically scales and fills the webpage viewport (no fixed height).
-  * Interactive Zoom & Pan: Mouse wheel zooms in/out (from 1min to 1hour), drag to pan, double-click to reset.
-  * Crosshairs ('+') directly on all 4 curves with Top-Right temperature badges.
+  * Interactive Zoom & Pan: Mouse wheel zooms in/out (from 1min to 4hours), drag to pan, double-click to reset.
+  * Crosshairs ('+') directly on all 4 temperature curves with Top-Right temperature badges.
+  * Hashrate curve on its own right-hand GH/s axis, sampled per 30s bucket.
+  * Share histogram on the x-axis: green accepted / red rejected, one bar per 30s, adjacent bars touch.
   * Auto right-align after 6s of no interaction.
 - Top 5 Metric Cards (Hashrate, Accepted, Rejected & Ratio, Plug Power, Interactive Plug Switch with password dl.general).
 - Dual Cutoff Protection (WRN TEMP 30s cutoff, STOP TEMP instant cutoff, no auto-recovery, Telegram alert).
@@ -40,6 +42,9 @@ from urllib.parse import urlparse
 import requests
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+from mijia_plug import (MijiaPlugDriver, load_plug_config, parse_chains,
+                        board_thresholds, parse_board_thresholds)
 from requests.adapters import HTTPAdapter
 from requests.auth import HTTPDigestAuth
 
@@ -72,128 +77,6 @@ def send_telegram_async(message: str):
             sys.stderr.write(f"[Telegram Alert Error] {e}\n")
 
     threading.Thread(target=_worker, daemon=True).start()
-
-
-class MijiaPlugDriver:
-    """Robust native miIO UDP client with persistent socket & timestamp sync."""
-
-    def __init__(self, ip: str = "10.8.1.110", token_hex: str = "458a4ef63ff154e2136a1342395c630f", did: str = "2051114902"):
-        self.ip = ip
-        self.did = str(did)
-        self.token = bytes.fromhex(token_hex)
-        self.key = hashlib.md5(self.token).digest()
-        self.iv = hashlib.md5(self.key + self.token).digest()
-
-        self.device_id: Optional[bytes] = None
-        self.stamp_offset: Optional[int] = None
-        self._msg_id = 0
-        self._lock = threading.Lock()
-
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.sock.settimeout(1.5)
-
-    def _encrypt(self, plaintext: bytes) -> bytes:
-        pad_len = 16 - (len(plaintext) % 16)
-        padded = plaintext + bytes([pad_len] * pad_len)
-        cipher = Cipher(algorithms.AES(self.key), modes.CBC(self.iv), backend=default_backend())
-        encryptor = cipher.encryptor()
-        return encryptor.update(padded) + encryptor.finalize()
-
-    def _decrypt(self, ciphertext: bytes) -> bytes:
-        cipher = Cipher(algorithms.AES(self.key), modes.CBC(self.iv), backend=default_backend())
-        decryptor = cipher.decryptor()
-        padded = decryptor.update(ciphertext) + decryptor.finalize()
-        return padded[:-padded[-1]]
-
-    def _handshake(self):
-        hello = bytes.fromhex("21310020ffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-        self.sock.sendto(hello, (self.ip, 54321))
-        data, _ = self.sock.recvfrom(1024)
-        self.device_id = data[8:12]
-        dev_stamp = int.from_bytes(data[12:16], "big")
-        self.stamp_offset = dev_stamp - int(time.time())
-
-    def _send_cmd(self, method: str, params: Any) -> Dict[str, Any]:
-        with self._lock:
-            for attempt in range(2):
-                try:
-                    if self.device_id is None or self.stamp_offset is None:
-                        self._handshake()
-
-                    self._msg_id += 1
-                    now_stamp = (int(time.time()) + self.stamp_offset) & 0xFFFFFFFF
-                    payload = json.dumps({"id": self._msg_id, "method": method, "params": params}, separators=(",", ":")).encode("utf-8")
-                    encrypted = self._encrypt(payload)
-
-                    packet_len = 32 + len(encrypted)
-                    header = bytearray(32)
-                    header[0:2] = b"\x21\x31"
-                    header[2:4] = packet_len.to_bytes(2, "big")
-                    header[8:12] = self.device_id
-                    header[12:16] = now_stamp.to_bytes(4, "big")
-                    header[16:32] = self.token
-                    header[16:32] = hashlib.md5(header[:16] + self.token + encrypted).digest()
-
-                    self.sock.sendto(header + encrypted, (self.ip, 54321))
-                    res, _ = self.sock.recvfrom(4096)
-                    decrypted = self._decrypt(res[32:])
-                    return json.loads(decrypted.decode("utf-8"))
-                except Exception:
-                    self.device_id = None
-                    self.stamp_offset = None
-                    if attempt == 1:
-                        raise
-            raise TimeoutError("miIO communication failed after retry")
-
-    def query_status(self) -> Dict[str, Any]:
-        try:
-            props = [
-                {"did": self.did, "siid": 2, "piid": 1},   # Switch Status (bool)
-                {"did": self.did, "siid": 11, "piid": 2},  # Electric Power (W)
-                {"did": self.did, "siid": 12, "piid": 2},  # Internal Temp (°C)
-            ]
-            res_json = self._send_cmd("get_properties", props)
-
-            switch_on = False
-            power_w = 0.0
-            temp_c = 0
-
-            for item in res_json.get("result", []):
-                siid = item.get("siid")
-                piid = item.get("piid")
-                val = item.get("value")
-                if siid == 2 and piid == 1:
-                    switch_on = bool(val)
-                elif siid == 11 and piid == 2:
-                    power_w = float(val) if val is not None else 0.0
-                elif siid == 12 and piid == 2:
-                    temp_c = int(val) if val is not None else 0
-
-            return {
-                "online": True,
-                "switch_on": switch_on,
-                "power_w": power_w,
-                "plug_temp": temp_c,
-            }
-        except Exception as e:
-            return {
-                "online": False,
-                "error": str(e),
-                "switch_on": False,
-                "power_w": 0.0,
-                "plug_temp": 0,
-            }
-
-    def set_switch(self, state: bool) -> bool:
-        try:
-            props = [{"did": self.did, "siid": 2, "piid": 1, "value": bool(state)}]
-            res = self._send_cmd("set_properties", props)
-            for item in res.get("result", []):
-                if item.get("code") == 0:
-                    return True
-            return False
-        except Exception:
-            return False
 
 
 class FanControllerDriver:
@@ -516,19 +399,23 @@ class MonitorStateManager:
         username: str = "root",
         password: str = "dl.general",
         plug_ip: str = "10.8.1.110",
-        plug_token: str = "458a4ef63ff154e2136a1342395c630f",
+        plug_token: str = "",
+        plug_did: str = "2051114902",
         interval: float = 1.0,
         wrn_temp: float = 75.0,
         stop_temp: float = 78.0,
+        board_overrides: Optional[List[Dict[str, Any]]] = None,
         fan_start_temp: float = 50.0,
         fan_max_temp: float = 70.0,
     ):
         self.miner_url = miner_url.rstrip("/")
         self.username = username
         self.password = password
-        self.interval = interval
+        self.interval = max(0.5, min(2.0, float(interval)))
         self.wrn_temp = wrn_temp
         self.stop_temp = stop_temp
+        # Per-board absolute limits; empty list = fall back to the built-in offsets.
+        self.board_overrides: List[Dict[str, Any]] = list(board_overrides or [])
         self.paused = False
 
         self.lock = threading.Lock()
@@ -542,18 +429,36 @@ class MonitorStateManager:
         self.max_hold_failures: int = 5  # Hold values for up to 5 consecutive transient failed attempts
 
         # Plug Driver
-        self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did="2051114902")
+        self.plug = MijiaPlugDriver(ip=plug_ip, token_hex=plug_token, did=plug_did)
 
         # Fan Controller Driver (CoolerHD 6-Channel 12025 Fan Controller on Serial)
         self.fan_driver = FanControllerDriver(preferred_port=os.getenv("FAN_SERIAL_PORT", "AUTO"))
 
-        # 1-Hour buffers (3600 seconds)
-        self.window_seconds = 3600.0
+        # 4-Hour buffers (14400 seconds)
+        self.window_seconds = 14400.0
         self.time_buffer: Deque[float] = deque()
         self.inlet_buffer: Deque[float] = deque()
         self.outlet_buffer: Deque[float] = deque()
         self.chip_max_buffer: Deque[float] = deque()
         self.chip_avg_buffer: Deque[float] = deque()
+
+        # Hashrate + share histogram. Temperature is appended every poll (1s), but a 4h
+        # window of per-second points would be 14k samples, so hashrate is averaged and
+        # the cumulative pool share counters are differenced into fixed 30s buckets.
+        self.bucket_seconds = 30.0
+        # Temperature points are throttled to one per 10s: across a 4h window that is 1440
+        # points (sub-pixel on any screen), instead of 14400 points shipped every second.
+        # This buffer is display-only; protection decisions use the live live chip_max.
+        self.temp_sample_seconds = 10.0
+        self._last_temp_sample: Optional[float] = None
+        self.share_buckets: Deque[Dict[str, Any]] = deque()
+        self._bucket_start: Optional[float] = None
+        self._bucket_acc_base = 0
+        self._bucket_rej_base = 0
+        self._bucket_acc = 0
+        self._bucket_rej = 0
+        self._bucket_rate_sum = 0.0
+        self._bucket_rate_n = 0
 
         # Protection State
         self.overheat_wrn_seconds = 0
@@ -577,10 +482,14 @@ class MonitorStateManager:
         self.plug_off_timestamp: Optional[float] = None
         self.plug_off_duration: float = 0.0
         self.plug_idle_cooldown_reached: bool = False
-
-        # Fan Disconnection Protection (Power off if disconnected > 120s while running)
-        self.fan_disconnect_start_time: Optional[float] = None
-        self.fan_disconnect_duration: float = 0.0
+        # Last confirmed switch state (None = never read yet). Kept across poll failures so a
+        # lossy miIO link cannot be mistaken for "plug is off" and idle the fans mid-mining.
+        self.plug_last_known_on: Optional[bool] = None
+        self.plug_unknown_since: Optional[float] = None
+        # Consecutive agreeing reads required before accepting a switch-state change.
+        self.PLUG_STATE_CONFIRMATIONS = 2
+        self.plug_pending_state: Optional[bool] = None
+        self.plug_pending_count: int = 0
 
         # Latest Snapshot
         self.latest_data: Dict[str, Any] = {
@@ -604,7 +513,6 @@ class MonitorStateManager:
             "fan_mode": "AUTO",
             "fan_control_mode": self.fan_control_mode,
             "manual_target_rpm": self.manual_target_rpm,
-            "fan_disconnect_duration": 0.0,
             "fans": {
                 "installed": HAS_PYSERIAL,
                 "connected": False,
@@ -624,9 +532,50 @@ class MonitorStateManager:
             "overheat_wrn_seconds": 0,
         }
 
+        # Smart Plug poller: miIO on this lossy link can take several seconds to answer,
+        # so poll it on its own thread and let the main loop read the cached snapshot.
+        self._plug_snapshot: Dict[str, Any] = {
+            "online": False, "switch_on": False, "power_w": 0.0, "plug_temp": 0,
+            "error": "plug not polled yet",
+        }
+        self._plug_snapshot_lock = threading.Lock()
+        self.plug_poll_seconds = 2.0
+        threading.Thread(target=self._plug_poll_loop, daemon=True).start()
+
         # Start Background Thread
         self.worker_thread = threading.Thread(target=self._run_loop, daemon=True)
         self.worker_thread.start()
+
+    def _plug_poll_loop(self):
+        """Continuously refresh the plug snapshot so a slow miIO reply never stalls fans."""
+        while True:
+            st = self.plug.query_status()
+            with self._plug_snapshot_lock:
+                self._plug_snapshot = st
+            if st.get("online") and st.get("state_confirmed"):
+                new_state = bool(st.get("switch_on"))
+                if new_state != self.plug_last_known_on:
+                    # Debounce state changes: a single odd reply on this lossy link must not
+                    # be enough to declare the miner unpowered (or powered) for the fan logic.
+                    if self.plug_pending_state != new_state:
+                        self.plug_pending_state = new_state
+                        self.plug_pending_count = 0
+                    self.plug_pending_count += 1
+                    if self.plug_pending_count >= self.PLUG_STATE_CONFIRMATIONS:
+                        self.plug_last_known_on = new_state
+                        self.plug_pending_state = None
+                        self.plug_pending_count = 0
+                else:
+                    self.plug_pending_state = None
+                    self.plug_pending_count = 0
+                self.plug_unknown_since = None
+            elif self.plug_unknown_since is None:
+                self.plug_unknown_since = time.time()
+            time.sleep(self.plug_poll_seconds)
+
+    def get_plug_snapshot(self) -> Dict[str, Any]:
+        with self._plug_snapshot_lock:
+            return dict(self._plug_snapshot)
 
     def _create_miner_session(self) -> requests.Session:
         s = requests.Session()
@@ -661,10 +610,14 @@ class MonitorStateManager:
         paused: Optional[bool] = None,
         fan_start: Optional[float] = None,
         fan_max: Optional[float] = None,
+        board_thresholds_update: Optional[List[Dict[str, Any]]] = None,
     ):
         with self.lock:
             if interval is not None:
-                self.interval = max(0.5, float(interval))
+                # Clamped low: this loop is the over-temperature watchdog, so the poll
+                # period is also the worst-case delay before STOP can cut the power.
+                # 2s keeps that delay acceptable; 60s did not.
+                self.interval = max(0.5, min(2.0, float(interval)))
                 self.latest_data["interval"] = self.interval
             if wrn is not None:
                 self.wrn_temp = float(wrn)
@@ -672,6 +625,9 @@ class MonitorStateManager:
             if stop is not None:
                 self.stop_temp = float(stop)
                 self.latest_data["stop_temp"] = self.stop_temp
+            if board_thresholds_update is not None:
+                self.board_overrides = list(board_thresholds_update)
+                self.latest_data["board_thresholds"] = self.board_overrides
             if paused is not None:
                 self.paused = bool(paused)
                 self.latest_data["paused"] = self.paused
@@ -683,9 +639,18 @@ class MonitorStateManager:
                 self.latest_data["fan_max_temp"] = self.fan_max_temp
 
     def set_plug_switch(self, state: bool) -> bool:
-        """Switch plug power state."""
+        """Switch plug power state and refresh the cached snapshot."""
         res = self.plug.set_switch(state)
         st = self.plug.query_status()
+        with self._plug_snapshot_lock:
+            self._plug_snapshot = st
+        if st.get("online") and st.get("state_confirmed"):
+            # An explicit user command is authoritative: adopt the observed state at once
+            # instead of waiting for the debounce counter to agree.
+            self.plug_last_known_on = bool(st.get("switch_on"))
+            self.plug_pending_state = None
+            self.plug_pending_count = 0
+            self.plug_unknown_since = None
         with self.lock:
             self.latest_data["plug"] = st
         return res
@@ -736,13 +701,83 @@ class MonitorStateManager:
         send_telegram_async(rst_msg)
 
     def clear_history(self):
-        """Clear all historical 1-hour curve data points."""
+        """Clear all historical curve data points."""
         with self.lock:
             self.time_buffer.clear()
             self.inlet_buffer.clear()
             self.outlet_buffer.clear()
             self.chip_max_buffer.clear()
             self.chip_avg_buffer.clear()
+            self.share_buckets.clear()
+            self._bucket_start = None
+            self._last_temp_sample = None
+            self._bucket_acc_base = 0
+            self._bucket_rej_base = 0
+            self._bucket_acc = 0
+            self._bucket_rej = 0
+            self._bucket_rate_sum = 0.0
+            self._bucket_rate_n = 0
+
+    def _update_share_buckets(self, now_epoch: float, rate_ghs: float,
+                              total_accepted: int, total_rejected: int):
+        """Fold per-poll samples into fixed 30s buckets for the hashrate/share chart.
+
+        The pool counters are cumulative, so each bucket stores the delta between its
+        start and end. A counter that goes *down* means the miner rebooted its stats;
+        the baseline is rebased instead of emitting a negative bar.
+        """
+        bucket_start = (int(now_epoch) // int(self.bucket_seconds)) * int(self.bucket_seconds)
+
+        if self._bucket_start is None:
+            self._bucket_start = bucket_start
+            self._bucket_acc_base = total_accepted
+            self._bucket_rej_base = total_rejected
+        elif bucket_start > self._bucket_start:
+            # Emit every elapsed bucket. Idle buckets (miner unreachable) are emitted with
+            # zero shares so the histogram shows the gap rather than silently compressing it.
+            acc_delta = max(0, total_accepted - self._bucket_acc_base - self._bucket_acc)
+            rej_delta = max(0, total_rejected - self._bucket_rej_base - self._bucket_rej)
+            avg_rate = (self._bucket_rate_sum / self._bucket_rate_n) if self._bucket_rate_n else 0.0
+            self._bucket_acc += acc_delta
+            self._bucket_rej += rej_delta
+            self.share_buckets.append({
+                "t": float(self._bucket_start),
+                "accepted": self._bucket_acc,
+                "rejected": self._bucket_rej,
+                "hashrate": avg_rate,
+            })
+
+            # Skip over buckets with no samples at all (e.g. the page was paused).
+            elapsed_buckets = int((bucket_start - self._bucket_start) // int(self.bucket_seconds))
+            for _ in range(max(0, elapsed_buckets - 1)):
+                self._bucket_start += int(self.bucket_seconds)
+                self.share_buckets.append({
+                    "t": float(self._bucket_start),
+                    "accepted": 0, "rejected": 0, "hashrate": 0.0,
+                })
+
+            self._bucket_start = bucket_start
+            self._bucket_acc_base = total_accepted
+            self._bucket_rej_base = total_rejected
+            self._bucket_acc = 0
+            self._bucket_rej = 0
+            self._bucket_rate_sum = 0.0
+            self._bucket_rate_n = 0
+        else:
+            # Counters only ever grow within a miner boot; a drop means a stats reset.
+            if total_accepted < self._bucket_acc_base:
+                self._bucket_acc_base = total_accepted
+                self._bucket_rej_base = total_rejected
+            self._bucket_acc = max(0, total_accepted - self._bucket_acc_base)
+            self._bucket_rej = max(0, total_rejected - self._bucket_rej_base)
+
+        if rate_ghs > 0:
+            self._bucket_rate_sum += rate_ghs
+            self._bucket_rate_n += 1
+
+        cutoff_epoch = now_epoch - self.window_seconds
+        while self.share_buckets and self.share_buckets[0]["t"] < cutoff_epoch:
+            self.share_buckets.popleft()
 
     def _run_loop(self):
         last_check_time = time.time()
@@ -766,6 +801,7 @@ class MonitorStateManager:
                 temp_pic = []
                 temp_pcb = []
                 temp_chip = []
+                chain_temps = []
 
                 # 1. Fetch Miner Data (with socket connect/read timeout & JSON validation)
                 try:
@@ -782,10 +818,16 @@ class MonitorStateManager:
                     st0 = raw_stats.get("STATS", [{}])[0]
                     rate_5s_ghs = float(st0.get("rate_5s", 0.0))
 
-                    chain0 = st0.get("chain", [{}])[0]
-                    temp_pic = [float(x) for x in chain0.get("temp_pic", [])]
-                    temp_pcb = [float(x) for x in chain0.get("temp_pcb", [])]
-                    temp_chip = [float(x) for x in chain0.get("temp_chip", [])]
+                    # One chain entry per hash board (chain_num=2 here). Reading only
+                    # chain[0] hid the second board: Chain1 read 71°C while Chain2 was at
+                    # 81°C, so the STOP threshold never fired.
+                    chain_temps, water_pic = parse_chains(st0)
+                    temp_pic = water_pic
+                    temp_pcb = []
+                    temp_chip = []
+                    for ct in chain_temps:
+                        temp_pcb.extend(ct["pcb"])
+                        temp_chip.extend(ct["chip"])
 
                     total_diffa = 0.0
                     total_diffr = 0.0
@@ -813,6 +855,7 @@ class MonitorStateManager:
                         "temp_pic": temp_pic,
                         "temp_pcb": temp_pcb,
                         "temp_chip": temp_chip,
+                        "chain_temps": chain_temps,
                     }
                 except Exception as e:
                     miner_err = str(e)
@@ -833,13 +876,15 @@ class MonitorStateManager:
                     temp_pic = self.last_valid_metrics["temp_pic"]
                     temp_pcb = self.last_valid_metrics["temp_pcb"]
                     temp_chip = self.last_valid_metrics["temp_chip"]
+                    chain_temps = self.last_valid_metrics.get("chain_temps", [])
                     miner_ok = True
                     is_recovering = True
                 else:
                     miner_ok = False
+                    chain_temps = []
 
-                # 2. Fetch Plug Data
-                plug_data = self.plug.query_status()
+                # 2. Read cached Plug Data (refreshed by the dedicated miIO poller thread)
+                plug_data = self.get_plug_snapshot()
 
                 latency_ms = int((time.time() - t0) * 1000)
 
@@ -850,9 +895,29 @@ class MonitorStateManager:
                 chip_max = max(temp_chip) if temp_chip else 0.0
                 chip_avg = (sum(temp_chip) / len(temp_chip)) if temp_chip else 0.0
 
+                # Per-board protection: boards run at different temperatures by design, so
+                # chain 2 gets a configurable allowance rather than one global threshold.
+                # hot_board is the board closest to its own limits.
+                hot_board = None
+                for i, ct in enumerate(chain_temps):
+                    warn_at = board_thresholds(wrn_thresh, i, "wrn", self.board_overrides)
+                    stop_at = board_thresholds(stop_thresh, i, "stop", self.board_overrides)
+                    margin = stop_at - ct["chip_max"]
+                    if hot_board is None or margin < hot_board["margin"]:
+                        hot_board = {"index": ct["index"], "chip_max": ct["chip_max"],
+                                     "warn_at": warn_at, "stop_at": stop_at, "margin": margin}
+                if hot_board:
+                    eff_max = hot_board["chip_max"]
+                    eff_wrn = hot_board["warn_at"]
+                    eff_stop = hot_board["stop_at"]
+                    board_label = f"Chain {hot_board['index']}"
+                else:
+                    eff_max, eff_wrn, eff_stop = chip_max, wrn_thresh, stop_thresh
+                    board_label = "All chains"
+
                 # 3. Dual Cutoff Protection Logic
-                is_over_wrn = (chip_max >= wrn_thresh)
-                is_over_stop = (chip_max >= stop_thresh)
+                is_over_wrn = (eff_max >= eff_wrn)
+                is_over_stop = (eff_max >= eff_stop)
 
                 with self.lock:
                     if self.cutoff_triggered:
@@ -866,7 +931,8 @@ class MonitorStateManager:
                                 f"🚨 <b>[AntMinerTab-Web 紧急急停断电告警]</b>\n\n"
                                 f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
                                 f"<b>级别</b>: <b>CRITICAL (达到急停温度 STOP TEMP)</b>\n"
-                                f"<b>芯片温度</b>: <b>{chip_max:.1f}°C</b> (急停阈值: {stop_thresh:.0f}°C)\n"
+                                f"<b>触发板号</b>: <b>{board_label}</b>\n"
+                                f"<b>芯片温度</b>: <b>{eff_max:.1f}°C</b> (该板急停阈值: {eff_stop:.0f}°C)\n"
                                 f"<b>水冷回路</b>: 进水 {inlet_t:.1f}°C | 出水 {outlet_t:.1f}°C (ΔT: +{delta_t:.1f}°C)\n"
                                 f"<b>动作执行</b>: 米家智能插座已立即<b>硬件切断电源</b>！\n"
                                 f"<b>保护机制</b>: 保护锁已死锁，<b>绝不自动恢复</b>，请现场检查水冷管路！\n"
@@ -883,7 +949,8 @@ class MonitorStateManager:
                                     f"⚠️ <b>[AntMinerTab-Web 超温持续超时断电告警]</b>\n\n"
                                     f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
                                     f"<b>级别</b>: <b>WARNING 超时关机 (WRN TEMP 维持超30秒)</b>\n"
-                                    f"<b>芯片最高温</b>: <b>{chip_max:.1f}°C</b> (预警阈值: {wrn_thresh:.0f}°C)\n"
+                                    f"<b>触发板号</b>: <b>{board_label}</b>\n"
+                                    f"<b>芯片最高温</b>: <b>{eff_max:.1f}°C</b> (该板预警阈值: {eff_wrn:.0f}°C)\n"
                                     f"<b>芯片平均温</b>: {chip_avg:.1f}°C\n"
                                     f"<b>水冷回路</b>: 进水 {inlet_t:.1f}°C | 出水 {outlet_t:.1f}°C (ΔT: +{delta_t:.1f}°C)\n"
                                     f"<b>动作执行</b>: 米家智能插座已执行<b>断电保护</b>！\n"
@@ -927,9 +994,14 @@ class MonitorStateManager:
                         )
                         send_telegram_async(recovery_msg)
 
-                    # Append to 1-Hour buffers
+                    # Append to the 4-Hour display buffers (throttled to one point per 10s).
+                    # Protection uses chip_max directly below, not these samples, so the
+                    # reduced chart resolution never delays a cutoff decision.
                     now_epoch = time.time()
-                    if inlet_t > 0 or outlet_t > 0 or chip_max > 0:
+                    due = (self._last_temp_sample is None or
+                           now_epoch - self._last_temp_sample >= self.temp_sample_seconds)
+                    if due and (inlet_t > 0 or outlet_t > 0 or chip_max > 0):
+                        self._last_temp_sample = now_epoch
                         self.time_buffer.append(now_epoch)
                         self.inlet_buffer.append(inlet_t)
                         self.outlet_buffer.append(outlet_t)
@@ -944,41 +1016,35 @@ class MonitorStateManager:
                             self.chip_max_buffer.popleft()
                             self.chip_avg_buffer.popleft()
 
+                    # Hashrate / share histogram buckets (fixed 30s, independent of the
+                    # temperature sampling rate so the bars line up on the time axis).
+                    # Only fed from real reads: the held-over "recovering" values would
+                    # otherwise re-count shares that were already in the previous bucket.
+                    if miner_fetch_success:
+                        self._update_share_buckets(now_epoch, rate_5s_ghs,
+                                                   total_accepted, total_rejected)
+
                     # 5. Safety Interlock 2: While running (plug is ON), if fan controller disconnects > 2min (120s), emergency power off!
-                    is_plug_on = plug_data.get("online", False) and plug_data.get("switch_on", False)
+                    # A failed poll is NOT proof that the plug is off: this socket's WiFi link
+                    # drops most packets, so "unreadable" must be treated as UNKNOWN, never as OFF.
+                    # plug_last_known_on / plug_unknown_since are maintained by _plug_poll_loop.
+                    plug_state_known = bool(plug_data.get("online", False))
+
+                    # Assume ON when we have never had a reading: keeps fans on the temp curve.
+                    is_plug_on = True if self.plug_last_known_on is None else self.plug_last_known_on
                     now_t = time.time()
-                    fan_connected = self.fan_driver.is_alive(timeout_sec=4.0)
 
-                    if is_plug_on:
-                        if fan_connected:
-                            self.fan_disconnect_start_time = None
-                            self.fan_disconnect_duration = 0.0
-                        else:
-                            if self.fan_disconnect_start_time is None:
-                                self.fan_disconnect_start_time = now_t
-                            self.fan_disconnect_duration = now_t - self.fan_disconnect_start_time
-
-                            # If fan lost > 120s (2 minutes), emergency shut down!
-                            if self.fan_disconnect_duration >= 120.0 and not self.cutoff_triggered:
-                                self.cutoff_triggered = True
-                                self.plug.set_switch(False)
-                                msg = (
-                                    f"🚨 <b>[AntMinerTab-Web 紧急风扇调速器失联断电告警]</b>\n\n"
-                                    f"<b>设备</b>: Antminer S19 Hydro ({self.miner_url})\n"
-                                    f"<b>级别</b>: <b>CRITICAL (风扇控速器通信中断超过 2 分钟)</b>\n"
-                                    f"<b>失联时长</b>: <b>{int(self.fan_disconnect_duration)} 秒</b>\n"
-                                    f"<b>芯片热点温度</b>: <b>{chip_max:.1f}°C</b>\n"
-                                    f"<b>动作执行</b>: 为防止水冷排无风散热导致矿机烧损，米家智能插座已立即<b>硬件切断电源</b>！\n"
-                                    f"<b>保护机制</b>: 保护锁已死锁，<b>绝不自动恢复</b>，请检查 CoolerHD 调速器串口连接！\n"
-                                    f"<b>时间</b>: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-                                )
-                                send_telegram_async(msg)
-                    else:
-                        self.fan_disconnect_start_time = None
-                        self.fan_disconnect_duration = 0.0
+                    # No fan-disconnect interlock by design: losing the fan controller always
+                    # shows up as rising chip temperature, which the WRN/STOP thresholds already
+                    # handle. A second, time-based cutoff only caused false power-offs on hosts
+                    # where no fan controller is attached at all.
 
                     # 6. Smart Plug Off & 5-minute Auto-Idle (600 RPM) Fan Control
-                    if not is_plug_on:
+                    # Only a *confirmed* OFF reading may start the idle countdown. If the plug
+                    # is unreadable we keep spinning the fans on the temperature curve instead
+                    # of gambling that the miner has no power.
+                    plug_confirmed_off = plug_state_known and not is_plug_on
+                    if plug_confirmed_off:
                         if self.plug_off_timestamp is None:
                             self.plug_off_timestamp = now_t
                         self.plug_off_duration = now_t - self.plug_off_timestamp
@@ -991,7 +1057,7 @@ class MonitorStateManager:
                     auto_target_rpm = 600
                     display_fan_mode = self.fan_control_mode
 
-                    if not is_plug_on and self.plug_off_duration >= 300.0:
+                    if plug_confirmed_off and self.plug_off_duration >= 300.0:
                         # 插座断电已达 5 分钟：强制调整至最低转速 (600 RPM) 怠速静音
                         auto_target_rpm = 600
                         display_fan_mode = "IDLE_600"
@@ -1001,7 +1067,7 @@ class MonitorStateManager:
                                 self.last_auto_fan_rpm = auto_target_rpm
                                 self.last_auto_fan_time = now_t
                                 self.fan_driver.set_speed("ALL", auto_target_rpm)
-                    elif not is_plug_on:
+                    elif plug_confirmed_off:
                         # 插座关闭未满 5 分钟：保持吹风排走余热
                         display_fan_mode = "COOLDOWN_5M"
                         if chip_max > self.fan_start_temp:
@@ -1066,18 +1132,27 @@ class MonitorStateManager:
                         "chip_avg": chip_avg,
                         "pcb_temps": temp_pcb,
                         "chip_temps": temp_chip,
+                        "chains": [
+                            {"index": ct["index"], "chip_max": ct["chip_max"], "chip_avg": ct["chip_avg"],
+                             "warn_at": board_thresholds(wrn_thresh, i, "wrn", self.board_overrides),
+                             "stop_at": board_thresholds(stop_thresh, i, "stop", self.board_overrides)}
+                            for i, ct in enumerate(chain_temps)
+                        ],
+                        "hot_board": ({k: v for k, v in hot_board.items() if k != "margin"} if hot_board else None),
                         "plug": plug_data,
+                        "plug_state_known": plug_state_known,
+                        "plug_unknown_seconds": round(now_t - self.plug_unknown_since, 1) if self.plug_unknown_since else 0.0,
                         "plug_off_duration": round(self.plug_off_duration, 1),
                         "fan_mode": display_fan_mode,
                         "fan_control_mode": self.fan_control_mode,
                         "manual_target_rpm": self.manual_target_rpm,
-                        "fan_disconnect_duration": round(self.fan_disconnect_duration, 1),
                         "fans": self.fan_driver.get_status(),
                         "fan_start_temp": self.fan_start_temp,
                         "fan_max_temp": self.fan_max_temp,
                         "auto_fan_rpm": auto_target_rpm,
                         "wrn_temp": self.wrn_temp,
                         "stop_temp": self.stop_temp,
+                        "board_thresholds": self.board_overrides,
                         "interval": self.interval,
                         "paused": self.paused,
                         "cutoff_triggered": self.cutoff_triggered,
@@ -1105,7 +1180,6 @@ class MonitorStateManager:
             data["fan_mode"] = self.latest_data.get("fan_mode", "AUTO")
             data["fan_control_mode"] = self.fan_control_mode
             data["manual_target_rpm"] = self.manual_target_rpm
-            data["fan_disconnect_duration"] = self.latest_data.get("fan_disconnect_duration", 0.0)
             data["plug_off_duration"] = self.latest_data.get("plug_off_duration", 0.0)
             data["curves"] = {
                 "x": list(self.time_buffer),
@@ -1113,7 +1187,16 @@ class MonitorStateManager:
                 "outlet": list(self.outlet_buffer),
                 "chip_max": list(self.chip_max_buffer),
                 "chip_avg": list(self.chip_avg_buffer),
+                # 30s buckets for the hashrate line and the share histogram.
+                "buckets": {
+                    "t": [b["t"] for b in self.share_buckets],
+                    "accepted": [b["accepted"] for b in self.share_buckets],
+                    "rejected": [b["rejected"] for b in self.share_buckets],
+                    "hashrate": [b["hashrate"] for b in self.share_buckets],
+                },
             }
+            data["window_seconds"] = self.window_seconds
+            data["bucket_seconds"] = self.bucket_seconds
             return data
 
 
@@ -1261,10 +1344,15 @@ HTML_PAGE = """<!DOCTYPE html>
   .main-grid {
     flex: 1;
     display: grid;
-    grid-template-columns: 6.3fr 3.7fr;
+    /* Weighted toward the chart: the sensor column only needs enough width for a
+       short label, a thin track and a temperature readout. */
+    grid-template-columns: 7.4fr 2.6fr;
     gap: 10px;
     min-height: 380px;
     height: 100%;
+  }
+  @media (max-width: 1200px) {
+    .main-grid { grid-template-columns: 6.6fr 3.4fr; }
   }
   @media (max-width: 900px) {
     .main-grid { grid-template-columns: 1fr; height: auto; }
@@ -1363,24 +1451,24 @@ HTML_PAGE = """<!DOCTYPE html>
   .sensor-bar-row {
     display: flex;
     align-items: center;
-    height: 22px;
-    font-size: 11px;
+    height: 18px;
+    font-size: 10px;
     font-weight: bold;
   }
-  .bar-label { width: 55px; color: #ffffff; }
+  .bar-label { width: 44px; color: #ffffff; }
   .bar-track {
     flex: 1;
-    height: 8px;
+    height: 6px;
     background: #252830;
     position: relative;
-    margin: 0 8px;
+    margin: 0 6px;
   }
   .bar-fill {
     height: 100%;
     width: 0%;
     background: #00c49f;
   }
-  .bar-val { width: 50px; text-align: right; }
+  .bar-val { width: 44px; text-align: right; }
   /* Footer */
   .footer {
     display: flex;
@@ -1442,7 +1530,7 @@ HTML_PAGE = """<!DOCTYPE html>
   <span class="badge" id="statusBadge">[ CONNECTING... ]</span>
   <div class="controls">
     <span>Interval:</span>
-    <input type="number" id="intervalInput" min="0.5" max="60" step="0.5" value="1.0">
+    <input type="number" id="intervalInput" min="0.5" max="2" step="0.5" value="1.0" title="采样/保护判定周期。上限 2s 是硬性限制：超过它，STOP 急停的响应延迟会变得不可接受。">
     <button id="pauseBtn">Pause</button>
     <button id="clearChartBtn">Clear Chart</button>
   </div>
@@ -1479,11 +1567,20 @@ HTML_PAGE = """<!DOCTYPE html>
 
 <!-- Main Section (Flexible Height) -->
 <div class="main-grid">
-  <!-- Left Panel: Responsive 1-Hour Canvas Plot -->
+  <!-- Left Panel: Responsive 4-Hour Canvas Plot -->
   <div class="panel">
     <div class="panel-header">
       <div>
-        <span style="color:#868c9c">TEMPERATURE DYNAMICS</span>
+        <span style="color:#868c9c">TEMPERATURE / HASHRATE / SHARES</span>
+        <span id="chartLegend" style="font-size:10px; font-weight:normal; margin-left:10px;">
+          <span style="color:#00a8e8">■ IN</span>
+          <span style="color:#f4a261; margin-left:6px">■ OUT</span>
+          <span style="color:#e76f51; margin-left:6px">■ CHIP MAX</span>
+          <span style="color:#e67e22; margin-left:6px">■ CHIP AVG</span>
+          <span style="color:#7aa2d4; margin-left:6px">■ HASH</span>
+          <span style="color:#00c49f; margin-left:8px">▮ ACC</span>
+          <span style="color:#e76f51; margin-left:4px">▮ REJ</span>
+        </span>
         <span class="zoom-hint" id="zoomHint">(Scroll to zoom, drag to pan, dblclick to reset)</span>
       </div>
       <span class="water-banner" id="waterBanner">Inlet: --.-°C | Outlet: --.-°C (ΔT: --.-°C)</span>
@@ -1495,32 +1592,35 @@ HTML_PAGE = """<!DOCTYPE html>
 
   <!-- Right Panel: Dual Thresholds & Sensor Gauges -->
   <div class="panel">
-    <div class="panel-header">
-      <span style="color:#868c9c">BOARD SENSORS (#1)</span>
-    </div>
-
-    <!-- Threshold Inputs (Fan Start & Fan Max on the left of WRN & STOP) -->
+    <!-- Fan curve inputs. These only modulate fan speed; they never cut power. -->
     <div class="thresh-row" style="flex-wrap: wrap; row-gap: 6px;">
       <span title="风扇起转 600 RPM 温度 (以芯片热点最高温为对象)" style="color:#00c49f;">FAN 600:</span>
       <input type="number" id="fanStartSpin" min="30" max="80" step="1" value="50" style="width:50px;"> °C
       <span title="风扇最大 2400 RPM 温度 (以芯片热点最高温为对象)" style="margin-left:6px; color:#00c49f;">FAN 2400:</span>
       <input type="number" id="fanMaxSpin" min="40" max="90" step="1" value="70" style="width:50px;"> °C
-      <span title="持续超温预警断电保护温度" style="margin-left:8px;">WRN:</span>
-      <input type="number" id="wrnSpin" min="40" max="90" step="1" value="75" style="width:50px;"> °C
-      <span title="即刻急停断电保护温度" style="margin-left:6px;">STOP:</span>
-      <input type="number" id="stopSpin" min="45" max="95" step="1" value="78" style="width:50px;"> °C
+    </div>
+
+    <!-- Per-board power-cutoff limits. Chain 2 runs hotter by design, so each board
+         carries its own WRN/STOP pair. Blank means "use the built-in default". -->
+    <div class="thresh-row" style="row-gap: 6px; border-top:1px dashed #2d313b; padding-top:5px;">
+      <span style="color:#f4a261; width:44px;" title="Chain1 预警温度：持续 30s 超温则断电，留空=默认 75">CH1 WRN:</span>
+      <input type="number" id="b1WrnSpin" min="40" max="110" step="1" placeholder="auto" style="width:52px;">
+      <span style="color:#f4a261;" title="Chain1 急停温度：即刻断电，留空=默认 78">STOP:</span>
+      <input type="number" id="b1StopSpin" min="45" max="115" step="1" placeholder="auto" style="width:52px;">
+    </div>
+    <div class="thresh-row" style="row-gap: 6px;">
+      <span style="color:#e67e22; width:44px;" title="Chain2 预警温度：相对 Chain1 自动 +10，留空=默认 85">CH2 WRN:</span>
+      <input type="number" id="b2WrnSpin" min="40" max="110" step="1" placeholder="auto" style="width:52px;">
+      <span style="color:#e67e22;" title="Chain2 急停温度：相对 Chain1 自动 +10，留空=默认 88">STOP:</span>
+      <input type="number" id="b2StopSpin" min="45" max="115" step="1" placeholder="auto" style="width:52px;">
     </div>
 
     <div class="alert-banner" id="alertBanner"></div>
     <button class="btn-reset-lock" id="resetLockBtn">RESET PROTECTION LOCK</button>
 
-    <!-- PCB Sensors -->
-    <div class="sec-title" style="color:#00a8e8">PCB Surface Sensors</div>
-    <div id="pcbBarsContainer"></div>
-
-    <!-- Chip Die Sensors -->
-    <div class="sec-title" style="color:#f4a261; margin-top:6px">Chip Die Core Sensors</div>
-    <div id="chipBarsContainer"></div>
+    <!-- Per-Board Chip Die Sensors (this miner has 2 hash boards) -->
+    <div class="sec-title" style="color:#f4a261; margin-top:6px">Chip Die Core Sensors (per board)</div>
+    <div id="chainBarsContainer"></div>
 
     <!-- 12025 Fan Controller (CoolerHD) -->
     <div class="sec-title" style="color:#00c49f; margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
@@ -1551,7 +1651,6 @@ HTML_PAGE = """<!DOCTYPE html>
     </div>
 
     <!-- Fan Safety Warning Banner (Displayed when fan disconnected while running or attempting to start) -->
-    <div id="fanSafetyBanner" style="display:none; padding:4px 6px; margin-bottom:6px; font-size:10px; font-weight:bold; background:#3b171c; border:1px solid #e76f51; color:#e76f51;"></div>
 
     <div id="fanBarsContainer"></div>
 
@@ -1609,9 +1708,12 @@ HTML_PAGE = """<!DOCTYPE html>
 <script>
   let isPaused = false;
   let currentPlugState = false;
-  let currentFanConnected = false;
+  let plugStateKnown = false;
+  let currentBoardThresholds = [];
+  let boardThresholdsDirty = false;
   let currentFanMode = "AUTO";
-  let curvesData = { x: [], inlet: [], outlet: [], chip_max: [], chip_avg: [] };
+  let curvesData = { x: [], inlet: [], outlet: [], chip_max: [], chip_avg: [], buckets: { t: [], accepted: [], rejected: [], hashrate: [] } };
+  let vBucketSeconds = 30;  // Width of one share/hashrate bucket, as reported by the server
   let currentServerNow = Date.now() / 1000;
 
   function formatClock(epochSec, withSec = false) {
@@ -1627,32 +1729,33 @@ HTML_PAGE = """<!DOCTYPE html>
   }
 
   // Responsive Zoom & Pan Viewport state
-  let viewSpan = 3600;    // Visible time span in seconds (Default 1 hour)
-  let viewOffset = 0;     // Shift right edge away from current time (Default 0 = now)
+  const WINDOW_SECONDS = 14400;   // Full history window: 4 hours
+  let viewSpan = WINDOW_SECONDS;  // Visible time span in seconds (Default 4 hours)
+  let viewOffset = 0;             // Shift right edge away from current time (Default 0 = now)
   let hoverX = null;
   let lastMouseMoveTime = 0;
   let isDragging = false;
   let dragStartX = 0;
   let dragStartOffset = 0;
 
-  // Initialize Bars
-  const pcbContainer = document.getElementById("pcbBarsContainer");
-  const chipContainer = document.getElementById("chipBarsContainer");
+  // Initialize Bars (6 chip sensors per hash board)
+  const chainContainer = document.getElementById("chainBarsContainer");
   const fanContainer = document.getElementById("fanBarsContainer");
 
+  for (let b = 1; b <= 2; b++) {
+    chainContainer.innerHTML += `
+      <div style="font-size:10px; color:#868c9c; margin:6px 0 2px 0;">CHAIN ${b} — <span id="chainThr${b}">--</span> <span id="chainMax${b}" style="font-weight:bold;">--.-°C</span></div>`;
+    for (let i = 1; i <= 6; i++) {
+      const key = (b - 1) * 6 + i;
+      chainContainer.innerHTML += `
+      <div class="sensor-bar-row">
+        <span class="bar-label">C${key}</span>
+        <div class="bar-track"><div class="bar-fill" id="chipFill${key}"></div></div>
+        <span class="bar-val" id="chipVal${key}">--.-°C</span>
+      </div>`;
+    }
+  }
   for (let i = 1; i <= 6; i++) {
-    pcbContainer.innerHTML += `
-      <div class="sensor-bar-row">
-        <span class="bar-label">PCB-${i}</span>
-        <div class="bar-track"><div class="bar-fill" id="pcbFill${i}"></div></div>
-        <span class="bar-val" id="pcbVal${i}">--.-°C</span>
-      </div>`;
-    chipContainer.innerHTML += `
-      <div class="sensor-bar-row">
-        <span class="bar-label">Chip-${i}</span>
-        <div class="bar-track"><div class="bar-fill" id="chipFill${i}"></div></div>
-        <span class="bar-val" id="chipVal${i}">--.-°C</span>
-      </div>`;
     fanContainer.innerHTML += `
       <div class="sensor-bar-row">
         <span class="bar-label">Fan-${i}</span>
@@ -1717,11 +1820,14 @@ HTML_PAGE = """<!DOCTYPE html>
     document.getElementById("valRejectRatio").innerText = `Ratio: ${d.reject_ratio.toFixed(2)} %`;
 
     // Plug Card
+    // "Not answered" is not the same as "turned off": this plug drops most packets, so an
+    // offline reading must not be rendered as a confirmed OFF state.
     const pBtn = document.getElementById("plugSwitchBtn");
-    if (d.plug && d.plug.online) {
+    if (d.plug && d.plug.online && d.plug.state_confirmed) {
       document.getElementById("valPlugPower").innerText = `${Math.round(d.plug.power_w)} W`;
       document.getElementById("valPlugLoad").innerText = `Load: ${(d.plug.power_w/1000).toFixed(2)} kW`;
       currentPlugState = d.plug.switch_on;
+      plugStateKnown = true;
       if (d.plug.switch_on) {
         pBtn.className = "btn-switch-on";
         pBtn.innerText = "ON";
@@ -1732,10 +1838,12 @@ HTML_PAGE = """<!DOCTYPE html>
         document.getElementById("valPlugTemp").innerText = `Power Cut Off`;
       }
     } else {
-      document.getElementById("valPlugPower").innerText = "OFFLINE";
+      plugStateKnown = false;
+      document.getElementById("valPlugPower").innerText = "LINK LOST";
+      document.getElementById("valPlugLoad").innerText = "miIO no reply (retrying)";
       pBtn.className = "btn-switch-off";
-      pBtn.innerText = "OFFLINE";
-      currentPlugState = false;
+      pBtn.innerText = "UNKNOWN";
+      document.getElementById("valPlugTemp").innerText = "State not confirmed";
     }
 
     // 3. Water Banner
@@ -1755,7 +1863,11 @@ HTML_PAGE = """<!DOCTYPE html>
       rstBtn.style.display = "block";
     } else if (d.overheat_wrn_seconds > 0) {
       const rem = Math.max(0, 30 - d.overheat_wrn_seconds);
-      alertBox.innerText = `WRN TEMP: ${d.chip_max.toFixed(1)}°C >= ${d.wrn_temp}°C! Cutoff in ${rem}s`;
+      const hot = d.hot_board || {};
+      const hotLabel = hot.index !== undefined ? `CHAIN ${hot.index} ` : "";
+      const hotTemp = hot.chip_max !== undefined ? hot.chip_max : d.chip_max;
+      const hotWrn = hot.warn_at !== undefined ? hot.warn_at : d.wrn_temp;
+      alertBox.innerText = `WRN TEMP: ${hotLabel}${hotTemp.toFixed(1)}°C >= ${hotWrn}°C! Cutoff in ${rem}s`;
       alertBox.style.display = "block";
       rstBtn.style.display = "none";
     } else {
@@ -1775,14 +1887,18 @@ HTML_PAGE = """<!DOCTYPE html>
       fanMaxInput.value = d.fan_max_temp;
     }
 
-    const wrnInput = document.getElementById("wrnSpin");
-    if (document.activeElement !== wrnInput && d.wrn_temp !== undefined) {
-      wrnInput.value = d.wrn_temp;
-    }
-
-    const stopInput = document.getElementById("stopSpin");
-    if (document.activeElement !== stopInput && d.stop_temp !== undefined) {
-      stopInput.value = d.stop_temp;
+    // Per-board power-cutoff limits. Blank means "use the automatic value" (base / base+offset).
+    const bt = d.board_thresholds || [];
+    ["b1WrnSpin", "b1StopSpin", "b2WrnSpin", "b2StopSpin"].forEach((id, idx) => {
+      const el = document.getElementById(id);
+      if (!el || document.activeElement === el) return;
+      const boardIdx = Math.floor(idx / 2);
+      const key = idx % 2 === 0 ? "wrn" : "stop";
+      const v = (bt[boardIdx] || {})[key];
+      el.value = (v === null || v === undefined) ? "" : v;
+    });
+    if (d.board_thresholds !== undefined && !boardThresholdsDirty) {
+      currentBoardThresholds = d.board_thresholds || [];
     }
 
     const intervalInput = document.getElementById("intervalInput");
@@ -1796,19 +1912,34 @@ HTML_PAGE = """<!DOCTYPE html>
       pauseBtn.innerText = isPaused ? "Resume" : "Pause";
     }
 
-    // 6. Sensor Bars
-    const wrn = d.wrn_temp;
-    for (let i = 0; i < 6; i++) {
-      const pVal = d.pcb_temps[i] || 0;
-      const cVal = d.chip_temps[i] || 0;
-
-      updateBar("pcb", i + 1, pVal, 80, wrn);
-      updateBar("chip", i + 1, cVal, 85, wrn);
+    // 6. Per-board sensor bars. Each board has its own thresholds, so the bar is coloured
+    // against that board's WRN/STOP rather than a single global value.
+    const chains = d.chains || [];
+    for (let b = 0; b < 2; b++) {
+      const c = chains[b];
+      const thr = document.getElementById(`chainThr${b + 1}`);
+      const mx = document.getElementById(`chainMax${b + 1}`);
+      if (c) {
+        if (thr) thr.innerText = `WRN ${c.warn_at}° / STOP ${c.stop_at}°`;
+        if (mx) {
+          mx.innerText = `max ${c.chip_max.toFixed(1)}°C`;
+          mx.style.color = c.chip_max >= c.stop_at ? "#e76f51"
+                          : (c.chip_max >= c.warn_at ? "#f4a261" : "#00c49f");
+        }
+      } else {
+        if (thr) thr.innerText = "no data";
+        if (mx) mx.innerText = "--.-°C";
+      }
+      const boardChip = (c && c.chip_max) ? c.chip_max : 0;
+      const boardWrn = c ? c.warn_at : d.wrn_temp;
+      for (let i = 0; i < 6; i++) {
+        const idx = b * 6 + i;
+        updateBar("chip", idx + 1, d.chip_temps[idx] || 0, 85, boardWrn);
+      }
     }
 
     // 7. CoolerHD 12025 Fan Speeds & Control State
     if (d.fans) {
-      currentFanConnected = Boolean(d.fans.connected);
 
       const fanBadge = document.getElementById("fanPortBadge");
       if (fanBadge) {
@@ -1863,22 +1994,6 @@ HTML_PAGE = """<!DOCTYPE html>
         }
       }
 
-      // Fan Disconnection Safety Alarm Banner
-      const safetyBanner = document.getElementById("fanSafetyBanner");
-      if (safetyBanner) {
-        if (d.plug && d.plug.switch_on && (!d.fans.connected || d.fan_disconnect_duration > 0)) {
-          const dur = d.fan_disconnect_duration || 0;
-          const rem = Math.max(0, Math.round(120 - dur));
-          safetyBanner.style.display = "block";
-          safetyBanner.innerText = `🚨 警告: 风扇控速器通信中断 (${Math.round(dur)}s / 120s)! 矿机运行中失联满 2 分钟将紧急断电! (剩余 ${rem}s)`;
-        } else if (!d.fans.connected) {
-          safetyBanner.style.display = "block";
-          safetyBanner.innerText = "🔒 安全锁定: 风扇控速器未连接！建立连接前严禁启动矿机电源。";
-        } else {
-          safetyBanner.style.display = "none";
-        }
-      }
-
       const rpms = d.fans.rpms || [];
       for (let i = 0; i < 6; i++) {
         const rVal = rpms[i] !== undefined ? rpms[i] : 0;
@@ -1908,6 +2023,7 @@ HTML_PAGE = """<!DOCTYPE html>
     // 8. Curves data
     if (d.curves) {
       curvesData = d.curves;
+      if (d.bucket_seconds) vBucketSeconds = d.bucket_seconds;
       drawCanvasPlot();
     }
   }
@@ -1951,6 +2067,10 @@ HTML_PAGE = """<!DOCTYPE html>
   const canvas = document.getElementById("plotCanvas");
   const ctx = canvas.getContext("2d");
   const wrapper = document.getElementById("plotWrapper");
+  // Right padding is wider than the left because the hashrate curve carries its own
+  // right-hand GH/s axis, keeping it independent of the temperature scale.
+  const CHART_PAD_L = 42;
+  const CHART_PAD_R = 54;
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -1977,10 +2097,18 @@ HTML_PAGE = """<!DOCTYPE html>
 
     ctx.clearRect(0, 0, w, h);
 
-    const padL = 42, padR = 15, padT = 16, padB = 24;
+    const padL = CHART_PAD_L, padR = CHART_PAD_R, padT = 16, padB = 24;
     const plotW = w - padL - padR;
     const plotH = h - padT - padB;
     if (plotW <= 0 || plotH <= 0) return;
+
+    // The share histogram owns a short band sitting on the x-axis; the temperature and
+    // hashrate curves get their own area above it, so the bars never cover the curves.
+    const histH = Math.max(26, Math.min(44, Math.round(plotH * 0.15)));
+    const chartBottom = padT + plotH;
+    const histTop = chartBottom - histH;
+    const tempBottom = histTop - 6;
+    const tempH = Math.max(20, tempBottom - padT);
 
     // Viewport Time Bounds (Epoch Timestamps)
     const viewRight = currentServerNow - viewOffset;
@@ -1988,11 +2116,11 @@ HTML_PAGE = """<!DOCTYPE html>
 
     // Update zoom hint
     const hint = document.getElementById("zoomHint");
-    if (viewSpan < 3550 || viewOffset > 10) {
-      hint.innerText = `[ Zoom: ${(3600/viewSpan).toFixed(1)}x | Span: ${Math.round(viewSpan/60)}m | DblClick to reset ]`;
+    if (viewSpan < WINDOW_SECONDS - 50 || viewOffset > 10) {
+      hint.innerText = `[ Zoom: ${(WINDOW_SECONDS/viewSpan).toFixed(1)}x | Span: ${Math.round(viewSpan/60)}m | DblClick to reset ]`;
       hint.style.color = "#ffd166";
     } else {
-      hint.innerText = `(Scroll to zoom, drag to pan, dblclick to reset)`;
+      hint.innerText = `(Scroll to zoom, drag to pan, dblclick to reset | ${WINDOW_SECONDS/3600}h window)`;
       hint.style.color = "#868c9c";
     }
 
@@ -2024,7 +2152,7 @@ HTML_PAGE = """<!DOCTYPE html>
       }
     }
 
-    // Grid & Y Ticks
+    // Grid & Y Ticks (temperature scale, applies to the curve area only)
     ctx.strokeStyle = "#242731";
     ctx.lineWidth = 1;
     ctx.fillStyle = "#868c9c";
@@ -2035,7 +2163,7 @@ HTML_PAGE = """<!DOCTYPE html>
     const yStep = (maxY - minY) / 4;
     for (let i = 0; i <= 4; i++) {
       const yVal = minY + yStep * i;
-      const py = padT + plotH - (plotH * (yVal - minY) / (maxY - minY));
+      const py = tempBottom - (tempH * (yVal - minY) / (maxY - minY));
       ctx.beginPath();
       ctx.moveTo(padL, py);
       ctx.lineTo(padL + plotW, py);
@@ -2043,25 +2171,51 @@ HTML_PAGE = """<!DOCTYPE html>
       ctx.fillText(`${yVal.toFixed(0)}°`, padL - 6, py);
     }
 
+    // Hashrate scale (right-hand axis). It is computed independently of the temperature
+    // range so a 67 TH/s rig and a 40-80°C chart can share one plot.
+    const buckets = (curvesData.buckets) || { t: [], accepted: [], rejected: [], hashrate: [] };
+    const bn = buckets.t ? buckets.t.length : 0;
+    let rateMax = 0;
+    for (let i = 0; i < bn; i++) {
+      const t = buckets.t[i];
+      if (t >= viewLeft && t <= viewRight && buckets.hashrate[i] > rateMax) rateMax = buckets.hashrate[i];
+    }
+    rateMax = rateMax > 0 ? rateMax * 1.15 : 100000;
+
+    if (bn > 0) {
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#6f8fb5";
+      for (let i = 0; i <= 4; i++) {
+        const py = tempBottom - (tempH * i / 4);
+        const gh = rateMax * i / 4;
+        ctx.fillText(gh >= 1000 ? `${(gh/1000).toFixed(1)}T` : `${Math.round(gh)}`, padL + plotW + 6, py);
+      }
+    }
+
     // Dynamic X Grid & Ticks (Local Wall-Clock Time: HH:MM / HH:MM:SS)
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
 
-    const tickCount = 5;
+    const tickCount = viewSpan >= 7200 ? 8 : 5;
     const tickStepSec = viewSpan / tickCount;
     const needSec = (viewSpan <= 300); // 视口跨度 <= 5分钟时显示秒
     for (let i = 0; i <= tickCount; i++) {
       const curEpoch = viewLeft + tickStepSec * i;
       const px = padL + plotW * ((curEpoch - viewLeft) / viewSpan);
 
+      ctx.strokeStyle = "#242731";
       ctx.beginPath();
       ctx.moveTo(px, padT);
-      ctx.lineTo(px, padT + plotH);
+      ctx.lineTo(px, chartBottom);
       ctx.stroke();
 
       const lbl = formatClock(curEpoch, needSec);
-      ctx.fillText(lbl, px, padT + plotH + 6);
+      ctx.fillStyle = "#868c9c";
+      ctx.fillText(lbl, px, chartBottom + 6);
     }
+
+    // Hashrate / share histogram band (sits on the x-axis, below the curves)
+    drawShareHistogram(buckets, viewLeft, viewRight);
 
     // Outer Plot Border
     ctx.strokeStyle = "#2d313b";
@@ -2072,15 +2226,18 @@ HTML_PAGE = """<!DOCTYPE html>
       return padL + plotW * ((sec - viewLeft) / viewSpan);
     }
     function getY(temp) {
-      return padT + plotH - (plotH * Math.min(1.0, Math.max(0.0, (temp - minY) / (maxY - minY))));
+      return tempBottom - (tempH * Math.min(1.0, Math.max(0.0, (temp - minY) / (maxY - minY))));
+    }
+    function getRateY(ghs) {
+      return tempBottom - (tempH * Math.min(1.0, Math.max(0.0, ghs / rateMax)));
     }
 
-    // Draw 4 Smooth Curves
+    // Draw 4 Temperature Curves + the Hashrate Curve
     if (n > 0) {
       ctx.save();
-      // Clip to plot area so lines don't bleed outside during zoom/pan
+      // Clip to the curve area so lines don't bleed into the histogram band during zoom/pan
       ctx.beginPath();
-      ctx.rect(padL, padT, plotW, plotH);
+      ctx.rect(padL, padT, plotW, tempH);
       ctx.clip();
 
       drawCurve(curvesData.inlet, "#00a8e8", 2.0);
@@ -2091,6 +2248,35 @@ HTML_PAGE = """<!DOCTYPE html>
       ctx.restore();
     }
 
+    // Hashrate curve uses the right-hand axis, so it is drawn un-clipped against its own
+    // scale. It spans the bucket series (30s resolution) rather than the 1s temperature
+    // series, which keeps the line light across a 4-hour window.
+    if (bn > 1) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(padL, padT, plotW, tempH);
+      ctx.clip();
+      ctx.strokeStyle = "#7aa2d4";
+      ctx.lineWidth = 1.6;
+      ctx.globalAlpha = 0.9;
+      ctx.beginPath();
+      let started = false;
+      for (let i = 0; i < bn; i++) {
+        const t = buckets.t[i];
+        if (t < viewLeft - 60 || t > viewRight + 60) continue;
+        const px = getX(t);
+        const py = getRateY(buckets.hashrate[i] || 0);
+        if (!started || (i > 0 && Math.abs(buckets.t[i] - buckets.t[i - 1]) > 90)) {
+          ctx.moveTo(px, py);
+          started = true;
+        } else {
+          ctx.lineTo(px, py);
+        }
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
     function drawCurve(series, color, lineWidth, isDash = false) {
       ctx.save();
       ctx.strokeStyle = color;
@@ -2098,7 +2284,9 @@ HTML_PAGE = """<!DOCTYPE html>
       if (isDash) ctx.setLineDash([4, 3]);
       ctx.beginPath();
       let started = false;
-      const maxGapSec = 15; // 采样时间差 > 15s 视为停机空档，断开连线！
+      // Points arrive every 10s (server-throttled). A gap well past that means the miner
+      // was actually offline, so the line breaks instead of drawing a false straight段.
+      const maxGapSec = 25;
       for (let i = 0; i < n; i++) {
         const tx = curvesData.x[i];
         if (tx < viewLeft - 30 || tx > viewRight + 30) continue;
@@ -2113,6 +2301,64 @@ HTML_PAGE = """<!DOCTYPE html>
       }
       ctx.stroke();
       ctx.restore();
+    }
+
+    // Share histogram: one bar per 30s bucket, green = accepted, red = rejected stacked on
+    // top. Bars are sized to the bucket's pixel width so neighbouring bars touch instead of
+    // leaving gaps, and the whole band is short enough not to cover the temperature curves.
+    function drawShareHistogram(bk, vl, vr) {
+      if (!bk.t || bk.t.length === 0) return;
+
+      const barSec = vBucketSeconds || 30;
+      const barW = (barSec / viewSpan) * plotW;
+
+      let peak = 0;
+      for (let i = 0; i < bk.t.length; i++) {
+        const t = bk.t[i];
+        if (t < vl - barSec || t > vr) continue;
+        const tot = (bk.accepted[i] || 0) + (bk.rejected[i] || 0);
+        if (tot > peak) peak = tot;
+      }
+      // Round the ceiling up so the tallest bar never touches the band's top edge.
+      peak = peak > 0 ? peak * 1.2 : 1;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(padL, histTop, plotW, histH);
+      ctx.clip();
+
+      for (let i = 0; i < bk.t.length; i++) {
+        const t = bk.t[i];
+        if (t < vl - barSec || t > vr) continue;
+        const acc = bk.accepted[i] || 0;
+        const rej = bk.rejected[i] || 0;
+        if (acc + rej <= 0) continue;
+
+        // Left edge of the bucket, so consecutive buckets produce touching bars.
+        const px = getX(t);
+        const w = Math.max(1, barW + 0.5);  // +0.5 removes hairline seams from antialiasing
+        const accH = histH * (acc / peak);
+        const rejH = histH * (rej / peak);
+
+        if (accH > 0) {
+          ctx.fillStyle = "rgba(0, 196, 159, 0.78)";
+          ctx.fillRect(px, histTop + histH - accH, w, accH);
+        }
+        if (rejH > 0) {
+          ctx.fillStyle = "rgba(231, 111, 81, 0.88)";
+          ctx.fillRect(px, histTop + histH - accH - rejH, w, rejH);
+        }
+      }
+      ctx.restore();
+
+      // Band baseline only. The colour key lives in the panel header legend, so nothing
+      // is drawn over the bars themselves.
+      ctx.strokeStyle = "#2d313b";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, histTop);
+      ctx.lineTo(padL + plotW, histTop);
+      ctx.stroke();
     }
 
     // Interactive Hover Crosshairs & Top-Right Badges
@@ -2137,7 +2383,7 @@ HTML_PAGE = """<!DOCTYPE html>
         ctx.setLineDash([3, 3]);
         ctx.beginPath();
         ctx.moveTo(snapPx, padT);
-        ctx.lineTo(snapPx, padT + plotH);
+        ctx.lineTo(snapPx, chartBottom);
         ctx.stroke();
         ctx.restore();
 
@@ -2149,9 +2395,25 @@ HTML_PAGE = """<!DOCTYPE html>
           { val: curvesData.chip_avg[closestIdx], col: "#e67e22" },
         ];
 
+        // Nearest 30s bucket, for the hashrate value and the share counts on the banner.
+        let bi = -1;
+        if (bn > 0) {
+          let bestDiff = Infinity;
+          for (let i = 0; i < bn; i++) {
+            const diff = Math.abs(buckets.t[i] - cursorSec);
+            if (diff < bestDiff) { bestDiff = diff; bi = i; }
+          }
+          if (bestDiff > vBucketSeconds * 2) bi = -1;
+        }
+
         // Top Banner shows authentic wall-clock time
         const snapClock = formatClock(curvesData.x[closestIdx], true);
-        document.getElementById("waterBanner").innerText = `[${snapClock}] In:${curvesData.inlet[closestIdx].toFixed(1)}°C | Out:${curvesData.outlet[closestIdx].toFixed(1)}°C | ChipMax:${curvesData.chip_max[closestIdx].toFixed(1)}°C | ChipAvg:${curvesData.chip_avg[closestIdx].toFixed(1)}°C`;
+        let banner = `[${snapClock}] In:${curvesData.inlet[closestIdx].toFixed(1)}°C | Out:${curvesData.outlet[closestIdx].toFixed(1)}°C | ChipMax:${curvesData.chip_max[closestIdx].toFixed(1)}°C | ChipAvg:${curvesData.chip_avg[closestIdx].toFixed(1)}°C`;
+        if (bi >= 0) {
+          const gh = buckets.hashrate[bi] || 0;
+          banner += ` | Hash:${gh.toFixed(1)} GH/s | ACC:${buckets.accepted[bi] || 0} REJ:${buckets.rejected[bi] || 0}`;
+        }
+        document.getElementById("waterBanner").innerText = banner;
 
         items.forEach(item => {
           if (!item.val) return;
@@ -2199,9 +2461,9 @@ HTML_PAGE = """<!DOCTYPE html>
 
     if (isDragging) {
       const dx = e.clientX - dragStartX;
-      const plotW = wrapper.clientWidth - 42 - 15;
+      const plotW = wrapper.clientWidth - CHART_PAD_L - CHART_PAD_R;
       const dt = (dx / plotW) * viewSpan;
-      viewOffset = Math.max(0, Math.min(3600 - viewSpan, dragStartOffset + dt));
+      viewOffset = Math.max(0, Math.min(WINDOW_SECONDS - viewSpan, dragStartOffset + dt));
     }
 
     drawCanvasPlot();
@@ -2233,14 +2495,14 @@ HTML_PAGE = """<!DOCTYPE html>
     e.preventDefault();
     lastMouseMoveTime = Date.now();
     const zoomFactor = e.deltaY < 0 ? 0.75 : 1.33;
-    viewSpan = Math.max(60, Math.min(3600, viewSpan * zoomFactor));
-    viewOffset = Math.max(0, Math.min(3600 - viewSpan, viewOffset));
+    viewSpan = Math.max(60, Math.min(WINDOW_SECONDS, viewSpan * zoomFactor));
+    viewOffset = Math.max(0, Math.min(WINDOW_SECONDS - viewSpan, viewOffset));
     drawCanvasPlot();
   }, { passive: false });
 
-  // Double click resets zoom to full 1 hour
+  // Double click resets zoom to the full 4-hour window
   wrapper.addEventListener("dblclick", () => {
-    viewSpan = 3600;
+    viewSpan = WINDOW_SECONDS;
     viewOffset = 0;
     drawCanvasPlot();
   });
@@ -2248,9 +2510,9 @@ HTML_PAGE = """<!DOCTYPE html>
   // Auto right-align reset after 6s of no mouse interaction
   setInterval(() => {
     if (Date.now() - lastMouseMoveTime > 6000) {
-      if (hoverX !== null || viewSpan !== 3600 || viewOffset !== 0) {
+      if (hoverX !== null || viewSpan !== WINDOW_SECONDS || viewOffset !== 0) {
         hoverX = null;
-        viewSpan = 3600;
+        viewSpan = WINDOW_SECONDS;
         viewOffset = 0;
         drawCanvasPlot();
       }
@@ -2282,19 +2544,22 @@ HTML_PAGE = """<!DOCTYPE html>
     });
   });
 
-  document.getElementById("wrnSpin").addEventListener("change", async e => {
-    await fetch("/api/settings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ wrn_temp: parseFloat(e.target.value) })
-    });
-  });
-
-  document.getElementById("stopSpin").addEventListener("change", async e => {
-    await fetch("/api/settings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ stop_temp: parseFloat(e.target.value) })
+  // Per-board threshold inputs. Blank clears that override (back to automatic).
+  ["b1WrnSpin", "b1StopSpin", "b2WrnSpin", "b2StopSpin"].forEach((id, idx) => {
+    document.getElementById(id).addEventListener("change", async e => {
+      const bt = (currentBoardThresholds || []).slice();
+      while (bt.length < 2) bt.push({});
+      const boardIdx = Math.floor(idx / 2);
+      const key = idx % 2 === 0 ? "wrn" : "stop";
+      if (!bt[boardIdx]) bt[boardIdx] = {};
+      const raw = e.target.value.trim();
+      bt[boardIdx] = { ...bt[boardIdx], [key]: raw === "" ? null : parseFloat(raw) };
+      currentBoardThresholds = bt;
+      await fetch("/api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ board_thresholds: bt })
+      });
     });
   });
 
@@ -2310,7 +2575,8 @@ HTML_PAGE = """<!DOCTYPE html>
 
   document.getElementById("clearChartBtn").addEventListener("click", async () => {
     await fetch("/api/clear_history", { method: "POST" });
-    curvesData = { x: [], inlet: [], outlet: [], chip_max: [], chip_avg: [] };
+    curvesData = { x: [], inlet: [], outlet: [], chip_max: [], chip_avg: [],
+                   buckets: { t: [], accepted: [], rejected: [], hashrate: [] } };
     hoverX = null;
     drawCanvasPlot();
   });
@@ -2437,6 +2703,10 @@ HTML_PAGE = """<!DOCTYPE html>
   const pwdErr = document.getElementById("pwdErr");
 
   document.getElementById("plugSwitchBtn").addEventListener("click", async () => {
+    if (!plugStateKnown) {
+      alert("插座当前状态未确认（miIO 无响应）。\\n\\n无法判断矿机是否已通电，因此已屏蔽切换操作以避免误操作。\\n请确认插座在线后重试。");
+      return;
+    }
     if (currentPlugState) {
       await fetch("/api/switch", {
         method: "POST",
@@ -2444,11 +2714,6 @@ HTML_PAGE = """<!DOCTYPE html>
         body: JSON.stringify({ state: false })
       });
     } else {
-      // 安全联锁规则 1: 建立连接前不允许电源启动！
-      if (!currentFanConnected) {
-        alert("🚨 安全锁定拦截！\\n\\n风扇控速器尚未连接或处于失联状态。\\n为了防止矿机水冷无风散热导致高温烧毁，在风扇控速器建立连接前，严格禁止电源启动！\\n\\n请先插入风扇调速器并在面板上方选择端口点击 CONNECT 连接。");
-        return;
-      }
       pwdErr.style.display = "none";
       pwdInput.value = "";
       modal.style.display = "flex";
@@ -2520,11 +2785,14 @@ def get_config_path(custom_path: Optional[str] = None) -> str:
 
 
 def load_config(config_path: Optional[str] = None) -> Dict[str, str]:
-    """Load or create config.json for login_password and power_password."""
+    """Load or create config.json for the web passwords and smart plug identity."""
     resolved_path = get_config_path(config_path)
     default_config = {
         "login_password": "antminer",
-        "power_password": "dl.general"
+        "power_password": "dl.general",
+        "plug_ip": "10.8.1.110",
+        "plug_did": "2051114902",
+        "plug_token": "",
     }
 
     if not os.path.exists(resolved_path):
@@ -2542,6 +2810,10 @@ def load_config(config_path: Optional[str] = None) -> Dict[str, str]:
             return {
                 "login_password": str(cfg.get("login_password", default_config["login_password"])),
                 "power_password": str(cfg.get("power_password", default_config["power_password"])),
+                "plug_ip": str(cfg.get("plug_ip", default_config["plug_ip"])),
+                "plug_did": str(cfg.get("plug_did", default_config["plug_did"])),
+                "plug_token": str(cfg.get("plug_token", default_config["plug_token"])),
+                "board_thresholds": parse_board_thresholds(cfg.get("board_thresholds")),
                 "_path": resolved_path,
             }
     except Exception as e:
@@ -2701,14 +2973,6 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
             state = req_data.get("state", False)
             pwd = str(req_data.get("password", ""))
             if state:
-                # 安全联锁规则 1: 建立连接前不允许电源启动！
-                if not self.server.state_manager.fan_driver.is_alive(timeout_sec=4.0):
-                    self.send_response(400)
-                    self.send_header("Content-Type", "application/json")
-                    self.end_headers()
-                    self.wfile.write(b'{"ok":false,"msg":"Safety Lock: Fan controller is NOT connected! Power ON is forbidden."}')
-                    return
-
                 expected_power_pwd = self.get_power_password()
                 if not hmac.compare_digest(pwd, expected_power_pwd):
                     self.send_response(403)
@@ -2724,6 +2988,7 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({"ok": res, "state": state}).encode("utf-8"))
 
         elif parsed.path == "/api/settings":
+            board_cfg = req_data.get("board_thresholds")
             self.server.state_manager.set_settings(
                 interval=req_data.get("interval"),
                 wrn=req_data.get("wrn_temp"),
@@ -2731,6 +2996,7 @@ class AntMinerWebHandler(BaseHTTPRequestHandler):
                 paused=req_data.get("paused"),
                 fan_start=req_data.get("fan_start_temp"),
                 fan_max=req_data.get("fan_max_temp"),
+                board_thresholds_update=parse_board_thresholds(board_cfg) if board_cfg is not None else None,
             )
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
@@ -2796,11 +3062,15 @@ def main():
     power_password = config["power_password"]
     fan_start_temp = float(config.get("fan_start_temp", 50.0))
     fan_max_temp = float(config.get("fan_max_temp", 70.0))
+    plug_ip = config.get("plug_ip") or "10.8.1.110"
+    plug_did = config.get("plug_did") or "2051114902"
+    plug_token = (config.get("plug_token") or "").strip()
 
     print("=" * 72)
     print(" 🚀 AntMinerTab Web Server Starting...")
     print(f" Target Miner: http://10.8.1.86")
-    print(f" Target Plug:  10.8.1.110 (Mijia Smart Plug 3)")
+    print(f" Target Plug:  {plug_ip} (Mijia Smart Plug 3, did={plug_did})")
+    print(f" Plug Token:   {'configured' if plug_token else '*** MISSING - set plug_token in config.json ***'}")
     print(f" Fan Device:   CoolerHD 12025 Fan Controller (Auto Serial 115200)")
     print(f" Fan Curve:    Linear 600 RPM @ {fan_start_temp:.0f}°C -> 2400 RPM @ {fan_max_temp:.0f}°C (Chip Hotspot)")
     print(f" Telegram Bot: @s332854BOT (7775553661)")
@@ -2815,7 +3085,23 @@ def main():
     print(f" LAN Access:       http://<host-ip>:{args.port}")
     print("=" * 72)
 
-    state_mgr = MonitorStateManager(fan_start_temp=fan_start_temp, fan_max_temp=fan_max_temp)
+    if not plug_token:
+        sys.stderr.write(
+            "[ERROR] plug_token is empty in %s.\n"
+            "        The smart plug cannot be controlled without it. Add the 32-hex miIO\n"
+            '        token as "plug_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" and restart.\n' % resolved_config_path
+        )
+
+    state_mgr = MonitorStateManager(
+        plug_ip=plug_ip,
+        plug_token=plug_token,
+        plug_did=plug_did,
+        wrn_temp=float(config.get("wrn_temp", 75.0)),
+        stop_temp=float(config.get("stop_temp", 78.0)),
+        board_overrides=config.get("board_thresholds") or [],
+        fan_start_temp=fan_start_temp,
+        fan_max_temp=fan_max_temp,
+    )
 
     server = ThreadingHTTPServer((args.host, args.port), AntMinerWebHandler)
     server.state_manager = state_mgr
