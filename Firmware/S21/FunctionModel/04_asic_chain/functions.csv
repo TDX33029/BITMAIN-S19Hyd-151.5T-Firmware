@@ -1,0 +1,137 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x2afc8,chain_asic_struct,5164,04_asic_chain;05_freq_voltage,1,14,chain_present | miner_sim.chain_present.chain_present_map:%d\n | miner_sim.chain_present.enable_sim_mode:%d\n,../analysis/reverse/full/bmminer/decompiled/2afc8_FUN_0002afc8.c
+bmminer,0x36fe4,clear_find_asic_fail_record,7860,04_asic_chain;10_config_eeprom,1,13,\n asic nonce number for chain[%d]...\n | /nonce | \nchain[%d] nonce info:\n,../analysis/reverse/full/bmminer/decompiled/36fe4_FUN_00036fe4.c
+bmminer,0x13300,config_parse_topol,8140,10_config_eeprom;04_asic_chain,1,10,alloc topol failed\n,../analysis/reverse/full/bmminer/decompiled/13300_FUN_00013300.c
+bmminer,0x2e084,get_chain_asic_domain_avg_voltage,640,04_asic_chain;02_power_psu,1,10,"chain%d, domain%d, asic avg voltage:%f | chain%d, domain%d, asic %03d, voltage:%f",../analysis/reverse/full/bmminer/decompiled/2e084_FUN_0002e084.c
+bmminer,0x2d6b0,set_freq_pll,2508,05_freq_voltage;04_asic_chain,1,9,,../analysis/reverse/full/bmminer/decompiled/2d6b0_FUN_0002d6b0.c
+bmminer,0x54654,chain_asic_detect,1060,04_asic_chain,1,6,"pic enabled for chain %d, press anykey to continue... | Chain %d only find %d asic, will power off hash board %d\n | Chain[%d]: find %d asic, times %d\n",../analysis/reverse/full/bmminer/decompiled/54654_FUN_00054654.c
+bmminer,0x2500c,set_chain_freq,536,05_freq_voltage;04_asic_chain,1,5,"chain = %d, start = %d, freq_step = %.2f\n",../analysis/reverse/full/bmminer/decompiled/2500c_FUN_0002500c.c
+bmminer,0x542f8,find_asic_counter,860,04_asic_chain;10_config_eeprom,1,3,exist chain,../analysis/reverse/full/bmminer/decompiled/542f8_FUN_000542f8.c
+bmminer,0x456ec,find_asic_counter_board,440,04_asic_chain;10_config_eeprom,1,2,,../analysis/reverse/full/bmminer/decompiled/456ec_FUN_000456ec.c
+bmminer,0x2f224,api_miner_chain_asic_status,240,04_asic_chain;09_web_api,1,0,,../analysis/reverse/full/bmminer/decompiled/2f224_FUN_0002f224.c
+bmminer,0x2f160,api_miner_chain_asic_num,192,04_asic_chain;09_web_api,1,0,,../analysis/reverse/full/bmminer/decompiled/2f160_FUN_0002f160.c
+bmminer,0x3f888,FUN_0003f888,828,04_asic_chain,0,13,\n dump asic nonce number...\n | Chain[%d] total nonce number = %d\n | Chain[%d] nonce:\n,../analysis/reverse/full/bmminer/decompiled/3f888_FUN_0003f888.c
+bmminer,0x47894,FUN_00047894,468,04_asic_chain,0,13,\n asic nonce number for chain[%d]...\n,../analysis/reverse/full/bmminer/decompiled/47894_FUN_00047894.c
+bmminer,0x5d758,FUN_0005d758,3288,05_freq_voltage;04_asic_chain,0,10,Do freq tuning fine.\n | >>>> Do single grade tuning.\n | Dump freq tuning fine result:\n | >>>> Do freq tuning fine parallel.\n,../analysis/reverse/full/bmminer/decompiled/5d758_FUN_0005d758.c
+bmminer,0x5adf4,FUN_0005adf4,2380,04_asic_chain,0,10,Chain %d nonce:\n,../analysis/reverse/full/bmminer/decompiled/5adf4_FUN_0005adf4.c
+bmminer,0x47508,FUN_00047508,460,04_asic_chain,0,10,\n dump domain nonce number...\n,../analysis/reverse/full/bmminer/decompiled/47508_FUN_00047508.c
+bmminer,0x29e18,FUN_00029e18,1736,10_config_eeprom;04_asic_chain;06_thermal_fan,0,9,/etc/topol.conf,../analysis/reverse/full/bmminer/decompiled/29e18_FUN_00029e18.c
+bmminer,0x471ac,FUN_000471ac,516,04_asic_chain,0,9,\n dump asic nonce number...\n | Chain[%d] total nonce number = %d\n,../analysis/reverse/full/bmminer/decompiled/471ac_FUN_000471ac.c
+bmminer,0x476e4,FUN_000476e4,432,04_asic_chain,0,9,\n asic nonce number for chain[%d] asic[%d]...\n,../analysis/reverse/full/bmminer/decompiled/476e4_FUN_000476e4.c
+bitmain_axi.ko,0x10090,init_module,352,04_asic_chain,0,8,Err:failed in creating axi fpga class.\n | AXI fpga dev virtual address is 0x%x\n | In axi fpga driver!\n,../../S19/analysis/reverse/full_modules/bitmain_axi.ko/decompiled/10090_init_module.c
+bitmain_axi.ko,0x1023c,cleanup_module,92,04_asic_chain,0,8,Bye Bye axi fpga driver!\n,../../S19/analysis/reverse/full_modules/bitmain_axi.ko/decompiled/1023c_cleanup_module.c
+cgminer,0x2610c,FUN_0002610c,976,07_mining_pool;04_asic_chain,0,7,Stratum reconnect requested from pool %d to %s | Denied stratum reconnect request to non-matching domain url '%s' | Denied stratum reconnect request for pool without domain '%s' | Denied stratum reconnect request to url without domain '%s',../analysis/reverse/full_aux/cgminer/decompiled/2610c_FUN_0002610c.c
+bmminer,0x2d338,FUN_0002d338,868,04_asic_chain,0,7,chain[%d]  domain %d vol :\n%s\n,../analysis/reverse/full/bmminer/decompiled/2d338_FUN_0002d338.c
+bmminer,0x64848,FUN_00064848,560,04_asic_chain,0,7,%s: waiting fpga uart%d clear send fifo space ...\n,../analysis/reverse/full/bmminer/decompiled/64848_FUN_00064848.c
+bmminer,0x58504,FUN_00058504,292,04_asic_chain,0,7,"Domain unbalance happen, chain = %d, domain = %d, nonce_num_domain = %d, threshold = %d.\n",../analysis/reverse/full/bmminer/decompiled/58504_FUN_00058504.c
+bmminer,0x15500,FUN_00015500,5956,04_asic_chain;10_config_eeprom;13_os_service,0,6,"nonce fifo flush by nonce, last_ts = %.2f.\n | repeat nonce error",../analysis/reverse/full/bmminer/decompiled/15500_FUN_00015500.c
+bmminer,0x51fd8,FUN_00051fd8,1592,04_asic_chain,0,6,"chain %d, bad core num %8d, rate = %.2f ========================round %d",../analysis/reverse/full/bmminer/decompiled/51fd8_FUN_00051fd8.c
+bmminer,0x47af0,FUN_00047af0,1064,04_asic_chain;10_config_eeprom,0,6,chain %d asic %d get reg value failed | Chain %d is not exist.\n,../analysis/reverse/full/bmminer/decompiled/47af0_FUN_00047af0.c
+bmminer,0x46a48,FUN_00046a48,1060,04_asic_chain;07_mining_pool;10_config_eeprom,0,6,!!! nonce invalid | !!! nonce crc error,../analysis/reverse/full/bmminer/decompiled/46a48_FUN_00046a48.c
+bmminer,0x458a8,FUN_000458a8,980,04_asic_chain,0,6,"%s, invalid chain or asic, chain %d, asic %03d",../analysis/reverse/full/bmminer/decompiled/458a8_FUN_000458a8.c
+bmminer,0x39228,FUN_00039228,832,04_asic_chain;05_freq_voltage,0,6,adjust middle chain = %d asic=%d set freq to %.2f | adjust end chain=%d asic=%d set end freq %.2f,../analysis/reverse/full/bmminer/decompiled/39228_FUN_00039228.c
+bmminer,0x17ee4,FUN_00017ee4,704,04_asic_chain;06_thermal_fan,0,6,"%s chain %d not pluged | read temp sensor failed: chain = %d, sensor pos = %d, address = %d, reg = %d\n | %s chain %d ,index %d not connected | %s invalid param. index = %d, type = %d, model = %d on chain %d",../analysis/reverse/full/bmminer/decompiled/17ee4_FUN_00017ee4.c
+bmminer,0x462cc,FUN_000462cc,632,04_asic_chain,0,6,"read asic reg error: expect chain = %d, chip = %d, reg = %d, got chain = %d, chip = %d, reg = %d\n | read asic reg timeout: expect chain = %d, chip = %d, reg = %d\n",../analysis/reverse/full/bmminer/decompiled/462cc_FUN_000462cc.c
+bmminer,0x57e6c,FUN_00057e6c,356,04_asic_chain,0,6,"[DEBUG] Check if is unbalanche happen, chain = %d\n | Unbalance happened: chain = %d, asic = %d\n",../analysis/reverse/full/bmminer/decompiled/57e6c_FUN_00057e6c.c
+bmminer,0x5a324,FUN_0005a324,168,04_asic_chain,0,6,"[DEBUG] Check if recv nonce enough, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/5a324_FUN_0005a324.c
+bmminer,0x413d0,FUN_000413d0,136,04_asic_chain,0,6,set UART baud to %d\n,../analysis/reverse/full/bmminer/decompiled/413d0_FUN_000413d0.c
+cgminer,0x40560,FUN_00040560,8152,05_freq_voltage;10_config_eeprom;04_asic_chain,0,5,freq_avg,../analysis/reverse/full_aux/cgminer/decompiled/40560_FUN_00040560.c
+bmminer,0x261a8,FUN_000261a8,1664,05_freq_voltage;04_asic_chain,0,5,"fixed step freq_start = %d, freq_end = %d, freq_step = %.2f | chain = %d set freq to %.2f",../analysis/reverse/full/bmminer/decompiled/261a8_FUN_000261a8.c
+bmminer,0x1c1f8,FUN_0001c1f8,1072,10_config_eeprom;04_asic_chain,0,5,"load chain %d eeprom data\n | FW type %s, eeprom[%d] shows %s\n",../analysis/reverse/full/bmminer/decompiled/1c1f8_FUN_0001c1f8.c
+bmminer,0x27a64,FUN_00027a64,1016,05_freq_voltage;04_asic_chain,0,5,2.chain_%d inc freq to %d\n | 1.inc all chain freq to %d\n,../analysis/reverse/full/bmminer/decompiled/27a64_FUN_00027a64.c
+bmminer,0x1ccc8,FUN_0001ccc8,712,05_freq_voltage;10_config_eeprom;04_asic_chain,0,5,freq value[%d] less than freq base[%d] for chain %d.\n | freq value[%d] greater than freq max[%d] for chain %d.\n,../analysis/reverse/full/bmminer/decompiled/1ccc8_FUN_0001ccc8.c
+bmminer,0x2683c,FUN_0002683c,636,05_freq_voltage;04_asic_chain,0,5,"fixed step chain = %d, freq_start = %d, freq_end = %d, freq_step = %.2f, is_higher_voltage = %s\n | chain = %d set freq to %.2f",../analysis/reverse/full/bmminer/decompiled/2683c_FUN_0002683c.c
+bmminer,0x5cc6c,FUN_0005cc6c,536,05_freq_voltage;04_asic_chain,0,5,"[DEBUG] Dump freq table, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/5cc6c_FUN_0005cc6c.c
+bmminer,0x6a484,FUN_0006a484,536,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | %s: Bad eeprom param, input chain is %d\n | fail to read eeprom by iic, chain: %d, addr: %d\n",../analysis/reverse/full/bmminer/decompiled/6a484_FUN_0006a484.c
+bmminer,0x6a270,FUN_0006a270,532,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | %s: Bad eeprom param, input chain is %d\n | fail to write eeprom by iic, chain:%d, addr: %d",../analysis/reverse/full/bmminer/decompiled/6a270_FUN_0006a270.c
+bmminer,0x38ea8,FUN_00038ea8,492,05_freq_voltage;04_asic_chain,0,5,chain = %d set freq to %.2f,../analysis/reverse/full/bmminer/decompiled/38ea8_FUN_00038ea8.c
+bmminer,0x1ddc4,FUN_0001ddc4,396,05_freq_voltage;04_asic_chain,0,5,"eeprom_set_freq, chain = %d, freq = %d.\n | eeprom_set_freq, chain = %d, pre freq = %d, new freq = %d.\n",../analysis/reverse/full/bmminer/decompiled/1ddc4_FUN_0001ddc4.c
+bmminer,0x39094,FUN_00039094,396,05_freq_voltage;04_asic_chain,0,5,chain = %d set freq to %.2f,../analysis/reverse/full/bmminer/decompiled/39094_FUN_00039094.c
+bmminer,0x5cafc,FUN_0005cafc,368,05_freq_voltage;04_asic_chain;07_mining_pool,0,5,"chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough\n | chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough\n | chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough\n",../analysis/reverse/full/bmminer/decompiled/5cafc_FUN_0005cafc.c
+bmminer,0x6e354,FUN_0006e354,356,03_pic_ctrl;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e354_FUN_0006e354.c
+bmminer,0x6a034,FUN_0006a034,332,10_config_eeprom;04_asic_chain,0,5,"%s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6a034_FUN_0006a034.c
+bmminer,0x6e5c4,FUN_0006e5c4,320,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e5c4_FUN_0006e5c4.c
+bmminer,0x6e704,FUN_0006e704,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e704_FUN_0006e704.c
+bmminer,0x6e83c,FUN_0006e83c,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e83c_FUN_0006e83c.c
+bmminer,0x6e974,FUN_0006e974,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e974_FUN_0006e974.c
+bmminer,0x6eaac,FUN_0006eaac,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6eaac_FUN_0006eaac.c
+bmminer,0x6ebe4,FUN_0006ebe4,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6ebe4_FUN_0006ebe4.c
+bmminer,0x6e4b8,FUN_0006e4b8,268,03_pic_ctrl;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e4b8_FUN_0006e4b8.c
+bmminer,0x6a180,FUN_0006a180,240,10_config_eeprom;04_asic_chain,0,5,"%s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6a180_FUN_0006a180.c
+bmminer,0x26f74,FUN_00026f74,220,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq = %d\n",../analysis/reverse/full/bmminer/decompiled/26f74_FUN_00026f74.c
+bmminer,0x5c964,FUN_0005c964,204,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_min = %d\n",../analysis/reverse/full/bmminer/decompiled/5c964_FUN_0005c964.c
+bmminer,0x5ca30,FUN_0005ca30,204,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_max = %d\n",../analysis/reverse/full/bmminer/decompiled/5ca30_FUN_0005ca30.c
+bmminer,0x4eb54,FUN_0004eb54,188,03_pic_ctrl;04_asic_chain,0,5,PIC reset failed.\n | Chain %d PIC reset failed.\n,../analysis/reverse/full/bmminer/decompiled/4eb54_FUN_0004eb54.c
+bmminer,0x2433c,FUN_0002433c,180,03_pic_ctrl;04_asic_chain,0,5,Check chain[%d] PIC fw version=0x%02x\n | chain[%d] PIC jump to app\n,../analysis/reverse/full/bmminer/decompiled/2433c_FUN_0002433c.c
+bmminer,0x281f0,FUN_000281f0,180,05_freq_voltage;10_config_eeprom;04_asic_chain,0,5,chain min freq in eeprom = %d,../analysis/reverse/full/bmminer/decompiled/281f0_FUN_000281f0.c
+bmminer,0x5c8b8,FUN_0005c8b8,172,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_avg = %d\n",../analysis/reverse/full/bmminer/decompiled/5c8b8_FUN_0005c8b8.c
+bmminer,0x1cf90,FUN_0001cf90,688,02_power_psu;04_asic_chain,0,4,"No work mode voltage, chain = %d, mode = %d.\n | voltage level out of range | voltage level not match",../analysis/reverse/full/bmminer/decompiled/1cf90_FUN_0001cf90.c
+bmminer,0x3d1e8,FUN_0003d1e8,424,04_asic_chain,0,4,Domain unbalance happened!\n,../analysis/reverse/full/bmminer/decompiled/3d1e8_FUN_0003d1e8.c
+fpga_mem_driver.ko,0x1009c,init_module,364,04_asic_chain,0,4,In fpga mem driver!\n | Err:failed in creating fpga mem class.\n | fpga mem virtual address is 0x%x\n,../../S19/analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/1009c_init_module.c
+bmminer,0x60724,FUN_00060724,304,04_asic_chain,0,4,fpga init failed\n,../analysis/reverse/full/bmminer/decompiled/60724_FUN_00060724.c
+bmminer,0x50084,FUN_00050084,216,04_asic_chain,0,4,FPGA Version = 0x%04X\n,../analysis/reverse/full/bmminer/decompiled/50084_FUN_00050084.c
+bmminer,0x243f0,FUN_000243f0,140,02_power_psu;04_asic_chain,0,4,"read_feedback_voltage chain = %d, voltage = %f\n",../analysis/reverse/full/bmminer/decompiled/243f0_FUN_000243f0.c
+fpga_mem_driver.ko,0x10254,cleanup_module,96,04_asic_chain,0,4,Bye Bye fpga mem driver!\n,../../S19/analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/10254_cleanup_module.c
+bmminer,0x3ee18,FUN_0003ee18,2508,02_power_psu;04_asic_chain,0,3,read asic vol in 30 min,../analysis/reverse/full/bmminer/decompiled/3ee18_FUN_0003ee18.c
+cgminer,0x27b5c,FUN_00027b5c,1568,04_asic_chain;07_mining_pool,0,3,%s %08x work %s midstate %s data %s nonce %s hash %s diff %lld | %s %08x midstate %s data %s nonce %s hash %s diff %lld | midstate %s data %s nonce %s hash %s,../analysis/reverse/full_aux/cgminer/decompiled/27b5c_FUN_00027b5c.c
+bmminer,0x181a8,FUN_000181a8,1536,04_asic_chain;06_thermal_fan,0,3,sensor %d @ chain %d is %s | chain %d temp sensor %s\n | sensor %d @ chain %d fail to set to ext mode | set ext mode failed for senser %d @ chain %d,../analysis/reverse/full/bmminer/decompiled/181a8_FUN_000181a8.c
+bmminer,0x28624,FUN_00028624,1500,04_asic_chain,0,3,get asic failed\n,../analysis/reverse/full/bmminer/decompiled/28624_FUN_00028624.c
+bmminer,0x50414,FUN_00050414,1316,04_asic_chain;07_mining_pool,0,3,only support asic boost,../analysis/reverse/full/bmminer/decompiled/50414_FUN_00050414.c
+bmminer,0x63d0c,FUN_00063d0c,1308,04_asic_chain,0,3,"%s: uart%d always busy, break\n | %s: uart%d always dose not has enough send fifo space, break\n | %s: the uart%d send left data is 4*N length, error!!!\n",../analysis/reverse/full/bmminer/decompiled/63d0c_FUN_00063d0c.c
+cgminer,0x1e2b0,FUN_0001e2b0,1020,04_asic_chain,0,3,%s%d: Duplicate nonce %08x,../analysis/reverse/full_aux/cgminer/decompiled/1e2b0_FUN_0001e2b0.c
+cgminer,0x1a700,FUN_0001a700,964,04_asic_chain,0,3,chain%d,../analysis/reverse/full_aux/cgminer/decompiled/1a700_FUN_0001a700.c
+bmminer,0x58648,FUN_00058648,888,04_asic_chain,0,3,">>>> Send work for chain %d.\n | Send work for chain %d done, time cost %lds, sleep_count = %d\n",../analysis/reverse/full/bmminer/decompiled/58648_FUN_00058648.c
+bmminer,0x62f44,FUN_00062f44,880,04_asic_chain,0,3,%s: The uart %d is not supported!!!\n,../analysis/reverse/full/bmminer/decompiled/62f44_FUN_00062f44.c
+bmminer,0x637a4,FUN_000637a4,856,04_asic_chain,0,3,"%s: the uart%d left data is 4*N length, error!!!\n",../analysis/reverse/full/bmminer/decompiled/637a4_FUN_000637a4.c
+bmminer,0x58e88,FUN_00058e88,832,04_asic_chain,0,3,"No enough work, asic = %d, work_count = %d, work_count_target = %d.\n",../analysis/reverse/full/bmminer/decompiled/58e88_FUN_00058e88.c
+bmminer,0x46e6c,FUN_00046e6c,828,04_asic_chain;10_config_eeprom,0,3,!!! REG_TYPE = 1. %u asic %d | !!!  %0x %0x %0x %0x asic %d  core 0x%02x ,../analysis/reverse/full/bmminer/decompiled/46e6c_FUN_00046e6c.c
+bmminer,0x46548,FUN_00046548,788,04_asic_chain,0,3,chain::%d don't exist!!!\n,../analysis/reverse/full/bmminer/decompiled/46548_FUN_00046548.c
+cgminer,0x2b8ec,FUN_0002b8ec,692,04_asic_chain,0,3,midstate %s data %s nonce %s version %s \r\n,../analysis/reverse/full_aux/cgminer/decompiled/2b8ec_FUN_0002b8ec.c
+bmminer,0x46048,FUN_00046048,644,04_asic_chain,0,3,Chain %d is not exist.\n,../analysis/reverse/full/bmminer/decompiled/46048_FUN_00046048.c
+cgminer,0x40260,FUN_00040260,644,04_asic_chain,0,3,%s nonce submited | got nonce sz %d,../analysis/reverse/full_aux/cgminer/decompiled/40260_FUN_00040260.c
+bmminer,0x4de18,FUN_0004de18,636,04_asic_chain,0,3,Chain%d:{,../analysis/reverse/full/bmminer/decompiled/4de18_FUN_0004de18.c
+bmminer,0x4dbb8,FUN_0004dbb8,608,04_asic_chain,0,3,"	chain id = %d\n | board id = %d, chain num = %d\n",../analysis/reverse/full/bmminer/decompiled/4dbb8_FUN_0004dbb8.c
+bmminer,0x47f20,FUN_00047f20,596,04_asic_chain,0,3,Chain %d is not exist.\n,../analysis/reverse/full/bmminer/decompiled/47f20_FUN_00047f20.c
+bmminer,0x64a78,FUN_00064a78,592,04_asic_chain,0,3,"%s: uart%d malloc buffer error\n | %s: uart%d clear rx fifo error. nbytes = %d, len = %d\n",../analysis/reverse/full/bmminer/decompiled/64a78_FUN_00064a78.c
+bmminer,0x63540,FUN_00063540,556,04_asic_chain,0,3,%s: The uart%d is not supported!!!\n,../analysis/reverse/full/bmminer/decompiled/63540_FUN_00063540.c
+bmminer,0x5a900,FUN_0005a900,552,04_asic_chain,0,3,"chain = %d, hw = %d, hw_threshold = %d, too much hw.\n | chain = %d, nonce_rate_curr = %.4f, nonce_rate_last = %.4f, nonce_rate_max = %.4f\n | [DEBUG] Check if is need stop, chain = %d, hw_threshold = %.4f, nonce_rate_threshold = %.2f, nonce_rate_dec_threshold = %.2f.\n",../analysis/reverse/full/bmminer/decompiled/5a900_FUN_0005a900.c
+bmminer,0x3e488,FUN_0003e488,544,04_asic_chain,0,3,chain %d hash rate %.2f low in %ld mins,../analysis/reverse/full/bmminer/decompiled/3e488_FUN_0003e488.c
+bmminer,0x632ec,FUN_000632ec,540,04_asic_chain,0,3,%s: The uart%d is not supported!!!\n,../analysis/reverse/full/bmminer/decompiled/632ec_FUN_000632ec.c
+bmminer,0x46860,FUN_00046860,484,04_asic_chain,0,3,chain::%d don't exist!!!\n,../analysis/reverse/full/bmminer/decompiled/46860_FUN_00046860.c
+bmminer,0x43924,FUN_00043924,432,04_asic_chain,0,3,%s %d: invalid nonce - HW error,../analysis/reverse/full/bmminer/decompiled/43924_FUN_00043924.c
+cgminer,0x30ec0,FUN_00030ec0,388,04_asic_chain,0,3,%s %d: invalid nonce - HW error,../analysis/reverse/full_aux/cgminer/decompiled/30ec0_FUN_00030ec0.c
+bmminer,0x3dc38,FUN_0003dc38,376,04_asic_chain,0,3,nonce fifo flush because of misalign_count.\n,../analysis/reverse/full/bmminer/decompiled/3dc38_FUN_0003dc38.c
+bmminer,0x2c888,FUN_0002c888,356,04_asic_chain,0,3,no need to set uart relay\n,../analysis/reverse/full/bmminer/decompiled/2c888_FUN_0002c888.c
+bmminer,0x50ef8,FUN_00050ef8,308,04_asic_chain,0,3,fix chain %d to 570M\n,../analysis/reverse/full/bmminer/decompiled/50ef8_FUN_00050ef8.c
+bmminer,0x5a540,FUN_0005a540,284,04_asic_chain,0,3,"[DEBUG] chain = %d, status = %s\n",../analysis/reverse/full/bmminer/decompiled/5a540_FUN_0005a540.c
+bmminer,0x5ab28,FUN_0005ab28,280,04_asic_chain,0,3,[DEBUG] Check if all chain pattern test done.\n,../analysis/reverse/full/bmminer/decompiled/5ab28_FUN_0005ab28.c
+bmminer,0x1da54,FUN_0001da54,272,04_asic_chain,0,3,"No board name, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1da54_FUN_0001da54.c
+bmminer,0x17cb4,FUN_00017cb4,264,04_asic_chain;06_thermal_fan,0,3,%s we read lm75a fd : %d chain %d read temp %d,../analysis/reverse/full/bmminer/decompiled/17cb4_FUN_00017cb4.c
+bmminer,0x17ac8,FUN_00017ac8,260,04_asic_chain,0,3,chain %d switch sel channel %d read back sel data 0x%0x | open switch fail on chain %d,../analysis/reverse/full/bmminer/decompiled/17ac8_FUN_00017ac8.c
+bmminer,0x17dbc,FUN_00017dbc,260,04_asic_chain;06_thermal_fan,0,3,%s we read tmp451 fd :d%d chain %d is_remote %d read temp %d,../analysis/reverse/full/bmminer/decompiled/17dbc_FUN_00017dbc.c
+bmminer,0x333f8,FUN_000333f8,256,04_asic_chain,0,3,chain%d_voladded=%d; | chain%d_badcore=%d; | chain%d_voltage=%d; | chain%d_basefreq=%d;,../analysis/reverse/full/bmminer/decompiled/333f8_FUN_000333f8.c
+bmminer,0x1c678,FUN_0001c678,240,04_asic_chain,0,3,"No hash board sn, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1c678_FUN_0001c678.c
+bmminer,0x17bcc,FUN_00017bcc,232,04_asic_chain,0,3,open switch fail on chain %d,../analysis/reverse/full/bmminer/decompiled/17bcc_FUN_00017bcc.c
+bmminer,0x5737c,FUN_0005737c,232,04_asic_chain,0,3,"chain = %d, nonce_rate_max = %.4f, nonce_rate_threshold = %.4f\n",../analysis/reverse/full/bmminer/decompiled/5737c_FUN_0005737c.c
+bmminer,0x5a1a4,FUN_0005a1a4,212,04_asic_chain,0,3,"[DEBUG] Check if chain is unqualified happen, chain = %d, nonce_rate_threshold = %.2f\n",../analysis/reverse/full/bmminer/decompiled/5a1a4_FUN_0005a1a4.c
+bmminer,0x19540,FUN_00019540,204,04_asic_chain,0,3,calibration sensor on chain %d failed,../analysis/reverse/full/bmminer/decompiled/19540_FUN_00019540.c
+bmminer,0x4f3b8,FUN_0004f3b8,204,04_asic_chain,0,3,Chain [%d] PCB Version: 0x%04x\n | Chain [%d] BOM Version: 0x%04x\n,../analysis/reverse/full/bmminer/decompiled/4f3b8_FUN_0004f3b8.c
+cgminer,0x2a8b4,FUN_0002a8b4,200,04_asic_chain,0,3,BENCHFILE nonce %u=0x%08x for work=%s,../analysis/reverse/full_aux/cgminer/decompiled/2a8b4_FUN_0002a8b4.c
+bmminer,0x1db64,FUN_0001db64,196,04_asic_chain,0,3,"No board name, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1db64_FUN_0001db64.c
+bmminer,0x4fa70,FUN_0004fa70,192,04_asic_chain,0,3,bad asic is %d\n,../analysis/reverse/full/bmminer/decompiled/4fa70_FUN_0004fa70.c
+bmminer,0x1d2f0,FUN_0001d2f0,188,04_asic_chain,0,3,"No chip bin, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1d2f0_FUN_0001d2f0.c
+bmminer,0x1d998,FUN_0001d998,188,04_asic_chain,0,3,"No work mode hash rate, chain = %d, mode = %d.\n",../analysis/reverse/full/bmminer/decompiled/1d998_FUN_0001d998.c
+bmminer,0x595dc,FUN_000595dc,184,04_asic_chain,0,3,"[DEBUG] Send work one chain, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/595dc_FUN_000595dc.c
+bmminer,0x443d0,FUN_000443d0,180,04_asic_chain,0,3,cgminer return err for this nonce!\n,../analysis/reverse/full/bmminer/decompiled/443d0_FUN_000443d0.c
+bmminer,0x1d244,FUN_0001d244,172,04_asic_chain,0,3,"No test standard, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1d244_FUN_0001d244.c
+bmminer,0x5a058,FUN_0005a058,168,04_asic_chain,0,3,"[DEBUG] Check if chain is unbalance happen, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/5a058_FUN_0005a058.c
+bmminer,0x1c768,FUN_0001c768,152,04_asic_chain,0,3,"No pcb version, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1c768_FUN_0001c768.c
+bmminer,0x1c800,FUN_0001c800,152,04_asic_chain,0,3,"No bom version, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1c800_FUN_0001c800.c
+bmminer,0x1b778,FUN_0001b778,68,04_asic_chain,0,3,"No ft ver, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1b778_FUN_0001b778.c
+bmminer,0x1b7bc,FUN_0001b7bc,68,04_asic_chain,0,3,"No chip tech, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1b7bc_FUN_0001b7bc.c
+fpga_mem_driver.ko,0x1002c,fpga_mem_mmap,96,04_asic_chain,0,0,,../../S19/analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/1002c_fpga_mem_mmap.c
+bitmain_axi.ko,0x1002c,axi_fpga_dev_mmap,88,04_asic_chain,0,0,,../../S19/analysis/reverse/full_modules/bitmain_axi.ko/decompiled/1002c_axi_fpga_dev_mmap.c
+bitmain_axi.ko,0x10024,axi_fpga_dev_open,8,04_asic_chain,0,0,,../../S19/analysis/reverse/full_modules/bitmain_axi.ko/decompiled/10024_axi_fpga_dev_open.c
+bitmain_axi.ko,0x10088,axi_fpga_dev_release,8,04_asic_chain,0,0,,../../S19/analysis/reverse/full_modules/bitmain_axi.ko/decompiled/10088_axi_fpga_dev_release.c
+fpga_mem_driver.ko,0x10024,fpga_mem_open,8,04_asic_chain,0,0,,../../S19/analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/10024_fpga_mem_open.c
+fpga_mem_driver.ko,0x10094,fpga_mem_release,8,04_asic_chain,0,0,,../../S19/analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/10094_fpga_mem_release.c

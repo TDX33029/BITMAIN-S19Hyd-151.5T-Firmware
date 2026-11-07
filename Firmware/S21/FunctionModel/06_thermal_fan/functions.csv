@@ -1,0 +1,32 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x171dc,fan_pwm_keep100,692,06_thermal_fan,1,13,"PWM keep 100:  airin_temp=%d, airout_temp=%f\n",../analysis/reverse/full/bmminer/decompiled/171dc_FUN_000171dc.c
+bmminer,0x54a78,fan_check,2716,06_thermal_fan,1,12,Fan check passed.\n,../analysis/reverse/full/bmminer/decompiled/54a78_FUN_00054a78.c
+bmminer,0x33d3c,fan_pwm_config,4700,06_thermal_fan;05_freq_voltage,1,10,bitmain-fan-pwm | get bitmain-fan-pwm failed\n,../analysis/reverse/full/bmminer/decompiled/33d3c_FUN_00033d3c.c
+bmminer,0x3ffbc,tuning_freq_thread,1472,05_freq_voltage;06_thermal_fan,1,10,tuning freq end | tuning freq start,../analysis/reverse/full/bmminer/decompiled/3ffbc_FUN_0003ffbc.c
+bmminer,0x170ac,set_fan_pwm,304,06_thermal_fan,1,10,pwm for fan init error | set pwm = %d,../analysis/reverse/full/bmminer/decompiled/170ac_FUN_000170ac.c
+bmminer,0x1a1d0,water_temp_pic_protect,5412,03_pic_ctrl;06_thermal_fan,1,7,"too hot water temperature pic temp %d (min %d)\n | too low water temperature pic temp %d (min %d)\n | over max temp, pic temp(chain%d) %d (max %d), pcb temp(chain%d) %d (max %d), chip temp(chain%d) %d(max %d) pcb temp rise %d chip temp rise %d, total_exit_failure %d\n",../analysis/reverse/full/bmminer/decompiled/1a1d0_FUN_0001a1d0.c
+bmminer,0x16de0,fan_control,548,06_thermal_fan,1,5,"fan lost | fan[%u] speed[%u]\n | Error, fan lost, only find %d (< %d)\n",../analysis/reverse/full/bmminer/decompiled/16de0_FUN_00016de0.c
+bmminer,0x17004,fan_pid_init,168,06_thermal_fan,1,5,init fan pid target=%d,../analysis/reverse/full/bmminer/decompiled/17004_FUN_00017004.c
+bmminer,0x18aa0,read_max_chip_temp,144,06_thermal_fan,1,0,,../analysis/reverse/full/bmminer/decompiled/18aa0_FUN_00018aa0.c
+bmminer,0x18a2c,read_board_temp,116,06_thermal_fan,1,0,,../analysis/reverse/full/bmminer/decompiled/18a2c_FUN_00018a2c.c
+cgminer,0x18ca8,FUN_00018ca8,4436,05_freq_voltage;06_thermal_fan,0,10,frequency,../analysis/reverse/full_aux/cgminer/decompiled/18ca8_FUN_00018ca8.c
+bmminer,0x36460,FUN_00036460,1312,06_thermal_fan;05_freq_voltage;10_config_eeprom,0,10,bitmain-fan-pwm,../analysis/reverse/full/bmminer/decompiled/36460_FUN_00036460.c
+bmminer,0x29e18,FUN_00029e18,1736,10_config_eeprom;04_asic_chain;06_thermal_fan,0,9,/etc/topol.conf,../analysis/reverse/full/bmminer/decompiled/29e18_FUN_00029e18.c
+bmminer,0x77d6c,FUN_00077d6c,432,06_thermal_fan,0,8,can nont get power temp and fan speed\n,../analysis/reverse/full/bmminer/decompiled/77d6c_FUN_00077d6c.c
+bmminer,0x18e18,FUN_00018e18,676,06_thermal_fan,0,7,temperature/temperature.c,../analysis/reverse/full/bmminer/decompiled/18e18_FUN_00018e18.c
+bmminer,0x17ee4,FUN_00017ee4,704,04_asic_chain;06_thermal_fan,0,6,"%s chain %d not pluged | read temp sensor failed: chain = %d, sensor pos = %d, address = %d, reg = %d\n | %s chain %d ,index %d not connected | %s invalid param. index = %d, type = %d, model = %d on chain %d",../analysis/reverse/full/bmminer/decompiled/17ee4_FUN_00017ee4.c
+bmminer,0x51174,FUN_00051174,328,06_thermal_fan,0,6,"water temp %d ~ %d, sleep %ds to cool down\n",../analysis/reverse/full/bmminer/decompiled/51174_FUN_00051174.c
+bmminer,0x290c8,FUN_000290c8,1376,06_thermal_fan,0,5,get fan failed\n,../analysis/reverse/full/bmminer/decompiled/290c8_FUN_000290c8.c
+bmminer,0x62d54,FUN_00062d54,292,06_thermal_fan,0,5,pwm type %d not supported\n,../analysis/reverse/full/bmminer/decompiled/62d54_FUN_00062d54.c
+bmminer,0x2725c,FUN_0002725c,244,05_freq_voltage;06_thermal_fan,0,5,"inc_freq to %d timeout spend %ds, wait target temp:%d failed, real_temp=%d",../analysis/reverse/full/bmminer/decompiled/2725c_FUN_0002725c.c
+bmminer,0x17490,FUN_00017490,100,06_thermal_fan,0,5,Note: front fan is power on!\n,../analysis/reverse/full/bmminer/decompiled/17490_FUN_00017490.c
+bmminer,0x17560,FUN_00017560,100,06_thermal_fan,0,5,Note: rear fan is power on!\n,../analysis/reverse/full/bmminer/decompiled/17560_FUN_00017560.c
+bmminer,0x181a8,FUN_000181a8,1536,04_asic_chain;06_thermal_fan,0,3,sensor %d @ chain %d is %s | chain %d temp sensor %s\n | sensor %d @ chain %d fail to set to ext mode | set ext mode failed for senser %d @ chain %d,../analysis/reverse/full/bmminer/decompiled/181a8_FUN_000181a8.c
+cgminer,0x43ce4,FUN_00043ce4,1120,06_thermal_fan;07_mining_pool,0,3,malloc temp job data buf failed: %d\n,../analysis/reverse/full_aux/cgminer/decompiled/43ce4_FUN_00043ce4.c
+bmminer,0x2f318,FUN_0002f318,772,06_thermal_fan,0,3,temp_pic,../analysis/reverse/full/bmminer/decompiled/2f318_FUN_0002f318.c
+bmminer,0x2f74c,FUN_0002f74c,328,06_thermal_fan,0,3,temp_pcb,../analysis/reverse/full/bmminer/decompiled/2f74c_FUN_0002f74c.c
+bmminer,0x2f624,FUN_0002f624,292,06_thermal_fan,0,3,temp_chip,../analysis/reverse/full/bmminer/decompiled/2f624_FUN_0002f624.c
+bmminer,0x17cb4,FUN_00017cb4,264,04_asic_chain;06_thermal_fan,0,3,%s we read lm75a fd : %d chain %d read temp %d,../analysis/reverse/full/bmminer/decompiled/17cb4_FUN_00017cb4.c
+bmminer,0x17dbc,FUN_00017dbc,260,04_asic_chain;06_thermal_fan,0,3,%s we read tmp451 fd :d%d chain %d is_remote %d read temp %d,../analysis/reverse/full/bmminer/decompiled/17dbc_FUN_00017dbc.c
+bmminer,0x193b0,FUN_000193b0,192,06_thermal_fan,0,3,do not read temp anymore...,../analysis/reverse/full/bmminer/decompiled/193b0_FUN_000193b0.c
+cgminer,0x2a5dc,FUN_0002a5dc,60,06_thermal_fan,0,3,Invalid value passed to set temp cutoff,../analysis/reverse/full_aux/cgminer/decompiled/2a5dc_FUN_0002a5dc.c
