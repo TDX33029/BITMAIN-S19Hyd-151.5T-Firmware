@@ -1,0 +1,7 @@
+#!/bin/sh
+# shutdown wrapper - busybox 1.37+ removed the shutdown applet
+case "$*" in
+  *-r*) exec reboot ;;
+  *-h*) exec halt ;;
+  *)    exec poweroff ;;
+esac

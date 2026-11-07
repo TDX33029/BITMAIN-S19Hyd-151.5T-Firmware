@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# udhcpc script edited by Tim Riker <Tim@Rikers.org>
+
+[ -z "$1" ] && echo "Error: should be called from udhcpc" && exit 1
+
+RESOLV_CONF="/etc/resolv.conf"
+if /etc/init.d/S37dnsmasq status; then
+	RESOLV_CONF="/etc/resolv.conf.dnsmasq"
+fi
+
+[ -e $RESOLV_CONF ] || touch $RESOLV_CONF
+[ -n "$broadcast" ] && BROADCAST="broadcast $broadcast"
+[ -n "$subnet" ] && NETMASK="netmask $subnet"
+
+case "$1" in
+	deconfig)
+		ifconfig $interface up
+		ifconfig $interface 0.0.0.0
+
+		# drop info from this interface
+		# resolv.conf may be a symlink to /tmp/, so take care
+		TMPFILE=$(mktemp)
+		grep -vE "# $interface\$" $RESOLV_CONF > $TMPFILE
+		cat $TMPFILE > $RESOLV_CONF
+		rm -f $TMPFILE
+		;;
+
+	leasefail|nak)
+		;;
+
+	renew|bound)
+		ifconfig $interface $ip $BROADCAST $NETMASK
+
+		if [ -n "$router" ] ; then
+			echo "deleting routers"
+			while route del default gw 0.0.0.0 dev $interface 2> /dev/null; do
+				:
+			done
+
+			for i in $router ; do
+				route add default gw $i dev $interface
+			done
+		fi
+
+		# prefer rfc3397 domain search list (option 119) if available
+		if [ -n "$search" ]; then
+			search_list=$search
+		elif [ -n "$domain" ]; then
+			search_list=$domain
+		fi
+
+		# build the new content aside and only rewrite the file when it
+		# changed: rewriting on every DHCP renewal makes dnsmasq re-read
+		# the file each time (log spam) and can catch it half-written
+		# ("no servers found"); short leases renew every few seconds
+		# resolv.conf may be a symlink to /tmp/, so take care
+		TMPFILE=$(mktemp)
+		grep -vE "# $interface\$" $RESOLV_CONF > $TMPFILE
+
+		if [ -n "$search_list" ]; then
+			echo "adding search list $search_list to $RESOLV_CONF"
+			echo "search $search_list # $interface" >> $TMPFILE
+		fi
+
+		for i in $dns ; do
+			echo "adding dns $i to $RESOLV_CONF"
+			echo "nameserver $i # $interface" >> $TMPFILE
+		done
+
+		if [ "$(md5sum < $TMPFILE)" != "$(md5sum < $RESOLV_CONF)" ]; then
+			cat $TMPFILE > $RESOLV_CONF
+		fi
+		rm -f $TMPFILE
+		;;
+esac
+
+HOOK_DIR="$0.d"
+for hook in "${HOOK_DIR}/"*; do
+    [ -f "${hook}" -a -x "${hook}" ] || continue
+    "${hook}" "${@}"
+done
+
+exit 0

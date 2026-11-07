@@ -1,0 +1,313 @@
+#!/bin/sh
+
+set -e
+
+. /lib/functions/bos-defaults.sh
+. /lib/functions/common.sh
+. /lib/functions/system.sh
+. /lib/functions/verify-update.sh
+
+SELF="$0"
+
+# Trap cleanup for temp directories:
+# - Main process: cleans up on early exit, trap removed before fork
+# - Forked process: trap set again via 'source', cleans up after successful upgrade
+cleanup_sysupgrade_tmp() {
+    rm -rf /dev/shm/sysupgrade.*
+}
+trap cleanup_sysupgrade_tmp EXIT INT TERM
+
+usage() {
+    echo "Usage: sysupgrade [<-F|--force> <-T|--test>] FILE_NAME"
+    echo "    <-F|--force>: Optional flag to skip the package signature check (e.g. a package signed with an unknown key)"
+    echo "    <-T|--test>: Optional flag to test firmware image compatibility"
+    echo "    FILE_NAME : path to sysupgrade package (example /dev/shm/sysupgrade.tgz)"
+}
+
+if [ $# -gt 3 ] || [ $# -lt 1 ]; then
+    echo "ERROR: illegal number of parameters"
+    echo ""
+    usage
+    exit 1
+fi
+
+check_compatibility() {
+    local package="$1"
+    local expected_folder="$2"
+
+    # Get folder name from tar listing (first component of first entry)
+    local platform_folder=$(tar -tf "$package" | head -1 | cut -d'/' -f1)
+
+    # Extract CONTROL directly from tar to stdout
+    local package_platform=$(tar -xOf "$package" "$platform_folder/CONTROL" 2>/dev/null | awk -F= '{print $2}')
+
+    if [ "$package_platform" != "$BOARD_NAME" ]; then
+        echo "ERROR: package for $package_platform can not be used on $BOARD_NAME"
+        return 2
+    fi
+
+    if [ "$expected_folder" != "$platform_folder" ]; then
+        echo "ERROR: package contains invalid folder $platform_folder"
+        return 2
+    fi
+
+    return 0
+}
+
+# Checked after the COMMAND version check so that a package of another major
+# version (e.g. a legacy one without a MODE file) is reported as such first.
+check_mode_compatibility() {
+    local package="$1"
+    local expected_folder="$2"
+    local package_mode=$(tar -xOf "$package" "$expected_folder/MODE" 2>/dev/null)
+
+    # Packages older than 26.04 carry no MODE file and are refused like before
+    if [ -z "$package_mode" ]; then
+        echo "ERROR: package has no MODE file (firmware older than 26.04), its compatibility with this $BOS_MODE system can not be checked"
+        return 2
+    fi
+
+    if [ "$package_mode" != "$BOS_MODE" ]; then
+        echo "ERROR: package for $package_mode mode can not be used on $BOS_MODE system"
+        return 2
+    fi
+
+    return 0
+}
+
+# Check firmware image by extracting COMMAND from tar package
+# This prevents OOM by checking version before extracting the full package
+check_firmware_image() {
+    local package_file="$1"
+    local package_folder="$2"
+    local command_file="$package_folder/COMMAND"
+    local tmp_command="/tmp/sysupgrade.COMMAND"
+
+    echo "Checking firmware version..."
+
+    # Extract only COMMAND file from tar (~3.5 KB)
+    tar -xOf "$package_file" "$command_file" > "$tmp_command" 2>/dev/null || {
+        echo "ERROR: Cannot extract COMMAND from package. Package may be for different platform or corrupted."
+        rm -f "$tmp_command"
+        return 3
+    }
+
+    # Source COMMAND to get check_image function and UPGRADE_FW_VERSION
+    . "$tmp_command" || {
+        echo "ERROR: Cannot . COMMAND file. Package may be for different platform or corrupted."
+        rm -f "$tmp_command"
+        return 3
+    }
+
+    # Call check_image (passes tar package for backward compatibility)
+    if type 'check_image' >/dev/null 2>/dev/null; then
+        check_image "$package_file" "$package_folder" && {
+            rm -f "$tmp_command"
+            return 0
+        }
+    else
+        echo "ERROR: not supported firmware image"
+    fi
+
+    rm -f "$tmp_command"
+    return 3
+}
+
+prepare_to_upgrade() {
+    /etc/init.d/S98boser stop || true
+    /etc/init.d/S99bosminer stop || true
+    /etc/init.d/S50dropbear stop || true
+
+    killall -9 dropbear || true
+
+    return 0
+}
+
+migrate_bosminer_config() {
+    # NOTE: package_root has to be absolute path in order to work properly
+    local package_root="$1"
+    local version_file="$package_root/version.json"
+
+    CONFIG_MIGRATION_TIMEOUT_SECS="300"
+
+    # Send migration version config file path to boser tcp server
+    # If `version.json` file does not exist, then
+    # boser will fallback to downgrade config to version `2.0`
+    echo "downgrade_config:${version_file}" | bos-tools --log-to-file netcat localhost 4029 -w "$CONFIG_MIGRATION_TIMEOUT_SECS" > /dev/null
+}
+
+upgrade_system() {
+    local package_root="$1"
+    local install_partition="$2"
+    local install_offset="$3"
+    local command_file="$package_root/COMMAND"
+    local image_file="$package_root/$BOS_ROOTFS_FILE"
+
+    [ -f "$command_file" ] && {
+        . "$command_file"
+        if type 'do_upgrade' >/dev/null 2>/dev/null; then
+            # Reset flag to test if recovery to stock is needed, because new BOS version could have problem to boot
+            flash_erase $BOS_SYSTEM_MTD $LOCAL_RECOVERY_FLAGS_OFFSET_BOS_LAYOUT 1
+            printf "$(printf '\\x%x' $RECOVERY_FLAG_INSTALLED)" | nandwrite -p -s $LOCAL_RECOVERY_FLAGS_OFFSET_BOS_LAYOUT $BOS_SYSTEM_MTD
+            do_upgrade "$image_file" "$install_partition" "$install_offset" && return 0
+        else
+            echo "ERROR: not supported upgrade procedure"
+        fi
+    }
+    echo "ERROR: upgrade failed"
+    return 3
+}
+
+fork_to_upgrade() {
+    local package_root="$1"
+    echo "Migrate bosminer configuration..."
+    # Bosminer config migration is not fatal error and sysupgrade process should continue if
+    # migration was not successful.
+    migrate_bosminer_config "$package_root" || true
+
+    echo "Prepare to upgrade..."
+    prepare_to_upgrade
+
+    echo "Performing the upgrade..."
+    upgrade_system "$package_root" "$BOS_SYSTEM_MTD" "$LOCAL_BOS_ROOTFS_OFFSET_BOS_LAYOUT" || exit $?
+
+    echo "Cleanup system..."
+    rm -f /etc/bos_version
+    rm -f /etc/bos_major
+    rm -f /etc/banner
+    # inittab changed to the busybox format in 26.10 and firmware older than
+    # 26.07 does not refresh it on upgrade; without this a downgrade boots
+    # the old init with the new inittab and never comes up
+    rm -f /etc/inittab
+
+    sync
+
+    echo "Rebooting..."
+    reboot
+
+    return 0
+}
+
+sync_with_boser() {
+    SYSUPGRADE_NOTIFY_MESSAGE="boser:notify:sysupgrade"
+    SYSUPGRADE_SYNC_TIMEOUT_SECS="3"
+
+    echo "Synchronizing upgrade process with boser..."
+
+    # Send message to boser TCP server and wait for its response message with 3 second timeout.
+    BOSER_RESPONSE_MESSAGE=$(echo "$SYSUPGRADE_NOTIFY_MESSAGE" | bos-tools --log-to-file netcat localhost 4029 -N -w "$SYSUPGRADE_SYNC_TIMEOUT_SECS")
+    BOSER_RESPONSE_STATUS=$?
+
+    # Return error only for invalid boser message. Bos-tools netcat returns 1 if it timeouts, but
+    # sysupgrade should continue even if synchronization times out. It is currently used only to
+    # provide response to APIs before shutting boser process down.
+
+    if [ "$BOSER_RESPONSE_STATUS" != "0" ]; then
+        echo "Synchronization with boser timed out after $SYSUPGRADE_SYNC_TIMEOUT_SECS seconds. Continuing with upgrade..."
+        return 0
+    fi
+
+    if [ "$BOSER_RESPONSE_MESSAGE" != "$SYSUPGRADE_NOTIFY_MESSAGE" ]; then
+        echo "Boser send invalid response message: '$BOSER_RESPONSE_MESSAGE'. Continuing with upgrade..."
+        return 0
+    fi
+
+    echo "Synchronization with boser is successfully completed. Continuing with upgrade..."
+    return 0
+}
+
+# Using hidden `--only-include` parameter we can track that script was included and should not be executed.
+# This feature is being used to perform forking to background, so when SSH connection is interrupted
+# in `prepare_to_upgrade`, the upgrade process continues
+if [ "$1" != "--only-include" ]; then
+    TEST=false
+    FORCE=false
+
+    while [ -n "$1" ]; do
+        case "$1" in
+            -F|--force) FORCE=true;;
+            -T|--test) TEST=true;;
+            *) PACKAGE="$1";;
+        esac
+        shift;
+    done
+
+    if [ ! -f "$PACKAGE" ]; then
+        echo "ERROR: file '${PACKAGE}' does not exist"
+        exit 1
+    fi
+
+    PACKAGE_FOLDER="sysupgrade-$BOARD_NAME"
+    SYSUPGRADE_LOG="/var/log/sysupgrade.log"
+
+    # Packages are signed in the build (test key locally, production key
+    # in CI); -F skips only the signature check, the compatibility checks
+    # below always run.
+    if [ "$FORCE" != "true" ]; then
+        echo "Check package signature..."
+        check_update_signature "$PACKAGE" || exit 2
+    else
+        echo "Force flag set, skipping the package signature check."
+    fi
+
+    echo "Check firmware compatibility..."
+    check_compatibility "$PACKAGE" "$PACKAGE_FOLDER" || exit $?
+
+    # Check firmware image before extraction. COMMAND script's check_image() is called with
+    # tar package path for backward compatibility - old firmware ignores this parameter and
+    # only checks version/disk space, while new firmware can use it to run code and extract
+    # any file before actual unpack and upgrade happened.
+    echo "Check firmware image..."
+    check_firmware_image "$PACKAGE" "$PACKAGE_FOLDER" || exit $?
+
+    echo "Check firmware mode..."
+    check_mode_compatibility "$PACKAGE" "$PACKAGE_FOLDER" || exit $?
+
+    if [ "$TEST" = "true" ]; then
+        # If sysupgrade is run in test mode, do not unpack tar archive and return with 0. Cleanup
+        # by trap is still performed.
+        exit 0
+    fi
+
+    TMP_DIR=$(mktemp -d "/dev/shm/sysupgrade.XXXXXXXXXX")
+    PACKAGE_ROOT="$TMP_DIR/$PACKAGE_FOLDER"
+
+    tar xvf "$PACKAGE" -C "$TMP_DIR"
+
+    rm -f "$SYSUPGRADE_LOG"
+
+    # IMPORTANT: Before starting the upgrade process, convert /etc/network.conf
+    # to a regular file at the same path. Two reasons:
+    #   1. Mount availability — older firmware may not mount
+    #      the stock config partition, so the symlink target would be
+    #      unreadable. A regular file in /etc/ is always available.
+    #   2. Downgrade compatibility — older restore_config calls
+    #      `ln -sf /mnt/.../network.conf /etc/network.conf` and fails
+    #      with "ln: /etc/network.conf: File exists" if the path is
+    #      already a symlink. Replacing it with a regular file lets
+    #      `ln -sf` succeed during downgrade.
+    #
+    # IMPORTANT: unlink the symlink first. Busybox cp -- including with
+    # -f or --remove-destination -- opens dest with O_TRUNC and follows
+    # the symlink, silently truncating the stock network.conf
+    # to 0 bytes. Removing the symlink first forces cp to create a
+    # fresh regular file in /etc/.
+    [ -L "/etc/network.conf" ] && rm -f "/etc/network.conf"
+    cp -f "/mnt/$BOS_ENV_STOCK_CONFIG/network.conf" "/etc/network.conf" || \
+        echo "WARNING: could not copy network.conf from stock config" >&2
+
+    if [ "$SYNC_WITH_BOSER" = "true" ]; then
+        # Synchronization with boser is not fatal error and sysupgrade process should continue if
+        # synchronization was not successful.
+        sync_with_boser || true
+    fi
+
+    echo "Begin upgrade process. Check $SYSUPGRADE_LOG for details..."
+
+    # Remove trap so main process exit doesn't delete TMP_DIR needed by forked process
+    trap - EXIT INT TERM
+
+    "$BOS_TOOLS_NAME" daemonize sh -- -c \
+        ". $0 --only-include; fork_to_upgrade '$PACKAGE_ROOT' >> '$SYSUPGRADE_LOG' 2>&1" \
+        2>&1 0</dev/null
+fi

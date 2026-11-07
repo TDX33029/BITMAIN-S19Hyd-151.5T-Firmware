@@ -1,0 +1,163 @@
+#!/bin/sh 
+
+. /lib/functions/common.sh
+
+DEFAULT_DHCP="true"
+DEFAULT_HOSTNAME="Antminer"
+
+# Link stock config from /mnt/$BOS_ENV_STOCK_CONFIG/network.conf to /etc
+# So the stock config is always in sync between stock and BOS.
+restore_config()
+{
+    # We have to fix possible states:
+    # 1. network.conf exists in /etc and it is regular file. That means it was created in previous version of BOS.
+    #    We have to copy this to stock config in order to keep latest changes in sync. Then create link.
+    # 2. network.conf does not exists, it is probably first boot of BOS. Just create link to stock config.
+
+    if [ -f "/etc/network.conf" ] && [ ! -h "/etc/network.conf" ]; then
+        # Copy current network.conf to stock config location, if it fails,
+        # skip the removing of the /etc/network.conf file, because in that case
+        # we will not be able to create link to stock config.
+        # Write through the existing inode instead of `cp -a`: the stock file
+        # is owned by the stock web user (www-data, mode 0755) and its CGI
+        # writes it as that user; `cp -a` would turn it into root:0644 and
+        # the stock web UI could no longer save network settings after an
+        # uninstall.
+        cat "/etc/network.conf" >"/mnt/$BOS_ENV_STOCK_CONFIG/network.conf" || return 1
+    fi
+
+    # Remove old file
+    rm -f "/etc/network.conf" 2>/dev/null
+
+    # Create link to stock config
+    ln -sf "/mnt/$BOS_ENV_STOCK_CONFIG/network.conf" "/etc/network.conf" 2>/dev/null
+
+    # In case of broken or missing stock config, seed the network config
+    # with defaults. Install writes only stock_config.json (not
+    # network.conf), so until the user configures the network via the API,
+    # consumers reading the file directly (e.g. boser) would see an empty
+    # file.
+    if [ ! -s "/etc/network.conf" ] ; then
+        if ! printf 'dhcp=%s\nhostname=%s\n' "$DEFAULT_DHCP" "$DEFAULT_HOSTNAME" > /etc/network.conf ; then
+            echo "S38network: WARNING: failed to seed /etc/network.conf" >&2
+        fi
+    fi
+}
+
+do_start()
+{
+    resolv_conf="/etc/resolv.conf"
+    resolv_conf_link="/tmp/resolv.conf.real"
+    if /etc/init.d/S37dnsmasq status; then
+        resolv_conf="/etc/resolv.conf.dnsmasq"
+    fi
+
+    # $resolv_conf_link serves as a link to the currently used or valid resolv.conf file which boser can
+    # use to read configured dns servers from. Thanks to this link boser doesn't need to contain any complicated logic
+    # (apart of the fallback to the default /etc/resolv.conf)
+    ln -sf "$resolv_conf" "$resolv_conf_link"
+
+    resolv_conf_tmp="$resolv_conf.tmp"
+    # RFC 1123 (labels may start with a digit, 1-63 chars), the same rule the API
+    # validates against, so a name the API accepted is never dropped here.
+    ValidHostnameRegex="^([A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)*[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?$"
+    ValidIpAddress="[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"
+
+    # Run restore_config if network.conf is in different state than symlink to RW
+    # stock config, or if the file (following the symlink) is empty/missing -- the
+    # symlink can be intact while the target is empty (never-configured miner,
+    # partition issue, manual intervention), and we want restore_config's seed to
+    # kick in for that case too.
+    if [ ! -h /etc/network.conf ] || \
+       [ "$(readlink /etc/network.conf)" != "/mnt/$BOS_ENV_STOCK_CONFIG/network.conf" ] || \
+       [ ! -s /etc/network.conf ]; then
+        restore_config
+    fi
+
+    if [ -s /etc/network.conf ] ; then
+        dhcp=`cat /etc/network.conf | grep dhcp |awk -F '=' '{print $2}'`
+        if [ "$dhcp" = "" ] ; then
+            echo "static mode"
+            ipaddress=`cat /etc/network.conf | grep ipaddress |awk -F '=' '{print $2}'|grep -o "$ValidIpAddress"`
+            gateway=`cat /etc/network.conf | grep gateway |awk -F '=' '{print $2}'|grep -o "$ValidIpAddress"`
+            netmask=`cat /etc/network.conf | grep netmask |awk -F '=' '{print $2}'|grep -o "$ValidIpAddress"`
+            dnsservers=`cat /etc/network.conf | grep dnsservers |awk -F '=' '{print $2}'`
+            echo $ipaddress  $gateway $netmask $dnsservers
+        else
+            dhcp=true
+        fi
+        configured_hostname=$(cat /etc/network.conf | grep hostname | awk -F '=' '{print $2}')
+        hostname=$(echo "$configured_hostname" | grep -E "$ValidHostnameRegex")
+        # A name the API accepted but this regex rejects must not silently keep
+        # the previous kernel hostname: say so and use the default instead.
+        if [ -n "$configured_hostname" ] && [ -z "$hostname" ] ; then
+            echo "Invalid hostname '$configured_hostname' in /etc/network.conf, using $DEFAULT_HOSTNAME" >&2
+            hostname="$DEFAULT_HOSTNAME"
+        fi
+    else
+        # Safety net: restore_config seeds the file when empty, but the seed
+        # write can fail (RO/full partition, broken symlink). Use the same
+        # defaults in-memory so eth0 still comes up via DHCP.
+        dhcp="$DEFAULT_DHCP"
+        hostname="$DEFAULT_HOSTNAME"
+    fi
+    
+    if [ -n "$hostname" ] ; then
+    	hostname $hostname
+    	echo $hostname > /etc/hostname
+		chmod 766 /etc/hostname
+    fi
+    
+    # Setup link 
+    ip link set lo up
+    ip link set eth0 up
+    ip addr flush dev eth0
+    
+    if [ "$dhcp" = "true" ] ; then
+        # busybox udhcpc's compiled-in default script path differs from /etc/udhcpc;
+        # pass -s explicitly so DHCP-supplied DNS gets written to resolv.conf.
+        #
+        # udhcpc keeps our stdio until it daemonizes (lease bound, or -t retries
+        # exhausted with -b); a caller draining our output through a pipe would
+        # block that long.
+        udhcpc -b -S -t 10 -A 10 -x hostname:$hostname -i eth0 -s /etc/udhcpc/default.script \
+            </dev/null >/dev/null 2>&1 &
+    else
+        # Manual setup
+        ip addr add $ipaddress/$netmask dev eth0
+        ip ro add default via $gateway
+    fi
+    # Setup DNS every time
+    > "$resolv_conf_tmp"
+    for ip in $dnsservers ; do
+        dns=`echo $ip|grep -o "$ValidIpAddress"`
+        if [ -n "$dns" ]; then
+            echo "Adding nameserver $ip to $resolv_conf_tmp"
+            echo "nameserver $ip" >> "$resolv_conf_tmp"
+        fi
+    done
+    mv "$resolv_conf_tmp" "$resolv_conf"
+}
+
+function do_stop()
+{
+    #kill udhcpc service
+    killall -9 udhcpc
+}
+
+case "$1" in
+    start|"")
+        do_start
+        ;;
+    stop)
+        do_stop
+        ;;
+    restart)
+        do_stop
+        do_start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}" >&2
+        exit 1
+        ;;
+esac

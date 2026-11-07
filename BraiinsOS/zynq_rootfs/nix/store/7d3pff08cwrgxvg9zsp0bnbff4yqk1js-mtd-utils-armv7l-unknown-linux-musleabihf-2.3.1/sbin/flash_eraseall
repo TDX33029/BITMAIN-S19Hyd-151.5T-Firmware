@@ -1,0 +1,2 @@
+#!/bin/sh
+exec flash_erase "$@" 0 0

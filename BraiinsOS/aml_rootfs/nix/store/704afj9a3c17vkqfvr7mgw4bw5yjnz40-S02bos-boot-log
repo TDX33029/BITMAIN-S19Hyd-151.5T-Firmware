@@ -1,0 +1,66 @@
+#!/bin/sh
+
+# Copyright (C) 2026 Braiins Systems s.r.o.
+#
+# This file is part of Braiins Open-Source Initiative (BOSI).
+#
+# BOSI is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+# Please, keep in mind that we may also license BOSI or any part thereof
+# under a proprietary license. For more information on the terms and conditions
+# of such proprietary license or if you have any other questions, please
+# contact us at opensource@braiins.com.
+
+# Sysvinit boot/shutdown marker; S02 = after S01syslogd so logger reaches
+# syslog. Shared by bm1 and the nix firmware; keep in sync with the procd
+# bos-boot-log.init.
+
+# Persistent across a power cut (in /etc, not tmpfs).
+BOS_BOOT_LOCK="/etc/bos_boot.lock"
+
+bos_log() {
+    logger -t bos -p "$1" "$2"
+}
+
+# A lock left over from the previous boot means an ungraceful shutdown.
+bos_marker_boot() {
+    if [ -f "${BOS_BOOT_LOCK}" ]; then
+        bos_log daemon.warning \
+            "Ungraceful shutdown detected (${BOS_BOOT_LOCK} survived the previous boot)"
+    fi
+    if : >"${BOS_BOOT_LOCK}" 2>/dev/null; then
+        sync
+    else
+        bos_log daemon.err \
+            "Failed to arm ${BOS_BOOT_LOCK}; ungraceful-shutdown detection disabled"
+    fi
+}
+
+bos_marker_shutdown() {
+    rm -f "${BOS_BOOT_LOCK}"
+    if [ -e "${BOS_BOOT_LOCK}" ]; then
+        bos_log daemon.err \
+            "Failed to clear ${BOS_BOOT_LOCK}; next boot may be misread as ungraceful"
+    fi
+    sync
+}
+
+case "$1" in
+    start) bos_log daemon.info "Miner booting"; bos_marker_boot ;;
+    stop) bos_log daemon.info "Miner is going to shutdown"; bos_marker_shutdown ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac

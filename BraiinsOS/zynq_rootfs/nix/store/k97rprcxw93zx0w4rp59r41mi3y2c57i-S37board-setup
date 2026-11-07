@@ -1,0 +1,52 @@
+#!/bin/sh
+
+# Zynq (bm3-am2, Antminer X19 control board) setup.
+# LEDs come up as /sys/class/leds (gpio-leds in the kernel DT) and boser
+# drives them directly. The buttons are gpio-keys-polled in the DT but no
+# driver binds them here (the kernel has no gpio_keys*, the legacy LEDE
+# gpio-button-hotplug module is not shipped), so export the lines for
+# boser's sysfs button driver, like BBB does. zynq_gpio chip base is 906
+# (ARCH_NR_GPIO 1024 - 118 lines). U-Boot does no button handling (BOS-4100).
+
+mem_info() {
+    memory_size=$(awk '/MemTotal/{total=$2}END{print total}' /proc/meminfo)
+    echo "zynq bm3-am2 board totally has ${memory_size}KB memory"
+}
+
+gpio_init() {
+    # IP report button: zynq GPIO 37 -> 906 + 37
+    if [ ! -d /sys/class/gpio/gpio943 ]; then
+        echo 943 > /sys/class/gpio/export
+        echo in > /sys/class/gpio/gpio943/direction
+        echo both > /sys/class/gpio/gpio943/edge
+    fi
+
+    # Reset button: zynq GPIO 15 -> 906 + 15
+    if [ ! -d /sys/class/gpio/gpio921 ]; then
+        echo 921 > /sys/class/gpio/export
+        echo in > /sys/class/gpio/gpio921/direction
+        echo both > /sys/class/gpio/gpio921/edge
+    fi
+}
+
+do_start() {
+    mem_info
+    gpio_init
+}
+
+do_stop() {
+    return 0
+}
+
+case "$1" in
+    start | "")
+        do_start
+        ;;
+    stop)
+        do_stop
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}" >&2
+        exit 1
+        ;;
+esac

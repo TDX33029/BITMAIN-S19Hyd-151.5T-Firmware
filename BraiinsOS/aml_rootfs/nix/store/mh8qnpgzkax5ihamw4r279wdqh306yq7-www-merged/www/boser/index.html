@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #262626" class="br-theme-dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>Braiins OS</title>
+
+        <script type="text/javascript">
+            /**
+             * Anchor relative asset URLs at the mount point (or the root when
+             * served standalone). Without this a deep route resolves them against
+             * its own directory, and the server answers those with index.html,
+             * so the page loads markup as script.
+             *
+             * Inline because it must run before the bundle loads. The predicate
+             * mirrors `isUnderBase` in src/lib/router/basename.ts; change both.
+             */
+            (function () {
+                var mount = '/bos';
+                var path = window.location.pathname;
+                var mounted = mount && (path === mount || path.indexOf(mount + '/') === 0);
+                var el = document.createElement('base');
+                el.href = (mounted ? mount : '') + '/';
+                document.getElementsByTagName('head')[0].appendChild(el);
+            })();
+        </script>
+
+        <script type="text/javascript">
+            /** Cache busting by appending changing of the URL (eg. query params) */
+            var l = document.createElement('link');
+            l.rel = "icon";
+            l.type = 'image/png';
+            l.href = '/var/favicon.png?v=' + Date.now();
+            document.getElementsByTagName("head")[0].appendChild(l);
+        </script>
+        <script type="text/javascript">
+            /**
+             * - Cache busting by appending changing of the URL (eg. query params)
+             * - Log load/parse errors
+             */
+            var originalGlobalOnError = window.onerror;
+            function revertOnError() {
+                window.onerror = originalGlobalOnError;
+            }
+
+            var errorStyle = 'color: red; font-weight: bold; font-size: 14px;';
+            var s = document.createElement('script');
+            function handleError(e) {
+                console.group('%cFailed to load the branding file!', errorStyle);
+                console.log(e);
+                console.groupEnd();
+                revertOnError();
+            }
+
+            // Parsing exception don't trigger the "onerror" callback
+            // so we'll try to catch it in global error handler
+            // and revert cleanup once we know loading is done.
+            window.onerror = handleError;
+            s.onerror = handleError;
+            s.onload = revertOnError;
+
+            s.src = '/var/brand.js?v=' + Date.now();
+            document.getElementsByTagName("head")[0].appendChild(s);
+        </script>
+    <meta name="build" head="46be68fe60bbbd4e" date="2026-10-19_22:56:58"><script defer src="static/js/lib-react.d0a3663d3d.js"></script><script defer src="static/js/lib-router.c24b60367d.js"></script><script defer src="static/js/218.9d6bc8b81d.js"></script><script defer src="static/js/index.ff0171d051.js"></script><link href="static/css/index.f9e11b1cc9.css" rel="stylesheet"></head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>

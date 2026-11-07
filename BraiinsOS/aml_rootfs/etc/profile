@@ -1,0 +1,39 @@
+[ -f /etc/banner ] && cat /etc/banner
+
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+export PS1='\u@\h:\w\$ '
+
+export PAGER='/bin/more'
+export EDITOR='/bin/vi'
+
+# Command history configuration
+export HISTFILE="/var/log/ash_history"
+export HISTSIZE=1000
+
+[ -x /bin/more ] || alias more=less
+[ -x /usr/bin/vim ] && alias vi=vim || alias vim=vi
+
+alias ll='ls -alF --color=auto'
+
+if [ -d /usr/lib/terminfo ];then
+	export TERMINFO=/usr/lib/terminfo
+fi
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+	if [ -r "$i" ]; then
+		. $i
+	fi
+done
+unset i
+
+if ( grep -qs '^root::' /etc/shadow && \
+     [ -z "$FAILSAFE" ] )
+then
+cat << EOF
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+EOF
+fi

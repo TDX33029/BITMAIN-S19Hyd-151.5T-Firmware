@@ -1,0 +1,45 @@
+#!/bin/sh
+
+. /lib/functions/common.sh
+. /lib/functions/system.sh
+. /lib/functions/bos-defaults.sh
+
+do_start() {
+    # redirect STDOUT and STDERR to /dev/kmsg
+    exec 1<&- 2<&- 1>/dev/kmsg 2>&1
+
+    echo "Checking recovery flag value."
+    local flag_after_boot=$(printf '\\x%x' $RECOVERY_FLAG_FIRST_BOOT)
+    # When special BOS_ENV_MTD partition is defined for current platform use it (e.g. on BBB),
+    # oterwise use common BOS_SYSTEM_MTD where ENV sub-partition is stored along
+    # with other BOS sub-partitions (e.g. on AML)
+    local env_mtd=${BOS_ENV_MTD:-$BOS_SYSTEM_MTD}
+    if [ "$(nanddump -s $LOCAL_RECOVERY_FLAGS_OFFSET_BOS_LAYOUT -l 1 $env_mtd)" = "$(printf $flag_after_boot)" ]; then
+        # Add sync, so all pending writes to NAND is flashed before the recovery is disabled.
+        sync
+        echo "First successful boot writing ${RECOVERY_FLAG_SUCCESSFUL} to recovery flag."
+        flash_erase $env_mtd $LOCAL_RECOVERY_FLAGS_OFFSET_BOS_LAYOUT 1
+        printf "$(printf '\\x%x' $RECOVERY_FLAG_SUCCESSFUL)" | nandwrite -p -s $LOCAL_RECOVERY_FLAGS_OFFSET_BOS_LAYOUT $env_mtd
+    fi
+}
+
+do_stop() {
+    true
+}
+
+case "$1" in
+    start)
+        # We set recovery flag in NAND mode only, because in SD mode there are no
+        # persistent changes in miner and stock FW is functional, so nothing to recover.
+        if [ "$BOS_MODE" = "nand" ]; then
+            do_start
+        fi
+    ;;
+    stop)
+        do_stop
+    ;;
+    *)
+        echo "Usage: $0 {start}" >&2
+        exit 1
+        ;;
+esac

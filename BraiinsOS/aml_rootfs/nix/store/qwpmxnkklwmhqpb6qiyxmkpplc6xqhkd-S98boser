@@ -1,0 +1,91 @@
+#!/bin/sh
+#
+# Starts boser
+#
+
+SERVICE_NAME="boser"
+SERVICE_COMMAND="/usr/bin/$SERVICE_NAME"
+SERVICE_ARG1="--log-to-file"
+SERVICE_PIDFILE="/var/run/$SERVICE_NAME.pid"
+WAIT_FOR_BOSMINER_TOML=30
+STOP_TIMEOUT=30
+
+start() {
+    printf "Starting $SERVICE_NAME: "
+    umask 077
+
+    start-stop-daemon -S -q -m -b -p "$SERVICE_PIDFILE" \
+        -x "/usr/bin/bos-tools" -- "run-and-watch" -- "$SERVICE_COMMAND" "$SERVICE_ARG1"
+    if [ $? = 0 ]; then
+        # HACK: wait for `boser` to start and generate `bosminer.toml` file
+        # On BBB platform, `boser` is starting more that 6s and `bosminer.toml` is not created
+        # so we need to wait more time.
+        for i in $(seq 1 $WAIT_FOR_BOSMINER_TOML); do
+            if [ -s "/etc/bosminer.toml" ]; then
+                # bosminer configuration file created successfully, exit
+                echo "OK"
+                return 0
+            else
+                sleep 1
+            fi
+        done
+        # Waited for `WAIT_FOR_BOSMINER_TOML` seconds, but `bosminer.toml` not created, log error
+        echo "S98boser: Waited for ${WAIT_FOR_BOSMINER_TOML}s, but bosminer.toml not created." > /dev/kmsg
+        echo "FAIL: bosminer.toml not created"
+    else
+        echo "FAIL"
+    fi
+}
+# The pidfile may be stale (wrapper crashed or was OOM killed) and its PID
+# recycled by an unrelated process, so check that the PID still belongs to
+# the bos-tools wrapper before waiting for it or killing it
+is_wrapper() {
+    [ "$(cat "/proc/$1/comm" 2>/dev/null)" = "bos-tools" ]
+}
+stop() {
+    printf "Stopping $SERVICE_NAME: "
+    WRAPPER_PID=$(cat "$SERVICE_PIDFILE" 2>/dev/null)
+    start-stop-daemon -K -q -R 5 -p "$SERVICE_PIDFILE"
+    status=$?
+    # BusyBox start-stop-daemon accepts but ignores -R (retry), so we
+    # must wait for the process to actually exit before returning
+    if [ -n "$WRAPPER_PID" ]; then
+        timeout=$STOP_TIMEOUT
+        while is_wrapper "$WRAPPER_PID" && [ "$timeout" -gt 0 ]; do
+            sleep 1
+            timeout=$((timeout - 1))
+        done
+        if is_wrapper "$WRAPPER_PID"; then
+            echo "S98boser: $SERVICE_NAME did not stop in ${STOP_TIMEOUT}s, sending SIGKILL" > /dev/kmsg
+            # Kill the wrapper first so it cannot respawn boser
+            kill -9 "$WRAPPER_PID" 2>/dev/null
+        fi
+    fi
+    # Kill boser also when the wrapper is already gone - a dead wrapper
+    # (crash, OOM kill) leaves boser orphaned and still holding its ports;
+    # in the normal case boser has already exited and this is a no-op
+    killall -9 "$SERVICE_NAME" 2>/dev/null
+    rm -f "$SERVICE_PIDFILE"
+    [ $status = 0 ] && echo "OK" || echo "FAIL"
+}
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+  start)
+      start
+    ;;
+  stop)
+      stop
+    ;;
+  restart|reload)
+      restart
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit $?

@@ -8,3 +8,6 @@ WebMonitor/config.*.json
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Ghidra headless project (repacks the analyzed binary, high churn)
+BraiinsOS/analysis/ghidra_project/

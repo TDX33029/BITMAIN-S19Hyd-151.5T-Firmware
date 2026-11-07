@@ -1,0 +1,301 @@
+{
+  "$id": "https://developer.braiins-os.com/advanced-settings/2.0.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "allow_disabling_hashboards_on_nopic_miners": {
+      "default": false,
+      "description": "Allows NoPIC miners to continue mining with a damaged hashboard by bypassing the default safety shutdown. Use only if you understand the risks.",
+      "title": "Hashboard Disabling on NoPIC Miners",
+      "type": "boolean",
+      "x-documentationUrl": "braiins-os/advanced-features/#enable-hashboard-disabling-on-nopic-miners",
+      "x-minVersion": "24.09",
+      "x-order": 0,
+      "x-status": "dangerous"
+    },
+    "allow_missing_voltage_feedback": {
+      "default": false,
+      "description": "Allows miner to start without voltage feedback from PIC or PSU. Disables voltage verification and short-circuit detection. Use only if you understand the risks.",
+      "title": "Allow missing voltage feedback",
+      "type": "boolean",
+      "x-minVersion": "26.05",
+      "x-order": 1,
+      "x-status": "stable"
+    },
+    "cgminer_readonly": {
+      "default": true,
+      "description": "When enabled, all mutating CGMiner API commands are blocked. This includes pool management (add/remove/replace/enable/disable/switch) and mining control (pause/resume).",
+      "title": "CGMiner API Read-Only",
+      "type": "boolean",
+      "x-category": "cgminer",
+      "x-minVersion": "26.05",
+      "x-order": 19,
+      "x-status": "stable"
+    },
+    "defrost_temperature_limit_c": {
+      "default": 10,
+      "description": "When defrost temperature is reached, miner will stop heating up the hashboards and proceed to boot up. Recommended value for Immersion and Hydro miners is 10 °C, for air-cooled miners set a temperature that fits your operation. Keep in mind that booting machines that are too cold may affect hardware health.",
+      "maximum": 15,
+      "minimum": -15,
+      "title": "Defrost Temperature Limit",
+      "type": "integer",
+      "x-dependsOn": {
+        "key": "enable_defrost",
+        "value": true
+      },
+      "x-documentationUrl": "braiins-os/advanced-features/#defrost",
+      "x-minVersion": "26.01",
+      "x-order": 14,
+      "x-status": "beta",
+      "x-unit": "°C"
+    },
+    "defrost_timeout_mode": {
+      "default": "indefinite",
+      "description": "Controls how long the hashboard heat-up routine runs. Indefinite means defrost runs until the hashboard is warm. Timed means defrost stops after the Defrost Timeout Duration.",
+      "enum": [
+        "indefinite",
+        "timed"
+      ],
+      "title": "Defrost Timeout Mode",
+      "type": "string",
+      "x-dependsOn": {
+        "key": "enable_defrost",
+        "value": true
+      },
+      "x-documentationUrl": "braiins-os/advanced-features/#defrost",
+      "x-minVersion": "26.04",
+      "x-order": 12,
+      "x-status": "beta"
+    },
+    "defrost_timeout_s": {
+      "default": 300,
+      "description": "Timeout in seconds for the hashboard heat-up routine.",
+      "maximum": 86400,
+      "minimum": 0,
+      "title": "Defrost Timeout Duration",
+      "type": "integer",
+      "x-dependsOn": {
+        "key": "defrost_timeout_mode",
+        "value": "timed"
+      },
+      "x-minVersion": "26.01",
+      "x-order": 13,
+      "x-status": "beta",
+      "x-unit": "s"
+    },
+    "enable_continuous_tuning": {
+      "default": false,
+      "description": "Keeps tuning the miner continuously after the initial tuning is complete.",
+      "title": "Continuous Tuning",
+      "type": "boolean",
+      "x-documentationUrl": "braiins-os/advanced-features/#continuous-tuning",
+      "x-minVersion": "26.01",
+      "x-order": 5,
+      "x-status": "beta"
+    },
+    "enable_defrost": {
+      "default": false,
+      "description": "Preheats cold hashboards to allow mining startup in low-temperature conditions.",
+      "title": "Defrost Hashboards",
+      "type": "boolean",
+      "x-documentationUrl": "braiins-os/advanced-features/#defrost",
+      "x-minVersion": "26.01",
+      "x-order": 11,
+      "x-status": "beta"
+    },
+    "fan_maximum_efficiency_mode": {
+      "default": false,
+      "description": "Runs the miner as cool as possible by controlling fans using both inlet and outlet temperature targets to slightly improve efficiency.",
+      "title": "Maximum Fan Efficiency Mode",
+      "type": "boolean",
+      "x-maxVersion": "26.09",
+      "x-minVersion": "25.05",
+      "x-order": 21,
+      "x-status": "deprecated"
+    },
+    "ignore_internal_chip_temperature": {
+      "default": false,
+      "description": "Disables the automatic pause triggered when an internal chip reaches DANGEROUS temperature. May lead to overheating or hardware damage.",
+      "title": "Override Chip Temperature Safety Check",
+      "type": "boolean",
+      "x-documentationUrl": "braiins-os/advanced-features/#override-internal-chip-temperature-sensor-check",
+      "x-minVersion": "25.03",
+      "x-order": 4,
+      "x-status": "dangerous"
+    },
+    "mdns_enabled": {
+      "default": false,
+      "description": "When enabled, the miner advertises its web interface and API over mDNS/DNS-SD so it can be discovered on the local network without knowing its IP address. Large miners default to disabled because link-local multicast is flooded to every port on flat farm networks. Small miners default to enabled; a device's live schema reports the default for its platform.",
+      "title": "Advertise over mDNS",
+      "type": "boolean",
+      "x-category": "network",
+      "x-minVersion": "26.09",
+      "x-order": 20,
+      "x-status": "stable"
+    },
+    "min_fan_pwm": {
+      "default": 20,
+      "description": "Minimum fan PWM percentage used when Min Fan PWM Mode is set to Manual.",
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Min Fan PWM",
+      "type": "integer",
+      "x-dependsOn": {
+        "key": "min_fan_pwm_mode",
+        "value": "manual"
+      },
+      "x-minVersion": "25.03",
+      "x-order": 3,
+      "x-status": "stable",
+      "x-unit": "%"
+    },
+    "min_fan_pwm_mode": {
+      "default": "auto",
+      "description": "Controls how the minimum fan PWM is determined at startup. In Auto mode, the miner runs fan autoconfiguration to find the minimum RPM. In Manual mode, a fixed value from Min Fan PWM is used instead.",
+      "enum": [
+        "auto",
+        "manual"
+      ],
+      "title": "Min Fan PWM Mode",
+      "type": "string",
+      "x-documentationUrl": "braiins-os/advanced-features/#set-minimal-fan-pwm",
+      "x-minVersion": "26.04",
+      "x-order": 2,
+      "x-status": "stable"
+    },
+    "normal_ramping_time_down_mode": {
+      "default": "unchanged",
+      "description": "Controls the ramp-down time during shutdown or restart. By default, the built-in timing is used. In Custom mode, the Normal Ramping Time Down value is applied.",
+      "enum": [
+        "unchanged",
+        "custom"
+      ],
+      "title": "Normal Ramp-Down Time Mode",
+      "type": "string",
+      "x-documentationUrl": "braiins-os/advanced-features/#custom-ramp-up-and-ramp-down-time",
+      "x-minVersion": "26.04",
+      "x-order": 8,
+      "x-status": "stable"
+    },
+    "normal_ramping_time_down_s": {
+      "default": 30,
+      "description": "Controls how quickly the miner ramps down frequency. Lower values may increase stress on components and reduce device lifespan. Higher values may be limited during miner shutdown and restart.",
+      "maximum": 600,
+      "minimum": 10,
+      "title": "Normal Ramping Time Down",
+      "type": "integer",
+      "x-dependsOn": {
+        "key": "normal_ramping_time_down_mode",
+        "value": "custom"
+      },
+      "x-minVersion": "25.07",
+      "x-order": 9,
+      "x-status": "stable",
+      "x-unit": "s"
+    },
+    "normal_ramping_time_up_mode": {
+      "default": "unchanged",
+      "description": "Controls the ramp-up time after boot or restart (not pause/resume). By default, the built-in timing is used. In Custom mode, the Normal Ramping Time Up value is applied.",
+      "enum": [
+        "unchanged",
+        "custom"
+      ],
+      "title": "Normal Ramp-Up Time Mode",
+      "type": "string",
+      "x-documentationUrl": "braiins-os/advanced-features/#custom-ramp-up-and-ramp-down-time",
+      "x-minVersion": "26.04",
+      "x-order": 6,
+      "x-status": "stable"
+    },
+    "normal_ramping_time_up_s": {
+      "default": 30,
+      "description": "Controls how quickly the miner ramps up after boot or restart (not pause/resume). Lower values may increase stress on components and reduce device lifespan.",
+      "maximum": 600,
+      "minimum": 10,
+      "title": "Normal Ramping Time Up",
+      "type": "integer",
+      "x-dependsOn": {
+        "key": "normal_ramping_time_up_mode",
+        "value": "custom"
+      },
+      "x-minVersion": "25.07",
+      "x-order": 7,
+      "x-status": "stable",
+      "x-unit": "s"
+    },
+    "overheat_recovery_mode": {
+      "default": "unchanged",
+      "description": "Override the behavior after the miner pauses due to DANGEROUS temperature. By default, automatic resume after cooldown is enabled for air-cooled and immersion miners but disabled for Hydro miners (to protect against damage when cooling water is not flowing).",
+      "enum": [
+        "unchanged",
+        "disabled",
+        "enabled"
+      ],
+      "title": "Auto-Recovery After Overheating",
+      "type": "string",
+      "x-documentationUrl": "braiins-os/advanced-features/#auto-recovery-after-overheating",
+      "x-minVersion": "26.05",
+      "x-order": 15,
+      "x-status": "beta"
+    },
+    "rambo_mode": {
+      "default": "disabled",
+      "description": "Rambo mode is a \"fault tolerance level\". Will ignore some errors in chip and PSU communication.",
+      "enum": [
+        "disabled",
+        "cautious",
+        "maximum"
+      ],
+      "title": "Rambo Mode",
+      "type": "string",
+      "x-documentationUrl": "braiins-os/advanced-features/#enable-rambo-mode",
+      "x-minVersion": "25.07",
+      "x-order": 10,
+      "x-status": "dangerous"
+    },
+    "start_cooldown_mode": {
+      "default": "unchanged",
+      "description": "Controls the cooldown that runs before mining starts or resumes. By default the miner waits for the chips to cool down to a pre-defined temperature. Timed mode caps the total wait time. Disabled mode skips the cooldown altogether. Starting with chips too hot can affect hardware health.",
+      "enum": [
+        "unchanged",
+        "timed",
+        "disabled"
+      ],
+      "title": "Cooldown Before Start Mode",
+      "type": "string",
+      "x-documentationUrl": "braiins-os/advanced-features/#cooldown-before-start",
+      "x-minVersion": "26.09",
+      "x-order": 17,
+      "x-status": "beta"
+    },
+    "start_cooldown_timeout_s": {
+      "default": 60,
+      "description": "Maximum time the miner spends cooling the chips down before mining starts or resumes.",
+      "maximum": 600,
+      "minimum": 15,
+      "title": "Cooldown Before Start Timeout",
+      "type": "integer",
+      "x-dependsOn": {
+        "key": "start_cooldown_mode",
+        "value": "timed"
+      },
+      "x-minVersion": "26.09",
+      "x-order": 18,
+      "x-status": "beta",
+      "x-unit": "s"
+    },
+    "startup_delay_max_s": {
+      "default": 0,
+      "description": "Maximum random delay before mining startup. A random value between 0 and this maximum is chosen each time the miner starts or resumes from pause. Useful for staggering startup across a farm after a power event.",
+      "maximum": 600,
+      "minimum": 0,
+      "title": "Maximum Startup Delay",
+      "type": "integer",
+      "x-minVersion": "26.05",
+      "x-order": 16,
+      "x-status": "stable",
+      "x-unit": "s"
+    }
+  },
+  "title": "Braiins OS Advanced Settings",
+  "type": "object"
+}

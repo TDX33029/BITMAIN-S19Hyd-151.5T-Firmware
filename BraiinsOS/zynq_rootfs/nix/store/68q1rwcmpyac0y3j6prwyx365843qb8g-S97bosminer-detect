@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# Starts bosminer-detect
+#
+
+SERVICE_NAME="bosminer"
+SERVICE_COMMAND="/usr/bin/$SERVICE_NAME"
+SERVICE_PIDFILE="/var/run/$SERVICE_NAME.pid"
+SERVICE_ARGS="model --detect"
+
+. /lib/functions/bos-defaults.sh
+
+start() {
+    # redirect STDOUT and STDERR to /dev/kmsg
+    exec 1<&- 2<&- 1>/dev/kmsg 2>&1
+
+    local model=""
+    case $BOARD_NAME in
+        am3-*|cvitek-bm1-am2|zynq-bm3-am2)
+            echo "Detecting miner model..."
+            # create or remove '/etc/bosminer_model' with actual hashchain model name
+            "$SERVICE_COMMAND" $SERVICE_ARGS
+        ;;
+        *)
+            # other platforms does not support model detection
+            true
+        ;;
+    esac
+}
+stop() {
+  	true
+}
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac
+
+exit $?

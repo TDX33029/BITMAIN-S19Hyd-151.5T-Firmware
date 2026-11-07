@@ -1,0 +1,44 @@
+keyword,start,size,evidence
+autotuning,0x01321754,612,3b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/rand-0.8.5/src/distributions/uniform.rs | stage7.rs | ee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/aws-l
+cooling,0x01301e9c,100, fan control mode is not 'auto' or 'manual'
+cooling,0x0130b59c,2680,miner-hal/src/fan/pid/ring_buffer.rs | ee9d583b888f934adbbe8d0/ver-stub-0.3.0/src/lib.rs | eeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/ver-s
+cooling,0x0130f4a0,844," Defrost: temperature monitor status unavailable, skipping | e/rsa/rsa.c | boundary | eeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/serde_core-1.0.228/src/f"
+cooling,0x0131fc1c,1536,-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/csnmp-0.3.5/src/message.rs | reshold can be adjusted with `[temp_control] cold_temp` option in the configuration file.
+devfee,0x01304810,1496,eeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/lz4_flex-0.11.5/src/sink.rs | noise-0.2.3/src/stratum_handshake/initiator.rs | or-cargo-de
+dps,0x0130d344,1604,st/library/alloc/src/vec/spec_from_iter_nested.rs | 7984ad5ab09ee9d583b888f934adbbe8d0/ring-0.17.8/src/aead/block.rs | us-tuner/src/dps.rs
+eeprom,0x0155480c,2344,rted for the currect control boardx19_J EEPROM parserx21_aes EEPROM parser | BHB68701-
+eeprom_crypto,0x01303a30,216,ndor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/bitcoin_hashes-0.13.0/src/sha256.rs
+eeprom_crypto,0x0133ee00,276,/aws-lc/crypto/fipsmodule/hmac/hmac.c
+error,0x014a19ac,8544,atesize_incrementcore thread exited earlycore thread panicked | ementcore thread exited earlycore thread panicked | est or response body errorerror decoding response bodyerror upgrading connectionoper
+power,0x012f5888,3116,eeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/rand-0.8.5/src/rngs/thread.rs | 5ab09ee9d583b888f934adbbe8d0/tracing-subscriber-0.3.20/src/registry/extensions
+power,0x01320d68,1080,/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/toml-0.8.19/src/ser.rs | 9b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f9
+power,0x0132b59c,1444,event_created_at | uppercasemapping |      at StartTaskAbortedstruct HashChain |      at StartTaskAbortedstruct HashChain | secs_since_epoch | Setting baudrateSignedPartHeaderZanabazar_Squareconfig_fr
+power,0x0132c264,2216,OutOfBoundsErrorPSU undervoltageWaitingWhileColdbosminer_versiondependentSchemas.debug_macro.dwophp_class_prefix | ingWhileColdbosminer_versiondependentSchemas.debug_macro.dwophp_class_prefix | Change
+power,0x0133d870,600,t-AcqCardCodeMsgTBE |  Voltage controller reset
+stratum_v1,0x011f24f0,4576,extranonce1 | /protocols/stratum-proxy/src/translation.rs:1655handle_notifyreject_sharesBUG: there is no message in the submit share queueperform_notifyextended_job
+stratum_v1,0x012f93a4,20,8d8191f44f31eed23608ce2310d851ca320/stratum2-messages-4.2.0/src/mining/conversions.rs
+stratum_v1,0x012f9858,324,-1.3.1/src/stratum2.rs
+stratum_v1,0x01304810,1496,eeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/lz4_flex-0.11.5/src/sink.rs | noise-0.2.3/src/stratum_handshake/initiator.rs | or-cargo-de
+stratum_v1,0x01305aac,872,d0/tokio-1.49.0/src/runtime/io/registration.rs | b09ee9d583b888f934adbbe8d0/tokio-1.49.0/src/runtime/io/registration.rs | ce2310d851ca320/ii-stratum2-noise-0.2.3/src/stratum_handshake/initiator.rs
+stratum_v1,0x01307320,564,eed23608ce2310d851ca320/ii-stratum2-noise-0.2.3/src/stratum_handshake/initiator.rs | 1.8.1/src/proto/h2/mod.rs | per-1.8.1/src/proto/h2/mod.rs
+stratum_v1,0x01322618,844,sminer/bosminer/src/client/pool_time.rs | argo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/curve25519-dalek-4.1.3/src/scalar.rs | ac259164a89f2577984ad5ab09ee9d583b888f934adb
+stratum_v2,0x012f93a4,20,8d8191f44f31eed23608ce2310d851ca320/stratum2-messages-4.2.0/src/mining/conversions.rs
+stratum_v2,0x012f9858,324,-1.3.1/src/stratum2.rs
+stratum_v2,0x013035c8,132,eeeeeee-vendor-cargo-deps/f2e45444cf1a7616fcedf64afbe898d8191f44f31eed23608ce2310d851ca320/ii-noise-0.3.2/src/codec.rs | c/frame/head.rs
+stratum_v2,0x01304810,1496,eeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/lz4_flex-0.11.5/src/sink.rs | noise-0.2.3/src/stratum_handshake/initiator.rs | or-cargo-de
+stratum_v2,0x01305494,272,e45444cf1a7616fcedf64afbe898d8191f44f31eed23608ce2310d851ca320/ii-noise-0.3.2/src/codec.rs
+stratum_v2,0x01305aac,872,d0/tokio-1.49.0/src/runtime/io/registration.rs | b09ee9d583b888f934adbbe8d0/tokio-1.49.0/src/runtime/io/registration.rs | ce2310d851ca320/ii-stratum2-noise-0.2.3/src/stratum_handshake/initiator.rs
+stratum_v2,0x01307320,564,eed23608ce2310d851ca320/ii-stratum2-noise-0.2.3/src/stratum_handshake/initiator.rs | 1.8.1/src/proto/h2/mod.rs | per-1.8.1/src/proto/h2/mod.rs
+stratum_v2,0x01312f40,1552,"shboard heat-up timed out, proceeding with start | 5ab09ee9d583b888f934adbbe8d0/tokio-1.49.0/src/runtime/io/scheduled_io.rs | 64a89f2577984ad5ab09ee9d583b888f934adbbe8d0/crossbeam-channel-0.5.13/src/c"
+stratum_v2,0x013151dc,296,10d851ca320/ii-noise-0.3.2/src/lib.rs | /lib.rs | eeeeeeeeeeeee-vendor-cargo-deps/f2e45444cf1a7616fcedf64afbe898d8191f44f31eed23608ce2310d851ca320/ii-async-utils-0.2.0/src/lib.rs
+stratum_v2,0x0131dbc8,584,b888f934adbbe8d0/tokio-1.49.0/src/io/poll_evented.rs | cf1a7616fcedf64afbe898d8191f44f31eed23608ce2310d851ca320/ii-noise-core-0.2.0/src/lib.rs | 5444cf1a7616fcedf64afbe898d8191f44f31eed23608ce2310d851
+stratum_v2,0x01322618,844,sminer/bosminer/src/client/pool_time.rs | argo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/curve25519-dalek-4.1.3/src/scalar.rs | ac259164a89f2577984ad5ab09ee9d583b888f934adb
+telemetry,0x00c570b0,13736,250 MHzReadReg | --enabled` shows all enabled injectsSend dummy tuner telemetryShow usage of all commandsSPEED |  nonce counter register 0x8c of all chips on hashboard 1VALUE
+telemetry,0x0100ec74,116,eeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/02d292470df30d6e2e1bd7fc9b8690f6a35d161ebd8a2f372e1b6e37b941b5e4/ii-metrics-0.9.0/src/transient.rs
+telemetry,0x01302360,192,0df30d6e2e1bd7fc9b8690f6a35d161ebd8a2f372e1b6e37b941b5e4/ii-metrics-0.9.0/src/prometheus_registry.rs
+telemetry,0x01304810,1496,eeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/lz4_flex-0.11.5/src/sink.rs | noise-0.2.3/src/stratum_handshake/initiator.rs | or-cargo-de
+telemetry,0x01304e68,132,e9d583b888f934adbbe8d0/idna-1.0.3/src/punycode.rs | 23608ce2310d851ca320/ii-telemetry-1.3.1/src/transport.rs
+telemetry,0x0130f4a0,844," Defrost: temperature monitor status unavailable, skipping | e/rsa/rsa.c | boundary | eeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/serde_core-1.0.228/src/f"
+telemetry,0x01311360,132,e/quicksort.rs | mgmt/telemetry/tuner.rs
+telemetry,0x0131f324,1508,a2f372e1b6e37b941b5e4/ii-metrics-0.9.0/src/transient.rs | ee-vendor-cargo-deps/02d292470df30d6e2e1bd7fc9b8690f6a35d161ebd8a2f372e1b6e37b941b5e4/ii-metrics-0.9.0/src/transient.rs | 09ee9d583b888f934adb
+telemetry,0x013211a0,44,/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/snow-0.9.6/src/symmetricstate.rs

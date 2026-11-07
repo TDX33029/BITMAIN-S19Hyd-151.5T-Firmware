@@ -1,0 +1,58 @@
+#!/bin/sh
+
+. /lib/functions/common.sh
+. /lib/functions/system.sh
+. /lib/functions/bos-defaults.sh
+
+post_install_unpack() {
+    # redirect STDOUT and STDERR to /dev/kmsg
+    exec 1<&- 2<&- 1>/dev/kmsg 2>&1
+
+    echo "Running a custom post-install script!"
+    # When special BOS_ENV_MTD partition is defined for current platform use it (e.g. on BBB),
+    # oterwise use common BOS_SYSTEM_MTD where ENV sub-partition is stored along
+    # with other BOS sub-partitions (e.g. on AML)
+    local env_mtd=${BOS_ENV_MTD:-$BOS_SYSTEM_MTD}
+
+    # Read size of post-install tar file with custom post-install script
+    local tar_size=$(printf "0x%x" $(nanddump -s ${LOCAL_RO_POST_INSTALL_TAR_LENGTH_OFFSET_BOS_LAYOUT} -q -l 10 $env_mtd) 2>/dev/null)
+    # Extract post-install tar to '/tmp' if it has nonzero size
+    if [ "$tar_size" != "0x0" ]; then
+        # Make command quiet or output will be suppressed in dmesg to the end of the script
+        /usr/sbin/nanddump -q -s ${LOCAL_RO_POST_INSTALL_TAR_OFFSET_BOS_LAYOUT} -l ${tar_size} $env_mtd | \
+        /bin/tar -x -C "/tmp/"
+
+        # Erase nand at offset `LOCAL_RO_POST_INSTALL_TAR_LENGTH_OFFSET_BOS_LAYOUT`
+        # so in next boot `tar_size` will be `0x0` and post-install script will not be run again
+        # Cleaning NAND regardless of the success of the script
+        # Make command quiet or output will be suppressed in dmesg to the end of the script
+        /usr/sbin/flash_erase -q $env_mtd $LOCAL_RO_POST_INSTALL_TAR_LENGTH_OFFSET_BOS_LAYOUT $POST_INSTALL_TAR_BLOCK_COUNT
+
+        # Check if install script exists
+        if [ -f "/tmp/$POST_INSTALL_DIR/$POST_INSTALL_SCRIPT" ]; then
+            # Run post-install script
+            cd "/tmp/$POST_INSTALL_DIR" || return 1
+            if /bin/sh "/tmp/$POST_INSTALL_DIR/$POST_INSTALL_SCRIPT" ; then
+                echo "Post-install stage3 has been successful!"
+            else
+                echo "Post-install stage3 failed!"
+            fi
+        fi
+        # `post_install` directory is not removed in `S46post-install`, because it is needed
+        # by `boser` to create `bosminer.toml` file on first boot
+    fi
+}
+
+case "$1" in
+    start)
+        # We run post-install script only on NAND mode, in sd mode
+        # there is no post-install data in nand to read
+        if [ "$BOS_MODE" = "nand" ] ; then
+            post_install_unpack || exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start}" >&2
+        exit 1
+        ;;
+esac

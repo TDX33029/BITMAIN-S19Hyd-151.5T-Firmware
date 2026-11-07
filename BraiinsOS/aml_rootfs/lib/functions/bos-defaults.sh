@@ -1,0 +1,1 @@
+/nix/store/0bpdv6b9ww1fcx0nv2askbrdndl87zcw-bos-base/bos-defaults.sh
