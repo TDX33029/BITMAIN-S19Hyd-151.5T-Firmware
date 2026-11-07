@@ -1,7 +1,0 @@
-program,address,name,size,labels,seed,score,evidence,source
-cgminer,0x24a8c,FUN_00024a8c,5588,07_mining_pool;12_crypto,0,13,"Pool %d confirmed mining.subscribe with extranonce1 %s extran2size %d | {""id"":%d, ""method"":""mining.configure"", ""params"":[[""version-rolling""],{""version-rolling.mask"":""%08x"",""version-rolling.min-bit-count"":%d}]}",../S21/analysis/reverse/full_aux/cgminer/decompiled/24a8c_FUN_00024a8c.c
-bmminer,0x34f98,FUN_00034f98,304,12_crypto;07_mining_pool,0,13,verify failed | openssl dgst -sha256 -verify /etc/bitmain-adv.pub -signature /nvdata/pool/pool.json.sig /nvdata/pool/pool.json > /dev/null 2>&1,../S21/analysis/reverse/full/bmminer/decompiled/34f98_FUN_00034f98.c
-FileParser,0x10de8,FUN_00010de8,1616,01_boot_upgrade;12_crypto,0,6,crl.tar.gz,../S21/analysis/reverse/full_aux/FileParser/decompiled/10de8_FUN_00010de8.c
-FileParser,0x12c40,FUN_00012c40,3016,12_crypto;01_boot_upgrade,0,4,Dump Miner.pem Failed!\r | Check pem payload failed! ret:[%d]\n | Dump Miner.pem.sig Failed!\r | /tmp/tmpfw/miner.pem.sig,../S21/analysis/reverse/full_aux/FileParser/decompiled/12c40_FUN_00012c40.c
-FileParser,0x10c70,FUN_00010c70,376,12_crypto,0,4,Check miner.pem Failed!,../S21/analysis/reverse/full_aux/FileParser/decompiled/10c70_FUN_00010c70.c
-cgminer,0x1f224,FUN_0001f224,128,12_crypto,0,4,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f224_FUN_0001f224.c

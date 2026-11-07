@@ -5,11 +5,27 @@
 
 本目录是两套固件的完整函数语料 + 功能块索引：
 
-- `S19/`：S19 Hydro（2022-12-17，bmminer 429,356 B）
-- `S21/`：S21e Hyd（2025-10-16，bmminer 655,256 B）
+- `../S19/FunctionModel/`：S19 Hydro（2022-12-17，bmminer 429,356 B）
+- `../S21/FunctionModel/`：S21e Hyd（2025-10-16，bmminer 655,256 B）
 
 全量反编译原始文件保留在各固件的 `analysis/reverse/` 下，本目录通过**硬链接**组织，
 不重复占用空间。
+
+两套模型目录结构完全一致：15 个模块（`00`~`13` + `99`），目录名相同。
+
+### 范围说明（重要）
+
+**已提取**
+- Bitmain 自有程序：`bmminer`、`cgminer`（仅 S21）、`FileParser`、`update-daemon`、
+  `monitor-ipsig`、`monitor-recobtn`、`antlogin`、`cgminer-api`、`id2mac`
+- 内核模块：`bitmain_axi.ko`、`fpga_mem_driver.ko`
+- WebUI CGI（shell）、`/etc/init.d` 启动脚本、升级脚本
+
+**未提取**
+- 标准第三方程序/库：busybox、dropbear、lighttpd、openssl、avahi、ntpd、sudo、jq、
+  iptables、glibc 等（与矿机业务无关，只作为依赖出现）
+- S21 的 `AMLCtrl_H6HB70801`（风冷 Amlogic 镜像）
+- WebUI 压缩 JS 的逐个函数：只建立端点/页面索引，不做反编译
 
 ---
 
@@ -17,7 +33,7 @@
 
 | 项 | S19 | S21 |
 |---|---:|---:|
-| 程序数 | 10 | 10 |
+| 程序数 | 10 | 11 |
 | 函数总数（含 thunk/导入） | 1,843 | 3,328 |
 | 实际反编译函数 | 1,186 | 2,245 |
 | thunk / 外部导入 | 657 | 1,083 |
@@ -52,19 +68,19 @@
 |---|---|---:|---:|
 | `00_imports_thunks` | 导入符号 / Thunk | 657 | 1,083 |
 | `01_boot_upgrade` | 固件升级与启动 | 13 | 14 |
-| `02_power_psu` | 电源 / PSU 控制 | 42 | 28 |
-| `03_pic_ctrl` | PIC 控制 | 20 | 14 |
-| `04_asic_chain` | ASIC / 算力链 | 110 | 133 |
+| `02_power_psu` | 电源 / PSU 控制 | 41 | 29 |
+| `03_pic_ctrl` | PIC 控制 | 20 | 11 |
+| `04_asic_chain` | ASIC / 算力链 | 100 | 136 |
 | `05_freq_voltage` | 频率 / 电压调节 | 27 | 63 |
-| `06_thermal_fan` | 温度 / 风扇 | 18 | 32 |
-| `07_mining_pool` | 矿池 / Stratum | 9 | 463 |
+| `06_thermal_fan` | 温度 / 风扇 | 17 | 31 |
+| `07_mining_pool` | 矿池 / Stratum | 7 | 463 |
 | `08_network` | 网络 | 13 | 17 |
-| `09_web_api` | WebUI / API | 24 | 29 |
-| `10_config_eeprom` | 配置 / EEPROM | 25 | 62 |
-| `11_log_monitor` | 日志 / 监控 / 看门狗 | 34 | 41 |
+| `09_web_api` | WebUI / API | 24 | 31 |
+| `10_config_eeprom` | 配置 / EEPROM | 26 | 63 |
+| `11_log_monitor` | 日志 / 监控 / 看门狗 | 34 | 40 |
 | `12_crypto` | 加密 / 签名 | 3 | 6 |
-| `13_os_service` | 系统服务 / 线程 | 18 | 38 |
-| `99_unclassified` | 未分类 | 866 | 1,414 |
+| `13_os_service` | 系统服务 / 线程 | 17 | 38 |
+| `99_unclassified` | 未分类 | 866 | 1,411 |
 
 > 一个函数可以属于多个块，所以块计数之和大于函数总数。
 > 分类是**启发式**的：字符串关键词 + 已知关键函数种子 + 外部调用（pthread/socket/RSA 等）。
@@ -97,14 +113,26 @@
 
 ## 3. WebUI 与启动脚本
 
-- `S19/09_web_api/webui/`、`S21/09_web_api/webui/`
+- `../S19/FunctionModel/09_web_api/webui/`、`../S21/FunctionModel/09_web_api/webui/`
   - `cgi-bin/`：全部 CGI 脚本（shell）
   - `functions.csv`：每个 CGI 的 shell 函数、行号范围、调用的命令、读写的文件
   - `endpoints.csv`：JS/HTML 中引用的 CGI 端点及对应文件
   - `init_scripts/`：`/etc/init.d` 全部启动脚本
   - `init_scripts.csv`：启动脚本的函数/命令/文件索引
-- `S19/01_boot_upgrade/init_scripts/`、`S21/01_boot_upgrade/init_scripts/`：
+- `../S19/FunctionModel/01_boot_upgrade/init_scripts/`、`../S21/FunctionModel/01_boot_upgrade/init_scripts/`：
   同一份启动脚本，放在升级/启动块下便于查阅。
+- `../S19/FunctionModel/01_boot_upgrade/update_scripts/`、`../S21/FunctionModel/01_boot_upgrade/update_scripts/`：
+  `updateporc.sh`、`Update.sh`、`init` 以及 `update_scripts.csv`（函数/命令/文件索引）。
+
+## 3.1 解包产物位置
+
+| 固件 | 目录 | 内容 |
+|---|---|---|
+| S19 | `S19/Unpacked/` | BOOT.bin 及 FSBL/bitstream/U-Boot、devicetree.dtb、uImage、minerfs/update 根文件系统、crl、miner.btm |
+| S21 | `S21/Unpacked/zynq/` | 同上 7 个部件（S21 内层签名容器） |
+| S21 | `S21/Unpacked/aml/` | **不纳入**（风冷 Amlogic 镜像，仅保留原始提取结果） |
+
+两个固件的 Zynq 部件签名链均已验证；S19 与 S21 使用同一把 root key。
 
 ---
 
@@ -122,10 +150,10 @@
 
 ## 5. 与旧目录的关系
 
-- `S19/FunctionModel/` 是**早期人工整理的 3 个专题块**：
+- `S19/FunctionModel_curated/` 是**早期人工整理的 3 个专题块**：
   `01_power_init`、`02_pic_init`、`03_asic_count_detect`，含详细协议说明与流程。
   它仍然保留，作为电源/PIC/ASIC 检测的深度阅读材料。
-- 本目录 `FunctionModel/S19/` 是**全量模型**，覆盖全部程序与全部函数；
+- `S19/FunctionModel/` 是**全量模型**，覆盖全部程序与全部函数；
   其中 `02_power_psu`、`03_pic_ctrl`、`04_asic_chain` 与旧专题块主题对应。
 - 两者的 .c 文件都来自同一份 Ghidra 工程，内容一致。
 
