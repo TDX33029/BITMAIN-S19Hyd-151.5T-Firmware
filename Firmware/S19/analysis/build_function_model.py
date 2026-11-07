@@ -17,7 +17,7 @@ import sys
 FW_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # FW_ROOT = .../Firmware
 FIRMWARE = FW_ROOT
-OUT_ROOT = os.path.join(FIRMWARE, "FunctionModel")
+OUT_ROOT = os.path.join(FIRMWARE, "FunctionModel")  # legacy index root
 
 BLOCKS = [
     ("00_imports_thunks", "导入符号 / Thunk", "PLT thunk 与外部导入符号，不含实际实现；列在此处便于查依赖。"),
@@ -209,6 +209,38 @@ AUX_DEFAULT = {
     "fpga_mem_driver.ko": "04_asic_chain",
 }
 
+S19_SEEDS = {
+    0x418fc: ("freq_tuning_fine", ["05_freq_voltage"]),
+    0x405b4: ("freq_tuning_basic_parallel", ["05_freq_voltage"]),
+    0x2a998: ("tuning_freq_engine", ["05_freq_voltage"]),
+    0x39544: ("freq_voltage_mode_init", ["05_freq_voltage"]),
+    0x19dc8: ("vol_freq_config_load", ["05_freq_voltage", "10_config_eeprom"]),
+    0x1d9cc: ("freq_check", ["05_freq_voltage"]),
+    0x1db34: ("freq_to_pll", ["05_freq_voltage"]),
+    0x1df34: ("fixed_step_freq", ["05_freq_voltage"]),
+    0x1e1dc: ("fixed_step_chain_freq", ["05_freq_voltage"]),
+    0x1e400: ("chain_freq_step", ["05_freq_voltage"]),
+    0x3ffb0: ("freq_tuning_basic_init", ["05_freq_voltage"]),
+    0x400e8: ("freq_tuning_basic_exit", ["05_freq_voltage"]),
+    0x40e04: ("freq_runtime_check", ["05_freq_voltage"]),
+    0x3a5b8: ("fan_pid_control", ["06_thermal_fan"]),
+    0x15968: ("fan_pwm_init", ["06_thermal_fan"]),
+    0x1575c: ("fan_lost_check", ["06_thermal_fan"]),
+    0x156a8: ("fan_speed_read", ["06_thermal_fan"]),
+    0x171b4: ("temp_report_parse", ["06_thermal_fan"]),
+    0x17830: ("temp_sensor_read", ["06_thermal_fan"]),
+    0x17a98: ("temp_sensor_offset", ["06_thermal_fan"]),
+    0x38228: ("water_temp_protect", ["06_thermal_fan"]),
+    0x469bc: ("fan_pwm_type", ["06_thermal_fan"]),
+    0x2d114: ("stratum_header_build", ["07_mining_pool"]),
+    0x2ecf8: ("stratum_job_recv", ["07_mining_pool"]),
+    0x2ea24: ("stratum_job_parse", ["07_mining_pool"]),
+    0x2ce80: ("set_target_diff", ["07_mining_pool"]),
+    0x3777c: ("send_job", ["07_mining_pool"]),
+    0x13f28: ("nonce_fifo_parse", ["04_asic_chain"]),
+    0x2bd54: ("mining_capability", ["07_mining_pool"]),
+}
+
 S21_SEEDS = {
     0x4ebd0: ("inc_freq", ["05_freq_voltage"]),
     0x27460: ("tuning_frequency", ["05_freq_voltage"]),
@@ -236,6 +268,24 @@ S21_SEEDS = {
     0x16de0: ("fan_control", ["06_thermal_fan"]),
     0x18aa0: ("read_max_chip_temp", ["06_thermal_fan"]),
     0x18a2c: ("read_board_temp", ["06_thermal_fan"]),
+    0x54654: ("chain_asic_detect", ["04_asic_chain"]),
+    0x2afc8: ("chain_asic_struct", ["04_asic_chain"]),
+    0x2e084: ("get_chain_asic_domain_avg_voltage", ["04_asic_chain", "02_power_psu"]),
+    0x2f160: ("api_miner_chain_asic_num", ["04_asic_chain", "09_web_api"]),
+    0x2f224: ("api_miner_chain_asic_status", ["04_asic_chain", "09_web_api"]),
+    0x36fe4: ("clear_find_asic_fail_record", ["04_asic_chain", "10_config_eeprom"]),
+    0x542f8: ("find_asic_counter", ["04_asic_chain", "10_config_eeprom"]),
+    0x456ec: ("find_asic_counter_board", ["04_asic_chain", "10_config_eeprom"]),
+    0x247d8: ("power_watchdog_control", ["02_power_psu"]),
+    0x3cc08: ("power_enable_watchdog", ["02_power_psu"]),
+    0x534b8: ("hem_power_adjust", ["02_power_psu"]),
+    0x29628: ("power_status", ["02_power_psu"]),
+    0x13300: ("config_parse_topol", ["10_config_eeprom", "04_asic_chain"]),
+    0x1a1d0: ("water_temp_pic_protect", ["03_pic_ctrl", "06_thermal_fan"]),
+    0x171dc: ("fan_pwm_keep100", ["06_thermal_fan"]),
+    0x170ac: ("set_fan_pwm", ["06_thermal_fan"]),
+    0x54a78: ("fan_check", ["06_thermal_fan"]),
+    0x33d3c: ("fan_pwm_config", ["06_thermal_fan"]),
 }
 
 
@@ -323,7 +373,7 @@ def main():
     fw = sys.argv[1] if len(sys.argv) > 1 else "S19"
     fwdir = os.path.join(FIRMWARE, fw)
     rev = os.path.join(fwdir, "analysis", "reverse")
-    out = os.path.join(OUT_ROOT, fw)
+    out = os.path.join(fwdir, "FunctionModel")
     os.makedirs(out, exist_ok=True)
 
     corpora = []
@@ -345,7 +395,10 @@ def main():
 
     seeds = {}
     if fw == "S19":
-        old_index = os.path.join(fwdir, "FunctionModel", "index.csv")
+        seeds = dict(S19_SEEDS)
+        old_index = os.path.join(fwdir, "FunctionModel_curated", "index.csv")
+        if not os.path.exists(old_index):
+            old_index = os.path.join(fwdir, "FunctionModel", "index.csv")
         if os.path.exists(old_index):
             blockmap = {"power": "02_power_psu", "pic": "03_pic_ctrl", "asic": "04_asic_chain"}
             with open(old_index, encoding="utf-8") as fh:
@@ -395,7 +448,7 @@ def main():
                 "size": f["size"], "labels": ";".join(labels), "seed": seeded,
                 "score": max(scores.values()) if scores else 0,
                 "evidence": " | ".join((evidence.get(labels[0]) or [])[:4]),
-                "source": os.path.relpath(cf, OUT_ROOT).replace(os.sep, "/") if cf else "",
+                "source": os.path.relpath(cf, out).replace(os.sep, "/") if cf else "",
             }
             all_rows.append(row)
             for b in labels:
@@ -420,7 +473,7 @@ def main():
         for r in rows:
             if not r["source"]:
                 continue
-            src = os.path.join(OUT_ROOT, r["source"].replace("/", os.sep))
+            src = os.path.join(out, r["source"].replace("/", os.sep))
             if os.path.exists(src):
                 link_or_copy(src, os.path.join(bdir, "decompiled", r["program"], os.path.basename(src)))
         # README
@@ -454,6 +507,42 @@ def main():
         if os.path.isdir(dst):
             shutil.rmtree(dst)
         shutil.copytree(init_src, dst)
+
+    # update scripts (updateporc.sh / Update.sh / init)
+    upd = {
+        "S19": ["Unpacked/minerfs.d/rootfs/usr/sbin/updateporc.sh",
+                "Unpacked/update.d/rootfs/etc/init.d/Update.sh",
+                "Unpacked/update.d/rootfs/init"],
+        "S21": ["Unpacked/zynq/minerfs.d/rootfs/usr/sbin/updateporc.sh",
+                "Unpacked/zynq/update.d/rootfs/etc/init.d/Update.sh",
+                "Unpacked/zynq/update.d/rootfs/init"],
+    }.get(fw, [])
+    if upd:
+        dst = os.path.join(out, "01_boot_upgrade", "update_scripts")
+        if os.path.isdir(dst):
+            shutil.rmtree(dst)
+        os.makedirs(dst, exist_ok=True)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        try:
+            from extract_webui import parse_shell
+        except Exception:
+            parse_shell = None
+        urows = []
+        for rel in upd:
+            p = os.path.join(fwdir, rel)
+            if not os.path.isfile(p):
+                continue
+            name = os.path.basename(p)
+            shutil.copy2(p, os.path.join(dst, name))
+            funcs, cmds, files = parse_shell(p) if parse_shell else ([], set(), set())
+            urows.append({"file": name, "original": rel.replace(os.sep, "/"),
+                          "functions": ";".join(f["name"] for f in funcs),
+                          "commands": ";".join(sorted(cmds)),
+                          "files": ";".join(sorted(files))})
+        with open(os.path.join(dst, "update_scripts.csv"), "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=["file", "original", "functions", "commands", "files"])
+            w.writeheader()
+            w.writerows(urows)
 
     # top README
     total = len(all_rows)
