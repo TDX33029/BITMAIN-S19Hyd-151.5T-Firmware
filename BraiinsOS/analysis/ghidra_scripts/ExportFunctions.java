@@ -19,14 +19,17 @@ public class ExportFunctions extends GhidraScript {
             CodeUnitIterator cu = currentProgram.getListing().getCodeUnits(f.getBody(), true);
             int sc = 0;
             while (cu.hasNext() && sc < 10) {
-                Data d = (Data) cu.next();
-                if (d.hasStringValue()) {
-                    Object v = d.getValue();
-                    String s = v == null ? "" : v.toString();
-                    if (s.length() >= 4) {
-                        if (sc > 0) sb.append(" | ");
-                        sb.append(s.replace('\n', ' ').replace('\r', ' ').replace('"', '\'').replace(',', ';'));
-                        sc++;
+                CodeUnit c = cu.next();
+                if (c instanceof Data) {
+                    Data d = (Data) c;
+                    if (d.hasStringValue()) {
+                        Object v = d.getValue();
+                        String s = v == null ? "" : v.toString();
+                        if (s.length() >= 4) {
+                            if (sc > 0) sb.append(" | ");
+                            sb.append(s.replace('\n', ' ').replace('\r', ' ').replace('"', '\'').replace(',', ';'));
+                            sc++;
+                        }
                     }
                 }
             }
