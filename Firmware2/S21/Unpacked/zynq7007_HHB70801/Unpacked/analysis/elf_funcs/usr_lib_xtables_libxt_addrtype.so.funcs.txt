@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_addrtype.so  (9700 B)  libs: libxtables.so.12, libc.so.6
+00000718  sz=0      _init
+000007bc  sz=20     libxt_addrtype_init
+00001148  sz=0      _fini

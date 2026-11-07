@@ -1,0 +1,13 @@
+# usr\lib\libaio.so.1.0.1  (5340 B)  libs: libc.so.6
+000006b0  sz=28     io_queue_init
+000006cc  sz=4      io_queue_release
+000006d0  sz=36     io_queue_wait
+000006f4  sz=96     io_queue_run
+000007b0  sz=116    io_getevents
+00000824  sz=68     io_submit
+00000868  sz=68     io_cancel
+000008ac  sz=60     io_setup
+000008e8  sz=52     io_destroy
+0000091c  sz=24     io_cancel
+00000934  sz=64     io_queue_wait
+00000974  sz=68     io_getevents

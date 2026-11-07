@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_REJECT.so  (5504 B)  libs: libxtables.so.12, libc.so.6
+000006c4  sz=0      _init
+0000075c  sz=16     libip6t_REJECT_init
+00000a68  sz=0      _fini

@@ -1,0 +1,174 @@
+{
+  "source": "Antminer-S19-Hydro-release-202212170935.bmu",
+  "size": 17989023,
+  "sha256": "a96ca601e7b9e360cb884401072579d23b74579b5f7578d0dd24b6c02cb04dc8",
+  "entries": [
+    {
+      "name": "header.bin",
+      "offset": 0,
+      "end": 512,
+      "size": 512,
+      "sha256": "528e77703e0edd71c9f49331ce7d4a0b850e9222ae23abea6477c20c34c5ce51",
+      "md5": "da48a342786baa28f9cd51c9cf68c208",
+      "note": "BMU header: magic 0x2601, platform S19, pubkey_len=0x1C3"
+    },
+    {
+      "name": "miner_pubkey.pem",
+      "offset": 24,
+      "end": 475,
+      "size": 451,
+      "sha256": "2dab0504d7c2f083ca940332534d43e1d0f40a582792554cf40b4bc1be2f6103",
+      "md5": "1fd2ae74c50161b36ace32823475880d",
+      "note": "RSA-2048 public key PEM"
+    },
+    {
+      "name": "sig_top.bin",
+      "offset": 1048,
+      "end": 1304,
+      "size": 256,
+      "sha256": "7b4df8873c09a219235a2cc2cf03452bfc3e0ccd7a99735219d66f507eb689a5",
+      "md5": "260b1d29e4f03f4c4eab66fd2ca22d62",
+      "note": "RSA-2048 signature (over header/manifest?)"
+    },
+    {
+      "name": "section_table.bin",
+      "offset": 1304,
+      "end": 1344,
+      "size": 40,
+      "sha256": "2a47a424101cfbde3a241e59a5e2b688ffdc49f0fce5e3c4600f12486a0cf413",
+      "md5": "2535a89f7e1c26abab8b9b78fd45c04d",
+      "note": "8 x {u8 id, u32 BE size}"
+    },
+    {
+      "name": "bootimg_header.bin",
+      "offset": 2048,
+      "end": 2560,
+      "size": 512,
+      "sha256": "271cb17727e60a204e5cf15543a3f6cd233cdf3c6de3a4fbffc84c9321527b80",
+      "md5": "9182fa6d4dd2eab842a2666179554032",
+      "note": "Zynq BootROM header: AA995566/XLNX, FSBL@+0x1700, no encryption"
+    },
+    {
+      "name": "fsbl.bin",
+      "offset": 7936,
+      "end": 140848,
+      "size": 132912,
+      "sha256": "4bf484768a73fede6e14874d8e7bb1e0650ba0b604845bd18e04937ab9a5c1e4",
+      "md5": "7cbae15c74d26e5957451c76745d139a",
+      "note": "FSBL (code + config blocks @0x1d180/0x1df00), runs from QSPI"
+    },
+    {
+      "name": "bitstream_top.bin",
+      "offset": 140848,
+      "end": 2224544,
+      "size": 2083696,
+      "sha256": "a249a15d7cf98ecd0721ac90142281310c559109908ad5f97c10d453312cbd33",
+      "md5": "522da5ecdc84348cc45525c86b7afdc7",
+      "note": "FPGA bitstream XC7Z007S (IDCODE 0x03723093), full config"
+    },
+    {
+      "name": "param_blob.bin",
+      "offset": 2224576,
+      "end": 2226304,
+      "size": 1728,
+      "sha256": "6111ec4a1af4b4f9151e6fab516e10eeafec1e2e540aca807fa7a97cc2d60397",
+      "md5": "e7e5bf8b1660cd68914151a91216ab4b",
+      "note": "ver 1.1.0.0 + 0x6C0 B high-entropy blob (encrypted params?)"
+    },
+    {
+      "name": "uboot.bin",
+      "offset": 2226304,
+      "end": 2684960,
+      "size": 458656,
+      "sha256": "0da5e3190e517bf19f10fd9824a205045c15c6fe889a9b698d8ff2b128bb31f0",
+      "md5": "1e51a77dc293c1a2f560e8365c737bbe",
+      "note": "U-Boot ARM, link base 0x04000000, contains embedded small bitstream"
+    },
+    {
+      "name": "dtb1.dtb",
+      "offset": 2684960,
+      "end": 2790208,
+      "size": 105248,
+      "sha256": "094f1d8e0cabc067a7361635559c6e1b619411cc799b5ff0f4c93a1748ab37d8",
+      "md5": "e4028b77a9de3d402b3408410290d847",
+      "note": "device tree blob #1 (inside boot partition id0)"
+    },
+    {
+      "name": "dtb2.dtb",
+      "offset": 2790208,
+      "end": 2798222,
+      "size": 8014,
+      "sha256": "47e56969ce80ae9b1374aea555bf49d3c47637c6207ee33d70a20e7f214e45c0",
+      "md5": "ad826c24ff83f4c32ea104ad1558bd95",
+      "note": "device tree blob #2 (section id1)"
+    },
+    {
+      "name": "uImage_kernel.img",
+      "offset": 2798222,
+      "end": 6855534,
+      "size": 4057312,
+      "sha256": "b887ec69adc7fcd9bd9566790c79d7e774c719a199f30f8bd1bc91c64f3a2803",
+      "md5": "47a18e358ace365e33d3d09845da8e9e",
+      "note": "Linux-4.6.0-xilinx-g03c746f7, comp=none, load 0x8000"
+    },
+    {
+      "name": "uImage_ramdisk1.img",
+      "offset": 6855534,
+      "end": 13708155,
+      "size": 6852621,
+      "sha256": "af466383f02d69c66ab71459b97f655d12338ee8a803b9c474808969fb4a81ed",
+      "md5": "03db3c18a52aab9fe728884b3fd7353c",
+      "note": "ramdisk #1 gzip"
+    },
+    {
+      "name": "uImage_ramdisk2.img",
+      "offset": 13708155,
+      "end": 17985418,
+      "size": 4277263,
+      "sha256": "2c98a387a7c299e5851bcdabf8a8c2b4ea61d466147d14d7e27ee259f6c39d39",
+      "md5": "9f2b5f344b877df9a3eac659fd9daf1c",
+      "note": "ramdisk #2 gzip"
+    },
+    {
+      "name": "crl.tar.gz",
+      "offset": 17985418,
+      "end": 17985970,
+      "size": 552,
+      "sha256": "ae7e69ea8c7cfe41dc10e30fcb8c0abd565f5d0eb39d9671c7347d7a866fe035",
+      "md5": "48b3f74aaf616d7bb786608d46f2670b",
+      "note": "crl + crl.sig"
+    },
+    {
+      "name": "miner_btm.tar.gz",
+      "offset": 17985970,
+      "end": 17986975,
+      "size": 1005,
+      "sha256": "db8fc594b151db9160ccc4ac6fe180ccd21b1545f5f980d791c40f3ab2f5d0ea",
+      "md5": "08c1e0fbfea1095575ddb2838cb033cf",
+      "note": "miner.btm + miner.btm.sig"
+    },
+    {
+      "name": "sig_bottom.bin",
+      "offset": 17986975,
+      "end": 17989023,
+      "size": 2048,
+      "sha256": "c2d1615c83e6131fcba87cf4a18d0aeaac476bde5fe1f4d167656ee9f0769ab3",
+      "md5": "ce504112d2f7aa6490f81177c5727c86",
+      "note": "RSA-2048 signature trailer (2048 B)"
+    },
+    {
+      "name": "ramdisk1.img",
+      "size": 33554432,
+      "sha256": "f61a19eaab44c46a34fa3a41573a0f6da21eb8a03ad3ba6d9c5932c7c7558377",
+      "md5": "ef4e67f02e40606290fa68cd4c5ff037",
+      "note": "gunzip of uImage payload"
+    },
+    {
+      "name": "ramdisk2.img",
+      "size": 33554432,
+      "sha256": "16072624ba9051ada6ecd4123955bd8f0b4bf2a2cff7ef6eb27447f1f7b07217",
+      "md5": "456e54438a1dbd8b266e1cf695139b93",
+      "note": "gunzip of uImage payload"
+    }
+  ]
+}

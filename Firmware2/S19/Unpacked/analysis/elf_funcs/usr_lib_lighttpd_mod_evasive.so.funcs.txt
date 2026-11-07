@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_evasive.so  (5392 B)  libs: libc.so.6
+000005c4  sz=0      _init
+00000af8  sz=116    mod_evasive_plugin_init
+00000b6c  sz=0      _fini

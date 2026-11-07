@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_pkttype.so  (5496 B)  libs: libxtables.so.12, libc.so.6
+000005fc  sz=0      _init
+00000688  sz=16     libxt_pkttype_init
+00000a5c  sz=0      _fini

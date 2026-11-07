@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_mac.so  (5484 B)  libs: libxtables.so.12, libc.so.6
+00000538  sz=0      _init
+000005ac  sz=16     libxt_mac_init
+0000080c  sz=0      _fini

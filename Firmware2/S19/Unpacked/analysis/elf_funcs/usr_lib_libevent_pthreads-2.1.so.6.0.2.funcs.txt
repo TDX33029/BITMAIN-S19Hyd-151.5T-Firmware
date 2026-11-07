@@ -1,0 +1,4 @@
+# usr\lib\libevent_pthreads-2.1.so.6.0.2  (5384 B)  libs: libcrypto.so.1.1, libpthread.so.0, libc.so.6
+00000898  sz=0      _init
+00000c30  sz=172    evthread_use_pthreads
+00000cdc  sz=0      _fini

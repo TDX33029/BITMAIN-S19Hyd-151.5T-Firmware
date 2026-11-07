@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_mh.so  (9612 B)  libs: libxtables.so.12, libc.so.6
+000006fc  sz=0      _init
+000007c4  sz=16     libip6t_mh_init
+00000e04  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_fastcgi.so  (47004 B)  libs: libc.so.6
+00001778  sz=0      _init
+00008ff8  sz=216    mod_fastcgi_plugin_init
+000090d0  sz=0      _fini

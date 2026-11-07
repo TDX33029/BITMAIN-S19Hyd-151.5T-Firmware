@@ -1,0 +1,7 @@
+# usr\bin\sudo  (111420 B)  libs: libutil.so.1, libsudo_util.so.0, libpthread.so.0, libdl.so.2, libc.so.6, ld-linux-armhf.so.3
+00012a28  sz=0      _init
+000153d0  sz=108    getenv
+0001543c  sz=80     putenv
+0001548c  sz=384    setenv
+0001560c  sz=268    unsetenv
+000260c0  sz=0      _fini

@@ -1,0 +1,3 @@
+# usr\sbin\avahi-autoipd  (30388 B)  libs: libdaemon.so.0, libc.so.6
+000114c8  sz=0      _init
+00015418  sz=0      _fini

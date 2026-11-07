@@ -1,0 +1,3 @@
+# usr\bin\pcretest  (50752 B)  libs: libpcre.so.1, libpcreposix.so.0, libc.so.6
+0001108c  sz=0      _init
+000187ac  sz=0      _fini

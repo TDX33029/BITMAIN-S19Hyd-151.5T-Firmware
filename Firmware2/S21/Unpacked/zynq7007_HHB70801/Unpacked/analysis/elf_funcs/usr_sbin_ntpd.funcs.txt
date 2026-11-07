@@ -1,0 +1,14 @@
+# usr\sbin\ntpd  (691052 B)  libs: libm.so.6, libssl.so.1.1, libcrypto.so.1.1, libdl.so.2, libatomic.so.1, libpthread.so.0, libc.so.6, ld-linux-armhf.so.3
+0000c668  sz=72     main
+0000ef98  sz=136    destroy_attr_val
+000334b0  sz=244    pool_name_resolved
+000368f4  sz=7612   receive
+000416d0  sz=132    ntpd_time_stepped
+0006d67c  sz=116    sigint_handler
+0006e398  sz=48     blocking_thread
+0007c4ec  sz=496    optionNumericVal
+0007f244  sz=748    optionPagedUsage
+000886f8  sz=236    optionLoadOpt
+0008a8c0  sz=156    optionPrintVersion
+0008c169  sz=60     __libc_csu_init
+0008c1a5  sz=2      __libc_csu_fini

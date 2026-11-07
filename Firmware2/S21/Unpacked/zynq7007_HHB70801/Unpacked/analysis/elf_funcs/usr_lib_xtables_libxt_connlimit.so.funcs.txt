@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_connlimit.so  (9880 B)  libs: libxtables.so.12, libc.so.6
+0000063c  sz=0      _init
+000006a4  sz=20     libxt_connlimit_init
+00000b88  sz=0      _fini

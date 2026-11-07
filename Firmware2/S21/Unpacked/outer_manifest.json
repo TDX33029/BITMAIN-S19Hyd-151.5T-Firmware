@@ -1,0 +1,20 @@
+{
+  "magic": "abababab",
+  "count": 2,
+  "entries": [
+    {
+      "chip": "zynq7007_HHB70801",
+      "model": "Antminer S21e Hyd.",
+      "offset": 16384,
+      "size": 18170354,
+      "file": "update.bmu"
+    },
+    {
+      "chip": "AMLCtrl_H6HB70801",
+      "model": "Antminer S21e Hyd.",
+      "offset": 18186738,
+      "size": 13331456,
+      "file": "update.bmu"
+    }
+  ]
+}

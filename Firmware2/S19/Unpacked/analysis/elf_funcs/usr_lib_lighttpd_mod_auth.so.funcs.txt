@@ -1,0 +1,8 @@
+# usr\lib\lighttpd\mod_auth.so  (26388 B)  libs: libcrypt.so.1, libc.so.6
+00000f7c  sz=0      _init
+00001c28  sz=68     auth_ldap_init
+00002450  sz=116    mod_auth_plugin_init
+00003520  sz=1192   http_auth_basic_check
+000039c8  sz=2952   http_auth_digest_check
+00004550  sz=212    http_auth_digest_generate_nonce
+00004624  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_cgi.so  (22032 B)  libs: libc.so.6
+00001144  sz=0      _init
+00003ad8  sz=168    mod_cgi_plugin_init
+00003b80  sz=0      _fini

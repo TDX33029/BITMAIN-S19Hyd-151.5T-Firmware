@@ -1,0 +1,3 @@
+# usr\bin\cvtsudoers  (227408 B)  libs: libsudo_util.so.0, libpthread.so.0, libdl.so.2, libc.so.6, ld-linux-armhf.so.3
+00011d74  sz=0      _init
+00036dc4  sz=0      _fini

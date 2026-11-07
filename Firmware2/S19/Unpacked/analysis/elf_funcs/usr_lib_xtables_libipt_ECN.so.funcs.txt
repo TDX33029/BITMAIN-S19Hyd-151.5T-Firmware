@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_ECN.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000550  sz=0      _init
+000005b8  sz=16     libipt_ECN_init
+00000904  sz=0      _fini

@@ -1,0 +1,1086 @@
+# bmminer functional strings (curated)
+
+== API commands (32) ==
+/usr/bin/cgminer-api {\"command\":\"reload\",\"new_api\":true}  >  /dev/null
+api_get_miner_freq_adjust_info
+api_get_miner_info
+api_miner_asic_tpl
+api_miner_asic_tpl r=%d,c=%d
+api_miner_chain_asic_num
+api_miner_chain_asic_status
+api_miner_chain_eeprom
+api_miner_chain_frequency
+api_miner_chain_hw
+api_miner_chain_nonce
+api_miner_chain_num
+api_miner_chain_rate_array
+api_miner_chain_rate_ideal
+api_miner_chain_rate_real
+api_miner_chain_sn
+api_miner_chain_temp_chip
+api_miner_chain_temp_pcb
+api_miner_chain_temp_pic
+api_miner_fan_num
+api_miner_fan_speed
+api_miner_id
+api_miner_inited
+api_miner_power_jt
+api_miner_rate_30m
+api_miner_rate_5s
+api_miner_rate_avg
+api_miner_rate_ideal
+api_miner_rate_unit
+api_miner_real_miner_type
+api_miner_version
+api_total_hash
+
+== Stratum/pool (33) ==
+%s: coinbase_padding_in_ddr[%d] = 0x%x, but *(coinbase_padding + %d) = 0x%x
+%s: given_id:%d job_id:%d switch:%d  ...
+%s: job_id non't found ...
+%s: job_id:0x%x   work_id:0x%x   nonce2:0x%llx nonce3:0x%x   version:0x%x
+%s: pool_diff:%llu work_diff:%f pool_diff_bit:%llu ...
+--pools
+/nvdata/pool/pool.json
+Bitmain S9 has to use stratum pools
+ERR: data trans/recv unmathced! chk=%d, data_size=%d, coinbase_len=%d
+Failed to calloc pool_stratum coinbase in c5
+Failed to malloc local merkle_bin
+Failed to malloc pool_stratum swork merkle_bin
+Generated stratum header %s
+Generated stratum merkle %s
+Work job_id %s nonce2 %llu ntime %s
+copy_pool_stratum
+gen_stratum_work
+get pool failed
+job_id: %x %02x, work_id:%d, diff:%d
+load safe pool failed
+open /nvdata/pool/pool.json failed
+openssl dgst -sha256 -verify /etc/bitmain-adv.pub -signature /nvdata/pool/pool.json.sig /nvdata/pool/pool.json > /dev/null 2>&1
+pool array item failed
+pool item failed
+pool.json not existed do nothing
+pools
+recover to safe pool config
+reload pool, need recalculate
+safe pool not existed
+spool[%d].pass:[%s], read[%s]
+spool[%d].url:[%s], read[%s]
+spool[%d].user:[%s], read[%s]
+verify failed use invalid pool config
+
+== Freq/voltage tuning (197) ==
+ current freq: %d
+--bitmain-freq
+--bitmain-freq-level
+--bitmain-freq-rise-step
+--bitmain-high-voltage
+--bitmain-tuning-freq-floor
+--bitmain-tuning-freq-level
+--bitmain-tuning-freq-step
+--bitmain-tuning-mode
+--bitmain-tuning-percent
+--bitmain-tuning-voltage-floor
+--bitmain-voltage
+--bitmain-voltage-compensate
+/config/scanfreqdone
+/freq_info
+1.inc all chain freq to %d
+2.chain_%d inc freq to %d
+>>>> Do freq tuning fine parallel.
+>>>> Do single grade tuning.
+>>>> Do tuning parallel.
+>>>> freq_curr = %d
+ADC_VOLTAGE_DATAOUT is not ready
+Do freq tuning basic.
+Do freq tuning fine.
+Dump freq tuning fine result:
+Fail to allocate memory for freq tuning basic context.
+Freq(%d) > Max_freq(%d), invalid!
+Get frequency failed!
+Get max freq failed!
+Get power dc_volt value failed
+Get power set_volt value failed
+No work mode freq, chain = %d, mode = %d.
+No work mode voltage, chain = %d, mode = %d.
+Parallel tuning failed, exit.
+Scan frequency percentage
+Set bitmain miner freq rise setp
+Set bitmain miner high voltage open core mode
+Set bitmain miner tuning mode
+Set bitmain miner voltage compensate in low temp
+Set bitmain tuning frequency floor
+Set bitmain tuning frequency level
+Set bitmain tuning frequency step
+Set bitmain tuning percent
+Set bitmain tuning voltage floor
+Set frequency
+Set voltage
+Set voltage failed, exit.
+This is fix-freq version
+Update freq result of high grade, chain = %d, grade_curr = %d.
+[%d] _POSTDIV1 = %d, _POSTDIV2 = %d, USER_DIV = %d, freq = %d
+[DEBUG] Allocate memory for freq tuning basic.
+[DEBUG] Dump freq table, chain = %d.
+[DEBUG] Free memory for freq tuning basic.
+[DEBUG] Freq tuning basic exit.
+[DEBUG] Freq tuning basic init.
+[DEBUG] Get freq result, chain = %d.
+[DEBUG] freq tuning fine exit.
+[DEBUG] freq tuning fine init.
+_tuning_freq_dump_nonce_info
+acceptable min_vol = %d min_freq = %d max_vol = %d max_freq = %d
+adjust end chain=%d asic=%d set end freq %.2f
+adjust middle chain = %d asic=%d set freq to %.2f
+api_get_miner_freq_adjust_info
+api_miner_chain_frequency
+asic freq:
+bitmain-freq
+bitmain-freq-level
+bitmain-voltage
+bitmain_get_sample_voltage
+bitmain_get_voltage
+bitmain_set_voltage
+bitmain_set_voltage failed
+bitmain_set_voltage_by_n
+bmminer_tuning
+can nont get voltage
+chain %d best level %d, freq %d
+chain = %d set freq to %.2f
+chain = %d, asic = %d, freq = %d
+chain = %d, asic = %d, pll_id = %d, freq = %d
+chain = %d, freq = %d
+chain = %d, freq = %g, is_higher_voltage = %s
+chain = %d, freq_avg = %d
+chain = %d, freq_avg = %d, freq_threshold = %d
+chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough
+chain = %d, freq_max = %d
+chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough
+chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough
+chain = %d, freq_min = %d
+chain = %d, grade_curr = %d, freq_target = %d
+chain = %d, start = %d, freq_step = %.2f
+chain min freq in eeprom = %d
+chain%d, domain%d, asic %03d, voltage:%f
+chain%d, domain%d, asic avg voltage:%f
+chain%d_basefreq=%d;
+chain%d_voltage=%d;
+chain[%d] domain[%d] asic avg voltage:%.4f,min:%.4f,max:%.4f,expect:%.4f
+chain[%d] domain[%d] asic voltage:
+cur_voltage = %d, avg_voltage = %.2f
+current_freq
+decreased_freq
+eeprom_freq
+eeprom_set_freq, chain = %d, freq = %d.
+eeprom_set_freq, chain = %d, pre freq = %d, new freq = %d.
+eeprom_set_voltage, chain = %d, pre voltage = %d, new voltage = %d.
+eeprom_set_voltage, chain = %d, voltage = %d.
+enter mixed freq mode
+entrance_temp = %d, current_voltage = %d, work_wol = %d
+failed to load freq in eeprom, using default
+fixed frequency is %d, g_frequency_offset is %d
+fixed step chain = %d, freq_start = %d, freq_end = %d, freq_step = %.2f, is_higher_voltage = %s
+fixed step freq_start = %d, freq_end = %d, freq_step = %.2f
+fixed working voltage = %d
+freq = %d, percent = %d, hcn = %d, timeout = %d
+freq level not match
+freq level out of range
+freq value[%d] greater than freq max[%d] for chain %d.
+freq value[%d] less than freq base[%d] for chain %d.
+freq_avg
+freq_base
+freq_diff_threshold
+freq_level = %d
+freq_prev = %d, freq_start = %d, freq_step = %d, freq_min = %d
+freq_serial_threshold
+freq_threshold
+freq_tuning_fine_count
+freq_tuning_fine_step
+freqs
+frequency = %d
+get bitmain-freq failed
+get bitmain-freq-level failed
+get bitmain-voltage failed
+get freq-level failed
+get inc_freq_delay failed
+get inc_freq_step failed
+get inc_freq_voltage failed
+get open_core_high_voltage failed
+get voltage_adjust_setp failed
+get_chain_asic_domain_avg_voltage
+inc freq delay:%d
+inc_freq to %d timeout spend %ds, wait target temp:%d failed, real_temp=%d
+inc_freq_delay
+inc_freq_step
+inc_freq_step: %d
+inc_freq_voltage
+inc_mixed_freq_prepare
+invaild bitmain_freq[%d]
+invaild bitmain_voltage[%d]
+invaild freq_level[%d]
+is_inc_freq_with_high_vol
+is_inc_freq_with_high_vol_runtime
+last avg = %.2f, current voltage = %.2f
+level %d, voltage = %d frequency = %d
+load vol-freq config file %s failed
+max freq in eeprom = %d
+max voltage in eeprom = %d
+miner_sim.eeprom.eeprom_info[%d].frequency:%d
+miner_sim.eeprom.eeprom_info[%d].voltage:%d
+normal inc freq voltage
+not find freq, set default freq start = %d, end = %d
+open_core_high_voltage
+opt_bitmain_high_voltage_open_core
+pic check voltage drop
+power is high when inc_freq, drop vol now, power:%d
+power voltage can not meet the target
+power voltage can not meet the target, retry:%d
+power voltage read failed, pls check!
+power voltage rise or drop, pls check!
+press any key to start rising frequency...
+read_feedback_voltage chain = %d, voltage = %f
+read_feedback_voltage failed!
+set default inc_freq_delay: %d
+set default inc_freq_step: %f
+set default inc_freq_voltage: %d
+set default open_core_high_voltage: %d
+set default voltage_adjust_setp: %d
+set voltage to work voltage
+set voltage to=%d
+set voltage to=%d, end_freq=%d
+set_freq
+set_voltage_by_steps
+sweep_freq_base = %d
+sweep_freq_step = %d
+test avg_freq:%.f, freq:%.f
+the minimal voltage = %.2f
+tuning freq end
+tuning freq start
+tuning_freq_matrix_thread set freq complete
+tuning_freq_thread
+tuning_freq_thread start waiting to work
+tuning_frequency from freq %d to freq %d, end_vol=%d, not set vol
+tuning_frequency from freq %d to freq %d, set vol to target voltage=%d, vol_cur=%d, vol_step=%d
+voltage = %d
+voltage level not match
+voltage level out of range
+voltage_adjust_setp
+warning topol_get_open_core_high_voltage=0,please check topol.conf!
+working_freq
+
+== Temp/fan/cooling (132) ==
+ Air out temprature is too high, set fixed full fan speed
+%s we read lm75a fd : %d chain %d read temp %d
+%s we read tmp451 fd :d%d chain %d is_remote %d read temp %d
+--bitmain-fan-ctrl
+--bitmain-fan-pwm
+/get_water_permit
+/get_water_permit:%d
+/inlet_temp
+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZbitmain_get_power_temp_fanspeed
+@bitmain_get_power_temp
+Can't get temperature sensor type!
+ERROR_FAN_LOST
+ERROR_TEMP_LOST
+ERROR_TEMP_LOST_1ST
+ERROR_TEMP_TOO_HIGH
+ERROR_TEMP_TOO_HIGH_WAITING
+ERROR_TEMP_TOO_LOW
+ERROR_TEMP_TOO_LOW_WAITING
+ERROR_WATER_REVERSE
+Enable bitmain miner fan controlling
+Error, fan lost, only find %d (< %d)
+Fan check passed.
+HEM power adjust current v: %d  I :%f miner power %d target_power %d entrance_temp :%d g_target_power: %d
+No temp, chain = %d.
+Note: front fan is power off!
+Note: front fan is power on!
+Note: rear fan is power off!
+Note: rear fan is power on!
+PWM keep 100:  airin_temp=%d, airout_temp=%f
+Sensor localtion:%d, Bring up temperature is %d
+Set bitmain fan pwm percentage 0~100
+Set bitmain miner voltage compensate in low temp
+Temporary Redirect
+Water is not flowing!
+Water temperature is too high!
+Water temperature is too low!
+api_miner_chain_temp_chip
+api_miner_chain_temp_pcb
+api_miner_chain_temp_pic
+api_miner_fan_num
+api_miner_fan_speed
+bitmain-fan-ctrl
+bitmain-fan-pwm
+bmminer_auto_temp
+bmminer_temp
+bringup_temp
+can nont get power temp and fan speed
+can not read temp by asic before calibration
+chain %d %s temp: %s, failure:%s
+chain %d temp sensor %s
+chain %d, asic %03d, temp:%.2f
+chain :%d seq:%d time:%ld  temp:%d-%d-%d-%d-%d-%d-%d-%d
+chain%d, sensor num:%d, avg temp:%.2f
+check_asic_temp_thread
+cmd : get water inlet temp
+do not read asic_temp_vol anymore...
+do not read temp anymore...
+dump_temp_info
+entrance_temp = %d, current_voltage = %d, work_wol = %d
+fan lost
+fan[%u] speed[%u]
+fan_eft : %d  fan_pwm : %d
+fan_id
+fan_id = %d, fan_speed = %d
+fan_info
+fan_num
+get bitmain-fan-ctrl failed,%p
+get bitmain-fan-pwm failed
+get fan failed
+get pid_target_temp failed
+get_sensor_temp_by_index invalid return 255!!, location:%d, index:%d, %d, %d
+get_water_permit failed
+get_water_permit:%d
+got abnormal temp: chain %d index %d ,error_temp %d, temporary skip the error temp
+got abnormal water temp_max %d temp_min %d exceed  temp limit 25, temporarily skiped. error_count = %d
+inc_freq to %d timeout spend %ds, wait target temp:%d failed, real_temp=%d
+index %d ,debug_temp %d
+init fan pid target=%d
+inlet_board_temp=%d,outlet_board_temp=%d,inlet_water_temp=%d,outlet_water_temp=%d
+inlet_water_temp:%d, outlet_water_temp:%d, chain : 0x%0x
+invaild bitmain_fan_pwm[%d]
+low temp 
+malloc %d runtime_fan failed
+miner_sim.fan.enable_sim_mode:%d
+miner_sim.fan.fan_info[%d].bringup_speed:%d
+miner_sim.fan.fan_info[%d].running_speed:%d
+miner_sim.sensor.sensor_info[0][%d].bringup_temp:%d
+mkstemp
+no temp raise, stop monitoring
+over max temp
+over max temp, pic temp(chain%d) %d (max %d), pcb temp(chain%d) %d (max %d), chip temp(chain%d) %d(max %d) pcb temp rise %d chip temp rise %d, total_exit_failur
+parse fan failed
+pcb_temp_in = %d
+pcb_temp_out = %d
+pid_target_temp
+pwm for fan init error
+pwm type %d not supported
+read temp sensor failed: chain = %d, sensor pos = %d, address = %d, reg = %d
+read_sensor_on_lm75a index %d sensor temp %d
+read_sensor_on_switch read %d on chain %d takes %ldms temp:%d
+rise vol by sudden temp drop.
+running_temp
+sensor %d @ chain %d chip_temp_offset less than 2, no need to set offset
+set chain %d to read chip temp
+set default pid_target_temp: %d
+set pwm = %d
+stable_test,fan_pwm:%d
+start up min temp by 75a = %d
+temp monitor thread exit
+temp rise too much
+temp too low
+temp_chip
+temp_mtr
+temp_pcb
+temp_pic
+temperature/temperature.c
+temperature_monitor_thread start...
+tmp451 index %d sensor temp %d is remote %d
+too hot water temperature pic temp %d (min %d)
+too low water temperature pic temp %d (min %d)
+uninit_asic_temp_vol_info
+uninit_temp_info
+waiting asic temp to %d, curr temp %f when time %ds
+waiting board temp come to %d
+water flow is reverse
+water flow is reverse, please swap the water pipes at the inlet and outlet
+water temp %d ~ %d, sleep %ds to cool down
+water temp %d ~ %d, stop.
+water temp diff err
+water temp drop 5 degree in 20 secs, now:%d, before:%d
+water_in_temp
+{"fan": [{"max": 6000, "id": 0, "name": 0}, {"max": 4300, "id": 1, "name": 0}], "ipreport": 943, "reset": 921, "chain": [{"id": 0, "plug": 0, "uart": 0, "reset"
+
+== Chain/hardware (405) ==
+ asic nonce number for chain[%d] asic[%d]...
+ asic nonce number for chain[%d]...
+ dump asic nonce number...
+!!!  %0x %0x %0x %0x asic %d  core 0x%02x 
+!!! REG_TYPE = 1. %u asic %d
+%s chain %d ,index %d not connected
+%s chain %d not pluged
+%s invalid param. index = %d, type = %d, model = %d on chain %d
+%s read iic err
+%s we read lm75a fd : %d chain %d read temp %d
+%s we read tmp451 fd :d%d chain %d is_remote %d read temp %d
+%s write iic err
+%s, %d, chain_number:%d, chip_addr:%d, reg_addr:%d, reg_value:0x%x, crc:%d
+%s, invalid chain or asic, chain %d, asic %03d
+%s: Bad eeprom param, input chain is %d
+%s: Bad pic param, input chain is %d
+%s: Chain ID J%d ...
+%s: The uart %d is not supported!!!
+%s: The uart%d is not supported!!!
+%s: auto exec eeprom_open, but chain %d open eeprom failed
+%s: auto exec open_pic, but chain %d open eeprom failed
+%s: chain %d which_asic_nonce %d which_core_nonce %d
+%s: the uart%d left data is 4*N length, error!!!
+%s: the uart%d send left data is 4*N length, error!!!
+%s: uart%d always busy, break
+%s: uart%d always dose not has enough send fifo space, break
+%s: uart%d clear rx fifo error. nbytes = %d, len = %d
+%s: uart%d malloc buffer error
+%s: waiting fpga uart%d clear send fifo space ...
+/asic_nonce
+/clear_find_asic_fail_record
+/config/find_asic_counter
+1.inc all chain freq to %d
+2.chain_%d inc freq to %d
+3.chain %d min = %d, max = %d
+>>>> Send work for chain %d.
+All ready chain done, exit.
+Chain %d PIC reset failed.
+Chain %d domain:
+Chain %d is not exist.
+Chain %d nonce:
+Chain %d only find %d asic, will power off hash board %d
+Chain [%d] BOM Version: 0x%04x
+Chain [%d] PCB Version: 0x%04x
+Chain%d:{
+Chain[%d] nonce:
+Chain[%d] total nonce number = %d
+Chain[%d]:
+Chain[%d]: find %d asic, times %d
+Check chain[%d] PIC fw version=0x%02x
+Data load fail for chain %d.
+Do freq tuning basic.
+Domain unbalance happen, chain = %d, domain = %d, nonce_num_domain = %d, threshold = %d.
+EEPROM error: %s
+EEPROM write data is not 32-bit aligned, FAIL ENC/DEC!
+ERROR_ASIC_NUM
+ERROR_EEPROM_INFO
+ERROR_PIC_LOST
+FW type %s, eeprom[%d] shows %s
+Fail to allocate memory for freq tuning basic context.
+No board name, chain = %d
+No bom version, chain = %d.
+No chain exist, exit.
+No chip bin, chain = %d
+No chip tech, chain = %d
+No enough work, asic = %d, work_count = %d, work_count_target = %d.
+No ft ver, chain = %d
+No full chain exist, exit.
+No hash board sn, chain = %d.
+No pcb version, chain = %d.
+No temp, chain = %d.
+No test standard, chain = %d.
+No work mode freq, chain = %d, mode = %d.
+No work mode hash rate, chain = %d, mode = %d.
+No work mode voltage, chain = %d, mode = %d.
+PIC reset failed.
+Read configuration fail for chain %d.
+Send work for chain %d done, time cost %lds, sleep_count = %d
+Unbalance happened: chain = %d, asic = %d
+Update freq result of high grade, chain = %d, grade_curr = %d.
+Write sweep result fail for chain %d.
+[DEBUG] Allocate memory for freq tuning basic.
+[DEBUG] Check if all chain pattern test done except block.
+[DEBUG] Check if all chain pattern test done.
+[DEBUG] Check if chain is unbalance happen, chain = %d.
+[DEBUG] Check if chain is unqualified happen, chain = %d, nonce_rate_threshold = %.2f
+[DEBUG] Check if is need stop, chain = %d, hw_threshold = %.4f, nonce_rate_threshold = %.2f, nonce_rate_dec_threshold = %.2f.
+[DEBUG] Check if is recv nonce enough, chain = %d.
+[DEBUG] Check if is unbalanche happen, chain = %d
+[DEBUG] Check if recv nonce enough, chain = %d.
+[DEBUG] Dump freq table, chain = %d.
+[DEBUG] Free memory for freq tuning basic.
+[DEBUG] Freq tuning basic exit.
+[DEBUG] Freq tuning basic init.
+[DEBUG] Get freq result, chain = %d.
+[DEBUG] Send work one chain, chain = %d.
+[DEBUG] Set chain serial, chain_serial_count = %d.
+[DEBUG] chain = %d, status = %s
+_bitmain_pic_disable_dc_dc_common
+_bitmain_pic_enable_dc_dc_common
+_bitmain_pic_get_sw_ver_common
+_bitmain_pic_heart_beat_common
+_bitmain_pic_reset_common
+_bitmain_pic_start_app_common
+adjust end chain=%d asic=%d set end freq %.2f
+adjust middle chain = %d asic=%d set freq to %.2f
+api_miner_asic_tpl
+api_miner_asic_tpl r=%d,c=%d
+api_miner_chain_asic_num
+api_miner_chain_asic_status
+api_miner_chain_eeprom
+api_miner_chain_frequency
+api_miner_chain_hw
+api_miner_chain_nonce
+api_miner_chain_num
+api_miner_chain_rate_array
+api_miner_chain_rate_ideal
+api_miner_chain_rate_real
+api_miner_chain_sn
+api_miner_chain_temp_chip
+api_miner_chain_temp_pcb
+api_miner_chain_temp_pic
+asic %d, wind %d, y %d
+asic freq:
+asic number is not right
+asic:
+asic[%03d]=%-8d
+asic_addr
+asic_addr 0x%x
+asic_addr : %s
+asic_addr_interval
+asic_addr_interval : %d
+asic_core_num
+asic_core_num: %d
+asic_domain_num
+asic_domain_num : %d
+asic_id
+asic_id: %s
+asic_response.c
+asic_sensor_addr[0] = 0x%x
+asic_sensor_addr[1] = 0x%x
+asic_sensor_addr[2] = 0x%x
+asic_sensor_addr[3] = 0x%x
+asic_sensor_type = 0x%x
+asic_small_core_num
+asic_small_core_num: %d
+bad asic is %d
+bad_asic_info
+basic init failed!
+bind_asic
+bind_asic: %d
+board id = %d, chain num = %d
+board_sn change, find_asic_counter clean
+calculate_core_number(topol_get_asic_small_core_num()):%d, mid_num:%d
+calibration sensor on chain %d failed
+can not find sweep in eeprom,test return %d
+can not read temp by asic before calibration
+chain
+chain %2d asic %03d adc:
+chain %d %s temp: %s, failure:%s
+chain %d asic %d get reg value failed
+chain %d best level %d, freq %d
+chain %d hash rate %.2f low in %ld mins
+chain %d power is %.2f
+chain %d stats:
+chain %d switch sel channel %d read back sel data 0x%0x
+chain %d temp sensor %s
+chain %d, asic %03d, temp:%.2f
+chain %d, bad core num %8d, rate = %.2f ========================round %d
+chain :%d seq:%d time:%ld  temp:%d-%d-%d-%d-%d-%d-%d-%d
+chain = %d set freq to %.2f
+chain = %d, asic = %d, freq = %d
+chain = %d, asic = %d, pll_id = %d, freq = %d
+chain = %d, chip = %d, core = %d
+chain = %d, freq = %d
+chain = %d, freq = %g, is_higher_voltage = %s
+chain = %d, freq_avg = %d
+chain = %d, freq_avg = %d, freq_threshold = %d
+chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough
+chain = %d, freq_max = %d
+chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough
+chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough
+chain = %d, freq_min = %d
+chain = %d, grade = %d
+chain = %d, grade_curr = %d, freq_target = %d
+chain = %d, grade_curr = %d, is_grade_curr_done = %d
+chain = %d, hw = %d, hw_threshold = %d, too much hw.
+chain = %d, ideal_hash_rate_GH = %d
+chain = %d, nonce_rate_curr = %.4f, nonce_rate_last = %.4f, nonce_rate_max = %.4f
+chain = %d, nonce_rate_max = %.4f, nonce_rate_threshold = %.4f
+chain = %d, start = %d, freq_step = %.2f
+chain avg vol %s from %d to %.2f
+chain avg vol %s to %.2f
+chain id = %d
+chain min freq in eeprom = %d
+chain num = %d
+chain%d domain %d avg vol=%f 
+chain%d, domain%d, asic %03d, voltage:%f
+chain%d, domain%d, asic avg voltage:%f
+chain%d, sensor num:%d, avg temp:%.2f
+chain%d_badcore=%d;
+chain%d_basefreq=%d;
+chain%d_voladded=%d;
+chain%d_voltage=%d;
+chain:
+chain::%d don't exist!!!
+chain[%d]  domain %d vol :
+chain[%d] PIC jump to app
+chain[%d] asic[%d] check pll config err
+chain[%d] asic[%d] check pll config err, times %d, value_set:%x, value_get:%x
+chain[%d] asic[%d] retry check pll config err, times %d, value_set:%x, value_get:%x
+chain[%d] domain[%d] asic avg voltage:%.4f,min:%.4f,max:%.4f,expect:%.4f
+chain[%d] domain[%d] asic voltage:
+chain[%d] get pll config err, times %d
+chain[%d] heart beat fail %d times.
+chain[%d] min = %d max =%d
+chain[%d] nonce info:
+chain_asic
+chain_asic_num
+chain_asic_num : %d
+chain_column
+chain_column: %d
+chain_domain_num
+chain_domain_num : %d
+chain_id
+chain_num %d, chain_domain_num %d, chain_asic_num %d, domain_asic_num %d
+chain_num : %d
+chain_present
+chain_present_map
+chain_row
+chain_row: %d
+chainnum=%d;
+check_asic_sensor_one_chain
+check_asic_temp_thread
+check_how_many_uart_data_in_fpga
+chian_%d,asic_%d do_core_reset
+clear find asic fail record success
+clear_uart_rx_fifo
+clear_uart_tx_fifo
+close_pic
+convert asic_addr failed
+core %8d data in asic %d is zero
+core %8d in asic %d not returned
+do not read asic_temp_vol anymore...
+domain_asic_num
+domain_asic_num : %d
+eeprom
+eeprom is not init, chain = %d
+eeprom:
+eeprom_bin
+eeprom_close
+eeprom_code
+eeprom_freq
+eeprom_ft
+eeprom_get_sweep_result error
+eeprom_info
+eeprom_open
+eeprom_read
+eeprom_set_freq, chain = %d, freq = %d.
+eeprom_set_freq, chain = %d, pre freq = %d, new freq = %d.
+eeprom_set_pt2_result, chain = %d, pre_pt2_result = %d, pt2_result = %d.
+eeprom_set_pt2_result, chain = %d, pt2_result = %d.
+eeprom_set_voltage, chain = %d, pre voltage = %d, new voltage = %d.
+eeprom_set_voltage, chain = %d, voltage = %d.
+eeprom_vol
+eeprom_write
+end read asic vol
+exist chain
+fail to create find_asic_counter file
+fail to r+ open find_asic_counter file
+fail to read eeprom by iic, chain: %d, addr: %d
+fail to w open find_asic_counter file
+fail to write eeprom by iic, chain:%d, addr: %d
+failed to i2c lock
+failed to i2c_init
+failed to i2c_ioctl
+failed to i2c_select
+failed to iic lock
+failed to load freq in eeprom, using default
+fix chain %d to 570M
+fixed step chain = %d, freq_start = %d, freq_end = %d, freq_step = %.2f, is_higher_voltage = %s
+freq value[%d] greater than freq max[%d] for chain %d.
+freq value[%d] less than freq base[%d] for chain %d.
+get a different board name for chain:%d, pre board_name:%s, current board_name:%s
+get array %d bind_asic failed
+get asic failed
+get asic_addr failed
+get asic_addr_interval failed
+get asic_core_num failed
+get asic_domain_num failed
+get asic_id failed
+get asic_small_core_num failed
+get board name failed for chain:%d
+get chain failed
+get chain_asic_num failed
+get chain_column failed
+get chain_domain_num failed
+get chain_num failed
+get chain_row failed
+get domain_asic_num failed
+get eeprom failed
+get i2c_addr failed
+get pic failed
+get pic sensor failed
+get test_loop_securely_find_asic_num failed
+get_chain_asic_domain_avg_voltage
+get_chain_reg_value
+get_pic_version
+get_read_address_info error, chain_id = %d
+get_send_address_info error, chain_id = %d
+got abnormal temp: chain %d index %d ,error_temp %d, temporary skip the error temp
+i2c_addr
+i2c_addr: %d
+iic not ready 4 read1
+iic not ready 4 read2
+iic not ready 4 write
+iic write failed
+iic write reg failed
+iic: %d
+inlet_water_temp:%d, outlet_water_temp:%d, chain : 0x%0x
+invalid_asic_num
+invalid_chain_num
+load chain %d eeprom data
+malloc %d asic_t failed
+malloc %d chain_t failed
+malloc %d runtime_chain failed
+max freq in eeprom = %d
+max sensor num = %d BITMAIN_MAX_CHAIN_NUM %d BITMAIN_MAX_CHAIN_NUM %d
+max voltage in eeprom = %d
+miner has reached find asic max fail num
+miner_bad_asic
+miner_sim.asic.asic_info[%d].asic_num:%d
+miner_sim.asic.enable_sim_mode:%d
+miner_sim.bad_asic.bad_asic_info[0][%d].bad_asic:%d
+miner_sim.bad_asic.enable_sim_mode:%d
+miner_sim.chain_present.chain_present_map:%d
+miner_sim.chain_present.enable_sim_mode:%d
+miner_sim.eeprom.eeprom_info[%d].board_name:%s
+miner_sim.eeprom.eeprom_info[%d].chip_bin:%d
+miner_sim.eeprom.eeprom_info[%d].clearance_flag:%d
+miner_sim.eeprom.eeprom_info[%d].frequency:%d
+miner_sim.eeprom.eeprom_info[%d].ft_version:%s
+miner_sim.eeprom.eeprom_info[%d].pt1_result:%d
+miner_sim.eeprom.eeprom_info[%d].pt2_result:%d
+miner_sim.eeprom.eeprom_info[%d].test_standard:%d
+miner_sim.eeprom.eeprom_info[%d].voltage:%d
+miner_sim.eeprom.enable_sim_mode:%d
+no need to set uart relay
+only support asic boost
+open switch fail on chain %d
+open_pic
+over max temp, pic temp(chain%d) %d (max %d), pcb temp(chain%d) %d (max %d), chip temp(chain%d) %d(max %d) pcb temp rise %d chip temp rise %d, total_exit_failur
+parse asic failed
+parse chain ctrlboard sensor failed
+parse chain eeprom failed
+parse chain failed
+parse chain pic failed
+parse chain sensor failed
+parse chain tpl failed
+pic check voltage drop
+pic enabled for chain %d, press anykey to continue...
+pic sensor:
+pic_heart_beat_thread
+pic_sensor_addr = 0x%x
+pic_sensor_type = 0x%x
+read asic reg error: expect chain = %d, chip = %d, reg = %d, got chain = %d, chip = %d, reg = %d
+read asic reg timeout: expect chain = %d, chip = %d, reg = %d
+read asic vol in 30 min
+read find_asic_counter file failed! err:%s
+read temp sensor failed: chain = %d, sensor pos = %d, address = %d, reg = %d
+read_feedback_voltage chain = %d, voltage = %f
+read_sensor_on_asic
+read_sensor_on_switch read %d on chain %d takes %ldms temp:%d
+read_uart_data_in_fpga
+recvBuf = %s, chain = %d, asic = %d
+recvBuf = %s, chain = %d, asic = %d, reg = 0x%x
+reg 0x%08x of asic %2d @ chain %2d, val = 0x%08x
+reopen asic %d
+reset chain %d asic %d core success!!!.
+reset clock asic %d
+reset_pic
+send_pic_heart_beat
+sensor %d @ chain %d chip_temp_offset less than 2, no need to set offset
+sensor %d @ chain %d fail to set to ext mode
+sensor %d @ chain %d is %s
+sensor %d @ chain %d manufacture id unknown
+sensor %d @ chain %d, offset = %d
+set UART baud to %d
+set chain %d to read chip temp
+set ext mode failed for senser %d @ chain %d
+set offset failed for senser %d @ chain %d
+start read asic vol
+temp_pic
+test:find asic num failed, whileloop
+test_loop_securely_find_asic_num
+test_loop_securely_find_asic_num: %d
+too hot water temperature pic temp %d (min %d)
+too low water temperature pic temp %d (min %d)
+uart_get_config return %d
+uart_send
+uninit_asic_temp_vol_info
+waiting asic temp to %d, curr temp %f when time %ds
+which_chain %d the fd of witch_state is %d
+write find_asic_counter file failed! err:%s
+{"fan": [{"max": 6000, "id": 0, "name": 0}, {"max": 4300, "id": 1, "name": 0}], "ipreport": 943, "reset": 921, "chain": [{"id": 0, "plug": 0, "uart": 0, "reset"
+
+== Config files (26) ==
+/config/cgminer.conf
+/config/counter
+/config/find_asic_counter
+/config/scanfreqdone
+/config/sn
+/etc/bitmain_category.conf
+/etc/cgminer.conf.factory
+/etc/levels.json
+/etc/topol.conf
+/nvdata/pool/pool.json
+/tmp/counter
+/tmp/miner/droa.log
+/tmp/miner/hashrate.log
+/tmp/miner_simulator.json
+/tmp/stable_file_name
+/tmp/stable_test-XXXXXX
+/tmp/zlog.lock
+See example-S7.conf or S9.conf for an example configuration.
+bmminer.conf
+open /cofig/cgminer.conf failed
+open /config/cgminer.conf failed
+open /config/test.json failed
+open /nvdata/pool/pool.json failed
+openssl dgst -sha256 -verify /etc/bitmain-adv.pub -signature /nvdata/pool/pool.json.sig /nvdata/pool/pool.json > /dev/null 2>&1
+pool.json not existed do nothing
+warning topol_get_open_core_high_voltage=0,please check topol.conf!
+
+== Logging (zlog) (99) ==
+------dzlog_init fail end------
+------dzlog_init start------
+------dzlog_init success end------
+------dzlog_set_category[%s] end, fail------ 
+------dzlog_set_category[%s] end, success------ 
+------dzlog_set_category[%s] start------
+------zlog_fini end------
+------zlog_fini start------
+------zlog_get_category[%s] fail, end------ 
+------zlog_get_category[%s] start------
+------zlog_get_category[%s] success, end------ 
+------zlog_init fail end------
+------zlog_init start------
+------zlog_init success end------
+------zlog_profile end------ 
+------zlog_profile start------ 
+------zlog_reload do nothing------
+------zlog_reload fail, total init version[%d] ------
+------zlog_reload start------
+------zlog_reload success, total init verison[%d] ------
+/tmp/miner/droa.log
+/tmp/miner/hashrate.log
+/tmp/zlog.lock
+Set log file, default: bmminer.log
+ZLOG_CONF_PATH
+ZLOG_PROFILE_DEBUG
+ZLOG_PROFILE_ERROR
+ZLOG_STRICT_INIT
+aa.1.log is not expect, need aa.01.log
+already init, use zlog_reload pls
+before finish, must zlog_init() or dzlog_init() fisrt
+never call zlog_init() or dzlog_init() before
+pre-use of zlog_buf_resize fail, so can't convert
+reach reload-conf-period but zlog_reload fail, zlog-chk-conf [file] see detail
+src/zlog.c
+thread not found, maybe not use zlog_put_mdc before
+zlog_buf_del[%p]
+zlog_buf_new fail
+zlog_buf_resize fail
+zlog_category_del[%p]
+zlog_category_fit_rules fail
+zlog_category_obtain_rules fail
+zlog_category_table_del[%p]
+zlog_category_table_fetch_category[%s] fail
+zlog_category_table_new fail
+zlog_category_table_update fail
+zlog_category_update_rules fail, try rollback
+zlog_conf_build_with_file fail
+zlog_conf_build_without_file fail
+zlog_conf_del[%p]
+zlog_conf_new fail
+zlog_conf_new[%s] fail
+zlog_default_category is null,dzlog_init() or dzlog_set_cateogry() is not called above
+zlog_event_del[%p]
+zlog_event_new fail
+zlog_format_del[%p]
+zlog_format_gen_msg fail
+zlog_format_new fail
+zlog_format_new fail [%s]
+zlog_format_output fail
+zlog_init_inner[%s] fail
+zlog_level_del[%p]
+zlog_level_list_new fail
+zlog_level_list_set fail
+zlog_level_new fail
+zlog_level_set_default fail
+zlog_mdc_del[%p]
+zlog_mdc_get_kv key[%s] fail
+zlog_mdc_kv_del[%p]
+zlog_mdc_kv_new failed
+zlog_mdc_new fail
+zlog_mdc_put fail, key[%s], value[%s]
+zlog_output fail, srcfile[%s], srcline[%ld]
+zlog_record_del[%p]
+zlog_record_new fail
+zlog_record_table_del[%p]
+zlog_record_table_new fail
+zlog_reload fail, use old conf file, still working
+zlog_rotater_add_archive_files fail
+zlog_rotater_del[%p]
+zlog_rotater_lsmv [%s] fail, return
+zlog_rotater_new fail
+zlog_rotater_parse_archive_path fail
+zlog_rotater_roll_files fail
+zlog_rotater_rotate fail
+zlog_rotater_seq_files fail
+zlog_rotater_trylock fail, maybe lock by other process or threads
+zlog_rotater_unlock fail
+zlog_rule_del[%p]
+zlog_rule_new fail
+zlog_rule_new fail [%s]
+zlog_rule_parse_path fail
+zlog_spec_del[%p]
+zlog_spec_gen_path fail
+zlog_spec_new fail
+zlog_spec_parse_print_fmt fail
+zlog_thread_del[%p]
+zlog_thread_new fail
+zlog_thread_resize_msg_buf fail, rd[%d]
+
+== Power (145) ==
+%s power disable watchdog error.
+%s power enable watchdog error.
+%s: auto exec bitmain_power_open, but open power failed
+****power off hashboard****
+/miner_power
+/power
+/power-%d
+/power_err_code
+/power_err_code:%d
+/power_err_data
+/power_fw_ver
+/power_reset_rc
+/power_sn
+/power_uptime
+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZbitmain_get_power_temp_fanspeed
+@bitmain_get_power_temp
+Chain %d only find %d asic, will power off hash board %d
+ERROR_POWER_LOST
+Enable bitmain low power mode.
+Get ac power failed
+Get power dc_volt value failed
+Get power error code failed
+Get power error code[4-7 8-11] %02x%02x%02x%02x %02x%02x%02x%02x, err_code:0x%08x
+Get power error data failed
+Get power error data:
+Get power reset root cause failed
+Get power set_volt value failed
+Get power update time failed
+HEM power adjust current v: %d  I :%f miner power %d target_power %d entrance_temp :%d g_target_power: %d
+Initializing the power, please wait, this may take up to 2 minutes...
+Note: front fan is power off!
+Note: front fan is power on!
+Note: rear fan is power off!
+Note: rear fan is power on!
+Please check if the power supply is normal?
+WARNING: exec_power_cmd_v2 only support even len
+[DEBUG] Board init, is_power_off = %d.
+api_miner_power_jt
+bitmain power close ===========
+bitmain_clear_power_status
+bitmain_get_history_power_status
+bitmain_get_miner_power
+bitmain_get_power_enable_status
+bitmain_get_power_input_status
+bitmain_get_power_running_time
+bitmain_get_power_status
+bitmain_get_power_status failed!
+bitmain_get_power_status_1
+bitmain_power_aging_time
+bitmain_power_is_calibrated
+bitmain_power_read
+bitmain_power_release_date
+bitmain_power_sw_ver
+bitmain_power_version
+bmminer_power
+can nont clear power status; ret = 0x%x
+can nont get history power status; ret = 0x%x
+can nont get power enable status; ret = 0x%x
+can nont get power input status; ret = 0x%x
+can nont get power ret = 0x%x
+can nont get power status
+can nont get power temp and fan speed
+can nont set power watchdog
+can't get power running time ret = 0x%x
+chain %d power is %.2f
+check power version failed, use v2 protocal to try it again
+clear power status failed
+cmd : get miner power
+cmd : get miner power err code
+cmd : get miner power err data
+cmd : get miner power reset root cause
+cmd : get miner power uptime
+current_power
+disable power watchdog: 0x%04x
+enable power watchdog: 0x%04x
+enable_power_calibration, calibration date:%d.
+get power aging time failed
+get power enable status failed
+get power failed
+get power fw ver failed
+get power info:%f, %f, %f, 0x%08x
+get power input status failed
+get power release date failed
+get power run time failed
+get power status failed
+get power version failed
+get power_target failed
+get poweron_with_reset_high failed
+http://%s:%d/power/%s
+is_board_init_with_power_off
+miner power:%d
+miner_power:%d
+miner_sim.power.enable_sim_mode:%d
+miner_sim.power.power_info.power:%d
+miner_sim.power.power_info.power_version:%d
+network connection lost for 5 min + %d seconds, power off...
+no json object[power] found
+no power sn stored on board
+no power supported
+parse power failed
+power 0x05 cmd failed
+power calibration data:
+power err_code:0x%08x
+power error code:0x%08x
+power firmware version:%d
+power fw_version = 0x%x
+power is Calibrated
+power is err.
+power is high when inc_freq, drop vol now, power:%d
+power is not Calibrated
+power off
+power open power_version < 0 will close power
+power open power_version = 0x%x
+power power_uptime:%.1f
+power reply the bad crc, crc = 0x%04x, crc_read = 0x%04x
+power reset root cause:0x%08x
+power sn:%s
+power status error = 0x%0x
+power status error!
+power type version error
+power type version: 0x%04x
+power voltage can not meet the target
+power voltage can not meet the target, retry:%d
+power voltage read failed, pls check!
+power voltage rise or drop, pls check!
+power:
+power: %.2f
+power_info
+power_init
+power_monitor_thread
+power_need_open
+power_sn
+power_target
+power_target: %d
+power_version
+poweron_with_reset_high
+psu version = 0x%x
+reset high before power init
+reset low before power init
+set default poweron_with_reset_high: %d
+set_vol:%f, out_vol:%f, power:%f, err_code:0x%08x!
+the target power is %d
+warning:power is not calibrated.
+will power off in %d seconds in case not resume
+write data to power register 0x86 success

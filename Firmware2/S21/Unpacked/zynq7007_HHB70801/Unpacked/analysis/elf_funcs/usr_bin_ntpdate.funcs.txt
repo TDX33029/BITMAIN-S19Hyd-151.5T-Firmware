@@ -1,0 +1,5 @@
+# usr\bin\ntpdate  (137180 B)  libs: libm.so.6, libssl.so.1.1, libcrypto.so.1.1, libdl.so.2, libatomic.so.1, libpthread.so.0, libc.so.6, ld-linux-armhf.so.3
+0000357c  sz=72     main
+00010564  sz=116    sigint_handler
+0001c581  sz=60     __libc_csu_init
+0001c5bd  sz=2      __libc_csu_fini

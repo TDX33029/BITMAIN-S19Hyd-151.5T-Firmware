@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_expire.so  (9528 B)  libs: libc.so.6
+00000868  sz=0      _init
+00001468  sz=112    mod_expire_plugin_init
+000014d8  sz=0      _fini

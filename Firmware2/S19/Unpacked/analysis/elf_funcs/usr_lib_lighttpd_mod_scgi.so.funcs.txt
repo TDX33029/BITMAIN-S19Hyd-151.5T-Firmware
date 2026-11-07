@@ -1,0 +1,5 @@
+# usr\lib\lighttpd\mod_scgi.so  (34624 B)  libs: libc.so.6
+0000155c  sz=0      _init
+00003aa8  sz=120    scgi_proclist_sort_down
+00006a4c  sz=216    mod_scgi_plugin_init
+00006dac  sz=0      _fini

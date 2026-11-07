@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_udp.so  (5492 B)  libs: libxtables.so.12, libc.so.6
+000005a8  sz=0      _init
+00000634  sz=16     libxt_udp_init
+00000bf8  sz=0      _fini

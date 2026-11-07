@@ -1,0 +1,11 @@
+# usr\lib\lighttpd\mod_ssi.so  (17836 B)  libs: libc.so.6
+00000d14  sz=0      _init
+00001128  sz=32     ssiexprparserAlloc
+00001148  sz=64     ssiexprparserFree
+00001188  sz=1960   ssiexprparser
+00001930  sz=12     ssi_val_init
+0000193c  sz=36     ssi_val_free
+00001960  sz=44     ssi_val_tobool
+0000198c  sz=2432   ssi_eval_expr
+00002e6c  sz=112    mod_ssi_plugin_init
+00002edc  sz=0      _fini

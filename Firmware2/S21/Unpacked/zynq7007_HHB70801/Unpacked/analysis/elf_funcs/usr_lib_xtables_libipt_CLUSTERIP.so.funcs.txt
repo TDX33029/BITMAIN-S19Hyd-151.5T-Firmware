@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_CLUSTERIP.so  (5496 B)  libs: libxtables.so.12, libc.so.6
+000005a8  sz=0      _init
+00000628  sz=16     libipt_CLUSTERIP_init
+00000a5c  sz=0      _fini

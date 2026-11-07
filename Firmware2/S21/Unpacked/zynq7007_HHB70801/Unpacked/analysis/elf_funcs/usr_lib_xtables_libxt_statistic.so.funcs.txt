@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_statistic.so  (5496 B)  libs: libxtables.so.12, libm.so.6, libc.so.6
+000005f8  sz=0      _init
+00000688  sz=16     libxt_statistic_init
+00000b0c  sz=0      _fini

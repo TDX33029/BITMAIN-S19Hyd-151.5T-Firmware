@@ -1,0 +1,129 @@
+%s [option] [paramaters]
+'%s' Not A Btmu File!
+-f [minerType] [fileName] [rootPublicKeyFile]: 
+-n [nandBinFile]: 
+-p [minerType] [fileName] [rootPublicKeyFile]: 
+-s [minerType] [fileName] [rootPublicKeyFile]: 
+-x [minerType] [fileName] [rootPublicKeyFile]: 
+.ARM.attributes
+.ARM.exidx
+.data
+.dynamic
+.dynstr
+.dynsym
+.eh_frame
+.fini
+.fini_array
+.gnu.version
+.gnu.version_r
+.hash
+.init
+.init_array
+.interp
+.note.ABI-tag
+.note.gnu.build-id
+.rel.dyn
+.rel.plt
+.rodata
+.shstrtab
+.text
+/lib/ld-linux-armhf.so.3
+/tmp/256BFF
+/tmp/tmpNand/7kreserve
+/tmp/tmpNand/crl
+/tmp/tmpNand/crl.sig
+/tmp/tmpNand/devicetree.dtb.sig
+/tmp/tmpNand/miner.btm
+/tmp/tmpNand/miner.btm.sig
+/tmp/tmpNand/minerfs.image.gz.sig
+/tmp/tmpNand/uImage.sig
+/tmp/tmpNand/update.image.gz.sig
+/tmp/tmpfw/
+/tmp/tmpfw/miner.pem
+/tmp/tmpfw/miner.pem.sig
+/tmp/unused
+/usr/bin/fw_version
+;JFAF8F
+All Done!
+BIO_free
+BIO_new_mem_buf
+BOOT.bin
+Cannot Open Root PublicKey '%s'!
+Check File Sig failed!
+Check FileSize Failed, FileSize Should Be [%d]Bytes, But It Was [%d] Bytes, And Total Says[%d]
+Check If Filename Was FullSize BMU
+Check If Filename Was Valided, and Dump BmuComments
+Check If Filename Was Valided, and Splite Bmu To "/tmp/tmpfw/"
+Check miner.pem Failed!
+Check pem payload failed! ret:[%d]
+Command Not Support!
+Content Doesn't Match![%d][%d]
+Create File '%s' Failed!
+Dump Miner.pem Failed!
+Dump Miner.pem.sig Failed!
+ERR_error_string
+ERR_get_error
+File '%s' Not Enough %d, Something Wrong!
+GLIBC_2.4
+GenFile Failed!
+Generate A 256Bytes 0xff File To "/tmp/256BFF"
+Load Nand Image File Failed!
+Load Pem Failed!
+OPENSSL_1_1_0
+Only Check If Filename was Valided.
+OpenSSL error: %s
+Option:{-f} {-s} {-p} {-n} {-x} {-q}
+Others: 
+PEM_read_bio_RSA_PUBKEY
+Param Err!
+RSA_free
+RSA_verify
+Read File '%s' Failed!
+Read Root PubK Failed!
+Returns:
+SHA256_Final
+SHA256_Init
+SHA256_Update
+Something Wrong!
+Splite SigImg To Single File To "/tmp/tmpNand/"
+This Comment Of This Package:
+This Package Was Not Full Package!
+Try To Write To File '%s' Failed!
+Useage:
+Well Done!
+_ITM_deregisterTMCloneTable
+_ITM_registerTMCloneTable
+__gmon_start__
+__libc_start_main
+__xstat64
+abort
+aeabi
+content:%x
+crl.tar.gz
+datafile
+devicetree.dtb
+fclose
+fileName Too Long!
+fileName:'%s', size:[%d]
+file[%d] size:[%d]
+fopen64
+fread
+fseek
+fw version data: %02X %02X %02X %02X %02X %02X %02X %02X
+fwrite
+input miner_type and bmu miner type donot match!
+libc.so.6
+libcrypto.so.1.1
+memcpy
+memset
+miner.btm.tar.gz
+miner_type %s
+miner_type_hash %16llx, bmu_hash %16llx
+minerfs.image.gz
+pemName Too Long!
+printf
+reserve
+strcpy
+strlen
+uImage
+update.image.gz

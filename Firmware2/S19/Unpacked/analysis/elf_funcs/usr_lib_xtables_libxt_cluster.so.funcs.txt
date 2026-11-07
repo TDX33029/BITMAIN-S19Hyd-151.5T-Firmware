@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_cluster.so  (9584 B)  libs: libxtables.so.12, libc.so.6
+00000584  sz=0      _init
+000005f8  sz=16     libxt_cluster_init
+00000aa8  sz=0      _fini

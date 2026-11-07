@@ -1,0 +1,3 @@
+# usr\bin\xmlwf  (22096 B)  libs: libexpat.so.1, libgcc_s.so.1, libc.so.6
+00011194  sz=0      _init
+00013bf4  sz=0      _fini

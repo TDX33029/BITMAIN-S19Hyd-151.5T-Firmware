@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_AUDIT.so  (5496 B)  libs: libxtables.so.12, libc.so.6
+0000058c  sz=0      _init
+0000060c  sz=16     libxt_AUDIT_init
+00000884  sz=0      _fini

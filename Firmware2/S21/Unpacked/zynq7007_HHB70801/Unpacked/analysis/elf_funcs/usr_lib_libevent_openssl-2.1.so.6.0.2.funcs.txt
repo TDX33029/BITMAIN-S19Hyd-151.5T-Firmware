@@ -1,0 +1,10 @@
+# usr\lib\libevent_openssl-2.1.so.6.0.2  (17988 B)  libs: libssl.so.1.1, libcrypto.so.1.1, libpthread.so.0, libc.so.6
+0000175c  sz=0      _init
+000037bc  sz=192    bufferevent_ssl_renegotiate
+0000387c  sz=44     bufferevent_openssl_get_ssl
+000038a8  sz=108    bufferevent_openssl_filter_new
+00003914  sz=196    bufferevent_openssl_socket_new
+000039d8  sz=160    bufferevent_openssl_get_allow_dirty_shutdown
+00003a78  sz=196    bufferevent_openssl_set_allow_dirty_shutdown
+00003b3c  sz=192    bufferevent_get_openssl_error
+00003bfc  sz=0      _fini

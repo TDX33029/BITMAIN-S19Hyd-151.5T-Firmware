@@ -1,0 +1,31 @@
+# FPGA bitstream PCAP walk (XC7Z007S, IDCODE 0x03723093)
+# bitstream_top.bin: file offset 0x22630-0x21F1A0
+
+sync @0x22630
+    @0x22638 T1 write TIMER = 0x00000000
+    @0x22640 T1 write WBSTAR = 0x00000000
+    @0x22648 T1 write CMD = 0x00000000 (NULL)
+    @0x22654 T1 write CMD = 0x00000007 (RCRC)
+    @0x22664 T1 write BOOTSTS = 0x00000000
+    @0x2266c T1 write COR0 = 0x02003fe5
+    @0x22674 T1 write COR1 = 0x00000000
+    @0x2267c T1 write IDCODE = 0x03723093 (device 0x03723093)
+    @0x22684 T1 write CMD = 0x00000009 (START?)
+    @0x22690 T1 write MASK = 0x00000401
+    @0x22698 T1 write CTL = 0x00000501
+    @0x226a0 T1 write MASK = 0x00000000
+    @0x226a8 T1 write reg0x18 = 0x00000000
+    @0x226d0 T1 write FAR = 0x00000000
+    @0x226d8 T1 write CMD = 0x00000001 (WAKEUP)
+    @0x226e8 T2 write reg0x3f cnt=520352
+    @0x21e96c T1 write CRC = 0xf388a8cf
+    @0x21e97c T1 write CMD = 0x0000000a (?)
+    @0x21e988 T1 write CMD = 0x00000003 (DGHIGH)
+    @0x21eb20 T1 write CMD = 0x00000005 (RCFG?)
+    @0x21eb2c T1 write FAR = 0x03be0000
+    @0x21eb34 T1 write MASK = 0x00000501
+    @0x21eb3c T1 write CTL = 0x00000501
+    @0x21eb44 T1 write CRC = 0xe3ad7ea5
+    @0x21eb54 T1 write CMD = 0x0000000d (DESYNC)
+    @0x21f1a0 STOP non-packet word 0xffffffff (t=7)
+    => walked to 0x21f1a0, FDRI total 0 words = 0 bytes

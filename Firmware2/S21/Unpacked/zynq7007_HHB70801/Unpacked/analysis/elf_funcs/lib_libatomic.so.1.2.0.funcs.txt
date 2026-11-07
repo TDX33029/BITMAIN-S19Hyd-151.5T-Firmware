@@ -1,0 +1,13 @@
+# lib\libatomic.so.1.2.0  (21776 B)  libs: libpthread.so.0, libc.so.6
+00001565  sz=188    __atomic_load
+00001621  sz=400    __atomic_store
+000017b1  sz=544    __atomic_compare_exchange
+00001a71  sz=468    __atomic_exchange
+00001c45  sz=132    __atomic_is_lock_free
+00001d59  sz=138    __atomic_feraiseexcept
+00001de5  sz=6      atomic_thread_fence
+00001ded  sz=2      atomic_signal_fence
+00001df1  sz=28     atomic_flag_test_and_set
+00001e0d  sz=28     atomic_flag_test_and_set_explicit
+00001e29  sz=14     atomic_flag_clear
+00001e39  sz=14     atomic_flag_clear_explicit

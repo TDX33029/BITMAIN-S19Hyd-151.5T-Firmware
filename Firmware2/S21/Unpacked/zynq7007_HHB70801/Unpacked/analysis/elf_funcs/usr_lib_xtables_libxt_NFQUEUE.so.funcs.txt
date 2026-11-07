@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_NFQUEUE.so  (9900 B)  libs: libxtables.so.12, libc.so.6
+00000654  sz=0      _init
+000006c8  sz=20     libxt_NFQUEUE_init
+00000ec0  sz=0      _fini

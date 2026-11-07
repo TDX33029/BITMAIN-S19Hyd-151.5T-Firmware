@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_dirlisting.so  (18012 B)  libs: libc.so.6
+00000c74  sz=0      _init
+00002660  sz=112    mod_dirlisting_plugin_init
+000026d0  sz=0      _fini

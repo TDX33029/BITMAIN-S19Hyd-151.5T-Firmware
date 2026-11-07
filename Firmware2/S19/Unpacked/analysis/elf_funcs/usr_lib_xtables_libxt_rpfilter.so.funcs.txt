@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_rpfilter.so  (5484 B)  libs: libxtables.so.12, libc.so.6
+00000554  sz=0      _init
+000005c8  sz=16     libxt_rpfilter_init
+00000920  sz=0      _fini

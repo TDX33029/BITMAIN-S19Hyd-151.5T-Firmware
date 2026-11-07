@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_tcp.so  (9624 B)  libs: libxtables.so.12, libc.so.6
+0000078c  sz=0      _init
+00000860  sz=16     libxt_tcp_init
+000016a4  sz=0      _fini

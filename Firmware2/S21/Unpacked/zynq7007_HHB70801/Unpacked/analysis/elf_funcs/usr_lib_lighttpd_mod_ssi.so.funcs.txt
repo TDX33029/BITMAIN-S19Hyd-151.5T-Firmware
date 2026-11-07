@@ -1,0 +1,11 @@
+# usr\lib\lighttpd\mod_ssi.so  (26360 B)  libs: libpcre.so.1, libc.so.6
+00001560  sz=0      _init
+00001b18  sz=32     ssiexprparserAlloc
+00001b38  sz=64     ssiexprparserFree
+00001b78  sz=1960   ssiexprparser
+00002320  sz=12     ssi_val_init
+0000232c  sz=36     ssi_val_free
+00002350  sz=44     ssi_val_tobool
+0000237c  sz=2432   ssi_eval_expr
+00004ff0  sz=112    mod_ssi_plugin_init
+00005060  sz=0      _fini

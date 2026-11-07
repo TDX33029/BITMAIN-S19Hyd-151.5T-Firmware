@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_staticfile.so  (13704 B)  libs: libc.so.6
+00000af8  sz=0      _init
+00001cf0  sz=112    mod_staticfile_plugin_init
+00001d60  sz=0      _fini

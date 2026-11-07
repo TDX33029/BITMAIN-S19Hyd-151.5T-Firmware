@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_ecn.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000578  sz=0      _init
+000005ec  sz=16     libxt_ecn_init
+00000af4  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_time.so  (13724 B)  libs: libxtables.so.12, libc.so.6
+00000778  sz=0      _init
+00000864  sz=16     libxt_time_init
+0000168c  sz=0      _fini

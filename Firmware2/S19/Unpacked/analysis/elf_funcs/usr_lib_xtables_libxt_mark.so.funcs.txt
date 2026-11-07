@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_mark.so  (9976 B)  libs: libxtables.so.12, libc.so.6
+0000070c  sz=0      _init
+0000078c  sz=20     libxt_MARK_init
+00001008  sz=0      _fini

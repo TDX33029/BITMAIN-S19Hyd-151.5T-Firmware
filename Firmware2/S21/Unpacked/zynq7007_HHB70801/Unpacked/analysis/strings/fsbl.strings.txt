@@ -1,0 +1,381 @@
+00015a7d           (((((                  
+00015abe  AAAAAA
+00015ade  BBBBBB
+00015c51  8STs
+e
+00015cd0  In FsblHookBeforeBitstreamDload function 
+
+00015cfc  In FsblHookAfterBitstreamDload function 
+
+00015d28  In FsblHookBeforeHandoff function 
+
+00015d50  In FsblHookFallback function 
+
+00015d70  Move Image failed
+
+00015d84  Move Image failed reading FsblLength
+
+00015dac  Get Header Start Address Failed
+
+00015dd0  Header Dump
+
+00015de0  Image Word Len: 0x%08lx
+
+00015dfc  Data Word Len: 0x%08lx
+
+00015e18  Partition Word Len:0x%08lx
+
+00015e38  Load Addr: 0x%08lx
+
+00015e50  Exec Addr: 0x%08lx
+
+00015e68  Partition Start: 0x%08lx
+
+00015e84  Partition Attr: 0x%08lx
+
+00015ea0  Partition Checksum Offset: 0x%08lx
+
+00015ec8  Section Count: 0x%08lx
+
+00015ee4  Checksum: 0x%08lx
+
+00015ef8  Partition Header Offset:0x%08lx
+
+00015f1c  Header Information Load Failed
+
+00015f40  Partition Count: %lu
+
+00015f58  Invalid Partition Count
+
+00015f74  There is no partition to load
+
+00015f94  Error: Checksum 0x%8.8lx != 0x%8.8lx
+
+00015fbc  PARTITION_HEADER_CORRUPTION
+
+00015fdc  INVALID_PARTITION_LENGTH
+
+00015ff8  IMAGE_HAS_NO_PARTITIONS
+
+00016014  Move Image Failed
+
+00016028  PCAP Data Transfer Failed
+
+00016044  PCAP Bitstream Download Failed
+
+00016068  PCAP Data Transfer failed 
+
+00016088  Actual checksum
+
+0001609c  0x%0x 
+000160a4  Calculated checksum
+
+000160bc  Error: Partition DataChecksum 0x%0x!= 0x%0x
+
+000160ec  Reboot status register: 0x%08lx
+
+00016110  Reboot status shows previous run falls back
+
+00016140  Multiboot Register: 0x%08lx
+
+00016160  Image Start Address: 0x%08lx
+
+00016180  Partition Header Load Failed
+
+000161a0  RSA enabled for Chip
+
+000161b8  Read Partition Header signature Failed
+
+000161e4  Partition Header signature Failed
+
+00016208  Partition Number: %lu
+
+00016220  INVALID_HEADER_FAIL
+
+00016238  Skipping partition %0lx
+
+00016254  Bitstream
+
+00016260  
+FSBL Warning !!!Bitstream not loaded into PL
+
+00016294  Partition order invalid
+
+000162b0  Application
+
+000162c0  Encrypted
+
+000162cc  RSA Signed
+
+000162dc  INVALID_LOAD_ADDRESS_FAIL
+
+000162f8  FSBL_BEFORE_BSTREAM_HOOK_FAIL
+
+00016318  PARTITION_MOVE_FAIL
+
+00016330  PARTITION_CHECKSUM_FAIL
+
+0001634c  Partition Validation Done
+
+00016368  AUTHENTICATION_FAIL
+
+00016380  Authentication Done
+
+00016398  DECRYPTION_FAIL
+
+000163ac  BITSTREAM_DOWNLOAD_FAIL
+
+000163c8  FSBL_AFTER_BSTREAM_HOOK_FAIL
+
+000163e8  EFUSE_SEC_EN bit is set, Encryption is mandatory
+
+0001641c  FSBL Status = 0x%.4lx
+
+00016434  Silicon Version 3.1
+
+0001644c  Silicon Version %lu.0
+
+00016464  Checksum = %8.8lx
+
+00016478  Searching For Next Valid Image
+0001649c  
+Image found, offset: 0x%.8lx
+
+000164c0  
+This Boot Mode Doesn't Support Fallback
+
+000164ec  Updated MultiBootReg = 0x%08lx
+
+00016510  
+No Image Found
+
+00016524  System Initialization Failed
+
+00016544  
+No Image Search
+
+00016558  FSBL_HANDOFF_HOOK_FAIL
+
+00016574  No Execution Address JTAG handoff 
+
+0001659c  SUCCESSFUL_HANDOFF
+
+000165b4  FIQ_HANDLER 
+
+000165c4  IRQ_HANDLER 
+
+000165d4  DATA_ABORT_HANDLER 
+
+000165ec  PREFETCH_ABORT_HANDLER 
+
+00016608  SVC_HANDLER 
+
+00016618  UNDEFINED_HANDLER
+
+0001662c  Check RSA Key Hash: 
+
+0001664c  RSA Key Auth Failed!
+00016664  3545B6DE1FF44EE4295270CC6D0FF730F861DB9CE32F70F2980619FAF0F34DC1
+000166a8  PS Data Initialization failed
+
+000166c8  PS status read failed
+
+000166e0  EfusePS status bits : 0x%x 
+
+00016700  EfusePS status bits : 128k CRC check on ROM enabled
+
+00016738  EfusePS status bits : 128k CRC check on ROM disabled
+
+00016770  EfusePS status bits : DFT JTAG is disabled
+
+000167a0  EfusePS status bits : DFT JTAG is enabled
+
+000167cc  EfusePS status bits : DFT mode is disabled
+
+000167fc  EfusePS status bits : DFT mode is enabled
+
+00016828  EfusePS status bits : RSA authentication of fsbl enabled
+
+00016864  PS EFUSE reading failed
+
+00016880  EfusePS status bits : RSA authentication of fsbl disabled
+
+000168bc  EfusePS status bits : Write protect enabled
+
+000168ec  EfusePS status bits : Write protect disabled
+
+0001691c  PS EFUSE writing failed
+
+00016938  
+eFUSE operations exit status: %08X
+
+00016960  PS7_INIT_FAIL : %s
+
+00016978  
+Xilinx First Stage Boot Loader 
+
+0001699c  Mar 14 2023
+000169a8  Release %d.%d	%s-%s
+
+000169c0  10:33:20
+000169cc  
+bbbbbbbbbbbbbbb
+
+000169e0  DDR_INIT_FAIL 
+
+000169f4  PCAP_INIT_FAIL 
+
+00016a08  Devcfg driver initialized 
+
+00016a28  User not allowed to do any system resets
+
+00016a54  Boot mode is NAND
+
+00016a68  NAND_INIT_FAIL 
+
+00016a7c  NAND Init Done 
+
+00016a90  Boot mode is NOR
+
+00016aa4  NOR Init Done 
+
+00016ab8  Boot mode is SD
+
+00016acc  BOOT.BIN
+00016ad8  SD_INIT_FAIL
+
+00016ae8  SD Init Done 
+
+00016af8  Booting Device is MMC
+
+00016b10  MMC_INIT_FAIL
+
+00016b20  MMC Init Done 
+
+00016b34  Boot mode is JTAG
+
+00016b48  ILLEGAL_BOOT_MODE 
+
+00016b60  Flash Base Address: 0x%08lx
+
+00016b80  INVALID_FLASH_ADDRESS 
+
+00016b9c  Linear Boot Device
+
+00016bb4  EFUSE STATS ERROR, fallback
+
+00016bd4  Handoff Address: 0x%08lx
+
+00016bf0  Nand Driver failed 
+ 
+00016c08  NAND intialization failed 
+ 
+00016c28  InitNand: Geometry = 0x%x
+
+00016c44  Nand driver initialized 
+
+00016c60  XDcfg_CfgInitialize failed 
+
+00016c80  Level Shifter Value = 0x%lx 
+
+00016ca0  Fabric not powered up
+
+00016cb8  Devcfg Status register = 0x%lx 
+
+00016cdc  PCAP:Fabric is Initialized done
+
+00016d00  Fabric Init failed
+
+00016d18  FATAL errors in PCAP %lx
+
+00016d34  PCAP:StatusReg = 0x%.8lx
+
+00016d50  PCAP_DEVICE_BUSY
+
+00016d64  PCAP:device ready
+
+00016d78  PCAP:IntStatus indicates error
+
+00016d9c  PCAP:Clear done
+
+00016db0  PCAP register dump:
+
+00016dc8  PCAP CTRL 0x%x: 0x%08lx
+
+00016de4  PCAP LOCK 0x%x: 0x%08lx
+
+00016e00  PCAP CONFIG 0x%x: 0x%08lx
+
+00016e1c  PCAP ISR 0x%x: 0x%08lx
+
+00016e38  PCAP IMR 0x%x: 0x%08lx
+
+00016e54  PCAP STATUS 0x%x: 0x%08lx
+
+00016e70  PCAP DMA SRC ADDR 0x%x: 0x%08lx
+
+00016e94  PCAP DMA DEST ADDR 0x%x: 0x%08lx
+
+00016eb8  PCAP DMA SRC LEN 0x%x: 0x%08lx
+
+00016edc  PCAP DMA DEST LEN 0x%x: 0x%08lx
+
+00016f00  PCAP ROM SHADOW CTRL 0x%x: 0x%08lx
+
+00016f28  PCAP MBOOT 0x%x: 0x%08lx
+
+00016f44  PCAP SW ID 0x%x: 0x%08lx
+
+00016f60  PCAP UNLOCK 0x%x: 0x%08lx
+
+00016f7c  PCAP MCTRL 0x%x: 0x%08lx
+
+00016f98  PCAP transfer timed out 
+
+00016fb4  PCAP_CLEAR_STATUS_FAIL 
+
+00016fd0  Status of XDcfg_Transfer = %lu  
+
+00016ff4  PCAP_DMA_DONE_FAIL 
+
+0001700c  DMA Done ! 
+
+0001701c  Errors in PCAP 
+
+00017030  PCAP_FPGA_DONE_FAIL
+
+00017048  FPGA Done ! 
+
+00017058  Undefined error status
+00017070  PS7 initialization successful
+00017090  PS7 init Data Corrupted
+000170a8  PS7 init mask poll timeout
+000170c4  Mask Poll failed for DDR Init
+000170e4  Mask Poll failed for PLL Init
+00017104  Mask Poll failed for DMA done bit
+00017128  Partition SPK Signature Authentication failed
+
+00017158  Partition Signature Authentication failed
+
+00017188  SD: rc= %.8x
+
+00017198  SD: Unable to open file %s: %d
+
+000171b8  SD: Unable to seek to %lx
+
+000171d4  *** ERROR: f_read returned %d
+
+000171f4  0123456789ABCDEF
+00017208  xnandps_bbm.c
+00017228  xnandps.c
+00017234  xnandps_onfi.c
+00017244  xdevcfg.c
+00017250  xdevcfg_intr.c
+0001726c  "*+,:;<=>?[]|
+0001727c  xsdps.c
+00017284  xsdps_options.c
+00017294  0123456789abcdefABCDEF
+000172ac  xadcps_selftest.c
+000172c0  xadcps.c
+000200b9  A]n _D
+00020166  ;oqbWtn

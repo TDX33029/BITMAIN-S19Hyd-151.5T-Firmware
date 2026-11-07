@@ -1,0 +1,2 @@
+# usr\bin\cgminer  (297636 B)  libs: libpthread.so.0, libm.so.6, librt.so.1, libz.so.1, libssl.so.1.1, libcrypto.so.1.1, libc.so.6
+0003fac4  sz=744    memmem

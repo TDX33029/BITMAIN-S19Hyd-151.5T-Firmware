@@ -1,0 +1,158 @@
+{
+  "entries": [
+    {
+      "name": "header.bin",
+      "offset": 0,
+      "size": 512,
+      "sha256": "e606c9894033402bcde2690facffb5934306b98c597b97c29b6e8aea97af62cd",
+      "md5": "a4c1b2810d60eec5dfe4f01b10d7589a",
+      "note": "BMU header: 2601 + nonce8 + 0x01FE + date 20251016 + pubkey_len 451"
+    },
+    {
+      "name": "miner_pubkey.pem",
+      "offset": 24,
+      "size": 451,
+      "sha256": "2dab0504d7c2f083ca940332534d43e1d0f40a582792554cf40b4bc1be2f6103",
+      "md5": "1fd2ae74c50161b36ace32823475880d",
+      "note": "RSA-2048 public key PEM"
+    },
+    {
+      "name": "sig_top.bin",
+      "offset": 1048,
+      "size": 256,
+      "sha256": "7b4df8873c09a219235a2cc2cf03452bfc3e0ccd7a99735219d66f507eb689a5",
+      "md5": "260b1d29e4f03f4c4eab66fd2ca22d62",
+      "note": "RSA-2048 signature"
+    },
+    {
+      "name": "section_table.bin",
+      "offset": 1304,
+      "size": 40,
+      "sha256": "1d07277e1e2748d0aaa8d1d81c1dbac9db33c96814071b0d3313649241811212",
+      "md5": "0388eb3b1cb490efb37480acd2a6aa3c",
+      "note": "8 x {u8 id, u32 BE size}"
+    },
+    {
+      "name": "bootimg_header.bin",
+      "offset": 2048,
+      "size": 512,
+      "sha256": "271cb17727e60a204e5cf15543a3f6cd233cdf3c6de3a4fbffc84c9321527b80",
+      "md5": "9182fa6d4dd2eab842a2666179554032",
+      "note": "Zynq BootROM header AA995566/XLNX, FSBL@+0x1700"
+    },
+    {
+      "name": "fsbl.bin",
+      "offset": 7936,
+      "size": 132912,
+      "sha256": "872a7a8333e31cacc830971e386e5b147c01065f27989cdceb2923a7f35a2f27",
+      "md5": "83436f07fdd18eca3fed1261f41c56f9",
+      "note": "FSBL + config blocks"
+    },
+    {
+      "name": "bitstream_top.bin",
+      "offset": 140848,
+      "size": 2083696,
+      "sha256": "22794c531117c50a1781cc6e61e2207277a4104db214f545197712b12831b985",
+      "md5": "85aa49a310d72a4f78a7e3a907ce942f",
+      "note": "FPGA bitstream IDCODE 0x03723093 XC7Z007S"
+    },
+    {
+      "name": "param_blob.bin",
+      "offset": 2224576,
+      "size": 1728,
+      "sha256": "4e704ee01572788dfb00d69315a6a3317ac5340be560e6eb8f04c526788d6915",
+      "md5": "620f94e11e09804a4e83059168b84c36",
+      "note": "ver 1.1.0.0 + 0x6C0 B high-entropy blob"
+    },
+    {
+      "name": "uboot.bin",
+      "offset": 2226304,
+      "size": 459024,
+      "sha256": "fbbdc0edd62b7b712c1887a4f0281dd5e2e3d8137f51e4db4860b154339a2835",
+      "md5": "0bdaf1df7fee538c3f2dedbb2b58eb6d",
+      "note": "U-Boot ARM base 0x04000000, contains embedded small bitstream"
+    },
+    {
+      "name": "dtb1.dtb",
+      "offset": 2685328,
+      "size": 105200,
+      "sha256": "883bbd31126094a26638878f544a4d4b784eae7664461830d316c5dba0290f60",
+      "md5": "2e747e15f7bb424465b6dc74e76036a5",
+      "note": "device tree #1 (totalsize 8990)"
+    },
+    {
+      "name": "dtb2.dtb",
+      "offset": 2790528,
+      "size": 8014,
+      "sha256": "47e56969ce80ae9b1374aea555bf49d3c47637c6207ee33d70a20e7f214e45c0",
+      "md5": "ad826c24ff83f4c32ea104ad1558bd95",
+      "note": "device tree #2 (totalsize 8014 = section id1)"
+    },
+    {
+      "name": "uImage_kernel.img",
+      "offset": 2798542,
+      "size": 4057320,
+      "sha256": "01b7afef7dfd5d5dc6b1ab6460d50ef8d24c34d67a2b114c217a715cad056664",
+      "md5": "d3ba9dcd36201876112df67e7bee4f2d",
+      "note": "Linux-4.6.0-xilinx-g03c746f7 comp=none load 0x8000"
+    },
+    {
+      "name": "uImage_ramdisk1.img",
+      "offset": 6855862,
+      "size": 7030544,
+      "sha256": "9adc5f6f0f466831585d98f929c834c47da1a25c7aaf8eb7a3ae9749e7218fec",
+      "md5": "b060d61997b2e3995e952d0039150dcd",
+      "note": "ramdisk #1 gzip"
+    },
+    {
+      "name": "uImage_ramdisk2.img",
+      "offset": 13886406,
+      "size": 4280343,
+      "sha256": "17bc2303b274f6562380794e0342ac0bf294a68c949cefeea9cc1ada7c16386c",
+      "md5": "4c9a65ea16f33ab920e75852b6c036c6",
+      "note": "ramdisk #2 gzip"
+    },
+    {
+      "name": "crl.tar.gz",
+      "offset": 18166749,
+      "size": 552,
+      "sha256": "ae7e69ea8c7cfe41dc10e30fcb8c0abd565f5d0eb39d9671c7347d7a866fe035",
+      "md5": "48b3f74aaf616d7bb786608d46f2670b",
+      "note": "crl + crl.sig"
+    },
+    {
+      "name": "miner_btm.tar.gz",
+      "offset": 18167301,
+      "size": 1005,
+      "sha256": "db8fc594b151db9160ccc4ac6fe180ccd21b1545f5f980d791c40f3ab2f5d0ea",
+      "md5": "08c1e0fbfea1095575ddb2838cb033cf",
+      "note": "miner.btm + sig"
+    },
+    {
+      "name": "sig_bottom.bin",
+      "offset": 18168306,
+      "size": 2048,
+      "sha256": "4147e41b43fe028a508b0721a9a8102d9ed6197a7ee8281bbc0dcae343a758b9",
+      "md5": "20072df4d81eeb6cc761be38e9462bb9",
+      "note": "RSA-2048 signature trailer"
+    },
+    {
+      "name": "ramdisk1.img",
+      "offset": null,
+      "size": 33554432,
+      "sha256": "83e11b10178b6c8d64c0418d6867aaa046177b6a1b3205c7fa7356cefcd262f7",
+      "md5": "05fc9826cad1d24156d72e806b411b5e",
+      "note": "gunzip of uImage_ramdisk1.img payload"
+    },
+    {
+      "name": "ramdisk2.img",
+      "offset": null,
+      "size": 33554432,
+      "sha256": "491ad68fef50726c473a399f68d0e1bc107f46c7627e5d311beb05b45ec8f7fe",
+      "md5": "917285b2dfe2ff8c2a299dc95f271414",
+      "note": "gunzip of uImage_ramdisk2.img payload"
+    }
+  ],
+  "size": 18170354,
+  "sha256": "2c63387f2d5980f6f70dfcd7da2c3bb46eddfc05ff2748435a7dfcf9315a693d"
+}

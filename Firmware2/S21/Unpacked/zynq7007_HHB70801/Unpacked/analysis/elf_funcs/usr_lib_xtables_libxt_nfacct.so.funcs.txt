@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_nfacct.so  (5492 B)  libs: libxtables.so.12, libc.so.6
+00000588  sz=0      _init
+00000608  sz=16     libxt_nfacct_init
+000007b4  sz=0      _fini

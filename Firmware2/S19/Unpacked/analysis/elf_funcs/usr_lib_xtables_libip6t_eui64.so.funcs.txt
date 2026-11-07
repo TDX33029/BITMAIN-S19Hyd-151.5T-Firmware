@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_eui64.so  (5412 B)  libs: libxtables.so.12, libc.so.6
+00000424  sz=0      _init
+00000468  sz=16     libip6t_eui64_init
+00000540  sz=0      _fini

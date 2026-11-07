@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_socket.so  (5780 B)  libs: libxtables.so.12, libc.so.6
+000005b0  sz=0      _init
+00000618  sz=20     libxt_socket_init
+00000958  sz=0      _fini

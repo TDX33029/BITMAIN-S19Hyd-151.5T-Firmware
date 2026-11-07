@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_policy.so  (9712 B)  libs: libxtables.so.12, libc.so.6
+00000758  sz=0      _init
+00000820  sz=20     libxt_policy_init
+0000166c  sz=0      _fini

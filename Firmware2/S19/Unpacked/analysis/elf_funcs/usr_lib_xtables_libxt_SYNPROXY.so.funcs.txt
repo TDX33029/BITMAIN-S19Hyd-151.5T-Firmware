@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_SYNPROXY.so  (5484 B)  libs: libxtables.so.12, libc.so.6
+00000534  sz=0      _init
+0000059c  sz=16     libxt_SYNPROXY_init
+000008a0  sz=0      _fini

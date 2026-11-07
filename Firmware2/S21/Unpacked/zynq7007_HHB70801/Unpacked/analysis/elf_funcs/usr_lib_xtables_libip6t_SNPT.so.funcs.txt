@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_SNPT.so  (5492 B)  libs: libxtables.so.12, libc.so.6
+00000570  sz=0      _init
+000005f0  sz=16     libip6t_SNPT_init
+00000830  sz=0      _fini

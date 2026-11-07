@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_rrdtool.so  (13680 B)  libs: libc.so.6
+000009e4  sz=0      _init
+00001878  sz=136    mod_rrdtool_plugin_init
+00001ce0  sz=0      _fini

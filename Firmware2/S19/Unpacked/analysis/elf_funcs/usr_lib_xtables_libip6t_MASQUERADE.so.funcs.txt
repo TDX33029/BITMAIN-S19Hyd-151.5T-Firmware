@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_MASQUERADE.so  (5500 B)  libs: libxtables.so.12, libc.so.6
+000005d8  sz=0      _init
+00000664  sz=16     libip6t_MASQUERADE_init
+00000b68  sz=0      _fini

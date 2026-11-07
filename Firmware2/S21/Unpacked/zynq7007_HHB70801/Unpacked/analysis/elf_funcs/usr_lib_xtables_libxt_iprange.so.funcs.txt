@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_iprange.so  (9832 B)  libs: libxtables.so.12, libc.so.6
+00000814  sz=0      _init
+0000090c  sz=20     libxt_iprange_init
+0000168c  sz=0      _fini

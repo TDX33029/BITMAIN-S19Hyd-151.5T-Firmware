@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "name": "bootimg_header_page.bin",
+      "offset": 2048,
+      "size": 2048,
+      "sha256": "d7018b70ed636257c483ff124d950ca34729c840dfe71ff7060ea1f2aab366fa",
+      "md5": "dd200dbaac4b9790cbd7cacc415bd274",
+      "note": "Android bootimg page0 with embedded AMLSECU blocks"
+    },
+    {
+      "name": "boot.img",
+      "offset": 2048,
+      "size": 13329408,
+      "sha256": "a938c461ef8c18660a86d75d8cab264b74a98868125cb9d1e26ced6c11c28d96",
+      "md5": "c5eb9fb372926832bec8208a88a074fc",
+      "note": "entire Android bootimg incl AMLSECU (whole sub-fw payload)"
+    },
+    {
+      "name": "amlsecu_desc.bin",
+      "offset": 3072,
+      "size": 1024,
+      "sha256": "392ec2eae949f4a2d25f04e16fb64a5e54ee81655cf0f42e2594079ffbc94454",
+      "md5": "a5e19894db3661034623fb779cfd9a26",
+      "note": "3 x 0x100 AMLSECU! descriptors (same 32B hash each)"
+    },
+    {
+      "name": "kernel.enc",
+      "offset": 4096,
+      "size": 6031360,
+      "sha256": "6dd8f871c55987c4a17ae9cd941c704395673026f955a75689612a25339ab472",
+      "md5": "214fea29e569087247dd84d08f79b83a",
+      "note": "encrypted kernel (6,031,360 B)"
+    },
+    {
+      "name": "ramdisk.enc",
+      "offset": 6035456,
+      "size": 7264256,
+      "sha256": "7345048d184eec370a328b226c26d1ef2d67a3a83c222282cf4dff4fa352591f",
+      "md5": "b6411a02fb1d4cf273323ffce2d5109a",
+      "note": "encrypted ramdisk (7,264,256 B)"
+    },
+    {
+      "name": "second.enc",
+      "offset": 13299712,
+      "size": 30720,
+      "sha256": "aaf9c452ee1910e565fe4e066302f1f000ea014ea333bb29bdc598824f9975ce",
+      "md5": "a316ea4e95a8cb8591bb315ae8f0d9d9",
+      "note": "encrypted second (30,720 B)"
+    }
+  ],
+  "size": 13331456,
+  "sha256": "8e43272e96d49d3577c35eaae3ce4c84b9895fb0ea024d1610257aaabea6bed7",
+  "bootimg": {
+    "kernel_size": 6031360,
+    "kernel_addr": 17301504,
+    "ramdisk_size": 7264256,
+    "ramdisk_addr": 16777216,
+    "second_size": 30720,
+    "second_addr": 15728640,
+    "page_size": 2048,
+    "cmdline": "init=/sbin/init"
+  }
+}

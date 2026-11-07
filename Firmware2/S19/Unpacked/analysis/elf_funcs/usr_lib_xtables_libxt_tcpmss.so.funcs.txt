@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_tcpmss.so  (5592 B)  libs: libxtables.so.12, libc.so.6
+000005a0  sz=0      _init
+00000608  sz=20     libxt_TCPMSS_init
+00000820  sz=0      _fini

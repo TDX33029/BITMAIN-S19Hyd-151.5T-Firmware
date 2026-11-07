@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_icmp6.so  (9608 B)  libs: libxtables.so.12, libc.so.6
+00000760  sz=0      _init
+0000081c  sz=16     libip6t_icmp6_init
+00000f2c  sz=0      _fini
