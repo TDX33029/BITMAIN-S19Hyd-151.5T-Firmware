@@ -1,0 +1,35 @@
+// FUN_0123749c @ 0123749c size=160 calls_out=5 calls_in=1
+// strings: 
+
+void FUN_0123749c(undefined4 *param_1,undefined4 param_2)
+
+{
+  undefined1 auStack_3d0 [472];
+  undefined4 local_1f8;
+  undefined4 uStack_1f4;
+  undefined4 uStack_1f0;
+  undefined4 uStack_1ec;
+  undefined4 uStack_1e8;
+  undefined4 local_1e4;
+  undefined1 local_24;
+  undefined4 local_1c;
+  
+  FUN_01214068(&local_1f8);
+  local_24 = 0;
+  FUN_016dd1aa(auStack_3d0,&local_1f8,0x1d8);
+  FUN_0125089c(&local_1f8,auStack_3d0,param_2);
+  if ((char)local_1e4 == '\x06') {
+    local_1c = local_1f8;
+                    /* WARNING: Subroutine does not return */
+    FUN_00fb74f8(&DAT_003b5278,0x1b,&local_1c,&DAT_0188ac5c,&DAT_0188abd8);
+  }
+  *param_1 = local_1f8;
+  param_1[1] = uStack_1f4;
+  param_1[2] = uStack_1f0;
+  param_1[3] = uStack_1ec;
+  param_1[4] = uStack_1e8;
+  param_1[5] = local_1e4;
+  FUN_01212754(auStack_3d0);
+  return;
+}
+

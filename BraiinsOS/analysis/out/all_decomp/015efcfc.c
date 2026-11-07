@@ -1,0 +1,36 @@
+// FUN_015efcfc @ 015efcfc size=152 calls_out=2 calls_in=0
+// strings: 
+
+bool FUN_015efcfc(uint *param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  code *pcVar1;
+  undefined4 *puVar2;
+  uint uVar3;
+  undefined4 uVar4;
+  undefined4 *puVar5;
+  uint local_28;
+  uint uStack_24;
+  
+  FUN_015ef810(&local_28,*(undefined4 *)param_1[2],param_2,param_3);
+  uVar3 = local_28 & 0xff;
+  if (uVar3 != 4) {
+    if (((char)*param_1 != '\x04') && ((char)*param_1 == '\x03')) {
+      puVar2 = (undefined4 *)param_1[1];
+      uVar4 = *puVar2;
+      puVar5 = (undefined4 *)puVar2[1];
+      pcVar1 = (code *)*puVar5;
+      if (pcVar1 != (code *)0x0) {
+        (*pcVar1)(uVar4);
+      }
+      if (puVar5[1] != 0) {
+        thunk_FUN_016d3fb4(uVar4);
+      }
+      thunk_FUN_016d3fb4(puVar2);
+    }
+    *param_1 = local_28;
+    param_1[1] = uStack_24;
+  }
+  return uVar3 != 4;
+}
+

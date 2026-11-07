@@ -1,0 +1,144 @@
+// FUN_009363f4 @ 009363f4 size=284 calls_out=1 calls_in=0
+// strings: 
+
+void FUN_009363f4(undefined4 *param_1)
+
+{
+  undefined4 *puVar1;
+  int local_438 [13];
+  undefined4 local_404;
+  undefined4 uStack_400;
+  undefined4 uStack_3fc;
+  undefined4 uStack_3f8;
+  undefined4 uStack_3f4;
+  undefined4 local_3f0;
+  undefined4 uStack_3ec;
+  undefined4 uStack_3e8;
+  undefined4 uStack_3e4;
+  undefined4 uStack_3e0;
+  undefined4 local_3dc;
+  undefined4 uStack_3d8;
+  undefined4 uStack_3d4;
+  undefined4 uStack_3d0;
+  undefined4 uStack_3cc;
+  undefined1 local_3c8;
+  int local_3c0 [13];
+  undefined4 local_38c;
+  undefined4 uStack_388;
+  undefined4 uStack_384;
+  undefined4 uStack_380;
+  undefined4 uStack_37c;
+  undefined4 local_378;
+  undefined4 uStack_374;
+  undefined4 uStack_370;
+  undefined4 uStack_36c;
+  undefined4 uStack_368;
+  undefined4 local_364;
+  undefined4 uStack_360;
+  undefined4 uStack_35c;
+  undefined4 uStack_358;
+  undefined4 uStack_354;
+  undefined4 local_1c0;
+  undefined4 uStack_1bc;
+  undefined4 uStack_1b8;
+  undefined4 uStack_1b4;
+  undefined4 uStack_1b0;
+  undefined4 uStack_1ac;
+  undefined4 local_1a8;
+  undefined4 uStack_1a4;
+  undefined4 uStack_1a0;
+  undefined4 uStack_19c;
+  undefined4 uStack_198;
+  undefined4 uStack_194;
+  undefined4 local_190;
+  undefined4 uStack_18c;
+  undefined4 uStack_188;
+  undefined4 uStack_184;
+  undefined4 uStack_180;
+  undefined4 uStack_17c;
+  undefined4 local_178;
+  undefined4 uStack_174;
+  undefined4 uStack_170;
+  undefined4 uStack_16c;
+  undefined4 uStack_168;
+  undefined4 uStack_164;
+  
+  FUN_009273a4(local_3c0);
+  puVar1 = (undefined4 *)((uint)local_3c0 | 4);
+  local_1c0 = *puVar1;
+  uStack_1bc = puVar1[1];
+  uStack_1b8 = puVar1[2];
+  uStack_1b4 = puVar1[3];
+  uStack_1b0 = puVar1[4];
+  uStack_1ac = puVar1[5];
+  local_1a8 = puVar1[6];
+  uStack_1a4 = puVar1[7];
+  uStack_1a0 = puVar1[8];
+  uStack_19c = puVar1[9];
+  uStack_198 = puVar1[10];
+  uStack_194 = puVar1[0xb];
+  if (local_3c0[0] == 4) {
+    param_1[2] = local_1c0;
+    param_1[3] = uStack_1bc;
+    param_1[4] = uStack_1b8;
+    param_1[5] = uStack_1b4;
+    param_1[6] = uStack_1b0;
+    param_1[7] = uStack_1ac;
+    param_1[8] = local_1a8;
+    param_1[9] = uStack_1a4;
+    param_1[10] = uStack_1a0;
+    param_1[0xb] = uStack_19c;
+    param_1[0xc] = uStack_198;
+    param_1[0xd] = uStack_194;
+    *param_1 = 3;
+    param_1[1] = 0;
+    return;
+  }
+  local_404 = local_38c;
+  uStack_400 = uStack_388;
+  uStack_3fc = uStack_384;
+  uStack_3f8 = uStack_380;
+  uStack_3f4 = uStack_37c;
+  local_3f0 = local_378;
+  uStack_3ec = uStack_374;
+  uStack_3e8 = uStack_370;
+  uStack_3e4 = uStack_36c;
+  uStack_3e0 = uStack_368;
+  local_3dc = local_364;
+  uStack_3d8 = uStack_360;
+  uStack_3d4 = uStack_35c;
+  uStack_3d0 = uStack_358;
+  uStack_3cc = uStack_354;
+  puVar1 = (undefined4 *)((uint)local_438 | 4);
+  *puVar1 = local_1c0;
+  puVar1[1] = uStack_1bc;
+  puVar1[2] = uStack_1b8;
+  puVar1[3] = uStack_1b4;
+  puVar1[4] = uStack_1b0;
+  puVar1[5] = uStack_1ac;
+  puVar1[6] = local_1a8;
+  puVar1[7] = uStack_1a4;
+  puVar1[8] = uStack_1a0;
+  puVar1[9] = uStack_19c;
+  puVar1[10] = uStack_198;
+  puVar1[0xb] = uStack_194;
+  local_3c8 = 0;
+  local_438[0] = local_3c0[0];
+                    /* WARNING: Could not recover jumptable at 0x0093650c. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  local_190 = local_1c0;
+  uStack_18c = uStack_1bc;
+  uStack_188 = uStack_1b8;
+  uStack_184 = uStack_1b4;
+  uStack_180 = uStack_1b0;
+  uStack_17c = uStack_1ac;
+  local_178 = local_1a8;
+  uStack_174 = uStack_1a4;
+  uStack_170 = uStack_1a0;
+  uStack_16c = uStack_19c;
+  uStack_168 = uStack_198;
+  uStack_164 = uStack_194;
+  (*(code *)(&DAT_00936510 + *(int *)(&DAT_00936510 + local_3c0[0] * 4)))();
+  return;
+}
+

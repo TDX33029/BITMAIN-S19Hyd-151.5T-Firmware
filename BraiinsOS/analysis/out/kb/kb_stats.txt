@@ -1,0 +1,38 @@
+functions: 20213  edges: 107079
+
+feature blocks:
+  stratum_v1           9893 functions     6374.1 KiB
+  autotuning           3775 functions     3393.8 KiB
+  hardware_uart_i2c     960 functions      400.8 KiB
+  stratum_v2            887 functions      140.6 KiB
+  unknown               669 functions      126.7 KiB
+  weak_crypto_hash      632 functions      587.5 KiB
+  telemetry             560 functions      382.8 KiB
+  weak_thermal_fan      439 functions      103.9 KiB
+  crypto_hash           396 functions      270.4 KiB
+  weak_stratum_v1       344 functions      103.3 KiB
+  voltage_power         317 functions      205.3 KiB
+  work_engine           219 functions       82.0 KiB
+  license_devfee        140 functions       51.1 KiB
+  weak_autotuning       127 functions       33.9 KiB
+  eeprom                127 functions       27.2 KiB
+  weak_model_detect     121 functions       21.5 KiB
+  weak_voltage_power     98 functions       15.9 KiB
+  thermal_fan            84 functions       47.1 KiB
+  weak_hardware_uart_i2c     76 functions       10.8 KiB
+  weak_telemetry         64 functions       19.0 KiB
+  dps                    54 functions       22.3 KiB
+  config                 46 functions       10.7 KiB
+  model_detect           33 functions       14.4 KiB
+  weak_config            31 functions        5.6 KiB
+  weak_work_engine       28 functions        7.6 KiB
+  weak_stratum_v2        26 functions        8.3 KiB
+  weak_license_devfee     20 functions        8.9 KiB
+  weak_eeprom            17 functions        3.7 KiB
+  api_cgminer             8 functions        1.4 KiB
+  weak_dps                5 functions        3.3 KiB
+  weak_grpc_boser         5 functions        3.5 KiB
+  weak_upgrade_recovery      4 functions        1.4 KiB
+  pool_mgmt               4 functions        2.4 KiB
+  grpc_boser              2 functions        0.6 KiB
+  upgrade_recovery        2 functions        1.0 KiB

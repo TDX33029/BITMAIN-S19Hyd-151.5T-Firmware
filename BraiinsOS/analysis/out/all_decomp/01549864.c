@@ -1,0 +1,133 @@
+// FUN_01549864 @ 01549864 size=340 calls_out=5 calls_in=0
+// strings: 
+
+undefined8 FUN_01549864(int param_1)
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  undefined4 uVar3;
+  undefined4 local_228;
+  undefined4 uStack_224;
+  undefined4 uStack_220;
+  undefined4 uStack_21c;
+  undefined4 uStack_218;
+  undefined4 uStack_214;
+  undefined4 local_210;
+  undefined4 uStack_20c;
+  undefined4 uStack_208;
+  undefined4 local_204;
+  undefined4 uStack_200;
+  undefined4 uStack_1fc;
+  undefined4 uStack_1f8;
+  undefined4 local_1f4;
+  undefined4 uStack_1f0;
+  undefined4 uStack_1ec;
+  undefined4 local_1e8;
+  undefined4 uStack_1e4;
+  undefined4 uStack_1e0;
+  undefined4 uStack_1dc;
+  undefined4 local_1d8;
+  undefined4 uStack_1d4;
+  undefined4 uStack_1d0;
+  undefined4 uStack_1cc;
+  undefined4 local_1c8;
+  undefined4 uStack_1c4;
+  undefined4 uStack_1c0;
+  undefined4 uStack_1bc;
+  undefined4 uStack_1b8;
+  undefined4 local_1b4;
+  undefined4 local_1b0;
+  undefined1 auStack_1ac [148];
+  undefined4 local_118;
+  undefined4 uStack_114;
+  undefined4 uStack_110;
+  undefined4 uStack_10c;
+  undefined4 uStack_108;
+  undefined4 local_104;
+  undefined4 uStack_100;
+  undefined4 uStack_fc;
+  undefined4 uStack_f8;
+  undefined4 uStack_f4;
+  undefined4 local_f0;
+  undefined4 uStack_ec;
+  undefined4 uStack_e8;
+  undefined4 uStack_e4;
+  undefined4 uStack_e0;
+  undefined4 uStack_dc;
+  undefined1 auStack_d8 [152];
+  undefined4 local_40;
+  undefined4 uStack_3c;
+  undefined4 uStack_38;
+  undefined4 uStack_34;
+  undefined4 uStack_30;
+  undefined4 uStack_2c;
+  
+  uVar1 = *(undefined4 *)(param_1 + 0x78);
+  uVar3 = *(undefined4 *)(param_1 + 0x74);
+  FUN_016dd1aa(auStack_d8,param_1 + 0x7c,0x94);
+  FUN_01512dd0(&local_228,param_1);
+  uStack_34 = *(undefined4 *)(param_1 + 0xc);
+  uStack_30 = *(undefined4 *)(param_1 + 0x10);
+  uStack_2c = *(undefined4 *)(param_1 + 0x14);
+  local_40 = local_228;
+  uStack_3c = uStack_224;
+  uStack_38 = uStack_220;
+  local_1e8 = *(undefined4 *)(param_1 + 0x40);
+  uStack_1e4 = *(undefined4 *)(param_1 + 0x44);
+  uStack_1e0 = *(undefined4 *)(param_1 + 0x48);
+  uStack_1dc = *(undefined4 *)(param_1 + 0x4c);
+  local_1d8 = *(undefined4 *)(param_1 + 0x50);
+  uStack_1d4 = *(undefined4 *)(param_1 + 0x54);
+  uStack_1d0 = *(undefined4 *)(param_1 + 0x58);
+  uStack_1cc = *(undefined4 *)(param_1 + 0x5c);
+  local_1f4 = *(undefined4 *)(param_1 + 0x34);
+  uStack_1f0 = *(undefined4 *)(param_1 + 0x38);
+  uStack_1ec = *(undefined4 *)(param_1 + 0x3c);
+  local_1c8 = *(undefined4 *)(param_1 + 0x60);
+  uStack_1c4 = *(undefined4 *)(param_1 + 100);
+  uStack_1c0 = *(undefined4 *)(param_1 + 0x68);
+  uStack_1bc = *(undefined4 *)(param_1 + 0x6c);
+  uStack_1b8 = *(undefined4 *)(param_1 + 0x70);
+  local_118 = *(undefined4 *)(param_1 + 0x110);
+  uStack_114 = *(undefined4 *)(param_1 + 0x114);
+  uStack_110 = *(undefined4 *)(param_1 + 0x118);
+  uStack_10c = *(undefined4 *)(param_1 + 0x11c);
+  uStack_108 = *(undefined4 *)(param_1 + 0x120);
+  local_104 = *(undefined4 *)(param_1 + 0x124);
+  uStack_100 = *(undefined4 *)(param_1 + 0x128);
+  uStack_fc = *(undefined4 *)(param_1 + 300);
+  uStack_f8 = *(undefined4 *)(param_1 + 0x130);
+  uStack_f4 = *(undefined4 *)(param_1 + 0x134);
+  local_f0 = *(undefined4 *)(param_1 + 0x138);
+  uStack_ec = *(undefined4 *)(param_1 + 0x13c);
+  uStack_e8 = *(undefined4 *)(param_1 + 0x140);
+  uStack_e4 = *(undefined4 *)(param_1 + 0x144);
+  uStack_e0 = *(undefined4 *)(param_1 + 0x148);
+  uStack_dc = *(undefined4 *)(param_1 + 0x14c);
+  local_210 = *(undefined4 *)(param_1 + 0x18);
+  uStack_20c = *(undefined4 *)(param_1 + 0x1c);
+  uStack_208 = *(undefined4 *)(param_1 + 0x20);
+  local_204 = *(undefined4 *)(param_1 + 0x24);
+  uStack_200 = *(undefined4 *)(param_1 + 0x28);
+  uStack_1fc = *(undefined4 *)(param_1 + 0x2c);
+  uStack_1f8 = *(undefined4 *)(param_1 + 0x30);
+  local_1b4 = uVar3;
+  local_1b0 = uVar1;
+  FUN_016dd1aa(auStack_1ac,param_1 + 0x7c,0x94);
+  local_228 = local_40;
+  uStack_224 = uStack_3c;
+  uStack_220 = uStack_38;
+  uStack_21c = uStack_34;
+  uStack_218 = uStack_30;
+  uStack_214 = uStack_2c;
+  iVar2 = thunk_FUN_016d4a50(0x150);
+  if (iVar2 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_00600874(4,0x150);
+  }
+  FUN_016dd1aa(iVar2,&local_228,0x150);
+  thunk_FUN_016d3fb4(param_1);
+  return CONCAT44(&DAT_018a7dc4,iVar2);
+}
+

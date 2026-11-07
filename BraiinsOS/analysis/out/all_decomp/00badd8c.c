@@ -1,0 +1,38 @@
+// FUN_00badd8c @ 00badd8c size=172 calls_out=2 calls_in=0
+// strings: 
+
+void FUN_00badd8c(int *param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  int iVar3;
+  int iVar4;
+  undefined4 *puVar5;
+  
+  iVar1 = *param_1;
+  iVar4 = param_1[2];
+  uVar2 = param_1[1] - iVar1;
+  *param_1 = 4;
+  param_1[1] = 4;
+  if (uVar2 != 0) {
+    puVar5 = (undefined4 *)(iVar1 + 4);
+    for (uVar2 = uVar2 / 0xc; uVar2 != 0; uVar2 = uVar2 - 1) {
+      if (puVar5[-1] != 0) {
+        thunk_FUN_016d3fb4(*puVar5);
+      }
+      puVar5 = puVar5 + 3;
+    }
+  }
+  iVar1 = param_1[4];
+  if (iVar1 != 0) {
+    iVar3 = *(int *)(iVar4 + 8);
+    if (param_1[3] != iVar3) {
+      FUN_016dd52c(*(int *)(iVar4 + 4) + iVar3 * 0xc,*(int *)(iVar4 + 4) + param_1[3] * 0xc,
+                   iVar1 * 0xc);
+    }
+    *(int *)(iVar4 + 8) = iVar3 + iVar1;
+  }
+  return;
+}
+
