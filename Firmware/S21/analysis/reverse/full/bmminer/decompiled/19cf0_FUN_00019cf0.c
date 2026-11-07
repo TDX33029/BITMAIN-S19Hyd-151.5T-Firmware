@@ -1,6 +1,5 @@
-// FUN_00019cf0 @ 00019cf0  size=52  callers=2
-// program: bmminer
-
+// FUN_00019cf0 @ 00019cf0  size=52
+// callers: [FUN_00019d24, FUN_0001a1d0]
 
 int FUN_00019cf0(undefined4 param_1)
 
@@ -14,4 +13,5 @@ int FUN_00019cf0(undefined4 param_1)
   sVar1 = FUN_00019c28(param_1,iVar2 == 0);
   return (int)sVar1;
 }
+
 

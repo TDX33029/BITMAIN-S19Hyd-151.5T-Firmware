@@ -1,6 +1,5 @@
-// FUN_00019c28 @ 00019c28  size=200  callers=8
-// program: bmminer
-
+// FUN_00019c28 @ 00019c28  size=200
+// callers: [FUN_00019d6c, FUN_00019db8, FUN_00019df0, FUN_00019e18, FUN_00019d58, FUN_0001a1d0, FUN_00019cf0, FUN_00019da4]
 
 int FUN_00019c28(undefined4 param_1,uint param_2)
 
@@ -49,4 +48,5 @@ int FUN_00019c28(undefined4 param_1,uint param_2)
   }
   return 0xff;
 }
+
 

@@ -1,6 +1,5 @@
-// FUN_0003da58 @ 0003da58  size=324  callers=0
-// program: bmminer
-
+// FUN_0003da58 @ 0003da58  size=324
+// callers: []
 
 undefined4 FUN_0003da58(void)
 
@@ -33,9 +32,10 @@ undefined4 FUN_0003da58(void)
     sleep(2);
   }
   if (3 < DAT_000be63c) {
-    snprintf(acStack_2018,0x2000,"%s exit ","power_monitor_thread");
+    snprintf(acStack_2018,0x2000,"%s exit ",DAT_0003db9c);
     FUN_0004948c(3,acStack_2018,0);
   }
   return 0;
 }
+
 

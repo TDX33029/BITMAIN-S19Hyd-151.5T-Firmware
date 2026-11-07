@@ -1,10 +1,10 @@
-// FUN_00024c74 @ 00024c74  size=16  callers=13
-// program: bmminer
-
+// FUN_00024c74 @ 00024c74  size=16
+// callers: [FUN_0003cc08, FUN_0003ffbc, FUN_000333f8, FUN_000531d0, FUN_0003fcec, FUN_00030750, FUN_00027a64, FUN_00027460, FUN_000534b8, FUN_0003da58, FUN_0003e6b4, FUN_0004ebd0, FUN_000261a8]
 
 undefined4 FUN_00024c74(void)
 
 {
   return DAT_000c0420;
 }
+
 
