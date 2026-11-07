@@ -11,3 +11,6 @@ __pycache__/
 
 # Ghidra headless project (repacks the analyzed binary, high churn)
 BraiinsOS/analysis/ghidra_project/
+
+# root duplicate (canonical copy lives in tools_fw2/)
+/braiins-toolbox.exe
