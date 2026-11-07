@@ -1,0 +1,77 @@
+// toolbox/actions/configure_cooling.proto  package=braiins.toolbox
+enum CoolingMode {
+  COOLING_MODE_UNSPECIFIED = 0;
+  COOLING_MODE_AUTOMATIC = 1;
+  COOLING_MODE_MANUAL = 2;
+  COOLING_MODE_IMMERSION = 3;
+}
+enum FanModeWhenPaused {
+  FAN_MODE_WHEN_PAUSED_UNSPECIFIED = 0;
+  FAN_MODE_WHEN_PAUSED_AUTOMATIC = 1;
+  FAN_MODE_WHEN_PAUSED_MANUAL = 2;
+}
+enum FanRuntimeWhenPaused {
+  FAN_RUNTIME_WHEN_PAUSED_UNSPECIFIED = 0;
+  FAN_RUNTIME_WHEN_PAUSED_TWO_MINUTES = 1;
+  FAN_RUNTIME_WHEN_PAUSED_INDEFINITELY = 2;
+}
+  message ConfigureCoolingActionInitRequest {
+    optional braiins.toolbox.ActionInitRequest base = 1;
+    optional braiins.toolbox.CoolingAndFans cooling_and_fans = 2;
+    optional braiins.toolbox.TemperatureControl temperature_control = 3;
+  }
+  message ConfigureCoolingActionExecRequest {
+    optional braiins.toolbox.ActionExecRequest base = 1;
+  }
+  message CoolingAndFans {
+    optional braiins.toolbox.CoolingMode cooling_mode = 1; // oneof 0
+    optional braiins.toolbox.IntOrDefault fixed_speed = 2; // oneof 1
+    optional uint32 minimum_required_fans = 3; // oneof 2
+    optional braiins.toolbox.CustomSpeedRange custom_speed_range = 4; // oneof 3
+    optional braiins.toolbox.FanModeWhenPaused fan_mode_when_paused = 5; // oneof 4
+    optional braiins.toolbox.FanRuntimeWhenPaused fan_runtime_when_paused = 6; // oneof 5
+    optional braiins.toolbox.IntOrDefault fan_pwm_when_paused = 7; // oneof 6
+  }
+  message TemperatureControl {
+    optional braiins.toolbox.IntOrDefault target_temperature = 1; // oneof 0
+    optional braiins.toolbox.IntOrDefault hot_temperature = 2; // oneof 1
+    optional braiins.toolbox.IntOrDefault dangerous_temperature = 3; // oneof 2
+  }
+  message IntOrDefault {
+    optional google.protobuf.Empty default = 1; // oneof 0
+    optional int32 value = 2; // oneof 0
+  }
+  message CustomSpeedRange {
+    optional google.protobuf.Empty default = 1; // oneof 0
+    optional braiins.toolbox.NonNegativeRange range = 2; // oneof 0
+  }
+  message NonNegativeRange {
+    optional uint32 minimum = 1;
+    optional uint32 maximum = 2;
+  }
+  message ConfigureCoolingActionMetadata {
+    optional braiins.toolbox.ActionMetadata base = 1;
+    optional braiins.toolbox.CoolingAndFansMetadata cooling_and_fans = 2;
+    optional braiins.toolbox.TemperatureControlMetadata temperature_control = 3;
+  }
+  message CoolingAndFansMetadata {
+    optional braiins.toolbox.NumberConstraint fixed_speed = 1;
+    optional braiins.toolbox.NumberConstraint minimum_required_fans = 2;
+    optional braiins.toolbox.NumberConstraint custom_speed_range = 3;
+    optional braiins.toolbox.NumberConstraint fan_pwm_when_paused = 4;
+  }
+  message TemperatureControlMetadata {
+    optional braiins.toolbox.NumberConstraint target = 1;
+    optional braiins.toolbox.NumberConstraint hot = 2;
+    optional braiins.toolbox.NumberConstraint dangerous = 3;
+  }
+  message NumberConstraint {
+    optional int32 min = 1;
+    optional int32 max = 2;
+  }
+service ConfigureCoolingActionService {
+  rpc GetMetadata(google.protobuf.Empty) returns (braiins.toolbox.ConfigureCoolingActionMetadata);
+  rpc Create(braiins.toolbox.ActionCreateRequest) returns (braiins.toolbox.ActionCreateResponse);
+  rpc Initialize(braiins.toolbox.ConfigureCoolingActionInitRequest) returns (braiins.toolbox.ActionInitResponse);
+  rpc Execute(braiins.toolbox.ConfigureCoolingActionExecRequest) returns (braiins.toolbox.ActionExecResponse);
+}

@@ -1,0 +1,22 @@
+// toolbox/actions/execute.proto  package=braiins.toolbox
+  message ExecuteActionMetadata {
+    optional braiins.toolbox.ActionMetadata base = 1;
+    optional uint32 default_command_timeout = 2;
+    optional uint32 max_script_size_bytes = 3;
+    optional uint32 min_command_timeout = 4;
+    optional uint32 max_command_timeout = 5;
+  }
+  message ExecuteActionExecRequest {
+    optional braiins.toolbox.ActionExecRequest base = 1;
+    optional string command = 2;
+    optional uint32 command_timeout = 3;
+  }
+  message ExecuteActionOutput {
+    optional string url = 1;
+  }
+service ExecuteActionService {
+  rpc GetMetadata(google.protobuf.Empty) returns (braiins.toolbox.ExecuteActionMetadata);
+  rpc Create(braiins.toolbox.ActionCreateRequest) returns (braiins.toolbox.ActionCreateResponse);
+  rpc Initialize(braiins.toolbox.ActionInitRequest) returns (braiins.toolbox.ActionInitResponse);
+  rpc Execute(braiins.toolbox.ExecuteActionExecRequest) returns (braiins.toolbox.ActionExecResponse);
+}

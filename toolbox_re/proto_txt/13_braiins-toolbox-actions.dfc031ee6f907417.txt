@@ -1,0 +1,99 @@
+// toolbox/device_query.proto  package=braiins.toolbox
+enum DeviceListField {
+  DEVICE_LIST_FIELD_UNSPECIFIED = 0;
+  DEVICE_LIST_FIELD_IP_RANGES = 1;
+  DEVICE_LIST_FIELD_IP_ADDR = 2;
+  DEVICE_LIST_FIELD_MAC_ADDR = 3;
+  DEVICE_LIST_FIELD_HOSTNAME = 4;
+  DEVICE_LIST_FIELD_FIRMWARE = 5;
+  DEVICE_LIST_FIELD_HARDWARE_ID = 6;
+  DEVICE_LIST_FIELD_VERSION = 7;
+  DEVICE_LIST_FIELD_BOOT_MODE = 8;
+  DEVICE_LIST_FIELD_MODEL = 9;
+  DEVICE_LIST_FIELD_CONTROL_BOARD = 10;
+  DEVICE_LIST_FIELD_BOS_SUPPORT = 11;
+  DEVICE_LIST_FIELD_POOLS = 12;
+  DEVICE_LIST_FIELD_STICKER_HASHRATE = 13;
+  DEVICE_LIST_FIELD_DEFAULT_POWER_TARGET = 14;
+  DEVICE_LIST_FIELD_TUNER_TARGET = 15;
+  DEVICE_LIST_FIELD_AUTOTUNING_ENABLED = 16;
+  DEVICE_LIST_FIELD_DPS_ENABLED = 17;
+  DEVICE_LIST_FIELD_PERFORMANCE_MODE = 18;
+  DEVICE_LIST_FIELD_CONTRACT_NAME = 19;
+  DEVICE_LIST_FIELD_IS_UNRECOGNIZED = 20;
+  DEVICE_LIST_FIELD_HAS_INVALID_CREDENTIALS = 21;
+  DEVICE_LIST_FIELD_CB_SERIAL = 22;
+  DEVICE_LIST_FIELD_HB_TYPE = 23;
+  DEVICE_LIST_FIELD_CHIP_TYPE = 24;
+  DEVICE_LIST_FIELD_PSU_MODEL = 25;
+  DEVICE_LIST_FIELD_PSU_FW_VERSION = 26;
+  DEVICE_LIST_FIELD_PSU_SERIAL_NUMBER = 27;
+  DEVICE_LIST_FIELD_PSU_VOLTAGE_RANGE = 28;
+  DEVICE_LIST_FIELD_COOLING_MODE = 29;
+  DEVICE_LIST_FIELD_TARGET_TEMP = 30;
+  DEVICE_LIST_FIELD_HOT_TEMP = 31;
+  DEVICE_LIST_FIELD_DANGEROUS_TEMP = 32;
+  DEVICE_LIST_FIELD_MIN_FANS = 33;
+  DEVICE_LIST_FIELD_FAN_SPEED_RANGE = 34;
+  DEVICE_LIST_FIELD_FAN_MODE = 35;
+  DEVICE_LIST_FIELD_FAN_PWM = 36;
+  DEVICE_LIST_FIELD_ADVANCED_SETTINGS = 37;
+  DEVICE_LIST_FIELD_HASHRATE_5S = 38;
+  DEVICE_LIST_FIELD_HASHRATE_1M = 39;
+  DEVICE_LIST_FIELD_HASHRATE_30M = 40;
+  DEVICE_LIST_FIELD_CHIP_TEMP_MAX = 41;
+  DEVICE_LIST_FIELD_FAN_SPEEDS = 42;
+  DEVICE_LIST_FIELD_MINING_UPTIME = 43;
+  DEVICE_LIST_FIELD_HASHBOARDS_ENABLED = 44;
+  DEVICE_LIST_FIELD_HASHBOARDS_TOTAL = 45;
+  DEVICE_LIST_FIELD_ESTIMATED_POWER_CONSUMPTION = 46;
+  DEVICE_LIST_FIELD_INLET_TEMP = 47;
+  DEVICE_LIST_FIELD_OUTLET_TEMP = 48;
+}
+  message DeviceListQuery {
+    optional braiins.toolbox.DeviceListFilter filter = 1;
+    optional string search = 2; // oneof 0
+    optional braiins.toolbox.DeviceListSort sorting = 3;
+    repeated braiins.toolbox.DeviceListField fields = 4;
+  }
+  message DeviceListFilter {
+    optional bool can_install_bos = 1; // oneof 0
+    optional double min_sticker_hashrate = 2; // oneof 1
+    optional double max_sticker_hashrate = 3; // oneof 2
+    optional braiins.toolbox.DeviceListPerformanceModeFilter performance_mode = 4;
+    optional bool autotuning_enabled = 5; // oneof 3
+    optional bool dps_enabled = 6; // oneof 4
+    optional braiins.toolbox.Firmware firmware = 7; // oneof 5
+    optional braiins.toolbox.ControlBoard control_board = 8; // oneof 6
+    optional string model = 9; // oneof 7
+    optional braiins.toolbox.DeviceListContractNameFilter contract = 10; // oneof 8
+    repeated string ip_ranges = 11;
+    optional braiins.toolbox.DeviceListCoolingModeFilter cooling_mode = 12;
+    optional braiins.toolbox.DeviceListAdvancedSettingsFilter advanced_settings = 14;
+  }
+  message DeviceListCoolingModeFilter {
+    optional google.protobuf.Empty missing = 1; // oneof 0
+    optional braiins.toolbox.BosCoolingMode mode = 2; // oneof 0
+  }
+  message DeviceListPerformanceModeFilter {
+    optional google.protobuf.Empty missing = 1; // oneof 0
+    optional braiins.toolbox.PerformanceMode mode = 2; // oneof 0
+  }
+  message DeviceListAdvancedSettingsFilter {
+    optional bool without = 1;
+    optional bool with_any = 2;
+    repeated string with_keys = 3;
+  }
+  message DeviceListContractNameFilter {
+    optional google.protobuf.Empty missing = 1; // oneof 0
+    optional string contract_name = 2; // oneof 0
+  }
+  message DeviceListSort {
+    enum Direction {
+      DIRECTION_UNSPECIFIED = 0;
+      DIRECTION_ASC = 1;
+      DIRECTION_DESC = 2;
+    }
+    optional braiins.toolbox.DeviceListField field = 1;
+    optional braiins.toolbox.DeviceListSort.Direction direction = 2;
+  }

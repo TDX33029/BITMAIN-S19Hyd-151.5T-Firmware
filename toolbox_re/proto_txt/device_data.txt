@@ -1,0 +1,112 @@
+// toolbox/device_data.proto  package=braiins.toolbox
+enum PerformanceMode {
+  PERFORMANCE_MODE_UNSPECIFIED = 0;
+  PERFORMANCE_MODE_SLEEP = 1;
+  PERFORMANCE_MODE_LOW = 2;
+  PERFORMANCE_MODE_NORMAL = 3;
+  PERFORMANCE_MODE_HIGH = 4;
+}
+enum BosCoolingMode {
+  BOS_COOLING_MODE_UNSPECIFIED = 0;
+  BOS_COOLING_MODE_AUTO = 1;
+  BOS_COOLING_MODE_MANUAL = 2;
+  BOS_COOLING_MODE_IMMERSION = 3;
+  BOS_COOLING_MODE_HYDRO = 4;
+  BOS_COOLING_MODE_DISABLED = 5;
+}
+enum FanMode {
+  FAN_MODE_UNSPECIFIED = 0;
+  FAN_MODE_AUTO = 1;
+  FAN_MODE_MANUAL = 2;
+}
+enum Firmware {
+  FIRMWARE_UNSPECIFIED = 0;
+  FIRMWARE_BOS = 1;
+  FIRMWARE_BITMAIN_STOCK = 2;
+  FIRMWARE_MICROBT_STOCK = 3;
+  FIRMWARE_VNISH = 4;
+  FIRMWARE_LUXOS = 5;
+  FIRMWARE_ICE_RIVER_STOCK = 6;
+  FIRMWARE_CANAAN_STOCK = 7;
+  FIRMWARE_MARA_FW = 8;
+  FIRMWARE_TERAFLUX = 9;
+  FIRMWARE_VIRTUAL = 999;
+  FIRMWARE_UNKNOWN = 1000;
+}
+enum BootMode {
+  BOOT_MODE_UNSPECIFIED = 0;
+  BOOT_MODE_NAND = 1;
+  BOOT_MODE_SD = 2;
+  BOOT_MODE_EMMC = 3;
+}
+enum ControlBoard {
+  CONTROL_BOARD_UNSPECIFIED = 0;
+  CONTROL_BOARD_ZYNQ = 1;
+  CONTROL_BOARD_BBB = 2;
+  CONTROL_BOARD_AML = 3;
+  CONTROL_BOARD_CVITEK = 4;
+  CONTROL_BOARD_BRAIINS = 5;
+  CONTROL_BOARD_H3 = 6;
+  CONTROL_BOARD_H6 = 7;
+  CONTROL_BOARD_H6OS = 8;
+  CONTROL_BOARD_H616 = 9;
+}
+  message StaticData {
+    optional bool is_unrecognized = 20;
+    optional bool has_invalid_credentials = 21;
+    optional string ip_addr = 1; // oneof 1
+    optional string mac_addr = 2; // oneof 2
+    optional string hostname = 3; // oneof 3
+    optional string hardware_id = 4; // oneof 4
+    optional braiins.toolbox.Firmware firmware = 5; // oneof 5
+    optional string version = 6; // oneof 6
+    optional braiins.toolbox.BootMode boot_mode = 7; // oneof 7
+    optional string model = 8; // oneof 8
+    optional braiins.toolbox.ControlBoard control_board = 9; // oneof 9
+    optional bool can_install_bos = 10; // oneof 10
+    repeated braiins.toolbox.ShortPool pools = 11;
+    optional bool autotuning_enabled = 12; // oneof 11
+    optional bool dps_enabled = 13; // oneof 12
+    optional uint32 power_target = 14; // oneof 0
+    optional double hashrate_target = 15; // oneof 0
+    optional braiins.toolbox.PerformanceMode performance_mode = 16; // oneof 13
+    optional string contract_name = 17; // oneof 14
+    optional double sticker_hashrate = 18; // oneof 15
+    optional uint32 default_power_target = 19; // oneof 16
+    optional string cb_serial = 22; // oneof 17
+    optional string chip_type = 23; // oneof 18
+    optional string psu_model = 24; // oneof 19
+    optional uint32 psu_fw_version = 25; // oneof 20
+    optional string psu_serial = 26; // oneof 21
+    optional double psu_min_voltage = 27; // oneof 22
+    optional double psu_max_voltage = 28; // oneof 23
+    optional braiins.toolbox.BosCoolingMode cooling_mode = 29; // oneof 24
+    optional float target_temp = 30; // oneof 25
+    optional float hot_temp = 31; // oneof 26
+    optional float dangerous_temp = 32; // oneof 27
+    optional uint32 min_fans = 33; // oneof 28
+    optional uint32 min_fan_speed = 34; // oneof 29
+    optional uint32 max_fan_speed = 35; // oneof 30
+    optional braiins.toolbox.FanMode fan_mode = 36; // oneof 31
+    optional float fan_pwm_paused = 37; // oneof 32
+    optional string hashboard_type = 38; // oneof 33
+    optional google.protobuf.Struct advanced_settings = 39; // oneof 34
+    optional double hashrate_5s = 40; // oneof 35
+    optional double hashrate_1m = 41; // oneof 36
+    optional double hashrate_30m = 42; // oneof 37
+    repeated float chip_temp_max = 43;
+    repeated int32 fan_speeds = 44;
+    optional uint32 mining_uptime = 45; // oneof 38
+    optional uint32 hashboards_enabled = 46; // oneof 39
+    optional uint32 hashboards_total = 47; // oneof 40
+    optional uint32 estimated_power_consumption = 48; // oneof 41
+    optional float inlet_temp = 49; // oneof 42
+    optional float outlet_temp = 50; // oneof 43
+  }
+  message ShortPool {
+    optional string full_url = 1;
+    optional string display_name = 2;
+    optional uint32 port = 3; // oneof 0
+    optional string username = 4;
+    optional string key = 5; // oneof 1
+  }

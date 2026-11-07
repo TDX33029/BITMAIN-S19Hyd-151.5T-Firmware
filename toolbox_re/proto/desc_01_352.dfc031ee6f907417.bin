@@ -1,0 +1,8 @@
+
+status.proto
+google.rpc"N
+Status
+code (
+message (	%
+details (2.google.protobuf.AnyB^
+com.google.rpcBStatusProtoPZ7google.golang.org/genproto/googleapis/rpc/status;status¢RPCbproto3

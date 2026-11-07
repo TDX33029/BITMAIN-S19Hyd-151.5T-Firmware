@@ -1,0 +1,5 @@
+// toolbox/action_output.proto  package=braiins.toolbox
+  message ActionOutput {
+    optional braiins.toolbox.CollectDataActionOutput collect_data = 1; // oneof 0
+    optional braiins.toolbox.ExecuteActionOutput execute = 2; // oneof 0
+  }

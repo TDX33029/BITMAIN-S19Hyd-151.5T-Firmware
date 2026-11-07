@@ -1,0 +1,7 @@
+// toolbox/actions/remove_tuned_profiles.proto  package=braiins.toolbox
+service RemoveTunedProfilesActionService {
+  rpc GetMetadata(google.protobuf.Empty) returns (braiins.toolbox.ActionMetadata);
+  rpc Create(braiins.toolbox.ActionCreateRequest) returns (braiins.toolbox.ActionCreateResponse);
+  rpc Initialize(braiins.toolbox.ActionInitRequest) returns (braiins.toolbox.ActionInitResponse);
+  rpc Execute(braiins.toolbox.ActionExecRequest) returns (braiins.toolbox.ActionExecResponse);
+}
