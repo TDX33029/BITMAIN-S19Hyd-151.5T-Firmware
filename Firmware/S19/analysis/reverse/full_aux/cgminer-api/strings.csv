@@ -1,0 +1,67 @@
+string_addr,string,from_addr,func_addr,func_name
+"00010154","/lib/ld-linux-armhf.so.3","0001007c",,
+"00010154","/lib/ld-linux-armhf.so.3","_elfSectionHeaders::00000034",,
+"000103e1","libc.so.6",,,
+"000103eb","socket",,,
+"000103f2","__rawmemchr",,,
+"000103fe","connect",,,
+"00010406","puts",,,
+"0001040b","realloc",,,
+"00010413","abort",,,
+"00010419","strtol",,,
+"00010420","strlen",,,
+"00010427","send",,,
+"0001042c","__errno_location",,,
+"0001043d","recv",,,
+"00010442","malloc",,,
+"00010449","__ctype_b_loc",,,
+"00010457","stderr",,,
+"0001045e","gethostbyname",,,
+"0001046c","close",,,
+"00010472","strchr",,,
+"00010479","fprintf",,,
+"00010481","strcmp",,,
+"00010488","strerror",,,
+"00010491","__libc_start_main",,,
+"000104a3","__gmon_start__",,,
+"000104b2","GLIBC_2.4",,,
+"00010de8","[%s%s] =>\n(\n","00010a98","000109b8","FUN_000109b8"
+"00010de8","[%s%s] =>\n(\n","00010b40","000109b8","FUN_000109b8"
+"00010df8","   [%s] => %s\n","00010ac4","000109b8","FUN_000109b8"
+"00010e08","   [%d] => %s\n","000109e0","000109b8","FUN_000109b8"
+"00010e08","   [%d] => %s\n","000109dc","000109b8","FUN_000109b8"
+"00010e08","   [%d] => %s\n","00010b20","000109b8","FUN_000109b8"
+"00010e1c","Couldn't get hostname: '%s'\n","00010c7c","00010b4c","FUN_00010b4c"
+"00010e3c","Socket initialisation failed: %s\n","00010cac","00010b4c","FUN_00010b4c"
+"00010e60","Socket connect failed: %s\n","00010cd8","00010b4c","FUN_00010b4c"
+"00010e7c","Send failed: %s\n","00010d5c","00010b4c","FUN_00010b4c"
+"00010e90","Err: OOM (%d)\n","00010c64","00010b4c","FUN_00010b4c"
+"00010e90","Err: OOM (%d)\n","00010d8c","00010b4c","FUN_00010b4c"
+"00010ea0","Recv failed: %s\n","00010d04","00010b4c","FUN_00010b4c"
+"00010eb4","Reply was '%s'\n","00010d70","00010b4c","FUN_00010b4c"
+"00010ec4","summary",,,
+"00010ee0","usAge: %s [command [ip/host [port]]]\n",,,
+".shstrtab::00000001",".shstrtab",,,
+".shstrtab::0000000b",".interp",,,
+".shstrtab::00000013",".note.ABI-tag",,,
+".shstrtab::00000021",".note.gnu.build-id",,,
+".shstrtab::00000034",".hash",,,
+".shstrtab::0000003a",".dynsym",,,
+".shstrtab::00000042",".dynstr",,,
+".shstrtab::0000004a",".gnu.version",,,
+".shstrtab::00000057",".gnu.version_r",,,
+".shstrtab::00000066",".rel.dyn",,,
+".shstrtab::0000006f",".rel.plt",,,
+".shstrtab::00000078",".init",,,
+".shstrtab::0000007e",".text",,,
+".shstrtab::00000084",".fini",,,
+".shstrtab::0000008a",".rodata",,,
+".shstrtab::00000092",".ARM.exidx",,,
+".shstrtab::0000009d",".eh_frame",,,
+".shstrtab::000000a7",".init_array",,,
+".shstrtab::000000b3",".fini_array",,,
+".shstrtab::000000bf",".dynamic",,,
+".shstrtab::000000c8",".got",,,
+".shstrtab::000000cd",".data",,,
+".shstrtab::000000d3",".bss",,,
+".shstrtab::000000d8",".ARM.attributes",,,

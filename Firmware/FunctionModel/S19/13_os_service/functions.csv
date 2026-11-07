@@ -1,0 +1,19 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x13f28,FUN_00013f28,5752,04_asic_chain;13_os_service;07_mining_pool,0,6,"nonce fifo flush by nonce, last_ts = %.2f.\n | reepat nonce error",../S19/analysis/reverse/full/bmminer/decompiled/13f28_FUN_00013f28.c
+update-daemon,0x108c8,FUN_000108c8,588,13_os_service,0,6,pthread_create error!\n,../S19/analysis/reverse/full_aux/update-daemon/decompiled/108c8_FUN_000108c8.c
+bmminer,0x59bf0,FUN_00059bf0,828,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/59bf0_FUN_00059bf0.c
+bmminer,0x59f30,FUN_00059f30,784,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/59f30_FUN_00059f30.c
+bmminer,0x59964,FUN_00059964,652,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/59964_FUN_00059964.c
+bmminer,0x18364,FUN_00018364,424,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/18364_FUN_00018364.c
+bmminer,0x3dd0c,FUN_0003dd0c,380,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/3dd0c_FUN_0003dd0c.c
+bmminer,0x45d08,FUN_00045d08,368,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/45d08_FUN_00045d08.c
+bmminer,0x33284,FUN_00033284,288,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/33284_FUN_00033284.c
+bmminer,0x27854,FUN_00027854,284,09_web_api;13_os_service,0,4,start the http log.\n,../S19/analysis/reverse/full/bmminer/decompiled/27854_FUN_00027854.c
+bmminer,0x2b150,FUN_0002b150,280,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/2b150_FUN_0002b150.c
+bmminer,0x2b268,FUN_0002b268,280,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/2b268_FUN_0002b268.c
+bmminer,0x2b380,FUN_0002b380,280,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/2b380_FUN_0002b380.c
+bmminer,0x2b498,FUN_0002b498,280,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/2b498_FUN_0002b498.c
+bmminer,0x2b5b0,FUN_0002b5b0,280,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/2b5b0_FUN_0002b5b0.c
+bmminer,0x2b6c8,FUN_0002b6c8,280,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/2b6c8_FUN_0002b6c8.c
+bmminer,0x47cb0,FUN_00047cb0,136,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/47cb0_FUN_00047cb0.c
+bmminer,0x35098,FUN_00035098,68,13_os_service,0,4,,../S19/analysis/reverse/full/bmminer/decompiled/35098_FUN_00035098.c

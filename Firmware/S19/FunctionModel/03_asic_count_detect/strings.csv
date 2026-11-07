@@ -1,0 +1,89 @@
+func_addr,func_name,string_addr,string
+00012650,FUN_00012650,000694f0,chain
+00012650,FUN_00012650,000694f8,get chain failed 
+00012650,FUN_00012650,0006950c,chain: 
+00012650,FUN_00012650,0006950c,chain: 
+00012650,FUN_00012650,00069514,get chain_num failed 
+00012650,FUN_00012650,0006952c,chain_num : %d 
+00012650,FUN_00012650,0006953c,chain_row
+00012650,FUN_00012650,00069548,get chain_row failed 
+00012650,FUN_00012650,00069560,chain_row: %d 
+00012650,FUN_00012650,00069570,chain_column
+00012650,FUN_00012650,00069580,get chain_column failed 
+00012650,FUN_00012650,0006959c,chain_column: %d 
+00012650,FUN_00012650,000695b0,chain_domain_num
+00012650,FUN_00012650,000695c4,get chain_domain_num failed 
+00012650,FUN_00012650,000695e4,chain_domain_num : %d 
+00012650,FUN_00012650,000695fc,chain_asic_num
+00012650,FUN_00012650,0006960c,get chain_asic_num failed 
+00012650,FUN_00012650,00069628,chain_asic_num : %d 
+00012650,FUN_00012650,00069640,domain_asic_num
+00012650,FUN_00012650,00069650,get domain_asic_num failed 
+00012650,FUN_00012650,0006966c,domain_asic_num : %d 
+00012650,FUN_00012650,00069684,"chain_num %d, chain_domain_num %d, chain_asic_num %d, domain_asic_num %d "
+00012650,FUN_00012650,000696d0,malloc %d chain_t failed 
+00012650,FUN_00012650,00069708,malloc %d asic_t failed 
+00012650,FUN_00012650,00069738,get pic failed 
+00012650,FUN_00012650,000697a4,get pic sensor failed 
+00012650,FUN_00012650,000697bc,pic sensor: 
+00012650,FUN_00012650,00069850,get array %d bind_asic failed 
+00012650,FUN_00012650,00069850,get array %d bind_asic failed 
+00012650,FUN_00012650,000698a4,parse chain pic failed 
+00012650,FUN_00012650,000698bc,eeprom
+00012650,FUN_00012650,000698c4,get eeprom failed 
+00012650,FUN_00012650,000698d8,eeprom: 
+00012650,FUN_00012650,000698e4,parse chain eeprom failed 
+00012650,FUN_00012650,00069914,bind_asic
+00012650,FUN_00012650,00069920,bind_asic: %d 
+00012650,FUN_00012650,00069938,parse chain sensor failed 
+0001eba4,FUN_0001eba4,0006997c,get asic failed 
+00012650,FUN_00012650,0006997c,get asic failed 
+00012650,FUN_00012650,00069a14,parse arrry %d asic failed 
+00012650,FUN_00012650,00069a30,parse chain domain failed 
+00012650,FUN_00012650,00069a4c,"asic %d, wind %d, y %d "
+0001eba4,FUN_0001eba4,00069c24,get power failed 
+0001eba4,FUN_0001eba4,00069c38,power: 
+0001eba4,FUN_0001eba4,00069c38,power: 
+0001eba4,FUN_0001eba4,00069c98,parse power failed 
+0001eba4,FUN_0001eba4,00069db8,asic_id
+0001eba4,FUN_0001eba4,00069dc0,get asic_id failed 
+0001eba4,FUN_0001eba4,00069dd4,asic_id: %s 
+0001eba4,FUN_0001eba4,00069de4,asic_addr
+0001eba4,FUN_0001eba4,00069df0,get asic_addr failed 
+0001eba4,FUN_0001eba4,00069e08,asic_addr : %s 
+0001eba4,FUN_0001eba4,00069e18,convert asic_addr failed 
+0001eba4,FUN_0001eba4,00069e34,asic_addr 0x%x 
+0001eba4,FUN_0001eba4,00069e44,asic_core_num
+0001eba4,FUN_0001eba4,00069e54,get asic_core_num failed 
+0001eba4,FUN_0001eba4,00069e70,asic_core_num: %d 
+0001eba4,FUN_0001eba4,00069e84,asic_small_core_num
+0001eba4,FUN_0001eba4,00069e98,get asic_small_core_num failed 
+0001eba4,FUN_0001eba4,00069eb8,asic_small_core_num: %d 
+0001eba4,FUN_0001eba4,00069f24,asic_domain_num
+0001eba4,FUN_0001eba4,00069f34,get asic_domain_num failed 
+0001eba4,FUN_0001eba4,00069f50,asic_domain_num : %d 
+0001eba4,FUN_0001eba4,00069f68,asic_addr_interval
+0001eba4,FUN_0001eba4,00069f7c,get asic_addr_interval failed 
+0001eba4,FUN_0001eba4,00069f9c,asic_addr_interval : %d 
+0001eba4,FUN_0001eba4,00069fb8,parse asic failed 
+0001eba4,FUN_0001eba4,00069fcc,parse chain failed 
+0002f808,FUN_0002f808,0006cc74,Chain %d is not exist. 
+0001eba4,FUN_0001eba4,0006edac,Chain [%d] BOM Version: 0x%04x 
+00037160,FUN_00037160,0006edf4,bad asic is %d 
+00037218,FUN_00037218,0006ee04,"pic enabled for chain %d, press anykey to continue..."
+00037218,FUN_00037218,0006ee3c,"Chain[%d]: find %d asic, times %d "
+00037218,FUN_00037218,0006ee60,"Chain %d only find %d asic, will power off hash board %d "
+0004c050,FUN_0004c050,00072104,enable_dc_dc
+0004c050,FUN_0004c050,00072104,enable_dc_dc
+0004c050,FUN_0004c050,00072114,_bitmain_pic_enable_dc_dc_common
+0004c050,FUN_0004c050,00072114,_bitmain_pic_enable_dc_dc_common
+0004c050,FUN_0004c050,00072114,_bitmain_pic_enable_dc_dc_common
+0004c224,FUN_0004c224,00072138,disable_dc_dc
+0004c224,FUN_0004c224,00072138,disable_dc_dc
+0004c224,FUN_0004c224,00072148,_bitmain_pic_disable_dc_dc_common
+0004c224,FUN_0004c224,00072148,_bitmain_pic_disable_dc_dc_common
+0004c224,FUN_0004c224,00072148,_bitmain_pic_disable_dc_dc_common
+0004c050,FUN_0004c050,000721a0,"%s: Bad pic param, input chain is %d "
+0004c224,FUN_0004c224,000721a0,"%s: Bad pic param, input chain is %d "
+0004c050,FUN_0004c050,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004c224,FUN_0004c224,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "

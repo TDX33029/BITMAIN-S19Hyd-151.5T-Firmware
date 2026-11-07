@@ -1,0 +1,12 @@
+caller_addr,caller_name,callee_addr,callee_name
+"000102c4","_DT_INIT","00010380","FUN_00010380"
+"000102e4","execlp","00022000","execlp"
+"000102f0","__libc_start_main","00022004","__libc_start_main"
+"00010308","abort","0002200c","abort"
+"00010350","entry","00010308","abort"
+"00010350","entry","000102f0","__libc_start_main"
+"00010380","FUN_00010380","00022008","__gmon_start__"
+"000103f4","_FINI_0","000103a4","FUN_000103a4"
+"00010410","FUN_00010410","000103f4","_FINI_0"
+"00010410","FUN_00010410","000102c4","_DT_INIT"
+"00010410","FUN_00010410","0001040c","_INIT_0"

@@ -1,0 +1,19 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x388ec,board_power_init_sequence,1128,02_power_psu;06_thermal_fan,1,12,warning:power is not calibrated.\n | power sn:%s\n | get power type version failed!,../S19/analysis/reverse/full/bmminer/decompiled/388ec_FUN_000388ec.c
+bmminer,0x3a5b8,FUN_0003a5b8,1064,06_thermal_fan,0,13,"max temp = %04d, diff = %04d, - pwm form %04d to %04d\n | max temp = %04d, diff = %04d, = pwm %04d\n | max temp = %04d, diff = %04d, + pwm form %04d to %04d\n",../S19/analysis/reverse/full/bmminer/decompiled/3a5b8_FUN_0003a5b8.c
+bmminer,0x39544,FUN_00039544,2548,05_freq_voltage;10_config_eeprom;06_thermal_fan,0,10,press any key to start rising frequency... | fixed frequency is %d\n,../S19/analysis/reverse/full/bmminer/decompiled/39544_FUN_00039544.c
+bmminer,0x15968,FUN_00015968,304,06_thermal_fan,0,10,pwm for fan init error | set pwm = %d,../S19/analysis/reverse/full/bmminer/decompiled/15968_FUN_00015968.c
+bmminer,0x171b4,FUN_000171b4,1060,06_thermal_fan;04_asic_chain,0,7,temperature/temperature.c,../S19/analysis/reverse/full/bmminer/decompiled/171b4_FUN_000171b4.c
+bmminer,0x17830,FUN_00017830,612,04_asic_chain;06_thermal_fan,0,6,"%s chain %d not pluged | %s invalid param. index = %d, type = %d, model = %d on chain %d | read temp sensor failed: chain = %d, sensor pos = %d, address = %d, reg = %d\n | %s chain %d ,index %d not connected",../S19/analysis/reverse/full/bmminer/decompiled/17830_FUN_00017830.c
+bmminer,0x38228,FUN_00038228,372,06_thermal_fan,0,6,"water temp %d ~ %d, sleep %ds to cool down\n",../S19/analysis/reverse/full/bmminer/decompiled/38228_FUN_00038228.c
+bmminer,0x1575c,FUN_0001575c,524,06_thermal_fan,0,5,"fan lost | Error, fan lost, only find %d (< %d)\n",../S19/analysis/reverse/full/bmminer/decompiled/1575c_FUN_0001575c.c
+bmminer,0x469bc,FUN_000469bc,196,06_thermal_fan,0,5,pwm type %d not supported\n,../S19/analysis/reverse/full/bmminer/decompiled/469bc_FUN_000469bc.c
+bmminer,0x156a8,FUN_000156a8,180,06_thermal_fan,0,5,fan[%u] speed[%u]\n,../S19/analysis/reverse/full/bmminer/decompiled/156a8_FUN_000156a8.c
+bmminer,0x15a98,FUN_00015a98,100,06_thermal_fan,0,5,Note: front fan is power on!\n,../S19/analysis/reverse/full/bmminer/decompiled/15a98_FUN_00015a98.c
+bmminer,0x15b68,FUN_00015b68,100,06_thermal_fan,0,5,Note: rear fan is power on!\n,../S19/analysis/reverse/full/bmminer/decompiled/15b68_FUN_00015b68.c
+bmminer,0x17a98,FUN_00017a98,1448,04_asic_chain;06_thermal_fan,0,3,"sensor %d @ chain %d is %s offset is:%d | sensor %d @ chain %d, offset = %d | chain %d temp sensor %s\n | sensor %d @ chain %d chip_temp_offset less than 2, no need to set offset",../S19/analysis/reverse/full/bmminer/decompiled/17a98_FUN_00017a98.c
+bmminer,0x220e0,FUN_000220e0,352,06_thermal_fan,0,3,temp_chip,../S19/analysis/reverse/full/bmminer/decompiled/220e0_FUN_000220e0.c
+bmminer,0x22244,FUN_00022244,352,06_thermal_fan,0,3,temp_pcb,../S19/analysis/reverse/full/bmminer/decompiled/22244_FUN_00022244.c
+bmminer,0x21fb8,FUN_00021fb8,292,06_thermal_fan,0,3,temp_pic,../S19/analysis/reverse/full/bmminer/decompiled/21fb8_FUN_00021fb8.c
+bmminer,0x18510,FUN_00018510,216,06_thermal_fan,0,3,do not read temp anymore...,../S19/analysis/reverse/full/bmminer/decompiled/18510_FUN_00018510.c
+bmminer,0x1b9d4,FUN_0001b9d4,68,04_asic_chain;06_thermal_fan,0,3,"No temp, chain = %d.\n",../S19/analysis/reverse/full/bmminer/decompiled/1b9d4_FUN_0001b9d4.c

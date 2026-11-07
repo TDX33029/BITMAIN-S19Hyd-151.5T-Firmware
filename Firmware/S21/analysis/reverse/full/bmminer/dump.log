@@ -1,0 +1,64 @@
+INFO  Using log config file: jar:file:/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/tools/ghidra_12.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Lenovo\AppData\Roaming\ghidra\ghidra_12.2_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Lenovo\AppData\Roaming\ghidra\ghidra_12.2_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (760 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Loaded 53 trusted CA certificates from the OS trust store. (DefaultTrustManagerFactory)  
+INFO  Loaded 118 trusted CA certificates from the Java default trust store. (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (1923 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (19 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\Swift\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\reverse\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S21\analysis\reverse\ghidra_project\S21Hydro (HeadlessAnalyzer)  
+INFO  Opening project: D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S21\analysis\reverse\ghidra_project\S21Hydro (HeadlessProject)  
+INFO  REPORT: Processing project file: /bmminer (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: BMDumpAllFunctions.java 'D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S21/analysis/reverse/full/bmminer/decompiled' 'D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S21/analysis/reverse/full/bmminer/functions.csv' '60'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\reverse\ghidra_scripts\BMDumpAllFunctions.java (HeadlessAnalyzer)  
+INFO  BMDumpAllFunctions.java> progress: total=100 ok=1 fail=0 skipped=99 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=200 ok=17 fail=0 skipped=183 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=300 ok=117 fail=0 skipped=183 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=400 ok=215 fail=0 skipped=185 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=500 ok=315 fail=0 skipped=185 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=600 ok=415 fail=0 skipped=185 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=700 ok=515 fail=0 skipped=185 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=800 ok=615 fail=0 skipped=185 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=900 ok=715 fail=0 skipped=185 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1000 ok=814 fail=0 skipped=186 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1100 ok=914 fail=0 skipped=186 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1200 ok=1014 fail=0 skipped=186 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1300 ok=1114 fail=0 skipped=186 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1400 ok=1214 fail=0 skipped=186 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1500 ok=1314 fail=0 skipped=186 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1600 ok=1412 fail=0 skipped=188 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1700 ok=1512 fail=0 skipped=188 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1800 ok=1612 fail=0 skipped=188 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=1900 ok=1659 fail=0 skipped=241 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> progress: total=2000 ok=1659 fail=0 skipped=341 (GhidraScript)  
+INFO  BMDumpAllFunctions.java> done: total=2035 ok=1659 fail=0 skipped=376 (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /bmminer (HeadlessAnalyzer)  

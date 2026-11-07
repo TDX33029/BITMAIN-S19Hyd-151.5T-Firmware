@@ -1,0 +1,13 @@
+{
+  "kernel_size": 6031360,
+  "kernel_addr": "0x1080000",
+  "ramdisk_size": 7264256,
+  "ramdisk_addr": "0x1000000",
+  "second_size": 30720,
+  "second_addr": "0xf00000",
+  "tags_addr": "0x100",
+  "page_size": 2048,
+  "cmdline": "init=/sbin/init",
+  "consumed": 13328384,
+  "extra": 512
+}

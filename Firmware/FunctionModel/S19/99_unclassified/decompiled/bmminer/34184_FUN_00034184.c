@@ -1,0 +1,17 @@
+// FUN_00034184 @ 00034184  size=88  callers=0
+// program: bmminer
+
+
+int FUN_00034184(void)
+
+{
+  int iVar1;
+  
+  iVar1 = FUN_00033a18(1,0x58,"util.c","tq_new",0x435);
+  *(int *)iVar1 = iVar1;
+  *(int *)(iVar1 + 4) = iVar1;
+  pthread_mutex_init((pthread_mutex_t *)(iVar1 + 0xc),(pthread_mutexattr_t *)0x0);
+  pthread_cond_init((pthread_cond_t *)(iVar1 + 0x28),(pthread_condattr_t *)0x0);
+  return iVar1;
+}
+

@@ -1,0 +1,28 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x418fc,FUN_000418fc,3280,05_freq_voltage;04_asic_chain,0,10,"Dump freq tuning fine result:\n | >>>> Do freq tuning fine parallel.\n | Parallel tuning failed, exit.\n | Do freq tuning fine.\n",../S19/analysis/reverse/full/bmminer/decompiled/418fc_FUN_000418fc.c
+bmminer,0x39544,FUN_00039544,2548,05_freq_voltage;10_config_eeprom;06_thermal_fan,0,10,press any key to start rising frequency... | fixed frequency is %d\n,../S19/analysis/reverse/full/bmminer/decompiled/39544_FUN_00039544.c
+bmminer,0x2a998,FUN_0002a998,1840,05_freq_voltage,0,10,tuning freq end\n | tuning freq start\n,../S19/analysis/reverse/full/bmminer/decompiled/2a998_FUN_0002a998.c
+bmminer,0x405b4,FUN_000405b4,1544,05_freq_voltage,0,10,Do freq tuning basic.\n | >>>> Do tuning parallel.\n,../S19/analysis/reverse/full/bmminer/decompiled/405b4_FUN_000405b4.c
+bmminer,0x19dc8,FUN_00019dc8,1024,05_freq_voltage;02_power_psu,0,10,"level %d, voltage = %d frequency = %d",../S19/analysis/reverse/full/bmminer/decompiled/19dc8_FUN_00019dc8.c
+bmminer,0x1d9cc,FUN_0001d9cc,356,05_freq_voltage,0,10,Get frequency failed!,../S19/analysis/reverse/full/bmminer/decompiled/1d9cc_FUN_0001d9cc.c
+bmminer,0x417b0,FUN_000417b0,332,05_freq_voltage,0,10,[DEBUG] freq tuning fine init.\n,../S19/analysis/reverse/full/bmminer/decompiled/417b0_FUN_000417b0.c
+bmminer,0x3ffb0,FUN_0003ffb0,312,05_freq_voltage,0,10,[DEBUG] Freq tuning basic init.\n | Fail to allocate memory for freq tuning basic context.\n | [DEBUG] Allocate memory for freq tuning basic.\n,../S19/analysis/reverse/full/bmminer/decompiled/3ffb0_FUN_0003ffb0.c
+bmminer,0x400e8,FUN_000400e8,188,05_freq_voltage,0,10,[DEBUG] Freq tuning basic exit.\n | [DEBUG] Free memory for freq tuning basic.\n,../S19/analysis/reverse/full/bmminer/decompiled/400e8_FUN_000400e8.c
+bmminer,0x41128,FUN_00041128,188,05_freq_voltage,0,10,[DEBUG] freq tuning fine exit.\n,../S19/analysis/reverse/full/bmminer/decompiled/41128_FUN_00041128.c
+bmminer,0x29bb8,FUN_00029bb8,580,05_freq_voltage,0,9,"%s, voltage = %d, freq = %d, hashrate = %f, miner_power = %04d, jt = %f\r\n",../S19/analysis/reverse/full/bmminer/decompiled/29bb8_FUN_00029bb8.c
+bmminer,0x1e400,FUN_0001e400,1336,05_freq_voltage;04_asic_chain,0,5,"chain = %d, start = %d, freq_step = %.2f\n",../S19/analysis/reverse/full/bmminer/decompiled/1e400_FUN_0001e400.c
+bmminer,0x412b4,FUN_000412b4,1276,05_freq_voltage,0,5,freq_serial_threshold | freq_tuning_fine_count | freq_tuning_fine_step | freq_diff_threshold,../S19/analysis/reverse/full/bmminer/decompiled/412b4_FUN_000412b4.c
+bmminer,0x1db34,FUN_0001db34,1024,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq = %g, is_higher_voltage = %s\n | [%d] _POSTDIV1 = %d, _POSTDIV2 = %d, USER_DIV = %d, freq = %d\n",../S19/analysis/reverse/full/bmminer/decompiled/1db34_FUN_0001db34.c
+bmminer,0x40238,FUN_00040238,892,05_freq_voltage,0,5,freq_base | freq_step | freq_serial_threshold | freq_threshold,../S19/analysis/reverse/full/bmminer/decompiled/40238_FUN_00040238.c
+bmminer,0x1df34,FUN_0001df34,668,05_freq_voltage;04_asic_chain,0,5,"chain = %d set freq to %.2f | fixed step freq_start = %d, freq_end = %d, freq_step = %.2f\n",../S19/analysis/reverse/full/bmminer/decompiled/1df34_FUN_0001df34.c
+bmminer,0x1e1dc,FUN_0001e1dc,540,05_freq_voltage;04_asic_chain,0,5,"chain = %d set freq to %.2f | fixed step chain = %d, freq_start = %d, freq_end = %d, freq_step = %.2f, is_higher_voltage = %s\n",../S19/analysis/reverse/full/bmminer/decompiled/1e1dc_FUN_0001e1dc.c
+bmminer,0x57ae4,FUN_00057ae4,540,05_freq_voltage;07_mining_pool,0,5,"Want freq: %f, Real freq: %f\n",../S19/analysis/reverse/full/bmminer/decompiled/57ae4_FUN_00057ae4.c
+bmminer,0x368b4,FUN_000368b4,492,05_freq_voltage,0,5,"freq = %d, percent = %d, hcn = %d, timeout = %d\n",../S19/analysis/reverse/full/bmminer/decompiled/368b4_FUN_000368b4.c
+bmminer,0x40f68,FUN_00040f68,448,05_freq_voltage;04_asic_chain,0,5,"[DEBUG] Dump freq table, chain = %d.\n",../S19/analysis/reverse/full/bmminer/decompiled/40f68_FUN_00040f68.c
+bmminer,0x1ba18,FUN_0001ba18,440,05_freq_voltage;04_asic_chain,0,5,"No work mode freq, chain = %d, mode = %d.\n | freq level not match",../S19/analysis/reverse/full/bmminer/decompiled/1ba18_FUN_0001ba18.c
+bmminer,0x40e04,FUN_00040e04,356,05_freq_voltage;04_asic_chain;07_mining_pool,0,5,"chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough\n | chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough\n | chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough\n",../S19/analysis/reverse/full/bmminer/decompiled/40e04_FUN_00040e04.c
+bmminer,0x40c6c,FUN_00040c6c,204,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_min = %d\n",../S19/analysis/reverse/full/bmminer/decompiled/40c6c_FUN_00040c6c.c
+bmminer,0x40d38,FUN_00040d38,204,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_max = %d\n",../S19/analysis/reverse/full/bmminer/decompiled/40d38_FUN_00040d38.c
+bmminer,0x21b3c,FUN_00021b3c,192,05_freq_voltage,0,5,freq_avg,../S19/analysis/reverse/full/bmminer/decompiled/21b3c_FUN_00021b3c.c
+bmminer,0x40bc0,FUN_00040bc0,172,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_avg = %d\n",../S19/analysis/reverse/full/bmminer/decompiled/40bc0_FUN_00040bc0.c
+bmminer,0x3628c,FUN_0003628c,72,05_freq_voltage,0,5,This is fix-freq version\n,../S19/analysis/reverse/full/bmminer/decompiled/3628c_FUN_0003628c.c

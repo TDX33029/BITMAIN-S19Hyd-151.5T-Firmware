@@ -1,0 +1,10 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x2ecf8,FUN_0002ecf8,1224,07_mining_pool,0,7,"%s, rec job data %p size: %d\n",../S19/analysis/reverse/full/bmminer/decompiled/2ecf8_FUN_0002ecf8.c
+bmminer,0x13f28,FUN_00013f28,5752,04_asic_chain;13_os_service;07_mining_pool,0,6,"nonce fifo flush by nonce, last_ts = %.2f.\n | reepat nonce error",../S19/analysis/reverse/full/bmminer/decompiled/13f28_FUN_00013f28.c
+bmminer,0x57ae4,FUN_00057ae4,540,05_freq_voltage;07_mining_pool,0,5,"Want freq: %f, Real freq: %f\n",../S19/analysis/reverse/full/bmminer/decompiled/57ae4_FUN_00057ae4.c
+bmminer,0x40e04,FUN_00040e04,356,05_freq_voltage;04_asic_chain;07_mining_pool,0,5,"chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough\n | chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough\n | chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough\n",../S19/analysis/reverse/full/bmminer/decompiled/40e04_FUN_00040e04.c
+bmminer,0x2d114,FUN_0002d114,2516,07_mining_pool,0,4,Generated stratum merkle %s | Generated stratum header %s,../S19/analysis/reverse/full/bmminer/decompiled/2d114_FUN_0002d114.c
+bmminer,0x3777c,FUN_0003777c,1300,04_asic_chain;07_mining_pool,0,3,only support asic boost,../S19/analysis/reverse/full/bmminer/decompiled/3777c_FUN_0003777c.c
+bmminer,0x2ea24,FUN_0002ea24,652,07_mining_pool,0,3,parse job buf len:%d\n,../S19/analysis/reverse/full/bmminer/decompiled/2ea24_FUN_0002ea24.c
+bmminer,0x2ce80,FUN_0002ce80,600,07_mining_pool,0,3,Diff zero passed to set_target,../S19/analysis/reverse/full/bmminer/decompiled/2ce80_FUN_0002ce80.c
+bmminer,0x2bd54,FUN_0002bd54,84,07_mining_pool,0,3,%s\nBuilt with bitmain_c5 mining support.\n,../S19/analysis/reverse/full/bmminer/decompiled/2bd54_FUN_0002bd54.c

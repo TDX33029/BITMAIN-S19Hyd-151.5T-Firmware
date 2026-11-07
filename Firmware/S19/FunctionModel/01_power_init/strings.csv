@@ -1,0 +1,49 @@
+func_addr,func_name,string_addr,string
+0001cc60,FUN_0001cc60,00068fac,set_voltage_by_steps
+0001cd50,FUN_0001cd50,00068fc4,power_init
+0001c978,FUN_0001c978,00068fdc,"chain = %d, voltage = %f "
+0001caa8,FUN_0001caa8,00068ff8,the minimal voltage = %.2f
+0001cc60,FUN_0001cc60,00069040,bitmain_set_voltage failed
+0001cd50,FUN_0001cd50,0006905c,power type version: 0x%04x 
+0001cd50,FUN_0001cd50,00069078,power type version error 
+0001cd50,FUN_0001cd50,00069094,"Initializing the power, please wait, this may take up to 2 minutes... "
+0001cd50,FUN_0001cd50,000690dc,%s power iic error. 
+0001cd50,FUN_0001cd50,000690f4,power voltage can not meet the target
+000388ec,FUN_000388ec,0006f244,power sn:%s 
+000388ec,FUN_000388ec,0006f254,"enable_power_calibration, calibration date:%d. "
+000388ec,FUN_000388ec,0006f284,warning:power is not calibrated. 
+000388ec,FUN_000388ec,0006f2a8,get power type version failed!
+0004f1d4,FUN_0004f1d4,000727d8,bitmain_power_read
+0004fd58,FUN_0004fd58,00072a48,bitmain_power_is_calibrated
+0004fe60,FUN_0004fe60,00072a64,bitmain_power_sw_ver
+00050390,FUN_00050390,00072aa4,bitmain_set_voltage
+000506f8,FUN_000506f8,00072ac0,bitmain_get_voltage
+0004e2c4,FUN_0004e2c4,00072ad4,WARNING: exec_power_cmd_v2 only support even len 
+0004e544,FUN_0004e544,00072b08,Get power dc_volt value failed 
+0004e648,FUN_0004e648,00072b28,power 0x05 cmd failed 
+0004e718,FUN_0004e718,00072b40,Get ac power failed 
+0004e7fc,FUN_0004e7fc,00072b58,Get power error code failed 
+0004e7fc,FUN_0004e7fc,00072b78,"Get power error code[4-7 8-11] %02x%02x%02x%02x %02x%02x%02x%02x, err_code:0x%08x "
+0004e960,FUN_0004e960,00072bcc,Get power reset root cause failed 
+0004ea28,FUN_0004ea28,00072bf0,Get power update time failed 
+0004eae4,FUN_0004eae4,00072c10,Get power error data failed 
+0004eae4,FUN_0004eae4,00072c30,Get power error data: 
+0004ee90,FUN_0004ee90,00072cf4,bitmain power close =========== 
+0004f034,FUN_0004f034,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+0004f1d4,FUN_0004f1d4,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+00050390,FUN_00050390,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+0004fd58,FUN_0004fd58,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+000506f8,FUN_000506f8,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+0004f8b4,FUN_0004f8b4,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+0004fe60,FUN_0004fe60,00072d18,"%s: auto exec bitmain_power_open, but open power failed "
+0004f034,FUN_0004f034,00072d54,get power version failed 
+0004f034,FUN_0004f034,00072d54,get power version failed 
+0004f034,FUN_0004f034,00072d70,"check power version failed, use v2 protocal to try it again "
+0004f1d4,FUN_0004f1d4,00072db0,power open power_version < 0 will close power 
+0004f1d4,FUN_0004f1d4,00072de0,power open power_version = 0x%x 
+0004f1d4,FUN_0004f1d4,00072e04,power is not Calibrated 
+0004f1d4,FUN_0004f1d4,00072e20,power is Calibrated 
+000506f8,FUN_000506f8,00072e50,can nont get voltage 
+0004f8b4,FUN_0004f8b4,00072e50,can nont get voltage 
+0004fe60,FUN_0004fe60,00072ed4,get power fw ver failed 
+000506f8,FUN_000506f8,00072ef0,Get power set_volt value failed 

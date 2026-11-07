@@ -1,0 +1,22 @@
+// FUN_000468b0 @ 000468b0  size=96  callers=0
+// program: cgminer
+
+
+int FUN_000468b0(int param_1,char *param_2)
+
+{
+  size_t sVar1;
+  uint uVar2;
+  int iVar3;
+  
+  sVar1 = strlen(param_2);
+  uVar2 = FUN_00045d6c(param_2,sVar1,DAT_00072c28);
+  iVar3 = FUN_000462b0(param_1,*(int *)(param_1 + 4) +
+                               (uVar2 & ~(-1 << (*(uint *)(param_1 + 8) & 0xff))) * 8,param_2,uVar2)
+  ;
+  if (iVar3 != 0) {
+    iVar3 = iVar3 + 8;
+  }
+  return iVar3;
+}
+

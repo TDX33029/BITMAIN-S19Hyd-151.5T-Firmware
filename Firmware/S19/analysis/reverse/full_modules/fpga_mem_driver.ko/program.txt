@@ -1,0 +1,9 @@
+name=fpga_mem_driver.ko
+executable_path=/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/ko_bin/fpga_mem_driver.ko
+language=ARM:LE:32:v8
+functions=22
+decompiled=5
+failed=0
+skipped=17
+strings=114
+call_edges=19

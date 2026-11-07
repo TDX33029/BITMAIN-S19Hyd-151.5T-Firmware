@@ -1,0 +1,464 @@
+program,address,name,size,labels,seed,score,evidence,source
+cgminer,0x39624,FUN_00039624,6748,07_mining_pool,0,16,mining.configure | mining.set_version_mask,../S21/analysis/reverse/full_aux/cgminer/decompiled/39624_FUN_00039624.c
+cgminer,0x21e14,FUN_00021e14,3540,07_mining_pool,0,15,"{""id"": %d, ""method"": ""mining.subscribe"", ""params"": []} | Pool %d confirmed mining.subscribe with extranonce1 %s extran2size %d | {""id"": %d, ""method"": ""mining.subscribe"", ""params"": [""%s/%s""]} | {""id"": %d, ""method"": ""mining.subscribe"", ""params"": [""%s/%s"", ""%s""]}",../S21/analysis/reverse/full_aux/cgminer/decompiled/21e14_FUN_00021e14.c
+cgminer,0x12d28,FUN_00012d28,14404,07_mining_pool;11_log_monitor;09_web_api,0,13,Blank worker exists.\n,../S21/analysis/reverse/full_aux/cgminer/decompiled/12d28_FUN_00012d28.c
+cgminer,0x24a8c,FUN_00024a8c,5588,07_mining_pool;12_crypto,0,13,"Pool %d confirmed mining.subscribe with extranonce1 %s extran2size %d | {""id"":%d, ""method"":""mining.configure"", ""params"":[[""version-rolling""],{""version-rolling.mask"":""%08x"",""version-rolling.min-bit-count"":%d}]}",../S21/analysis/reverse/full_aux/cgminer/decompiled/24a8c_FUN_00024a8c.c
+cgminer,0x36bf0,FUN_00036bf0,4324,07_mining_pool,0,13,"{""params"": [""%s"", ""%s"", ""%s"", ""%s"", ""%s""], ""id"": %d, ""method"": ""mining.submit""} | {""params"": [""%s"", ""%s"", ""%s"", ""%s"", ""%s"", ""%08x""], ""id"": %d, ""method"": ""mining.submit""}",../S21/analysis/reverse/full_aux/cgminer/decompiled/36bf0_FUN_00036bf0.c
+cgminer,0x270d0,FUN_000270d0,1016,07_mining_pool,0,13,"Method 'subscribe' not found for service 'mining.extranonce' | Cannot subscribe to mining.extranonce for pool %d | {""id"": %d, ""method"": ""mining.extranonce.subscribe"", ""params"": []}",../S21/analysis/reverse/full_aux/cgminer/decompiled/270d0_FUN_000270d0.c
+bmminer,0x34f98,FUN_00034f98,304,12_crypto;07_mining_pool,0,13,verify failed | openssl dgst -sha256 -verify /etc/bitmain-adv.pub -signature /nvdata/pool/pool.json.sig /nvdata/pool/pool.json > /dev/null 2>&1,../S21/analysis/reverse/full/bmminer/decompiled/34f98_FUN_00034f98.c
+cgminer,0x37ce0,FUN_00037ce0,6344,07_mining_pool,0,10,Network diff set to %s | New block: %s... diff %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/37ce0_FUN_00037ce0.c
+cgminer,0x17678,FUN_00017678,2284,07_mining_pool,0,10,Best Share | Last Share Difficulty | Last Share Time,../S21/analysis/reverse/full_aux/cgminer/decompiled/17678_FUN_00017678.c
+cgminer,0x320b0,FUN_000320b0,2024,07_mining_pool,0,10,Lost %d shares due to no stratum share response from pool %d,../S21/analysis/reverse/full_aux/cgminer/decompiled/320b0_FUN_000320b0.c
+cgminer,0x3b884,FUN_0003b884,1872,07_mining_pool,0,10,"Pool %d stale share detected, submitting as user requested | Pool %d stale share detected, discarding | Accepted %s %d benchmark share nonce %08x | Pool %d stale share detected, submitting as pool requested",../S21/analysis/reverse/full_aux/cgminer/decompiled/3b884_FUN_0003b884.c
+cgminer,0x274c8,FUN_000274c8,752,07_mining_pool,0,10,"{""id"": %d, ""method"": ""mining.suggest_difficulty"", ""params"": [%d]} | {""id"": %d, ""method"": ""mining.authorize"", ""params"": [""%s"", ""%s""]}",../S21/analysis/reverse/full_aux/cgminer/decompiled/274c8_FUN_000274c8.c
+cgminer,0x264e0,FUN_000264e0,3028,07_mining_pool,0,8,mining.set_version_mask | mining.ping | mining.set_difficulty | mining.multi_version,../S21/analysis/reverse/full_aux/cgminer/decompiled/264e0_FUN_000264e0.c
+cgminer,0x2cd4c,FUN_0002cd4c,2016,07_mining_pool;13_os_service,0,7,"Testing pool %d stratum %s | Failed to create stratum sthread | No Stratum, GBT or Solo support in pool %d %s unable to use | Failed to create stratum rthread",../S21/analysis/reverse/full_aux/cgminer/decompiled/2cd4c_FUN_0002cd4c.c
+bmminer,0x35a44,FUN_00035a44,1300,07_mining_pool,0,7,pool.json not existed do nothing,../S21/analysis/reverse/full/bmminer/decompiled/35a44_FUN_00035a44.c
+bmminer,0x44b40,FUN_00044b40,1272,07_mining_pool,0,7,"%s, rec job data %p size: %d\n",../S21/analysis/reverse/full/bmminer/decompiled/44b40_FUN_00044b40.c
+cgminer,0x33d64,FUN_00033d64,1252,07_mining_pool,0,7,Work stale due to stratum job_id mismatch | Work stale due to stratum inactive,../S21/analysis/reverse/full_aux/cgminer/decompiled/33d64_FUN_00033d64.c
+cgminer,0x2610c,FUN_0002610c,976,07_mining_pool;04_asic_chain,0,7,Denied stratum reconnect request for pool without domain '%s' | Denied stratum reconnect request to non-matching domain url '%s' | Denied stratum reconnect request to url without domain '%s' | Stratum reconnect requested from pool %d to %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/2610c_FUN_0002610c.c
+cgminer,0x214d4,FUN_000214d4,944,07_mining_pool,0,7,Stratum send failed due to no pool stratum_active,../S21/analysis/reverse/full_aux/cgminer/decompiled/214d4_FUN_000214d4.c
+cgminer,0x328bc,FUN_000328bc,904,07_mining_pool,0,7,Lost %d shares due to stratum disconnect on pool %d,../S21/analysis/reverse/full_aux/cgminer/decompiled/328bc_FUN_000328bc.c
+cgminer,0x317d4,FUN_000317d4,804,07_mining_pool,0,7,Cleared %d work items due to stratum disconnect on pool %d,../S21/analysis/reverse/full_aux/cgminer/decompiled/317d4_FUN_000317d4.c
+bmminer,0x350c8,FUN_000350c8,400,07_mining_pool,0,7,open /nvdata/pool/pool.json failed | /nvdata/pool/pool.json,../S21/analysis/reverse/full/bmminer/decompiled/350c8_FUN_000350c8.c
+cgminer,0x2a4a8,FUN_0002a4a8,392,07_mining_pool,0,7,stratum+tls:// | stratum+tcp://,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a4a8_FUN_0002a4a8.c
+cgminer,0x21370,FUN_00021370,352,07_mining_pool,0,7,Closing socket for stratum pool %d,../S21/analysis/reverse/full_aux/cgminer/decompiled/21370_FUN_00021370.c
+cgminer,0x2ffe4,FUN_0002ffe4,180,07_mining_pool,0,7,Stratum connection to pool %d resumed,../S21/analysis/reverse/full_aux/cgminer/decompiled/2ffe4_FUN_0002ffe4.c
+cgminer,0x2e0c8,FUN_0002e0c8,5028,07_mining_pool;05_freq_voltage;08_network,0,6,Share submissions: %lld |  Share submissions: %lld | Best share difficulty: %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/2e0c8_FUN_0002e0c8.c
+cgminer,0x19e28,FUN_00019e28,2236,07_mining_pool,0,6,Last Share Pool | Last Share Difficulty | Last Share Time,../S21/analysis/reverse/full_aux/cgminer/decompiled/19e28_FUN_00019e28.c
+cgminer,0x1af70,FUN_0001af70,2196,07_mining_pool;08_network,0,6,Best Share,../S21/analysis/reverse/full_aux/cgminer/decompiled/1af70_FUN_0001af70.c
+bmminer,0x46a48,FUN_00046a48,1060,04_asic_chain;07_mining_pool;10_config_eeprom,0,6,!!! nonce invalid | !!! nonce crc error,../S21/analysis/reverse/full/bmminer/decompiled/46a48_FUN_00046a48.c
+cgminer,0x21028,FUN_00021028,840,07_mining_pool,0,6,JSON-RPC unexpected mining.configure value: %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/21028_FUN_00021028.c
+cgminer,0x23668,FUN_00023668,4452,07_mining_pool,0,5,settime notify.ntime successfuly,../S21/analysis/reverse/full_aux/cgminer/decompiled/23668_FUN_00023668.c
+cgminer,0x2f770,FUN_0002f770,832,11_log_monitor;07_mining_pool,0,5,Killing off watchdog thread,../S21/analysis/reverse/full_aux/cgminer/decompiled/2f770_FUN_0002f770.c
+bmminer,0x5cafc,FUN_0005cafc,368,05_freq_voltage;04_asic_chain;07_mining_pool,0,5,"chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough\n | chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough\n | chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough\n",../S21/analysis/reverse/full/bmminer/decompiled/5cafc_FUN_0005cafc.c
+bmminer,0x42c8c,FUN_00042c8c,2544,07_mining_pool,0,4,Generated stratum header %s | Generated stratum merkle %s,../S21/analysis/reverse/full/bmminer/decompiled/42c8c_FUN_00042c8c.c
+cgminer,0x3d300,FUN_0003d300,2028,13_os_service;07_mining_pool,0,4,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3d300_FUN_0003d300.c
+cgminer,0x33628,FUN_00033628,1500,07_mining_pool,0,4,Generated stratum header %s | Generated stratum merkle %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/33628_FUN_00033628.c
+cgminer,0x330f0,FUN_000330f0,648,13_os_service;07_mining_pool,0,4,,../S21/analysis/reverse/full_aux/cgminer/decompiled/330f0_FUN_000330f0.c
+cgminer,0x298dc,FUN_000298dc,300,13_os_service;07_mining_pool,0,4,,../S21/analysis/reverse/full_aux/cgminer/decompiled/298dc_FUN_000298dc.c
+cgminer,0x28d5c,FUN_00028d5c,284,13_os_service;07_mining_pool,0,4,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28d5c_FUN_00028d5c.c
+cgminer,0x2a4dc,FUN_0002a4dc,220,07_mining_pool;09_web_api,0,4,stratum+tcp://,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a4dc_FUN_0002a4dc.c
+bmminer,0x35258,FUN_00035258,2028,07_mining_pool,0,3,pool item failed\n | get pool failed\n,../S21/analysis/reverse/full/bmminer/decompiled/35258_FUN_00035258.c
+cgminer,0x3b0b8,FUN_0003b0b8,1992,07_mining_pool,0,3,Pushing work from pool %d to hash queue,../S21/analysis/reverse/full_aux/cgminer/decompiled/3b0b8_FUN_0003b0b8.c
+cgminer,0x35cd4,FUN_00035cd4,1728,07_mining_pool,0,3,"work prepare failed, exiting mining thread %d",../S21/analysis/reverse/full_aux/cgminer/decompiled/35cd4_FUN_00035cd4.c
+cgminer,0x27b5c,FUN_00027b5c,1568,04_asic_chain;07_mining_pool,0,3,midstate %s data %s nonce %s hash %s | %s %08x midstate %s data %s nonce %s hash %s diff %lld | %s %08x work %s midstate %s data %s nonce %s hash %s diff %lld,../S21/analysis/reverse/full_aux/cgminer/decompiled/27b5c_FUN_00027b5c.c
+cgminer,0x2ad5c,FUN_0002ad5c,1508,07_mining_pool,0,3,"\n		""extranonce-subscribe"" : true,",../S21/analysis/reverse/full_aux/cgminer/decompiled/2ad5c_FUN_0002ad5c.c
+bmminer,0x50414,FUN_00050414,1316,04_asic_chain;07_mining_pool,0,3,only support asic boost,../S21/analysis/reverse/full/bmminer/decompiled/50414_FUN_00050414.c
+cgminer,0x43ce4,FUN_00043ce4,1120,06_thermal_fan;07_mining_pool,0,3,malloc temp job data buf failed: %d\n,../S21/analysis/reverse/full_aux/cgminer/decompiled/43ce4_FUN_00043ce4.c
+cgminer,0x31afc,FUN_00031afc,1060,07_mining_pool,0,3,Switching to pool %d %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/31afc_FUN_00031afc.c
+bmminer,0x44854,FUN_00044854,680,07_mining_pool,0,3,parse job buf len:%d\n,../S21/analysis/reverse/full/bmminer/decompiled/44854_FUN_00044854.c
+cgminer,0x311dc,FUN_000311dc,664,07_mining_pool,0,3,New best share: %s,../S21/analysis/reverse/full_aux/cgminer/decompiled/311dc_FUN_000311dc.c
+bmminer,0x429e0,FUN_000429e0,620,07_mining_pool,0,3,Diff zero passed to set_target,../S21/analysis/reverse/full/bmminer/decompiled/429e0_FUN_000429e0.c
+bmminer,0x33570,FUN_00033570,608,07_mining_pool,0,3,pool array item failed\n,../S21/analysis/reverse/full/bmminer/decompiled/33570_FUN_00033570.c
+cgminer,0x2b530,FUN_0002b530,600,07_mining_pool,0,3,Diff zero passed to set_target,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b530_FUN_0002b530.c
+cgminer,0x20de0,FUN_00020de0,580,07_mining_pool,0,3,"Pool %d rolling mask do not match! | mask returned by pool is %s, swaped = 0x%x",../S21/analysis/reverse/full_aux/cgminer/decompiled/20de0_FUN_00020de0.c
+cgminer,0x314b0,FUN_000314b0,548,07_mining_pool,0,3,Found block for pool %d!,../S21/analysis/reverse/full_aux/cgminer/decompiled/314b0_FUN_000314b0.c
+cgminer,0x28560,FUN_00028560,532,07_mining_pool,0,3,Failed to open %s for share log | Failed to open fd %u for share log | Standard output missing for share log,../S21/analysis/reverse/full_aux/cgminer/decompiled/28560_FUN_00028560.c
+cgminer,0x3c1b0,FUN_0003c1b0,408,07_mining_pool,0,3,%s %d: Share above target,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c1b0_FUN_0003c1b0.c
+cgminer,0x2fe1c,FUN_0002fe1c,312,07_mining_pool,0,3,"Pool %d %s alive, testing stability | Pool %d %s alive",../S21/analysis/reverse/full_aux/cgminer/decompiled/2fe1c_FUN_0002fe1c.c
+cgminer,0x306ac,FUN_000306ac,304,07_mining_pool;10_config_eeprom,0,3,Setting pool %d to quota %d,../S21/analysis/reverse/full_aux/cgminer/decompiled/306ac_FUN_000306ac.c
+cgminer,0x31f80,FUN_00031f80,304,07_mining_pool,0,3,Pool %d %s failed to return work | Pool %d %s not responding!,../S21/analysis/reverse/full_aux/cgminer/decompiled/31f80_FUN_00031f80.c
+cgminer,0x316dc,FUN_000316dc,248,07_mining_pool,0,3,Share above target,../S21/analysis/reverse/full_aux/cgminer/decompiled/316dc_FUN_000316dc.c
+cgminer,0x29148,FUN_00029148,244,07_mining_pool,0,3,WTF No pool %d found!,../S21/analysis/reverse/full_aux/cgminer/decompiled/29148_FUN_00029148.c
+cgminer,0x305c0,FUN_000305c0,236,07_mining_pool,0,3,Pool %d extranonce subscribing enabled.,../S21/analysis/reverse/full_aux/cgminer/decompiled/305c0_FUN_000305c0.c
+cgminer,0x3bfd8,FUN_0003bfd8,232,07_mining_pool,0,3,%s %s %d: Share above target,../S21/analysis/reverse/full_aux/cgminer/decompiled/3bfd8_FUN_0003bfd8.c
+bmminer,0x2460c,FUN_0002460c,192,07_mining_pool,0,3,"Slept %d seconds, diff = %d.\n",../S21/analysis/reverse/full/bmminer/decompiled/2460c_FUN_0002460c.c
+cgminer,0x2b848,FUN_0002b848,164,07_mining_pool,0,3,%s %d duplicate share detected as HW error,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b848_FUN_0002b848.c
+bmminer,0x41654,FUN_00041654,84,07_mining_pool,0,3,%s\nBuilt with bitmain_c5 mining support.\n,../S21/analysis/reverse/full/bmminer/decompiled/41654_FUN_00041654.c
+cgminer,0x28774,FUN_00028774,84,07_mining_pool,0,3,%s\nBuilt with bitmain_c5 mining support.\n,../S21/analysis/reverse/full_aux/cgminer/decompiled/28774_FUN_00028774.c
+cgminer,0x1b83c,FUN_0001b83c,4792,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1b83c_FUN_0001b83c.c
+cgminer,0x21888,FUN_00021888,1404,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/21888_FUN_00021888.c
+cgminer,0x29318,FUN_00029318,896,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29318_FUN_00029318.c
+cgminer,0x44b4c,FUN_00044b4c,680,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/44b4c_FUN_00044b4c.c
+cgminer,0x18a04,FUN_00018a04,672,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/18a04_FUN_00018a04.c
+cgminer,0x1eae0,FUN_0001eae0,656,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1eae0_FUN_0001eae0.c
+cgminer,0x44e0c,FUN_00044e0c,332,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/44e0c_FUN_00044e0c.c
+cgminer,0x2b3d0,FUN_0002b3d0,252,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b3d0_FUN_0002b3d0.c
+cgminer,0x42dbc,FUN_00042dbc,248,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/42dbc_FUN_00042dbc.c
+cgminer,0x42888,FUN_00042888,192,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/42888_FUN_00042888.c
+cgminer,0x1f76c,FUN_0001f76c,140,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f76c_FUN_0001f76c.c
+cgminer,0x2c310,FUN_0002c310,92,07_mining_pool,0,2,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2c310_FUN_0002c310.c
+cgminer,0x1710c,FUN_0001710c,1384,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1710c_FUN_0001710c.c
+cgminer,0x43954,FUN_00043954,904,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/43954_FUN_00043954.c
+cgminer,0x4294c,FUN_0004294c,608,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4294c_FUN_0004294c.c
+cgminer,0x16f00,FUN_00016f00,520,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16f00_FUN_00016f00.c
+cgminer,0x16be8,FUN_00016be8,508,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16be8_FUN_00016be8.c
+cgminer,0x17f7c,FUN_00017f7c,332,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/17f7c_FUN_00017f7c.c
+cgminer,0x427b4,FUN_000427b4,208,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/427b4_FUN_000427b4.c
+cgminer,0x42eb8,FUN_00042eb8,68,07_mining_pool,0,1,,../S21/analysis/reverse/full_aux/cgminer/decompiled/42eb8_FUN_00042eb8.c
+cgminer,0x34b64,FUN_00034b64,2744,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/34b64_FUN_00034b64.c
+cgminer,0x3c780,FUN_0003c780,2480,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c780_FUN_0003c780.c
+cgminer,0x47044,FUN_00047044,2064,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/47044_FUN_00047044.c
+cgminer,0x45398,FUN_00045398,2028,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45398_FUN_00045398.c
+cgminer,0x45d6c,FUN_00045d6c,1204,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45d6c_FUN_00045d6c.c
+cgminer,0x3f108,FUN_0003f108,1200,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3f108_FUN_0003f108.c
+cgminer,0x32c58,FUN_00032c58,1172,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/32c58_FUN_00032c58.c
+cgminer,0x3f5b8,FUN_0003f5b8,1092,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3f5b8_FUN_0003f5b8.c
+cgminer,0x2bc14,FUN_0002bc14,1080,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2bc14_FUN_0002bc14.c
+cgminer,0x2c608,FUN_0002c608,1036,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2c608_FUN_0002c608.c
+cgminer,0x30aa8,FUN_00030aa8,1032,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/30aa8_FUN_00030aa8.c
+cgminer,0x346ac,FUN_000346ac,836,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/346ac_FUN_000346ac.c
+cgminer,0x1cb54,FUN_0001cb54,828,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1cb54_FUN_0001cb54.c
+cgminer,0x3424c,FUN_0003424c,828,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3424c_FUN_0003424c.c
+cgminer,0x3fc20,FUN_0003fc20,812,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3fc20_FUN_0003fc20.c
+cgminer,0x35694,FUN_00035694,788,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/35694_FUN_00035694.c
+cgminer,0x3daf0,FUN_0003daf0,788,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3daf0_FUN_0003daf0.c
+cgminer,0x3ff4c,memmem,744,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ff4c_memmem.c
+cgminer,0x1cf38,FUN_0001cf38,684,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1cf38_FUN_0001cf38.c
+cgminer,0x33380,FUN_00033380,672,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/33380_FUN_00033380.c
+cgminer,0x46428,FUN_00046428,660,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46428_FUN_00046428.c
+cgminer,0x45008,FUN_00045008,648,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45008_FUN_00045008.c
+cgminer,0x28838,FUN_00028838,620,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28838_FUN_00028838.c
+cgminer,0x3009c,FUN_0003009c,584,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3009c_FUN_0003009c.c
+cgminer,0x2aa68,FUN_0002aa68,568,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2aa68_FUN_0002aa68.c
+cgminer,0x1e6b0,FUN_0001e6b0,508,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1e6b0_FUN_0001e6b0.c
+cgminer,0x1fe44,FUN_0001fe44,496,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1fe44_FUN_0001fe44.c
+cgminer,0x4a000,FUN_0004a000,492,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a000_FUN_0004a000.c
+cgminer,0x27874,FUN_00027874,488,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/27874_FUN_00027874.c
+cgminer,0x1dd98,FUN_0001dd98,480,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1dd98_FUN_0001dd98.c
+cgminer,0x48cd4,FUN_00048cd4,460,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48cd4_FUN_00048cd4.c
+cgminer,0x2c3b0,FUN_0002c3b0,444,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2c3b0_FUN_0002c3b0.c
+cgminer,0x183a4,FUN_000183a4,428,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/183a4_FUN_000183a4.c
+cgminer,0x1fb7c,FUN_0001fb7c,420,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1fb7c_FUN_0001fb7c.c
+cgminer,0x29a08,FUN_00029a08,420,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29a08_FUN_00029a08.c
+cgminer,0x296a0,FUN_000296a0,396,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/296a0_FUN_000296a0.c
+cgminer,0x16a60,FUN_00016a60,392,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16a60_FUN_00016a60.c
+cgminer,0x2a2a8,FUN_0002a2a8,388,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a2a8_FUN_0002a2a8.c
+cgminer,0x46e30,FUN_00046e30,388,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46e30_FUN_00046e30.c
+cgminer,0x28af0,FUN_00028af0,384,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28af0_FUN_00028af0.c
+cgminer,0x20a48,FUN_00020a48,372,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20a48_FUN_00020a48.c
+cgminer,0x3eb3c,FUN_0003eb3c,372,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3eb3c_FUN_0003eb3c.c
+cgminer,0x23324,FUN_00023324,368,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/23324_FUN_00023324.c
+cgminer,0x2c108,FUN_0002c108,368,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2c108_FUN_0002c108.c
+cgminer,0x30938,FUN_00030938,364,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/30938_FUN_00030938.c
+cgminer,0x3c44c,FUN_0003c44c,352,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c44c_FUN_0003c44c.c
+cgminer,0x33c08,FUN_00033c08,344,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/33c08_FUN_00033c08.c
+cgminer,0x1f444,FUN_0001f444,336,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f444_FUN_0001f444.c
+cgminer,0x230d0,FUN_000230d0,336,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/230d0_FUN_000230d0.c
+cgminer,0x49cb0,FUN_00049cb0,336,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49cb0_FUN_00049cb0.c
+cgminer,0x1d438,FUN_0001d438,328,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1d438_FUN_0001d438.c
+cgminer,0x42f00,FUN_00042f00,328,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/42f00_FUN_00042f00.c
+cgminer,0x4a1bc,FUN_0004a1bc,324,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a1bc_FUN_0004a1bc.c
+cgminer,0x16920,FUN_00016920,320,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16920_FUN_00016920.c
+cgminer,0x48668,FUN_00048668,320,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48668_FUN_00048668.c
+cgminer,0x2f5a8,FUN_0002f5a8,316,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2f5a8_FUN_0002f5a8.c
+cgminer,0x28e8c,FUN_00028e8c,312,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28e8c_FUN_00028e8c.c
+cgminer,0x1880c,FUN_0001880c,304,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1880c_FUN_0001880c.c
+cgminer,0x46b44,FUN_00046b44,304,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46b44_FUN_00046b44.c
+cgminer,0x2d850,FUN_0002d850,292,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d850_FUN_0002d850.c
+cgminer,0x2f480,FUN_0002f480,292,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2f480_FUN_0002f480.c
+cgminer,0x4671c,FUN_0004671c,288,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4671c_FUN_0004671c.c
+cgminer,0x16de4,FUN_00016de4,284,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16de4_FUN_00016de4.c
+cgminer,0x22db0,FUN_00022db0,284,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/22db0_FUN_00022db0.c
+cgminer,0x4adc8,FUN_0004adc8,278,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4adc8_FUN_0004adc8.c
+cgminer,0x2a654,FUN_0002a654,276,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a654_FUN_0002a654.c
+cgminer,0x3f9fc,FUN_0003f9fc,276,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3f9fc_FUN_0003f9fc.c
+cgminer,0x4acbc,FUN_0004acbc,274,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4acbc_FUN_0004acbc.c
+cgminer,0x23520,FUN_00023520,272,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/23520_FUN_00023520.c
+cgminer,0x3d1f0,FUN_0003d1f0,272,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3d1f0_FUN_0003d1f0.c
+cgminer,0x3fb10,FUN_0003fb10,272,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3fb10_FUN_0003fb10.c
+cgminer,0x18550,FUN_00018550,260,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/18550_FUN_00018550.c
+cgminer,0x47d00,FUN_00047d00,260,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/47d00_FUN_00047d00.c
+cgminer,0x469a4,FUN_000469a4,252,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/469a4_FUN_000469a4.c
+cgminer,0x2921c,FUN_0002921c,248,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2921c_FUN_0002921c.c
+cgminer,0x2dc24,FUN_0002dc24,248,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2dc24_FUN_0002dc24.c
+cgminer,0x49bc0,FUN_00049bc0,240,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49bc0_FUN_00049bc0.c
+cgminer,0x1e988,FUN_0001e988,236,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1e988_FUN_0001e988.c
+cgminer,0x2fc80,FUN_0002fc80,236,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2fc80_FUN_0002fc80.c
+cgminer,0x302e8,FUN_000302e8,236,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/302e8_FUN_000302e8.c
+cgminer,0x487a8,FUN_000487a8,236,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/487a8_FUN_000487a8.c
+cgminer,0x49960,FUN_00049960,236,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49960_FUN_00049960.c
+cgminer,0x3c694,FUN_0003c694,232,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c694_FUN_0003c694.c
+cgminer,0x48900,FUN_00048900,232,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48900_FUN_00048900.c
+cgminer,0x48214,FUN_00048214,228,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48214_FUN_00048214.c
+cgminer,0x47fa0,FUN_00047fa0,224,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/47fa0_FUN_00047fa0.c
+cgminer,0x49ae0,FUN_00049ae0,224,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49ae0_FUN_00049ae0.c
+cgminer,0x201dc,FUN_000201dc,220,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/201dc_FUN_000201dc.c
+cgminer,0x48578,FUN_00048578,220,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48578_FUN_00048578.c
+cgminer,0x49f0c,FUN_00049f0c,220,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49f0c_FUN_00049f0c.c
+cgminer,0x1fd20,FUN_0001fd20,216,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1fd20_FUN_0001fd20.c
+cgminer,0x49068,FUN_00049068,216,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49068_FUN_00049068.c
+cgminer,0x20bbc,FUN_00020bbc,212,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20bbc_FUN_00020bbc.c
+cgminer,0x3eec8,FUN_0003eec8,212,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3eec8_FUN_0003eec8.c
+cgminer,0x47ecc,FUN_00047ecc,212,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/47ecc_FUN_00047ecc.c
+cgminer,0x1d364,FUN_0001d364,208,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1d364_FUN_0001d364.c
+cgminer,0x20108,FUN_00020108,208,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20108_FUN_00020108.c
+cgminer,0x22cdc,FUN_00022cdc,208,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/22cdc_FUN_00022cdc.c
+cgminer,0x1e1ac,FUN_0001e1ac,204,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1e1ac_FUN_0001e1ac.c
+cgminer,0x2a76c,FUN_0002a76c,204,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a76c_FUN_0002a76c.c
+cgminer,0x4845c,FUN_0004845c,204,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4845c_FUN_0004845c.c
+cgminer,0x497d8,FUN_000497d8,204,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/497d8_FUN_000497d8.c
+cgminer,0x22bec,FUN_00022bec,200,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/22bec_FUN_00022bec.c
+cgminer,0x2dd7c,FUN_0002dd7c,200,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2dd7c_FUN_0002dd7c.c
+cgminer,0x47e04,FUN_00047e04,200,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/47e04_FUN_00047e04.c
+cgminer,0x1d29c,FUN_0001d29c,196,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1d29c_FUN_0001d29c.c
+cgminer,0x3e568,FUN_0003e568,196,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e568_FUN_0003e568.c
+cgminer,0x20794,FUN_00020794,192,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20794_FUN_00020794.c
+cgminer,0x20d20,FUN_00020d20,192,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20d20_FUN_00020d20.c
+cgminer,0x2aca0,FUN_0002aca0,188,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2aca0_FUN_0002aca0.c
+cgminer,0x42630,FUN_00042630,188,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/42630_FUN_00042630.c
+cgminer,0x498a4,FUN_000498a4,188,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/498a4_FUN_000498a4.c
+cgminer,0x18654,FUN_00018654,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/18654_FUN_00018654.c
+cgminer,0x20854,FUN_00020854,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20854_FUN_00020854.c
+cgminer,0x284a8,FUN_000284a8,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/284a8_FUN_000284a8.c
+cgminer,0x3ea84,FUN_0003ea84,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ea84_FUN_0003ea84.c
+cgminer,0x46d74,FUN_00046d74,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46d74_FUN_00046d74.c
+cgminer,0x4815c,FUN_0004815c,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4815c_FUN_0004815c.c
+cgminer,0x495e4,FUN_000495e4,184,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/495e4_FUN_000495e4.c
+cgminer,0x1fac8,FUN_0001fac8,176,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1fac8_FUN_0001fac8.c
+cgminer,0x2df04,FUN_0002df04,176,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2df04_FUN_0002df04.c
+cgminer,0x45290,FUN_00045290,176,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45290_FUN_00045290.c
+cgminer,0x49328,FUN_00049328,176,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49328_FUN_00049328.c
+cgminer,0x1e8dc,FUN_0001e8dc,172,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1e8dc_FUN_0001e8dc.c
+cgminer,0x29c00,FUN_00029c00,172,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29c00_FUN_00029c00.c
+cgminer,0x2d7a0,FUN_0002d7a0,168,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d7a0_FUN_0002d7a0.c
+cgminer,0x2db78,FUN_0002db78,168,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2db78_FUN_0002db78.c
+cgminer,0x1ce90,FUN_0001ce90,164,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1ce90_FUN_0001ce90.c
+cgminer,0x2fd70,FUN_0002fd70,164,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2fd70_FUN_0002fd70.c
+cgminer,0x4a384,FUN_0004a384,164,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a384_FUN_0004a384.c
+cgminer,0x22fd4,FUN_00022fd4,160,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/22fd4_FUN_00022fd4.c
+cgminer,0x2fbd8,FUN_0002fbd8,160,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2fbd8_FUN_0002fbd8.c
+cgminer,0x3e99c,FUN_0003e99c,160,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e99c_FUN_0003e99c.c
+cgminer,0x1875c,FUN_0001875c,152,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1875c_FUN_0001875c.c
+cgminer,0x2a210,FUN_0002a210,152,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a210_FUN_0002a210.c
+cgminer,0x2dfb8,FUN_0002dfb8,152,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2dfb8_FUN_0002dfb8.c
+cgminer,0x1f2cc,FUN_0001f2cc,148,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f2cc_FUN_0001f2cc.c
+cgminer,0x1f978,FUN_0001f978,148,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f978_FUN_0001f978.c
+cgminer,0x2d974,FUN_0002d974,148,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d974_FUN_0002d974.c
+cgminer,0x30008,FUN_00030008,148,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/30008_FUN_00030008.c
+cgminer,0x46ce0,FUN_00046ce0,148,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46ce0_FUN_00046ce0.c
+cgminer,0x49a4c,FUN_00049a4c,148,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49a4c_FUN_00049a4c.c
+cgminer,0x1f8e8,FUN_0001f8e8,144,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f8e8_FUN_0001f8e8.c
+cgminer,0x2a9b4,FUN_0002a9b4,144,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a9b4_FUN_0002a9b4.c
+cgminer,0x496b0,FUN_000496b0,144,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/496b0_FUN_000496b0.c
+cgminer,0x1dff8,FUN_0001dff8,140,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1dff8_FUN_0001dff8.c
+cgminer,0x26080,FUN_00026080,140,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/26080_FUN_00026080.c
+cgminer,0x48b30,FUN_00048b30,140,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48b30_FUN_00048b30.c
+cgminer,0x1d1e8,FUN_0001d1e8,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1d1e8_FUN_0001d1e8.c
+cgminer,0x1f860,FUN_0001f860,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f860_FUN_0001f860.c
+cgminer,0x23494,FUN_00023494,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/23494_FUN_00023494.c
+cgminer,0x29034,FUN_00029034,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29034_FUN_00029034.c
+cgminer,0x2b344,FUN_0002b344,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b344_FUN_0002b344.c
+cgminer,0x2daec,FUN_0002daec,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2daec_FUN_0002daec.c
+cgminer,0x3e628,FUN_0003e628,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e628_FUN_0003e628.c
+cgminer,0x3e6b0,FUN_0003e6b0,136,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e6b0_FUN_0003e6b0.c
+cgminer,0x4a700,FUN_0004a700,132,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a700_FUN_0004a700.c
+cgminer,0x1df78,FUN_0001df78,128,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1df78_FUN_0001df78.c
+cgminer,0x23050,FUN_00023050,128,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/23050_FUN_00023050.c
+cgminer,0x1f594,FUN_0001f594,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f594_FUN_0001f594.c
+cgminer,0x1f610,FUN_0001f610,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f610_FUN_0001f610.c
+cgminer,0x1f68c,FUN_0001f68c,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f68c_FUN_0001f68c.c
+cgminer,0x22f10,FUN_00022f10,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/22f10_FUN_00022f10.c
+cgminer,0x307dc,FUN_000307dc,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/307dc_FUN_000307dc.c
+cgminer,0x345c0,FUN_000345c0,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/345c0_FUN_000345c0.c
+cgminer,0x46394,FUN_00046394,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46394_FUN_00046394.c
+cgminer,0x489e8,FUN_000489e8,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/489e8_FUN_000489e8.c
+cgminer,0x48a64,FUN_00048a64,124,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48a64_FUN_00048a64.c
+cgminer,0x1e084,FUN_0001e084,120,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1e084_FUN_0001e084.c
+cgminer,0x2d52c,FUN_0002d52c,120,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d52c_FUN_0002d52c.c
+cgminer,0x404e4,FUN_000404e4,120,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/404e4_FUN_000404e4.c
+cgminer,0x45ba8,FUN_00045ba8,120,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45ba8_FUN_00045ba8.c
+cgminer,0x28ce4,FUN_00028ce4,116,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28ce4_FUN_00028ce4.c
+cgminer,0x462b0,FUN_000462b0,116,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/462b0_FUN_000462b0.c
+cgminer,0x1fa58,FUN_0001fa58,112,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1fa58_FUN_0001fa58.c
+cgminer,0x2c04c,FUN_0002c04c,112,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2c04c_FUN_0002c04c.c
+cgminer,0x2e054,FUN_0002e054,112,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2e054_FUN_0002e054.c
+cgminer,0x2f6e8,FUN_0002f6e8,112,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2f6e8_FUN_0002f6e8.c
+cgminer,0x46324,FUN_00046324,112,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46324_FUN_00046324.c
+cgminer,0x45c20,FUN_00045c20,108,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45c20_FUN_00045c20.c
+cgminer,0x46938,FUN_00046938,108,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46938_FUN_00046938.c
+cgminer,0x48894,FUN_00048894,108,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48894_FUN_00048894.c
+cgminer,0x48bbc,FUN_00048bbc,108,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48bbc_FUN_00048bbc.c
+cgminer,0x20090,FUN_00020090,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20090_FUN_00020090.c
+cgminer,0x200f8,FUN_000200f8,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/200f8_FUN_000200f8.c
+cgminer,0x291b0,FUN_000291b0,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/291b0_FUN_000291b0.c
+cgminer,0x2a1a4,FUN_0002a1a4,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a1a4_FUN_0002a1a4.c
+cgminer,0x2cc78,FUN_0002cc78,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2cc78_FUN_0002cc78.c
+cgminer,0x2da80,FUN_0002da80,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2da80_FUN_0002da80.c
+cgminer,0x34640,FUN_00034640,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/34640_FUN_00034640.c
+cgminer,0x48c28,FUN_00048c28,104,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48c28_FUN_00048c28.c
+cgminer,0x1f360,FUN_0001f360,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f360_FUN_0001f360.c
+cgminer,0x1f708,FUN_0001f708,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f708_FUN_0001f708.c
+cgminer,0x2cce4,FUN_0002cce4,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2cce4_FUN_0002cce4.c
+cgminer,0x2d5a8,FUN_0002d5a8,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d5a8_FUN_0002d5a8.c
+cgminer,0x3ecb0,FUN_0003ecb0,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ecb0_FUN_0003ecb0.c
+cgminer,0x43048,FUN_00043048,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/43048_FUN_00043048.c
+cgminer,0x430ac,FUN_000430ac,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/430ac_FUN_000430ac.c
+cgminer,0x49218,FUN_00049218,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49218_FUN_00049218.c
+cgminer,0x4a3d4,FUN_0004a3d4,100,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a3d4_FUN_0004a3d4.c
+cgminer,0x2a800,FUN_0002a800,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a800_FUN_0002a800.c
+cgminer,0x2b4cc,FUN_0002b4cc,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b4cc_FUN_0002b4cc.c
+cgminer,0x3d18c,FUN_0003d18c,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3d18c_FUN_0003d18c.c
+cgminer,0x3e8c0,FUN_0003e8c0,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e8c0_FUN_0003e8c0.c
+cgminer,0x3edc4,FUN_0003edc4,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3edc4_FUN_0003edc4.c
+cgminer,0x3ee24,FUN_0003ee24,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ee24_FUN_0003ee24.c
+cgminer,0x466bc,FUN_000466bc,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/466bc_FUN_000466bc.c
+cgminer,0x468b0,FUN_000468b0,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/468b0_FUN_000468b0.c
+cgminer,0x48fb8,FUN_00048fb8,96,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48fb8_FUN_00048fb8.c
+cgminer,0x1ea74,FUN_0001ea74,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1ea74_FUN_0001ea74.c
+cgminer,0x2ca14,FUN_0002ca14,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2ca14_FUN_0002ca14.c
+cgminer,0x2ca98,FUN_0002ca98,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2ca98_FUN_0002ca98.c
+cgminer,0x2cb64,FUN_0002cb64,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2cb64_FUN_0002cb64.c
+cgminer,0x2cbc0,FUN_0002cbc0,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2cbc0_FUN_0002cbc0.c
+cgminer,0x2cc1c,FUN_0002cc1c,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2cc1c_FUN_0002cc1c.c
+cgminer,0x2d70c,FUN_0002d70c,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d70c_FUN_0002d70c.c
+cgminer,0x2dd20,FUN_0002dd20,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2dd20_FUN_0002dd20.c
+cgminer,0x3ef9c,FUN_0003ef9c,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ef9c_FUN_0003ef9c.c
+cgminer,0x4683c,FUN_0004683c,92,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4683c_FUN_0004683c.c
+cgminer,0x4accc,FUN_0004accc,90,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4accc_FUN_0004accc.c
+cgminer,0x20034,FUN_00020034,88,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20034_FUN_00020034.c
+cgminer,0x3ed14,FUN_0003ed14,88,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ed14_FUN_0003ed14.c
+cgminer,0x3ed6c,FUN_0003ed6c,88,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ed6c_FUN_0003ed6c.c
+cgminer,0x45340,FUN_00045340,88,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45340_FUN_00045340.c
+cgminer,0x28c90,FUN_00028c90,84,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28c90_FUN_00028c90.c
+cgminer,0x4948c,FUN_0004948c,84,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4948c_FUN_0004948c.c
+cgminer,0x4a488,FUN_0004a488,82,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a488_FUN_0004a488.c
+cgminer,0x2982c,FUN_0002982c,80,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2982c_FUN_0002982c.c
+cgminer,0x29884,FUN_00029884,80,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29884_FUN_00029884.c
+cgminer,0x3e760,FUN_0003e760,80,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e760_FUN_0003e760.c
+cgminer,0x3e7b0,FUN_0003e7b0,80,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e7b0_FUN_0003e7b0.c
+cgminer,0x2a42c,FUN_0002a42c,76,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a42c_FUN_0002a42c.c
+cgminer,0x2bbc8,FUN_0002bbc8,76,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2bbc8_FUN_0002bbc8.c
+cgminer,0x2da34,FUN_0002da34,76,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2da34_FUN_0002da34.c
+cgminer,0x30574,FUN_00030574,76,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/30574_FUN_00030574.c
+cgminer,0x48328,FUN_00048328,76,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48328_FUN_00048328.c
+cgminer,0x4a438,FUN_0004a438,76,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a438_FUN_0004a438.c
+cgminer,0x1fa0c,FUN_0001fa0c,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1fa0c_FUN_0001fa0c.c
+cgminer,0x202bc,FUN_000202bc,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/202bc_FUN_000202bc.c
+cgminer,0x20690,FUN_00020690,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20690_FUN_00020690.c
+cgminer,0x29c98,FUN_00029c98,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29c98_FUN_00029c98.c
+cgminer,0x2a138,FUN_0002a138,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a138_FUN_0002a138.c
+cgminer,0x2cb1c,FUN_0002cb1c,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2cb1c_FUN_0002cb1c.c
+cgminer,0x3ea3c,FUN_0003ea3c,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ea3c_FUN_0003ea3c.c
+cgminer,0x46ff8,FUN_00046ff8,72,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46ff8_FUN_00046ff8.c
+cgminer,0x18360,FUN_00018360,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/18360_FUN_00018360.c
+cgminer,0x2032c,FUN_0002032c,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2032c_FUN_0002032c.c
+cgminer,0x206d8,FUN_000206d8,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/206d8_FUN_000206d8.c
+cgminer,0x2b7fc,FUN_0002b7fc,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b7fc_FUN_0002b7fc.c
+cgminer,0x2c584,FUN_0002c584,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2c584_FUN_0002c584.c
+cgminer,0x3ee84,FUN_0003ee84,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3ee84_FUN_0003ee84.c
+cgminer,0x44f74,FUN_00044f74,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/44f74_FUN_00044f74.c
+cgminer,0x49178,FUN_00049178,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49178_FUN_00049178.c
+cgminer,0x492b0,FUN_000492b0,68,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/492b0_FUN_000492b0.c
+cgminer,0x2045c,FUN_0002045c,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2045c_FUN_0002045c.c
+cgminer,0x2049c,FUN_0002049c,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2049c_FUN_0002049c.c
+cgminer,0x22ed0,FUN_00022ed0,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/22ed0_FUN_00022ed0.c
+cgminer,0x2300c,FUN_0002300c,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2300c_FUN_0002300c.c
+cgminer,0x27834,FUN_00027834,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/27834_FUN_00027834.c
+cgminer,0x46c74,FUN_00046c74,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46c74_FUN_00046c74.c
+cgminer,0x46fb8,FUN_00046fb8,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46fb8_FUN_00046fb8.c
+cgminer,0x49578,FUN_00049578,64,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49578_FUN_00049578.c
+cgminer,0x204dc,FUN_000204dc,60,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/204dc_FUN_000204dc.c
+cgminer,0x2a618,FUN_0002a618,60,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a618_FUN_0002a618.c
+cgminer,0x3e4fc,FUN_0003e4fc,60,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e4fc_FUN_0003e4fc.c
+cgminer,0x45c8c,FUN_00045c8c,60,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45c8c_FUN_00045c8c.c
+cgminer,0x4ad28,FUN_0004ad28,60,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4ad28_FUN_0004ad28.c
+cgminer,0x20424,FUN_00020424,56,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20424_FUN_00020424.c
+cgminer,0x20a04,FUN_00020a04,56,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20a04_FUN_00020a04.c
+cgminer,0x287cc,FUN_000287cc,56,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/287cc_FUN_000287cc.c
+cgminer,0x2d768,FUN_0002d768,56,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2d768_FUN_0002d768.c
+cgminer,0x3f0d0,FUN_0003f0d0,56,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3f0d0_FUN_0003f0d0.c
+cgminer,0x202f8,FUN_000202f8,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/202f8_FUN_000202f8.c
+cgminer,0x20370,FUN_00020370,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20370_FUN_00020370.c
+cgminer,0x203a4,FUN_000203a4,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/203a4_FUN_000203a4.c
+cgminer,0x20938,FUN_00020938,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20938_FUN_00020938.c
+cgminer,0x23220,FUN_00023220,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/23220_FUN_00023220.c
+cgminer,0x28804,FUN_00028804,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28804_FUN_00028804.c
+cgminer,0x29d10,FUN_00029d10,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29d10_FUN_00029d10.c
+cgminer,0x483cc,FUN_000483cc,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/483cc_FUN_000483cc.c
+cgminer,0x48f60,FUN_00048f60,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48f60_FUN_00048f60.c
+cgminer,0x49034,FUN_00049034,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49034_FUN_00049034.c
+cgminer,0x4927c,FUN_0004927c,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4927c_FUN_0004927c.c
+cgminer,0x492f4,FUN_000492f4,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/492f4_FUN_000492f4.c
+cgminer,0x49408,FUN_00049408,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49408_FUN_00049408.c
+cgminer,0x4aee0,FUN_0004aee0,52,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4aee0_FUN_0004aee0.c
+cgminer,0x23634,FUN_00023634,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/23634_FUN_00023634.c
+cgminer,0x29ce0,FUN_00029ce0,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29ce0_FUN_00029ce0.c
+cgminer,0x29d70,FUN_00029d70,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29d70_FUN_00029d70.c
+cgminer,0x29da0,FUN_00029da0,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29da0_FUN_00029da0.c
+cgminer,0x29dd0,FUN_00029dd0,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29dd0_FUN_00029dd0.c
+cgminer,0x29e00,FUN_00029e00,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29e00_FUN_00029e00.c
+cgminer,0x29e30,FUN_00029e30,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29e30_FUN_00029e30.c
+cgminer,0x29ee4,FUN_00029ee4,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29ee4_FUN_00029ee4.c
+cgminer,0x29f40,FUN_00029f40,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29f40_FUN_00029f40.c
+cgminer,0x2a478,FUN_0002a478,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a478_FUN_0002a478.c
+cgminer,0x3c180,FUN_0003c180,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c180_FUN_0003c180.c
+cgminer,0x493d8,FUN_000493d8,48,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/493d8_FUN_000493d8.c
+cgminer,0x1d270,FUN_0001d270,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1d270_FUN_0001d270.c
+cgminer,0x1e8ac,FUN_0001e8ac,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1e8ac_FUN_0001e8ac.c
+cgminer,0x2090c,FUN_0002090c,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2090c_FUN_0002090c.c
+cgminer,0x29d44,FUN_00029d44,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29d44_FUN_00029d44.c
+cgminer,0x29e60,FUN_00029e60,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29e60_FUN_00029e60.c
+cgminer,0x29e8c,FUN_00029e8c,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29e8c_FUN_00029e8c.c
+cgminer,0x29eb8,FUN_00029eb8,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29eb8_FUN_00029eb8.c
+cgminer,0x29f14,FUN_00029f14,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29f14_FUN_00029f14.c
+cgminer,0x29f70,FUN_00029f70,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29f70_FUN_00029f70.c
+cgminer,0x45d40,FUN_00045d40,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/45d40_FUN_00045d40.c
+cgminer,0x46cb4,FUN_00046cb4,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46cb4_FUN_00046cb4.c
+cgminer,0x48400,FUN_00048400,44,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48400_FUN_00048400.c
+cgminer,0x16688,FUN_00016688,42,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16688_FUN_00016688.c
+cgminer,0x4ad88,FUN_0004ad88,42,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4ad88_FUN_0004ad88.c
+cgminer,0x16640,FUN_00016640,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16640_FUN_00016640.c
+cgminer,0x1f2a4,FUN_0001f2a4,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f2a4_FUN_0001f2a4.c
+cgminer,0x2bba0,FUN_0002bba0,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2bba0_FUN_0002bba0.c
+cgminer,0x2ca70,FUN_0002ca70,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2ca70_FUN_0002ca70.c
+cgminer,0x2caf4,FUN_0002caf4,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2caf4_FUN_0002caf4.c
+cgminer,0x2da0c,FUN_0002da0c,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2da0c_FUN_0002da0c.c
+cgminer,0x34598,FUN_00034598,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/34598_FUN_00034598.c
+cgminer,0x3c158,FUN_0003c158,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c158_FUN_0003c158.c
+cgminer,0x3e738,FUN_0003e738,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e738_FUN_0003e738.c
+cgminer,0x40238,FUN_00040238,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/40238_FUN_00040238.c
+cgminer,0x4854c,FUN_0004854c,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4854c_FUN_0004854c.c
+cgminer,0x48cac,FUN_00048cac,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48cac_FUN_00048cac.c
+cgminer,0x4943c,FUN_0004943c,40,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4943c_FUN_0004943c.c
+cgminer,0x16610,entry,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16610_entry.c
+cgminer,0x29010,FUN_00029010,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/29010_FUN_00029010.c
+cgminer,0x2a864,FUN_0002a864,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a864_FUN_0002a864.c
+cgminer,0x2a88c,FUN_0002a88c,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2a88c_FUN_0002a88c.c
+cgminer,0x48528,FUN_00048528,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48528_FUN_00048528.c
+cgminer,0x48f14,FUN_00048f14,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48f14_FUN_00048f14.c
+cgminer,0x491bc,FUN_000491bc,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/491bc_FUN_000491bc.c
+cgminer,0x494e8,FUN_000494e8,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/494e8_FUN_000494e8.c
+cgminer,0x4ad64,FUN_0004ad64,36,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4ad64_FUN_0004ad64.c
+cgminer,0x16664,FUN_00016664,34,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/16664_FUN_00016664.c
+cgminer,0x20c94,FUN_00020c94,32,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20c94_FUN_00020c94.c
+cgminer,0x28ff0,FUN_00028ff0,32,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28ff0_FUN_00028ff0.c
+cgminer,0x2b7dc,FUN_0002b7dc,32,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/2b7dc_FUN_0002b7dc.c
+cgminer,0x3e5fc,FUN_0003e5fc,32,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e5fc_FUN_0003e5fc.c
+cgminer,0x3e818,FUN_0003e818,32,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e818_FUN_0003e818.c
+cgminer,0x3eff8,FUN_0003eff8,32,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3eff8_FUN_0003eff8.c
+cgminer,0x48374,FUN_00048374,28,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48374_FUN_00048374.c
+cgminer,0x48c90,FUN_00048c90,28,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48c90_FUN_00048c90.c
+cgminer,0x49018,FUN_00049018,28,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49018_FUN_00049018.c
+cgminer,0x491e0,FUN_000491e0,28,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/491e0_FUN_000491e0.c
+cgminer,0x491fc,FUN_000491fc,28,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/491fc_FUN_000491fc.c
+cgminer,0x4a6e4,FUN_0004a6e4,26,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4a6e4_FUN_0004a6e4.c
+cgminer,0x166b4,_FINI_0,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/166b4__FINI_0.c
+cgminer,0x1f3c4,FUN_0001f3c4,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1f3c4_FUN_0001f3c4.c
+cgminer,0x46410,FUN_00046410,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46410_FUN_00046410.c
+cgminer,0x46898,FUN_00046898,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46898_FUN_00046898.c
+cgminer,0x46910,FUN_00046910,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46910_FUN_00046910.c
+cgminer,0x482f8,FUN_000482f8,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/482f8_FUN_000482f8.c
+cgminer,0x48310,FUN_00048310,24,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48310_FUN_00048310.c
+cgminer,0x270bc,FUN_000270bc,20,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/270bc_FUN_000270bc.c
+cgminer,0x28478,FUN_00028478,20,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/28478_FUN_00028478.c
+cgminer,0x4842c,FUN_0004842c,20,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4842c_FUN_0004842c.c
+cgminer,0x3e538,FUN_0003e538,16,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e538_FUN_0003e538.c
+cgminer,0x3e548,FUN_0003e548,16,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e548_FUN_0003e548.c
+cgminer,0x1242c,_DT_INIT,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1242c__DT_INIT.c
+cgminer,0x20788,FUN_00020788,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/20788_FUN_00020788.c
+cgminer,0x3c34c,FUN_0003c34c,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3c34c_FUN_0003c34c.c
+cgminer,0x3e61c,FUN_0003e61c,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/3e61c_FUN_0003e61c.c
+cgminer,0x48f94,FUN_00048f94,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48f94_FUN_00048f94.c
+cgminer,0x48fa0,FUN_00048fa0,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48fa0_FUN_00048fa0.c
+cgminer,0x48fac,FUN_00048fac,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48fac_FUN_00048fac.c
+cgminer,0x495c0,FUN_000495c0,12,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/495c0_FUN_000495c0.c
+cgminer,0x1ead8,FUN_0001ead8,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/1ead8_FUN_0001ead8.c
+cgminer,0x46928,FUN_00046928,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46928_FUN_00046928.c
+cgminer,0x46930,FUN_00046930,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/46930_FUN_00046930.c
+cgminer,0x48440,FUN_00048440,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/48440_FUN_00048440.c
+cgminer,0x49170,FUN_00049170,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/49170_FUN_00049170.c
+cgminer,0x495cc,FUN_000495cc,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/495cc_FUN_000495cc.c
+cgminer,0x495d8,FUN_000495d8,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/495d8_FUN_000495d8.c
+cgminer,0x4af20,_DT_FINI,8,07_mining_pool,0,0,,../S21/analysis/reverse/full_aux/cgminer/decompiled/4af20__DT_FINI.c

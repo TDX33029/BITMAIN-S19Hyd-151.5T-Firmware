@@ -1,0 +1,9 @@
+name=FileParser
+executable_path=/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/FileParser
+language=ARM:LE:32:v8
+functions=65
+decompiled=16
+failed=0
+skipped=49
+strings=123
+call_edges=97

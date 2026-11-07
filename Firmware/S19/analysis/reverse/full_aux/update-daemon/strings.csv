@@ -1,0 +1,91 @@
+string_addr,string,from_addr,func_addr,func_name
+"00010154","/lib/ld-linux-armhf.so.3","0001007c",,
+"00010154","/lib/ld-linux-armhf.so.3","_elfSectionHeaders::00000034",,
+"00010495","libpthread.so.0",,,
+"000104a5","_ITM_deregisterTMCloneTable",,,
+"000104c1","_ITM_registerTMCloneTable",,,
+"000104db","read",,,
+"000104e0","close",,,
+"000104e6","pthread_exit",,,
+"000104f3","connect",,,
+"000104fb","send",,,
+"00010500","recv",,,
+"00010505","accept",,,
+"0001050c","pthread_create",,,
+"0001051b","libc.so.6",,,
+"00010525","socket",,,
+"0001052c","strcpy",,,
+"00010533","sprintf",,,
+"0001053b","perror",,,
+"00010542","puts",,,
+"00010547","listen",,,
+"0001054e","abort",,,
+"00010554","__assert_fail",,,
+"00010562","strlen",,,
+"00010569","memset",,,
+"00010570","strstr",,,
+"00010577","bind",,,
+"0001057c","shutdown",,,
+"00010585","inet_addr",,,
+"0001058f","stderr",,,
+"00010596","system",,,
+"0001059d","fwrite",,,
+"000105a4","__libc_start_main",,,
+"000105b6","__gmon_start__",,,
+"000105c5","GLIBC_2.4",,,
+"00010f1c","/usr/sbin/updateporc.sh ","00010c84","00010c24","FUN_00010c24"
+"0001131c","ProcessServer","00010a9c","000108c8","FUN_000108c8"
+"0001131c","ProcessServer","00010ab8","000108c8","FUN_000108c8"
+"0001132c","New Thread!\r","00010c38","00010c24","FUN_00010c24"
+"0001133c","Recv:'%s'\r\n","00010c70","00010c24","FUN_00010c24"
+"00011348","system err!\r","00010d78","00010c24","FUN_00010c24"
+"00011358","system status:[%d]\r\n","00010cf0","00010c24","FUN_00010c24"
+"00011370","Shell Exec Successfully!\r","00010d10","00010c24","FUN_00010c24"
+"0001138c","Shell Execute Failed, Ret[%d]\r\n","00010d98","00010c24","FUN_00010c24"
+"000113b0","Other Exit Ret[%d]\r\n","00010d54","00010c24","FUN_00010c24"
+"000113cc","Come On WUHAN","00010cc8","00010c24","FUN_00010c24"
+"000113dc","127.0.0.1","0001092c","000108c8","FUN_000108c8"
+"000113dc","127.0.0.1","00010dd4","00010db8","FUN_00010db8"
+"000113e8","22322","00010950","000108c8","FUN_000108c8"
+"000113e8","22322","00010df8","00010db8","FUN_00010db8"
+"000113f0","socket err:","00010eac","00010db8","FUN_00010db8"
+"000113fc","connect err:","00010ec0","00010db8","FUN_00010db8"
+"0001140c","daemonc","000108dc","000108c8","FUN_000108c8"
+"00011414","daemons","000108f8","000108c8","FUN_000108c8"
+"0001141c","update-daemon.c","00010a94","000108c8","FUN_000108c8"
+"0001141c","update-daemon.c","00010ab0","000108c8","FUN_000108c8"
+"0001142c","sockfd_server != -1","00010ab4","000108c8","FUN_000108c8"
+"00011440","Will Listening To Port[%d]\r\n","00010964","000108c8","FUN_000108c8"
+"00011460","bind error!\n","00010af8","000108c8","FUN_000108c8"
+"00011470","listen error!\n","00010ad0","000108c8","FUN_000108c8"
+"00011480","waiting for new connection...","000109bc","000108c8","FUN_000108c8"
+"000114a0","Accept error!\n","00010a6c","000108c8","FUN_000108c8"
+"000114b0","A new connection occurs!","000109e8","000108c8","FUN_000108c8"
+"000114cc","pthread_create error!\n","00010a1c","000108c8","FUN_000108c8"
+"000114e4","ret != -1","00010a98","000108c8","FUN_000108c8"
+"000114f0","Server shuts down","00010a3c","000108c8","FUN_000108c8"
+"00011504","Cannot Find Command!\r","00010a7c","000108c8","FUN_000108c8"
+".shstrtab::00000001",".shstrtab",,,
+".shstrtab::0000000b",".interp",,,
+".shstrtab::00000013",".note.ABI-tag",,,
+".shstrtab::00000021",".note.gnu.build-id",,,
+".shstrtab::00000034",".hash",,,
+".shstrtab::0000003a",".dynsym",,,
+".shstrtab::00000042",".dynstr",,,
+".shstrtab::0000004a",".gnu.version",,,
+".shstrtab::00000057",".gnu.version_r",,,
+".shstrtab::00000066",".rel.dyn",,,
+".shstrtab::0000006f",".rel.plt",,,
+".shstrtab::00000078",".init",,,
+".shstrtab::0000007e",".text",,,
+".shstrtab::00000084",".fini",,,
+".shstrtab::0000008a",".rodata",,,
+".shstrtab::00000092",".ARM.exidx",,,
+".shstrtab::0000009d",".eh_frame",,,
+".shstrtab::000000a7",".init_array",,,
+".shstrtab::000000b3",".fini_array",,,
+".shstrtab::000000bf",".dynamic",,,
+".shstrtab::000000c8",".got",,,
+".shstrtab::000000cd",".data",,,
+".shstrtab::000000d3",".bss",,,
+".shstrtab::000000d8",".ARM.attributes",,,

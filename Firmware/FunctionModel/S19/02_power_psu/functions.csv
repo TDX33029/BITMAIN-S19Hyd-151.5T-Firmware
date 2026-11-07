@@ -1,0 +1,43 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x388ec,board_power_init_sequence,1128,02_power_psu;06_thermal_fan,1,12,warning:power is not calibrated.\n | power sn:%s\n | get power type version failed!,../S19/analysis/reverse/full/bmminer/decompiled/388ec_FUN_000388ec.c
+bmminer,0x1cd50,power_init,504,02_power_psu,1,9,"power type version: 0x%04x\n | %s power iic error.\n | power voltage can not meet the target | Initializing the power, please wait, this may take up to 2 minutes...\n",../S19/analysis/reverse/full/bmminer/decompiled/1cd50_FUN_0001cd50.c
+bmminer,0x506f8,bitmain_get_voltage,772,02_power_psu,1,5,"Get power set_volt value failed\n | %s: auto exec bitmain_power_open, but open power failed\n",../S19/analysis/reverse/full/bmminer/decompiled/506f8_FUN_000506f8.c
+bmminer,0x4f8b4,power_read_voltage,372,02_power_psu,1,5,"%s: auto exec bitmain_power_open, but open power failed\n",../S19/analysis/reverse/full/bmminer/decompiled/4f8b4_FUN_0004f8b4.c
+bmminer,0x1c978,get_chain_voltage,272,02_power_psu,1,4,"chain = %d, voltage = %f\n",../S19/analysis/reverse/full/bmminer/decompiled/1c978_FUN_0001c978.c
+bmminer,0x1caa8,get_min_voltage,188,02_power_psu,1,4,the minimal voltage = %.2f,../S19/analysis/reverse/full/bmminer/decompiled/1caa8_FUN_0001caa8.c
+bmminer,0x4e2c4,power_cmd_v2,520,02_power_psu,1,3,,../S19/analysis/reverse/full/bmminer/decompiled/4e2c4_FUN_0004e2c4.c
+bmminer,0x1cba0,wait_sensor_stable,192,02_power_psu,1,3,,../S19/analysis/reverse/full/bmminer/decompiled/1cba0_FUN_0001cba0.c
+bmminer,0x50d88,i2c_read_seg,168,02_power_psu,1,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/50d88_FUN_00050d88.c
+bmminer,0x50e30,i2c_write_seg,168,02_power_psu,1,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/50e30_FUN_00050e30.c
+bmminer,0x4f1d4,power_open,1668,02_power_psu,1,1,"power open power_version < 0 will close power\n | power open power_version = 0x%x\n | %s: auto exec bitmain_power_open, but open power failed\n | power is Calibrated\n",../S19/analysis/reverse/full/bmminer/decompiled/4f1d4_FUN_0004f1d4.c
+bmminer,0x50390,bitmain_set_voltage,652,02_power_psu,1,1,"%s: auto exec bitmain_power_open, but open power failed\n",../S19/analysis/reverse/full/bmminer/decompiled/50390_FUN_00050390.c
+bmminer,0x4eae4,power_get_error_data,568,02_power_psu,1,1,Get power error data:\n | Get power error data failed\n,../S19/analysis/reverse/full/bmminer/decompiled/4eae4_FUN_0004eae4.c
+bmminer,0x4f034,power_get_type_version,412,02_power_psu,1,1,"get power version failed\n | check power version failed, use v2 protocal to try it again\n | %s: auto exec bitmain_power_open, but open power failed\n",../S19/analysis/reverse/full/bmminer/decompiled/4f034_FUN_0004f034.c
+bmminer,0x4e7fc,power_get_error_code,352,02_power_psu,1,1,"Get power error code[4-7 8-11] %02x%02x%02x%02x %02x%02x%02x%02x, err_code:0x%08x\n | Get power error code failed\n",../S19/analysis/reverse/full/bmminer/decompiled/4e7fc_FUN_0004e7fc.c
+bmminer,0x4fe60,power_get_sw_version,272,02_power_psu,1,1,"%s: auto exec bitmain_power_open, but open power failed\n | get power fw ver failed\n",../S19/analysis/reverse/full/bmminer/decompiled/4fe60_FUN_0004fe60.c
+bmminer,0x4e544,power_get_dc_voltage,240,02_power_psu,1,1,Get power dc_volt value failed\n,../S19/analysis/reverse/full/bmminer/decompiled/4e544_FUN_0004e544.c
+bmminer,0x4e718,power_get_ac_voltage,220,02_power_psu,1,1,Get ac power failed\n,../S19/analysis/reverse/full/bmminer/decompiled/4e718_FUN_0004e718.c
+bmminer,0x4e648,power_cmd_0x05,204,02_power_psu,1,1,power 0x05 cmd failed\n,../S19/analysis/reverse/full/bmminer/decompiled/4e648_FUN_0004e648.c
+bmminer,0x4e960,power_get_reset_cause,196,02_power_psu,1,1,Get power reset root cause failed\n,../S19/analysis/reverse/full/bmminer/decompiled/4e960_FUN_0004e960.c
+bmminer,0x4ea28,power_get_update_time,184,02_power_psu,1,1,Get power update time failed\n,../S19/analysis/reverse/full/bmminer/decompiled/4ea28_FUN_0004ea28.c
+bmminer,0x4ee90,power_close,128,02_power_psu,1,1,bitmain power close ===========\n,../S19/analysis/reverse/full/bmminer/decompiled/4ee90_FUN_0004ee90.c
+bmminer,0x4fd58,power_is_calibrated,128,02_power_psu,1,1,"%s: auto exec bitmain_power_open, but open power failed\n",../S19/analysis/reverse/full/bmminer/decompiled/4fd58_FUN_0004fd58.c
+bmminer,0x4fff4,power_type_to_voltage_code,448,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/4fff4_FUN_0004fff4.c
+bmminer,0x4e110,power_cmd_v1,432,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/4e110_FUN_0004e110.c
+bmminer,0x1cc60,set_voltage_by_steps,232,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/1cc60_FUN_0001cc60.c
+bmminer,0x20854,power_type_is_supported,84,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/20854_FUN_00020854.c
+bmminer,0x479b0,gpio_power_enable_low,56,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/479b0_FUN_000479b0.c
+bmminer,0x479e8,gpio_power_enable_high,56,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/479e8_FUN_000479e8.c
+bmminer,0x4f890,power_open_if_needed,36,02_power_psu,1,0,,../S19/analysis/reverse/full/bmminer/decompiled/4f890_FUN_0004f890.c
+bmminer,0x19dc8,FUN_00019dc8,1024,05_freq_voltage;02_power_psu,0,10,"level %d, voltage = %d frequency = %d",../S19/analysis/reverse/full/bmminer/decompiled/19dc8_FUN_00019dc8.c
+bmminer,0x27f90,FUN_00027f90,584,02_power_psu,0,7,chain avg vol %s to %.2f,../S19/analysis/reverse/full/bmminer/decompiled/27f90_FUN_00027f90.c
+bmminer,0x361d4,FUN_000361d4,184,10_config_eeprom;02_power_psu,0,5,max voltage in eeprom = %d\n,../S19/analysis/reverse/full/bmminer/decompiled/361d4_FUN_000361d4.c
+bmminer,0x1bbd0,FUN_0001bbd0,364,02_power_psu;04_asic_chain,0,4,"No work mode voltage, chain = %d, mode = %d.\n | voltage level not match",../S19/analysis/reverse/full/bmminer/decompiled/1bbd0_FUN_0001bbd0.c
+bmminer,0x51808,FUN_00051808,624,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/51808_FUN_00051808.c
+bmminer,0x515b0,FUN_000515b0,596,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/515b0_FUN_000515b0.c
+bmminer,0x513ac,FUN_000513ac,512,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/513ac_FUN_000513ac.c
+bmminer,0x511b8,FUN_000511b8,496,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/511b8_FUN_000511b8.c
+bmminer,0x51090,FUN_00051090,292,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/51090_FUN_00051090.c
+bmminer,0x51a7c,FUN_00051a7c,272,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/51a7c_FUN_00051a7c.c
+bmminer,0x51b90,FUN_00051b90,248,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/51b90_FUN_00051b90.c
+bmminer,0x50c08,FUN_00050c08,112,02_power_psu,0,3,failed to i2c lock\n,../S19/analysis/reverse/full/bmminer/decompiled/50c08_FUN_00050c08.c
