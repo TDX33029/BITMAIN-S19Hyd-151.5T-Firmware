@@ -1,0 +1,103 @@
+// FUN_0122208c @ 0122208c size=300 calls_out=1 calls_in=1
+// strings: 
+
+void FUN_0122208c(int *param_1,uint *param_2,uint *param_3)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  uint uVar11;
+  uint uVar12;
+  int local_a0;
+  int iStack_9c;
+  int iStack_98;
+  int iStack_94;
+  int iStack_90;
+  int local_8c;
+  int iStack_88;
+  int iStack_84;
+  int iStack_80;
+  int iStack_7c;
+  int local_78;
+  int iStack_74;
+  int iStack_70;
+  int iStack_6c;
+  int iStack_68;
+  int local_64;
+  int iStack_60;
+  int iStack_5c;
+  int iStack_58;
+  int iStack_54;
+  int local_50;
+  int iStack_4c;
+  int iStack_48;
+  int iStack_44;
+  int iStack_40;
+  int local_3c;
+  int iStack_38;
+  int iStack_34;
+  int iStack_30;
+  int iStack_2c;
+  
+  uVar1 = *param_3;
+  uVar2 = param_3[1];
+  uVar3 = param_3[2];
+  uVar4 = param_3[3];
+  uVar5 = param_2[1];
+  uVar10 = *param_2;
+  uVar11 = param_2[2];
+  uVar12 = param_2[3];
+  uVar6 = param_3[0x22];
+  uVar8 = param_3[0x23];
+  uVar7 = param_2[0x22];
+  uVar9 = param_2[0x23];
+  FUN_01221fbc(&local_a0,param_2 + 4,param_3 + 4);
+  FUN_01221fbc(&local_78,param_2 + 0xe,param_3 + 0xe);
+  FUN_01221fbc(&local_50,param_2 + 0x18,param_3 + 0x18);
+  param_1[2] = uVar3 + uVar11;
+  param_1[3] = uVar4 + uVar12 + (uint)CARRY4(uVar3,uVar11);
+  *param_1 = uVar1 + uVar10;
+  param_1[1] = uVar2 + uVar5 + (uint)CARRY4(uVar1,uVar10);
+  param_1[0x22] = uVar6 + uVar7;
+  param_1[0x23] = uVar8 + uVar9;
+  param_1[4] = local_a0;
+  param_1[5] = iStack_9c;
+  param_1[6] = iStack_98;
+  param_1[7] = iStack_94;
+  param_1[8] = iStack_90;
+  param_1[9] = local_8c;
+  param_1[10] = iStack_88;
+  param_1[0xb] = iStack_84;
+  param_1[0xc] = iStack_80;
+  param_1[0xd] = iStack_7c;
+  param_1[0xe] = local_78;
+  param_1[0xf] = iStack_74;
+  param_1[0x10] = iStack_70;
+  param_1[0x11] = iStack_6c;
+  param_1[0x12] = iStack_68;
+  param_1[0x13] = local_64;
+  param_1[0x14] = iStack_60;
+  param_1[0x15] = iStack_5c;
+  param_1[0x16] = iStack_58;
+  param_1[0x17] = iStack_54;
+  param_1[0x18] = local_50;
+  param_1[0x19] = iStack_4c;
+  param_1[0x1a] = iStack_48;
+  param_1[0x1b] = iStack_44;
+  param_1[0x1c] = iStack_40;
+  param_1[0x1d] = local_3c;
+  param_1[0x1e] = iStack_38;
+  param_1[0x1f] = iStack_34;
+  param_1[0x20] = iStack_30;
+  param_1[0x21] = iStack_2c;
+  return;
+}
+

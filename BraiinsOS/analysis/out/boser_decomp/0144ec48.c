@@ -1,0 +1,25 @@
+// FUN_0144ec48 @ 0144ec48 size=88 calls_out=3 calls_in=2
+// strings: capacity overflow
+
+void FUN_0144ec48(int param_1)
+
+{
+  uint uVar1;
+  uint uVar2;
+  
+  uVar1 = *(uint *)(param_1 + 0xf0);
+  if ((uVar1 < 0x3c) || (uVar1 = *(uint *)(param_1 + 4), uVar1 != 0xffffffff)) {
+    uVar2 = 0;
+    if (uVar1 != 0) {
+      uVar2 = 0xffffffff >> LZCOUNT(uVar1);
+    }
+    if (uVar2 != 0xffffffff) {
+      FUN_0144eca8(param_1,uVar2 + 1);
+      FUN_01ab1588();
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0130739c("capacity overflow",0x11,&DAT_01d2ebe8);
+}
+

@@ -1,0 +1,103 @@
+// FUN_00fed838 @ 00fed838 size=408 calls_out=2 calls_in=1
+// strings: 
+
+void FUN_00fed838(undefined4 *param_1,int param_2,undefined4 param_3)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  undefined4 local_d8;
+  undefined4 uStack_d4;
+  undefined4 uStack_d0;
+  undefined4 local_c8;
+  undefined4 uStack_c4;
+  undefined4 uStack_c0;
+  undefined4 local_b8;
+  undefined4 uStack_b4;
+  undefined4 uStack_b0;
+  undefined4 local_a8;
+  undefined4 uStack_a4;
+  undefined4 uStack_a0;
+  undefined4 local_98;
+  undefined4 uStack_94;
+  undefined4 uStack_90;
+  undefined4 local_88;
+  undefined4 uStack_84;
+  undefined4 uStack_80;
+  undefined4 local_78;
+  undefined4 uStack_74;
+  undefined4 uStack_70;
+  undefined4 local_68;
+  undefined4 uStack_64;
+  undefined4 uStack_60;
+  undefined4 local_58;
+  undefined4 uStack_54;
+  undefined4 uStack_50;
+  undefined4 local_48;
+  undefined4 uStack_44;
+  undefined4 uStack_40;
+  undefined4 uStack_3c;
+  undefined4 uStack_38;
+  undefined4 local_30;
+  undefined4 uStack_2c;
+  undefined4 uStack_28;
+  
+  FUN_00fedd28(&local_d8);
+  FUN_00fedd28(&local_c8,param_2 + 0xc,param_3);
+  FUN_00fedd28(&local_b8,param_2 + 0x18,param_3);
+  FUN_00fedd28(&local_a8,param_2 + 0x24,param_3);
+  FUN_00fedd28(&local_98,param_2 + 0x30,param_3);
+  FUN_00fedd28(&local_88,param_2 + 0x3c,param_3);
+  FUN_00fedd28(&local_78,param_2 + 0x48,param_3);
+  FUN_00fedd28(&local_68,param_2 + 0x54,param_3);
+  FUN_00fedd28(&local_58,param_2 + 0x60,param_3);
+  local_48 = *(undefined4 *)(param_2 + 0x78);
+  uStack_44 = *(undefined4 *)(param_2 + 0x7c);
+  uStack_40 = *(undefined4 *)(param_2 + 0x80);
+  uStack_3c = *(undefined4 *)(param_2 + 0x84);
+  uStack_38 = *(undefined4 *)(param_2 + 0x88);
+  FUN_00fedc7c(&local_30,param_2 + 0x6c,param_3);
+  *param_1 = local_d8;
+  param_1[1] = uStack_d4;
+  param_1[2] = uStack_d0;
+  param_1[3] = local_c8;
+  param_1[4] = uStack_c4;
+  param_1[5] = uStack_c0;
+  param_1[6] = local_b8;
+  param_1[7] = uStack_b4;
+  param_1[8] = uStack_b0;
+  param_1[9] = local_a8;
+  param_1[10] = uStack_a4;
+  param_1[0xb] = uStack_a0;
+  param_1[0xc] = local_98;
+  param_1[0xd] = uStack_94;
+  param_1[0xe] = uStack_90;
+  param_1[0xf] = local_88;
+  param_1[0x10] = uStack_84;
+  param_1[0x11] = uStack_80;
+  param_1[0x12] = local_78;
+  param_1[0x13] = uStack_74;
+  param_1[0x14] = uStack_70;
+  param_1[0x15] = local_68;
+  param_1[0x16] = uStack_64;
+  param_1[0x17] = uStack_60;
+  param_1[0x18] = local_58;
+  param_1[0x19] = uStack_54;
+  param_1[0x1a] = uStack_50;
+  param_1[0x1b] = local_30;
+  param_1[0x1c] = uStack_2c;
+  param_1[0x1d] = uStack_28;
+  uVar1 = *(undefined4 *)(param_2 + 0x7c);
+  uVar2 = *(undefined4 *)(param_2 + 0x80);
+  uVar3 = *(undefined4 *)(param_2 + 0x84);
+  uVar4 = *(undefined4 *)(param_2 + 0x88);
+  param_1[0x1e] = *(undefined4 *)(param_2 + 0x78);
+  param_1[0x1f] = uVar1;
+  param_1[0x20] = uVar2;
+  param_1[0x21] = uVar3;
+  param_1[0x22] = uVar4;
+  return;
+}
+

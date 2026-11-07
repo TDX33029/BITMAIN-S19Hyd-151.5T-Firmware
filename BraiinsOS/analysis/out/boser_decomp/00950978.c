@@ -1,0 +1,19 @@
+// FUN_00950978 @ 00950978 size=56 calls_out=1 calls_in=1
+// strings: 
+
+void FUN_00950978(undefined4 *param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = param_1[1];
+  iVar1 = param_1[3];
+  *param_1 = 4;
+  param_1[1] = 4;
+  param_1[2] = 0;
+  param_1[3] = 4;
+  FUN_0094adcc(iVar2,((uint)(iVar1 - iVar2) >> 2) * -0x3b13b13b);
+  return;
+}
+

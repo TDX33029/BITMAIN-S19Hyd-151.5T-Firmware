@@ -1,0 +1,26 @@
+// FUN_01b3f6a0 @ 01b3f6a0 size=324 calls_out=4 calls_in=0
+// strings: NIST P-224 | NIST P-224
+
+undefined8 FUN_01b3f6a0(void)
+
+{
+  DAT_01d52e64 = 0x2c9;
+  DAT_01d52e60 = "NIST P-224";
+  FUN_01b26974(&DAT_01d52e68,&DAT_0053a270,5);
+  DAT_01d52e71 = 5;
+  FUN_01b2b030(&DAT_01d52da8,7,&DAT_00556424,&DAT_005563d0,0xffffffff,0xffffffff);
+  FUN_01b2b030(&DAT_01d52d78,7,&DAT_00556408,&DAT_005563b4,0x6a1fc2eb,0xd6e24270);
+  DAT_01d52ca4 = FUN_01b3d7c4();
+  FUN_01b26974(&DAT_01d52cac,&DAT_0055637c,0x1c);
+  FUN_01b26974(&DAT_01d52cf0,&DAT_00556360,0x1c);
+  FUN_01b26974(&DAT_01d52d34,&DAT_005563ec,0x1c);
+  FUN_01b26974(&DAT_01d52e1c,&DAT_00556398,0x1c);
+  DAT_01d52ca8 = &DAT_01d52ca4;
+  FUN_01b3f634(&DAT_01d52ca4);
+  DAT_01d52e78 = 1;
+  DAT_01d52e7c = 1;
+  DAT_01d52e80 = 4;
+  DAT_01d52e84 = 0;
+  return 0;
+}
+

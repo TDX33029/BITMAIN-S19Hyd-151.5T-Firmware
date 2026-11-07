@@ -32,3 +32,23 @@
 
 三层不是三套代码——devel/cgminer 是 bosminer 内嵌 RPC，boser 是独立 gRPC 网关。
 你的固件照这个分层：引擎内嵌调试 RPC + 独立 API 网关进程 + 兼容层只读开关。
+
+## boser 网关实测结构（26,607 函数已全量反编译 → `../out/boser_decomp/`）
+
+两个 gRPC 命名空间（字符串证据计数）：
+- **`braiins.bos.v1.*`**（正式 API）：PerformanceService×20 / MinerService×11 /
+  ActionsService×10 / PoolService×6 / UpgradeService×5 / AdvancedSettingsService×5 /
+  NetworkService×4 / CoolingService×4 / LicenseService×3 / ConfigurationService×3
+- **`braiins.boser.web.*`**（Web UI 专用面）：UpgradeService / SettingsService /
+  MinerService / ChipDataService / ActionsService —— **正式 API 与 Web 面分开**，
+  Web 面可以加一些不适合放进稳定 API 的东西（如 ChipDataService 芯片级数据）
+- 系统边界：/etc/boser /etc/bosminer /etc/crontabs（boser 还管 crontab——
+  自动升级调度在那里）
+- 代码规模：26.6k 函数中大部分是 tonic/prost/h2/hyper 运行时——业务逻辑
+  只是一小层。**重写 boser 级别的网关用 tonic 生成代码即可，无需逆向**；
+  值得学的只有"双命名空间分离"和"网关独立进程"两个决策。
+
+## 函数级入口（boser_decomp/）
+
+按服务名 grep：`grep -rl "PerformanceService" ../out/boser_decomp --include="*.c"`
+（注意 index CSV 字符串列只留 6 条，服务路径可能不在其中，直接 grep .c 文件。）

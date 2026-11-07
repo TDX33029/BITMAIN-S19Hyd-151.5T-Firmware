@@ -1,0 +1,26 @@
+// FUN_01432304 @ 01432304 size=68 calls_out=2 calls_in=10
+// strings: 
+
+void FUN_01432304(undefined4 *param_1)
+
+{
+  bool bVar1;
+  int iVar2;
+  int *piVar3;
+  
+  piVar3 = (int *)*param_1;
+  FUN_01437430(piVar3);
+  DataMemoryBarrier(0xb);
+  do {
+    iVar2 = *piVar3;
+    bVar1 = (bool)hasExclusiveAccess(piVar3);
+  } while (!bVar1);
+  *piVar3 = iVar2 + -1;
+  if (iVar2 == 1) {
+    DataMemoryBarrier(0xb);
+    FUN_01a75d8c(*param_1);
+    return;
+  }
+  return;
+}
+

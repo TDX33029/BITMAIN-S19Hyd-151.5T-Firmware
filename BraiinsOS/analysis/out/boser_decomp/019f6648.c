@@ -1,0 +1,17 @@
+// FUN_019f6648 @ 019f6648 size=60 calls_out=2 calls_in=1
+// strings: 
+
+void FUN_019f6648(int *param_1)
+
+{
+  if (*param_1 == 3) {
+    return;
+  }
+  FUN_019f89c4(param_1,param_1[2]);
+  if (*param_1 == 2) {
+    return;
+  }
+  FUN_00668d74(param_1);
+  return;
+}
+

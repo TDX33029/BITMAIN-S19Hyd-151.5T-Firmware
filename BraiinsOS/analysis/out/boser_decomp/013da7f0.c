@@ -1,0 +1,39 @@
+// FUN_013da7f0 @ 013da7f0 size=148 calls_out=3 calls_in=1
+// strings: 
+
+void FUN_013da7f0(undefined4 *param_1)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  int *piVar3;
+  
+  puVar2 = (undefined4 *)*param_1;
+  if (puVar2 != (undefined4 *)0x0) {
+    FUN_013da8b0(param_1 + 1);
+    if (puVar2 != (undefined4 *)&DAT_00533ccd) {
+      piVar3 = puVar2 + -2;
+      iVar1 = *piVar3;
+      *param_1 = &DAT_00533ccd;
+      *piVar3 = iVar1 + -1;
+      if (iVar1 + -1 != 0) {
+        return;
+      }
+      if (puVar2[1] != 0) {
+        thunk_FUN_01be4678(*puVar2);
+      }
+      if (puVar2 == (undefined4 *)&DAT_00000007) {
+        return;
+      }
+      iVar1 = puVar2[-1];
+      puVar2[-1] = iVar1 + -1;
+      if (iVar1 + -1 == 0) {
+        thunk_FUN_01be4678(piVar3);
+        return;
+      }
+      return;
+    }
+  }
+  return;
+}
+

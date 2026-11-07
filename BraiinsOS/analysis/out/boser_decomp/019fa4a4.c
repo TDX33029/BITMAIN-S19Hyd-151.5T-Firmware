@@ -1,0 +1,57 @@
+// FUN_019fa4a4 @ 019fa4a4 size=124 calls_out=2 calls_in=2
+// strings: 
+
+void FUN_019fa4a4(int *param_1)
+
+{
+  bool bVar1;
+  char cVar2;
+  int *piVar3;
+  uint uVar4;
+  int iVar5;
+  uint uVar6;
+  
+  if (*param_1 == 0) {
+    if (param_1[2] == 4 && param_1[3] == 0) {
+      return;
+    }
+    piVar3 = (int *)param_1[10];
+    DataMemoryBarrier(0xb);
+    do {
+      iVar5 = *piVar3;
+      bVar1 = (bool)hasExclusiveAccess(piVar3);
+    } while (!bVar1);
+    *piVar3 = iVar5 + -1;
+    if (iVar5 == 1) {
+      DataMemoryBarrier(0xb);
+      FUN_019db648(param_1[10]);
+    }
+    FUN_019bb7e0(param_1[6],param_1[7]);
+    return;
+  }
+  if (*param_1 != 1) {
+    return;
+  }
+  if (param_1[2] == 4) {
+    FUN_00b91e68(param_1[6],param_1[7]);
+    return;
+  }
+  uVar4 = param_1[2];
+  uVar6 = uVar4 - 2;
+  if (uVar4 < 2) {
+    uVar6 = 2;
+  }
+  if (uVar6 < 2) {
+    cVar2 = (char)param_1[3];
+    if (cVar2 == '\x04') goto LAB_019fa354;
+  }
+  else {
+    if (uVar4 == 0) goto LAB_019fa354;
+    cVar2 = (char)param_1[3];
+  }
+  FUN_0069d8a4(cVar2,param_1[4]);
+LAB_019fa354:
+  FUN_019bb7e0(param_1[6],param_1[7]);
+  return;
+}
+

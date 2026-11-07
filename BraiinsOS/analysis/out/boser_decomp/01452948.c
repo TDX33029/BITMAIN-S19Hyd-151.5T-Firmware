@@ -1,0 +1,43 @@
+// FUN_01452948 @ 01452948 size=176 calls_out=3 calls_in=1
+// strings: 
+
+void FUN_01452948(undefined4 param_1,uint param_2)
+
+{
+  uint uVar1;
+  undefined1 *puVar2;
+  int iVar3;
+  uint uVar4;
+  int unaff_r8;
+  int unaff_r9;
+  undefined1 auStack_102c [4096];
+  int local_2c;
+  int local_28;
+  int local_24;
+  
+  uVar1 = param_2 - (param_2 >> 1);
+  uVar4 = 1000000;
+  if (param_2 < 1000000) {
+    uVar4 = param_2;
+  }
+  if (uVar4 <= uVar1) {
+    uVar4 = uVar1;
+  }
+  if (uVar4 < 0x201) {
+    puVar2 = auStack_102c;
+    iVar3 = 0x200;
+  }
+  else {
+    FUN_014528f8(&local_2c,uVar4);
+    iVar3 = local_2c - local_24;
+    puVar2 = (undefined1 *)(local_28 + local_24 * 8);
+    unaff_r8 = local_28;
+    unaff_r9 = local_2c;
+  }
+  FUN_014516c0(param_1,param_2,puVar2,iVar3,param_2 < 0x41);
+  if (0x200 < uVar4) {
+    FUN_01af7af8(unaff_r9,unaff_r8,4,8);
+  }
+  return;
+}
+

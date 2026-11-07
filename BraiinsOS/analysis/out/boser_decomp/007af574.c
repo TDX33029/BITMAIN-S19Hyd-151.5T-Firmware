@@ -1,0 +1,27 @@
+// FUN_007af574 @ 007af574 size=120 calls_out=4 calls_in=0
+// strings: 
+
+undefined8 FUN_007af574(int param_1)
+
+{
+  undefined4 *puVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  
+  puVar1 = (undefined4 *)thunk_FUN_01be5118(0xc);
+  if (puVar1 == (undefined4 *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_0066439c(4,0xc);
+  }
+  uVar2 = *(undefined4 *)(param_1 + 0x20);
+  uVar3 = *(undefined4 *)(param_1 + 0x24);
+  *puVar1 = *(undefined4 *)(param_1 + 0x1c);
+  puVar1[1] = uVar2;
+  puVar1[2] = uVar3;
+  if (*(int *)(param_1 + 4) == 2) {
+    FUN_006676f8(param_1 + 8);
+  }
+  thunk_FUN_01be4678(param_1);
+  return CONCAT44(&UNK_01c09c18,puVar1);
+}
+

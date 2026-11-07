@@ -1,0 +1,33 @@
+// FUN_01a38638 @ 01a38638 size=116 calls_out=3 calls_in=1
+// strings: 
+
+void FUN_01a38638(int param_1)
+
+{
+  bool bVar1;
+  int *piVar2;
+  int iVar3;
+  
+  if (*(int *)(param_1 + 8) == 2 && *(int *)(param_1 + 0xc) == 0) {
+    return;
+  }
+  FUN_019bb7e0(*(undefined4 *)(param_1 + 0x118),*(undefined4 *)(param_1 + 0x11c));
+  if (*(int *)(param_1 + 0x40) == 0) {
+    FUN_019bb7e0(*(undefined4 *)(param_1 + 0x44),*(undefined4 *)(param_1 + 0x48));
+  }
+  FUN_0194f108(param_1 + 0x58);
+  piVar2 = *(int **)(param_1 + 0x130);
+  DataMemoryBarrier(0xb);
+  do {
+    iVar3 = *piVar2;
+    bVar1 = (bool)hasExclusiveAccess(piVar2);
+  } while (!bVar1);
+  *piVar2 = iVar3 + -1;
+  if (iVar3 == 1) {
+    DataMemoryBarrier(0xb);
+    FUN_01a38404(*(undefined4 *)(param_1 + 0x130));
+    return;
+  }
+  return;
+}
+
