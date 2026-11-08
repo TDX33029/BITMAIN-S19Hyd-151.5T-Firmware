@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_SECMARK.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000530  sz=0      _init
+00000598  sz=16     libxt_SECMARK_init
+00000738  sz=0      _fini

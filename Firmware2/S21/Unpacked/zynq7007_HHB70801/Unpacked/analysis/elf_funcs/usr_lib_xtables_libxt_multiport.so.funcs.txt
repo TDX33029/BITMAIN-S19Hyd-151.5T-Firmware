@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_multiport.so  (9908 B)  libs: libxtables.so.12, libc.so.6
+00000758  sz=0      _init
+00000814  sz=20     libxt_multiport_init
+00001960  sz=0      _fini

@@ -1,0 +1,169 @@
+#!/bin/sh
+
+# include file with common static constants
+. /lib/functions/common.sh
+
+MNT_PATH="/mnt"
+ETC_PATH="/etc"
+UPPER_ETC_PATH="${MNT_PATH}/upper/etc"
+UPPER_INIT_PATH="${MNT_PATH}/upper/init"
+
+# This function upgrades init.d scripts and should be called
+# after use of sysupgrade
+function finish_upgrade()
+{
+    local last_version_initd_files=$(/bin/cat "$UPPER_INIT_PATH" 2>/dev/null)
+
+    # perform scripts upgrade
+    for f in ${last_version_initd_files}
+    do
+        /bin/rm -f "${UPPER_ETC_PATH}/init.d/${f}"
+    done
+
+    # remove firmware-owned files (version stamps, banner, inittab, dnsmasq
+    # config, udhcpc's default script and profile) if they exist, so they are
+    # refreshed from the new rootfs too
+    /bin/rm -f "${UPPER_ETC_PATH}/bos_version"
+    /bin/rm -f "${UPPER_ETC_PATH}/bos_major"
+    /bin/rm -f "${UPPER_ETC_PATH}/bos_build"
+    /bin/rm -f "${UPPER_ETC_PATH}/banner"
+    /bin/rm -f "${UPPER_ETC_PATH}/inittab"
+    /bin/rm -f "${UPPER_ETC_PATH}/dnsmasq.conf"
+    /bin/rm -f "${UPPER_ETC_PATH}/udhcpc/default.script"
+    /bin/rm -f "${UPPER_ETC_PATH}/profile"
+
+    # update list of init scripts files
+    /bin/ls -1 "${ETC_PATH}/init.d" > $UPPER_INIT_PATH
+}
+
+function prepare_ubifs()
+{
+    if ! /usr/sbin/ubiattach -p "${BOS_OVERLAY_MTD}"; then
+        /usr/sbin/flash_erase "${BOS_OVERLAY_MTD}" 0 0 || return 1
+        /usr/sbin/ubiformat "${BOS_OVERLAY_MTD}" -y || return 1
+        /usr/sbin/ubiattach -p "${BOS_OVERLAY_MTD}" || return 1
+    fi
+    if [ ! -c "${BOS_OVERLAY_UBI}" ]; then
+        /usr/sbin/ubimkvol "${BOS_OVERLAY_UBI%_*}" -N overlay -m || return 1
+    fi
+
+    return 0
+}
+
+function etc_init()
+{
+    # can contain version or non-existing file
+    local last_version=$(/bin/cat "$UPPER_ETC_PATH/bos_version" 2>/dev/null)
+    # must be always present in system
+    local current_version=$(/bin/cat "$ETC_PATH/bos_version" 2>/dev/null)
+    local last_version_initd_files=""
+
+    # Generate list of init script if does not exist, in case of upgrade, it must
+    # contain list of init.d from previous OS version
+    if [ ! -f "$UPPER_INIT_PATH" ]; then
+        /bin/ls -1 "${ETC_PATH}/init.d" > $UPPER_INIT_PATH
+    fi
+
+    # if versions are different (for example after sysupgrade), then we must
+    # upgrade init.d scripts
+    if [ "$last_version" != "$current_version" ]; then
+        finish_upgrade
+    fi
+    
+    # inittab is firmware-owned and version-gated finish_upgrade misses it
+    # when bos_version matches (e.g. reinstall of the same build over a
+    # surviving overlay); a stale sysvinit-style copy breaks busybox init
+    /bin/rm -f "${UPPER_ETC_PATH}/inittab"
+
+    # symlinks into the nix store (/etc/opkg/keys, init.d scripts) are
+    # firmware-owned and their target changes with every build; a persisted
+    # copy would keep pointing at the previous rootfs, so drop them all and
+    # let the copy below re-create the ones the running firmware ships
+    for link in $(/bin/find "${UPPER_ETC_PATH}" -type l); do
+        case "$(/bin/readlink "$link")" in
+            /nix/store/*) /bin/rm -f "$link" ;;
+        esac
+    done
+
+    # recursively copy only missing files
+    yes n | \
+    cp -iar "${ETC_PATH}/"* "${UPPER_ETC_PATH}" 2>/dev/null || return 0
+
+    # change mount point
+    /bin/mount --bind "${UPPER_ETC_PATH}" "${ETC_PATH}" || return 0
+    /bin/umount -l "${MNT_PATH}"
+}
+
+function upper_init() {
+    /bin/mkdir -p "${UPPER_ETC_PATH}" || return 0
+}
+
+function env_tar_unpack() {
+    # read size of tar file with environmental files
+    local env_tar_size=$(printf "0x%x" $(nanddump \
+    -s ${LOCAL_RO_ENV_TAR_LENGTH_OFFSET_BOS_LAYOUT} -q -l 10 ${BOS_SYSTEM_MTD}) 2>/dev/null)
+    # extract env tar to '/tmp' if it has nonzero size
+    if [ "$env_tar_size" != "0x0" ]; then
+        /usr/sbin/nanddump -s ${LOCAL_RO_ENV_TAR_OFFSET_BOS_LAYOUT} -l ${env_tar_size} ${BOS_SYSTEM_MTD} | \
+        /bin/tar -x -C "/tmp"
+    fi
+}
+
+# Function to mount stock_config partition to /mnt
+mount_stock_config() {
+    mnt_path="/mnt/stock_config"
+    ubi_number=2
+    /bin/mkdir -p ${mnt_path} || return 1
+    # Mount mnt stock_config partition as RW so we can sync network settings
+    /usr/sbin/ubiattach -m ${STOCK_CONFIG_MTD_NUMBER} -d ${ubi_number} || return 1
+    /bin/mount -t ubifs /dev/ubi${ubi_number}_0 ${mnt_path} || return 1
+}
+
+# Link serial number to /tmp/serial_number
+link_serial_number() {
+    ln -s "/mnt/stock_config/sn" /tmp/serial_number || true
+}
+
+# devtmpfs does not get automounted for initramfs
+/bin/mount -t devtmpfs devtmpfs /dev
+/bin/mount -t sysfs sysfs /sys
+/bin/mount -t proc proc /proc
+# NOTE: I order to prevent OOM we need to reduce size of /tmp.
+# Boser, borminer and other processes can take more than half of RAM.
+/bin/mount -t tmpfs tmpfs /tmp -o mode=1777,size=70M
+# Mounts matching legacy inittab si2-si3 + fstab (busybox init doesn't
+# reliably run mount -a after the overlay bind-mount of /etc)
+/bin/mkdir -p /dev/pts /dev/shm
+/bin/mount -t devpts devpts /dev/pts
+/bin/mount -t tmpfs tmpfs /dev/shm -o mode=0777
+/bin/mount -t tmpfs tmpfs /run -o mode=0755,nosuid,nodev
+# Standard fd symlinks (legacy: inittab si5-si8, root_meta.sh)
+/bin/ln -sf /proc/self/fd /dev/fd
+/bin/ln -sf /proc/self/fd/0 /dev/stdin
+/bin/ln -sf /proc/self/fd/1 /dev/stdout
+/bin/ln -sf /proc/self/fd/2 /dev/stderr
+
+# include file with dynamicaly created constants (partition numbers, local MTD offsets)
+# it must be included after `/proc` is mounted
+. /lib/functions/system.sh
+
+# extract env tarball with system configuration to 'tmp' directory
+env_tar_unpack
+
+# We will use overlay not only for etc, but also for the logs, so we have to limit
+# the number of writes to the flash memory. We will use UBIFS and additional options:
+# noatime - do not update file access time
+# nodiratime - do not update directory access time
+prepare_ubifs &&
+/bin/mount -t ubifs -o noatime,nodiratime "${BOS_OVERLAY_UBI}" "${MNT_PATH}" && {
+    upper_init
+    etc_init
+}
+
+mount_stock_config
+link_serial_number
+
+exec 0</dev/console
+exec 1>/dev/console
+exec 2>/dev/console
+exec /sbin/init "$@"

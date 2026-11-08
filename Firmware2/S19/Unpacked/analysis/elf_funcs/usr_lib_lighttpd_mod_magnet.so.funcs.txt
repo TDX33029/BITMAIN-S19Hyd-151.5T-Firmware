@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_magnet.so  (5260 B)  libs: libm.so.6, libc.so.6
+000003e4  sz=0      _init
+000004e4  sz=8      mod_magnet_plugin_init
+000004ec  sz=0      _fini

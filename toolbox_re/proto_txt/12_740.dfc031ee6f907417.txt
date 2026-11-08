@@ -1,0 +1,21 @@
+// toolbox/feature_support.proto  package=braiins.toolbox
+enum AntminerPlatform {
+  ANTMINER_PLATFORM_UNSPECIFIED = 0;
+  ANTMINER_PLATFORM_X23 = 6;
+  ANTMINER_PLATFORM_X21 = 5;
+  ANTMINER_PLATFORM_X19 = 1;
+  ANTMINER_PLATFORM_X17 = 2;
+  ANTMINER_PLATFORM_S9 = 3;
+  ANTMINER_PLATFORM_OLD_VNISH = 4;
+}
+  message BosVersion {
+    optional uint32 year = 1;
+    optional uint32 month = 2;
+    optional uint32 patch = 3; // oneof 0
+  }
+  message MicroBTStockVersion {
+    optional uint32 year = 1;
+    optional uint32 month = 2;
+    optional uint32 day = 3;
+    optional uint32 patch = 4; // oneof 0
+  }

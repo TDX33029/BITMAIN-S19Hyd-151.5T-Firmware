@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_redirect.so  (5400 B)  libs: libc.so.6
+00000618  sz=0      _init
+00000b14  sz=112    mod_redirect_plugin_init
+00000b84  sz=0      _fini

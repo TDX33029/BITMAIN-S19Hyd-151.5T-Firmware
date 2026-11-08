@@ -1,0 +1,19 @@
+// FUN_01b09324 @ 01b09324 size=136 calls_out=2 calls_in=0
+// strings: /aws-lc/crypto/evp_extra/p_ed25519_asn1.c
+
+bool FUN_01b09324(int param_1,undefined4 param_2,uint *param_3,undefined4 param_4)
+
+{
+  uint uVar1;
+  
+  uVar1 = *param_3;
+  if (0x1f < uVar1) {
+    FUN_01b092a8(param_4,*(int *)(param_1 + 8) + 0x20);
+    *param_3 = 0x20;
+  }
+  else {
+    FUN_01b053d4(6,0,100,"/aws-lc/crypto/evp_extra/p_ed25519_asn1.c",0x6d);
+  }
+  return 0x1f < uVar1;
+}
+

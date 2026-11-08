@@ -1,0 +1,27 @@
+// FUN_01b23c38 @ 01b23c38 size=192 calls_out=0 calls_in=0
+// strings: 
+
+void FUN_01b23c38(void)
+
+{
+  DAT_01d52248 = 0x198;
+  DAT_01d52260 = FUN_01b695d0;
+  DAT_01d5224c = FUN_01b1fd38;
+  DAT_01d52250 = FUN_01b25424;
+  DAT_01d5226c = FUN_01b422a8;
+  DAT_01d52254 = &LAB_01b1f9bc;
+  DAT_01d52258 = FUN_01b59660;
+  DAT_01d5225c = 0;
+  DAT_01d52264 = 0;
+  DAT_01d52268 = 0;
+  DAT_01d52270 = 0;
+  DAT_01d52274 = 0;
+  DAT_01d52278 = 0;
+  DAT_01d5227c = 0;
+  DAT_01d52280 = FUN_01b45b14;
+  DAT_01d52284 = FUN_01b47b00;
+  DAT_01d52288 = &LAB_01b3ce9c;
+  DAT_01d5228c = FUN_01b48da0;
+  return;
+}
+

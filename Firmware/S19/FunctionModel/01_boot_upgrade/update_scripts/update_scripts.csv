@@ -1,0 +1,4 @@
+file,original,functions,commands,files
+updateporc.sh,Unpacked/minerfs.d/rootfs/usr/sbin/updateporc.sh,mount_update;prepare_ubifs;set_marker,cp;grep;rm;sync;umount,/dev/mtd0;/dev/mtd6;/dev/null;/dev/ubi1;/dev/ubi1_0;/dev/ubi_ctrl;/etc/bitmain.pub;/etc/mtab;/tmp/update-mount-err.log;/tmp/updatedata;/tmp/updatedata/;/tmp/updatedata/update.bmu;/usr/bin/FileParser
+Update.sh,Unpacked/update.d/rootfs/etc/init.d/Update.sh,spliteFile;checkFile;writeToNand;makeSigImg;spliteNandSigImg,,/dev/mtd0;/dev/mtd1;/dev/mtd3;/dev/mtd5;/dev/null;/etc/bitmain.pub;/tmp/256BFF;/tmp/nandBin;/tmp/tmpNand;/tmp/tmpfw;/tmp/tmpfw/;/usr/bin/FileParser
+init,Unpacked/update.d/rootfs/init,,,/bin/mount;/dev/console;/sbin/init

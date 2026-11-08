@@ -1,0 +1,109 @@
+// FUN_006bbce0 @ 006bbce0 size=444 calls_out=3 calls_in=3
+// strings: 
+
+void FUN_006bbce0(int param_1)
+
+{
+  bool bVar1;
+  int iVar2;
+  int iVar3;
+  int *piVar4;
+  int *piVar5;
+  int *piVar6;
+  int *piVar7;
+  undefined4 *local_2c;
+  undefined4 *local_28;
+  int local_24;
+  int local_20;
+  undefined4 local_1c;
+  
+  iVar2 = *(int *)(param_1 + 8);
+  if (iVar2 != 0) {
+    piVar6 = *(int **)(param_1 + 4);
+    piVar5 = piVar6;
+    do {
+      piVar7 = piVar5 + 3;
+      piVar4 = (int *)(*piVar5 + 0x14);
+      if (*piVar4 == 0) {
+        DataMemoryBarrier(0xb);
+LAB_006bbd3c:
+        bVar1 = (bool)hasExclusiveAccess(piVar4);
+        if (!bVar1) goto code_r0x006bbd48;
+        *piVar4 = 2;
+        DataMemoryBarrier(0xb);
+        DataMemoryBarrier(0xb);
+        piVar5 = (int *)(*(int *)(*piVar5 + 0x10) + 0x18);
+        do {
+          iVar3 = *piVar5;
+          bVar1 = (bool)hasExclusiveAccess(piVar5);
+        } while (!bVar1);
+        *piVar5 = 1;
+        if (iVar3 == -1) {
+          FUN_016d6968(0xf0,piVar5,0x81,1);
+        }
+        goto LAB_006bbd18;
+      }
+LAB_006bbd10:
+      ClearExclusiveLocal();
+      DataMemoryBarrier(0xb);
+LAB_006bbd18:
+      piVar5 = piVar7;
+    } while (piVar7 != piVar6 + iVar2 * 3);
+  }
+  local_2c = *(undefined4 **)(param_1 + 0x10);
+  local_20 = *(int *)(param_1 + 0x14);
+  *(undefined4 *)(param_1 + 0x14) = 0;
+  local_1c = 0;
+  local_24 = param_1 + 0xc;
+  local_28 = local_2c + local_20 * 3;
+  if (local_20 != 0) {
+    do {
+      piVar4 = (int *)*local_2c;
+      piVar5 = local_2c + 1;
+      local_2c = local_2c + 3;
+      piVar6 = piVar4 + 5;
+      if (*piVar6 == 0) {
+        DataMemoryBarrier(0xb);
+LAB_006bbe00:
+        bVar1 = (bool)hasExclusiveAccess(piVar6);
+        if (!bVar1) goto code_r0x006bbe0c;
+        *piVar6 = *piVar5;
+        DataMemoryBarrier(0xb);
+        DataMemoryBarrier(0xb);
+        piVar5 = (int *)(piVar4[4] + 0x18);
+        do {
+          iVar2 = *piVar5;
+          bVar1 = (bool)hasExclusiveAccess(piVar5);
+        } while (!bVar1);
+        *piVar5 = 1;
+        if (iVar2 == -1) {
+          FUN_016d6968(0xf0,piVar5,0x81,1);
+        }
+        goto LAB_006bbe20;
+      }
+LAB_006bbe18:
+      ClearExclusiveLocal();
+      DataMemoryBarrier(0xb);
+LAB_006bbe20:
+      DataMemoryBarrier(0xb);
+      do {
+        iVar2 = *piVar4;
+        bVar1 = (bool)hasExclusiveAccess(piVar4);
+      } while (!bVar1);
+      *piVar4 = iVar2 + -1;
+      if (iVar2 == 1) {
+        DataMemoryBarrier(0xb);
+        FUN_00fbaa00(piVar4);
+      }
+    } while (local_2c != local_28);
+  }
+  FUN_007bbd40(&local_2c);
+  return;
+code_r0x006bbd48:
+  if (*piVar4 != 0) goto LAB_006bbd10;
+  goto LAB_006bbd3c;
+code_r0x006bbe0c:
+  if (*piVar6 != 0) goto LAB_006bbe18;
+  goto LAB_006bbe00;
+}
+

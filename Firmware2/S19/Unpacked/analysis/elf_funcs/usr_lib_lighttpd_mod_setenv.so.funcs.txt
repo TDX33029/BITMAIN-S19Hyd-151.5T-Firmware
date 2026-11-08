@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_setenv.so  (5424 B)  libs: libc.so.6
+00000694  sz=0      _init
+00000d08  sz=136    mod_setenv_plugin_init
+00000d90  sz=0      _fini

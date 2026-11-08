@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_CLASSIFY.so  (5600 B)  libs: libxtables.so.12, libc.so.6
+000005f0  sz=0      _init
+00000670  sz=20     libxt_CLASSIFY_init
+000008f4  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_ULOG.so  (5504 B)  libs: libxtables.so.12, libc.so.6
+000005f0  sz=0      _init
+0000067c  sz=16     libipt_ULOG_init
+00000960  sz=0      _fini

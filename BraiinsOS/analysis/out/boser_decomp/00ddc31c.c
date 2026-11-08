@@ -1,0 +1,14 @@
+// FUN_00ddc31c @ 00ddc31c size=48 calls_out=2 calls_in=2
+// strings: 
+
+void FUN_00ddc31c(undefined4 *param_1)
+
+{
+  undefined4 uVar1;
+  
+  uVar1 = param_1[1];
+  FUN_006d0a68(uVar1,param_1[2]);
+  FUN_0132b958(*param_1,uVar1,8,0xc0);
+  return;
+}
+

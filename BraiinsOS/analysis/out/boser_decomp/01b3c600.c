@@ -1,0 +1,94 @@
+// FUN_01b3c600 @ 01b3c600 size=892 calls_out=13 calls_in=0
+// strings: 
+
+undefined8 FUN_01b3c600(void)
+
+{
+  FUN_01b257dc(&DAT_01d51e14,0,0x150);
+  DAT_01d51e14 = FUN_01b3c354();
+  DAT_01d51e1c = &LAB_01b5a608;
+  DAT_01d51e18 = 0x20;
+  DAT_01d51e20 = &LAB_01b5a7f8;
+  DAT_01d51e24 = &LAB_01b5a8ac;
+  DAT_01d51e28 = &LAB_01b5a760;
+  DAT_01d51e2c = &DAT_01b5aa44;
+  DAT_01d51e30 = FUN_01b3be88();
+  DAT_01d51e38 = &LAB_01b5a09c;
+  DAT_01d51e3c = &LAB_01b5a244;
+  DAT_01d51e40 = &LAB_01b5a3a4;
+  DAT_01d51e34 = 0x14;
+  DAT_01d51e44 = &LAB_01b5a140;
+  DAT_01d51e48 = &LAB_01b5a43c;
+  DAT_01d51e4c = FUN_01b3c3a0();
+  DAT_01d51e50 = 0x40;
+  DAT_01d51e54 = &LAB_01b658b4;
+  DAT_01d51e58 = &LAB_01b66120;
+  DAT_01d51e5c = &DAT_01b65e20;
+  DAT_01d51e60 = &LAB_01b65c6c;
+  DAT_01d51e64 = &DAT_01b69f94;
+  DAT_01d51e68 = FUN_01b3c3ec();
+  DAT_01d51e6c = 0x40;
+  DAT_01d51e70 = &LAB_01b659d4;
+  DAT_01d51e74 = &LAB_01b660e0;
+  DAT_01d51e78 = &LAB_01b696f0;
+  DAT_01d51e7c = &LAB_01b65cc4;
+  DAT_01d51e80 = &DAT_01b69fbc;
+  DAT_01d51e84 = FUN_01b3bdf0();
+  DAT_01d51e8c = &LAB_01b4d2e8;
+  DAT_01d51e90 = &LAB_01b4d424;
+  DAT_01d51e94 = &LAB_01b4d51c;
+  DAT_01d51e88 = 0x10;
+  DAT_01d51e98 = &LAB_01b4d38c;
+  DAT_01d51e9c = &LAB_01b4d5b4;
+  DAT_01d51ea0 = FUN_01b3c308();
+  DAT_01d51ea8 = &LAB_01b5a528;
+  DAT_01d51ea4 = 0x20;
+  DAT_01d51eac = &LAB_01b5a838;
+  DAT_01d51eb0 = &LAB_01b5a9f4;
+  DAT_01d51eb4 = &LAB_01b5a6b4;
+  DAT_01d51eb8 = &DAT_01b5aa1c;
+  DAT_01d51ebc = FUN_01b3c438();
+  DAT_01d51ec0 = 0x40;
+  DAT_01d51ec4 = &LAB_01b65af4;
+  DAT_01d51ec8 = &LAB_01b66234;
+  DAT_01d51ecc = &DAT_01b65ecc;
+  DAT_01d51ed0 = &LAB_01b65d1c;
+  DAT_01d51ed4 = &DAT_01b69fe4;
+  DAT_01d51ed8 = FUN_01b3c484();
+  DAT_01d51edc = 0x40;
+  DAT_01d51ee0 = &LAB_01b65c14;
+  DAT_01d51ee4 = &LAB_01b66274;
+  DAT_01d51ee8 = &DAT_01b65f78;
+  DAT_01d51eec = &LAB_01b65d74;
+  DAT_01d51ef0 = &DAT_01b6a00c;
+  DAT_01d51ef4 = FUN_01b3c4d0();
+  DAT_01d51efc = &LAB_01b5b30c;
+  DAT_01d51ef8 = 0;
+  DAT_01d51f00 = &LAB_01b5b334;
+  DAT_01d51f08 = 0;
+  DAT_01d51f0c = 0;
+  DAT_01d51f04 = &LAB_01b5b35c;
+  DAT_01d51f10 = FUN_01b3c51c();
+  DAT_01d51f18 = &LAB_01b5b388;
+  DAT_01d51f14 = 0;
+  DAT_01d51f1c = &LAB_01b5b3b0;
+  DAT_01d51f24 = 0;
+  DAT_01d51f28 = 0;
+  DAT_01d51f20 = &LAB_01b5b3d8;
+  DAT_01d51f2c = FUN_01b3c568();
+  DAT_01d51f34 = &LAB_01b5b404;
+  DAT_01d51f30 = 0;
+  DAT_01d51f38 = &LAB_01b5b42c;
+  DAT_01d51f40 = 0;
+  DAT_01d51f44 = 0;
+  DAT_01d51f3c = &LAB_01b5b454;
+  DAT_01d51f48 = FUN_01b3c5b4();
+  DAT_01d51f50 = &LAB_01b5b480;
+  DAT_01d51f4c = 0;
+  DAT_01d51f54 = &LAB_01b5b4a8;
+  DAT_01d51f5c = 0;
+  DAT_01d51f60 = 0;
+  DAT_01d51f58 = &LAB_01b5b4d0;
+  return 0;
+}
+

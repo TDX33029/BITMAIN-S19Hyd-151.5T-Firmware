@@ -1,0 +1,58 @@
+// FUN_00f2a900 @ 00f2a900 size=264 calls_out=8 calls_in=2
+// strings: 
+
+void FUN_00f2a900(int *param_1)
+
+{
+  bool bVar1;
+  int *piVar2;
+  int iVar3;
+  
+  if (*param_1 != 3 || param_1[1] != 0) {
+    FUN_0142e6dc(param_1);
+  }
+  if (param_1[0x39] != 0) {
+    FUN_00f200ec();
+  }
+  if (((*(byte *)(param_1 + 0x34) != 0xb) && (9 < *(byte *)(param_1 + 0x34))) &&
+     (param_1[0x36] != 0)) {
+    thunk_FUN_01be4678(param_1[0x35]);
+  }
+  if (param_1[0x2e] != 0) {
+    FUN_01139b38(param_1[0x2e],param_1[0x2f]);
+  }
+  piVar2 = (int *)param_1[0x30];
+  if (piVar2 != (int *)0x0) {
+    DataMemoryBarrier(0xb);
+    do {
+      iVar3 = *piVar2;
+      bVar1 = (bool)hasExclusiveAccess(piVar2);
+    } while (!bVar1);
+    *piVar2 = iVar3 + -1;
+    if (iVar3 == 1) {
+      DataMemoryBarrier(0xb);
+      FUN_018531c0(param_1[0x30],param_1[0x31]);
+    }
+  }
+  piVar2 = (int *)param_1[0x32];
+  if (piVar2 != (int *)0x0) {
+    DataMemoryBarrier(0xb);
+    do {
+      iVar3 = *piVar2;
+      bVar1 = (bool)hasExclusiveAccess(piVar2);
+    } while (!bVar1);
+    *piVar2 = iVar3 + -1;
+    if (iVar3 == 1) {
+      DataMemoryBarrier(0xb);
+      FUN_018531c0(param_1[0x32],param_1[0x33]);
+    }
+  }
+  FUN_0172f038(param_1 + 0x10);
+  FUN_01820710(param_1 + 0x24);
+  if (param_1[0x22] == 0) {
+    return;
+  }
+  FUN_01429548(param_1[0x23]);
+  return;
+}
+

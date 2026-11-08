@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_TTL.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000580  sz=0      _init
+000005f4  sz=16     libipt_ttl_init
+0000092c  sz=0      _fini

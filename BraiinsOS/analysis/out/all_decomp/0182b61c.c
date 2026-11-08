@@ -1,0 +1,160 @@
+// FUN_0182b61c @ 0182b61c size=1320 calls_out=5 calls_in=3
+// strings: 
+
+undefined8 FUN_0182b61c(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  uint *puVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint *puVar8;
+  uint local_124;
+  uint local_120;
+  uint local_11c;
+  uint local_118;
+  uint local_114;
+  uint local_110;
+  uint local_10c;
+  uint local_108;
+  uint local_104;
+  uint local_100;
+  uint local_fc;
+  uint local_f8;
+  uint local_f4;
+  uint local_f0;
+  uint local_ec;
+  uint local_e0 [8];
+  undefined1 auStack_c0 [32];
+  uint local_a0;
+  uint local_9c;
+  uint local_98;
+  uint local_94;
+  uint local_90;
+  uint local_8c;
+  uint local_88;
+  uint local_84;
+  uint local_80;
+  uint local_7c;
+  uint local_78;
+  uint local_74;
+  uint local_70;
+  uint local_6c;
+  uint local_68;
+  uint local_64;
+  uint local_60;
+  uint local_5c;
+  uint local_58;
+  uint local_54;
+  uint local_50;
+  uint local_4c;
+  uint local_48;
+  uint local_44;
+  uint local_40;
+  uint local_3c;
+  uint local_38;
+  uint local_34;
+  int local_2c;
+  
+  local_2c = DAT_018ddaf8;
+  FUN_016dd606(auStack_c0,0,0x40,0);
+  FUN_016dd1aa(param_2,param_1 + 0x24,0x7c);
+  FUN_01825594(local_e0,param_3,param_1 + 4);
+  uVar3 = 0;
+  local_fc = 0;
+  local_100 = 0;
+  uVar7 = 0;
+  local_ec = 0;
+  puVar4 = &DAT_00453a04;
+  local_104 = 0;
+  local_108 = 0;
+  local_10c = 0;
+  local_110 = 0;
+  local_114 = 0;
+  local_f8 = 0;
+  local_f4 = 0;
+  local_118 = 0;
+  local_f0 = 0;
+  local_120 = 0;
+  local_124 = 0;
+  local_11c = 0;
+  while( true ) {
+    uVar5 = 0;
+    puVar8 = puVar4;
+    do {
+      uVar6 = uVar5 + 1;
+      uVar5 = (uint)((local_e0[uVar3 >> 5] >> (uVar3 & 0x1f) & 0xf) == uVar5);
+      uVar1 = uVar5 - 1;
+      uVar2 = -uVar5;
+      uVar7 = puVar8[-8] & uVar2 | uVar7 & uVar1;
+      local_118 = puVar8[-7] & uVar2 | local_118 & uVar1;
+      local_f0 = puVar8[-6] & uVar2 | local_f0 & uVar1;
+      local_11c = puVar8[-5] & uVar2 | local_11c & uVar1;
+      local_120 = puVar8[-4] & uVar2 | local_120 & uVar1;
+      local_124 = puVar8[-3] & uVar2 | local_124 & uVar1;
+      local_f4 = puVar8[-2] & uVar2 | local_f4 & uVar1;
+      local_f8 = uVar2 & puVar8[-1] | uVar1 & local_f8;
+      uVar2 = uVar5 - 1;
+      uVar5 = -uVar5;
+      local_110 = uVar5 & *puVar8 | local_110 & uVar2;
+      local_114 = uVar5 & puVar8[1] | local_114 & uVar2;
+      local_108 = uVar5 & puVar8[2] | local_108 & uVar2;
+      local_10c = uVar5 & puVar8[3] | local_10c & uVar2;
+      local_ec = uVar5 & puVar8[4] | local_ec & uVar2;
+      local_104 = uVar5 & puVar8[5] | local_104 & uVar2;
+      local_fc = uVar5 & puVar8[6] | local_fc & uVar2;
+      local_100 = uVar5 & puVar8[7] | uVar2 & local_100;
+      uVar5 = uVar6;
+      puVar8 = puVar8 + 0x10;
+    } while (uVar6 != 0x10);
+    local_7c = (local_118 & 0xfffff) << 6 | uVar7 >> 0x1a;
+    local_78 = (local_f0 & 0x3fff) << 0xc | local_118 >> 0x14;
+    local_74 = (local_11c & 0xff) << 0x12 | local_f0 >> 0xe;
+    local_70 = (local_120 & 3) << 0x18 | local_11c >> 8;
+    uVar3 = uVar3 + 4;
+    local_68 = (local_124 & 0x3fffff) << 4 | local_120 >> 0x1c;
+    local_64 = (local_f4 & 0xffff) << 10 | local_124 >> 0x16;
+    local_60 = (local_f8 & 0x3ff) << 0x10 | local_f4 >> 0x10;
+    local_54 = (local_114 & 0xfffff) << 6 | local_110 >> 0x1a;
+    local_58 = local_110 & 0x3ffffff;
+    local_50 = (local_108 & 0x3fff) << 0xc | local_114 >> 0x14;
+    local_4c = (local_10c & 0xff) << 0x12 | local_108 >> 0xe;
+    local_48 = (local_ec & 3) << 0x18 | local_10c >> 8;
+    local_40 = (local_104 & 0x3fffff) << 4 | local_ec >> 0x1c;
+    local_44 = (local_ec & 0xfffffff) >> 2;
+    local_34 = local_100 >> 10;
+    local_3c = (local_fc & 0xffff) << 10 | local_104 >> 0x16;
+    local_38 = (local_100 & 0x3ff) << 0x10 | local_fc >> 0x10;
+    local_80 = uVar7 & 0x3ffffff;
+    local_6c = (local_120 & 0xfffffff) >> 2;
+    local_5c = local_f8 >> 10;
+    local_a0 = local_110;
+    local_9c = local_114;
+    local_98 = local_108;
+    local_94 = local_10c;
+    local_90 = local_ec;
+    local_8c = local_104;
+    local_88 = local_fc;
+    local_84 = local_100;
+    FUN_0182a6c8(param_2,param_2,&local_80);
+    if (uVar3 == 0x100) break;
+    puVar4 = puVar4 + 0x100;
+    local_110 = local_a0;
+    local_114 = local_9c;
+    local_108 = local_98;
+    local_10c = local_94;
+    local_ec = local_90;
+    local_104 = local_8c;
+    local_fc = local_88;
+    local_100 = local_84;
+  }
+  if (local_2c != DAT_018ddaf8) {
+                    /* WARNING: Subroutine does not return */
+    FUN_016d2b78();
+  }
+  return 0;
+}
+

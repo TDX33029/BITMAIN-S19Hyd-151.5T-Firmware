@@ -1,0 +1,138 @@
+UPGRADE_FW_MAJOR="2022-09-13-0-11012d53-22.08-plus"
+UPGRADE_FW_VERSION="2026-10-19-0-46be68fe-26.10-plus"
+UPGRADE_FW_REQUIRE="2022-09-13-0-11012d53-22.08-plus"
+# current rootfs partition is 72 MiB big so limit of 40 MiB fits
+# with enough reserve for bad blocks
+NAND_BLOCK_COUNT="320"
+NAND_BLOCK_SIZE="0x20000"
+
+current_fw_version() {
+    cat /etc/bos_version
+}
+
+current_fw_major() {
+    cat /etc/bos_major
+}
+
+check_fw_version() {
+    echo "Gathering current firmware information..."
+
+    local fw_major=$(current_fw_major)
+    local fw_version=$(current_fw_version)
+
+    echo "version             : $fw_version"
+    echo "major               : $fw_major"
+
+    echo "Checking compatibility..."
+
+    if [ "$UPGRADE_FW_VERSION" ">" "$fw_version" ]; then
+        # firmware upgrade
+        if [ "$UPGRADE_FW_REQUIRE" ">" "$fw_version" ]; then
+            echo "Firmware upgrade to '$UPGRADE_FW_VERSION' is not possible!"
+            echo "Firmware version '$UPGRADE_FW_REQUIRE' is required before upgrading to this version."
+            return 1
+        fi
+    elif [ "$UPGRADE_FW_VERSION" "<" "$fw_version" ]; then
+        # firmware downgrade
+        if [ "$UPGRADE_FW_MAJOR" != "$fw_major" ]; then
+            echo "Firmware downgrade to '$UPGRADE_FW_VERSION' is not possible!"
+            echo "Downgrade is only possible among firmwares with major version '$UPGRADE_FW_MAJOR'."
+            echo "Do the factory reset and try to upgrade to this version."
+            return 1
+        fi
+    fi
+
+    return 0
+}
+
+# Check if /etc has enough space (1MB) for logging during upgrade, and free
+free_space_etc() {
+    # Check if /etc has at least 1MiB free space
+    local required_space=1024
+    local etc_free=$(df | grep /etc | awk '{print $4}')
+
+    # If we already have enough space, return success
+    if [ "$etc_free" -ge "$required_space" ]; then
+        return 0
+    fi
+
+    # Get used space for /var/log/metrics
+    # Keep du stderr visible so failures (e.g. missing applet) are not hidden
+    local metrics_used
+    metrics_used=$(du -s /var/log/metrics | awk '{print $1}') || true
+    # Handle case where directory doesn't exist or is empty
+    [ -z "$metrics_used" ] && metrics_used=0
+
+    # Check if freeing metrics logs would give us enough space
+    if [ $((etc_free + metrics_used)) -ge "$required_space" ]; then
+        rm -rf /var/log/metrics/*
+        return 0
+    fi
+
+    # Not enough space even after freeing logs
+    return 1
+}
+
+check_image() {
+    free_space_etc || {
+        echo "Not enough free space in /etc for logging during upgrade."
+        echo "Please free up some space and try again."
+        return 1
+    }
+
+    local image_file=$1
+    local image_file_size=$(cat "$image_file" | wc -c)
+    local max_image_file_size=$((${NAND_BLOCK_COUNT}*${NAND_BLOCK_SIZE}))
+
+    echo "image_file_size     : $image_file_size"
+    echo "max_image_file_size : $max_image_file_size"
+
+    if [ "${image_file_size}" -gt "${max_image_file_size}" ]; then 
+        echo "Image size exceeds ${max_image_file_size}"
+        return 1
+    fi
+
+    check_fw_version
+}
+
+# Get file size in decimal number if second parameter is 10
+# otherwise return files size in hexadecimal number
+file_size() {
+    number_base=$2
+    decimal_file_size="$(wc -c < "$1")"
+    if [ "$number_base" = "10" ]; then
+        echo "$decimal_file_size"
+        return 0
+    fi
+    printf "0x%x" "$decimal_file_size"
+}
+
+do_upgrade() {
+    local image_file="$1"
+    local install_partition="$2"
+    local install_offset="$3"
+    # Get the package root directory from the image file path
+    local package_root="$(dirname "$image_file")"
+
+    # Load constants "$BOS_ENV_FILE" and "$NAND_ENV_DEVICE"
+    . /lib/functions/common.sh
+
+    flash_erase "$install_partition" "$install_offset" "$NAND_BLOCK_COUNT"
+    nandwrite -p -s "$install_offset" "$install_partition" "$image_file"
+
+    # Get size of the new env file so we know how much to dump
+    env_size=$(file_size "$package_root/$BOS_ENV_FILE" 10)
+
+    # Check if the env is the same and write only if it's different
+    cat $package_root/$BOS_ENV_FILE | sha256sum > /tmp/$BOS_ENV_FILE.checksum
+    if dd bs=$env_size if=$NAND_ENV_DEVICE | \
+       sha256sum -c /tmp/$BOS_ENV_FILE.checksum &>/dev/null; then
+        # Env is the same, no need to update
+        return 0
+    fi
+
+    # Env is different, write new env
+    dd if="$package_root/$BOS_ENV_FILE" bs=$env_size of=$NAND_ENV_DEVICE
+
+    return 0
+}

@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_extforward.so  (9556 B)  libs: libc.so.6
+000008fc  sz=0      _init
+00001538  sz=140    mod_extforward_plugin_init
+000015c4  sz=0      _fini

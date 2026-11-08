@@ -1,0 +1,7 @@
+# usr\lib\libpcreposix.so.0.0.6  (9496 B)  libs: libpcre.so.1, libc.so.6
+000006d8  sz=0      _init
+00000838  sz=236    regerror
+00000924  sz=36     regfree
+00000948  sz=200    regcomp
+00000a10  sz=660    regexec
+00000ca4  sz=0      _fini

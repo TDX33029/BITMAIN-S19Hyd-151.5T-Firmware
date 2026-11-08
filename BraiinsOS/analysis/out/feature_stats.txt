@@ -1,0 +1,14 @@
+functions total: 24180
+modes: {'T': 9282, 'A': 14898}
+functions per keyword:
+  stratum_v2          11
+  telemetry            9
+  stratum_v1           7
+  power                5
+  cooling              4
+  eeprom_crypto        2
+  devfee               1
+  dps                  1
+  autotuning           1
+  error                1
+  eeprom               1

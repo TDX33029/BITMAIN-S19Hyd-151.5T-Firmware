@@ -1,0 +1,64 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x36fe4,clear_find_asic_fail_record,7860,04_asic_chain;10_config_eeprom,1,13,\n asic nonce number for chain[%d]...\n | /nonce | \nchain[%d] nonce info:\n,../analysis/reverse/full/bmminer/decompiled/36fe4_FUN_00036fe4.c
+bmminer,0x13300,config_parse_topol,8140,10_config_eeprom;04_asic_chain,1,10,alloc topol failed\n,../analysis/reverse/full/bmminer/decompiled/13300_FUN_00013300.c
+bmminer,0x55518,freq_voltage_main_init,4240,05_freq_voltage;02_power_psu;10_config_eeprom,1,10,"fixed frequency is %d, g_frequency_offset is %d\n | press any key to start rising frequency...",../analysis/reverse/full/bmminer/decompiled/55518_FUN_00055518.c
+bmminer,0x513a0,mode_init,2444,10_config_eeprom;13_os_service,1,6,,../analysis/reverse/full/bmminer/decompiled/513a0_FUN_000513a0.c
+bmminer,0x1d4fc,eeprom_get_sweep_result,1180,10_config_eeprom;05_freq_voltage,1,5,"eeprom is not init, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1d4fc_FUN_0001d4fc.c
+bmminer,0x1c934,eeprom_get_max_freq,912,10_config_eeprom;05_freq_voltage,1,5,,../analysis/reverse/full/bmminer/decompiled/1c934_FUN_0001c934.c
+bmminer,0x4e344,power_get_max_voltage_eeprom,224,02_power_psu;10_config_eeprom,1,5,max voltage in eeprom = %d\n,../analysis/reverse/full/bmminer/decompiled/4e344_FUN_0004e344.c
+bmminer,0x542f8,find_asic_counter,860,04_asic_chain;10_config_eeprom,1,3,exist chain,../analysis/reverse/full/bmminer/decompiled/542f8_FUN_000542f8.c
+bmminer,0x25b38,build_freq_plan,612,05_freq_voltage;10_config_eeprom,1,3,,../analysis/reverse/full/bmminer/decompiled/25b38_FUN_00025b38.c
+bmminer,0x456ec,find_asic_counter_board,440,04_asic_chain;10_config_eeprom,1,2,,../analysis/reverse/full/bmminer/decompiled/456ec_FUN_000456ec.c
+bmminer,0x12c78,parse_strategy,1660,10_config_eeprom;05_freq_voltage,1,0,,../analysis/reverse/full/bmminer/decompiled/12c78_FUN_00012c78.c
+bmminer,0x152cc,parse_adjust_strategy,560,10_config_eeprom,1,0,,../analysis/reverse/full/bmminer/decompiled/152cc_FUN_000152cc.c
+bmminer,0x36460,FUN_00036460,1312,06_thermal_fan;05_freq_voltage;10_config_eeprom,0,10,bitmain-fan-pwm,../analysis/reverse/full/bmminer/decompiled/36460_FUN_00036460.c
+bmminer,0x29e18,FUN_00029e18,1736,10_config_eeprom;04_asic_chain;06_thermal_fan,0,9,/etc/topol.conf,../analysis/reverse/full/bmminer/decompiled/29e18_FUN_00029e18.c
+bmminer,0x4546c,FUN_0004546c,484,10_config_eeprom,0,9,/etc/cgminer.conf.factory,../analysis/reverse/full/bmminer/decompiled/4546c_FUN_0004546c.c
+bmminer,0x36980,FUN_00036980,392,10_config_eeprom,0,9,open /config/cgminer.conf failed | /config/cgminer.conf,../analysis/reverse/full/bmminer/decompiled/36980_FUN_00036980.c
+bmminer,0x36b08,FUN_00036b08,1244,10_config_eeprom;09_web_api,0,7,serialize input miner conf failed | open /cofig/cgminer.conf failed | serialize local  miner conf failed | invalid set miner conf param,../analysis/reverse/full/bmminer/decompiled/36b08_FUN_00036b08.c
+bmminer,0x15500,FUN_00015500,5956,04_asic_chain;10_config_eeprom;13_os_service,0,6,"nonce fifo flush by nonce, last_ts = %.2f.\n | repeat nonce error",../analysis/reverse/full/bmminer/decompiled/15500_FUN_00015500.c
+bmminer,0x47af0,FUN_00047af0,1064,04_asic_chain;10_config_eeprom,0,6,chain %d asic %d get reg value failed | Chain %d is not exist.\n,../analysis/reverse/full/bmminer/decompiled/47af0_FUN_00047af0.c
+bmminer,0x46a48,FUN_00046a48,1060,04_asic_chain;07_mining_pool;10_config_eeprom,0,6,!!! nonce invalid | !!! nonce crc error,../analysis/reverse/full/bmminer/decompiled/46a48_FUN_00046a48.c
+cgminer,0x40560,FUN_00040560,8152,05_freq_voltage;10_config_eeprom;04_asic_chain,0,5,freq_avg,../analysis/reverse/full_aux/cgminer/decompiled/40560_FUN_00040560.c
+bmminer,0x1c1f8,FUN_0001c1f8,1072,10_config_eeprom;04_asic_chain,0,5,"load chain %d eeprom data\n | FW type %s, eeprom[%d] shows %s\n",../analysis/reverse/full/bmminer/decompiled/1c1f8_FUN_0001c1f8.c
+bmminer,0x1ccc8,FUN_0001ccc8,712,05_freq_voltage;10_config_eeprom;04_asic_chain,0,5,freq value[%d] less than freq base[%d] for chain %d.\n | freq value[%d] greater than freq max[%d] for chain %d.\n,../analysis/reverse/full/bmminer/decompiled/1ccc8_FUN_0001ccc8.c
+bmminer,0x6a484,FUN_0006a484,536,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | %s: Bad eeprom param, input chain is %d\n | fail to read eeprom by iic, chain: %d, addr: %d\n",../analysis/reverse/full/bmminer/decompiled/6a484_FUN_0006a484.c
+bmminer,0x6a270,FUN_0006a270,532,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | %s: Bad eeprom param, input chain is %d\n | fail to write eeprom by iic, chain:%d, addr: %d",../analysis/reverse/full/bmminer/decompiled/6a270_FUN_0006a270.c
+bmminer,0x6a034,FUN_0006a034,332,10_config_eeprom;04_asic_chain,0,5,"%s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6a034_FUN_0006a034.c
+bmminer,0x6e5c4,FUN_0006e5c4,320,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e5c4_FUN_0006e5c4.c
+bmminer,0x6e704,FUN_0006e704,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e704_FUN_0006e704.c
+bmminer,0x6e83c,FUN_0006e83c,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e83c_FUN_0006e83c.c
+bmminer,0x6e974,FUN_0006e974,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6e974_FUN_0006e974.c
+bmminer,0x6eaac,FUN_0006eaac,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6eaac_FUN_0006eaac.c
+bmminer,0x6ebe4,FUN_0006ebe4,312,03_pic_ctrl;10_config_eeprom;04_asic_chain,0,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6ebe4_FUN_0006ebe4.c
+bmminer,0x6a180,FUN_0006a180,240,10_config_eeprom;04_asic_chain,0,5,"%s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/6a180_FUN_0006a180.c
+bmminer,0x2fbb4,FUN_0002fbb4,208,10_config_eeprom,0,5,eeprom,../analysis/reverse/full/bmminer/decompiled/2fbb4_FUN_0002fbb4.c
+bmminer,0x27e60,FUN_00027e60,188,10_config_eeprom,0,5,"can not find sweep in eeprom,test return %d",../analysis/reverse/full/bmminer/decompiled/27e60_FUN_00027e60.c
+bmminer,0x281f0,FUN_000281f0,180,05_freq_voltage;10_config_eeprom;04_asic_chain,0,5,chain min freq in eeprom = %d,../analysis/reverse/full/bmminer/decompiled/281f0_FUN_000281f0.c
+bmminer,0x77634,FUN_00077634,1836,10_config_eeprom,0,3,calibration data crc err,../analysis/reverse/full/bmminer/decompiled/77634_FUN_00077634.c
+bmminer,0x46e6c,FUN_00046e6c,828,04_asic_chain;10_config_eeprom,0,3,!!! REG_TYPE = 1. %u asic %d | !!!  %0x %0x %0x %0x asic %d  core 0x%02x ,../analysis/reverse/full/bmminer/decompiled/46e6c_FUN_00046e6c.c
+bmminer,0x6f1fc,FUN_0006f1fc,684,10_config_eeprom,0,3,"power reply the bad crc, crc = 0x%04x, crc_read = 0x%04x\n",../analysis/reverse/full/bmminer/decompiled/6f1fc_FUN_0006f1fc.c
+cgminer,0x306ac,FUN_000306ac,304,07_mining_pool;10_config_eeprom,0,3,Setting pool %d to quota %d,../analysis/reverse/full_aux/cgminer/decompiled/306ac_FUN_000306ac.c
+FileParser,0x12180,FUN_00012180,2716,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/12180_FUN_00012180.c
+FileParser,0x11be0,FUN_00011be0,980,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11be0_FUN_00011be0.c
+FileParser,0x13808,FUN_00013808,920,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/13808_FUN_00013808.c
+FileParser,0x116c8,FUN_000116c8,804,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/116c8_FUN_000116c8.c
+FileParser,0x109a8,FUN_000109a8,500,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/109a8_FUN_000109a8.c
+FileParser,0x11a00,FUN_00011a00,464,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11a00_FUN_00011a00.c
+FileParser,0x11598,FUN_00011598,304,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11598_FUN_00011598.c
+FileParser,0x11fbc,FUN_00011fbc,288,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11fbc_FUN_00011fbc.c
+FileParser,0x10b9c,FUN_00010b9c,212,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10b9c_FUN_00010b9c.c
+FileParser,0x120dc,FUN_000120dc,164,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/120dc_FUN_000120dc.c
+FileParser,0x11514,FUN_00011514,132,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11514_FUN_00011514.c
+FileParser,0x114c8,FUN_000114c8,76,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/114c8_FUN_000114c8.c
+FileParser,0x11490,FUN_00011490,56,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11490_FUN_00011490.c
+FileParser,0x13bec,FUN_00013bec,52,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/13bec_FUN_00013bec.c
+FileParser,0x11460,FUN_00011460,48,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11460_FUN_00011460.c
+FileParser,0x108b0,FUN_000108b0,42,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/108b0_FUN_000108b0.c
+FileParser,0x10868,FUN_00010868,40,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10868_FUN_00010868.c
+FileParser,0x10838,entry,36,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10838_entry.c
+FileParser,0x1088c,FUN_0001088c,34,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/1088c_FUN_0001088c.c
+FileParser,0x108dc,_FINI_0,24,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/108dc__FINI_0.c
+FileParser,0x106e8,_DT_INIT,12,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/106e8__DT_INIT.c
+FileParser,0x13c2c,FUN_00013c2c,12,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/13c2c_FUN_00013c2c.c
+FileParser,0x13c38,_DT_FINI,8,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/13c38__DT_FINI.c

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_ipvs.so  (9712 B)  libs: libxtables.so.12, libc.so.6
+00000754  sz=0      _init
+0000081c  sz=20     libxt_ipvs_init
+00000fcc  sz=0      _fini

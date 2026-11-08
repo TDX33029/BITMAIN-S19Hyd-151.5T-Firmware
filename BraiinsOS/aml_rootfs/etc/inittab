@@ -1,0 +1,16 @@
+# /etc/inittab — busybox-init: <id>:<runlevels>:<action>:<command>
+#   id        — tty name without /dev/; empty inherits init's stdio
+#   runlevels — ignored; "initdefault" is rejected as a bad entry
+#   command   — leading "-" makes init claim the tty via TIOCSCTTY
+#
+# Pre-init mounts and /dev setup happen in the device `init` script.
+
+::sysinit:/etc/init.d/rcS
+
+# Console login; "-" claims /dev/ttyS0 so Ctrl+C and job control work.
+ttyS0::askfirst:-/bin/login -f root
+
+::ctrlaltdel:/sbin/reboot
+
+::shutdown:/etc/init.d/rcK
+::shutdown:/bin/umount -a -r

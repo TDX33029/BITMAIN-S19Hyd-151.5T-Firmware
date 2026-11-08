@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_CONNSECMARK.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000544  sz=0      _init
+000005ac  sz=16     libxt_CONNSECMARK_init
+000007c8  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_userdir.so  (9600 B)  libs: libc.so.6
+00000918  sz=0      _init
+00001278  sz=112    mod_userdir_plugin_init
+000012e8  sz=0      _fini

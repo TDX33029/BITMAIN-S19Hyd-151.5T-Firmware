@@ -1,0 +1,30 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x247d8,power_watchdog_control,1148,02_power_psu,1,12,"power voltage can not meet the target, retry:%d | power voltage can not meet the target | power type version error\n | disable power watchdog: 0x%04x\n",../analysis/reverse/full/bmminer/decompiled/247d8_FUN_000247d8.c
+bmminer,0x55518,freq_voltage_main_init,4240,05_freq_voltage;02_power_psu;10_config_eeprom,1,10,"fixed frequency is %d, g_frequency_offset is %d\n | press any key to start rising frequency...",../analysis/reverse/full/bmminer/decompiled/55518_FUN_00055518.c
+bmminer,0x2e084,get_chain_asic_domain_avg_voltage,640,04_asic_chain;02_power_psu,1,10,"chain%d, domain%d, asic avg voltage:%f | chain%d, domain%d, asic %03d, voltage:%f",../analysis/reverse/full/bmminer/decompiled/2e084_FUN_0002e084.c
+bmminer,0x3cc08,power_enable_watchdog,1460,02_power_psu,1,8,"power voltage read failed, pls check! | power voltage rise or drop, pls check! | power status error = 0x%0x | power status error!",../analysis/reverse/full/bmminer/decompiled/3cc08_FUN_0003cc08.c
+bmminer,0x29628,power_status,868,02_power_psu,1,6,power:\n | get power failed\n,../analysis/reverse/full/bmminer/decompiled/29628_FUN_00029628.c
+bmminer,0x4e344,power_get_max_voltage_eeprom,224,02_power_psu;10_config_eeprom,1,5,max voltage in eeprom = %d\n,../analysis/reverse/full/bmminer/decompiled/4e344_FUN_0004e344.c
+bmminer,0x534b8,hem_power_adjust,3084,02_power_psu,1,4,power is err. | miner power:%d | HEM power adjust current v: %d  I :%f miner power %d target_power %d entrance_temp :%d g_target_power: %d,../analysis/reverse/full/bmminer/decompiled/534b8_FUN_000534b8.c
+bmminer,0x246cc,set_voltage,260,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/246cc_FUN_000246cc.c
+bmminer,0x1b800,FUN_0001b800,2552,05_freq_voltage;02_power_psu,0,10,"level %d, voltage = %d frequency = %d",../analysis/reverse/full/bmminer/decompiled/1b800_FUN_0001b800.c
+bmminer,0x73f10,FUN_00073f10,468,02_power_psu,0,5,"can nont get power status\n | %s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/73f10_FUN_00073f10.c
+bmminer,0x75a60,FUN_00075a60,328,02_power_psu,0,5,"%s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/75a60_FUN_00075a60.c
+bmminer,0x3da58,FUN_0003da58,324,05_freq_voltage;02_power_psu,0,5,"power is high when inc_freq, drop vol now, power:%d",../analysis/reverse/full/bmminer/decompiled/3da58_FUN_0003da58.c
+bmminer,0x1cf90,FUN_0001cf90,688,02_power_psu;04_asic_chain,0,4,"No work mode voltage, chain = %d, mode = %d.\n | voltage level out of range | voltage level not match",../analysis/reverse/full/bmminer/decompiled/1cf90_FUN_0001cf90.c
+bmminer,0x24490,FUN_00024490,192,02_power_psu,0,4,the minimal voltage = %.2f,../analysis/reverse/full/bmminer/decompiled/24490_FUN_00024490.c
+bmminer,0x243f0,FUN_000243f0,140,02_power_psu;04_asic_chain,0,4,"read_feedback_voltage chain = %d, voltage = %f\n",../analysis/reverse/full/bmminer/decompiled/243f0_FUN_000243f0.c
+bmminer,0x3ee18,FUN_0003ee18,2508,02_power_psu;04_asic_chain,0,3,read asic vol in 30 min,../analysis/reverse/full/bmminer/decompiled/3ee18_FUN_0003ee18.c
+bmminer,0x67604,FUN_00067604,920,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/67604_FUN_00067604.c
+bmminer,0x67278,FUN_00067278,908,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/67278_FUN_00067278.c
+bmminer,0x66f8c,FUN_00066f8c,748,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/66f8c_FUN_00066f8c.c
+bmminer,0x66cb4,FUN_00066cb4,728,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/66cb4_FUN_00066cb4.c
+bmminer,0x669ec,FUN_000669ec,468,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/669ec_FUN_000669ec.c
+bmminer,0x6799c,FUN_0006799c,416,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/6799c_FUN_0006799c.c
+bmminer,0x67b3c,FUN_00067b3c,360,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/67b3c_FUN_00067b3c.c
+bmminer,0x541d0,FUN_000541d0,296,02_power_psu,0,3,vol=%d\n,../analysis/reverse/full/bmminer/decompiled/541d0_FUN_000541d0.c
+bmminer,0x62a08,FUN_00062a08,200,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/62a08_FUN_00062a08.c
+bmminer,0x62ad0,FUN_00062ad0,200,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/62ad0_FUN_00062ad0.c
+bmminer,0x628b0,FUN_000628b0,172,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/628b0_FUN_000628b0.c
+bmminer,0x6295c,FUN_0006295c,172,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/6295c_FUN_0006295c.c
+bmminer,0x62814,FUN_00062814,156,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/62814_FUN_00062814.c

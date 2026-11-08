@@ -1,0 +1,52 @@
+#!/bin/sh
+#
+# Starts set-environment
+#
+
+HWID_FILE="/etc/miner_hwid"
+
+generate_hwid() {
+    local ethaddr=$(/bin/cat /sys/class/net/eth0/address)
+    local serial_number=""
+
+    # Try to read serial number from stock config
+    if [ -f "/tmp/serial_number" ]; then
+        serial_number=$(cat /tmp/serial_number | tr -d '\n\r ')
+    fi
+
+    # Generate hwid from hash of serial number and MAC address
+    # This ensures persistent device_id across reinstalls
+    local input_string="bitmain-serial-${serial_number}-mac-${ethaddr}"
+
+    # Use md5sum to generate hash and base64 to have bigger space in 16 characters
+    # Convert hex to binary using sed and printf (busybox compatible)
+    echo -n "${input_string}" | md5sum | awk '{print $1}' | sed 's/../\\x&/g' | xargs -0 printf | head -c 12 | base64 | tr "+/" "ab"
+}
+
+start() {
+    if [[ ! -f "$HWID_FILE" ]]; then
+        generate_hwid > "${HWID_FILE}"
+    fi
+    cp "$HWID_FILE" "/tmp/"
+}
+stop() {
+    true
+}
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac
+
+exit $?

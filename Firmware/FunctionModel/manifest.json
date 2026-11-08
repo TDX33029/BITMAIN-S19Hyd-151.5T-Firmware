@@ -1,0 +1,227 @@
+{
+  "scope": "Zynq7007 hydro only; AML (air-cooled) excluded",
+  "firmware": {
+    "S19": {
+      "model_dir": "S19/FunctionModel",
+      "index_functions": 1843,
+      "programs": [
+        {
+          "program": "bmminer",
+          "source": "S19/Unpacked/minerfs.d/rootfs/usr/bin/bmminer",
+          "size": 429356,
+          "sha256": "8f584fa9466bccaabf622eb63dda605eeadec17d83e56242e3101f77b36697ce",
+          "functions": 1420,
+          "decompiled": 1087,
+          "strings_rows": 3594,
+          "call_edges": 4373
+        },
+        {
+          "program": "FileParser",
+          "source": "S19/analysis/reverse/aux_bin/FileParser",
+          "size": 15720,
+          "sha256": "a8e9a8f27d83906e6ce8c9cc9a77ff177b52fcb380b0d8cc3822093850587119",
+          "functions": 65,
+          "decompiled": 16,
+          "strings_rows": 128,
+          "call_edges": 97
+        },
+        {
+          "program": "antlogin",
+          "source": "S19/analysis/reverse/aux_bin/antlogin",
+          "size": 5464,
+          "sha256": "1511556bd301af36536be2b4f49ad0df52c43b6802e63d8fd4cdc7ad696633e3",
+          "functions": 16,
+          "decompiled": 8,
+          "strings_rows": 33,
+          "call_edges": 11
+        },
+        {
+          "program": "cgminer-api",
+          "source": "S19/analysis/reverse/aux_bin/cgminer-api",
+          "size": 9632,
+          "sha256": "14fc6f3fa4c94121493b6721a1b64343835a1e84ecbbb95e2032504a0a31e511",
+          "functions": 53,
+          "decompiled": 10,
+          "strings_rows": 66,
+          "call_edges": 46
+        },
+        {
+          "program": "id2mac",
+          "source": "S19/analysis/reverse/aux_bin/id2mac",
+          "size": 6512,
+          "sha256": "ab6d00421bd97cb1a3c8e8eb58a72cc684d2e5fea47b6bb3d4b86f5d8879c7b9",
+          "functions": 31,
+          "decompiled": 11,
+          "strings_rows": 43,
+          "call_edges": 26
+        },
+        {
+          "program": "monitor-ipsig",
+          "source": "S19/analysis/reverse/aux_bin/monitor-ipsig",
+          "size": 9688,
+          "sha256": "d7864c2dc103cfa791e7422dac1cd5cb5f194ba4650a09a855e6cbd27309affc",
+          "functions": 90,
+          "decompiled": 20,
+          "strings_rows": 99,
+          "call_edges": 116
+        },
+        {
+          "program": "monitor-recobtn",
+          "source": "S19/analysis/reverse/aux_bin/monitor-recobtn",
+          "size": 5532,
+          "sha256": "9aa3d35e61be981775365e07ec22fbdc1ff6dd28c396f10737824a6674a5f57b",
+          "functions": 54,
+          "decompiled": 12,
+          "strings_rows": 65,
+          "call_edges": 52
+        },
+        {
+          "program": "update-daemon",
+          "source": "S19/analysis/reverse/aux_bin/update-daemon",
+          "size": 9660,
+          "sha256": "9d65f92dceae584ff525050e3801e5704e9856d45460654463ea2189273f0a71",
+          "functions": 70,
+          "decompiled": 12,
+          "strings_rows": 90,
+          "call_edges": 72
+        },
+        {
+          "program": "bitmain_axi.ko",
+          "source": "S19/analysis/reverse/ko_bin/bitmain_axi.ko",
+          "size": 7428,
+          "sha256": "32da56d0a8aa13158706d3bb63c16c9452c277f33845cadd51d501c1e2ec3f10",
+          "functions": 22,
+          "decompiled": 5,
+          "strings_rows": 110,
+          "call_edges": 19
+        },
+        {
+          "program": "fpga_mem_driver.ko",
+          "source": "S19/analysis/reverse/ko_bin/fpga_mem_driver.ko",
+          "size": 7916,
+          "sha256": "772fcd01373dda9f24eab164c0183e2620e44607ef16f01213f35cc573c663ad",
+          "functions": 22,
+          "decompiled": 5,
+          "strings_rows": 117,
+          "call_edges": 19
+        }
+      ]
+    },
+    "S21": {
+      "model_dir": "S21/FunctionModel",
+      "index_functions": 3328,
+      "programs": [
+        {
+          "program": "bmminer",
+          "source": "S21/Unpacked/zynq/minerfs.d/rootfs/usr/bin/bmminer",
+          "size": 655256,
+          "sha256": "aac3a8c0edb729c00fffa010d0e0a92c63548908d2359481478dee7c8c56af8e",
+          "functions": 2035,
+          "decompiled": 1659,
+          "strings_rows": 4686,
+          "call_edges": 6210
+        },
+        {
+          "program": "FileParser",
+          "source": "S21/analysis/reverse/aux_bin/FileParser",
+          "size": 23912,
+          "sha256": "23dc7156908cf34d6c76a2f3b9c776b98d7fd2995ef886bc3092cbf8698df114",
+          "functions": 76,
+          "decompiled": 27,
+          "strings_rows": 134,
+          "call_edges": 122
+        },
+        {
+          "program": "antlogin",
+          "source": "S21/analysis/reverse/aux_bin/antlogin",
+          "size": 5464,
+          "sha256": "00b06eec085f41159ef536acec4eea78b636e83a899451dff45e2ba7d29dfeb0",
+          "functions": 16,
+          "decompiled": 8,
+          "strings_rows": 33,
+          "call_edges": 11
+        },
+        {
+          "program": "cgminer",
+          "source": "S21/analysis/reverse/aux_bin/cgminer",
+          "size": 297676,
+          "sha256": "9637106d2823996d12c6daeeb1e3ababacc2fb5ab5c8b44b1a1df82117e3abfc",
+          "functions": 853,
+          "decompiled": 476,
+          "strings_rows": 2466,
+          "call_edges": 2699
+        },
+        {
+          "program": "cgminer-api",
+          "source": "S21/analysis/reverse/aux_bin/cgminer-api",
+          "size": 9636,
+          "sha256": "9f8409f9f7bc388455d96c32ca424bfa32c74fa8238864fe21af9ac16fac1c8f",
+          "functions": 55,
+          "decompiled": 10,
+          "strings_rows": 67,
+          "call_edges": 48
+        },
+        {
+          "program": "id2mac",
+          "source": "S21/analysis/reverse/aux_bin/id2mac",
+          "size": 6512,
+          "sha256": "4dfd5eae8466b2a8132c526ac99b9c93274b6316cb26fc03dab746a771f7acdf",
+          "functions": 31,
+          "decompiled": 11,
+          "strings_rows": 43,
+          "call_edges": 26
+        },
+        {
+          "program": "monitor-ipsig",
+          "source": "S21/analysis/reverse/aux_bin/monitor-ipsig",
+          "size": 9688,
+          "sha256": "8fb535e30b8cc1c28522266ec10fa11e7e78ea8c35839e6ffe9d680b451725d8",
+          "functions": 90,
+          "decompiled": 20,
+          "strings_rows": 99,
+          "call_edges": 116
+        },
+        {
+          "program": "monitor-recobtn",
+          "source": "S21/analysis/reverse/aux_bin/monitor-recobtn",
+          "size": 5532,
+          "sha256": "51f4dfaca1f037291bcf21d47b0fb0e33103c9772521d6d4efc34d4178bffdc7",
+          "functions": 54,
+          "decompiled": 12,
+          "strings_rows": 65,
+          "call_edges": 52
+        },
+        {
+          "program": "update-daemon",
+          "source": "S21/analysis/reverse/aux_bin/update-daemon",
+          "size": 9668,
+          "sha256": "a16ea1b0e36c7a4ff907b2a739604d963e45749f1ac06abc1aa45b15b0d9f4af",
+          "functions": 74,
+          "decompiled": 12,
+          "strings_rows": 94,
+          "call_edges": 76
+        },
+        {
+          "program": "bitmain_axi.ko",
+          "source": "S19/analysis/reverse/ko_bin/bitmain_axi.ko",
+          "size": 7428,
+          "sha256": "32da56d0a8aa13158706d3bb63c16c9452c277f33845cadd51d501c1e2ec3f10",
+          "functions": 22,
+          "decompiled": 5,
+          "strings_rows": 110,
+          "call_edges": 19
+        },
+        {
+          "program": "fpga_mem_driver.ko",
+          "source": "S19/analysis/reverse/ko_bin/fpga_mem_driver.ko",
+          "size": 7916,
+          "sha256": "772fcd01373dda9f24eab164c0183e2620e44607ef16f01213f35cc573c663ad",
+          "functions": 22,
+          "decompiled": 5,
+          "strings_rows": 117,
+          "call_edges": 19
+        }
+      ]
+    }
+  }
+}

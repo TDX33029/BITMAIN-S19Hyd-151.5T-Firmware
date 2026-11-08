@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_DNAT.so  (9728 B)  libs: libxtables.so.12, libc.so.6
+0000073c  sz=0      _init
+0000081c  sz=20     libip6t_DNAT_init
+000013f4  sz=0      _fini

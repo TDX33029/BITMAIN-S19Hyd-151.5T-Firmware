@@ -1,0 +1,3772 @@
+04015a34  USBC,L	
+0402a9cc  UUUU3333
+0405b9d4  rsa_mod_exp_sw
+0405b9e4  efi_load_pe
+0405ba31  AAAAAA
+0405ba51  BBBBBB
+0405bd50  RE is too long (data overflow)
+0405bd70  No closing ']' bracket
+0405bd88  No closing bracket
+0405bd9c  Unbalanced brackets
+0405bdb0  |.^$*+?()[\
+0405bed5  P%@Fpg`
+0405bf14  ftGd$T
+0405bf6c  uJTZ7j
+0405bfad  n6~UNt^
+0405c0fd  Qkkbal
+0405c498  0123456789ABCDEF
+
+%s
+
+
+0405c589  [?25%c
+0405c599  [%d;%df
+0405c5a4  Scanning disks on %s...
+
+0405c5c8  Found %d disks
+
+0405c605  ir;%s: Invalid DOS Signature
+
+0405c624  %s: Invalid NT Signature
+
+0405c640  %s: Could not allocate %ld bytes
+
+0405c664  %s: Invalid optional header magic %x
+
+0405c68c  Unknown Relocation off %x type %x
+
+0405c708  U-Boot EFI: Relocation at %p is out of range (%lx)
+
+0405c73c  WARNING: Truncating timer from %llx to %x
+
+0405c7b8  #address-cells
+0405c7fc  /aliases
+0405c808  phandle
+0405c810  linux,phandle
+0405c820  compatible
+0405c82c  #size-cells
+0405c838  <valid offset/length>
+0405c850  <no error>
+0405c85c  <unknown error>
+0405c86c  /chosen
+0405c874  /config
+0405c87c  status
+0405c88c  <none>
+0405c894  No valid device tree binary found - please append one to U-Boot binary, use u-boot-dtb.bin or define CONFIG_OF_EMBED. For sandbox, use -d <file.dtb>
+
+0405c92c  fdtcontroladdr
+0405caa8  Error: Bad gzipped data
+
+0405cac4  Error: gunzip out of data in header
+
+0405caec  ### ERROR ### Please RESET the board ###
+
+0405cb18  0123456789abcdef
+0405cb2c  Env export buffer too small: %zu, but need %zu
+
+0405cb5c  himport_r: can't insert "%s=%s" into hash table
+
+0405cb90  WARNING: '%s' neither in running nor in imported env!
+
+0405cbc8  WARNING: '%s' not in imported env, deleting it!
+
+0405cbfc  incorrect header check
+0405cc14  unknown compression method
+0405cc30  invalid window size
+0405cc44  unknown header flags set
+0405cc60  header crc mismatch
+0405cc74  invalid block type
+0405cc88  invalid stored block lengths
+0405cca8  too many length or distance symbols
+0405cccc  invalid code lengths set
+0405cce8  invalid bit length repeat
+0405cd04  invalid literal/lengths set
+0405cd20  invalid distances set
+0405cd38  incorrect data check
+0405cd50  incorrect length check
+0405cd68  invalid distance too far back
+0405cd88  invalid distance code
+0405cda0  invalid literal/length code
+0405cdbc  initcall sequence %p failed at call %p (err=%d)
+
+0405d670  list passed to list_sort() too long for efficiency
+
+0405d6a4  ERROR: Failed to allocate 0x%lx bytes below 0x%lx.
+
+0405d6d8  unknown cmd (%d) at %d
+
+0405d6f0  Error compiling regex: %s
+
+0405d70c  ## ERROR: unsupported match method: 0x%02x
+
+0405d80c  EPTGMK
+0405de24  %08lx:
+0405de38      %s
+
+0405de40  %llu Hz%s
+0405de58   %cHz%s
+0405de60  %llu Bytes%s
+0405de70   %ciB%s
+0405ded0  Jump offset is too big
+0405e1a0  RE is too long (code overflow)
+0405e1c8  %s: Skipping invalid prop
+0405e1e4  %s: Missing RSA key info
+0405e200  RSA key bits %u outside allowed range %d..%d
+
+0405e230  %s: Out of memory
+0405e244  RSA key words %u exceeds maximum %d
+
+0405e26c  Public exponent is too short (%d bits, minimum 2)
+
+0405e2a0  LSB of RSA public exponent must be set.
+
+0405e2cc  signature
+0405e2d8  key-%s
+0405e2e0  rsa,num-bits
+0405e2f0  rsa,n0-inverse
+0405e300  rsa,exponent
+0405e310  rsa,modulus
+0405e31c  rsa,r-squared
+0405e32c  RSA: Can't find Modular Exp implementation
+
+0405e9b0  need dictionary
+0405e9c0  stream end
+0405e9cc  file error
+0405e9d8  stream error
+0405e9e8  data error
+0405e9f4  insufficient memory
+0405ea08  buffer error
+0405ea18  incompatible version
+0405ea30  FDT_ERR_NOTFOUND
+0405ea44  FDT_ERR_EXISTS
+0405ea54  FDT_ERR_NOSPACE
+0405ea64  FDT_ERR_BADOFFSET
+0405ea78  FDT_ERR_BADPATH
+0405ea88  FDT_ERR_BADSTATE
+0405ea9c  FDT_ERR_TRUNCATED
+0405eab0  FDT_ERR_BADMAGIC
+0405eac4  FDT_ERR_BADVERSION
+0405ead8  FDT_ERR_BADSTRUCTURE
+0405eaf0  FDT_ERR_BADLAYOUT
+0405eb04  nvidia,tegra20-emc
+0405eb18  nvidia,tegra20-emc-table
+0405eb34  nvidia,tegra20-nand
+0405eb48  nvidia,tegra124-pmc
+0405eb5c  nvidia,tegra186-sdhci
+0405eb74  nvidia,tegra210-sdhci
+0405eb8c  nvidia,tegra124-sdhci
+0405eba4  nvidia,tegra30-sdhci
+0405ebbc  nvidia,tegra20-sdhci
+0405ebd4  nvidia,tegra124-xusb-padctl
+0405ebf0  nvidia,tegra210-xusb-padctl
+0405ec0c  smsc,lan9215
+0405ec1c  samsung,exynos-sromc
+0405ec34  samsung,s3c2440-i2c
+0405ec48  samsung,exynos-sound
+0405ec60  wolfson,wm8994-codec
+0405ec78  google,cros-ec-keyb
+0405ec8c  samsung,exynos-usb-phy
+0405eca4  samsung,exynos5250-usb3-phy
+0405ecc0  samsung,exynos-tmu
+0405ecd4  samsung,exynos-fimd
+0405ece8  samsung,exynos-mipi-dsi
+0405ed00  samsung,exynos5-dp
+0405ed14  samsung,exynos-dwmmc
+0405ed2c  samsung,exynos-mmc
+0405ed40  maxim,max77686
+0405ed50  spi-flash
+0405ed5c  maxim,max98095-codec
+0405ed74  samsung,exynos5-hsi2c
+0405ed8c  samsung,sysmmu-v3.3
+0405eda0  intel,microcode
+0405edb0  intel,pantherpoint-ahci
+0405edc8  intel,model-206ax
+0405eddc  intel,gma
+0405ede8  ams,as3722
+0405edf4  intel,ich-spi
+0405ee04  intel,quark-mrc
+0405ee14  socionext,uniphier-xhci
+0405ee2c  intel,bd82x6x
+0405ee3c  altr,socfpga-stmmac
+0405ee50  altr,socfpga-dw-mshc
+0405ee68  snps,dwc2
+0405ee74  intel,baytrail-fsp
+0405ee88  intel,baytrail-fsp-mdp
+0405eea0  intel,ivybridge-fsp
+0405eeb4  <NULL>
+0405f29c  Error: inflateInit2() returned %d
+
+0405f2c0  Error: inflate() returned %d
+
+0405f69a  @@echo Copying Linux from NAND flash to RAM... && nand read ${kernel_load_address} 0x2000000 ${kernel_size} && nand read ${devicetree_load_address} 0x1a00000 ${devicetree_size} && echo Copying ramdisk... && nand read ${ramdisk_load_address} 0x6000000 0x1000000 && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+0405f86c  zynq_gem_probe
+0405f87b  nand_scan_tail
+0405f88a  board_late_init
+0405f89a  dram_init
+0405f8a4  composite_unbind
+0405f8b5  xilinx_load
+0405f8c1  xilinx_dump
+0405f8cd  xilinx_info
+0405f8d9  bcm5461_config
+0405f8e8  bcm54xx_parse_status
+0405f8fd  bcm54xx_startup
+0405f90d  phy_broadcom_init
+0405f91f  fdt_fixup_memory_banks
+0405f936  __of_translate_address
+0405f94d  create_bbt
+0405f958  nand_select_chip
+0405f969  verify_bbt_descr
+0405f97a  genphy_config_advert
+0405f98f  genphy_restart_aneg
+0405f9a3  genphy_config_aneg
+0405f9b6  genphy_update_link
+0405f9c9  mdio_register
+0405f9d7  phy_device_create
+0405f9e9  phy_connect
+0405f9f5  board_phy_config
+0405fa06  nand_transfer_oob
+0405fa18  nand_fill_oob
+0405fa26  zynq_phy_init
+0405fa34  zynq_gem_init
+0405fa42  _ehci_create_int_queue
+0405fa59  dfu_transfer_medium_ram
+0405fa71  dfu_fill_entity_ram
+0405fa85  dfu_init_env_entities
+0405fa9b  dfu_get_buf
+0405faa7  dfu_get_hash_algo
+0405fab9  dfu_write
+0405fac3  dfu_read
+0405facc  dfu_fill_entity
+0405fadc  dfu_config_entities
+0405faf0  download_head
+0405fafe  download_tail
+0405fb0c  process_rqt_download
+0405fb21  process_data
+0405fb2e  thor_rx_data
+0405fb3b  thor_tx_data
+0405fb48  do_thor_down
+0405fb55  thor_rx_tx_complete
+0405fb69  run_usb_dnl_gadget
+0405fb7c  mmc_block_op
+0405fb89  thor_func_setup
+0405fb99  thor_init
+0405fba3  mmc_file_op
+0405fbaf  thor_handle
+0405fbbb  dfu_write_medium_mmc
+0405fbd0  dfu_get_medium_size_mmc
+0405fbe8  thor_func_set_alt
+0405fbfa  dfu_read_medium_mmc
+0405fc0e  dfu_fill_entity_mmc
+0405fc22  g_dnl_register
+0405fc31  do_bootvx_fdt
+0405fc3f  v7_dcache_inval_range
+0405fc55  set_default_env
+0405fc65  fpga_loadbitstream
+0405fc78  env_import
+0405fc83  xilinx_load
+0405fc8f  xilinx_loadfs
+0405fc9d  xilinx_dump
+0405fca9  fpga_dev_info
+0405fcb7  fpga_add
+0405fcc0  fpga_fsload
+0405fccc  fpga_load
+0405fcd6  fpga_dump
+0405fce0  fpga_info
+0405fcea  ext4fs_devread
+0405fcf9  ext4fs_log_journal
+0405fd0c  ext4fs_put_metadata
+0405fd20  zynq_dma_transfer
+0405fd32  zynq_dma_xfer_init
+0405fd45  do_env_export
+0405fd53  zynq_align_dma_buffer
+0405fd69  zynq_validate_bitstream
+0405fd81  sdhci_reset
+0405fd8d  zynq_load
+0405fd97  do_env_import
+0405fda5  sdhci_transfer_data
+0405fdb9  zynq_loadfs
+0405fdc5  sdhci_send_command
+0405fdd8  sdhci_set_clock
+0405fde8  sdhci_init
+0405fdf3  add_sdhci
+0405fdfd  alloc_double_indirect_block
+0405fe19  fdt_find_or_add_subnode
+0405fe31  device_remove
+0405fe3f  device_probe
+0405fe4c  dev_get_platdata
+0405fe5d  dev_get_parent_platdata
+0405fe75  dev_get_uclass_platdata
+0405fe8d  dev_get_priv
+0405fe9a  dev_get_uclass_priv
+0405feae  dev_get_parent_priv
+0405fec2  raw_access
+0405fecd  spi_slave_ofdata_to_platdata
+0405feea  zynq_nand_init
+0405fef9  mdio_wait
+0405ff03  ci_ep_queue
+0405ff0f  zynq_gem_recv
+0405ff1d  drivers/mtd/mtdcore.c
+0405ff33  U-Boot BUG at %s:%d!
+
+0405ff49  ## Error: illegal character '='in variable name "%s"
+
+0405ff7f  ## Can't malloc %d bytes
+
+0405ff99  ## Error inserting "%s" variable, errno=%d
+
+0405ffc5  %-*s- %s
+
+0405ffcf  Unknown command '%s' - try 'help' without arguments for list of all known commands
+
+
+04060024  %s: xfers requiring several transactions are not supported.
+
+04060061  Timeout destroying interrupt endpoint queue
+
+0406008e  %s: unlock failed, writes may not work
+
+040600b6  %s: Hardware doesn't specify base clock frequency
+
+040600e9  %s: mmc create fail!
+
+040600ff  DRAM:  
+04060107  bad length %d < %d
+
+0406011b  ## Warning: gatewayip needed but not set
+
+04060145  
+ARP Retry count exceeded; starting again
+
+04060170  aaaaa, bootdelay = %d
+
+04060196  Resetting CPU ...
+
+040601a9  ERROR, invalid PHY mode (0x%x
+)
+040601c9  Auto-neg error, defaulting to 10BT/HD
+
+040601f0  Unknown operator '%s'
+
+04060207  fdt_len = %d Bytes
+
+0406021b  
+
+init SD fail before read devicetree.dtb.sig file!!!
+
+
+04060253  devicetree.dtb.sig
+04060266  
+
+read devicetree.dtb.sig file fail!!!
+
+
+0406028f  
+
+read fdt sig fail!!!
+
+
+040602a8  
+FDT rsa verify success!!!!!
+
+
+040602c7  
+FDT rsa verify fail!!!
+
+
+040602e1  ramfs_addr = 0x%lx
+
+040602f5  ramfs_len = %d Bytes
+
+0406030b  
+
+init SD fail before read update.image.gz.sig!!!
+
+
+0406033f  update.image.gz.sig
+04060353  
+
+read update.image.gz.sig fail!!!
+
+
+04060378  
+
+read fs sig fail!!!
+
+
+04060390  
+FS rsa verify success!!!!!
+
+
+040603ae  
+FS rsa verify fail!!!
+
+
+040603c7  kernel_addr = 0x%lx
+
+040603dc  kernel_len = %d Bytes
+
+040603f3  
+
+init SD fail before read uImage.sig!!!
+
+
+0406041e  uImage.sig
+04060429  
+
+read uImage.sig fail!!!
+
+
+04060445  
+
+read kernel sig fail!!!
+
+
+04060461  
+KERNEL rsa verify success!!!!!
+
+
+04060483  
+KERNEL rsa verify fail!!!
+
+
+040604a0  
+find upgrade marker!
+
+040604b7  
+
+read upgrade marker error!!! 
+
+
+040604d9  please restart ...
+
+
+
+040604ef  malloc miner key fail!!!
+
+
+0406050a  malloc root key fail!!!
+
+
+04060524  
+
+read crl sig fail!!!
+
+
+0406053d  
+CRL rsa verify success!!!!!
+
+
+0406055c  
+
+malloc for crl list fail!!!
+
+
+0406057c  
+CRL rsa verify fail!!!
+
+
+04060596  
+
+read crl version fail!!!
+
+
+040605b3  
+
+init miner key fail!!!
+
+
+040605ce  
+
+init root key fail!!!
+
+
+040605ec  
+
+init SD fail before read miner.btm.sig file!!!
+
+
+0406061f  miner.btm.sig
+0406062d  
+
+read miner.btm.sig file fail!!!
+
+
+04060651  miner.btm
+0406065b  
+
+read miner.btm file fail!!!
+
+
+0406067b  
+MINER BTM rsa verify success!!!!!
+
+
+040606a0  
+
+find miner BTM in crl!!!
+
+
+040606bd  
+MINER BTM rsa verify fail!!!
+
+
+040606dd  
+
+read miner btm sig fail!!!
+
+
+040606fc  
+
+find miner btm in crl!!!
+
+
+04060719  
+
+read miner btm fail!!!
+
+
+04060734  Signature is of incorrect length %d
+
+04060759  Checksum algorithm: %s
+
+04060771  Signature length %u exceeds maximum %d
+
+04060799  RSA: Can't find Modular Exp implementation
+
+040607c5  Error in Modular exponentation
+
+040607e5  In RSAVerify(): Padding check failed!
+
+0406080c  In RSAVerify(): Hash check failed!
+
+04060830  ** Bad device specification %s %s **
+
+04060856  ** Bad HW partition specification %s %s **
+
+04060882  ** Bad device %s %s **
+
+0406089a  ** No device specified **
+
+040608ba  ** Bad partition specification %s %s **
+
+040608e3  ** Bad device size - %s %s **
+
+04060902  ** No partition table - %s %s **
+
+04060924  Whole Disk
+0406092f  ** Invalid partition %d **
+
+0406094b  ** No valid partitions found **
+
+0406096c  ** Invalid partition type "%.32s" (expect "U-Boot")
+
+040609a1  version: 0219044840d61bcca8de74be87b2d8f14d7faadd commit: 2020-04-28 16:55:34 build: 2020-05-28 15:43:20
+04060a0a  build version information::  %s.
+
+04060a2c  author: zhiqiang.liu      email: zhiqiang.liu@bitmain.com
+04060a66  author information::  %s.
+
+
+04060a82  mem=2032M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+04060ad5  mem=1008M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+04060b28  mem=496M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+04060b7a  mem=240M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+04060bcc  mem=112M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+04060c1e  --- %s: sys_sdram_size = 0x%lx, and we consider it as 128M
+
+
+04060c5b   uboot_software_version=
+04060c7a  %s: final bootargs: %s
+
+
+04060c93  This is release version
+
+
+04060cad  qspiboot
+04060cb6  modeboot
+04060cbf  --- nand boot nand ---
+
+
+04060cd8  nandboot
+04060ce1  --- nand boot sd ---
+
+
+04060cf8  nandboot_sd
+04060d04  norboot
+04060d0c  sdboot
+04060d13  jtagboot
+04060d1c  %s: failed to allocate
+
+04060d34  %s: Unable detect NAND based on MIO settings
+
+04060d62  %s: nand_scan_ident failed
+
+04060d7e  %s: Unable to detect OnDie ECC
+
+04060d9e  %s: nand_scan_tailfailed
+
+04060db8  ZYNQ NAND init failed
+
+04060dcf     reserving fdt memory region: addr=%llx size=%llx
+
+04060e04  ## Flattened Device Tree from Legacy Image at %08lx
+
+04060e39  fdt header checksum invalid
+04060e55  fdt checksum invalid
+04060e6a  uImage is not a fdt
+04060e7e  uImage is compressed
+04060e93  uImage data is not a fdt
+04060eac  fdt overwritten
+04060ebc  ## Flattened Device Tree blob at %08lx
+
+04060ee4  ERROR: Did not find a cmdline Flattened Device Tree
+
+04060f19     Booting using the fdt blob at %#08lx
+
+04060f42  ## Flattened Device Tree from multi component Image at %08lX
+
+04060f80     Booting using the fdt at 0x%p
+
+04060fa2  fdt size != image size
+04060fb9  partial
+04060fc1     Programming %s bitstream... 
+04060fe1  The given image format is not supported (corrupt?)
+
+04061015  loadables
+0406101f  get ramdisk error
+
+04061032  get ramdisk ok
+
+04061042  ## Loading init Ramdisk from Legacy for %d, Image at %08lx ...
+
+04061082  No Linux %s Ramdisk Image
+
+0406109d  Wrong Ramdisk Image Format
+
+040610b9  ## Loading init Ramdisk from multi component Legacy Image at %08lx ...
+
+04061101  (fake run for tracing)
+04061118  machid
+0406111f  Using machid 0x%lx from environment
+
+04061144  
+Starting kernel ...%s
+
+
+0406115d  FDT creation failed! hanging...
+0406117d  FDT and ATAGS support not compiled in - hanging
+
+040611ae  /memory
+040611b6  ## WARNING: fixup memory failed!
+
+040611d8  initrd_high
+040611e4  ramdisk - allocation error
+
+04061200     Loading Ramdisk to %08lx, end %08lx ... 
+0406122c  image is not a fdt
+0406123f  fdt_high
+04061248  Failed using fdt_high value for Device Tree
+04061274  device tree - allocation error
+
+04061294     Using Device Tree in place at %p, end %p
+
+040612c1     Loading Device Tree to %p, end %p ... 
+040612eb  fdt move failed
+040612fb  bootdelay
+04061305  kernel-offset
+04061313  kernaddr
+0406131c  rootdisk-offset
+0406132c  rootaddr
+04061339  Loading
+04061341     %s %s ... 
+0406134f     Uncompressing %s ... 
+04061368  Image too large: increase CONFIG_SYS_BOOTM_LEN
+
+04061398  %s: uncompress error %d
+
+040613b1  Must RESET board to recover
+
+040613ce  Ramdisk image is corrupt or invalid
+
+040613f3  Could not find a valid device tree
+
+04061417  FPGA image is corrupted or invalid
+
+0406143b  Loadable(s) is corrupt or invalid
+
+0406145e  autostart
+0406146c  Automatic boot of image at addr 0x%08lX ...
+
+04061499  bootpretryperiod
+040614aa  BOOTP broadcast %d
+
+040614be  
+Retry time exceeded
+
+040614d4  Bad Linux ARM zImage magic!
+
+040614f1  Kernel image @ %#08lx [ %#08lx - %#08lx ]
+
+04061520  ERROR : check_gpio: invalid GPIO %d
+
+04061545  %s: %s: error: gpio %s%d not reserved
+
+0406156c  Board: Xilinx Zynq
+
+04061580  %s: ep0 transaction already in progress
+
+040615a9  bootsecure
+040615bb  ## Error: Secure boot command not specified
+
+040615e8  ## Error: "%s" returned (code %d)
+
+0406160b  Unknown command '%s' - try 'help'
+
+0406162e  'bootd' recursion detected
+
+0406164a  Command '%s' failed: Error %d
+
+04061669  %s - %s
+
+
+04061673  Usage:
+%s 
+0406167e  - No additional help available.
+
+0406169f  
+Loading from %s device %d, partition %d: Name: %.32s  Type: %.32s
+
+040616e3  ** Read error on %d:%d
+
+040616fb  
+** Bad Header Checksum **
+
+04061717  drivers/usb/gadget/composite.c
+0406174b  bootcmd=run $modeboot
+04061761  bootdelay=2
+0406176d  baudrate=115200
+0406177d  preboot=
+04061786  kernel_image=uImage
+0406179a  kernel_load_address=0x2000000
+040617b8  ramdisk_image=update.image.gz
+040617d6  ramdisk_load_address=0x3800000
+040617f5  devicetree_image=devicetree.dtb
+04061815  devicetree_load_address=0x3000000
+04061837  bitstream_image=system.bit.bin
+04061856  boot_image=BOOT.bin
+0406186a  loadbit_addr=0x100000
+04061880  loadbootenv_addr=0x2000000
+0406189b  kernel_size=0x800000
+040618b0  devicetree_size=0x20000
+040618c8  ramdisk_size=0x2000000
+040618df  boot_size=0xF00000
+040618f2  fdt_high=0x20000000
+04061906  initrd_high=0x20000000
+0406191d  bootenv=uEnv.txt
+0406192e  loadbootenv=load mmc 0 ${loadbootenv_addr} ${bootenv}
+04061964  importbootenv=echo Importing environment from SD ...; env import -t ${loadbootenv_addr} $filesize
+040619c6  sd_uEnvtxt_existence_test=test -e mmc 0 /uEnv.txt
+040619f8  preboot=if test $modeboot = sdboot && env run sd_uEnvtxt_existence_test; then if env run loadbootenv; then env run importbootenv; fi; fi; 
+04061a83  mmc_loadbit=echo Loading bitstream from SD/MMC/eMMC to RAM.. && mmcinfo && load mmc 0 ${loadbit_addr} ${bitstream_image} && fpga load 0 ${loadbit_addr} ${filesize}
+04061b27  norboot=echo Copying Linux from NOR flash to RAM... && cp.b 0xE2100000 ${kernel_load_address} ${kernel_size} && cp.b 0xE2600000 ${devicetree_load_address} ${devicetree_size} && echo Copying ramdisk... && cp.b 0xE2620000 ${ramdisk_load_address} ${ramdisk_size} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+04061c7e  qspiboot=echo Copying Linux from QSPI flash to RAM... && sf probe 0 0 0 && sf read ${kernel_load_address} 0x100000 ${kernel_size} && sf read ${devicetree_load_address} 0x600000 ${devicetree_size} && echo Copying ramdisk... && sf read ${ramdisk_load_address} 0x620000 ${ramdisk_size} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+04061dec  uenvboot=if run loadbootenv; then echo Loaded environment from ${bootenv}; run importbootenv; fi; if test -n $uenvcmd; then echo Running uenvcmd ...; run uenvcmd; fi
+04061e92  sdboot=if mmcinfo; then echo Copying Linux from SD to RAM... && load mmc 0 ${kernel_load_address} ${kernel_image} && load mmc 0 ${devicetree_load_address} ${devicetree_image} && load mmc 0 ${ramdisk_load_address} ${ramdisk_image} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}; fi
+04061fcf  usbboot=if usb start; then run uenvboot; echo Copying Linux from USB to RAM... && load usb 0 ${kernel_load_address} ${kernel_image} && load usb 0 ${devicetree_load_address} ${devicetree_image} && load usb 0 ${ramdisk_load_address} ${ramdisk_image} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}; fi
+0406211e  nandboot=echo Copying Linux from NAND flash to RAM... && nand read ${kernel_load_address} 0x2000000 ${kernel_size} && nand read ${devicetree_load_address} 0x1a00000 ${devicetree_size} && echo Copying ramdisk... && nand read ${ramdisk_load_address} 0x2800000 ${ramdisk_size} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+04062283  nandboot_sd=echo Copying Linux from SD to RAM... && echo Copying Linux from SD to RAM... && fatload mmc 0 ${kernel_load_address} ${kernel_image} && fatload mmc 0 ${devicetree_load_address} ${devicetree_image} && fatload mmc 0 ${ramdisk_load_address} ${ramdisk_image} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+040623e1  jtagboot=echo TFTPing Linux to RAM... && tftpboot ${kernel_load_address} ${kernel_image} && tftpboot ${devicetree_load_address} ${devicetree_image} && tftpboot ${ramdisk_load_address} ${ramdisk_image} && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+040624fd  rsa_norboot=echo Copying Image from NOR flash to RAM... && cp.b 0xE2100000 0x100000 ${boot_size} && zynqrsa 0x100000 && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+040625c5  rsa_nandboot=echo Copying Image from NAND flash to RAM... && nand read 0x100000 0x0 ${boot_size} && zynqrsa 0x100000 && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+0406268d  rsa_qspiboot=echo Copying Image from QSPI flash to RAM... && sf probe 0 0 0 && sf read 0x100000 0x0 ${boot_size} && zynqrsa 0x100000 && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+04062765  rsa_sdboot=echo Copying Image from SD to RAM... && load mmc 0 0x100000 ${boot_image} && zynqrsa 0x100000 && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+04062821  rsa_jtagboot=echo TFTPing Image to RAM... && tftpboot 0x100000 ${boot_image} && zynqrsa 0x100000 && bootm ${kernel_load_address} ${ramdisk_load_address} ${devicetree_load_address}
+040628d5  dfu_ram_info=set dfu_alt_info ${kernel_image} ram 0x3000000 0x500000\\;${devicetree_image} ram 0x2A00000 0x20000\\;${ramdisk_image} ram 0x2000000 0x600000
+04062970  dfu_ram=run dfu_ram_info && dfu 0 ram 0
+04062998  thor_ram=run dfu_ram_info && thordown 0 ram 0
+040629c6  dfu_mmc_info=set dfu_alt_info ${kernel_image} fat 0 1\\;${devicetree_image} fat 0 1\\;${ramdisk_image} fat 0 1
+04062a35  dfu_mmc=run dfu_mmc_info && dfu 0 mmc 0
+04062a5d  thor_mmc=run dfu_mmc_info && thordown 0 mmc 0
+04062a8d  %s: null device
+
+04062a9e  (%d:%d) Vendor: %s Prod.: %s Rev: %s
+
+04062ac4  Model: %s Firm: %s Ser#: %s
+
+04062ae1  Vendor: %s Rev: %s Prod: %s
+
+04062afe  device type DOC
+
+04062b0f  device type unknown
+
+04062b24  Unhandled device type: %i
+
+04062b3f              Type: 
+04062b52  Removable 
+04062b5d  Hard Disk
+04062b67  CD ROM
+04062b6e  Optical Device
+04062b82  # %02X #
+04062b8b              Capacity: %ld.%ld MB = %ld.%ld GB (%ld x %ld)
+
+04062bc6              Capacity: not available
+
+04062beb  unbind() method failed on dev '%s' on error path
+
+04062c1d  Failed to unbind dev '%s' on error path
+
+04062c46  %s: Device '%s' failed to remove on error path
+
+04062c76  %s: Device '%s' failed child_post_remove()
+04062ca1  %s: Device '%s' failed to remove, but children are gone
+
+04062cda  %s: Device '%s' failed to post_probe on error path
+
+04062d0e  dfu_hash_algo
+04062d1c  ERROR: DFU hash method: %s not supported!
+
+at %s:%d/%s()
+
+04062d56  ERROR: Hash algorithm %s not supported
+
+at %s:%d/%s()
+
+04062d8f  NAND support not available!
+
+04062dac  SF support not available!
+
+04062dc7  %s: Device %s not (yet) supported!
+
+04062deb  ERROR: Invalid number of arguments.
+
+at %s:%d/%s()
+
+04062e1f  ERROR: Couldn't find MMC device no. %d.
+
+at %s:%d/%s()
+
+04062e57  ERROR: Couldn't init MMC device.
+
+at %s:%d/%s()
+
+04062e88  mmcpart
+04062e90  ERROR: Couldn't find part #%d on mmc device #%d
+
+at %s:%d/%s()
+
+04062ed0  ERROR: Memory layout (%s) not supported!
+
+at %s:%d/%s()
+
+04062f09  ERROR: Could not memalign 0x%x bytes
+at %s:%d/%s()
+
+04062f3d  ERROR: unsupported device: %s
+
+at %s:%d/%s()
+
+04062f6b  
+DFU complete %s: 0x%08x
+
+04062f8e  dfu_bufsiz
+04062f99  %s: Could not memalign 0x%lx bytes
+
+04062fbd  dfu_alt_info
+04062fca  ERROR: "dfu_alt_info" env variable not defined!
+
+at %s:%d/%s()
+
+0406300a  ERROR: DFU entities configuration failed!
+
+at %s:%d/%s()
+
+04063044  Device Firmware Upgrade
+0406305c  %s: Failed to fill buffer
+
+04063077  
+UPLOAD ... done
+Ctrl+C to exit ...
+
+0406309c  DFU alt settings list:
+
+040630b4  dev: %s alt: %d name: %s layout: %s
+
+040630d9  %s: Wrong sequence number! [%d] [%d]
+
+040630ff  ERROR: Buffer overflow! (0x%p + 0x%x > 0x%p)
+
+at %s:%d/%s()
+
+0406313c  drivers/dfu/dfu.c
+0406314e  drivers/dfu/dfu_ram.c
+04063164  ERROR: unsupported layout: %s
+
+at %s:%d/%s()
+
+04063192  ERROR: request exceeds allowed area
+
+at %s:%d/%s()
+
+040631c6  U-Boot.armv7
+040631d3  bootp_arch
+040631de  bootp_vci
+040631e8  DHCP client bound to address %pI4 (%lu ms)
+
+04063214  DHCP: INVALID STATE
+
+04063229  Host Name
+04063233  *** WARNING: %s is too long (%d - max: %d) - truncated
+
+0406326b  Root Path
+04063275  *** Unhandled DHCP Option in OFFER/ACK: %d
+
+040632a1  EHCI failed: timeout when disabling periodic list
+
+040632d4   Class       Probed   Name
+
+040632f0  uclass %d: %s
+
+040632ff  - %c %s @ %08lx
+0406330f  , seq %d, (req %d)
+04063322  get_value
+0406332c  set_value
+04063336  Virtual root driver already exists!
+
+0406335b  Virtual root driver does not exist!
+
+04063380  u-boot,dm-pre-reloc
+04063394  Some drivers failed to bind
+
+040633b1  Some drivers were not found
+
+040633ce  arch_number
+040633da  boot_params
+040633e6  DRAM bank
+040633f0  -> start
+040633f9  -> size
+04063401  baudrate    = %u bps
+
+04063417  TLB addr
+04063420  relocaddr
+0406342a  reloc off
+04063434  irq_sp
+0406343b  sp start 
+04063445  ARM frequency = %ld MHz
+
+0406345e  DSP frequency = %ld MHz
+
+04063477  DDR frequency = %ld MHz
+
+04063490  bootcmd
+04063498  ## Starting EFI application at 0x%08lx ...
+
+040634c4  ## Application terminated, r = %d
+
+040634e7  ERROR: Failed to process device tree
+
+0406350d  WARNING: Invalid device tree, expect boot to fail
+
+04063540  ## Starting application at 0x%08lx ...
+
+0406356b  ## Application terminated, rc = 0x%lx
+
+04063592  Trying to execute a command out of order
+
+040635bc  confaddr
+040635c5  ## Transferring control to Plan 9 (at address %08lx) ...
+
+040635ff  common/bootm_os.c
+04063611  ! %s:%d FIT images not supported for '%s' - must reset board to recover!
+
+0406365b  ## Transferring control to RTEMS (at address %08lx) ...
+
+04063694  ## Booting kernel from Legacy Image at %08lx ...
+
+040636c6  Unsupported Architecture 0x%x
+
+040636e5  Wrong Image Format for %s command
+
+04063708  ERROR: can't get kernel image!
+
+04063728  Can't get image type!
+
+0406373f  Can't get image compression!
+
+0406375d  Can't get image OS!
+
+04063772  Can't get image ARCH!
+
+04063789  Can't get image load address!
+
+040637a8  ERROR: unknown image format type!
+
+040637cb  Could not find a valid setup.bin for x86
+
+040637f5  Can't get entry point property!
+
+04063816  Could not find kernel entry point!
+
+0406383a  WARNING: legacy format multi component image overwritten
+
+04063874  ERROR: new format image overwritten - must RESET the board to recover
+
+040638bb  initrd_start
+040638c8  initrd_end
+040638d3  ERROR: booting os '%s' (%d) is not supported
+
+04063901  subcommand not supported
+
+04063920  Automatic boot of VxWorks image at address 0x%08lx ...
+
+04063958  ## Ethernet MAC address not copied to NV RAM
+
+04063986  bootaddr
+0406398f  ## VxWorks bootline address not specified
+
+040639ba  bootdev
+040639c2  ## VxWorks boot device not specified
+
+040639e8  bootfile
+040639f1  host:%s 
+040639fa  host:vxWorks 
+04063a08  ipaddr
+04063a14  netmask
+04063a1c  :%08x 
+04063a23  serverip
+04063a32  gatewayip
+04063a42  hostname
+04063a4b  tn=%s 
+04063a52  othbootargs
+04063a5e  ## Using bootline (@ 0x%lx): %s
+
+04063a7f  ## Not an ELF image, assuming binary
+
+04063aa5  ## Starting vxWorks at 0x%08lx ...
+
+04063ac9  ## vxWorks terminated
+
+04063ae0  /chosen
+04063ae8  ## ERROR: %s : %s
+
+04063afb  ## Starting vxWorks at 0x%08lx, device tree at 0x%08lx ...
+
+04063b37  List of available devices:
+
+04063b53  %-8s %08x %c%c 
+04063b63  data abort
+
+04063b6f  Data (writethrough) Cache is %s
+
+04063b90  usb_dnl_dfu
+04063b9f  ## Resetting to default environment
+
+04063bc4  edit: 
+04063bcb  ERROR: Cannot export environment: errno = %d
+
+at %s:%d/%s()
+
+04063c0c  ## Warning: defaulting to text format
+
+04063c33  ## Error: external checksum format must pass size
+
+04063c66  ## Info: input data size = %zu = 0x%zX
+
+04063c8e  ## Error: bad CRC, import failed
+
+04063cb0  cmd/nvedit.c
+04063cbd  ERROR: Environment import failed: errno = %d
+
+at %s:%d/%s()
+
+04063cfa  ## %s: only one of "-b", "-c" or "-t" allowed
+
+04063d29  ## Warning: Input data exceeds %d bytes - truncated
+
+04063d5e  
+Environment size: %d/%ld bytes
+
+04063d7f  ## Error: "%s" not defined
+
+04063d9b  usage: fatinfo <interface> [<dev[:part]>]
+
+04063dc6  
+** Unable to use %s %d:%d for fatinfo **
+
+04063df1  
+** Unable to use %s %d:%d for fatwrite **
+
+04063e1d  
+** Unable to write "%s" from %s %d:%d **
+
+04063e48  %llu bytes written
+
+04063e5c  Error: FAT sector size mismatch (fs=%hu, dev=%lu)
+
+04063e8f              %s%c
+
+04063ea1   %8u   %s%c
+
+04063eae  
+%d file(s), %d dir(s)
+
+
+04063ec7  Error reading cluster
+
+04063ede  Error: reading directory block
+
+04063efe  Error: %llu overflow
+
+04063f14  Error: clearing FAT entries
+
+04063f31  Error: finding empty cluster
+
+04063f4f  Error: writing contents
+
+04063f68  Error: flush fat buffer
+
+04063f81  Error: writing directory entry
+
+04063fa1  /* NULL pointer error */
+04063fbd  The address of the fdt is %#08lx
+
+04063fdf  New length %d < existing length %d, ignoring.
+
+0406400e  libfdt fdt_open_into(): %s
+
+0406402a  No FDT memory address configured. Please configure
+the FDT address via "fdt addr <address>" command.
+Aborting!
+
+0406409d  New length 0x%X < existing length 0x%X, aborting.
+
+040640d0  libfdt fdt_path_offset() returned %s
+
+040640f6  libfdt fdt_add_subnode(): %s
+
+04064114  Sorry, I could not convert "%s"
+
+04064135  Unexpected character '%c'
+
+04064150  libfdt fdt_setprop(): %s
+
+0406416a  libfdt node not found
+
+04064181  0x%08X
+04064188  error: unprintable value
+
+040641a7  libfdt fdt_getprop(): %s
+
+040641c1  %s%s {
+
+040641c9  Nested too deep, aborting.
+
+040641eb  %s%s;
+
+040641f2  %s%s = 
+040641fa  %s/* NOP */
+
+04064207  Unknown tag 0x%08X
+
+0406421b  libfdt fdt_delprop():  %s
+
+04064236  libfdt fdt_del_node():  %s
+
+04064252  magic:			0x%x
+
+04064261  totalsize:		0x%x (%d)
+
+04064278  off_dt_struct:		0x%x
+
+0406428e  off_dt_strings:		0x%x
+
+040642a5  off_mem_rsvmap:		0x%x
+
+040642bc  version:		%d
+
+040642ca  last_comp_version:	%d
+
+040642e1  boot_cpuid_phys:	0x%x
+
+040642f8  size_dt_strings:	0x%x
+
+0406430f  size_dt_struct:		0x%x
+
+04064326  number mem_rsv:		0x%x
+
+04064341  index		   start		    size
+
+0406435c  ------------------------------------------------
+
+0406438e  libfdt fdt_get_mem_rsv():  %s
+
+040643ad      %x	%08x%08x	%08x%08x
+
+040643c7  libfdt fdt_add_mem_rsv():  %s
+
+040643e6  libfdt fdt_del_mem_rsv():  %s
+
+04064405  Could not find configuration node: %s
+
+0406442c  fast interrupt request
+
+04064444  Unable to update property %s:%s, err=%s
+
+04064472  fpgadata
+04064481  loadbp
+04064488  loadfs
+0406448f  loadmk
+04064496  Unknown fpga operation "%s"
+
+040644b3  FPGA device not specified
+
+040644ce  Wrong parameters for FPGA request
+
+040644f1  GUNZIP: error
+
+04064500  Fpga subimage data not found
+
+0406451e  ** Unknown image type
+
+04064535  ## Starting application at 0x%08lX ...
+
+0406455d  ## Application terminated, rc = 0x%lX
+
+04064584  GPIO: '%s' not found
+
+0406459a  cmd_gpio
+040645a3  gpio: requesting pin %u failed
+
+040645c3  gpio: pin %s (gpio %i) value is 
+040645e4  unknown (ret=%d)
+
+040645f6     Warning: no access to GPIO output value
+
+04064622     Warning: value of pin is still %d
+
+0406464c  Instruction Cache is %s
+
+04064665  ## Copying part %d from legacy image at %08lx ...
+
+04064698  Wrong Image Type for %s command
+
+040646b9  Must specify load address for %s command with compressed image
+
+040646f9  Bad Image Part
+
+04064709  ## Copying '%s' subimage from FIT image at %08lx ...
+
+0406473f  Could not find script subimage compression type
+
+04064770  Invalid image type for imxtract
+
+04064791     Loading part %d ... 
+040647a9     Uncompressing part %d ... 
+040647c7  GUNZIP ERROR - image not loaded
+
+040647e8  Unimplemented compression type %d
+
+0406480b  fileaddr
+04064814  Invalid data width specifier
+
+04064832  ** No boot file defined **
+
+0406484e  %llu bytes read in %lu ms
+0406486b  loads_echo
+04064876  ## Ready for S-Record download ...
+
+0406489a  ## S-Record download aborted
+
+040648b8  ## Start Addr      = 0x%08lX
+
+040648d6  loadaddr
+040648df  ## Switch baudrate to %d bps and press ENTER ...
+
+04064917  ## Ready for binary (ymodem) download to 0x%08lX at %d bps...
+
+0406495c  ## Ready for binary (xmodem) download to 0x%08lX at %d bps...
+
+0406499b  ## Ready for binary (kermit) download to 0x%08lX at %d bps...
+
+040649da  ## Binary (kermit) download aborted
+
+040649ff  ## Switch baudrate to %d bps and press ESC ...
+
+04064a2f  PHY does not have extended functions
+
+04064a55  Reading from bus %s
+
+04064a6a  PHY at address %d:
+
+04064a82  %d - 0x%x
+
+04064a8d  Base Address: 0x%08lx
+
+04064aa4  double word
+04064ab5  halfword
+04064abe  %s at 0x%08lx (%#0*lx) != %s at 0x%08lx (%#0*lx)
+
+04064af0  Total of %ld %s(s) were the same
+
+04064b12  Zero length ???
+
+04064b31  IEEE 802.3
+04064b3c  IEEE 802.9 ISLAN-16T
+04064b55  Incorrect PHY address. Range should be 0-31
+
+04064b82  PHY 0x%02X: OUI = 0x%04X, Model = 0x%02X, Rev = 0x%02X, %3dbase%s, %s
+
+04064bc9  Error reading from the PHY addr=%02x reg=%02x
+
+04064bf8  addr=%02x reg=%02x data=
+04064c17  Error writing to the PHY addr=%02x reg=%02x
+
+04064c44  Error reading from the PHY
+04064c5f   addr=%02x
+04064c6a  Error writing to the PHY
+04064c86  The MII dump command only formats the standard MII registers, 0-5.
+
+04064cca  %u.     (%04hx)                 -- %s --
+
+04064cfe    (%04hx:%04x) %u.
+04064d11  %2u,%2u =   b%u%u    speed selection = %s Mbps
+04064d40  %2u    = %5u    duplex = %s
+04064d5c  %2u-%2u = %5u    selector = %s
+04064d7b  %2u-%2u =     %u    selector = %s
+04064d9d  %2u   
+04064da4  %2u-%2u
+04064dac   = %5u    %s
+04064dc2  #part_num shouldn't be larger than %d
+
+04064de9  switch to partitions #%d, %s
+
+04064e07  mmc%d is current device
+
+04064e20  mmc%d(part %d) is current device
+
+04064e42  
+MMC erase: dev # %d, block # %d, count %d ... 
+04064e72  Error: card is write protected!
+
+04064e93  %d blocks erased: %s
+
+04064ec7  Partition configuration:
+
+04064ee1  	User Enhanced Start: 
+04064ef8  	User Enhanced Size: 
+04064f0e  	No enhanced user data area
+
+04064f2b  	User partition write reliability: %s
+
+04064f52  	GP%i Capacity: 
+04064f63  	No GP%i partition
+
+04064f77  	GP%i write reliability: %s
+
+04064f94  Partitioning successful, power-cycle to make effective
+
+04064fcc  Failed!
+
+04064fd5  get mmc type error!
+
+04064fea  
+MMC read: dev # %d, block # %d, count %d ... 
+04065019  %d blocks read: %s
+
+0406502d  OK, force rescan
+0406503e  set dsr %s
+
+0406504a  
+MMC write: dev # %d, block # %d, count %d ... 
+0406507a  %d blocks written: %s
+
+040650a2  Device: %s
+
+040650ae  Manufacturer ID: %x
+
+040650c3  OEM: %x
+
+040650cc  Name: %c%c%c%c%c 
+
+040650df  Tran Speed: %d
+
+040650ef  Rd Block Len: %d
+
+04065101  %s version %d.%d
+04065112  High Capacity: %s
+
+04065125  Bus Width: %d-bit%s
+
+0406513a  Erase Group Size: 
+0406514d  HC WP Group Size: 
+04065160  User Capacity: 
+04065170   WRREL
+
+04065178  Boot Capacity: 
+04065188  RPMB Capacity: 
+04065198  No MMC device available
+
+040651bc  
+no devices available
+
+040651d3  
+Device %d bad blocks:
+
+040651eb    %08llx
+
+04065204  .spread
+04065218  
+NAND %s: 
+04065223  Warning: scrub option will erase all factory set bad blocks!
+         There is no reliable way to recover them.
+         Use this command only for testing purposes if you
+         are sure of what you are doing!
+
+Really scrub this NAND flash? <y/N>
+
+0406531d  scrub aborted
+
+04065331  No memory for page buffer
+
+0406534c  Error (%d) reading page %08lx
+
+0406536b  Page %08lx dump:
+
+04065383  	%02x %02x %02x %02x %02x %02x %02x %02x  %02x %02x %02x %02x %02x %02x %02x %02x
+
+040653d6  	%02x %02x %02x %02x %02x %02x %02x %02x
+
+04065405  '%s' is not a number
+
+0406541b  Size exceeds partition or device limit
+
+04065443  size adjusted to 0x%llx (%d bad blocks)
+
+0406546c  %s: error at offset %llx, ret %d
+
+0406548e  Unknown nand command suffix '%s'.
+
+040654b1  markbad
+040654b9  block 0x%08lx NOT marked as bad! ERROR %d
+
+040654e4  block 0x%08lx successfully marked as bad
+
+0406550e  biterr
+0406551b  device is %swrite protected
+
+04065538  NAND flash successfully locked
+
+04065558  Error locking NAND flash
+
+04065572  unlock
+04065579  .allexcept
+04065584  NAND flash successfully unlocked
+
+040655a6  Error unlocking NAND flash, write and erase will probably fail
+
+040655e6  bootdevice
+040655f1  
+** No boot device **
+
+04065608  
+** Device %d not available
+
+04065625  .jffs2
+04065632  Unknown nand load suffix '%s'
+
+04065651  
+Loading from %s, offset 0x%lx
+
+04065671  ** Read error
+
+04065680  Fit image detected...
+
+04065697  ** Bad FIT image format
+
+040656b0  not used
+
+040656ba  ping failed; host %s is not alive
+
+040656dd  host %s is alive
+
+040656ef  prefetch abort
+
+040656ff  resetting ...
+
+0406570e  %llu bytes written in %lu ms
+0406572b  
+ ** Abort
+
+04065737  software interrupt
+
+0406574b  ## Executing script at %08lx
+
+04065769  malloc
+04065775  Written
+04065783  Failed to initialize SPI flash at %u:%u (error %d)
+
+040657b7  No SPI flash selected. Please run `sf probe'
+
+040657e5  update
+040657ec  ERROR: attempting %s past flash size (%#x)
+
+04065818  Failed to map physical memory
+
+04065837     Updating, %zu%% %lu B/s
+04065853  SPI flash failed in %s step
+
+04065870  %zu bytes written, %zu bytes skipped
+04065895   in %ld.%lds, speed %ld B/s
+
+040658b2  SF: %zu bytes @ %#x %s: 
+040658cb  SF: %zu bytes @ %#x Erased: %s
+
+040658eb  protect
+040658f3  start sector is not a valid number
+
+04065917  len is not a valid number
+
+04065932  do_bootm
+0406593b  ERROR prep subcommand failed!
+
+0406595a  Argument image is now in RAM: 0x%p
+
+0406597e  Argument image is now in RAM at: 0x%p
+
+040659a5  Subcommand failed
+
+040659b8  TIZEN "THOR" Downloader
+
+040659d1  cmd/thordown.c
+040659e0  ERROR: USB init failed: %d
+at %s:%d/%s()
+
+04065a0a  usb_dnl_thor
+04065a17  ERROR: THOR DOWNLOAD failed: %d
+at %s:%d/%s()
+
+04065a46  ERROR: THOR failed: %d
+at %s:%d/%s()
+
+04065a6c  undefined instruction
+
+04065a83  starting USB...
+
+04065a94  resetting USB...
+
+04065aab  serial
+04065ab2  stopping USB..
+
+04065ac2  USB is stopped. Please issue 'usb start' first.
+
+04065af3  USB device tree:
+
+04065b09  config for device %d
+
+04065b1f  *** No device available ***
+
+04065b3c  Device %d does not exist.
+
+04065b57  Device is no hub or does not have %d ports.
+
+04065b84  Setting Test_J mode
+04065b98  Setting Test_K mode
+04065bac  Setting Test_SE0_NAK mode
+04065bc6  Setting Test_Packet mode
+04065bdf  Setting Test_Force_Enable mode
+04065bfe  Unrecognized test mode: %s
+Available modes: J, K, S[E0_NAK], P[acket], F[orce_Enable]
+
+04065c55   on downstream facing port %d...
+
+04065c77   on upstream facing port...
+
+04065c94  Error during SET_FEATURE.
+
+04065caf  Test mode successfully set. Use 'usb start' to return to normal operation.
+
+04065d00  
+no USB devices available
+
+04065d1b  no current device selected
+
+04065d37  
+USB read: device %d block # %ld, count %ld ... 
+04065d68  %ld blocks read: %s
+
+04065d7d  
+USB write: device %d block # %ld, count %ld ... 
+04065daf  %ld blocks write: %s
+
+04065dc5  
+USB device %d: 
+04065dd6  unknown device
+
+04065de6  
+    Device %d: 
+04065e00  arm-linux-gnueabihf-gcc (Linaro GCC 7.2-2017.11) 7.2.1 20171011
+
+04065e41  GNU ld (Linaro_Binutils-2017.11) 2.28.2.20170706
+
+04065e73  
+%s: sys_sdram_size = 0x%08lx
+
+04065e92   %s: sys_sdram_size = 2 GB
+
+04065eae  %s: sys_sdram_size = 1 GB
+
+04065ec9  %s: sys_sdram_size = 512 MB
+
+04065ee6  %s: sys_sdram_size = 256 MB
+
+04065f03  %s: sys_sdram_size = 128 MB
+
+04065f20  %s: sys_sdram_size = 0x%lx, and we consider it as 128M
+
+04065f58  %s: gd->ram_size = 0x%lx
+
+04065f72  usb0 wrong num MIO: %d, Index %d
+
+04065f94  usb1 wrong num MIO: %d, Index %d
+
+04065fb6  zynq ULPI viewport init failed
+
+04065fd6  EHCI failed to shut down host controller.
+
+04066001  unable to allocate TDs
+
+04066019  unable to construct SETUP TD
+
+04066037  unable to construct DATA TD
+
+04066054  EHCI fail timeout STS_ASS set
+
+04066073  EHCI timed out on TD - token=%#x
+
+04066095  EHCI fail timeout STS_ASS reset
+
+040660b6  out of buffer pointers (%zu bytes left)
+
+040660df  EHCI failed: timeout when enabling periodic list
+
+04066111  .callbacks
+0406611c  .flags
+04066123  ## Warning: Unknown environment variable access method '%c'
+
+04066160  ## Warning: Unknown environment variable type '%c'
+
+04066194  ## Error: flags type check failure for "%s" <= "%s" (type: %c)
+
+040661d4  ## Error: Can't delete "%s"
+
+040661f1  ## Error: Can't overwrite "%s"
+
+04066211  oldval: %s  defval: %s
+
+04066229  ## Error: Can't create "%s"
+
+0406624b  sdxbim
+04066252  !bad CRC
+0406625b  ERROR: Cannot import environment: errno = %d
+
+at %s:%d/%s()
+
+04066298  !import failed
+040662a7  %s=%s
+
+040662ae  ## Error: cannot export environment
+
+040662d3  !spi_flash_probe() failed
+040662ed  !spi_flash_read() failed
+0406630a  %s%daddr
+04066313  %saddr
+0406631a  ethact
+04066321  ethrotate
+0406632b  ethprime
+04066334  eth%d: %s
+0406633e   [PRIME]
+04066347  
+Error: %s address %pM illegal value
+
+0406636d  
+Warning: %s failed to set MAC address
+
+04066395  eth%dmacskip
+040663a2  ethmacskip
+040663ad  
+Error: eth device name "%s" has a space!
+
+040663dc  
+Warning: %s MAC addresses don't match:
+
+04066405  Address in SROM is         %pM
+
+04066425  Address in environment is  %pM
+
+04066445  
+Warning: %s using MAC address from ROM
+
+0406646e  
+Warning: %s (eth%d) using random MAC address - %pM
+
+040664a7  ** Cannot support non-zero offset **
+
+040664cd  ** File not found %s **
+
+040664e6  ** Error ext4fs_write() **
+
+04066502  no block left to assign
+
+0406651b  No Memory
+
+04066526  %s: Device read error!
+
+0406653e  no block left assign
+
+04066554  no block left
+
+04066563  Recovery required
+
+04066576  File System is consistent
+
+04066591  ** Invalid Block Device Descriptor (NULL)
+
+040665bc  %s read outside partition %lu
+
+040665db   ** ext2fs_devread() read error **
+
+040665ff   ** %s read error - block
+
+0406661a  * %s read error - last part
+
+04066637  file found deleting
+
+0406664c  Error in ext4fs_log_gdt
+
+04066665  Please supply Absolute path
+
+04066682  Invalid path
+
+04066690  It is a Directory
+
+040666a3  Error in getting the block group descriptor table
+
+040666d6  Failed to iterate over directory %s
+
+040666fb  <DIR> 
+04066702  <SYM> 
+04066709  < ? > 
+04066710  %10u %s
+
+04066719  Invalid input arguments %s
+
+04066735  ** Can not find directory. **
+
+04066754  Failed to mount ext2 filesystem...
+
+04066778  buffer ptr is NULL
+
+0406678c  _get_node: malloc failed
+
+040667a6  update journal finished
+
+040667bf  1st Block Full:Allocate new block
+
+040667e2  Directory exceeds limit
+
+040667fb  no inode left to assign
+
+04066814  error in File System init
+
+0406682f  No memory
+
+0406683a  Not enough space on partition !!!
+
+0406685d  Error in copying content
+
+04066877  ** Unable to read file %s **
+
+04066898  fdt_chosen: %s
+
+040668a8  WARNING: could not set bootargs %s.
+
+040668cd  ERROR: 
+040668d5   - must RESET the board to recover.
+
+040668fa  %s: %s: %s
+
+04066906  /aliases
+0406690f  ethernet
+04066918  eth%daddr
+04066922  local-mac-address
+04066934  %s: num banks %d exceeds hardcoded limit %d. Recompile with higher MEMORY_BANKS_MAX?
+
+0406698a  device_type
+04066996  WARNING: could not set %s %s.
+
+040669b9  fdt_initrd: %s
+
+040669c9  linux,initrd-start
+040669dc  WARNING: could not set linux,initrd-start %s.
+
+04066a0b  WARNING: could not set linux,initrd-end %s.
+
+04066a38  linux,initrd-end
+04066a49  fdt_root: %s
+
+04066a57  serial#
+04066a5f  serial-number
+04066a6d  WARNING: could not set serial-number %s.
+
+04066a97  %s: Bad cell count for %s
+
+04066ab2  ranges
+04066ab9  The address of the fdt is invalid (NULL).
+
+04066ae4  libfdt fdt_check_header(): %s
+04066b02   - too old, fdt %d < %d
+04066b1a   - too new, fdt %d > %d
+04066b32  No current device
+
+04066b45  Interface:  
+04066b52  
+  Device %d: 
+04066b61  
+No valid FAT fs found
+
+04066b79  Filesystem: %s "%s"
+
+04066b8e  reading %s
+
+04066b9a  Error: non zero offset is currently not supported.
+
+04066bce  writing %s
+
+04066bda  Zynq> 
+04066be1  MMC Device %d not found
+
+04066bfa  Can't find images parent node '%s' (%s)
+
+04066c23  ## Checking hash(es) for FIT Image at %08lx ...
+
+04066c54     Hash(es) for Image %u (%s): 
+04066c74  /configurations
+04066c84  compatible
+04066c8f  %s  Kernel:       
+04066ca2  %s  Init Ramdisk: %s
+
+04066cb8  %s  FDT:          %s
+
+04066cce  %s  FPGA:         %s
+
+04066ce4  %s  Loadables:    
+04066cf7  %s                
+04066d0a  hashed-nodes
+04066d17  Can't get hashed-nodes property
+04066d37  Number of hashed nodes exceeds maximum
+04066d5e  Failed to hash configuration
+04066d7b  No data to hash
+04066d8b  Too many hash regions
+04066da1  hashed-strings
+04066db5   error!
+%s for '%s' hash node in '%s' config node
+
+04066de8  description
+04066df4  Verification failed
+04066e08  Unsupported %s address size
+
+04066e25  compression
+04066e37  /images
+04066e3f  ## Loading %s from FIT Image at %08lx ...
+
+04066e6a  Bad FIT %s image format!
+
+04066e84  Could not find configuration node
+
+04066ea7     Using '%s' configuration
+
+04066ec4     Verifying Hash Integrity ... 
+04066ee5  Could not find subimage node
+
+04066f03     Trying '%s' %s subimage
+
+04066f1f  Unsupported Architecture
+
+04066f39  FDT image is compressed
+04066f51  No %s %s %s Image
+
+04066f64  Could not find %s subimage data!
+
+04066f86  Subimage data is not a FDT
+04066fa1  Can't get %s subimage load address!
+
+04066fc6  Error: %s overwritten
+
+04066fdd     Loading %s from 0x%08lx to 0x%08lx
+
+04067004  %s  Description:  
+04067017  %s  Type:         %s
+
+0406702d  %s  Compression:  %s
+
+04067043  %s  Data Start:   
+04067056  %s  Data Size:    
+04067069  %s  Architecture: %s
+
+0406707f  %s  OS:           %s
+
+04067095  %s  Load Address: 
+040670a8  %s  Entry Point:  
+040670c5  %s  %s algo:    
+040670d6  invalid/unsupported
+
+040670eb  key-name-hint
+040670f9  required
+04067102   (required)
+0406710e  %s  %s value:   
+0406711f  unavailable
+
+04067132  Unknown signature algorithm
+0406714e  Can't get image data/size
+04067168  Unable to verify required signature
+0406718c  Can't get hash algo property
+040671a9  uboot-ignore
+040671b6  -skipped 
+040671c0  Can't get hash value property
+040671de  Unsupported hash algorithm
+040671f9  Bad hash value len
+0406720c  Bad hash value
+0406721e  Corrupted or truncated tree
+0406723a   error!
+%s for '%s' hash node in '%s' image node
+
+0406726c  Failed to verify required signature '%s'
+
+04067296  %sFIT description: 
+040672aa  %s Image %u (%s)
+
+040672bc  %s Default Configuration: '%s'
+
+040672dc  %s Configuration %u (%s)
+
+040672f6  error: wrinting directory entry
+
+04067317  %s: FPGA support not initialized!
+
+0406733a  %s: Exceeded Max FPGA device count
+
+0406735e  %s: NULL device descriptor
+
+0406737a  %s: Unsupported FPGA type %d
+
+04067398  Xilinx Device
+Descriptor @ 0x%p
+
+040673b9  Altera devices
+040673c8  Lattice devices
+040673d8  %s: Invalid or unsupported device type %d
+
+04067403  %s: Invalid device number %d
+
+04067421  %s: No FPGA devices available.
+
+04067441  Bitstream support not implemented for this FPGA device
+
+04067479    design filename = "%s"
+
+04067493  %s: Part number id not recognized in bitstream
+
+040674c3  %s: Wrong bitstream ID for this device
+
+040674eb  %s: Bitstream ID %s, current device ID %d/%s
+
+04067519  %s: Please fill correct device ID to xilinx_desc
+
+0406754b    part number = "%s"
+
+04067561  %s: Date identifier not recognized in bitstream
+
+04067592    date = "%s"
+
+040675a1  %s: Time identifier not recognized in bitstream
+
+040675d2    time = "%s"
+
+040675e1  %s: Data length id not recognized in bitstream
+
+04067611    bytes in bitstream = %d
+
+0406762c  %s: No support for %s.
+
+04067644  %s: Null buffer.
+
+04067656  ** Unrecognized filesystem type **
+
+0406767a  ** %s shorter than offset + len **
+
+0406769e  ** Unable to write file %s **
+
+040676bd  usb_dnload
+040676c8  %s: failed!, error: %d
+
+040676e0  Unknown Architecture
+040676f5  Unknown Compression
+04067709  Unknown OS
+04067714  Unknown Image
+04067722  %d Bytes = 
+0406772e  --- %s 8
+
+04067738  %s Waiting for PHY auto negotiation to complete
+04067768   TIMEOUT !
+
+04067774  user interrupt!
+
+04067785   done
+
+0406778c  --- %s 5, phydev->link = %d
+
+040677a9  FAT: Misaligned buffer address (%p)
+
+040677ce  unable to get device descriptor (error=%d)
+
+040677fa  USB device descriptor short read (expected %i, got %i)
+
+04067832  Error: Invalid FAT entry: 0x%08x
+
+04067857  Failed to allocate PHY device for %s:%d
+
+04067880  --- %s: phy_id = 0x%08x
+
+04067899  Invalid FAT entry
+
+040678ac  bootm_low
+040678b6  bootm_mapsize
+040678c4  bootm_size
+040678cf  env_buf [%d bytes] too small for value of "%s"
+
+040678ff  dir_input
+04067909  dir_output
+04067914  Bank %s:
+
+0406791e  %s%d: %s
+04067927  : %d [%c]%s%s
+04067935  Unknown hash algorithm '%s'
+
+04067952  HASH_MAX_DIGEST_SIZE exceeded
+
+04067971  %s for %08lx ... %08lx ==> 
+0406798d  TFTP server died
+0406799e  
+%s; starting again
+
+040679b3  
+## Checking Image at %08lx ...
+
+040679d4     Legacy image found
+
+040679eb     Bad Magic Number
+
+04067a00     Bad Header Checksum
+
+04067a18     Verifying Checksum ... 
+04067a33     Bad Data CRC
+
+04067a48     FIT image found
+
+04067a5c  Bad FIT image format!
+
+04067a73  Bad hash in FIT image!
+
+04067a8b  Unknown image format!
+
+04067aa2  %sImage Name:   %.*s
+
+04067ab8  %sImage Type:   
+04067ac9  %s %s %s (%s)
+
+04067ad8  %sData Size:    
+04067ae9  %sLoad Address: %08x
+
+04067aff  %sEntry Point:  %08x
+
+04067b15  %sContents:
+
+04067b22  %s   Image %d: 
+04067b32  %s    Offset = 0x%08lx
+
+04067b4a  ERROR: root node setup failed
+
+04067b69  ERROR: /chosen node create failed
+
+04067b8c  ERROR: arch-specific fdt fixup failed
+
+04067bb3   - must RESET the board to recover.
+
+
+04067bd9  baudrate
+04067be2  no mmc device at slot %x
+
+04067bfc  load-environment
+04067c0d  fdtcontroladdr
+04067c1c  ethaddr
+04067c24  MMC:   
+04067c2c  NAND:  
+04067c34  Net:   
+04067c42  ERROR: %s - start address is not aligned - 0x%08x
+
+04067c75  ERROR: %s - stop address is not aligned - 0x%08x
+
+04067ca7  %d.%d.%d.%d
+04067cb3  No match for driver '%s'
+
+04067ccd  Device tree error at offset %d
+
+04067ced  Error binding driver '%s': %d
+
+04067d0c  
+## First Load Addr = 0x%08lX
+## Last  Load Addr = 0x%08lX
+## Total Size      = 0x%08lX = %ld Bytes
+
+04067d71  ## Total Size      = 0x%08x = %d Bytes
+
+04067d99  filesize
+04067da2  Waiting for PHY realtime link
+04067dc0  preboot
+04067dc8  No CLI available
+04067dd9  Xilinx
+04067de0  %d - %s
+04067de8   <--> %s
+
+04067df2  %s is not a known ethernet
+
+04067e0e  --- %s
+
+04067e16  --- %s 1
+
+04067e20  mdio_register: non unique device name '%s'
+
+04067e4c  --- %s 2
+
+04067e56  --- %s 3
+
+04067e60  PHY duplex
+04067e6b  PHY AN duplex
+04067e79   read failed, assuming half duplex
+
+04067e9d  NULL device name!
+
+04067eb0  MII devices: 
+04067ec4  Current device: '%s'
+
+04067eda  No such device: %s
+
+04067eee  PHY speed
+04067ef8  PHY AN speed
+04067f05   read failed, assuming 10BASE-T
+
+04067f26  
+
+Caution! Your devices Erase group is 0x%x
+The erase range would be change to 0x%lx~0x%lx
+
+
+04067f83  mmc erase failed
+
+04067f95  drivers/dfu/dfu_mmc.c
+04067fab  ERROR: Device MMC %d - not found!
+at %s:%d/%s()
+
+04067fdc  Request would exceed designated area!
+
+04068003  ERROR: MMC operation failed
+at %s:%d/%s()
+
+0406802e  MMC: block number 0x%lx exceeds max(0x%lx)
+
+0406805a  mmc fail to send stop cmd
+
+04068075  mmc write failed
+
+04068090  %s: Layout (%s) not (yet) supported!
+
+040680b6  %s%s mmc %d:%d
+040680ca  dfu: Read error!
+
+040680dc  dfu: Wrong file size!
+
+040680f3  eMMC >= 4.4 required for enhanced user data area
+
+04068125  Card does not support partitioning
+
+04068149  Card does not define HC WP group size
+
+04068170  User data enhanced area not HC WP group size aligned
+
+040681a6  GP%i partition not HC WP group size aligned
+
+040681d3  Card does not support enhanced attribute
+
+040681fd  Total enhanced size exceeds maximum (%u > %u)
+
+0406822c  Card does not support host controlled partition write reliability settings
+
+04068278  Card already partitioned
+
+04068292  %s - probe failed: %d
+
+040682a9  Status Error: 0x%08X
+
+040682bf  Timeout waiting card ready
+
+040682db  MMC: no card present
+
+040682f1  Card did not respond to voltage select!
+
+0406831a  MMC: SET_DSR failed
+
+0406832f  Man %06x Snr %04x%04x
+04068345  %c%c%c%c%c%c
+04068352  %08lx:
+0406836f  mtdparts support missing.
+
+0406838a  Offset exceeds device limit
+
+040683a7  device %d 
+040683b2  whole chip
+
+040683be  offset 0x%llx, size 0x%llx
+
+040683e2  #(-27<FP
+040683fa  e03f<ij??ji<f30ef30e?ji<<ij?e03f
+0406842a  i<?j0ef33fe0j?<i
+0406845a  j?<i3fe00ef3i<?jj?<i3fe00ef3i<?j
+0406849a  i<?j0ef33fe0j?<i
+040684ba  f30e?ji<<ij?e03fe03f<ij??ji<f30e
+040684ea  Attempt to erase non block-aligned data
+
+04068513  Size of erase exceeds limit
+
+04068530  Skipping bad block at  0x%08llx                                          
+
+0406857c  
+%s: MTD get bad block failed: %d
+
+0406859f  
+%s: MTD Erase failure: %d
+
+040685bb  
+%s: MTD writeoob failure: %d
+
+040685da  Erasing at 0x%llx -- %3d%% complete.
+04068600   Cleanmarker written at 0x%llx.
+04068620  nand_get_lock_status: Start address must be beginning of nand page!
+
+04068665  %lu MiB
+
+0406866e  nand_lock: Device is locked tight!
+
+04068697  %s, sector size %u KiB
+
+040686af    Page size   %8d b
+
+040686c4    OOB size    %8d b
+
+040686d9    Erase size  %8d b
+
+040686ee    subpagesize %8d b
+
+04068703    options     0x%8x
+
+04068718    bbt options 0x%8x
+
+0406872d  nand_writesize
+0406873c  nand_oobsize
+04068749  nand_erasesize
+04068758  Attempt to read non page-aligned data
+
+0406877f  Attempt to read outside the flash area
+
+040687a7  Size of read exceeds partition or device limit
+
+040687d7  NAND read from offset %llx failed %d
+
+040687fd  Skipping bad block 0x%08llx
+
+0406881a  nand%d
+04068826  nand_unlock: Device is write protected!
+
+0406884f  nand_unlock: Device is locked tight!
+
+04068875  nand_unlock: Start address must be beginning of nand block!
+
+040688b2  nand_unlock: Length must be a multiple of nand block size %08x!
+
+040688f3  drivers/mtd/nand/nand_base.c
+04068910  WARNING in %s line %d
+
+04068927  Attempt to write non page-aligned data
+
+0406894f  Attempt to write outside the flash area
+
+04068978  Size of write exceeds partition or device limit
+
+040689a9  NAND write to offset %llx failed %d
+
+040689ce  Skip bad block 0x%08llx
+
+040689e7  autoload
+040689fa  *** ERROR: ping address not given
+
+04068a1d  *** ERROR: `serverip' not set
+
+04068a3c  *** ERROR: `ipaddr' not set
+
+04068a59  *** ERROR: No ethernet found.
+
+04068a78  *** ERROR: `ethaddr' not set
+
+04068a96  *** ERROR: `eth%daddr' not set
+
+04068ab6  
+Abort
+
+04068abe  Bytes transferred = %d (%x hex)
+
+04068adf   ICMP Host Redirect to %pI4 
+04068afc  netretry
+04068b0a  Invalid address/size
+
+04068b20  rootpath
+04068b2f  domain
+04068b36  *** ERROR: Cannot mount
+
+04068b4f  *** ERROR: Cannot umount
+
+04068b69  
+done
+
+04068b70  *** ERROR: File lookup fail
+
+04068b8d  *** ERROR: Symlink fail
+
+04068ba6  *** ERROR: NFS version not supported: Requested: V%d, accepted: min V%d - max V%d
+
+04068bf9  *** ERROR: accept state error (%d)
+
+04068c21  /nfsroot/%02X%02X%02X%02X.img
+04068c3f  *** Warning: no boot file name; using '%s'
+
+04068c6b  Using %s device
+
+04068c7c  File transfer via NFS from server %pI4; our IP address is %pI4
+04068cbb  ; sending through gateway %pI4
+04068cda  
+Filename '%s/%s'.
+04068ced   Size is 0x%x Bytes = 
+04068d04  
+Load address: 0x%lx
+Loading: *
+04068d25  
+Retry count exceeded; starting again
+
+04068d4c  #size-cells
+04068d58  ## Baudrate %d bps not supported
+
+04068d7a  ## Baudrate may not be deleted
+
+04068d9a  \.callbacks:callbacks,\.flags:flags,baudrate:baudrate,bootfile:bootfile,ipaddr:ipaddr,gatewayip:gatewayip,netmask:netmask,serverip:serverip,nvlan:nvlan,vlan:vlan,eth\d?addr:ethaddr,loadaddr:loadaddr,stdin:console,stdout:console,stderr:console,
+04068e8e  eth\d?addr:ma,ipaddr:i,gatewayip:i,netmask:i,serverip:i,nvlan:d,vlan:d,dnsip:i,
+04068efb  exit not allowed from main input shell.
+
+04068f24  <INTERRUPT>
+
+04068f31  hd%c%d
+04068f38  sd%c%d
+04068f3f  usbd%c%d
+04068f48  docd%c%d
+04068f51  xx%c%d
+04068f74  UNKNOWN
+04068f7c   device %d  --   Partition Type: %s
+
+
+04068fa2  ## Unknown partition table type %x
+
+04068fc6  
+Partition Map for 
+04068fda  Part	Start Sector	Num Sectors	UUID		Type
+
+04069004  Could not get PHY for %s: addr %d
+
+04069027  %s:%d is connected to %s.  Reconnecting to %s
+
+04069056  PHY reset timed out
+
+0406906b  %s: Timeout
+
+0406907d  * 0x%p [0x%08x]
+0406908d  0x%08x%s
+04069098  %02x%s
+0406909f  Journal Recovery Completed
+
+040690bb  Journal Scan Completed
+
+040690d3  %s: %d
+040690e0  %-12s= 0x%08lX
+
+040690fc  ** Can't read partition table on %d:%lu **
+
+04069128  bad MBR sector signature 0x%02x%02x
+
+0406914d  %3d	%-10lu	%-10lu	%08x-%02x	%02x%s%s
+
+04069173  TIGHT 
+0406917a  UNLOCK 
+04069182  %08lx - %08lx: %08lx blocks %s%s%s
+
+040691a9  U-Boot 2016.07-g4c04e6f-dirty
+040691c7  k unknown
+040691d1  p unknown
+040691db  c unknown
+040691e5  Command not supported -> cmd: %d
+
+04069207  PIT table file - not supported
+
+04069227  ERROR: Alt setting [%d] to write not found!
+at %s:%d/%s()
+
+04069262  ERROR: DFU write failed [%d] cnt: %d
+at %s:%d/%s()
+
+04069296  ERROR: Alt setting: %d entity not found!
+
+at %s:%d/%s()
+
+040692cf  ERROR: Transfer buffer not allocated!
+at %s:%d/%s()
+
+04069304  ERROR: DFU write failed [%d]: left: %llu
+at %s:%d/%s()
+
+0406933c  ERROR: DFU flush failed!
+at %s:%d/%s()
+
+04069364  ERROR: Operation not supported: %d
+at %s:%d/%s()
+
+04069396  RQT: UPLOAD not supported!
+
+040693b2  ERROR: unknown request (%d)
+at %s:%d/%s()
+
+040693dd  USB download gadget
+040693f1  part_offset is %lu
+
+04069405  total_sector is %llu
+
+0406941b  error: overflow occurs
+
+04069433  invalid extent block
+
+04069449  Extent Error
+
+04069457  ** SI ext2fs read block (indir 1)malloc failed. **
+
+0406948b  ** SI ext2fs read block (indir 1):malloc failed. **
+
+040694c0  ** SI ext2fs read block (indir 1)failed. **
+
+040694ed  ** DI ext2fs read block (indir 2 1)malloc failed. **
+
+04069523  ** DI ext2fs read block (indir 2 1)failed. **
+
+04069552  ** DI ext2fs read block (indir 2 2)malloc failed. **
+
+04069588  ** DI ext2fs read block (indir 2 2)failed. **
+
+040695b7  ** TI ext2fs read block (indir 2 1)malloc failed. **
+
+040695ed  ** TI ext2fs read block (indir 2 1)failed. **
+
+0406961c  ** TI ext2fs read block (indir 2 2)malloc failed. **
+
+04069652  ** TI ext2fs read block (indir 2 2)failed. **
+
+04069681  FAT32   
+0406968a  FAT12   
+04069693  FAT16   
+0406969c  pre-reloc realloc() is not supported
+040696c6  Error compiling regex: %s
+
+040696e1  HUSH_NO_EVAL
+040696ee  Unknown command '%s' - try 'help' or use 'run' command
+
+04069726  common/dfu.c
+04069733  ERROR: board usb init failed
+
+at %s:%d/%s()
+
+04069760  ERROR: g_dnl_register failed
+at %s:%d/%s()
+
+0406978c  ERROR: Deferred dfu_flush() failed!
+at %s:%d/%s()
+
+040697bf  %s: Aligned buffer alloc failed!!!
+
+040697e3  %s: Reset 0x%x never completed.
+
+04069804  %s: MMC: %d busy 
+04069816  timeout increasing to: %u ms.
+
+04069835  timeout.
+
+0406983f  %s: Timeout for status update!
+
+0406985f  %s: Error detected in status(0x%X)!
+
+04069884  %s: Transfer data timeout
+
+0406989f  %s: Timeout to wait cmd & data inhibit
+
+040698c7  %s: Internal clock never stabilised.
+
+040698ed  stdout-path
+040698f9  No serial driver found
+04069910  armpll
+04069917  ddrpll
+04069924  ddr_2x
+0406992b  ddr_3x
+04069936  cpu_6or4x
+04069940  cpu_3or2x
+0406994a  cpu_2x
+04069951  cpu_1x
+04069984  dbg_trc
+0406998c  dbg_apb
+040699b1  usb0_aper
+040699bb  usb1_aper
+040699c5  gem0_aper
+040699cf  gem1_aper
+040699d9  sdio0_aper
+040699e4  sdio1_aper
+040699ef  spi0_aper
+040699f9  spi1_aper
+04069a03  can0_aper
+04069a0d  can1_aper
+04069a17  i2c0_aper
+04069a21  i2c1_aper
+04069a2b  uart0_aper
+04069a36  uart1_aper
+04069a41  gpio_aper
+04069a4b  lqspi_aper
+04069a56  smc_aper
+04069a5f  *** Warning - %s, using default environment
+
+
+04069a8d  Using default environment
+
+
+04069aa9  common/env_common.c
+04069abd  No such device
+
+04069acd  Device %d: %s
+04069adb  ... is now current device
+
+04069af6  ERROR: There is a global environment variable with the same name.
+
+04069b39  %s: readonly variable
+04069b4f  fdtaddr
+04069b57  setenv
+04069b64  Model: %s
+
+04069b6f   %-11s [ %c ]    
+04069b90  reloc pc : [<%08lx>]	   lr : [<%08lx>]
+
+04069bb8  sp : %08lx  ip : %08lx	 fp : %08lx
+
+04069bdc  r10: %08lx  r9 : %08lx	 r8 : %08lx
+
+04069c00  r7 : %08lx  r6 : %08lx	 r5 : %08lx  r4 : %08lx
+
+04069c30  r3 : %08lx  r2 : %08lx	 r1 : %08lx  r0 : %08lx
+
+04069c60  Flags: %c%c%c%c
+04069c70    IRQs %s  FIQs %s  Mode %s%s
+
+04069c8f  clk		frequency
+
+04069c9f  %10s%20lu
+
+04069caa  verify
+04069cb1  Bad magic number
+
+04069cc3  Bad header crc
+
+04069cd3  Bad data crc
+
+04069ce1  Bad image type
+
+04069cf1  Empty Script
+
+04069cff  No FIT subimage unit name
+
+04069d1a  Can't find '%s' FIT subimage
+
+04069d38  Not a image image
+
+04069d4b  Bad Data Hash
+
+04069d5a  Could not find script subimage data
+
+04069d7f  Wrong image format for "source" command
+
+04069da8  offset 0x%x is protected and cannot be erased
+
+04069dd7  offset 0x%x is protected and cannot be written
+
+04069e07  memory-map
+04069e12  spi_flash@%d:%d
+04069e22  spi_flash_std
+04069e30  SF: Failed to get idcodes
+
+04069e4b  SF: enter 4B address mode failed
+
+04069e6d  SF: enter 3B address mode failed
+
+04069e8f  SF: Detected %s with page size 
+04069eaf  , erase size 
+04069ebd  , total 
+04069ec6  , mapped at %p
+04069ed5  SF: Unsupported flash IDs: 
+04069ef1  manuf %02x, jedec %04x, ext_jedec %04x
+
+04069f19  SF: Need set QEB func for %02x flash
+
+04069f3f  SF: Failed to set up slave
+
+04069f5b  SF: Timeout!
+
+04069f69  Invalid bus %d (err=%d)
+
+04069f82  Invalid chip select %d:%d (err=%d)
+
+04069fa6  spi-max-frequency
+04069fbe  Cannot set speed (err=%d)
+
+04069fd9  Cannot set mode (err=%d)
+
+04069ff3  spi-cpol
+04069ffc  spi-cpha
+0406a005  spi-cs-high
+0406a011  spi-3wire
+0406a01b  spi-half-duplex
+0406a02b  spi-tx-bus-width
+0406a03c  drivers/spi/spi-uclass.c
+0406a055  ERROR: spi-tx-bus-width %d not supported
+
+at %s:%d/%s()
+
+0406a08e  spi-rx-bus-width
+0406a09f  ERROR: spi-rx-bus-width %d not supported
+
+at %s:%d/%s()
+
+0406a0d8  DOWNLOAD ... OK
+Ctrl+C to exit ...
+
+0406a0fc  In:    
+0406a104  No input devices available!
+
+0406a121  Out:   
+0406a129  No output devices available!
+
+0406a147  Err:   
+0406a14f  No error devices available!
+
+0406a16c  USER_26
+0406a174  FIQ_26
+0406a17b  IRQ_26
+0406a182  SVC_26
+0406a189  UK4_26
+0406a190  UK5_26
+0406a197  UK6_26
+0406a19e  UK7_26
+0406a1a5  UK8_26
+0406a1ac  UK9_26
+0406a1b3  UK10_26
+0406a1bb  UK11_26
+0406a1c3  UK12_26
+0406a1cb  UK13_26
+0406a1d3  UK14_26
+0406a1db  UK15_26
+0406a1e3  USER_32
+0406a1eb  FIQ_32
+0406a1f2  IRQ_32
+0406a1f9  SVC_32
+0406a200  UK4_32
+0406a207  UK5_32
+0406a20e  UK6_32
+0406a215  ABT_32
+0406a21c  UK8_32
+0406a223  UK9_32
+0406a22a  HYP_32
+0406a231  UND_32
+0406a238  UK12_32
+0406a240  UK13_32
+0406a248  UK14_32
+0406a250  SYS_32
+0406a25d  qspi1_cs
+0406a26c  qspi0_dio
+0406a276  qspi1_cs_dio
+0406a283  qspi1_dio
+0406a293  nand16
+0406a2c8  7z014s
+0406a2cf  7z012s
+0406a2dc  7z007s
+0406a2e3  sha256
+0406a2f0  Perform RESET of the CPU
+0406a309  start application at address 'addr'
+0406a32d  addr [arg ...]
+    - start application at address 'addr'
+      passing 'arg' as arguments
+0406a38d  boot Linux zImage image from memory
+0406a3b1  iminfo
+0406a3b8  print header information for application image
+0406a3e7  addr [addr ...]
+    - print header information for application image starting at
+      address 'addr' in memory; this includes verification of the
+      image contents (magic number, header and payload checksums)
+0406a4c2  boot default, i.e., run 'bootcmd'
+0406a4e4  boot application image from memory
+0406a507  loados
+0406a50e  ramdisk
+0406a516  cmdline
+0406a52c  alias for 'help'
+0406a542  print command description/usage
+0406a562  
+	- print brief description of all commands
+help command ...
+	- print detailed usage of 'command'
+0406a5c4  print monitor, compiler and linker version
+0406a5ef  source
+0406a5f6  run script from memory
+0406a60d  bdinfo
+0406a614  print Board Info structure
+0406a62f  bootefi
+0406a637  Boots an EFI payload from memory
+0406a658  dcache
+0406a65f  enable or disable data cache
+0406a67c  [on, off, flush]
+    - enable, disable, or flush data (writethrough) cache
+0406a6c7  icache
+0406a6ce  enable or disable instruction cache
+0406a6f2  [on, off, flush]
+    - enable, disable, or flush instruction cache
+0406a739  CLK sub-system
+0406a74d  coninfo
+0406a755  print console devices and information
+0406a77b  echo args to console
+0406a790  [args..]
+    - echo args to console; \c suppresses newline
+0406a7cb  bootvx
+0406a7d2  Boot vxWorks from an ELF image
+0406a7f1   [address] - load address of vxWorks ELF image.
+0406a821  bootelf
+0406a829  Boot from an ELF image in memory
+0406a84a  [-p|-s] [address]
+	- load ELF image at [address] via program headers (-p)
+	  or via section headers (-s)
+0406a8b8  exit script
+0406a8c4  ext4load
+0406a8cd  load binary file from a Ext4 filesystem
+0406a8f5  <interface> [<dev[:part]> [addr [filename [bytes [pos]]]]]
+    - load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from ext4 filesystem
+0406a999  ext4ls
+0406a9a0  list files in a directory (default /)
+0406a9c6  <interface> <dev[:part]> [directory]
+    - list files from 'dev' on 'interface' in a 'directory'
+0406aa27  ext4size
+0406aa30  determine a file's size
+0406aa48  <interface> <dev[:part]> <filename>
+    - Find file 'filename' from 'dev' on 'interface'
+      and determine its size.
+0406aabf  ext4write
+0406aac9  create a file in the root directory
+0406aaed  <interface> <dev[:part]> <addr> <absolute filename path>
+    [sizebytes] [file offset]
+    - create a file in / directory
+0406ab67  ext2load
+0406ab70  load binary file from a Ext2 filesystem
+0406ab98  <interface> [<dev[:part]> [addr [filename [bytes [pos]]]]]
+    - load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from ext2 filesystem.
+0406ac3d  ext2ls
+0406ac44  fatwrite
+0406ac4d  write file into a dos filesystem
+0406ac6e  <interface> <dev[:part]> <addr> <filename> <bytes>
+    - write file 'filename' from the address 'addr' in RAM
+      to 'dev' on 'interface'
+0406acfa  fatinfo
+0406ad02  print information about filesystem
+0406ad25  <interface> [<dev[:part]>]
+    - print information about filesystem from 'dev' on 'interface'
+0406ad89  <interface> [<dev[:part]>] [directory]
+    - list files from 'dev' on 'interface' in a 'directory'
+0406adec  fatload
+0406adf4  load binary file from a dos filesystem
+0406ae1b  <interface> [<dev[:part]> [<addr> [<filename> [bytes [pos]]]]]
+    - Load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from dos filesystem.
+      'pos' gives the file position to start loading from.
+      If 'pos' is omitted, 0 is used. 'pos' requires 'bytes'.
+      'bytes' gives the size to load. If 'bytes' is 0 or omitted,
+      the load stops on end of file.
+      If either 'pos' or 'bytes' are not aligned to
+      ARCH_DMA_MINALIGN then a misaligned buffer warning will
+      be printed and performance will suffer for the load.
+0406b050  fatsize
+0406b058  flattened device tree utility commands
+0406b07f  loadable FPGA image support
+0406b09b  [operation type] [device number] [image address] [image size]
+fpga operations:
+  dump	[dev] [address] [size]	Load device to memory buffer
+  info	[dev]			list known device information
+  load	[dev] [address] [size]	Load device from memory buffer
+  loadp	[dev] [address] [size]	Load device from memory buffer with partial bitstream
+  loadb	[dev] [address] [size]	Load device from bitstream buffer (Xilinx only)
+  loadbp	[dev] [address] [size]	Load device from bitstream buffer with partial bitstream(Xilinx only)
+Load device from filesystem (FAT by default) (Xilinx only)
+  loadfs [dev] [address] [image size] [blocksize] <interface>
+        [<dev[:part]>] <filename>
+  loadmk [dev] [address]	Load device generated with mkimage
+	For loadmk operating on FIT format uImage address must include
+	subimage unit name in the form of addr:<subimg_uname>
+0406b3e7  fstype
+0406b3ee  Look up a filesystem type
+0406b408  <interface> <dev>:<part>
+- print filesystem type
+fstype <interface> <dev>:<part> <varname>
+- set environment variable to filesystem type
+
+0406b492  <interface> [<dev[:part]> [directory]]
+    - List files in directory 'directory' of partition 'part' on
+      device type 'interface' instance 'dev'.
+0406b52d  save file to a filesystem
+0406b547  <interface> <dev[:part]> <addr> <filename> bytes [pos]
+    - Save binary file 'filename' to partition 'part' on device
+      type 'interface' instance 'dev' from addr 'addr' in memory.
+      'bytes' gives the size to save in bytes and is mandatory.
+      'pos' gives the file byte position to start writing to.
+      If 'pos' is 0 or omitted, the file is written from the start.
+0406b6c2  load binary file from a filesystem
+0406b6e5  <interface> [<dev[:part]> [<addr> [<filename> [bytes [pos]]]]]
+    - Load binary file 'filename' from partition 'part' on device
+       type 'interface' instance 'dev' to address 'addr' in memory.
+      'bytes' gives the size to load in bytes.
+      If 'bytes' is 0 or omitted, the file is read until the end.
+      'pos' gives the file byte position to start reading from.
+      If 'pos' is 0 or omitted, the file is read from the start.
+0406b89c  query and control gpio pins
+0406b8b8  <input|set|clear|toggle> <pin>
+    - input/set/clear/toggle the specified pin
+gpio status [-a] [<bank> | <pin>]  - show [all/claimed] GPIOs
+0406b94a  return true/false on integer compare
+0406b96f  [.b, .w, .l, .s] [*]value1 <op> [*]value2
+0406b9c2  load binary file over serial line (ymodem mode)
+0406b9f2  [ off ] [ baud ]
+    - load binary file over serial line with offset 'off' and baudrate 'baud'
+0406ba51  load binary file over serial line (xmodem mode)
+0406ba87  load binary file over serial line (kermit mode)
+0406babd  load S-Record file over serial line
+0406bae1  [ off ]
+    - load S-Record file over serial line with offset 'off'
+0406bb2a  infinite loop on address range
+0406bb49  [.b, .w, .l] address number_of_objects
+0406bb75  print or set address offset
+0406bb91  
+    - print address offset for memory commands
+base off
+    - set address offset for memory commands to 'off'
+0406bc00  checksum calculation
+0406bc15  address count [addr]
+    - compute CRC32 checksum [save at addr]
+0406bc5a  memory compare
+0406bc69  [.b, .w, .l] addr1 addr2 count
+0406bc88  memory copy
+0406bc94  [.b, .w, .l] source target count
+0406bcb8  memory write (fill)
+0406bccc  [.b, .w, .l] address value [count]
+0406bcf2  memory modify (constant address)
+0406bd13  [.b, .w, .l] address
+0406bd2b  memory modify (auto-incrementing address)
+0406bd55  memory display
+0406bd64  [.b, .w, .l] address [# of objects]
+0406bd88  MII utility commands
+0406bd9d  device                            - list available devices
+mii device <devname>                  - set current device
+mii info   <addr>                     - display MII PHY info
+mii read   <addr> <reg>               - read  MII PHY <addr> register <reg>
+mii write  <addr> <reg> <data>        - write MII PHY <addr> register <reg>
+mii modify <addr> <reg> <data> <mask> - modify MII PHY <addr> register <reg>
+                                        updating bits identified in <mask>
+mii dump   <addr> <reg>               - pretty-print <addr> <reg> (0-5 only)
+Addr and/or reg may be ranges, e.g. 2-7.
+0406bff6  next page able
+0406c005  acknowledge
+0406c011  remote fault
+0406c01e  (reserved)
+0406c029  asymmetric pause able
+0406c03f  100BASE-T4 able
+0406c04f  100BASE-X full duplex able
+0406c06a  100BASE-TX able
+0406c07a  10BASE-T full duplex able
+0406c094  10BASE-T able
+0406c0a2  xxx to do
+0406c0ac  asymmetric pause
+0406c0bd  pause enable
+0406c0ca  100BASE-TX full duplex able
+0406c0e6  10BASE-T   full duplex able
+0406c102  10BASE-T   able
+0406c112  OUI portion
+0406c11e  manufacturer part number
+0406c137  manufacturer rev. number
+0406c150  100BASE-X  full duplex able
+0406c16c  100BASE-X  half duplex able
+0406c188  10 Mbps    full duplex able
+0406c1a4  10 Mbps    half duplex able
+0406c1c0  100BASE-T2 full duplex able
+0406c1dc  100BASE-T2 half duplex able
+0406c1f8  extended status
+0406c208  MF preamble suppression
+0406c220  A/N complete
+0406c22d  A/N able
+0406c236  link status
+0406c242  jabber detect
+0406c250  extended capabilities
+0406c266  loopback
+0406c26f  speed selection
+0406c27f  A/N enable
+0406c28a  power-down
+0406c295  isolate
+0406c29d  restart A/N
+0406c2a9  collision test enable
+0406c2bf  PHY control register
+0406c2d4  PHY status register
+0406c2e8  PHY ID 1 register
+0406c2fa  PHY ID 2 register
+0406c30c  Autonegotiation advertisement register
+0406c333  Autonegotiation partner abilities register
+0406c363  MDIO utility commands
+0406c379  list			- List MDIO buses
+mdio read <phydev> [<devad>.]<reg> - read PHY's register at <devad>.<reg>
+mdio write <phydev> [<devad>.]<reg> <data> - write PHY's register at <devad>.<reg>
+mdio rx <phydev> [<devad>.]<reg> - read PHY's extended register at <devad>.<reg>
+mdio wx <phydev> [<devad>.]<reg> <data> - write PHY's extended register at <devad>.<reg>
+<phydev> may be:
+   <busname>  <addr>
+   <addr>
+   <eth name>
+<addr> <devad>, and <reg> may be ranges, e.g. 1-5.4-0x1f.
+
+0406c558  delay execution for some time
+0406c576  N
+    - delay execution for N seconds (N is _decimal_ !!!)
+0406c5b1  mmcinfo
+0406c5b9  display MMC info
+0406c5ca  - display info of the current MMC device
+0406c5f3  MMC sub system
+0406c602  info - display info of the current MMC device
+mmc read addr blk# cnt
+mmc write addr blk# cnt
+mmc erase blk# cnt
+mmc rescan
+mmc part - lists available partition on current mmc device
+mmc dev [dev] [part] - show or set current mmc device [partition]
+mmc list - lists available devices
+mmc hwpartition [args...] - does hardware partitioning
+  arguments (sizes in 512-byte blocks):
+    [user [enh start cnt] [wrrel {on|off}]] - sets user data area attributes
+    [gp1|gp2|gp3|gp4 cnt [enh] [wrrel {on|off}]] - general purpose partition
+    [check|set|complete] - mode, complete set partitioning completed
+  WARNING: Partitioning is a write-once setting once it is set to complete.
+  Power cycling is required to initialize partitions after set to complete.
+mmc setdsr <value> - set DSR register value
+
+0406c92b  hwpartition
+0406c937  setdsr
+0406c944  boot from NAND device
+0406c95a  [partition] | [[[loadAddr] dev] offset]
+0406c987  NAND sub-system
+0406c99c  send ICMP ECHO_REQUEST to network host
+0406c9c3  pingAddress
+0406c9d3  boot image via network using NFS protocol
+0406c9fd  [loadAddress] [[hostIPaddr:]bootfilename]
+0406ca2c  boot image via network using DHCP/TFTP protocol
+0406ca5c  tftpput
+0406ca64  TFTP put command, for uploading files to a server
+0406ca96  Address Size [[hostIPaddr:]filename]
+0406cabb  tftpboot
+0406cac4  boot image via network using TFTP protocol
+0406caf5  boot image via network using BOOTP/TFTP protocol
+0406cb29  SPI flash sub-system
+0406cb3e  probe [[bus:]cs] [hz] [mode]	- init flash device on given SPI bus
+				  and chip select
+sf read addr offset|partition len	- read `len' bytes starting at
+				          `offset' or from start of mtd
+					  `partition'to memory at `addr'
+sf write addr offset|partition len	- write `len' bytes from memory
+				          at `addr' to flash at `offset'
+					  or to start of mtd `partition'
+sf erase offset|partition [+]len	- erase `len' bytes from `offset'
+					  or from start of mtd `partition'
+					 `+len' round up `len' to block size
+sf update addr offset|partition len	- erase and write `len' bytes from memory
+					  at `addr' to flash at `offset'
+					  or to start of mtd `partition'
+sf protect lock/unlock sector len	- protect/unprotect 'len' bytes starting
+					  at address 'sector'
+
+0406ce5a  do nothing, successfully
+0406ce79  do nothing, unsuccessfully
+0406ce94  minimal test like /bin/sh
+0406ceae  [args..]
+0406cec6  1.5 Mb/s
+0406cecf  480 Mb/s
+0406ced8  5 Gb/s
+0406cedf  usbboot
+0406cee7  boot from USB device
+0406cefc  loadAddr dev:part
+0406cf0e  USB sub-system
+0406cf1d  start - start (scan) USB controller
+usb reset - reset (rescan) USB controller
+usb stop [f] - stop USB [f]=force stop
+usb tree - show USB device tree
+usb info [dev] - show available USB devices
+usb test [dev] [port] [mode] - set USB 2.0 test mode
+    (specify port 0 to indicate the device's upstream port)
+    Available modes: J, K, S[E0_NAK], P[acket], F[orce_Enable]
+usb storage - show details of USB storage devices
+usb dev [dev] - show or set current USB storage device
+usb part [dev] - print partition table of one or all USB storage    devices
+usb read addr blk# cnt - read `cnt' blocks starting at block `blk#'
+    to memory address `addr'
+usb write addr blk# cnt - write `cnt' blocks starting at block `blk#'
+    from memory address `addr'
+0406d209  thordown
+0406d212  TIZEN "THOR" downloader
+0406d22a  <USB_controller> <interface> <dev>
+  - device software upgrade via LTHOR TIZEN dowload
+    program via <USB_controller> on device <dev>,
+	attached to interface <interface>
+
+0406d2d7  imxtract
+0406d2e0  extract a part of a multi-image
+0406d304  SPL configuration
+0406d316  export <img=atags|fdt> [kernel_addr] [initrd_addr] [fdt_addr]
+	img		"atags" or "fdt"
+	kernel_addr	address where a kernel image is stored.
+			kernel is loaded as part of the boot process, but it is not started.
+	initrd_addr	address of initial ramdisk
+			can be set to "-" if fdt_addr without initrd_addr is used.
+	fdt_addr	in case of fdt, the address of the device tree.
+
+0406d489  export
+0406d496  Device Firmware Upgrade
+0406d4ae  <USB_controller> <interface> <dev> [list]
+  - device firmware upgrade via <USB_controller>
+    on device <dev>, attached to interface
+    <interface>
+    [list] - list available alt settings
+
+0406d572  run commands in an environment variable
+0406d59a  var [...]
+    - run the commands in the environment variable(s) 'var'
+0406d5e0  set environment variables
+0406d5fa  [-f] name value ...
+    - [forcibly] set environment variable 'name' to 'value ...'
+setenv [-f] name
+    - [forcibly] delete environment variable 'name'
+0406d693  printenv
+0406d69c  print environment variables
+0406d6b8  [-a]
+    - print [all] values of all environment variables
+printenv name ...
+    - print value of environment variable 'name'
+0406d736  editenv
+0406d73e  edit environment variable
+0406d758  name
+    - edit environment variable 'name'
+0406d784  environment handling commands
+0406d7a2  default
+0406d7aa  delete
+0406d7b6  import
+0406d7c3  exists
+0406d7cf  showvar
+0406d7d7  print local hushshell variables
+0406d7f7  
+    - print values of all hushshell variables
+showvar name ...
+    - print value of hushshell variable 'name'
+0406d88a  SPI Flash
+0406d899  uncompressed
+0406d8ac  bzip2 compressed
+0406d8c2  gzip compressed
+0406d8d7  lzma compressed
+0406d8eb  lzo compressed
+0406d8fe  lz4 compressed
+0406d90d  aisimage
+0406d916  Davinci AIS image
+0406d928  Filesystem Image
+0406d939  firmware
+0406d942  Firmware
+0406d94b  flat_dt
+0406d953  Flat Device Tree
+0406d964  gpimage
+0406d96c  TI Keystone SPL Image
+0406d982  kernel
+0406d989  Kernel Image
+0406d996  kernel_noload
+0406d9a4  Kernel Image (no loading done)
+0406d9c3  kwbimage
+0406d9cc  Kirkwood Boot Image
+0406d9e0  imximage
+0406d9e9  Freescale i.MX Boot Image
+0406da03  Invalid Image
+0406da17  Multi-File Image
+0406da28  omapimage
+0406da32  TI OMAP SPL With GP CH
+0406da49  pblimage
+0406da52  Freescale PBL Boot Image
+0406da6b  RAMDisk Image
+0406da79  Script
+0406da80  socfpgaimage
+0406da8d  Altera SOCFPGA preloader
+0406daa6  standalone
+0406dab1  Standalone Program
+0406dac4  ublimage
+0406dacd  Davinci UBL image
+0406dadf  mxsimage
+0406dae8  Freescale MXS Boot Image
+0406db01  atmelimage
+0406db0c  ATMEL ROM-Boot Image
+0406db21  x86_setup
+0406db2b  x86 setup.bin
+0406db39  lpc32xximage
+0406db46  LPC32XX Boot Image
+0406db59  rkimage
+0406db61  Rockchip Boot Image
+0406db7a  Rockchip SD Boot Image
+0406db97  Rockchip SPI Boot Image
+0406dbaf  zynqimage
+0406dbb9  Xilinx Zynq Boot Image
+0406dbd0  zynqmpimage
+0406dbdc  Xilinx ZynqMP Boot Image
+0406dbf5  FPGA Image
+0406dc00  Invalid OS
+0406dc17  netbsd
+0406dc1e  NetBSD
+0406dc29  Enea OSE
+0406dc38  Plan 9
+0406dc4b  u-boot
+0406dc52  U-Boot
+0406dc59  vxworks
+0406dc61  VxWorks
+0406dc71  Invalid ARCH
+0406dc92  Intel x86
+0406dcb0  microblaze
+0406dcbb  MicroBlaze
+0406dcd0  mips64
+0406dcd7  MIPS 64 Bit
+0406dce9  NIOS II
+0406dcf1  powerpc
+0406dcf9  PowerPC
+0406dd0a  IBM S390
+0406dd13  SuperH
+0406dd26  sparc64
+0406dd2e  SPARC 64 Bit
+0406dd3b  blackfin
+0406dd44  Blackfin
+0406dd6a  OpenRISC 1000
+0406dd78  sandbox
+0406dd80  Sandbox
+0406dd8e  AArch64
+0406dd96  AMD x86_64
+0406dda1  sha1,rsa2048
+0406ddae  sha256,rsa2048
+0406ddbd  sha256,rsa4096
+0406ddd2  stdout
+0406ddd9  stderr
+0406dde0  Block sequence error
+0406ddf5  CRC/checksum error
+0406de08  Invalid framing
+0406de18  Cancelled
+0406de22  End of file
+0406de2e  Timed out
+0406de38  Sorry, zModem not available yet
+0406de58  Can't access file
+0406de73  root_driver
+0406de7f  generic_simple_bus
+0406de92  simple-bus
+0406de9d  simple-mfd
+0406dea8  rsa_mod_exp
+0406deb4  mod_exp_sw
+0406debf  RAW_ADDR
+0406ded7  RAM_ADDR
+0406dee5  OneNAND
+0406df01  unused
+0406df0d  gpio_zynq
+0406df17  xlnx,zynq-gpio-1.0
+0406df2a  xlnx,zynqmp-gpio-1.0
+0406df3f  zynq_gpio
+0406df49  zynqmp_gpio
+0406df55  arasan_sdhci
+0406df62  arasan,sdhci-8.9a
+0406df74  Toshiba
+0406df7c  Samsung
+0406df84  Fujitsu
+0406df8c  National
+0406df95  Renesas
+0406df9d  ST Micro
+0406dfac  Micron
+0406dfb3  AMD/Spansion
+0406dfc0  Macronix
+0406dfcd  SanDisk
+0406dfdf  Unknown
+0406dfe7  TC58NVG0S3E 1G 3.3V 8-bit
+0406e001  TC58NVG2S0F 4G 3.3V 8-bit
+0406e01b  TC58NVG3S0F 8G 3.3V 8-bit
+0406e035  TC58NVG5D2 32G 3.3V 8-bit
+0406e04f  TC58NVG6D2 64G 3.3V 8-bit
+0406e069  SDTNRGAMA 64G 3.3V 8-bit
+0406e082  H27UCG8T2ATR-BC 64G 3.3V 8-bit
+0406e0a1  NAND 4MiB 5V 8-bit
+0406e0b4  NAND 4MiB 3,3V 8-bit
+0406e0c9  NAND 8MiB 3,3V 8-bit
+0406e0de  NAND 16MiB 1,8V 8-bit
+0406e0f4  NAND 16MiB 3,3V 8-bit
+0406e10a  NAND 16MiB 1,8V 16-bit
+0406e121  NAND 16MiB 3,3V 16-bit
+0406e138  NAND 32MiB 1,8V 8-bit
+0406e14e  NAND 32MiB 3,3V 8-bit
+0406e164  NAND 32MiB 1,8V 16-bit
+0406e17b  NAND 32MiB 3,3V 16-bit
+0406e192  NAND 64MiB 1,8V 8-bit
+0406e1a8  NAND 64MiB 3,3V 8-bit
+0406e1be  NAND 64MiB 1,8V 16-bit
+0406e1d5  NAND 64MiB 3,3V 16-bit
+0406e1ec  NAND 128MiB 1,8V 8-bit
+0406e203  NAND 128MiB 3,3V 8-bit
+0406e21a  NAND 128MiB 1,8V 16-bit
+0406e232  NAND 128MiB 3,3V 16-bit
+0406e24a  NAND 256MiB 3,3V 8-bit
+0406e261  NAND 256MiB 1,8V 8-bit
+0406e278  NAND 256MiB 1,8V 16-bit
+0406e290  NAND 256MiB 3,3V 16-bit
+0406e2a8  NAND 512MiB 1,8V 8-bit
+0406e2bf  NAND 512MiB 3,3V 8-bit
+0406e2d6  NAND 512MiB 1,8V 16-bit
+0406e2ee  NAND 512MiB 3,3V 16-bit
+0406e306  NAND 1GiB 1,8V 8-bit
+0406e31b  NAND 1GiB 3,3V 8-bit
+0406e330  NAND 1GiB 1,8V 16-bit
+0406e346  NAND 1GiB 3,3V 16-bit
+0406e35c  NAND 2GiB 1,8V 8-bit
+0406e371  NAND 2GiB 3,3V 8-bit
+0406e386  NAND 2GiB 1,8V 16-bit
+0406e39c  NAND 2GiB 3,3V 16-bit
+0406e3b2  NAND 4GiB 1,8V 8-bit
+0406e3c7  NAND 4GiB 3,3V 8-bit
+0406e3dc  NAND 4GiB 1,8V 16-bit
+0406e3f2  NAND 4GiB 3,3V 16-bit
+0406e408  NAND 8GiB 1,8V 8-bit
+0406e41d  NAND 8GiB 3,3V 8-bit
+0406e432  NAND 8GiB 1,8V 16-bit
+0406e448  NAND 8GiB 3,3V 16-bit
+0406e45e  NAND 16GiB 1,8V 8-bit
+0406e474  NAND 16GiB 3,3V 8-bit
+0406e48a  NAND 16GiB 1,8V 16-bit
+0406e4a1  NAND 16GiB 3,3V 16-bit
+0406e4b8  NAND 32GiB 1,8V 8-bit
+0406e4ce  NAND 32GiB 3,3V 8-bit
+0406e4e4  NAND 32GiB 1,8V 16-bit
+0406e4fb  NAND 32GiB 3,3V 16-bit
+0406e512  NAND 64GiB 1,8V 8-bit
+0406e528  NAND 64GiB 3,3V 8-bit
+0406e53e  NAND 64GiB 1,8V 16-bit
+0406e555  NAND 64GiB 3,3V 16-bit
+0406e56c  spi_flash
+0406e576  spi-flash
+0406e580  S25FL008A
+0406e58a  S25FL016A
+0406e594  S25FL032A
+0406e59e  S25FL064A
+0406e5a8  S25FL116K
+0406e5b2  S25FL132K
+0406e5bc  S25FL164K
+0406e5c6  S25FL128P_256K
+0406e5d5  S25FL128P_64K
+0406e5e3  S25FL032P
+0406e5ed  S25FL064P
+0406e5f7  S25FL128S_256K
+0406e606  S25FL128S_64K
+0406e614  S25FL256S_256K
+0406e623  S25FL256S_64K
+0406e631  S25FS512S
+0406e63b  S25FL512S_256K
+0406e64a  S25FL512S_64K
+0406e658  S25FL512S_512K
+0406e667  M25P10
+0406e66e  M25P20
+0406e675  M25P40
+0406e67c  M25P80
+0406e683  M25P16
+0406e68a  M25PE16
+0406e692  M25PX16
+0406e69a  M25P32
+0406e6a1  M25P64
+0406e6a8  M25P128
+0406e6b0  M25PX64
+0406e6b8  N25Q32
+0406e6bf  N25Q32A
+0406e6c7  N25Q64
+0406e6ce  N25Q64A
+0406e6d6  N25Q128
+0406e6de  N25Q128A
+0406e6e7  N25Q256
+0406e6ef  N25Q256A
+0406e6f8  N25Q512
+0406e700  N25Q512A
+0406e709  N25Q1024
+0406e712  N25Q1024A
+0406e71c  MT25QL02G
+0406e726  MT25QU02G
+0406e730  W25P80
+0406e737  W25P16
+0406e73e  W25P32
+0406e745  W25X40
+0406e74c  W25X16
+0406e753  W25X32
+0406e75a  W25X64
+0406e761  W25Q80BL
+0406e76a  W25Q16CL
+0406e773  W25Q32BV
+0406e77c  W25Q64CV
+0406e785  W25Q128BV
+0406e78f  W25Q256
+0406e797  W25Q80BW
+0406e7a0  W25Q16DW
+0406e7a9  W25Q32DW
+0406e7b2  W25Q64DW
+0406e7bb  W25Q128FW
+0406e7c5  zynq_gem
+0406e7ce  cdns,zynqmp-gem
+0406e7de  cdns,zynq-gem
+0406e7ec  cdns,gem
+0406e7f5  sgmii-2500
+0406e800  qsgmii
+0406e812  rgmii-id
+0406e81b  rgmii-rxid
+0406e826  rgmii-txid
+0406e83c  Generic PHY
+0406e848  Broadcom CYGNUS GPHY
+0406e85d  Broadcom BCM5482S
+0406e86f  Broadcom BCM5464S
+0406e881  Broadcom BCM5461S
+0406e893  Marvell 88E1310
+0406e8a3  Marvell 88E1518
+0406e8b3  Marvell 88E1510
+0406e8c3  Marvell 88E1149S
+0406e8d4  Marvell 88E1145
+0406e8e4  Marvell 88E1121R
+0406e8f5  Marvell 88E1118R
+0406e906  Marvell 88E1118
+0406e916  Marvell 88E1111S
+0406e927  Marvell 88E1011S
+0406e938  RealTek RTL8211F
+0406e949  RealTek RTL8211DN
+0406e95b  RealTek RTL8211E
+0406e96c  RealTek RTL8211B
+0406e97d  Xilinx PCS/PMA PHY
+0406e990  arm_dcc
+0406e998  arm,dcc
+0406e9a0  serial_zynq
+0406e9ac  xlnx,xuartps
+0406e9b9  cdns,uart-r1p8
+0406e9c8  cdns,uart-r1p12
+0406e9d8  spi_generic_drv
+0406e9e8  spi_generic
+0406e9f4  zynq_qspi
+0406e9fe  xlnx,zynq-qspi-1.0
+0406ea11  ci_udc
+0406ea1c  ep1in-bulk
+0406ea27  ep2out-bulk
+0406ea33  ep3in-int
+0406ea41  unsupported
+0406ea56  Driver model low level access
+0406ea74  tree         Dump driver model tree ('*' = activated)
+dm uclass        Dump list of instances for each uclass
+dm devres        Dump list of device resources for each device
+0406eb21  uclass
+0406eb28  devres
+0406eb2f  port(%d) reset error
+
+0406eb45  Timeout poll on interrupt endpoint
+
+0406eb69  You want copy to many chars
+0406eb85  syntax error
+
+0406eb93          
+0406eba6  blksize
+0406ebae  
+TFTP error: 
+0406ebbc  First block is not block 1 (%ld)
+
+0406ebde  Starting again
+
+
+0406ebef  
+TFTP error: '%s' (%d)
+
+0406ec07  Not retrying...
+
+0406ec22  blksize%c%d%c
+0406ec30  File too large
+0406ec3f  File has bad magic
+0406ec57  tftpblocksize
+0406ec65  tftptimeout
+0406ec71  TFTP timeout (%ld ms) too low, set min = 1000 ms
+
+0406eca3  tftptimeoutcountmax
+0406ecb7  TFTP timeout count max (%d ms) negative, set to 0
+
+0406ecea  TFTP %s server %pI4; our IP address is %pI4
+0406ed16  Filename '%s'.
+0406ed25  Save address: 0x%lx
+
+0406ed3a  Save size:    0x%lx
+
+0406ed4f  Saving: *
+0406ed5a  Load address: 0x%lx
+
+0406ed73  Retry count exceeded
+0406ed88  f_thor
+0406ed8f  ERROR: %s: EPs setup failed!
+at %s:%d/%s()
+
+0406edbb  ERROR: thor_setup: unknown request: %d
+at %s:%d/%s()
+
+0406edf1  %s: No data received!
+
+0406ee0d  %s: Data not received!
+
+0406ee25  Download request from the Host PC
+
+0406ee4d  Wrong reply information
+
+0406ee66  ERROR: kill %s:  resubmit %d bytes --> %d
+at %s:%d/%s()
+
+0406ee9f  drivers/usb/gadget/f_thor.c
+0406eebb  ERROR: ERROR:%d
+at %s:%d/%s()
+
+0406eeda  HUSH_VERSION
+0406eeec  ~~~ 2
+
+0406eef3  ~~~ 3
+
+0406eefa  ~~~ 4
+
+0406ef01  Device '%s': seq %d is in use by '%s'
+
+0406ef28  <UEI %x>
+
+0406ef32  EP%d/%s FAIL info=%x pg0=%x
+
+0406ef4f  ULPI integrity check failed
+
+0406ef6c  ULPI request timed out
+
+0406ef84  ULPI wakeup timed out
+
+0406efbb  ERROR, too many USB Devices, max=%d
+
+0406efe0  composite
+0406efea  Human Interface, Subclass: 
+0406f011  Keyboard
+0406f020  reserved
+0406f029  Mass Storage, 
+0406f03d  SFF-8020i (ATAPI)
+0406f04f  QIC-157 (Tape)
+0406f062  SFF-8070
+0406f06b  Transp. SCSI
+0406f078  Command/Bulk
+0406f085  Command/Bulk/Int
+0406f096  Bulk only
+0406f0a0  Self Powered 
+0406f0ae  Bus Powered 
+0406f0bb  Remote Wakeup 
+0406f0d1     Configuration: %d
+
+0406f0e7     - Interfaces: %d %s%s%dmA
+
+0406f105       Interface: %d
+
+0406f119       - Alternate Setting %d, Endpoints: %d
+
+0406f145       - Class 
+0406f153       - 
+0406f15b       - Endpoint %d %s 
+0406f172  Control
+0406f17a  Isochronous
+0406f186  Interrupt
+0406f190   MaxPacket %d
+0406f19e   Interval %dms
+0406f1ad  %d: %s,  USB Revision %x.%x
+
+0406f1ca   - %s %s %s
+
+0406f1d7   - Class: 
+0406f1e2   - Class: (from Interface) %s
+
+0406f201   - PacketSize: %d  Configurations: %d
+
+0406f228   - Vendor: 0x%04x  Product 0x%04x Version %d.%d
+
+0406f259  String: "%s"
+0406f266  Error: Cannot find high speed parent of usb-1 device
+
+0406f29c  See Interface
+0406f2b0  Communication
+0406f2be  Human Interface
+0406f2ce  Printer
+0406f2d6  Mass Storage
+0406f2e7  CDC Data
+0406f2f0  Vendor specific
+0406f300  unable to get descriptor, error %lX
+
+0406f325  config descriptor too short (expected %i, got %i)
+
+0406f358  ERROR: USB_MAX_HUB (%d) reached
+
+0406f379  usb_pgood_delay
+0406f389  Can't allocate memory for USB device!
+
+0406f3b0  Port %d over-current occurred %d times
+
+0406f3d8  cannot reset port %i!?
+
+0406f3f0  cannot create new device: ret=%d
+0406f411  USB%d:   
+0406f41b  Port not available.
+
+0406f430  lowlevel init failed
+
+0406f446  scanning bus %d for devices... 
+0406f466  No USB Device found
+
+0406f47b  %d USB Device(s) found
+
+0406f493  USB error: all controllers failed lowlevel init
+
+0406f4c4  EHCI fail to reset
+
+0406f4d8  USB EHCI %x.%02x
+
+0406f4ea  usb_new_device: Cannot read configuration, skipping device %04x:%04x
+
+0406f530   ERROR: NOT USB_CONFIG_DESC %x
+
+0406f550  ERROR: Invalid USB CFG length (%d)
+
+0406f574  ERROR: Invalid USB IF length (%d)
+
+0406f597  USB IF descriptor overflowed buffer!
+
+0406f5bd  Too many USB interfaces!
+
+0406f5d7  ERROR: Invalid USB EP length (%d)
+
+0406f5fa  USB EP descriptor overflowed buffer!
+
+0406f620  Endpoint descriptor out of order!
+
+0406f643  Interface %d has too many endpoints!
+
+0406f669  ERROR: Invalid USB EPC length (%d)
+
+0406f68d  USB EPC descriptor overflowed buffer!
+
+0406f6b4  EPC descriptor out of order!
+
+0406f6d2  failed to set default configuration len %d, status %lX
+
+0406f70a  selecting invalid interface %d
+0406f729  Cannot allocate device context to get SLOT_ID
+
+0406f758  usb_new_device: invalid max packet size
+
+0406f781  
+      USB device not accepting new address (error=%lX)
+
+0406f7ba  12 Mb/s
+0406f7c6   %s (%s, %dmA)
+
+0406f7d6   %s  %s %s %s
+
+0406f7e5  failed to stop USB controller %d
+
+0406f807  	Did not get interrupt on CBI
+
+0406f826  cmd 0x%02X returned 0x%02X 0x%02X 0x%02X 0x%02X (NOT READY)
+
+0406f863  cmd 0x%02X returned 0x%02X 0x%02X 0x%02X 0x%02X
+
+0406f894  error in inquiry
+
+0406f8a6  Device NOT ready
+   Request Sense returned %02X %02X %02X
+
+0406f8e1  READ_CAP ERROR
+
+0406f8f1  No storage devices, perhaps not 'usb start'ed..?
+
+0406f923         scanning usb for storage devices... 
+0406f94f  max USB Storage Device reached: %d stopping
+
+0406f97c  %d Storage Device(s) found
+
+0406f998  USB Storage Transport unknown / not yet implemented
+
+0406f9cd  Sorry, protocol %d not yet supported.
+
+0406f9f4  ## No elf image at address 0x%08lx
+
+0406fa18  ## Not a 32-bit elf image at address 0x%08lx
+
+0406fa46  drivers/mtd/nand/nand_bbt.c
+0406fa62  BUG: failure at %s:%d/%s()!
+
+0406fa84  U-Boot 2016.07-g4c04e6f-dirty (Mar 09 2023 - 12:00:21 +0800)
+0406fac1  %s: Missing dump operation
+
+0406fadd  Family:        	
+0406faee  Spartan-II
+
+0406fafa  Spartan-III
+
+0406fb07  Virtex-II
+
+0406fb12  Zynq PL
+
+0406fb1b  ZynqMP PL
+
+0406fb26  Unknown family type, %d
+
+0406fb3f  Interface type:	
+0406fb50  Slave Serial
+
+0406fb5e  Master Serial
+
+0406fb6d  Slave Parallel
+
+0406fb7d  JTAG Mode
+
+0406fb88  Slave SelectMap Mode
+
+0406fb9e  Master SelectMap Mode
+
+0406fbb5  Device configuration interface (Zynq)
+
+0406fbdc  csu_dma configuration interface (ZynqMP)
+
+0406fc06  Unsupported interface type, %d
+
+0406fc26  Device Size:   	%zd bytes
+Cookie:        	0x%x (%d)
+
+0406fc5b  Device name:   	%s
+
+0406fc6f  Device Function Table @ 0x%p
+
+0406fc8d  No Device Function Table.
+
+0406fca8  %s: Invalid device descriptor
+
+0406fcc7  %s: Missing load operation
+
+0406fce3  %s: Missing loadfs operation
+
+0406fd01  %s: NULL part size
+
+0406fd15  %s: Invalid Interface type, %d
+
+0406fd35  %s: Invalid family type, %d
+
+0406fd52  %s: NULL descriptor!
+
+0406fd68  phy-type
+0406fd71  ERROR : memory not allocated
+
+0406fd8f  Unknown error
+0406fda3  xyzModem - %s mode, %d(SOH)/%d(STX)/%d(CAN) packets, %d retries
+
+0406fde4  %s: Align buffer at %x to %x(swap %d)
+
+0406fe0b  %s: Bitstream is not swapped(%d) - swap it
+
+0406fe37  ECC enabled 
+0406fe44  ECC disabled 
+0406fe52  %s: Timeout wait for DMA to complete
+
+0406fe78  %s: No link.
+
+0406fe86  --- %s 4
+
+0406fe90  --- %s 5
+
+0406fe9a  --- %s 6
+
+0406fea4  --- %s 7
+
+0406feae  --- %s 9, nwctrl = 0x%08x
+
+0406fec9  phy-handle
+0406fed4  phy-mode
+0406fedd  xlnx,emio
+0406fee7  ZYNQ GEM: %lx, phyaddr %d, interface %s
+
+0406ff10  --- %s: interface = %d
+
+0406ff28  --- %s
+ 0000000000
+
+0406ff3c  PHY is not detected
+
+0406ff51  GEM PHY init failed
+
+0406ff66  --- %s 0
+
+0406ff70  GEM: SOF or EOF not set for last buffer received!
+
+0406ffa3  %s: Zero size packet?
+
+0406ffba  TX buffers exhausted in mid frame
+
+0406ffdd  Inavlid bank and pin num
+
+0406fff7  No Platform data found
+
+0407000f  %s: Timeout wait for FPGA to config
+
+04070034  Non existing GEM id %d
+
+0407004c  %s: Bitstream is not validated yet (diff %x)
+
+0407007a  %s: Bitstream has to be placed up to 1MB (%x)
+
+040700a9  %s: Timeout wait for INIT to clear
+
+040700cd  %s: Timeout wait for INIT to set
+

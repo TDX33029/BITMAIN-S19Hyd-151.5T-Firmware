@@ -1,0 +1,194 @@
+{
+  "source": "Antminer-S19-Hydro-release-202212170935.bmu",
+  "size": 17989023,
+  "size_hex": "0x1127d9f",
+  "header": {
+    "magic": "0x2601",
+    "model": "S19",
+    "field_0x06": 0,
+    "field_0x08": 510,
+    "field_0x0c": 0,
+    "field_0x10": 0,
+    "pubkey_len": 451,
+    "pubkey_offset": 24,
+    "signature_offset": 1048,
+    "signature_len": 256,
+    "signature_algorithm": "RSA-2048 / SHA-256 PKCS#1 v1.5 over miner.pem"
+  },
+  "part_table": {
+    "count": 7,
+    "entries": [
+      {
+        "index": 0,
+        "size": 2788160,
+        "size_hex": "0x2a8b40"
+      },
+      {
+        "index": 1,
+        "size": 8014,
+        "size_hex": "0x1f4e"
+      },
+      {
+        "index": 2,
+        "size": 4057312,
+        "size_hex": "0x3de8e0"
+      },
+      {
+        "index": 3,
+        "size": 6852621,
+        "size_hex": "0x68900d"
+      },
+      {
+        "index": 4,
+        "size": 4277263,
+        "size_hex": "0x41440f"
+      },
+      {
+        "index": 5,
+        "size": 552,
+        "size_hex": "0x228"
+      },
+      {
+        "index": 6,
+        "size": 1005,
+        "size_hex": "0x3ed"
+      }
+    ]
+  },
+  "signature_trailer": {
+    "offset": 17986975,
+    "count": 8,
+    "slot_size": 256
+  },
+  "BOOT.bin_header": {
+    "ident": "XNLX",
+    "width_word": "0xaa995566",
+    "enc_status": 0,
+    "version": "0x1010000",
+    "fsbl_src": 5888,
+    "fsbl_len": 131088,
+    "total_len": 131088,
+    "qspi_cfg": 1,
+    "checksum_stored": "0xfc154520",
+    "checksum_ok": true
+  },
+  "fsbl": {
+    "offset": 7936,
+    "size": 131088,
+    "sha256": "42b1bcb12a018a7fea3d8f58ae8d9465765d960803b4c29f656ed6c8ab3ba257"
+  },
+  "bitstream": {
+    "offset": 140832,
+    "size": 2083712,
+    "sha256": "e64bf702c4dce1e0157842eefab6cdfd8201bbacb870d1134f55dbbbd8b1b2f4",
+    "preamble": "bb00000044002211ffffffffffffffff665599aa",
+    "idcode": "0x3723093",
+    "desync_offset": 2222932
+  },
+  "uboot": {
+    "offset": 2226304,
+    "size": 563904,
+    "sha256": "437cd0b7db3c29501e48a29aba74e4d87f6c2247ed056335fc8c5868705a670a",
+    "vector_0": "0xea0000b8",
+    "marker_deadbeef": "0xdeadbeef",
+    "version": "U-Boot 2016.07-gdb5d44e-dirty"
+  },
+  "devicetree": {
+    "size": 8014,
+    "fdt_totalsize": 8014,
+    "sha256": "47e56969ce80ae9b1374aea555bf49d3c47637c6207ee33d70a20e7f214e45c0"
+  },
+  "signature_verification": {
+    "0": {
+      "component": "BOOT.bin",
+      "verified": true
+    },
+    "1": {
+      "component": "devicetree.dtb",
+      "verified": true
+    },
+    "2": {
+      "component": "uImage",
+      "verified": true
+    },
+    "3": {
+      "component": "minerfs.image.gz",
+      "verified": true
+    },
+    "4": {
+      "component": "update.image.gz",
+      "verified": true
+    },
+    "5": {
+      "component": "crl.tar.gz",
+      "verified": true
+    },
+    "6": {
+      "component": "miner.btm.tar.gz",
+      "verified": true
+    }
+  },
+  "uImage": {
+    "magic": "0x27051956",
+    "hcrc": "0x92018374",
+    "time": 1669810451,
+    "size": 4057248,
+    "load": "0x8000",
+    "ep": "0x8000",
+    "dcrc": "0xaaa2355d",
+    "os": 5,
+    "arch": 2,
+    "type": 2,
+    "comp": 0,
+    "name": "Linux-4.6.0-xilinx-g03c746f7",
+    "vmlinux_size": 11750816,
+    "vmlinux_sha256": "8332de52dc75081d7292448ee7b0f4de4f6b31829ade710165df035c63fa232a",
+    "linux_version": "Linux version 4.6.0-xilinx-g03c746f7 (jenkins@nomd-nomd-fwc-bj) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11) ) #1 SMP PREEMPT Wed Nov 30 20:14"
+  },
+  "minerfs": {
+    "uimage": {
+      "magic": "0x27051956",
+      "hcrc": "0x7cf55901",
+      "time": 1671241783,
+      "size": 6852557,
+      "load": "0x0",
+      "ep": "0x0",
+      "dcrc": "0x3c4c3a3f",
+      "os": 5,
+      "arch": 2,
+      "type": 3,
+      "comp": 1,
+      "name": "ramdisk"
+    },
+    "compressed_size": 6852621,
+    "image_size": 33554432,
+    "image_sha256": "f61a19eaab44c46a34fa3a41573a0f6da21eb8a03ad3ba6d9c5932c7c7558377",
+    "ext2_magic": "0xef53",
+    "blocks": 32768,
+    "inodes": 10016,
+    "volume": "linux"
+  },
+  "update": {
+    "uimage": {
+      "magic": "0x27051956",
+      "hcrc": "0x7874ec07",
+      "time": 1671242087,
+      "size": 4277199,
+      "load": "0x0",
+      "ep": "0x0",
+      "dcrc": "0x7356315e",
+      "os": 5,
+      "arch": 2,
+      "type": 3,
+      "comp": 1,
+      "name": "ramdisk"
+    },
+    "compressed_size": 4277263,
+    "image_size": 33554432,
+    "image_sha256": "16072624ba9051ada6ecd4123955bd8f0b4bf2a2cff7ef6eb27447f1f7b07217",
+    "ext2_magic": "0xef53",
+    "blocks": 32768,
+    "inodes": 10016,
+    "volume": "linux"
+  }
+}

@@ -1,0 +1,16 @@
+# usr\libexec\sudo\sudo_noexec.so  (5328 B)  libs: libdl.so.2, libc.so.6, ld-linux-armhf.so.3
+000006a8  sz=0      _init
+00000888  sz=36     execl
+000008ac  sz=36     execle
+000008d0  sz=36     execlp
+000008f4  sz=24     execv
+0000090c  sz=24     execvp
+00000924  sz=24     execve
+0000093c  sz=24     execvpe
+00000954  sz=24     fexecve
+0000096c  sz=24     posix_spawn
+00000984  sz=24     posix_spawnp
+0000099c  sz=24     system
+000009b4  sz=24     popen
+000009cc  sz=84     wordexp
+00000a20  sz=0      _fini

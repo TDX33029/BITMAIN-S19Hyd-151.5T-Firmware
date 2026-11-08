@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_status.so  (17828 B)  libs: libc.so.6
+00000a40  sz=0      _init
+00002704  sz=152    mod_status_plugin_init
+00002b14  sz=0      _fini

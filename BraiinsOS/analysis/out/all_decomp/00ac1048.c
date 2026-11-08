@@ -1,0 +1,39 @@
+// FUN_00ac1048 @ 00ac1048 size=112 calls_out=3 calls_in=1
+// strings: 
+
+int FUN_00ac1048(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  undefined4 *puVar3;
+  undefined4 uVar4;
+  undefined4 uVar5;
+  undefined4 uVar6;
+  undefined4 uVar7;
+  undefined **local_150 [8];
+  undefined1 auStack_130 [280];
+  
+  puVar3 = (undefined4 *)((uint)local_150 | 4);
+  local_150[0] = &PTR_FUN_0186ecb4;
+  uVar2 = param_2[1];
+  uVar4 = param_2[2];
+  uVar5 = param_2[3];
+  uVar6 = param_2[4];
+  uVar7 = param_2[5];
+  *puVar3 = *param_2;
+  puVar3[1] = uVar2;
+  puVar3[2] = uVar4;
+  puVar3[3] = uVar5;
+  puVar3[4] = uVar6;
+  puVar3[5] = uVar7;
+  FUN_016dd1aa(auStack_130,param_1,0x118);
+  iVar1 = thunk_FUN_016d4a50(0x138);
+  if (iVar1 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_00600874(8,0x138);
+  }
+  FUN_016dd1aa(iVar1,local_150,0x138);
+  return iVar1;
+}
+

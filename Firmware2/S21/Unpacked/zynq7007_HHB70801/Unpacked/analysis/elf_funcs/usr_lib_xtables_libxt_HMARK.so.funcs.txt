@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_HMARK.so  (9712 B)  libs: libxtables.so.12, libc.so.6
+000006f0  sz=0      _init
+000007a0  sz=20     libxt_HMARK_init
+000013b8  sz=0      _fini

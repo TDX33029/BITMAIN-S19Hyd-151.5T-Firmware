@@ -1,0 +1,148 @@
+#!/bin/sh
+
+# This script is not intended to be run automatically by rcS script
+
+PROG="/usr/sbin/dnsmasq"
+PIDFILE="/var/run/dnsmasq.pid"
+CHILDPIDFILE="/var/run/dnsmasq.child.pid"
+
+ARG1="--conf-file=/etc/dnsmasq.conf"
+ARG2="--keep-in-foreground"
+ARG3="--pid-file=$CHILDPIDFILE"
+
+ENABLED_FLAG="/etc/dnsmasq.enabled"
+RESOLV_CONF="/etc/resolv.conf"
+RESOLV_CONF_DNSMASQ="/etc/resolv.conf.dnsmasq"
+
+start()
+{
+    if [ ! -f "$ENABLED_FLAG" ] && [ "$1" != "force" ]; then
+        echo "Dnsmasq serice is NOT enabled"
+        exit 0
+    fi
+
+    # Check for running process
+    if _status; then
+        echo "$PROG is already running"
+        exit 0
+    fi
+
+    # ensure that lo interface is up os we can bind it
+    ip link set lo up
+
+    # touch child pidfile, dnsmasq doesn't do this on it's own
+    touch "$CHILDPIDFILE"
+
+    # /etc/resolv.conf is a symlink into /tmp, so on a fresh boot (empty
+    # overlay, or right after a factory reset) it dangles until S38network
+    # or udhcpc writes it -- and we run before both. Create it so the grep
+    # below reads an empty file instead of failing. Same guard as
+    # udhcpc/default.script.
+    [ -e "$RESOLV_CONF" ] || touch "$RESOLV_CONF"
+
+    # The line bellow can be executed in 2 scenarios.
+    # Either the device is just booting and then it doesn't matter what we write
+    # to the resolv.conf.dnsmasq, since it's going to be overwritten by the
+    # following S38network init script or udhcpc shell script.
+    # Or we are starting dnsmasq manually and then we want to transfer the content of
+    # resolv.conf to the resolv.conf.dnsmasq to ensure uninterrupted DNS resolving.
+    # Just to stay on the safe side we are filtering localhost (127.0.0.1) entries out
+    # to prevent creating loops. Also if the localhost address would somehow make it in,
+    # we wouldn't want to copy it back to the resolv.conf upon shuting this service down (see stop() func).
+    grep -v "127.0.0.1" "$RESOLV_CONF" > "$RESOLV_CONF_DNSMASQ"
+
+    # Create new resolv.conf file with localhost address
+    echo "nameserver 127.0.0.1" > "$RESOLV_CONF"
+
+    echo "Starting dnsmasq..."
+    if start-stop-daemon -S -m -b -p "$PIDFILE" -x "/usr/bin/bos-tools" -- \
+                    "run-and-watch" -- "$PROG" "$ARG1" "$ARG2" "$ARG3"; then
+        echo "OK"
+    else
+        echo "FAIL"
+        # Move content of resolv.conf.dnsmasq to resolv.conf
+        # At this point we expect that starting of dnsmasq failed for some reason
+        # so we are putting nameservers back to resolv.conf so that the libc
+        # can keep resolving domains.
+        mv "$RESOLV_CONF_DNSMASQ" "$RESOLV_CONF"
+    fi
+}
+
+stop()
+{
+    echo "Stopping dnsmasq..."
+    DNSMASQ_PID=$(cat "$PIDFILE" 2>/dev/null)
+    if start-stop-daemon -K -R 5 -p "$PIDFILE"; then
+        # BusyBox start-stop-daemon accepts but ignores -R (retry), so we
+        # must wait for the process to actually exit before returning
+        if [ -n "$DNSMASQ_PID" ] && [ -e /proc/$DNSMASQ_PID ]; then
+            while [ -e /proc/$DNSMASQ_PID ]; do sleep 1; done
+        fi
+        echo "OK"
+        # Dnsmasq service is stoped, this can be done only manually by the user
+        # To keep the system operating, We are putting nameservers back to
+        # resolv.conf so that the libc can keep resolving domains.
+        mv "$RESOLV_CONF_DNSMASQ" "$RESOLV_CONF"
+    else
+        echo "FAIL"
+    fi
+}
+
+_status() {
+    if [ -f "$PIDFILE" ] && [ -d "/proc/$(cat $PIDFILE)" ] && \
+       [ -f "$CHILDPIDFILE" ] && [ -d "/proc/$(cat $CHILDPIDFILE)" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+status() {
+    if _status ; then
+        echo "Dnsmasq is running"
+        exit 0
+    else
+        echo "Dnsmasq is NOT running"
+        exit 1
+    fi
+}
+
+enable() {
+    touch "$ENABLED_FLAG"
+}
+
+disable() {
+    rm -f "$ENABLED_FLAG" &>/dev/null || true
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    force-start)
+        start force
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    status)
+        status
+        ;;
+    enable)
+        enable
+        ;;
+    disable)
+        disable
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status|enable|disable|force-start}"
+        exit 1
+        ;;
+esac
+
+exit 0
+

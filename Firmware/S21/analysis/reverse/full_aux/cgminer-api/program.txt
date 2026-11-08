@@ -1,0 +1,9 @@
+name=cgminer-api
+executable_path=/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S21/analysis/reverse/aux_bin/cgminer-api
+language=ARM:LE:32:v8
+functions=55
+decompiled=10
+failed=0
+skipped=45
+strings=62
+call_edges=48

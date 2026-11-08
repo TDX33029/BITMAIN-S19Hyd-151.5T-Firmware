@@ -1,0 +1,7 @@
+// toolbox/actions/start.proto  package=braiins.toolbox
+service StartActionService {
+  rpc GetMetadata(google.protobuf.Empty) returns (braiins.toolbox.ActionMetadata);
+  rpc Create(braiins.toolbox.ActionCreateRequest) returns (braiins.toolbox.ActionCreateResponse);
+  rpc Initialize(braiins.toolbox.ActionInitRequest) returns (braiins.toolbox.ActionInitResponse);
+  rpc Execute(braiins.toolbox.ActionExecRequest) returns (braiins.toolbox.ActionExecResponse);
+}

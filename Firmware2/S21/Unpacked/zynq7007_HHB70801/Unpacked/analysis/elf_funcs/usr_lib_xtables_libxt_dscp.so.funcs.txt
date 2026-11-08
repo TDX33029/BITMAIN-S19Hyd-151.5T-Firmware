@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_dscp.so  (5604 B)  libs: libxtables.so.12, libc.so.6
+000006b8  sz=0      _init
+00000744  sz=20     libxt_DSCP_init
+000009cc  sz=0      _fini

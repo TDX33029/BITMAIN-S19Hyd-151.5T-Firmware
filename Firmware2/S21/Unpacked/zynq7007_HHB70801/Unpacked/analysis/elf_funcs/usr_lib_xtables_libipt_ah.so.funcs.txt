@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_ah.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000564  sz=0      _init
+000005e4  sz=16     libipt_ah_init
+0000098c  sz=0      _fini

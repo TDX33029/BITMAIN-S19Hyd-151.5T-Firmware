@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_bpf.so  (9708 B)  libs: libxtables.so.12, libc.so.6
+000006b8  sz=0      _init
+000007ac  sz=20     libxt_bpf_init
+00000e08  sz=0      _fini

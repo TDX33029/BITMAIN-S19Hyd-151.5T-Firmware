@@ -1,0 +1,37 @@
+// FUN_01434f58 @ 01434f58 size=212 calls_out=3 calls_in=1
+// strings: hyper::client::connect::http/nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rsevent /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:545event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:549event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:542event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:354event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:617event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:650event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:662event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/connect/http.rs:656event /nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-vendor-cargo-deps/c19b7c6f923b580ac259164a89f2577984ad5ab09ee9d583b888f934adbbe8d0/hyper-0.14.31/src/client/client.rs:616 | InvalidParamSegmentInvalidParamInvalidCatchAll | InvalidParamSegmentInvalidParamInvalidCatchAll
+
+void FUN_01434f58(undefined4 param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  char *pcVar3;
+  undefined4 *puVar4;
+  undefined4 local_24;
+  undefined4 local_20;
+  undefined4 local_1c;
+  
+  FUN_01aaaecc(DAT_01d4ea30,param_1);
+  iVar1 = DAT_01d4ea30;
+  if ((DAT_01d51ae9 == '\0') && (1 < DAT_01d51b00)) {
+    local_20 = *(undefined4 *)(DAT_01d4ea30 + 0x14);
+    local_1c = *(undefined4 *)(DAT_01d4ea30 + 0x18);
+    local_24 = 2;
+    DataMemoryBarrier(0xb);
+    puVar4 = DAT_01d4edc8;
+    if (DAT_01d51174 != 2) {
+      puVar4 = &DAT_01cfc5e0;
+    }
+    pcVar3 = DAT_01d4edc4;
+    if (DAT_01d51174 != 2) {
+      pcVar3 = "InvalidParamSegmentInvalidParamInvalidCatchAll";
+    }
+    iVar2 = (*(code *)puVar4[3])(pcVar3,&local_24);
+    if (iVar2 != 0) {
+      FUN_01aaa328(iVar1,pcVar3,puVar4[4],&local_24,param_1);
+    }
+  }
+  return;
+}
+

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_IDLETIMER.so  (5480 B)  libs: libxtables.so.12, libc.so.6
+0000050c  sz=0      _init
+00000568  sz=16     libxt_IDLETIMER_init
+000006b8  sz=0      _fini

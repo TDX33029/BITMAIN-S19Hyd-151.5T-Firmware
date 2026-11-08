@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_cgroup.so  (9784 B)  libs: libxtables.so.12, libc.so.6
+00000610  sz=0      _init
+00000690  sz=20     libxt_cgroup_init
+00000cb0  sz=0      _fini

@@ -1,0 +1,30 @@
+{
+  "0": {
+    "component": "BOOT.bin",
+    "verified": true
+  },
+  "1": {
+    "component": "devicetree.dtb",
+    "verified": true
+  },
+  "2": {
+    "component": "uImage",
+    "verified": true
+  },
+  "3": {
+    "component": "minerfs.image.gz",
+    "verified": true
+  },
+  "4": {
+    "component": "update.image.gz",
+    "verified": true
+  },
+  "5": {
+    "component": "crl.tar.gz",
+    "verified": true
+  },
+  "6": {
+    "component": "miner.btm.tar.gz",
+    "verified": true
+  }
+}

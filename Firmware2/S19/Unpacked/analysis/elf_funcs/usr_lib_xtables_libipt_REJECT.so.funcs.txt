@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_REJECT.so  (9608 B)  libs: libxtables.so.12, libc.so.6
+0000072c  sz=0      _init
+000007d0  sz=16     libipt_REJECT_init
+00000b54  sz=0      _fini

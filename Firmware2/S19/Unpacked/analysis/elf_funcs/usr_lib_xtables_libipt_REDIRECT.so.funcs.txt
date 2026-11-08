@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_REDIRECT.so  (5504 B)  libs: libxtables.so.12, libc.so.6
+0000060c  sz=0      _init
+000006a4  sz=16     libipt_REDIRECT_init
+00000b60  sz=0      _fini

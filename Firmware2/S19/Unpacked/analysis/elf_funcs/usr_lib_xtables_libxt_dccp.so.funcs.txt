@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_dccp.so  (9608 B)  libs: libxtables.so.12, libc.so.6
+0000071c  sz=0      _init
+000007d8  sz=16     libxt_dccp_init
+00001270  sz=0      _fini

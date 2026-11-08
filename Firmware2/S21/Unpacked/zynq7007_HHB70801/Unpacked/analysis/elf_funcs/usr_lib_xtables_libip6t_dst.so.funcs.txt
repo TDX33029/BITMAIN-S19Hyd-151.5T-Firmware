@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_dst.so  (5504 B)  libs: libxtables.so.12, libc.so.6
+000005fc  sz=0      _init
+000006a0  sz=16     libip6t_dst_init
+00000c50  sz=0      _fini

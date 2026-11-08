@@ -1,0 +1,104 @@
+// FUN_005e90bc @ 005e90bc size=832 calls_out=0 calls_in=1
+// strings: 
+
+void FUN_005e90bc(uint *param_1)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  uint uVar11;
+  uint uVar12;
+  uint uVar13;
+  uint uVar14;
+  uint uVar15;
+  uint uVar16;
+  uint uVar17;
+  uint uVar18;
+  uint uVar19;
+  uint uVar20;
+  uint uVar21;
+  uint uVar22;
+  uint uVar23;
+  uint uVar24;
+  uint uVar25;
+  uint uVar26;
+  uint uVar27;
+  uint uVar28;
+  
+  uVar17 = param_1[1];
+  uVar6 = param_1[5];
+  uVar14 = param_1[3];
+  uVar9 = param_1[6];
+  uVar24 = *param_1;
+  uVar11 = param_1[4];
+  uVar28 = uVar17 ^ uVar24;
+  uVar21 = uVar6 ^ uVar14 ^ uVar9 ^ uVar17;
+  uVar13 = uVar11 ^ uVar14;
+  uVar7 = uVar9 ^ uVar11;
+  uVar1 = uVar13 ^ uVar28;
+  uVar15 = param_1[7];
+  uVar11 = uVar15 ^ uVar11;
+  uVar2 = param_1[2] ^ uVar17;
+  uVar23 = uVar15 ^ uVar9;
+  uVar8 = uVar14 ^ uVar24;
+  uVar3 = uVar13 ^ uVar2;
+  uVar25 = uVar23 ^ uVar8;
+  uVar10 = uVar11 ^ uVar9;
+  uVar18 = (uVar25 ^ uVar3) & uVar13;
+  uVar4 = (uVar10 ^ uVar14) & uVar3 ^ uVar18;
+  uVar22 = (uVar21 | uVar1) ^ uVar7 & (uVar13 ^ uVar24) ^ uVar4;
+  uVar18 = uVar18 ^ uVar25 & uVar23;
+  uVar12 = uVar6 ^ param_1[2];
+  uVar15 = uVar15 ^ uVar12;
+  uVar20 = uVar7 ^ uVar28;
+  uVar12 = uVar7 ^ uVar12;
+  uVar5 = (uVar23 ^ uVar28) & uVar12;
+  uVar16 = uVar9 ^ uVar17 ^ uVar8;
+  uVar17 = uVar20 & uVar15 ^ uVar8 ^ uVar5 ^ uVar18;
+  uVar18 = uVar21 & uVar1 ^ (uVar20 ^ uVar6) & uVar16 ^ uVar13 ^ uVar6 ^ uVar18;
+  uVar4 = uVar2 ^ uVar10 & uVar11 ^ uVar25 ^ uVar5 ^ uVar4;
+  uVar5 = uVar4 & uVar22;
+  uVar19 = (uVar22 ^ uVar18) & ~(uVar17 & uVar22) ^ uVar5;
+  uVar9 = (uVar5 ^ uVar17) & (uVar22 ^ uVar18) ^ uVar18;
+  uVar22 = uVar4 ^ uVar17;
+  uVar8 = uVar5 ^ uVar4 & uVar18 & uVar22 ^ uVar22;
+  uVar26 = uVar8 ^ uVar19;
+  uVar28 = (uVar9 ^ uVar19) & (uVar23 ^ uVar28) ^ uVar26 & uVar23;
+  uVar17 = (uVar5 ^ uVar18) & uVar22 ^ uVar17;
+  uVar18 = uVar17 ^ uVar9;
+  *param_1 = uVar18 & uVar13 ^ uVar9 & uVar20 ^ uVar28;
+  uVar4 = uVar18 & (uVar25 ^ uVar2);
+  uVar1 = (uVar17 ^ uVar8) & uVar1;
+  uVar22 = uVar1 ^ uVar8 & uVar7 ^ uVar4;
+  uVar14 = (uVar18 ^ uVar26) & (uVar10 ^ uVar14);
+  uVar21 = (uVar17 ^ uVar8) & uVar21;
+  uVar27 = uVar14 ^ uVar26 & uVar25;
+  uVar6 = uVar17 & (uVar20 ^ uVar6);
+  uVar2 = uVar27 ^ uVar22;
+  param_1[7] = uVar21 ^ uVar6 ^ uVar2;
+  uVar12 = (uVar9 ^ uVar19) & uVar12;
+  uVar6 = uVar12 ^ uVar6;
+  uVar15 = uVar9 & uVar15;
+  param_1[4] = uVar12 ^ uVar15 ^ uVar2;
+  uVar5 = uVar8 & (uVar13 ^ uVar24);
+  uVar22 = (uVar18 ^ uVar26) & uVar3 ^ uVar5 ^ uVar22;
+  uVar15 = uVar15 ^ uVar19 & uVar11;
+  uVar3 = uVar15 ^ uVar9 & uVar20;
+  param_1[3] = uVar6 ^ uVar26 & uVar23 ^ uVar3 ^ uVar22;
+  param_1[1] = uVar14 ^ uVar21 ^ uVar22;
+  uVar5 = uVar5 ^ uVar19 & uVar10;
+  param_1[2] = uVar2 ^ uVar5 ^ uVar6;
+  uVar4 = uVar5 ^ uVar21 ^ uVar17 & uVar16 ^ uVar4;
+  param_1[5] = uVar4 ^ uVar1 ^ uVar3 ^ uVar27;
+  param_1[6] = uVar4 ^ uVar8 & uVar7 ^ uVar15 ^ uVar26 & uVar25 ^ uVar28;
+  return;
+}
+

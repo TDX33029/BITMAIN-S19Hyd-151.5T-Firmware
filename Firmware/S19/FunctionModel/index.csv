@@ -1,0 +1,1844 @@
+program,address,name,size,labels,seed,score,evidence,source
+FileParser,0x106e8,_DT_INIT,12,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/106e8__DT_INIT.c
+FileParser,0x10708,abort,12,00_imports_thunks,0,0,,
+FileParser,0x10714,ERR_get_error,12,00_imports_thunks,0,0,,
+FileParser,0x10720,__libc_start_main,12,00_imports_thunks,0,0,,
+FileParser,0x10738,fclose,12,00_imports_thunks,0,0,,
+FileParser,0x10744,memset,12,00_imports_thunks,0,0,,
+FileParser,0x10750,RSA_verify,12,00_imports_thunks,0,4,,
+FileParser,0x1075c,fseek,12,00_imports_thunks,0,0,,
+FileParser,0x10768,PEM_read_bio_RSA_PUBKEY,12,00_imports_thunks,0,0,,
+FileParser,0x10774,SHA256_Final,12,00_imports_thunks,0,4,,
+FileParser,0x10780,strlen,12,00_imports_thunks,0,0,,
+FileParser,0x1078c,memcpy,12,00_imports_thunks,0,0,,
+FileParser,0x10798,fopen64,12,00_imports_thunks,0,0,,
+FileParser,0x107a4,BIO_new_mem_buf,12,00_imports_thunks,0,0,,
+FileParser,0x107b0,strcpy,12,00_imports_thunks,0,0,,
+FileParser,0x107bc,printf,12,00_imports_thunks,0,0,,
+FileParser,0x107c8,ERR_error_string,12,00_imports_thunks,0,0,,
+FileParser,0x107d4,fwrite,12,00_imports_thunks,0,0,,
+FileParser,0x107f0,puts,12,00_imports_thunks,0,0,,
+FileParser,0x107fc,RSA_free,12,00_imports_thunks,0,4,,
+FileParser,0x10808,SHA256_Update,12,00_imports_thunks,0,4,,
+FileParser,0x10814,BIO_free,12,00_imports_thunks,0,0,,
+FileParser,0x10820,SHA256_Init,12,00_imports_thunks,0,4,,
+FileParser,0x1082c,fread,12,00_imports_thunks,0,0,,
+FileParser,0x10838,entry,36,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10838_entry.c
+FileParser,0x10868,FUN_00010868,40,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10868_FUN_00010868.c
+FileParser,0x1088c,FUN_0001088c,34,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/1088c_FUN_0001088c.c
+FileParser,0x108b0,FUN_000108b0,42,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/108b0_FUN_000108b0.c
+FileParser,0x108dc,_FINI_0,24,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/108dc__FINI_0.c
+FileParser,0x108f4,_INIT_0,2,00_imports_thunks,0,0,,
+FileParser,0x108f8,FUN_000108f8,176,01_boot_upgrade,0,3,"		-s [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was Valided, and Splite Bmu To ""/tmp/tmpfw/""\n | 		-x [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was FullSize BMU\n",../analysis/reverse/full_aux/FileParser/decompiled/108f8_FUN_000108f8.c
+FileParser,0x109a8,FUN_000109a8,500,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/109a8_FUN_000109a8.c
+FileParser,0x10b9c,FUN_00010b9c,212,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10b9c_FUN_00010b9c.c
+FileParser,0x10c70,FUN_00010c70,376,12_crypto,0,4,Check miner.pem Failed!,../analysis/reverse/full_aux/FileParser/decompiled/10c70_FUN_00010c70.c
+FileParser,0x10de8,FUN_00010de8,1616,01_boot_upgrade;12_crypto,0,6,crl.tar.gz,../analysis/reverse/full_aux/FileParser/decompiled/10de8_FUN_00010de8.c
+FileParser,0x11460,FUN_00011460,2660,12_crypto,0,4,Load Pem Failed! | Dump Miner.pem.sig Failed!\r | /tmp/tmpfw/miner.pem | Dump Miner.pem Failed!\r,../analysis/reverse/full_aux/FileParser/decompiled/11460_FUN_00011460.c
+FileParser,0x11ec4,FUN_00011ec4,800,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11ec4_FUN_00011ec4.c
+FileParser,0x12230,FUN_00012230,52,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/12230_FUN_00012230.c
+FileParser,0x12270,FUN_00012270,12,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/12270_FUN_00012270.c
+FileParser,0x1227c,_DT_FINI,8,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/1227c__DT_FINI.c
+FileParser,0x24000,abort,1,00_imports_thunks,0,0,,
+FileParser,0x24004,ERR_get_error,1,00_imports_thunks,0,0,,
+FileParser,0x24008,__libc_start_main,1,00_imports_thunks,0,0,,
+FileParser,0x2400c,__gmon_start__,1,00_imports_thunks,0,0,,
+FileParser,0x24010,fclose,1,00_imports_thunks,0,0,,
+FileParser,0x24014,memset,1,00_imports_thunks,0,0,,
+FileParser,0x24018,RSA_verify,1,00_imports_thunks,0,0,,
+FileParser,0x24024,fseek,1,00_imports_thunks,0,0,,
+FileParser,0x24028,PEM_read_bio_RSA_PUBKEY,1,00_imports_thunks,0,0,,
+FileParser,0x2402c,SHA256_Final,1,00_imports_thunks,0,0,,
+FileParser,0x24030,strlen,1,00_imports_thunks,0,0,,
+FileParser,0x24034,memcpy,1,00_imports_thunks,0,0,,
+FileParser,0x24038,fopen64,1,00_imports_thunks,0,0,,
+FileParser,0x2403c,BIO_new_mem_buf,1,00_imports_thunks,0,0,,
+FileParser,0x24040,strcpy,1,00_imports_thunks,0,0,,
+FileParser,0x24044,printf,1,00_imports_thunks,0,0,,
+FileParser,0x24048,ERR_error_string,1,00_imports_thunks,0,0,,
+FileParser,0x2404c,fwrite,1,00_imports_thunks,0,0,,
+FileParser,0x24050,__xstat64,1,00_imports_thunks,0,0,,
+FileParser,0x24054,puts,1,00_imports_thunks,0,0,,
+FileParser,0x24058,RSA_free,1,00_imports_thunks,0,0,,
+FileParser,0x2405c,SHA256_Update,1,00_imports_thunks,0,0,,
+FileParser,0x24060,BIO_free,1,00_imports_thunks,0,0,,
+FileParser,0x24064,SHA256_Init,1,00_imports_thunks,0,0,,
+FileParser,0x24068,fread,1,00_imports_thunks,0,0,,
+antlogin,0x102c4,_DT_INIT,12,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/102c4__DT_INIT.c
+antlogin,0x102e4,execlp,12,00_imports_thunks,0,0,,
+antlogin,0x102f0,__libc_start_main,12,00_imports_thunks,0,0,,
+antlogin,0x10308,abort,12,00_imports_thunks,0,0,,
+antlogin,0x10350,entry,36,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10350_entry.c
+antlogin,0x10380,FUN_00010380,40,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10380_FUN_00010380.c
+antlogin,0x103a4,FUN_000103a4,34,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/103a4_FUN_000103a4.c
+antlogin,0x103c8,FUN_000103c8,42,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/103c8_FUN_000103c8.c
+antlogin,0x103f4,_FINI_0,24,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/103f4__FINI_0.c
+antlogin,0x1040c,_INIT_0,2,00_imports_thunks,0,0,,
+antlogin,0x10410,FUN_00010410,52,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10410_FUN_00010410.c
+antlogin,0x10450,_DT_FINI,8,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10450__DT_FINI.c
+antlogin,0x22000,execlp,1,00_imports_thunks,0,0,,
+antlogin,0x22004,__libc_start_main,1,00_imports_thunks,0,0,,
+antlogin,0x22008,__gmon_start__,1,00_imports_thunks,0,0,,
+antlogin,0x2200c,abort,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x10024,axi_fpga_dev_open,8,04_asic_chain,0,0,,../analysis/reverse/full_modules/bitmain_axi.ko/decompiled/10024_axi_fpga_dev_open.c
+bitmain_axi.ko,0x1002c,axi_fpga_dev_mmap,88,04_asic_chain,0,0,,../analysis/reverse/full_modules/bitmain_axi.ko/decompiled/1002c_axi_fpga_dev_mmap.c
+bitmain_axi.ko,0x10088,axi_fpga_dev_release,8,04_asic_chain,0,0,,../analysis/reverse/full_modules/bitmain_axi.ko/decompiled/10088_axi_fpga_dev_release.c
+bitmain_axi.ko,0x10090,init_module,352,04_asic_chain,0,8,In axi fpga driver!\n | Err:failed in creating axi fpga class.\n | AXI fpga dev virtual address is 0x%x\n,../analysis/reverse/full_modules/bitmain_axi.ko/decompiled/10090_init_module.c
+bitmain_axi.ko,0x1023c,cleanup_module,92,04_asic_chain,0,8,Bye Bye axi fpga driver!\n,../analysis/reverse/full_modules/bitmain_axi.ko/decompiled/1023c_cleanup_module.c
+bitmain_axi.ko,0x11000,alloc_chrdev_region,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11004,__class_create,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x1100c,class_destroy,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11010,iounmap,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11014,remap_pfn_range,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11018,kfree,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x1101c,__release_region,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11020,kmem_cache_alloc,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11024,cdev_add,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11028,device_create,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x1102c,ioremap,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11030,printk,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11034,unregister_chrdev_region,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11038,device_destroy,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11040,cdev_init,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x11048,cdev_del,1,00_imports_thunks,0,0,,
+bitmain_axi.ko,0x1104c,__request_region,1,00_imports_thunks,0,0,,
+bmminer,0x11ea8,_DT_INIT,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/11ea8__DT_INIT.c
+bmminer,0x11ec8,pthread_mutex_unlock,12,00_imports_thunks,0,0,,
+bmminer,0x11ed4,calloc,12,00_imports_thunks,0,0,,
+bmminer,0x11ee0,strstr,12,00_imports_thunks,0,0,,
+bmminer,0x11eec,raise,12,00_imports_thunks,0,0,,
+bmminer,0x11ef8,sem_wait,12,00_imports_thunks,0,0,,
+bmminer,0x11f04,fsync,12,00_imports_thunks,0,0,,
+bmminer,0x11f10,strcmp,12,00_imports_thunks,0,0,,
+bmminer,0x11f1c,strtol,12,00_imports_thunks,0,0,,
+bmminer,0x11f28,sem_post,12,00_imports_thunks,0,0,,
+bmminer,0x11f34,srandom,12,00_imports_thunks,0,0,,
+bmminer,0x11f40,setsockopt,12,00_imports_thunks,0,0,,
+bmminer,0x11f4c,strcspn,12,00_imports_thunks,0,0,,
+bmminer,0x11f58,printf,12,00_imports_thunks,0,0,,
+bmminer,0x11f64,read,12,00_imports_thunks,0,0,,
+bmminer,0x11f70,pthread_mutex_destroy,12,00_imports_thunks,0,0,,
+bmminer,0x11f7c,fflush,12,00_imports_thunks,0,0,,
+bmminer,0x11f88,memmove,12,00_imports_thunks,0,0,,
+bmminer,0x11f94,pthread_rwlock_init,12,00_imports_thunks,0,0,,
+bmminer,0x11fa0,free,12,00_imports_thunks,0,0,,
+bmminer,0x11fac,fgets,12,00_imports_thunks,0,0,,
+bmminer,0x11fb8,pthread_mutex_lock,12,00_imports_thunks,0,0,,
+bmminer,0x11fc4,pthread_detach,12,00_imports_thunks,0,4,,
+bmminer,0x11fd0,clock_gettime,12,00_imports_thunks,0,0,,
+bmminer,0x11fdc,pthread_self,12,00_imports_thunks,0,0,,
+bmminer,0x11fe8,memcpy,12,00_imports_thunks,0,0,,
+bmminer,0x11ff4,mmap64,12,00_imports_thunks,0,0,,
+bmminer,0x12000,pthread_mutex_init,12,00_imports_thunks,0,0,,
+bmminer,0x1200c,time,12,00_imports_thunks,0,0,,
+bmminer,0x12018,pthread_mutex_trylock,12,00_imports_thunks,0,0,,
+bmminer,0x12024,_IO_getc,12,00_imports_thunks,0,0,,
+bmminer,0x12030,memcmp,12,00_imports_thunks,0,0,,
+bmminer,0x1203c,inet_ntoa,12,00_imports_thunks,0,0,,
+bmminer,0x12048,pthread_attr_setstacksize,12,00_imports_thunks,0,0,,
+bmminer,0x12054,sleep,12,00_imports_thunks,0,0,,
+bmminer,0x12060,stpcpy,12,00_imports_thunks,0,0,,
+bmminer,0x1206c,pthread_rwlock_wrlock,12,00_imports_thunks,0,0,,
+bmminer,0x12078,recvfrom,12,00_imports_thunks,0,2,,
+bmminer,0x12084,pthread_setcancelstate,12,00_imports_thunks,0,0,,
+bmminer,0x12090,pthread_rwlock_rdlock,12,00_imports_thunks,0,0,,
+bmminer,0x1209c,pthread_cond_init,12,00_imports_thunks,0,0,,
+bmminer,0x120a8,pthread_key_create,12,00_imports_thunks,0,0,,
+bmminer,0x120b4,unlink,12,00_imports_thunks,0,0,,
+bmminer,0x120c0,realloc,12,00_imports_thunks,0,0,,
+bmminer,0x120cc,localtime_r,12,00_imports_thunks,0,0,,
+bmminer,0x120d8,pthread_cond_destroy,12,00_imports_thunks,0,0,,
+bmminer,0x120e4,strcasecmp,12,00_imports_thunks,0,0,,
+bmminer,0x120f0,perror,12,00_imports_thunks,0,0,,
+bmminer,0x120fc,accept,12,00_imports_thunks,0,0,,
+bmminer,0x12108,__fxstat64,12,00_imports_thunks,0,0,,
+bmminer,0x12114,sigaction,12,00_imports_thunks,0,0,,
+bmminer,0x12120,fwrite,12,00_imports_thunks,0,0,,
+bmminer,0x1212c,strcat,12,00_imports_thunks,0,0,,
+bmminer,0x12138,ioctl,12,00_imports_thunks,0,0,,
+bmminer,0x12144,lseek64,12,00_imports_thunks,0,0,,
+bmminer,0x12150,strtoll,12,00_imports_thunks,0,0,,
+bmminer,0x1215c,usleep,12,00_imports_thunks,0,0,,
+bmminer,0x12168,strcpy,12,00_imports_thunks,0,0,,
+bmminer,0x12174,gettimeofday,12,00_imports_thunks,0,0,,
+bmminer,0x12180,fread,12,00_imports_thunks,0,0,,
+bmminer,0x1218c,sched_yield,12,00_imports_thunks,0,0,,
+bmminer,0x12198,pthread_create,12,00_imports_thunks,0,4,,
+bmminer,0x121a4,gethostname,12,00_imports_thunks,0,0,,
+bmminer,0x121b0,strtof,12,00_imports_thunks,0,0,,
+bmminer,0x121bc,open64,12,00_imports_thunks,0,0,,
+bmminer,0x121c8,getenv,12,00_imports_thunks,0,0,,
+bmminer,0x121d4,puts,12,00_imports_thunks,0,0,,
+bmminer,0x121e0,sysinfo,12,00_imports_thunks,0,0,,
+bmminer,0x121ec,malloc,12,00_imports_thunks,0,0,,
+bmminer,0x121f8,__libc_start_main,12,00_imports_thunks,0,0,,
+bmminer,0x12204,strerror,12,00_imports_thunks,0,0,,
+bmminer,0x12210,strftime,12,00_imports_thunks,0,0,,
+bmminer,0x1221c,localtime,12,00_imports_thunks,0,0,,
+bmminer,0x12228,__ctype_tolower_loc,12,00_imports_thunks,0,0,,
+bmminer,0x12234,__ctype_toupper_loc,12,00_imports_thunks,0,0,,
+bmminer,0x1224c,sem_trywait,12,00_imports_thunks,0,0,,
+bmminer,0x12258,rename,12,00_imports_thunks,0,0,,
+bmminer,0x12264,__ctype_b_loc,12,00_imports_thunks,0,0,,
+bmminer,0x12270,getpid,12,00_imports_thunks,0,0,,
+bmminer,0x1227c,exit,12,00_imports_thunks,0,0,,
+bmminer,0x12288,syscall,12,00_imports_thunks,0,0,,
+bmminer,0x12294,sem_timedwait,12,00_imports_thunks,0,0,,
+bmminer,0x122a0,strtoul,12,00_imports_thunks,0,0,,
+bmminer,0x122ac,strlen,12,00_imports_thunks,0,0,,
+bmminer,0x122b8,round,12,00_imports_thunks,0,0,,
+bmminer,0x122c4,strchr,12,00_imports_thunks,0,0,,
+bmminer,0x122d0,pthread_setcanceltype,12,00_imports_thunks,0,0,,
+bmminer,0x122dc,fprintf,12,00_imports_thunks,0,0,,
+bmminer,0x122e8,fcntl,12,00_imports_thunks,0,0,,
+bmminer,0x122f4,sqrt,12,00_imports_thunks,0,0,,
+bmminer,0x12300,pthread_attr_init,12,00_imports_thunks,0,0,,
+bmminer,0x1230c,__errno_location,12,00_imports_thunks,0,0,,
+bmminer,0x12318,strncasecmp,12,00_imports_thunks,0,0,,
+bmminer,0x12324,snprintf,12,00_imports_thunks,0,0,,
+bmminer,0x12340,__isoc99_sscanf,12,00_imports_thunks,0,0,,
+bmminer,0x1234c,__strdup,12,00_imports_thunks,0,0,,
+bmminer,0x12358,mkdir,12,00_imports_thunks,0,0,,
+bmminer,0x12364,bind,12,00_imports_thunks,0,0,,
+bmminer,0x12370,sem_init,12,00_imports_thunks,0,0,,
+bmminer,0x1237c,memset,12,00_imports_thunks,0,0,,
+bmminer,0x12388,pthread_rwlock_unlock,12,00_imports_thunks,0,0,,
+bmminer,0x12394,strncpy,12,00_imports_thunks,0,0,,
+bmminer,0x123a0,pthread_cancel,12,00_imports_thunks,0,0,,
+bmminer,0x123ac,fgetc,12,00_imports_thunks,0,0,,
+bmminer,0x123b8,prctl,12,00_imports_thunks,0,0,,
+bmminer,0x123c4,strtod,12,00_imports_thunks,0,0,,
+bmminer,0x123d0,write,12,00_imports_thunks,0,0,,
+bmminer,0x123dc,fileno,12,00_imports_thunks,0,0,,
+bmminer,0x123e8,access,12,00_imports_thunks,0,0,,
+bmminer,0x123f4,fclose,12,00_imports_thunks,0,0,,
+bmminer,0x12400,munmap,12,00_imports_thunks,0,0,,
+bmminer,0x1240c,strtok,12,00_imports_thunks,0,0,,
+bmminer,0x12418,glob64,12,00_imports_thunks,0,0,,
+bmminer,0x12424,pthread_cond_timedwait,12,00_imports_thunks,0,0,,
+bmminer,0x12430,pthread_setspecific,12,00_imports_thunks,0,0,,
+bmminer,0x1243c,sigemptyset,12,00_imports_thunks,0,0,,
+bmminer,0x12448,popen,12,00_imports_thunks,0,0,,
+bmminer,0x12454,pthread_rwlock_destroy,12,00_imports_thunks,0,0,,
+bmminer,0x12460,errx,12,00_imports_thunks,0,0,,
+bmminer,0x1246c,strrchr,12,00_imports_thunks,0,0,,
+bmminer,0x12478,listen,12,00_imports_thunks,0,0,,
+bmminer,0x12484,vfprintf,12,00_imports_thunks,0,0,,
+bmminer,0x12490,pthread_join,12,00_imports_thunks,0,4,,
+bmminer,0x1249c,lldiv,12,00_imports_thunks,0,0,,
+bmminer,0x124a8,fputc,12,00_imports_thunks,0,0,,
+bmminer,0x124b4,globfree64,12,00_imports_thunks,0,0,,
+bmminer,0x124c0,syslog,12,00_imports_thunks,0,0,,
+bmminer,0x124cc,sscanf,12,00_imports_thunks,0,0,,
+bmminer,0x124d8,localeconv,12,00_imports_thunks,0,0,,
+bmminer,0x124e4,sprintf,12,00_imports_thunks,0,0,,
+bmminer,0x124f0,openlog,12,00_imports_thunks,0,0,,
+bmminer,0x124fc,vsnprintf,12,00_imports_thunks,0,0,,
+bmminer,0x12508,fopen64,12,00_imports_thunks,0,0,,
+bmminer,0x12514,qsort,12,00_imports_thunks,0,0,,
+bmminer,0x12520,strpbrk,12,00_imports_thunks,0,0,,
+bmminer,0x1252c,pthread_cond_wait,12,00_imports_thunks,0,0,,
+bmminer,0x12538,socket,12,00_imports_thunks,0,2,,
+bmminer,0x12544,clock_nanosleep,12,00_imports_thunks,0,0,,
+bmminer,0x12550,inet_addr,12,00_imports_thunks,0,0,,
+bmminer,0x1255c,random,12,00_imports_thunks,0,0,,
+bmminer,0x12568,pthread_testcancel,12,00_imports_thunks,0,0,,
+bmminer,0x12574,gethostbyname,12,00_imports_thunks,0,0,,
+bmminer,0x12580,fseek,12,00_imports_thunks,0,0,,
+bmminer,0x1258c,strncat,12,00_imports_thunks,0,0,,
+bmminer,0x12598,sem_destroy,12,00_imports_thunks,0,0,,
+bmminer,0x125a4,__xstat64,12,00_imports_thunks,0,0,,
+bmminer,0x125b0,isatty,12,00_imports_thunks,0,0,,
+bmminer,0x125bc,fputs,12,00_imports_thunks,0,0,,
+bmminer,0x125c8,strncmp,12,00_imports_thunks,0,0,,
+bmminer,0x125d4,pthread_cond_signal,12,00_imports_thunks,0,0,,
+bmminer,0x125e0,abort,12,00_imports_thunks,0,0,,
+bmminer,0x125ec,recv,12,00_imports_thunks,0,2,,
+bmminer,0x125f8,close,12,00_imports_thunks,0,0,,
+bmminer,0x12604,__lxstat64,12,00_imports_thunks,0,0,,
+bmminer,0x12610,send,12,00_imports_thunks,0,2,,
+bmminer,0x1261c,connect,12,00_imports_thunks,0,2,,
+bmminer,0x12628,__assert_fail,12,00_imports_thunks,0,0,,
+bmminer,0x12634,pthread_getspecific,12,00_imports_thunks,0,0,,
+bmminer,0x12640,pclose,12,00_imports_thunks,0,0,,
+bmminer,0x12650,config_parse_chain_topology,6360,04_asic_chain;10_config_eeprom,1,10,get domain failed\n | parse chain domain failed\n | domain:\n | domain,../analysis/reverse/full/bmminer/decompiled/12650_FUN_00012650.c
+bmminer,0x13f28,nonce_fifo_parse,5752,04_asic_chain,1,6,"reepat nonce error | nonce fifo flush by nonce, last_ts = %.2f.\n",../analysis/reverse/full/bmminer/decompiled/13f28_FUN_00013f28.c
+bmminer,0x155e8,entry,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/155e8_entry.c
+bmminer,0x15618,FUN_00015618,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/15618_FUN_00015618.c
+bmminer,0x1563c,FUN_0001563c,34,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1563c_FUN_0001563c.c
+bmminer,0x15660,FUN_00015660,42,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/15660_FUN_00015660.c
+bmminer,0x1568c,_FINI_0,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1568c__FINI_0.c
+bmminer,0x156a4,_INIT_0,2,00_imports_thunks,0,0,,
+bmminer,0x156a8,fan_speed_read,180,06_thermal_fan,1,5,fan[%u] speed[%u]\n,../analysis/reverse/full/bmminer/decompiled/156a8_FUN_000156a8.c
+bmminer,0x1575c,fan_lost_check,524,06_thermal_fan,1,5,"fan lost | Error, fan lost, only find %d (< %d)\n",../analysis/reverse/full/bmminer/decompiled/1575c_FUN_0001575c.c
+bmminer,0x15968,fan_pwm_init,304,06_thermal_fan,1,10,pwm for fan init error | set pwm = %d,../analysis/reverse/full/bmminer/decompiled/15968_FUN_00015968.c
+bmminer,0x15a98,FUN_00015a98,100,06_thermal_fan,0,5,Note: front fan is power on!\n,../analysis/reverse/full/bmminer/decompiled/15a98_FUN_00015a98.c
+bmminer,0x15b68,FUN_00015b68,100,06_thermal_fan,0,5,Note: rear fan is power on!\n,../analysis/reverse/full/bmminer/decompiled/15b68_FUN_00015b68.c
+bmminer,0x15c30,FUN_00015c30,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/15c30_FUN_00015c30.c
+bmminer,0x15c70,FUN_00015c70,376,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/15c70_FUN_00015c70.c
+bmminer,0x15de8,thunk_FUN_00036ad8,4,00_imports_thunks,0,0,,
+bmminer,0x15dec,FUN_00015dec,488,04_asic_chain,0,3,"%s chain %d ,index %d not connected | set offset failed for senser %d @ chain %d",../analysis/reverse/full/bmminer/decompiled/15dec_FUN_00015dec.c
+bmminer,0x15fd4,FUN_00015fd4,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/15fd4_FUN_00015fd4.c
+bmminer,0x1602c,FUN_0001602c,168,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1602c_FUN_0001602c.c
+bmminer,0x160d8,FUN_000160d8,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/160d8_FUN_000160d8.c
+bmminer,0x16114,FUN_00016114,1716,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/16114_FUN_00016114.c
+bmminer,0x167c8,FUN_000167c8,2120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/167c8_FUN_000167c8.c
+bmminer,0x17010,FUN_00017010,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/17010_FUN_00017010.c
+bmminer,0x17028,FUN_00017028,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/17028_FUN_00017028.c
+bmminer,0x17054,FUN_00017054,352,04_asic_chain,0,3,chain %d chip_addr %d => pos %d (%d)\n,../analysis/reverse/full/bmminer/decompiled/17054_FUN_00017054.c
+bmminer,0x171b4,temp_report_parse,1060,06_thermal_fan,1,7,temperature/temperature.c,../analysis/reverse/full/bmminer/decompiled/171b4_FUN_000171b4.c
+bmminer,0x175e0,FUN_000175e0,308,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/175e0_FUN_000175e0.c
+bmminer,0x17714,FUN_00017714,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/17714_FUN_00017714.c
+bmminer,0x1779c,FUN_0001779c,148,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1779c_FUN_0001779c.c
+bmminer,0x17830,temp_sensor_read,612,06_thermal_fan,1,6,"read temp sensor failed: chain = %d, sensor pos = %d, address = %d, reg = %d\n | can not read temp by asic before calibration",../analysis/reverse/full/bmminer/decompiled/17830_FUN_00017830.c
+bmminer,0x17a98,temp_sensor_offset,1448,06_thermal_fan,1,3,chain %d temp sensor %s\n,../analysis/reverse/full/bmminer/decompiled/17a98_FUN_00017a98.c
+bmminer,0x180f4,FUN_000180f4,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/180f4_FUN_000180f4.c
+bmminer,0x1816c,FUN_0001816c,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1816c_FUN_0001816c.c
+bmminer,0x18274,FUN_00018274,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18274_FUN_00018274.c
+bmminer,0x182d4,FUN_000182d4,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/182d4_FUN_000182d4.c
+bmminer,0x18364,FUN_00018364,424,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/18364_FUN_00018364.c
+bmminer,0x18510,FUN_00018510,216,06_thermal_fan,0,3,do not read temp anymore...,../analysis/reverse/full/bmminer/decompiled/18510_FUN_00018510.c
+bmminer,0x185e8,FUN_000185e8,228,04_asic_chain,0,3,calibration sensor on chain %d failed,../analysis/reverse/full/bmminer/decompiled/185e8_FUN_000185e8.c
+bmminer,0x186d0,FUN_000186d0,236,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/186d0_FUN_000186d0.c
+bmminer,0x18758,FUN_00018758,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18758_FUN_00018758.c
+bmminer,0x1879c,FUN_0001879c,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1879c_FUN_0001879c.c
+bmminer,0x18800,FUN_00018800,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18800_FUN_00018800.c
+bmminer,0x18864,FUN_00018864,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18864_FUN_00018864.c
+bmminer,0x188e8,FUN_000188e8,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/188e8_FUN_000188e8.c
+bmminer,0x18940,FUN_00018940,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18940_FUN_00018940.c
+bmminer,0x18998,FUN_00018998,188,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18998_FUN_00018998.c
+bmminer,0x18a54,FUN_00018a54,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18a54_FUN_00018a54.c
+bmminer,0x18a88,FUN_00018a88,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18a88_FUN_00018a88.c
+bmminer,0x18ae0,FUN_00018ae0,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18ae0_FUN_00018ae0.c
+bmminer,0x18af4,FUN_00018af4,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18af4_FUN_00018af4.c
+bmminer,0x18b54,FUN_00018b54,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18b54_FUN_00018b54.c
+bmminer,0x18b68,FUN_00018b68,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18b68_FUN_00018b68.c
+bmminer,0x18bc8,FUN_00018bc8,188,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18bc8_FUN_00018bc8.c
+bmminer,0x18c84,FUN_00018c84,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18c84_FUN_00018c84.c
+bmminer,0x18cb8,FUN_00018cb8,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18cb8_FUN_00018cb8.c
+bmminer,0x18cec,FUN_00018cec,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18cec_FUN_00018cec.c
+bmminer,0x18d00,FUN_00018d00,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18d00_FUN_00018d00.c
+bmminer,0x18d38,FUN_00018d38,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18d38_FUN_00018d38.c
+bmminer,0x18d4c,FUN_00018d4c,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18d4c_FUN_00018d4c.c
+bmminer,0x18d84,FUN_00018d84,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/18d84_FUN_00018d84.c
+bmminer,0x19ae0,FUN_00019ae0,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/19ae0_FUN_00019ae0.c
+bmminer,0x19af4,FUN_00019af4,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/19af4_FUN_00019af4.c
+bmminer,0x19b08,FUN_00019b08,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/19b08_FUN_00019b08.c
+bmminer,0x19b74,FUN_00019b74,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/19b74_FUN_00019b74.c
+bmminer,0x19bc0,FUN_00019bc0,520,04_asic_chain,0,3,No memory for configuraion for chain %d.\n,../analysis/reverse/full/bmminer/decompiled/19bc0_FUN_00019bc0.c
+bmminer,0x19dc8,vol_freq_config_load,1024,05_freq_voltage;10_config_eeprom,1,10,"level %d, voltage = %d frequency = %d",../analysis/reverse/full/bmminer/decompiled/19dc8_FUN_00019dc8.c
+bmminer,0x1a1cc,FUN_0001a1cc,2776,10_config_eeprom,0,8,"Fixture CRC check fail.fixture_crc = 0x%x, len = 0x%x, crc = 0x%x\n",../analysis/reverse/full/bmminer/decompiled/1a1cc_FUN_0001a1cc.c
+bmminer,0x1acb0,FUN_0001acb0,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1acb0_FUN_0001acb0.c
+bmminer,0x1ad34,FUN_0001ad34,468,10_config_eeprom;04_asic_chain,0,5,"[chain %d] Update miner info in eeprom.\n | [chain %d] Update miner info Failed, EEPROM does not have enough space.\n",../analysis/reverse/full/bmminer/decompiled/1ad34_FUN_0001ad34.c
+bmminer,0x1af08,FUN_0001af08,1640,03_pic_ctrl;04_asic_chain,0,5,pic sensor | pic sensor addr,../analysis/reverse/full/bmminer/decompiled/1af08_FUN_0001af08.c
+bmminer,0x1b574,FUN_0001b574,456,04_asic_chain,0,3,[chain %d]\n,../analysis/reverse/full/bmminer/decompiled/1b574_FUN_0001b574.c
+bmminer,0x1b73c,FUN_0001b73c,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1b73c_FUN_0001b73c.c
+bmminer,0x1b750,FUN_0001b750,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1b750_FUN_0001b750.c
+bmminer,0x1b798,FUN_0001b798,188,04_asic_chain,0,3,"No hash board sn, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1b798_FUN_0001b798.c
+bmminer,0x1b854,FUN_0001b854,148,04_asic_chain,0,3,"No pcb version, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1b854_FUN_0001b854.c
+bmminer,0x1b8e8,FUN_0001b8e8,148,04_asic_chain,0,3,"No bom version, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1b8e8_FUN_0001b8e8.c
+bmminer,0x1b9d4,FUN_0001b9d4,68,04_asic_chain;06_thermal_fan,0,3,"No temp, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1b9d4_FUN_0001b9d4.c
+bmminer,0x1ba18,FUN_0001ba18,440,05_freq_voltage;04_asic_chain,0,5,"freq level not match | No work mode freq, chain = %d, mode = %d.\n",../analysis/reverse/full/bmminer/decompiled/1ba18_FUN_0001ba18.c
+bmminer,0x1bbd0,FUN_0001bbd0,364,02_power_psu;04_asic_chain,0,4,"voltage level not match | No work mode voltage, chain = %d, mode = %d.\n",../analysis/reverse/full/bmminer/decompiled/1bbd0_FUN_0001bbd0.c
+bmminer,0x1bd3c,FUN_0001bd3c,164,04_asic_chain,0,3,"No test standard, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/1bd3c_FUN_0001bd3c.c
+bmminer,0x1bde0,FUN_0001bde0,164,04_asic_chain,0,3,"No chip bin, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1bde0_FUN_0001bde0.c
+bmminer,0x1be84,FUN_0001be84,200,04_asic_chain,0,3,"No ft ver, chain = %d\n",../analysis/reverse/full/bmminer/decompiled/1be84_FUN_0001be84.c
+bmminer,0x1bf4c,FUN_0001bf4c,168,04_asic_chain,0,3,"No work mode hash rate, chain = %d, mode = %d.\n",../analysis/reverse/full/bmminer/decompiled/1bf4c_FUN_0001bf4c.c
+bmminer,0x1c0c0,FUN_0001c0c0,284,10_config_eeprom,0,5,EEPROM does not have enough space\n,../analysis/reverse/full/bmminer/decompiled/1c0c0_FUN_0001c0c0.c
+bmminer,0x1c1dc,FUN_0001c1dc,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1c1dc_FUN_0001c1dc.c
+bmminer,0x1c2ec,FUN_0001c2ec,168,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1c2ec_FUN_0001c2ec.c
+bmminer,0x1c394,FUN_0001c394,620,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1c394_FUN_0001c394.c
+bmminer,0x1c444,FUN_0001c444,624,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1c444_FUN_0001c444.c
+bmminer,0x1c4f4,FUN_0001c4f4,168,10_config_eeprom,0,5,"EEPROM write data is not 32-bit aligned, FAIL ENC/DEC!\n",../analysis/reverse/full/bmminer/decompiled/1c4f4_FUN_0001c4f4.c
+bmminer,0x1c888,chain_pic_reset_check,24,03_pic_ctrl,1,0,,../analysis/reverse/full/bmminer/decompiled/1c888_FUN_0001c888.c
+bmminer,0x1c8a0,thunk_FUN_0004c050,4,00_imports_thunks,0,0,,
+bmminer,0x1c8a4,thunk_FUN_0004c224,4,00_imports_thunks,0,0,,
+bmminer,0x1c8a8,chain_pic_heartbeat_check,24,03_pic_ctrl,1,0,,../analysis/reverse/full/bmminer/decompiled/1c8a8_FUN_0001c8a8.c
+bmminer,0x1c8c0,chain_pic_start_and_check_version,180,03_pic_ctrl,1,5,chain[%d] PIC jump to app\n | Check chain[%d] PIC fw version=0x%02x\n,../analysis/reverse/full/bmminer/decompiled/1c8c0_FUN_0001c8c0.c
+bmminer,0x1c978,get_chain_voltage,272,02_power_psu,1,4,"chain = %d, voltage = %f\n",../analysis/reverse/full/bmminer/decompiled/1c978_FUN_0001c978.c
+bmminer,0x1caa8,get_min_voltage,188,02_power_psu,1,4,the minimal voltage = %.2f,../analysis/reverse/full/bmminer/decompiled/1caa8_FUN_0001caa8.c
+bmminer,0x1cb8c,FUN_0001cb8c,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1cb8c_FUN_0001cb8c.c
+bmminer,0x1cba0,wait_sensor_stable,192,02_power_psu,1,3,,../analysis/reverse/full/bmminer/decompiled/1cba0_FUN_0001cba0.c
+bmminer,0x1cc60,set_voltage_by_steps,232,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/1cc60_FUN_0001cc60.c
+bmminer,0x1cd50,power_init,504,02_power_psu,1,9,"Initializing the power, please wait, this may take up to 2 minutes...\n | power voltage can not meet the target | power type version: 0x%04x\n | power type version error\n",../analysis/reverse/full/bmminer/decompiled/1cd50_FUN_0001cd50.c
+bmminer,0x1cf54,FUN_0001cf54,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1cf54_FUN_0001cf54.c
+bmminer,0x1cf64,FUN_0001cf64,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1cf64_FUN_0001cf64.c
+bmminer,0x1cf90,FUN_0001cf90,588,09_web_api,0,4,http get failed\n | http://%s:%d/power/%s,../analysis/reverse/full/bmminer/decompiled/1cf90_FUN_0001cf90.c
+bmminer,0x1d1dc,FUN_0001d1dc,712,09_web_api,0,5,http://%s:%d/api/v1/power,../analysis/reverse/full/bmminer/decompiled/1d1dc_FUN_0001d1dc.c
+bmminer,0x1d4a4,FUN_0001d4a4,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d4a4_FUN_0001d4a4.c
+bmminer,0x1d4c8,thunk_FUN_0001d4a4,4,00_imports_thunks,0,0,,
+bmminer,0x1d4ec,thunk_FUN_0004e718,4,00_imports_thunks,0,0,,
+bmminer,0x1d520,FUN_0001d520,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d520_FUN_0001d520.c
+bmminer,0x1d594,FUN_0001d594,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d594_FUN_0001d594.c
+bmminer,0x1d618,FUN_0001d618,428,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d618_FUN_0001d618.c
+bmminer,0x1d7c4,FUN_0001d7c4,376,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d7c4_FUN_0001d7c4.c
+bmminer,0x1d93c,FUN_0001d93c,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d93c_FUN_0001d93c.c
+bmminer,0x1d9a4,FUN_0001d9a4,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1d9a4_FUN_0001d9a4.c
+bmminer,0x1d9cc,freq_check,356,05_freq_voltage,1,10,Get frequency failed!,../analysis/reverse/full/bmminer/decompiled/1d9cc_FUN_0001d9cc.c
+bmminer,0x1db30,FUN_0001db30,4,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1db30_FUN_0001db30.c
+bmminer,0x1db34,freq_to_pll,1024,05_freq_voltage,1,5,"chain = %d, freq = %g, is_higher_voltage = %s\n | [%d] _POSTDIV1 = %d, _POSTDIV2 = %d, USER_DIV = %d, freq = %d\n",../analysis/reverse/full/bmminer/decompiled/1db34_FUN_0001db34.c
+bmminer,0x1df34,fixed_step_freq,668,05_freq_voltage,1,5,"chain = %d set freq to %.2f | fixed step freq_start = %d, freq_end = %d, freq_step = %.2f\n",../analysis/reverse/full/bmminer/decompiled/1df34_FUN_0001df34.c
+bmminer,0x1e1dc,fixed_step_chain_freq,540,05_freq_voltage,1,5,"chain = %d set freq to %.2f | fixed step chain = %d, freq_start = %d, freq_end = %d, freq_step = %.2f, is_higher_voltage = %s\n",../analysis/reverse/full/bmminer/decompiled/1e1dc_FUN_0001e1dc.c
+bmminer,0x1e400,chain_freq_step,1336,05_freq_voltage,1,5,"chain = %d, start = %d, freq_step = %.2f\n",../analysis/reverse/full/bmminer/decompiled/1e400_FUN_0001e400.c
+bmminer,0x1ea90,chain_runtime_init,276,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/1ea90_FUN_0001ea90.c
+bmminer,0x1eba4,config_parse_topol_conf,5208,04_asic_chain;10_config_eeprom,1,9,Chain [%d] BOM Version: 0x%04x\n | parse chain failed\n,../analysis/reverse/full/bmminer/decompiled/1eba4_FUN_0001eba4.c
+bmminer,0x1fffc,FUN_0001fffc,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/1fffc_FUN_0001fffc.c
+bmminer,0x2001c,FUN_0002001c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2001c_FUN_0002001c.c
+bmminer,0x2002c,get_expected_asic_num,16,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/2002c_FUN_0002002c.c
+bmminer,0x2003c,FUN_0002003c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2003c_FUN_0002003c.c
+bmminer,0x2004c,FUN_0002004c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2004c_FUN_0002004c.c
+bmminer,0x2005c,FUN_0002005c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2005c_FUN_0002005c.c
+bmminer,0x2006c,FUN_0002006c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2006c_FUN_0002006c.c
+bmminer,0x2007c,FUN_0002007c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2007c_FUN_0002007c.c
+bmminer,0x2008c,FUN_0002008c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2008c_FUN_0002008c.c
+bmminer,0x2009c,FUN_0002009c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2009c_FUN_0002009c.c
+bmminer,0x200ac,FUN_000200ac,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/200ac_FUN_000200ac.c
+bmminer,0x200bc,FUN_000200bc,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/200bc_FUN_000200bc.c
+bmminer,0x200d8,FUN_000200d8,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/200d8_FUN_000200d8.c
+bmminer,0x200e8,FUN_000200e8,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/200e8_FUN_000200e8.c
+bmminer,0x2013c,set_chain_present,140,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/2013c_FUN_0002013c.c
+bmminer,0x201c8,FUN_000201c8,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/201c8_FUN_000201c8.c
+bmminer,0x201d8,chain_present,24,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/201d8_FUN_000201d8.c
+bmminer,0x201f0,FUN_000201f0,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/201f0_FUN_000201f0.c
+bmminer,0x20204,FUN_00020204,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20204_FUN_00020204.c
+bmminer,0x20214,FUN_00020214,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20214_FUN_00020214.c
+bmminer,0x20228,FUN_00020228,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20228_FUN_00020228.c
+bmminer,0x20238,FUN_00020238,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20238_FUN_00020238.c
+bmminer,0x20248,FUN_00020248,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20248_FUN_00020248.c
+bmminer,0x2028c,FUN_0002028c,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2028c_FUN_0002028c.c
+bmminer,0x20310,FUN_00020310,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20310_FUN_00020310.c
+bmminer,0x20378,FUN_00020378,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20378_FUN_00020378.c
+bmminer,0x203d8,FUN_000203d8,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/203d8_FUN_000203d8.c
+bmminer,0x203ec,FUN_000203ec,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/203ec_FUN_000203ec.c
+bmminer,0x203fc,FUN_000203fc,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/203fc_FUN_000203fc.c
+bmminer,0x20468,FUN_00020468,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20468_FUN_00020468.c
+bmminer,0x204d8,FUN_000204d8,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/204d8_FUN_000204d8.c
+bmminer,0x20548,FUN_00020548,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20548_FUN_00020548.c
+bmminer,0x205b4,get_detected_asic_num,100,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/205b4_FUN_000205b4.c
+bmminer,0x20618,FUN_00020618,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20618_FUN_00020618.c
+bmminer,0x20688,FUN_00020688,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20688_FUN_00020688.c
+bmminer,0x206f4,FUN_000206f4,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/206f4_FUN_000206f4.c
+bmminer,0x20758,FUN_00020758,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20758_FUN_00020758.c
+bmminer,0x207cc,FUN_000207cc,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/207cc_FUN_000207cc.c
+bmminer,0x20854,power_type_is_supported,84,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/20854_FUN_00020854.c
+bmminer,0x208a8,FUN_000208a8,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/208a8_FUN_000208a8.c
+bmminer,0x208bc,FUN_000208bc,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/208bc_FUN_000208bc.c
+bmminer,0x208cc,FUN_000208cc,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/208cc_FUN_000208cc.c
+bmminer,0x208f0,FUN_000208f0,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/208f0_FUN_000208f0.c
+bmminer,0x20934,FUN_00020934,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20934_FUN_00020934.c
+bmminer,0x2094c,FUN_0002094c,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2094c_FUN_0002094c.c
+bmminer,0x20998,FUN_00020998,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20998_FUN_00020998.c
+bmminer,0x20a54,FUN_00020a54,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20a54_FUN_00020a54.c
+bmminer,0x20a9c,FUN_00020a9c,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20a9c_FUN_00020a9c.c
+bmminer,0x20af4,FUN_00020af4,264,04_asic_chain,0,3,no need to set uart relay\n,../analysis/reverse/full/bmminer/decompiled/20af4_FUN_00020af4.c
+bmminer,0x20c04,chain_cmd_broadcast,88,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/20c04_FUN_00020c04.c
+bmminer,0x20c5c,FUN_00020c5c,188,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20c5c_FUN_00020c5c.c
+bmminer,0x20c88,FUN_00020c88,232,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20c88_FUN_00020c88.c
+bmminer,0x20d70,FUN_00020d70,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20d70_FUN_00020d70.c
+bmminer,0x20e38,FUN_00020e38,220,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20e38_FUN_00020e38.c
+bmminer,0x20f14,FUN_00020f14,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20f14_FUN_00020f14.c
+bmminer,0x20f60,FUN_00020f60,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20f60_FUN_00020f60.c
+bmminer,0x20fb8,FUN_00020fb8,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/20fb8_FUN_00020fb8.c
+bmminer,0x21000,FUN_00021000,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21000_FUN_00021000.c
+bmminer,0x21060,FUN_00021060,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21060_FUN_00021060.c
+bmminer,0x210e4,FUN_000210e4,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/210e4_FUN_000210e4.c
+bmminer,0x2116c,FUN_0002116c,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2116c_FUN_0002116c.c
+bmminer,0x211cc,FUN_000211cc,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/211cc_FUN_000211cc.c
+bmminer,0x212c0,FUN_000212c0,168,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/212c0_FUN_000212c0.c
+bmminer,0x21368,FUN_00021368,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21368_FUN_00021368.c
+bmminer,0x21410,FUN_00021410,224,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21410_FUN_00021410.c
+bmminer,0x214f4,FUN_000214f4,296,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/214f4_FUN_000214f4.c
+bmminer,0x2162c,FUN_0002162c,276,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2162c_FUN_0002162c.c
+bmminer,0x21744,FUN_00021744,232,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21744_FUN_00021744.c
+bmminer,0x21830,FUN_00021830,208,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21830_FUN_00021830.c
+bmminer,0x21904,FUN_00021904,244,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21904_FUN_00021904.c
+bmminer,0x219fc,FUN_000219fc,316,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/219fc_FUN_000219fc.c
+bmminer,0x21b3c,FUN_00021b3c,192,05_freq_voltage,0,5,freq_avg,../analysis/reverse/full/bmminer/decompiled/21b3c_FUN_00021b3c.c
+bmminer,0x21c00,FUN_00021c00,244,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21c00_FUN_00021c00.c
+bmminer,0x21cf8,FUN_00021cf8,260,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21cf8_FUN_00021cf8.c
+bmminer,0x21e00,FUN_00021e00,192,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21e00_FUN_00021e00.c
+bmminer,0x21ec4,FUN_00021ec4,240,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/21ec4_FUN_00021ec4.c
+bmminer,0x21fb8,FUN_00021fb8,292,06_thermal_fan,0,3,temp_pic,../analysis/reverse/full/bmminer/decompiled/21fb8_FUN_00021fb8.c
+bmminer,0x220e0,FUN_000220e0,352,06_thermal_fan,0,3,temp_chip,../analysis/reverse/full/bmminer/decompiled/220e0_FUN_000220e0.c
+bmminer,0x22244,FUN_00022244,352,06_thermal_fan,0,3,temp_pcb,../analysis/reverse/full/bmminer/decompiled/22244_FUN_00022244.c
+bmminer,0x223a8,FUN_000223a8,396,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/223a8_FUN_000223a8.c
+bmminer,0x22538,FUN_00022538,192,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22538_FUN_00022538.c
+bmminer,0x225fc,FUN_000225fc,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/225fc_FUN_000225fc.c
+bmminer,0x226c4,FUN_000226c4,208,10_config_eeprom,0,5,eeprom,../analysis/reverse/full/bmminer/decompiled/226c4_FUN_000226c4.c
+bmminer,0x22798,FUN_00022798,244,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22798_FUN_00022798.c
+bmminer,0x22890,FUN_00022890,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22890_FUN_00022890.c
+bmminer,0x228dc,FUN_000228dc,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/228dc_FUN_000228dc.c
+bmminer,0x2293c,FUN_0002293c,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2293c_FUN_0002293c.c
+bmminer,0x22988,FUN_00022988,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22988_FUN_00022988.c
+bmminer,0x229e0,FUN_000229e0,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/229e0_FUN_000229e0.c
+bmminer,0x22a2c,FUN_00022a2c,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22a2c_FUN_00022a2c.c
+bmminer,0x22a44,FUN_00022a44,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22a44_FUN_00022a44.c
+bmminer,0x22a5c,FUN_00022a5c,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22a5c_FUN_00022a5c.c
+bmminer,0x22a74,FUN_00022a74,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22a74_FUN_00022a74.c
+bmminer,0x22a8c,FUN_00022a8c,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22a8c_FUN_00022a8c.c
+bmminer,0x22b10,FUN_00022b10,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22b10_FUN_00022b10.c
+bmminer,0x22bb8,FUN_00022bb8,168,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22bb8_FUN_00022bb8.c
+bmminer,0x22c64,FUN_00022c64,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22c64_FUN_00022c64.c
+bmminer,0x22d80,FUN_00022d80,9312,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/22d80_FUN_00022d80.c
+bmminer,0x251e0,FUN_000251e0,204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/251e0_FUN_000251e0.c
+bmminer,0x252b8,FUN_000252b8,436,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/252b8_FUN_000252b8.c
+bmminer,0x2546c,FUN_0002546c,168,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2546c_FUN_0002546c.c
+bmminer,0x25514,FUN_00025514,156,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/25514_FUN_00025514.c
+bmminer,0x255b0,FUN_000255b0,4700,04_asic_chain,0,13,\n asic nonce number for chain[%d]...\n | /nonce,../analysis/reverse/full/bmminer/decompiled/255b0_FUN_000255b0.c
+bmminer,0x2680c,FUN_0002680c,256,04_asic_chain,0,3,chain%d_voltage=%d; | chain%d_badcore=%d; | chain%d_basefreq=%d; | chain%d_voladded=%d;,../analysis/reverse/full/bmminer/decompiled/2680c_FUN_0002680c.c
+bmminer,0x26950,FUN_00026950,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/26950_FUN_00026950.c
+bmminer,0x26968,FUN_00026968,2924,09_web_api,0,4,find http request end flag! | statusServiceThread send http response error | send http response...\n | statusServiceThread not support http command,../analysis/reverse/full/bmminer/decompiled/26968_FUN_00026968.c
+bmminer,0x274d4,FUN_000274d4,896,09_web_api,0,4,http listen failed! try again after 10s... | http port bind failed! try again after 10s...,../analysis/reverse/full/bmminer/decompiled/274d4_FUN_000274d4.c
+bmminer,0x27854,FUN_00027854,284,09_web_api;13_os_service,0,4,start the http log.\n,../analysis/reverse/full/bmminer/decompiled/27854_FUN_00027854.c
+bmminer,0x27970,FUN_00027970,1348,09_web_api,0,4,GET /%s HTTP/1.1\r\nHOST: %s:%d\r\nAccept: */*\r\n\r\n | http://,../analysis/reverse/full/bmminer/decompiled/27970_FUN_00027970.c
+bmminer,0x27eb4,FUN_00027eb4,220,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/27eb4_FUN_00027eb4.c
+bmminer,0x27f90,FUN_00027f90,584,02_power_psu,0,7,chain avg vol %s to %.2f,../analysis/reverse/full/bmminer/decompiled/27f90_FUN_00027f90.c
+bmminer,0x281e8,FUN_000281e8,424,04_asic_chain,0,4,Domain unbalance happened!\n,../analysis/reverse/full/bmminer/decompiled/281e8_FUN_000281e8.c
+bmminer,0x28390,FUN_00028390,664,08_network,0,3,"network connection lost | network connection resume, restart | network connection lost for 5 min + %d seconds, power off... | network connection resume, restart...",../analysis/reverse/full/bmminer/decompiled/28390_FUN_00028390.c
+bmminer,0x28628,FUN_00028628,3032,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/28628_FUN_00028628.c
+bmminer,0x2922c,FUN_0002922c,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2922c_FUN_0002922c.c
+bmminer,0x292b4,FUN_000292b4,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/292b4_FUN_000292b4.c
+bmminer,0x29324,FUN_00029324,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/29324_FUN_00029324.c
+bmminer,0x29354,FUN_00029354,348,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/29354_FUN_00029354.c
+bmminer,0x294c0,FUN_000294c0,544,04_asic_chain,0,3,chain %d hash rate %.2f low in %ld mins,../analysis/reverse/full/bmminer/decompiled/294c0_FUN_000294c0.c
+bmminer,0x296ec,FUN_000296ec,1064,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/296ec_FUN_000296ec.c
+bmminer,0x29b38,FUN_00029b38,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/29b38_FUN_00029b38.c
+bmminer,0x29b5c,FUN_00029b5c,80,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/29b5c_FUN_00029b5c.c
+bmminer,0x29bb8,FUN_00029bb8,580,05_freq_voltage,0,9,"%s, voltage = %d, freq = %d, hashrate = %f, miner_power = %04d, jt = %f\r\n",../analysis/reverse/full/bmminer/decompiled/29bb8_FUN_00029bb8.c
+bmminer,0x29e08,FUN_00029e08,1244,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/29e08_FUN_00029e08.c
+bmminer,0x2a314,FUN_0002a314,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2a314_FUN_0002a314.c
+bmminer,0x2a3a4,FUN_0002a3a4,828,04_asic_chain,0,13,\n dump asic nonce number...\n | Chain[%d] total nonce number = %d\n | Chain[%d] nonce:\n,../analysis/reverse/full/bmminer/decompiled/2a3a4_FUN_0002a3a4.c
+bmminer,0x2a6e4,FUN_0002a6e4,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2a6e4_FUN_0002a6e4.c
+bmminer,0x2a72c,FUN_0002a72c,216,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2a72c_FUN_0002a72c.c
+bmminer,0x2a808,FUN_0002a808,400,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2a808_FUN_0002a808.c
+bmminer,0x2a998,tuning_freq_engine,1840,05_freq_voltage,1,10,tuning freq end\n | tuning freq start\n,../analysis/reverse/full/bmminer/decompiled/2a998_FUN_0002a998.c
+bmminer,0x2b0f0,FUN_0002b0f0,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2b0f0_FUN_0002b0f0.c
+bmminer,0x2b150,FUN_0002b150,280,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/2b150_FUN_0002b150.c
+bmminer,0x2b268,FUN_0002b268,280,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/2b268_FUN_0002b268.c
+bmminer,0x2b380,FUN_0002b380,280,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/2b380_FUN_0002b380.c
+bmminer,0x2b498,FUN_0002b498,280,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/2b498_FUN_0002b498.c
+bmminer,0x2b5b0,FUN_0002b5b0,280,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/2b5b0_FUN_0002b5b0.c
+bmminer,0x2b6c8,FUN_0002b6c8,280,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/2b6c8_FUN_0002b6c8.c
+bmminer,0x2b7e0,FUN_0002b7e0,160,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2b7e0_FUN_0002b7e0.c
+bmminer,0x2b880,FUN_0002b880,160,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2b880_FUN_0002b880.c
+bmminer,0x2b9c0,FUN_0002b9c0,160,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2b9c0_FUN_0002b9c0.c
+bmminer,0x2bb00,FUN_0002bb00,128,04_asic_chain,0,6,set UART baud to %d\n,../analysis/reverse/full/bmminer/decompiled/2bb00_FUN_0002bb00.c
+bmminer,0x2bb80,FUN_0002bb80,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2bb80_FUN_0002bb80.c
+bmminer,0x2bb9c,FUN_0002bb9c,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2bb9c_FUN_0002bb9c.c
+bmminer,0x2bbd0,FUN_0002bbd0,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2bbd0_FUN_0002bbd0.c
+bmminer,0x2bc04,FUN_0002bc04,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2bc04_FUN_0002bc04.c
+bmminer,0x2bd24,FUN_0002bd24,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2bd24_FUN_0002bd24.c
+bmminer,0x2bd54,mining_capability,84,07_mining_pool,1,3,%s\nBuilt with bitmain_c5 mining support.\n,../analysis/reverse/full/bmminer/decompiled/2bd54_FUN_0002bd54.c
+bmminer,0x2c28c,FUN_0002c28c,240,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c28c_FUN_0002c28c.c
+bmminer,0x2c380,FUN_0002c380,896,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/2c380_FUN_0002c380.c
+bmminer,0x2c708,FUN_0002c708,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c708_FUN_0002c708.c
+bmminer,0x2c738,FUN_0002c738,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c738_FUN_0002c738.c
+bmminer,0x2c764,FUN_0002c764,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c764_FUN_0002c764.c
+bmminer,0x2c7e0,FUN_0002c7e0,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c7e0_FUN_0002c7e0.c
+bmminer,0x2c8b0,FUN_0002c8b0,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c8b0_FUN_0002c8b0.c
+bmminer,0x2c924,FUN_0002c924,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c924_FUN_0002c924.c
+bmminer,0x2c980,FUN_0002c980,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c980_FUN_0002c980.c
+bmminer,0x2c9dc,FUN_0002c9dc,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2c9dc_FUN_0002c9dc.c
+bmminer,0x2ca38,FUN_0002ca38,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2ca38_FUN_0002ca38.c
+bmminer,0x2ca7c,FUN_0002ca7c,544,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2ca7c_FUN_0002ca7c.c
+bmminer,0x2cca8,FUN_0002cca8,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2cca8_FUN_0002cca8.c
+bmminer,0x2ccf4,FUN_0002ccf4,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2ccf4_FUN_0002ccf4.c
+bmminer,0x2cd24,FUN_0002cd24,252,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/2cd24_FUN_0002cd24.c
+bmminer,0x2ce20,FUN_0002ce20,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2ce20_FUN_0002ce20.c
+bmminer,0x2ce80,set_target_diff,600,07_mining_pool,1,3,Diff zero passed to set_target,../analysis/reverse/full/bmminer/decompiled/2ce80_FUN_0002ce80.c
+bmminer,0x2d114,stratum_header_build,2516,07_mining_pool,1,4,Generated stratum header %s | Generated stratum merkle %s,../analysis/reverse/full/bmminer/decompiled/2d114_FUN_0002d114.c
+bmminer,0x2db6c,FUN_0002db6c,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2db6c_FUN_0002db6c.c
+bmminer,0x2dba8,FUN_0002dba8,204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2dba8_FUN_0002dba8.c
+bmminer,0x2dc2c,FUN_0002dc2c,348,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2dc2c_FUN_0002dc2c.c
+bmminer,0x2dd8c,FUN_0002dd8c,424,04_asic_chain,0,3,%s %d: invalid nonce - HW error,../analysis/reverse/full/bmminer/decompiled/2dd8c_FUN_0002dd8c.c
+bmminer,0x2df3c,FUN_0002df3c,4,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2df3c_FUN_0002df3c.c
+bmminer,0x2e050,FUN_0002e050,1200,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/2e050_FUN_0002e050.c
+bmminer,0x2e510,FUN_0002e510,420,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2e510_FUN_0002e510.c
+bmminer,0x2e6b4,FUN_0002e6b4,180,04_asic_chain,0,3,cgminer return err for this nonce!\n,../analysis/reverse/full/bmminer/decompiled/2e6b4_FUN_0002e6b4.c
+bmminer,0x2e768,FUN_0002e768,340,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2e768_FUN_0002e768.c
+bmminer,0x2e8bc,FUN_0002e8bc,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2e8bc_FUN_0002e8bc.c
+bmminer,0x2ea24,stratum_job_parse,652,07_mining_pool,1,3,parse job buf len:%d\n,../analysis/reverse/full/bmminer/decompiled/2ea24_FUN_0002ea24.c
+bmminer,0x2ecbc,FUN_0002ecbc,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2ecbc_FUN_0002ecbc.c
+bmminer,0x2ecf8,stratum_job_recv,1224,07_mining_pool,1,7,"%s, rec job data %p size: %d\n",../analysis/reverse/full/bmminer/decompiled/2ecf8_FUN_0002ecf8.c
+bmminer,0x2f1c8,FUN_0002f1c8,216,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2f1c8_FUN_0002f1c8.c
+bmminer,0x2f5f4,FUN_0002f5f4,404,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/2f5f4_FUN_0002f5f4.c
+bmminer,0x2f78c,FUN_0002f78c,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2f78c_FUN_0002f78c.c
+bmminer,0x2f798,FUN_0002f798,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2f798_FUN_0002f798.c
+bmminer,0x2f7d0,FUN_0002f7d0,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/2f7d0_FUN_0002f7d0.c
+bmminer,0x2f808,chain_scan,556,04_asic_chain,1,3,Chain %d is not exist.\n,../analysis/reverse/full/bmminer/decompiled/2f808_FUN_0002f808.c
+bmminer,0x2fa34,FUN_0002fa34,632,04_asic_chain,0,6,"read asic reg error: expect chain = %d, chip = %d, reg = %d, got chain = %d, chip = %d, reg = %d\n | read asic reg timeout: expect chain = %d, chip = %d, reg = %d\n",../analysis/reverse/full/bmminer/decompiled/2fa34_FUN_0002fa34.c
+bmminer,0x2fcb0,FUN_0002fcb0,764,04_asic_chain,0,3,chain::%d don't exist!!!\n,../analysis/reverse/full/bmminer/decompiled/2fcb0_FUN_0002fcb0.c
+bmminer,0x2ffb0,FUN_0002ffb0,1008,04_asic_chain,0,9,!!! nonce invalid from chain:%d asic:%d\n | !!! nonce crc error\n,../analysis/reverse/full/bmminer/decompiled/2ffb0_FUN_0002ffb0.c
+bmminer,0x303a0,FUN_000303a0,616,04_asic_chain;10_config_eeprom,0,6,!!! REG_TYPE = 1.%08x from chain:%d asic:%d\n,../analysis/reverse/full/bmminer/decompiled/303a0_FUN_000303a0.c
+bmminer,0x30608,FUN_00030608,512,04_asic_chain,0,9,\n dump asic nonce number...\n | Chain[%d] total nonce number = %d\n,../analysis/reverse/full/bmminer/decompiled/30608_FUN_00030608.c
+bmminer,0x3080c,FUN_0003080c,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3080c_FUN_0003080c.c
+bmminer,0x308d8,FUN_000308d8,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/308d8_FUN_000308d8.c
+bmminer,0x308fc,FUN_000308fc,460,04_asic_chain,0,10,\n dump domain nonce number...\n,../analysis/reverse/full/bmminer/decompiled/308fc_FUN_000308fc.c
+bmminer,0x30ad8,FUN_00030ad8,348,04_asic_chain,0,9,\n asic nonce number for chain[%d] asic[%d]...\n,../analysis/reverse/full/bmminer/decompiled/30ad8_FUN_00030ad8.c
+bmminer,0x30c34,FUN_00030c34,436,04_asic_chain,0,9,"chain[%d] aisc[%d] total asic nonce number:%d, total chain nonce number:%d; increased asic nonce number:%d, increased chain nonce number:%d\n",../analysis/reverse/full/bmminer/decompiled/30c34_FUN_00030c34.c
+bmminer,0x30dec,FUN_00030dec,484,04_asic_chain,0,13,\n asic nonce number for chain[%d]...\n,../analysis/reverse/full/bmminer/decompiled/30dec_FUN_00030dec.c
+bmminer,0x30fd4,FUN_00030fd4,828,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/30fd4_FUN_00030fd4.c
+bmminer,0x31310,FUN_00031310,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/31310_FUN_00031310.c
+bmminer,0x313b8,FUN_000313b8,684,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/313b8_FUN_000313b8.c
+bmminer,0x31668,FUN_00031668,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/31668_FUN_00031668.c
+bmminer,0x316f0,FUN_000316f0,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/316f0_FUN_000316f0.c
+bmminer,0x3171c,FUN_0003171c,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3171c_FUN_0003171c.c
+bmminer,0x317e4,FUN_000317e4,208,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/317e4_FUN_000317e4.c
+bmminer,0x32218,FUN_00032218,676,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32218_FUN_00032218.c
+bmminer,0x324bc,FUN_000324bc,424,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/324bc_FUN_000324bc.c
+bmminer,0x32664,FUN_00032664,336,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32664_FUN_00032664.c
+bmminer,0x327b4,FUN_000327b4,484,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/327b4_FUN_000327b4.c
+bmminer,0x32998,FUN_00032998,744,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32998_FUN_00032998.c
+bmminer,0x32c84,FUN_00032c84,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32c84_FUN_00032c84.c
+bmminer,0x32d00,FUN_00032d00,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32d00_FUN_00032d00.c
+bmminer,0x32d88,FUN_00032d88,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32d88_FUN_00032d88.c
+bmminer,0x32eb0,FUN_00032eb0,968,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/32eb0_FUN_00032eb0.c
+bmminer,0x33284,FUN_00033284,288,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/33284_FUN_00033284.c
+bmminer,0x333b0,FUN_000333b0,508,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/333b0_FUN_000333b0.c
+bmminer,0x335ac,FUN_000335ac,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/335ac_FUN_000335ac.c
+bmminer,0x335dc,FUN_000335dc,172,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/335dc_FUN_000335dc.c
+bmminer,0x33688,FUN_00033688,236,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33688_FUN_00033688.c
+bmminer,0x33774,FUN_00033774,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33774_FUN_00033774.c
+bmminer,0x337d8,FUN_000337d8,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/337d8_FUN_000337d8.c
+bmminer,0x337e0,FUN_000337e0,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/337e0_FUN_000337e0.c
+bmminer,0x33848,FUN_00033848,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33848_FUN_00033848.c
+bmminer,0x338c4,FUN_000338c4,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/338c4_FUN_000338c4.c
+bmminer,0x33928,FUN_00033928,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33928_FUN_00033928.c
+bmminer,0x33990,FUN_00033990,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33990_FUN_00033990.c
+bmminer,0x33a18,FUN_00033a18,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33a18_FUN_00033a18.c
+bmminer,0x33bf8,FUN_00033bf8,176,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33bf8_FUN_00033bf8.c
+bmminer,0x33cac,FUN_00033cac,452,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33cac_FUN_00033cac.c
+bmminer,0x33e70,FUN_00033e70,216,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33e70_FUN_00033e70.c
+bmminer,0x33f94,FUN_00033f94,496,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/33f94_FUN_00033f94.c
+bmminer,0x34184,FUN_00034184,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34184_FUN_00034184.c
+bmminer,0x341e0,FUN_000341e0,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/341e0_FUN_000341e0.c
+bmminer,0x34258,FUN_00034258,208,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34258_FUN_00034258.c
+bmminer,0x3432c,FUN_0003432c,220,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3432c_FUN_0003432c.c
+bmminer,0x3440c,FUN_0003440c,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3440c_FUN_0003440c.c
+bmminer,0x34574,FUN_00034574,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34574_FUN_00034574.c
+bmminer,0x345ac,FUN_000345ac,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/345ac_FUN_000345ac.c
+bmminer,0x345ec,FUN_000345ec,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/345ec_FUN_000345ec.c
+bmminer,0x3462c,FUN_0003462c,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3462c_FUN_0003462c.c
+bmminer,0x347e0,FUN_000347e0,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/347e0_FUN_000347e0.c
+bmminer,0x34828,FUN_00034828,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34828_FUN_00034828.c
+bmminer,0x348e4,FUN_000348e4,192,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/348e4_FUN_000348e4.c
+bmminer,0x349a4,FUN_000349a4,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/349a4_FUN_000349a4.c
+bmminer,0x34a5c,delay_ms,44,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/34a5c_FUN_00034a5c.c
+bmminer,0x34a88,FUN_00034a88,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34a88_FUN_00034a88.c
+bmminer,0x34b00,FUN_00034b00,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34b00_FUN_00034b00.c
+bmminer,0x34fdc,FUN_00034fdc,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/34fdc_FUN_00034fdc.c
+bmminer,0x3501c,FUN_0003501c,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3501c_FUN_0003501c.c
+bmminer,0x35098,FUN_00035098,68,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/35098_FUN_00035098.c
+bmminer,0x350e0,FUN_000350e0,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/350e0_FUN_000350e0.c
+bmminer,0x351dc,FUN_000351dc,336,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/351dc_FUN_000351dc.c
+bmminer,0x3532c,FUN_0003532c,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3532c_FUN_0003532c.c
+bmminer,0x35430,FUN_00035430,368,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35430_FUN_00035430.c
+bmminer,0x355a0,FUN_000355a0,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/355a0_FUN_000355a0.c
+bmminer,0x3562c,FUN_0003562c,272,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3562c_FUN_0003562c.c
+bmminer,0x357f0,FUN_000357f0,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/357f0_FUN_000357f0.c
+bmminer,0x35b18,FUN_00035b18,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35b18_FUN_00035b18.c
+bmminer,0x35b74,FUN_00035b74,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35b74_FUN_00035b74.c
+bmminer,0x35c38,FUN_00035c38,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35c38_FUN_00035c38.c
+bmminer,0x35c60,FUN_00035c60,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35c60_FUN_00035c60.c
+bmminer,0x35ca8,FUN_00035ca8,608,04_asic_chain,0,3,"	chain id = %d\n | board id = %d, chain num = %d\n",../analysis/reverse/full/bmminer/decompiled/35ca8_FUN_00035ca8.c
+bmminer,0x35f08,FUN_00035f08,240,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35f08_FUN_00035f08.c
+bmminer,0x35f58,FUN_00035f58,636,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/35f58_FUN_00035f58.c
+bmminer,0x361d4,FUN_000361d4,184,10_config_eeprom;02_power_psu,0,5,max voltage in eeprom = %d\n,../analysis/reverse/full/bmminer/decompiled/361d4_FUN_000361d4.c
+bmminer,0x3628c,FUN_0003628c,72,05_freq_voltage,0,5,This is fix-freq version\n,../analysis/reverse/full/bmminer/decompiled/3628c_FUN_0003628c.c
+bmminer,0x362d4,FUN_000362d4,140,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/362d4_FUN_000362d4.c
+bmminer,0x36360,FUN_00036360,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36360_FUN_00036360.c
+bmminer,0x36370,FUN_00036370,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36370_FUN_00036370.c
+bmminer,0x36380,FUN_00036380,668,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/36380_FUN_00036380.c
+bmminer,0x366f4,FUN_000366f4,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/366f4_FUN_000366f4.c
+bmminer,0x366fc,FUN_000366fc,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/366fc_FUN_000366fc.c
+bmminer,0x3670c,chain_pic_reset_flow,188,03_pic_ctrl,1,5,Chain %d PIC reset failed.\n | PIC reset failed.\n,../analysis/reverse/full/bmminer/decompiled/3670c_FUN_0003670c.c
+bmminer,0x36748,FUN_00036748,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36748_FUN_00036748.c
+bmminer,0x36788,FUN_00036788,256,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36788_FUN_00036788.c
+bmminer,0x368b4,FUN_000368b4,492,05_freq_voltage,0,5,"freq = %d, percent = %d, hcn = %d, timeout = %d\n",../analysis/reverse/full/bmminer/decompiled/368b4_FUN_000368b4.c
+bmminer,0x36ad8,FUN_00036ad8,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36ad8_FUN_00036ad8.c
+bmminer,0x36b18,FUN_00036b18,204,04_asic_chain,0,3,Chain [%d] BOM Version: 0x%04x\n | Chain [%d] PCB Version: 0x%04x\n,../analysis/reverse/full/bmminer/decompiled/36b18_FUN_00036b18.c
+bmminer,0x36be4,FUN_00036be4,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36be4_FUN_00036be4.c
+bmminer,0x36c5c,FUN_00036c5c,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36c5c_FUN_00036c5c.c
+bmminer,0x36c6c,FUN_00036c6c,572,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/36c6c_FUN_00036c6c.c
+bmminer,0x36d8c,FUN_00036d8c,980,04_asic_chain,0,6,chain %u asic %u asic_nonce_num %llu\n,../analysis/reverse/full/bmminer/decompiled/36d8c_FUN_00036d8c.c
+bmminer,0x37160,chain_bad_asic_probe,184,04_asic_chain,1,3,bad asic is %d\n,../analysis/reverse/full/bmminer/decompiled/37160_FUN_00037160.c
+bmminer,0x37218,chain_asic_detect,500,04_asic_chain,1,6,"pic enabled for chain %d, press anykey to continue... | Chain[%d]: find %d asic, times %d\n | Chain %d only find %d asic, will power off hash board %d\n",../analysis/reverse/full/bmminer/decompiled/37218_FUN_00037218.c
+bmminer,0x3740c,FUN_0003740c,216,04_asic_chain,0,4,FPGA Version = 0x%04X\n,../analysis/reverse/full/bmminer/decompiled/3740c_FUN_0003740c.c
+bmminer,0x374e4,FUN_000374e4,292,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/374e4_FUN_000374e4.c
+bmminer,0x374fc,FUN_000374fc,636,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/374fc_FUN_000374fc.c
+bmminer,0x3777c,send_job,1300,07_mining_pool,1,3,"start to send job, mid_auto_gen = %d",../analysis/reverse/full/bmminer/decompiled/3777c_FUN_0003777c.c
+bmminer,0x37c98,FUN_00037c98,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/37c98_FUN_00037c98.c
+bmminer,0x37cb4,FUN_00037cb4,1040,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/37cb4_FUN_00037cb4.c
+bmminer,0x380c8,FUN_000380c8,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/380c8_FUN_000380c8.c
+bmminer,0x3818c,FUN_0003818c,236,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3818c_FUN_0003818c.c
+bmminer,0x38228,water_temp_protect,372,06_thermal_fan,1,6,"water temp %d ~ %d, sleep %ds to cool down\n",../analysis/reverse/full/bmminer/decompiled/38228_FUN_00038228.c
+bmminer,0x3839c,FUN_0003839c,1360,04_asic_chain,0,3,"chain num = %d | No chain exist, exit.\n",../analysis/reverse/full/bmminer/decompiled/3839c_FUN_0003839c.c
+bmminer,0x388ec,board_power_init_sequence,1128,02_power_psu;06_thermal_fan,1,12,warning:power is not calibrated.\n | get power type version failed! | power sn:%s\n,../analysis/reverse/full/bmminer/decompiled/388ec_FUN_000388ec.c
+bmminer,0x38d58,FUN_00038d58,1600,04_asic_chain,0,6,"chain %d, bad core num %8d, rate = %.2f ========================round %d",../analysis/reverse/full/bmminer/decompiled/38d58_FUN_00038d58.c
+bmminer,0x3946c,FUN_0003946c,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3946c_FUN_0003946c.c
+bmminer,0x39544,freq_voltage_mode_init,2548,05_freq_voltage;10_config_eeprom,1,10,fixed frequency is %d\n | press any key to start rising frequency...,../analysis/reverse/full/bmminer/decompiled/39544_FUN_00039544.c
+bmminer,0x39f4c,FUN_00039f4c,1640,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/39f4c_FUN_00039f4c.c
+bmminer,0x3a5b8,fan_pid_control,1064,06_thermal_fan,1,13,"max temp = %04d, diff = %04d, = pwm %04d\n | max temp = %04d, diff = %04d, - pwm form %04d to %04d\n | max temp = %04d, diff = %04d, + pwm form %04d to %04d\n",../analysis/reverse/full/bmminer/decompiled/3a5b8_FUN_0003a5b8.c
+bmminer,0x3a9e0,FUN_0003a9e0,716,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3a9e0_FUN_0003a9e0.c
+bmminer,0x3ad08,FUN_0003ad08,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3ad08_FUN_0003ad08.c
+bmminer,0x3ae38,FUN_0003ae38,232,04_asic_chain,0,3,"chain = %d, nonce_rate_max = %.4f, nonce_rate_threshold = %.4f\n",../analysis/reverse/full/bmminer/decompiled/3ae38_FUN_0003ae38.c
+bmminer,0x3af20,FUN_0003af20,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3af20_FUN_0003af20.c
+bmminer,0x3b490,FUN_0003b490,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b490_FUN_0003b490.c
+bmminer,0x3b500,FUN_0003b500,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b500_FUN_0003b500.c
+bmminer,0x3b510,FUN_0003b510,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b510_FUN_0003b510.c
+bmminer,0x3b520,thunk_FUN_0001cf54,4,00_imports_thunks,0,0,,
+bmminer,0x3b524,FUN_0003b524,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b524_FUN_0003b524.c
+bmminer,0x3b534,FUN_0003b534,136,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3b534_FUN_0003b534.c
+bmminer,0x3b5bc,FUN_0003b5bc,664,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3b5bc_FUN_0003b5bc.c
+bmminer,0x3b854,FUN_0003b854,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b854_FUN_0003b854.c
+bmminer,0x3b864,FUN_0003b864,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b864_FUN_0003b864.c
+bmminer,0x3b874,FUN_0003b874,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3b874_FUN_0003b874.c
+bmminer,0x3b99c,FUN_0003b99c,356,04_asic_chain,0,6,"[DEBUG] Check if is unbalanche happen, chain = %d\n | Unbalance happened: chain = %d, asic = %d\n",../analysis/reverse/full/bmminer/decompiled/3b99c_FUN_0003b99c.c
+bmminer,0x3bc24,FUN_0003bc24,260,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3bc24_FUN_0003bc24.c
+bmminer,0x3bd28,FUN_0003bd28,156,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3bd28_FUN_0003bd28.c
+bmminer,0x3be20,FUN_0003be20,420,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3be20_FUN_0003be20.c
+bmminer,0x3c0d8,FUN_0003c0d8,468,04_asic_chain,0,9,"Nonce counter overflow: chain = %d, asic = %d, nonce_return = %d, nonce_match = %d, nonce_accumulate = %d\n",../analysis/reverse/full/bmminer/decompiled/3c0d8_FUN_0003c0d8.c
+bmminer,0x3c198,FUN_0003c198,176,04_asic_chain,0,3,"[DEBUG] Check if read reg done, chain = %d, done_threshold = %d.\n",../analysis/reverse/full/bmminer/decompiled/3c198_FUN_0003c198.c
+bmminer,0x3c248,FUN_0003c248,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3c248_FUN_0003c248.c
+bmminer,0x3c288,FUN_0003c288,1544,04_asic_chain,0,6,"[DEBUG] Set start nonce offset invalid.\n | [DEBUG] Get nonce counter, chain.\n",../analysis/reverse/full/bmminer/decompiled/3c288_FUN_0003c288.c
+bmminer,0x3c890,FUN_0003c890,112,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3c890_FUN_0003c890.c
+bmminer,0x3c9b0,FUN_0003c9b0,292,04_asic_chain,0,7,"Domain unbalance happen, chain = %d, domain = %d, nonce_num_domain = %d, threshold = %d.\n",../analysis/reverse/full/bmminer/decompiled/3c9b0_FUN_0003c9b0.c
+bmminer,0x3caf4,FUN_0003caf4,1136,04_asic_chain,0,3,"Send work for chain %d done, time cost %lds, sleep_count = %d\n | >>>> Send work for chain %d.\n",../analysis/reverse/full/bmminer/decompiled/3caf4_FUN_0003caf4.c
+bmminer,0x3cf68,FUN_0003cf68,700,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3cf68_FUN_0003cf68.c
+bmminer,0x3d224,FUN_0003d224,128,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3d224_FUN_0003d224.c
+bmminer,0x3d2bc,FUN_0003d2bc,368,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3d2bc_FUN_0003d2bc.c
+bmminer,0x3d42c,FUN_0003d42c,832,04_asic_chain,0,3,"No enough work, asic = %d, work_count = %d, work_count_target = %d.\n",../analysis/reverse/full/bmminer/decompiled/3d42c_FUN_0003d42c.c
+bmminer,0x3d76c,FUN_0003d76c,112,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3d76c_FUN_0003d76c.c
+bmminer,0x3d7f8,FUN_0003d7f8,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3d7f8_FUN_0003d7f8.c
+bmminer,0x3d9d8,FUN_0003d9d8,316,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3d9d8_FUN_0003d9d8.c
+bmminer,0x3db14,FUN_0003db14,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3db14_FUN_0003db14.c
+bmminer,0x3db58,FUN_0003db58,184,04_asic_chain,0,3,"[DEBUG] Send work one chain, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/3db58_FUN_0003db58.c
+bmminer,0x3dc10,FUN_0003dc10,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3dc10_FUN_0003dc10.c
+bmminer,0x3dc58,FUN_0003dc58,180,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3dc58_FUN_0003dc58.c
+bmminer,0x3dd0c,FUN_0003dd0c,380,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/3dd0c_FUN_0003dd0c.c
+bmminer,0x3de88,FUN_0003de88,256,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3de88_FUN_0003de88.c
+bmminer,0x3df8c,FUN_0003df8c,464,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3df8c_FUN_0003df8c.c
+bmminer,0x3e334,FUN_0003e334,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3e334_FUN_0003e334.c
+bmminer,0x3e3cc,FUN_0003e3cc,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3e3cc_FUN_0003e3cc.c
+bmminer,0x3e444,FUN_0003e444,204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3e444_FUN_0003e444.c
+bmminer,0x3e510,FUN_0003e510,196,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3e510_FUN_0003e510.c
+bmminer,0x3e5d4,FUN_0003e5d4,168,04_asic_chain,0,3,"[DEBUG] Check if chain is unbalance happen, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/3e5d4_FUN_0003e5d4.c
+bmminer,0x3e720,FUN_0003e720,212,04_asic_chain,0,3,"[DEBUG] Check if chain is unqualified happen, chain = %d, nonce_rate_threshold = %.2f\n",../analysis/reverse/full/bmminer/decompiled/3e720_FUN_0003e720.c
+bmminer,0x3e8a0,FUN_0003e8a0,168,04_asic_chain,0,6,"[DEBUG] Check if recv nonce enough, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/3e8a0_FUN_0003e8a0.c
+bmminer,0x3e948,FUN_0003e948,372,04_asic_chain,0,3,>>>> Send work for chain %d.\n,../analysis/reverse/full/bmminer/decompiled/3e948_FUN_0003e948.c
+bmminer,0x3eabc,FUN_0003eabc,284,04_asic_chain,0,3,"[DEBUG] chain = %d, status = %s\n",../analysis/reverse/full/bmminer/decompiled/3eabc_FUN_0003eabc.c
+bmminer,0x3ebd8,FUN_0003ebd8,152,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3ebd8_FUN_0003ebd8.c
+bmminer,0x3ec70,FUN_0003ec70,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3ec70_FUN_0003ec70.c
+bmminer,0x3ecb4,FUN_0003ecb4,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3ecb4_FUN_0003ecb4.c
+bmminer,0x3ed98,FUN_0003ed98,228,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3ed98_FUN_0003ed98.c
+bmminer,0x3ee7c,FUN_0003ee7c,552,04_asic_chain,0,3,"chain = %d, hw = %d, hw_threshold = %d, too much hw.\n | chain = %d, nonce_rate_curr = %.4f, nonce_rate_last = %.4f, nonce_rate_max = %.4f\n | [DEBUG] Check if is need stop, chain = %d, hw_threshold = %.4f, nonce_rate_threshold = %.2f, nonce_rate_dec_threshold = %.2f.\n",../analysis/reverse/full/bmminer/decompiled/3ee7c_FUN_0003ee7c.c
+bmminer,0x3f0a4,FUN_0003f0a4,280,04_asic_chain,0,3,[DEBUG] Check if all chain pattern test done.\n,../analysis/reverse/full/bmminer/decompiled/3f0a4_FUN_0003f0a4.c
+bmminer,0x3f2d0,FUN_0003f2d0,160,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/3f2d0_FUN_0003f2d0.c
+bmminer,0x3f370,FUN_0003f370,2004,04_asic_chain,0,10,Chain %d nonce:\n,../analysis/reverse/full/bmminer/decompiled/3f370_FUN_0003f370.c
+bmminer,0x3fb44,FUN_0003fb44,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3fb44_FUN_0003fb44.c
+bmminer,0x3fb88,FUN_0003fb88,1024,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3fb88_FUN_0003fb88.c
+bmminer,0x3ff88,FUN_0003ff88,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/3ff88_FUN_0003ff88.c
+bmminer,0x3ffb0,freq_tuning_basic_init,312,05_freq_voltage,1,10,[DEBUG] Allocate memory for freq tuning basic.\n | [DEBUG] Freq tuning basic init.\n | Fail to allocate memory for freq tuning basic context.\n,../analysis/reverse/full/bmminer/decompiled/3ffb0_FUN_0003ffb0.c
+bmminer,0x400e8,freq_tuning_basic_exit,188,05_freq_voltage,1,10,[DEBUG] Freq tuning basic exit.\n | [DEBUG] Free memory for freq tuning basic.\n,../analysis/reverse/full/bmminer/decompiled/400e8_FUN_000400e8.c
+bmminer,0x40238,FUN_00040238,892,05_freq_voltage,0,5,freq_base | freq_serial_threshold | freq_threshold | freq_step,../analysis/reverse/full/bmminer/decompiled/40238_FUN_00040238.c
+bmminer,0x405b4,freq_tuning_basic_parallel,1544,05_freq_voltage,1,10,Do freq tuning basic.\n | >>>> Do tuning parallel.\n,../analysis/reverse/full/bmminer/decompiled/405b4_FUN_000405b4.c
+bmminer,0x40bc0,FUN_00040bc0,172,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_avg = %d\n",../analysis/reverse/full/bmminer/decompiled/40bc0_FUN_00040bc0.c
+bmminer,0x40c6c,FUN_00040c6c,204,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_min = %d\n",../analysis/reverse/full/bmminer/decompiled/40c6c_FUN_00040c6c.c
+bmminer,0x40d38,FUN_00040d38,204,05_freq_voltage;04_asic_chain,0,5,"chain = %d, freq_max = %d\n",../analysis/reverse/full/bmminer/decompiled/40d38_FUN_00040d38.c
+bmminer,0x40e04,freq_runtime_check,356,05_freq_voltage,1,5,"chain = %d, freq_avg = %d, freq_threshold = %d, avg freq enough\n | chain = %d, freq_max = %d, freq_min = %d, freq_diff = %d, freq_diff_threshold = %d, freq diff enough\n | chain = %d, freq_max_runtime = %d, freq_threshold = %d, max freq enough\n",../analysis/reverse/full/bmminer/decompiled/40e04_FUN_00040e04.c
+bmminer,0x40f68,FUN_00040f68,448,05_freq_voltage;04_asic_chain,0,5,"[DEBUG] Dump freq table, chain = %d.\n",../analysis/reverse/full/bmminer/decompiled/40f68_FUN_00040f68.c
+bmminer,0x41128,FUN_00041128,188,05_freq_voltage,0,10,[DEBUG] freq tuning fine exit.\n,../analysis/reverse/full/bmminer/decompiled/41128_FUN_00041128.c
+bmminer,0x412b4,FUN_000412b4,1276,05_freq_voltage,0,5,freq_base | freq_serial_threshold | freq_tuning_fine_count | freq_diff_threshold,../analysis/reverse/full/bmminer/decompiled/412b4_FUN_000412b4.c
+bmminer,0x417b0,FUN_000417b0,332,05_freq_voltage,0,10,[DEBUG] freq tuning fine init.\n,../analysis/reverse/full/bmminer/decompiled/417b0_FUN_000417b0.c
+bmminer,0x418fc,freq_tuning_fine,3280,05_freq_voltage,1,10,"Dump freq tuning fine result:\n | Parallel tuning failed, exit.\n | Do freq tuning fine.\n | >>>> Do freq tuning fine parallel.\n",../analysis/reverse/full/bmminer/decompiled/418fc_FUN_000418fc.c
+bmminer,0x425d4,FUN_000425d4,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/425d4_FUN_000425d4.c
+bmminer,0x42610,FUN_00042610,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42610_FUN_00042610.c
+bmminer,0x42620,FUN_00042620,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42620_FUN_00042620.c
+bmminer,0x42640,FUN_00042640,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42640_FUN_00042640.c
+bmminer,0x426d4,FUN_000426d4,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/426d4_FUN_000426d4.c
+bmminer,0x426f4,FUN_000426f4,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/426f4_FUN_000426f4.c
+bmminer,0x42700,FUN_00042700,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42700_FUN_00042700.c
+bmminer,0x42788,FUN_00042788,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42788_FUN_00042788.c
+bmminer,0x42810,FUN_00042810,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42810_FUN_00042810.c
+bmminer,0x42838,FUN_00042838,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42838_FUN_00042838.c
+bmminer,0x42888,FUN_00042888,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42888_FUN_00042888.c
+bmminer,0x428f0,FUN_000428f0,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/428f0_FUN_000428f0.c
+bmminer,0x42998,FUN_00042998,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42998_FUN_00042998.c
+bmminer,0x42a74,FUN_00042a74,160,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42a74_FUN_00042a74.c
+bmminer,0x42b14,FUN_00042b14,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42b14_FUN_00042b14.c
+bmminer,0x42b5c,FUN_00042b5c,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42b5c_FUN_00042b5c.c
+bmminer,0x42c14,FUN_00042c14,372,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42c14_FUN_00042c14.c
+bmminer,0x42d88,FUN_00042d88,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42d88_FUN_00042d88.c
+bmminer,0x42dec,FUN_00042dec,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42dec_FUN_00042dec.c
+bmminer,0x42e44,FUN_00042e44,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42e44_FUN_00042e44.c
+bmminer,0x42e9c,FUN_00042e9c,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42e9c_FUN_00042e9c.c
+bmminer,0x42efc,FUN_00042efc,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42efc_FUN_00042efc.c
+bmminer,0x42f5c,FUN_00042f5c,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42f5c_FUN_00042f5c.c
+bmminer,0x42fa0,FUN_00042fa0,212,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/42fa0_FUN_00042fa0.c
+bmminer,0x43074,FUN_00043074,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/43074_FUN_00043074.c
+bmminer,0x430d0,FUN_000430d0,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/430d0_FUN_000430d0.c
+bmminer,0x431a8,FUN_000431a8,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/431a8_FUN_000431a8.c
+bmminer,0x431e0,FUN_000431e0,1200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/431e0_FUN_000431e0.c
+bmminer,0x43690,FUN_00043690,1092,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/43690_FUN_00043690.c
+bmminer,0x43ad4,memchr,276,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/43ad4_memchr.c
+bmminer,0x43be8,FUN_00043be8,272,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/43be8_FUN_00043be8.c
+bmminer,0x43cf8,FUN_00043cf8,812,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/43cf8_FUN_00043cf8.c
+bmminer,0x44024,memmem,744,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/44024_memmem.c
+bmminer,0x44310,FUN_00044310,3716,04_asic_chain,0,10,domain %2d:,../analysis/reverse/full/bmminer/decompiled/44310_FUN_00044310.c
+bmminer,0x451d8,FUN_000451d8,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/451d8_FUN_000451d8.c
+bmminer,0x45220,FUN_00045220,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45220_FUN_00045220.c
+bmminer,0x4529c,FUN_0004529c,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4529c_FUN_0004529c.c
+bmminer,0x45314,FUN_00045314,244,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/45314_FUN_00045314.c
+bmminer,0x45408,FUN_00045408,540,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45408_FUN_00045408.c
+bmminer,0x45624,FUN_00045624,236,04_asic_chain,0,4,fpga init failed\n,../analysis/reverse/full/bmminer/decompiled/45624_FUN_00045624.c
+bmminer,0x45710,FUN_00045710,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45710_FUN_00045710.c
+bmminer,0x45748,FUN_00045748,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45748_FUN_00045748.c
+bmminer,0x457ac,FUN_000457ac,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/457ac_FUN_000457ac.c
+bmminer,0x457b4,FUN_000457b4,4,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/457b4_FUN_000457b4.c
+bmminer,0x457b8,FUN_000457b8,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/457b8_FUN_000457b8.c
+bmminer,0x45850,FUN_00045850,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45850_FUN_00045850.c
+bmminer,0x458e8,FUN_000458e8,496,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/458e8_FUN_000458e8.c
+bmminer,0x45ad8,FUN_00045ad8,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45ad8_FUN_00045ad8.c
+bmminer,0x45af8,FUN_00045af8,204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45af8_FUN_00045af8.c
+bmminer,0x45bc4,FUN_00045bc4,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45bc4_FUN_00045bc4.c
+bmminer,0x45c40,FUN_00045c40,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45c40_FUN_00045c40.c
+bmminer,0x45cb8,FUN_00045cb8,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45cb8_FUN_00045cb8.c
+bmminer,0x45cfc,FUN_00045cfc,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45cfc_FUN_00045cfc.c
+bmminer,0x45d04,FUN_00045d04,4,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45d04_FUN_00045d04.c
+bmminer,0x45d08,FUN_00045d08,368,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/45d08_FUN_00045d08.c
+bmminer,0x45e7c,FUN_00045e7c,276,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/45e7c_FUN_00045e7c.c
+bmminer,0x45f94,FUN_00045f94,172,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/45f94_FUN_00045f94.c
+bmminer,0x46044,FUN_00046044,376,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/46044_FUN_00046044.c
+bmminer,0x461c0,FUN_000461c0,452,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/461c0_FUN_000461c0.c
+bmminer,0x46388,FUN_00046388,332,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/46388_FUN_00046388.c
+bmminer,0x464d8,FUN_000464d8,356,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/464d8_FUN_000464d8.c
+bmminer,0x46640,FUN_00046640,324,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/46640_FUN_00046640.c
+bmminer,0x46784,FUN_00046784,320,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/46784_FUN_00046784.c
+bmminer,0x468cc,FUN_000468cc,160,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/468cc_FUN_000468cc.c
+bmminer,0x469bc,fan_pwm_type,196,06_thermal_fan,1,5,pwm type %d not supported\n,../analysis/reverse/full/bmminer/decompiled/469bc_FUN_000469bc.c
+bmminer,0x46b00,FUN_00046b00,492,04_asic_chain,0,3,%s: The uart %d is not supported!!!\n,../analysis/reverse/full/bmminer/decompiled/46b00_FUN_00046b00.c
+bmminer,0x46d24,FUN_00046d24,428,04_asic_chain,0,3,%s: The uart%d is not supported!!!\n,../analysis/reverse/full/bmminer/decompiled/46d24_FUN_00046d24.c
+bmminer,0x46f0c,FUN_00046f0c,308,04_asic_chain,0,7,%s: waiting fpga uart%d clear send fifo space ...\n,../analysis/reverse/full/bmminer/decompiled/46f0c_FUN_00046f0c.c
+bmminer,0x47044,FUN_00047044,520,04_asic_chain,0,3,%s: The uart%d is not supported!!!\n,../analysis/reverse/full/bmminer/decompiled/47044_FUN_00047044.c
+bmminer,0x47288,FUN_00047288,96,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/47288_FUN_00047288.c
+bmminer,0x472e8,FUN_000472e8,4,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/472e8_FUN_000472e8.c
+bmminer,0x472ec,FUN_000472ec,584,04_asic_chain,0,3,"%s: uart%d always busy, break\n | %s: uart%d always dose not has enough send fifo space, break\n",../analysis/reverse/full/bmminer/decompiled/472ec_FUN_000472ec.c
+bmminer,0x47538,FUN_00047538,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47538_FUN_00047538.c
+bmminer,0x475ac,FUN_000475ac,132,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/475ac_FUN_000475ac.c
+bmminer,0x476e8,FUN_000476e8,136,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/476e8_FUN_000476e8.c
+bmminer,0x4782c,FUN_0004782c,252,04_asic_chain,0,3,"%s: uart%d clear rx fifo error. nbytes = %d, len = %d\n | %s: uart%d malloc buffer error\n",../analysis/reverse/full/bmminer/decompiled/4782c_FUN_0004782c.c
+bmminer,0x47954,FUN_00047954,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47954_FUN_00047954.c
+bmminer,0x47964,FUN_00047964,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47964_FUN_00047964.c
+bmminer,0x47974,FUN_00047974,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47974_FUN_00047974.c
+bmminer,0x479b0,gpio_power_enable_low,56,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/479b0_FUN_000479b0.c
+bmminer,0x479e8,gpio_power_enable_high,56,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/479e8_FUN_000479e8.c
+bmminer,0x47a30,FUN_00047a30,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47a30_FUN_00047a30.c
+bmminer,0x47a74,FUN_00047a74,324,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47a74_FUN_00047a74.c
+bmminer,0x47bb8,FUN_00047bb8,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47bb8_FUN_00047bb8.c
+bmminer,0x47c18,FUN_00047c18,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47c18_FUN_00047c18.c
+bmminer,0x47c38,FUN_00047c38,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47c38_FUN_00047c38.c
+bmminer,0x47cb0,FUN_00047cb0,136,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/47cb0_FUN_00047cb0.c
+bmminer,0x47d38,FUN_00047d38,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47d38_FUN_00047d38.c
+bmminer,0x47d78,FUN_00047d78,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47d78_FUN_00047d78.c
+bmminer,0x47f44,FUN_00047f44,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47f44_FUN_00047f44.c
+bmminer,0x47fd4,FUN_00047fd4,4,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47fd4_FUN_00047fd4.c
+bmminer,0x47fd8,FUN_00047fd8,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47fd8_FUN_00047fd8.c
+bmminer,0x47fe4,FUN_00047fe4,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/47fe4_FUN_00047fe4.c
+bmminer,0x48028,FUN_00048028,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48028_FUN_00048028.c
+bmminer,0x48034,FUN_00048034,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48034_FUN_00048034.c
+bmminer,0x48490,FUN_00048490,132,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/48490_FUN_00048490.c
+bmminer,0x48518,FUN_00048518,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48518_FUN_00048518.c
+bmminer,0x485dc,FUN_000485dc,332,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/485dc_FUN_000485dc.c
+bmminer,0x48738,FUN_00048738,256,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48738_FUN_00048738.c
+bmminer,0x48838,FUN_00048838,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48838_FUN_00048838.c
+bmminer,0x488b4,FUN_000488b4,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/488b4_FUN_000488b4.c
+bmminer,0x488bc,FUN_000488bc,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/488bc_FUN_000488bc.c
+bmminer,0x488c4,FUN_000488c4,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/488c4_FUN_000488c4.c
+bmminer,0x488cc,FUN_000488cc,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/488cc_FUN_000488cc.c
+bmminer,0x48ae0,FUN_00048ae0,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48ae0_FUN_00048ae0.c
+bmminer,0x48b84,FUN_00048b84,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48b84_FUN_00048b84.c
+bmminer,0x48bd4,FUN_00048bd4,636,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48bd4_FUN_00048bd4.c
+bmminer,0x48bec,FUN_00048bec,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48bec_FUN_00048bec.c
+bmminer,0x48c0c,FUN_00048c0c,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48c0c_FUN_00048c0c.c
+bmminer,0x48c84,FUN_00048c84,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48c84_FUN_00048c84.c
+bmminer,0x48cc8,FUN_00048cc8,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48cc8_FUN_00048cc8.c
+bmminer,0x48cf4,FUN_00048cf4,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48cf4_FUN_00048cf4.c
+bmminer,0x48d3c,free,4,00_imports_thunks,0,0,,
+bmminer,0x48d40,FUN_00048d40,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48d40_FUN_00048d40.c
+bmminer,0x48d94,FUN_00048d94,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48d94_FUN_00048d94.c
+bmminer,0x48de8,FUN_00048de8,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48de8_FUN_00048de8.c
+bmminer,0x48e48,FUN_00048e48,260,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48e48_FUN_00048e48.c
+bmminer,0x48f50,FUN_00048f50,140,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48f50_FUN_00048f50.c
+bmminer,0x48fe0,FUN_00048fe0,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/48fe0_FUN_00048fe0.c
+bmminer,0x49060,FUN_00049060,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49060_FUN_00049060.c
+bmminer,0x490b8,FUN_000490b8,128,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/490b8_FUN_000490b8.c
+bmminer,0x4939c,FUN_0004939c,692,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4939c_FUN_0004939c.c
+bmminer,0x49650,FUN_00049650,264,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49650_FUN_00049650.c
+bmminer,0x49758,FUN_00049758,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49758_FUN_00049758.c
+bmminer,0x497ac,FUN_000497ac,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/497ac_FUN_000497ac.c
+bmminer,0x49858,FUN_00049858,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49858_FUN_00049858.c
+bmminer,0x498b4,FUN_000498b4,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/498b4_FUN_000498b4.c
+bmminer,0x498f4,FUN_000498f4,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/498f4_FUN_000498f4.c
+bmminer,0x49928,FUN_00049928,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49928_FUN_00049928.c
+bmminer,0x4994c,FUN_0004994c,80,10_config_eeprom;04_asic_chain,0,5,"%s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4994c_FUN_0004994c.c
+bmminer,0x4999c,FUN_0004999c,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4999c_FUN_0004999c.c
+bmminer,0x49ab4,FUN_00049ab4,344,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | fail to write eeprom by iic, chain:%d, addr: %d | %s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/49ab4_FUN_00049ab4.c
+bmminer,0x49c10,FUN_00049c10,348,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | fail to read eeprom by iic, chain: %d, addr: %d\n | %s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/49c10_FUN_00049c10.c
+bmminer,0x49d70,FUN_00049d70,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49d70_FUN_00049d70.c
+bmminer,0x49df8,FUN_00049df8,172,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49df8_FUN_00049df8.c
+bmminer,0x49eb0,FUN_00049eb0,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49eb0_FUN_00049eb0.c
+bmminer,0x49f24,FUN_00049f24,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49f24_FUN_00049f24.c
+bmminer,0x49f3c,FUN_00049f3c,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49f3c_FUN_00049f3c.c
+bmminer,0x49f50,FUN_00049f50,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49f50_FUN_00049f50.c
+bmminer,0x49f68,FUN_00049f68,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49f68_FUN_00049f68.c
+bmminer,0x49fac,FUN_00049fac,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/49fac_FUN_00049fac.c
+bmminer,0x4a0bc,FUN_0004a0bc,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a0bc_FUN_0004a0bc.c
+bmminer,0x4a0e4,FUN_0004a0e4,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a0e4_FUN_0004a0e4.c
+bmminer,0x4a0f0,FUN_0004a0f0,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a0f0_FUN_0004a0f0.c
+bmminer,0x4a128,FUN_0004a128,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a128_FUN_0004a128.c
+bmminer,0x4a160,FUN_0004a160,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a160_FUN_0004a160.c
+bmminer,0x4a198,FUN_0004a198,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a198_FUN_0004a198.c
+bmminer,0x4a1d0,FUN_0004a1d0,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a1d0_FUN_0004a1d0.c
+bmminer,0x4a218,FUN_0004a218,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a218_FUN_0004a218.c
+bmminer,0x4a250,FUN_0004a250,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a250_FUN_0004a250.c
+bmminer,0x4a288,FUN_0004a288,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a288_FUN_0004a288.c
+bmminer,0x4a2c0,FUN_0004a2c0,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a2c0_FUN_0004a2c0.c
+bmminer,0x4a2f8,FUN_0004a2f8,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a2f8_FUN_0004a2f8.c
+bmminer,0x4a330,FUN_0004a330,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a330_FUN_0004a330.c
+bmminer,0x4a368,FUN_0004a368,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a368_FUN_0004a368.c
+bmminer,0x4a3a0,FUN_0004a3a0,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a3a0_FUN_0004a3a0.c
+bmminer,0x4a3d8,FUN_0004a3d8,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a3d8_FUN_0004a3d8.c
+bmminer,0x4a434,FUN_0004a434,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a434_FUN_0004a434.c
+bmminer,0x4a4a4,FUN_0004a4a4,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a4a4_FUN_0004a4a4.c
+bmminer,0x4a50c,FUN_0004a50c,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a50c_FUN_0004a50c.c
+bmminer,0x4a574,FUN_0004a574,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a574_FUN_0004a574.c
+bmminer,0x4a5ac,FUN_0004a5ac,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a5ac_FUN_0004a5ac.c
+bmminer,0x4a5d4,FUN_0004a5d4,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a5d4_FUN_0004a5d4.c
+bmminer,0x4a678,FUN_0004a678,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a678_FUN_0004a678.c
+bmminer,0x4a6a4,FUN_0004a6a4,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a6a4_FUN_0004a6a4.c
+bmminer,0x4a6c8,FUN_0004a6c8,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a6c8_FUN_0004a6c8.c
+bmminer,0x4a6fc,FUN_0004a6fc,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a6fc_FUN_0004a6fc.c
+bmminer,0x4a764,FUN_0004a764,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a764_FUN_0004a764.c
+bmminer,0x4a784,FUN_0004a784,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a784_FUN_0004a784.c
+bmminer,0x4a83c,FUN_0004a83c,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a83c_FUN_0004a83c.c
+bmminer,0x4a85c,FUN_0004a85c,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a85c_FUN_0004a85c.c
+bmminer,0x4a890,FUN_0004a890,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a890_FUN_0004a890.c
+bmminer,0x4a8b0,FUN_0004a8b0,340,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4a8b0_FUN_0004a8b0.c
+bmminer,0x4aa04,FUN_0004aa04,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4aa04_FUN_0004aa04.c
+bmminer,0x4aa94,FUN_0004aa94,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4aa94_FUN_0004aa94.c
+bmminer,0x4aabc,FUN_0004aabc,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4aabc_FUN_0004aabc.c
+bmminer,0x4aae4,FUN_0004aae4,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4aae4_FUN_0004aae4.c
+bmminer,0x4ab28,FUN_0004ab28,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ab28_FUN_0004ab28.c
+bmminer,0x4ab6c,FUN_0004ab6c,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ab6c_FUN_0004ab6c.c
+bmminer,0x4abac,FUN_0004abac,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4abac_FUN_0004abac.c
+bmminer,0x4abf0,FUN_0004abf0,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4abf0_FUN_0004abf0.c
+bmminer,0x4ac18,FUN_0004ac18,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ac18_FUN_0004ac18.c
+bmminer,0x4ac38,FUN_0004ac38,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ac38_FUN_0004ac38.c
+bmminer,0x4ac60,FUN_0004ac60,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ac60_FUN_0004ac60.c
+bmminer,0x4ac9c,FUN_0004ac9c,948,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ac9c_FUN_0004ac9c.c
+bmminer,0x4b050,FUN_0004b050,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b050_FUN_0004b050.c
+bmminer,0x4b084,FUN_0004b084,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b084_FUN_0004b084.c
+bmminer,0x4b0d8,FUN_0004b0d8,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b0d8_FUN_0004b0d8.c
+bmminer,0x4b130,FUN_0004b130,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b130_FUN_0004b130.c
+bmminer,0x4b1cc,FUN_0004b1cc,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b1cc_FUN_0004b1cc.c
+bmminer,0x4b214,FUN_0004b214,32,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b214_FUN_0004b214.c
+bmminer,0x4b234,FUN_0004b234,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b234_FUN_0004b234.c
+bmminer,0x4b268,FUN_0004b268,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b268_FUN_0004b268.c
+bmminer,0x4b29c,chain_gpio_power_on,68,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/4b29c_FUN_0004b29c.c
+bmminer,0x4b2e4,chain_gpio_power_off,68,04_asic_chain,1,0,,../analysis/reverse/full/bmminer/decompiled/4b2e4_FUN_0004b2e4.c
+bmminer,0x4b328,FUN_0004b328,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b328_FUN_0004b328.c
+bmminer,0x4b364,FUN_0004b364,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b364_FUN_0004b364.c
+bmminer,0x4b38c,FUN_0004b38c,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b38c_FUN_0004b38c.c
+bmminer,0x4b3e4,FUN_0004b3e4,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b3e4_FUN_0004b3e4.c
+bmminer,0x4b424,FUN_0004b424,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b424_FUN_0004b424.c
+bmminer,0x4b464,FUN_0004b464,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b464_FUN_0004b464.c
+bmminer,0x4b48c,FUN_0004b48c,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b48c_FUN_0004b48c.c
+bmminer,0x4b4cc,FUN_0004b4cc,188,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b4cc_FUN_0004b4cc.c
+bmminer,0x4b588,FUN_0004b588,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b588_FUN_0004b588.c
+bmminer,0x4b5c8,FUN_0004b5c8,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b5c8_FUN_0004b5c8.c
+bmminer,0x4b5f0,FUN_0004b5f0,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b5f0_FUN_0004b5f0.c
+bmminer,0x4b614,FUN_0004b614,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b614_FUN_0004b614.c
+bmminer,0x4b688,FUN_0004b688,256,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b688_FUN_0004b688.c
+bmminer,0x4b788,FUN_0004b788,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b788_FUN_0004b788.c
+bmminer,0x4b7d8,pic_open_invalid_chain,80,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4b7d8_FUN_0004b7d8.c
+bmminer,0x4b828,FUN_0004b828,340,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4b828_FUN_0004b828.c
+bmminer,0x4b97c,pic_open,160,03_pic_ctrl,1,0,,../analysis/reverse/full/bmminer/decompiled/4b97c_FUN_0004b97c.c
+bmminer,0x4bad0,pic_get_version,508,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4bad0_FUN_0004bad0.c
+bmminer,0x4bcd4,pic_reset,412,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4bcd4_FUN_0004bcd4.c
+bmminer,0x4be78,pic_start_app,464,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4be78_FUN_0004be78.c
+bmminer,0x4c050,pic_enable_dcdc,460,04_asic_chain,1,5,"%s: auto exec open_pic, but chain %d open eeprom failed\n | %s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4c050_FUN_0004c050.c
+bmminer,0x4c224,pic_disable_dcdc,452,04_asic_chain,1,5,"%s: auto exec open_pic, but chain %d open eeprom failed\n | %s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4c224_FUN_0004c224.c
+bmminer,0x4c3f0,pic_send_heartbeat,456,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4c3f0_FUN_0004c3f0.c
+bmminer,0x4c5c0,pic_write_iic_byte,532,03_pic_ctrl,1,0,,../analysis/reverse/full/bmminer/decompiled/4c5c0_FUN_0004c5c0.c
+bmminer,0x4c7d4,pic_seek_1704,304,03_pic_ctrl,1,0,,../analysis/reverse/full/bmminer/decompiled/4c7d4_FUN_0004c7d4.c
+bmminer,0x4c908,FUN_0004c908,368,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4c908_FUN_0004c908.c
+bmminer,0x4ca78,pic_get_voltage,956,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4ca78_FUN_0004ca78.c
+bmminer,0x4ce44,pic_iic_block_rw,696,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4ce44_FUN_0004ce44.c
+bmminer,0x4d104,pic_iic_block_rw2,720,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4d104_FUN_0004d104.c
+bmminer,0x4da28,pic_read_iic,800,03_pic_ctrl,1,5,"%s: Bad pic param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4da28_FUN_0004da28.c
+bmminer,0x4de38,FUN_0004de38,268,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4de38_FUN_0004de38.c
+bmminer,0x4e110,power_cmd_v1,432,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/4e110_FUN_0004e110.c
+bmminer,0x4e2c4,power_cmd_v2,520,02_power_psu,1,3,,../analysis/reverse/full/bmminer/decompiled/4e2c4_FUN_0004e2c4.c
+bmminer,0x4e544,power_get_dc_voltage,240,02_power_psu,1,1,Get power dc_volt value failed\n,../analysis/reverse/full/bmminer/decompiled/4e544_FUN_0004e544.c
+bmminer,0x4e648,power_cmd_0x05,204,02_power_psu,1,1,power 0x05 cmd failed\n,../analysis/reverse/full/bmminer/decompiled/4e648_FUN_0004e648.c
+bmminer,0x4e718,power_get_ac_voltage,220,02_power_psu,1,1,Get ac power failed\n,../analysis/reverse/full/bmminer/decompiled/4e718_FUN_0004e718.c
+bmminer,0x4e7fc,power_get_error_code,352,02_power_psu,1,1,"Get power error code failed\n | Get power error code[4-7 8-11] %02x%02x%02x%02x %02x%02x%02x%02x, err_code:0x%08x\n",../analysis/reverse/full/bmminer/decompiled/4e7fc_FUN_0004e7fc.c
+bmminer,0x4e960,power_get_reset_cause,196,02_power_psu,1,1,Get power reset root cause failed\n,../analysis/reverse/full/bmminer/decompiled/4e960_FUN_0004e960.c
+bmminer,0x4ea28,power_get_update_time,184,02_power_psu,1,1,Get power update time failed\n,../analysis/reverse/full/bmminer/decompiled/4ea28_FUN_0004ea28.c
+bmminer,0x4eae4,power_get_error_data,568,02_power_psu,1,1,Get power error data failed\n | Get power error data:\n,../analysis/reverse/full/bmminer/decompiled/4eae4_FUN_0004eae4.c
+bmminer,0x4edd4,FUN_0004edd4,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4edd4_FUN_0004edd4.c
+bmminer,0x4ee20,FUN_0004ee20,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ee20_FUN_0004ee20.c
+bmminer,0x4ee90,power_close,128,02_power_psu,1,1,bitmain power close ===========\n,../analysis/reverse/full/bmminer/decompiled/4ee90_FUN_0004ee90.c
+bmminer,0x4ef10,FUN_0004ef10,212,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4ef10_FUN_0004ef10.c
+bmminer,0x4f024,FUN_0004f024,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4f024_FUN_0004f024.c
+bmminer,0x4f034,power_get_type_version,412,02_power_psu,1,1,"%s: auto exec bitmain_power_open, but open power failed\n | check power version failed, use v2 protocal to try it again\n | get power version failed\n",../analysis/reverse/full/bmminer/decompiled/4f034_FUN_0004f034.c
+bmminer,0x4f1d4,power_open,1668,02_power_psu,1,1,power open power_version < 0 will close power\n | power is not Calibrated\n | power is Calibrated\n | power open power_version = 0x%x\n,../analysis/reverse/full/bmminer/decompiled/4f1d4_FUN_0004f1d4.c
+bmminer,0x4f890,power_open_if_needed,36,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/4f890_FUN_0004f890.c
+bmminer,0x4f8b4,power_read_voltage,372,02_power_psu,1,5,"%s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/4f8b4_FUN_0004f8b4.c
+bmminer,0x4fd58,power_is_calibrated,128,02_power_psu,1,1,"%s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/4fd58_FUN_0004fd58.c
+bmminer,0x4fddc,FUN_0004fddc,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4fddc_FUN_0004fddc.c
+bmminer,0x4fe20,FUN_0004fe20,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/4fe20_FUN_0004fe20.c
+bmminer,0x4fe60,power_get_sw_version,272,02_power_psu,1,1,"get power fw ver failed\n | %s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/4fe60_FUN_0004fe60.c
+bmminer,0x4fff4,power_type_to_voltage_code,448,02_power_psu,1,0,,../analysis/reverse/full/bmminer/decompiled/4fff4_FUN_0004fff4.c
+bmminer,0x50390,bitmain_set_voltage,652,02_power_psu,1,1,"%s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/50390_FUN_00050390.c
+bmminer,0x5063c,FUN_0005063c,188,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5063c_FUN_0005063c.c
+bmminer,0x506f8,bitmain_get_voltage,772,02_power_psu,1,5,"Get power set_volt value failed\n | %s: auto exec bitmain_power_open, but open power failed\n",../analysis/reverse/full/bmminer/decompiled/506f8_FUN_000506f8.c
+bmminer,0x50a40,thunk_FUN_0004e718,4,00_imports_thunks,0,0,,
+bmminer,0x50a44,thunk_FUN_0004e7fc,4,00_imports_thunks,0,0,,
+bmminer,0x50a48,thunk_FUN_0004eae4,4,00_imports_thunks,0,0,,
+bmminer,0x50a4c,thunk_FUN_0004e960,4,00_imports_thunks,0,0,,
+bmminer,0x50a50,thunk_FUN_0004ea28,4,00_imports_thunks,0,0,,
+bmminer,0x50a54,FUN_00050a54,16,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/50a54_FUN_00050a54.c
+bmminer,0x50a64,i2c_device_open,420,03_pic_ctrl,1,0,,../analysis/reverse/full/bmminer/decompiled/50a64_FUN_00050a64.c
+bmminer,0x50c08,FUN_00050c08,112,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/50c08_FUN_00050c08.c
+bmminer,0x50c78,i2c_read_block,136,03_pic_ctrl,1,3,,../analysis/reverse/full/bmminer/decompiled/50c78_FUN_00050c78.c
+bmminer,0x50d00,i2c_write_block,136,03_pic_ctrl,1,3,,../analysis/reverse/full/bmminer/decompiled/50d00_FUN_00050d00.c
+bmminer,0x50d88,i2c_read_seg,168,02_power_psu,1,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/50d88_FUN_00050d88.c
+bmminer,0x50e30,i2c_write_seg,168,02_power_psu,1,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/50e30_FUN_00050e30.c
+bmminer,0x50ee8,FUN_00050ee8,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/50ee8_FUN_00050ee8.c
+bmminer,0x50f44,FUN_00050f44,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/50f44_FUN_00050f44.c
+bmminer,0x50fac,FUN_00050fac,228,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/50fac_FUN_00050fac.c
+bmminer,0x51090,FUN_00051090,292,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/51090_FUN_00051090.c
+bmminer,0x511b8,FUN_000511b8,496,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/511b8_FUN_000511b8.c
+bmminer,0x513ac,FUN_000513ac,512,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/513ac_FUN_000513ac.c
+bmminer,0x515b0,FUN_000515b0,596,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/515b0_FUN_000515b0.c
+bmminer,0x51808,FUN_00051808,624,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/51808_FUN_00051808.c
+bmminer,0x51a7c,FUN_00051a7c,272,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/51a7c_FUN_00051a7c.c
+bmminer,0x51b90,FUN_00051b90,248,02_power_psu,0,3,failed to i2c lock\n,../analysis/reverse/full/bmminer/decompiled/51b90_FUN_00051b90.c
+bmminer,0x51ca0,FUN_00051ca0,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/51ca0_FUN_00051ca0.c
+bmminer,0x51d34,FUN_00051d34,648,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/51d34_FUN_00051d34.c
+bmminer,0x51fbc,FUN_00051fbc,176,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/51fbc_FUN_00051fbc.c
+bmminer,0x5206c,FUN_0005206c,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5206c_FUN_0005206c.c
+bmminer,0x520c4,FUN_000520c4,2028,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/520c4_FUN_000520c4.c
+bmminer,0x528d4,FUN_000528d4,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/528d4_FUN_000528d4.c
+bmminer,0x5294c,FUN_0005294c,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5294c_FUN_0005294c.c
+bmminer,0x529b8,FUN_000529b8,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/529b8_FUN_000529b8.c
+bmminer,0x52a6c,FUN_00052a6c,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/52a6c_FUN_00052a6c.c
+bmminer,0x52a98,FUN_00052a98,1204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/52a98_FUN_00052a98.c
+bmminer,0x52fdc,FUN_00052fdc,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/52fdc_FUN_00052fdc.c
+bmminer,0x53050,FUN_00053050,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53050_FUN_00053050.c
+bmminer,0x530c0,FUN_000530c0,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/530c0_FUN_000530c0.c
+bmminer,0x5313c,FUN_0005313c,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5313c_FUN_0005313c.c
+bmminer,0x53154,FUN_00053154,660,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53154_FUN_00053154.c
+bmminer,0x533e8,FUN_000533e8,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/533e8_FUN_000533e8.c
+bmminer,0x53448,FUN_00053448,288,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53448_FUN_00053448.c
+bmminer,0x53568,FUN_00053568,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53568_FUN_00053568.c
+bmminer,0x535c4,FUN_000535c4,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/535c4_FUN_000535c4.c
+bmminer,0x535dc,FUN_000535dc,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/535dc_FUN_000535dc.c
+bmminer,0x5363c,FUN_0005363c,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5363c_FUN_0005363c.c
+bmminer,0x53654,FUN_00053654,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53654_FUN_00053654.c
+bmminer,0x5365c,FUN_0005365c,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5365c_FUN_0005365c.c
+bmminer,0x53664,FUN_00053664,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53664_FUN_00053664.c
+bmminer,0x536d0,FUN_000536d0,252,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/536d0_FUN_000536d0.c
+bmminer,0x53870,FUN_00053870,304,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53870_FUN_00053870.c
+bmminer,0x539a0,FUN_000539a0,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/539a0_FUN_000539a0.c
+bmminer,0x539e0,FUN_000539e0,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/539e0_FUN_000539e0.c
+bmminer,0x53a0c,FUN_00053a0c,148,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53a0c_FUN_00053a0c.c
+bmminer,0x53aa0,FUN_00053aa0,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53aa0_FUN_00053aa0.c
+bmminer,0x53b5c,FUN_00053b5c,388,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53b5c_FUN_00053b5c.c
+bmminer,0x53ce4,FUN_00053ce4,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53ce4_FUN_00053ce4.c
+bmminer,0x53d24,FUN_00053d24,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53d24_FUN_00053d24.c
+bmminer,0x53d70,FUN_00053d70,2064,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/53d70_FUN_00053d70.c
+bmminer,0x54588,FUN_00054588,1188,09_web_api,0,3,invalid token | unexpected token,../analysis/reverse/full/bmminer/decompiled/54588_FUN_00054588.c
+bmminer,0x54a2c,FUN_00054a2c,260,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/54a2c_FUN_00054a2c.c
+bmminer,0x54b30,FUN_00054b30,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/54b30_FUN_00054b30.c
+bmminer,0x54bf8,FUN_00054bf8,212,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/54bf8_FUN_00054bf8.c
+bmminer,0x54ccc,FUN_00054ccc,224,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/54ccc_FUN_00054ccc.c
+bmminer,0x54e88,FUN_00054e88,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/54e88_FUN_00054e88.c
+bmminer,0x54f40,FUN_00054f40,228,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/54f40_FUN_00054f40.c
+bmminer,0x55024,FUN_00055024,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55024_FUN_00055024.c
+bmminer,0x5503c,FUN_0005503c,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5503c_FUN_0005503c.c
+bmminer,0x55054,FUN_00055054,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55054_FUN_00055054.c
+bmminer,0x550a0,FUN_000550a0,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/550a0_FUN_000550a0.c
+bmminer,0x550f8,FUN_000550f8,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/550f8_FUN_000550f8.c
+bmminer,0x5512c,FUN_0005512c,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5512c_FUN_0005512c.c
+bmminer,0x55158,FUN_00055158,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55158_FUN_00055158.c
+bmminer,0x5516c,FUN_0005516c,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5516c_FUN_0005516c.c
+bmminer,0x55188,FUN_00055188,204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55188_FUN_00055188.c
+bmminer,0x55254,FUN_00055254,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55254_FUN_00055254.c
+bmminer,0x55278,FUN_00055278,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55278_FUN_00055278.c
+bmminer,0x552a0,FUN_000552a0,220,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/552a0_FUN_000552a0.c
+bmminer,0x55390,FUN_00055390,320,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55390_FUN_00055390.c
+bmminer,0x554d0,FUN_000554d0,236,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/554d0_FUN_000554d0.c
+bmminer,0x555bc,FUN_000555bc,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/555bc_FUN_000555bc.c
+bmminer,0x55628,FUN_00055628,232,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55628_FUN_00055628.c
+bmminer,0x55710,FUN_00055710,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55710_FUN_00055710.c
+bmminer,0x5578c,FUN_0005578c,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5578c_FUN_0005578c.c
+bmminer,0x55858,FUN_00055858,140,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55858_FUN_00055858.c
+bmminer,0x558e4,FUN_000558e4,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/558e4_FUN_000558e4.c
+bmminer,0x55950,FUN_00055950,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55950_FUN_00055950.c
+bmminer,0x559b8,FUN_000559b8,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/559b8_FUN_000559b8.c
+bmminer,0x559d4,FUN_000559d4,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/559d4_FUN_000559d4.c
+bmminer,0x559fc,FUN_000559fc,460,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/559fc_FUN_000559fc.c
+bmminer,0x55c3c,FUN_00055c3c,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55c3c_FUN_00055c3c.c
+bmminer,0x55c88,FUN_00055c88,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55c88_FUN_00055c88.c
+bmminer,0x55cbc,FUN_00055cbc,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55cbc_FUN_00055cbc.c
+bmminer,0x55cc8,FUN_00055cc8,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55cc8_FUN_00055cc8.c
+bmminer,0x55ce0,FUN_00055ce0,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55ce0_FUN_00055ce0.c
+bmminer,0x55d40,FUN_00055d40,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55d40_FUN_00055d40.c
+bmminer,0x55d5c,FUN_00055d5c,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55d5c_FUN_00055d5c.c
+bmminer,0x55d90,FUN_00055d90,216,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55d90_FUN_00055d90.c
+bmminer,0x55e98,FUN_00055e98,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55e98_FUN_00055e98.c
+bmminer,0x55ea0,FUN_00055ea0,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55ea0_FUN_00055ea0.c
+bmminer,0x55ee4,FUN_00055ee4,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55ee4_FUN_00055ee4.c
+bmminer,0x55f08,FUN_00055f08,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55f08_FUN_00055f08.c
+bmminer,0x55f24,FUN_00055f24,28,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55f24_FUN_00055f24.c
+bmminer,0x55f40,FUN_00055f40,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55f40_FUN_00055f40.c
+bmminer,0x55fa4,FUN_00055fa4,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55fa4_FUN_00055fa4.c
+bmminer,0x55fd8,FUN_00055fd8,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/55fd8_FUN_00055fd8.c
+bmminer,0x5601c,FUN_0005601c,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5601c_FUN_0005601c.c
+bmminer,0x56050,FUN_00056050,176,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56050_FUN_00056050.c
+bmminer,0x56100,FUN_00056100,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56100_FUN_00056100.c
+bmminer,0x56130,FUN_00056130,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56130_FUN_00056130.c
+bmminer,0x56164,FUN_00056164,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56164_FUN_00056164.c
+bmminer,0x561b4,FUN_000561b4,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/561b4_FUN_000561b4.c
+bmminer,0x56210,FUN_00056210,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56210_FUN_00056210.c
+bmminer,0x562cc,FUN_000562cc,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/562cc_FUN_000562cc.c
+bmminer,0x562e8,FUN_000562e8,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/562e8_FUN_000562e8.c
+bmminer,0x562f4,FUN_000562f4,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/562f4_FUN_000562f4.c
+bmminer,0x56300,FUN_00056300,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56300_FUN_00056300.c
+bmminer,0x5630c,FUN_0005630c,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5630c_FUN_0005630c.c
+bmminer,0x563d8,FUN_000563d8,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/563d8_FUN_000563d8.c
+bmminer,0x56500,FUN_00056500,204,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56500_FUN_00056500.c
+bmminer,0x565cc,FUN_000565cc,188,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/565cc_FUN_000565cc.c
+bmminer,0x56688,FUN_00056688,236,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56688_FUN_00056688.c
+bmminer,0x56774,FUN_00056774,148,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56774_FUN_00056774.c
+bmminer,0x56808,FUN_00056808,224,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56808_FUN_00056808.c
+bmminer,0x568e8,FUN_000568e8,240,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/568e8_FUN_000568e8.c
+bmminer,0x569d8,FUN_000569d8,336,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/569d8_FUN_000569d8.c
+bmminer,0x56c34,FUN_00056c34,220,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56c34_FUN_00056c34.c
+bmminer,0x56d28,FUN_00056d28,492,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56d28_FUN_00056d28.c
+bmminer,0x56ee4,FUN_00056ee4,324,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/56ee4_FUN_00056ee4.c
+bmminer,0x570ac,FUN_000570ac,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/570ac_FUN_000570ac.c
+bmminer,0x570fc,FUN_000570fc,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/570fc_FUN_000570fc.c
+bmminer,0x57160,FUN_00057160,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57160_FUN_00057160.c
+bmminer,0x571ac,thunk_FUN_0005924c,4,00_imports_thunks,0,0,,
+bmminer,0x571b0,FUN_000571b0,140,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/571b0_FUN_000571b0.c
+bmminer,0x5723c,FUN_0005723c,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5723c_FUN_0005723c.c
+bmminer,0x5737c,FUN_0005737c,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5737c_FUN_0005737c.c
+bmminer,0x5745c,FUN_0005745c,308,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5745c_FUN_0005745c.c
+bmminer,0x57590,FUN_00057590,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57590_FUN_00057590.c
+bmminer,0x57674,FUN_00057674,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57674_FUN_00057674.c
+bmminer,0x576b0,FUN_000576b0,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/576b0_FUN_000576b0.c
+bmminer,0x576f4,FUN_000576f4,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/576f4_FUN_000576f4.c
+bmminer,0x57750,thunk_FUN_00057674,4,00_imports_thunks,0,0,,
+bmminer,0x57754,FUN_00057754,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57754_FUN_00057754.c
+bmminer,0x577a4,FUN_000577a4,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/577a4_FUN_000577a4.c
+bmminer,0x577ec,FUN_000577ec,564,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/577ec_FUN_000577ec.c
+bmminer,0x57a20,FUN_00057a20,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57a20_FUN_00057a20.c
+bmminer,0x57a8c,FUN_00057a8c,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57a8c_FUN_00057a8c.c
+bmminer,0x57ae4,FUN_00057ae4,540,05_freq_voltage;07_mining_pool,0,5,"Want freq: %f, Real freq: %f\n",../analysis/reverse/full/bmminer/decompiled/57ae4_FUN_00057ae4.c
+bmminer,0x57d0c,FUN_00057d0c,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57d0c_FUN_00057d0c.c
+bmminer,0x57d84,FUN_00057d84,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57d84_FUN_00057d84.c
+bmminer,0x57dc8,FUN_00057dc8,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57dc8_FUN_00057dc8.c
+bmminer,0x57f1c,FUN_00057f1c,156,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57f1c_FUN_00057f1c.c
+bmminer,0x57fb8,FUN_00057fb8,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/57fb8_FUN_00057fb8.c
+bmminer,0x58050,FUN_00058050,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58050_FUN_00058050.c
+bmminer,0x58098,FUN_00058098,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58098_FUN_00058098.c
+bmminer,0x580c4,FUN_000580c4,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/580c4_FUN_000580c4.c
+bmminer,0x58100,FUN_00058100,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58100_FUN_00058100.c
+bmminer,0x58108,FUN_00058108,208,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58108_FUN_00058108.c
+bmminer,0x581d8,FUN_000581d8,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/581d8_FUN_000581d8.c
+bmminer,0x5823c,FUN_0005823c,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5823c_FUN_0005823c.c
+bmminer,0x582a4,FUN_000582a4,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/582a4_FUN_000582a4.c
+bmminer,0x5830c,FUN_0005830c,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5830c_FUN_0005830c.c
+bmminer,0x5836c,FUN_0005836c,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5836c_FUN_0005836c.c
+bmminer,0x583f8,FUN_000583f8,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/583f8_FUN_000583f8.c
+bmminer,0x5845c,FUN_0005845c,140,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5845c_FUN_0005845c.c
+bmminer,0x584e8,FUN_000584e8,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/584e8_FUN_000584e8.c
+bmminer,0x58578,FUN_00058578,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58578_FUN_00058578.c
+bmminer,0x585cc,FUN_000585cc,132,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/585cc_FUN_000585cc.c
+bmminer,0x585e8,FUN_000585e8,136,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/585e8_FUN_000585e8.c
+bmminer,0x585f8,FUN_000585f8,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/585f8_FUN_000585f8.c
+bmminer,0x5861c,FUN_0005861c,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5861c_FUN_0005861c.c
+bmminer,0x5869c,FUN_0005869c,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5869c_FUN_0005869c.c
+bmminer,0x586f4,FUN_000586f4,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/586f4_FUN_000586f4.c
+bmminer,0x5874c,FUN_0005874c,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5874c_FUN_0005874c.c
+bmminer,0x587a4,FUN_000587a4,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/587a4_FUN_000587a4.c
+bmminer,0x587c8,FUN_000587c8,56,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/587c8_FUN_000587c8.c
+bmminer,0x58800,FUN_00058800,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58800_FUN_00058800.c
+bmminer,0x58870,FUN_00058870,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58870_FUN_00058870.c
+bmminer,0x588fc,FUN_000588fc,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/588fc_FUN_000588fc.c
+bmminer,0x58988,FUN_00058988,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58988_FUN_00058988.c
+bmminer,0x58b04,FUN_00058b04,48,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58b04_FUN_00058b04.c
+bmminer,0x58b34,FUN_00058b34,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58b34_FUN_00058b34.c
+bmminer,0x58bf0,FUN_00058bf0,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58bf0_FUN_00058bf0.c
+bmminer,0x58c64,FUN_00058c64,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58c64_FUN_00058c64.c
+bmminer,0x58cd4,FUN_00058cd4,180,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58cd4_FUN_00058cd4.c
+bmminer,0x58ce0,FUN_00058ce0,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58ce0_FUN_00058ce0.c
+bmminer,0x58d0c,FUN_00058d0c,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58d0c_FUN_00058d0c.c
+bmminer,0x58d70,FUN_00058d70,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58d70_FUN_00058d70.c
+bmminer,0x58e38,FUN_00058e38,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58e38_FUN_00058e38.c
+bmminer,0x58e84,FUN_00058e84,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58e84_FUN_00058e84.c
+bmminer,0x58ed0,FUN_00058ed0,44,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58ed0_FUN_00058ed0.c
+bmminer,0x58efc,FUN_00058efc,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58efc_FUN_00058efc.c
+bmminer,0x58f70,FUN_00058f70,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58f70_FUN_00058f70.c
+bmminer,0x58f90,FUN_00058f90,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58f90_FUN_00058f90.c
+bmminer,0x58ffc,FUN_00058ffc,40,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/58ffc_FUN_00058ffc.c
+bmminer,0x59024,FUN_00059024,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59024_FUN_00059024.c
+bmminer,0x590b8,FUN_000590b8,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/590b8_FUN_000590b8.c
+bmminer,0x590ec,FUN_000590ec,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/590ec_FUN_000590ec.c
+bmminer,0x59150,FUN_00059150,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59150_FUN_00059150.c
+bmminer,0x591fc,FUN_000591fc,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/591fc_FUN_000591fc.c
+bmminer,0x59230,FUN_00059230,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59230_FUN_00059230.c
+bmminer,0x59238,FUN_00059238,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59238_FUN_00059238.c
+bmminer,0x5924c,FUN_0005924c,160,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5924c_FUN_0005924c.c
+bmminer,0x592ec,FUN_000592ec,348,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/592ec_FUN_000592ec.c
+bmminer,0x59448,FUN_00059448,372,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59448_FUN_00059448.c
+bmminer,0x595c0,FUN_000595c0,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/595c0_FUN_000595c0.c
+bmminer,0x59658,FUN_00059658,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59658_FUN_00059658.c
+bmminer,0x596ac,FUN_000596ac,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/596ac_FUN_000596ac.c
+bmminer,0x5971c,FUN_0005971c,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5971c_FUN_0005971c.c
+bmminer,0x59768,FUN_00059768,212,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/59768_FUN_00059768.c
+bmminer,0x5983c,FUN_0005983c,216,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5983c_FUN_0005983c.c
+bmminer,0x59964,FUN_00059964,652,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/59964_FUN_00059964.c
+bmminer,0x59bf0,FUN_00059bf0,828,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/59bf0_FUN_00059bf0.c
+bmminer,0x59f30,FUN_00059f30,784,13_os_service,0,4,,../analysis/reverse/full/bmminer/decompiled/59f30_FUN_00059f30.c
+bmminer,0x5a244,FUN_0005a244,680,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5a244_FUN_0005a244.c
+bmminer,0x5a504,FUN_0005a504,332,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5a504_FUN_0005a504.c
+bmminer,0x5a67c,FUN_0005a67c,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5a67c_FUN_0005a67c.c
+bmminer,0x5a6e0,FUN_0005a6e0,336,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5a6e0_FUN_0005a6e0.c
+bmminer,0x5a830,FUN_0005a830,460,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/5a830_FUN_0005a830.c
+bmminer,0x5aa00,FUN_0005aa00,548,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/5aa00_FUN_0005aa00.c
+bmminer,0x5ac28,FUN_0005ac28,748,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5ac28_FUN_0005ac28.c
+bmminer,0x5af18,FUN_0005af18,236,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5af18_FUN_0005af18.c
+bmminer,0x5b008,FUN_0005b008,460,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5b008_FUN_0005b008.c
+bmminer,0x5b1d8,FUN_0005b1d8,460,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5b1d8_FUN_0005b1d8.c
+bmminer,0x5b3a8,FUN_0005b3a8,676,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5b3a8_FUN_0005b3a8.c
+bmminer,0x5b650,FUN_0005b650,392,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5b650_FUN_0005b650.c
+bmminer,0x5b7dc,FUN_0005b7dc,276,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5b7dc_FUN_0005b7dc.c
+bmminer,0x5b8f4,FUN_0005b8f4,228,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5b8f4_FUN_0005b8f4.c
+bmminer,0x5ba54,FUN_0005ba54,700,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5ba54_FUN_0005ba54.c
+bmminer,0x5bd14,FUN_0005bd14,700,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5bd14_FUN_0005bd14.c
+bmminer,0x5bfd4,FUN_0005bfd4,756,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5bfd4_FUN_0005bfd4.c
+bmminer,0x5c2cc,FUN_0005c2cc,756,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5c2cc_FUN_0005c2cc.c
+bmminer,0x5c5c4,FUN_0005c5c4,676,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5c5c4_FUN_0005c5c4.c
+bmminer,0x5c86c,FUN_0005c86c,704,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5c86c_FUN_0005c86c.c
+bmminer,0x5cec4,FUN_0005cec4,532,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5cec4_FUN_0005cec4.c
+bmminer,0x5d0d8,FUN_0005d0d8,172,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d0d8_FUN_0005d0d8.c
+bmminer,0x5d184,FUN_0005d184,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d184_FUN_0005d184.c
+bmminer,0x5d1f8,FUN_0005d1f8,324,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d1f8_FUN_0005d1f8.c
+bmminer,0x5d33c,FUN_0005d33c,256,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d33c_FUN_0005d33c.c
+bmminer,0x5d43c,FUN_0005d43c,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d43c_FUN_0005d43c.c
+bmminer,0x5d4b4,FUN_0005d4b4,220,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d4b4_FUN_0005d4b4.c
+bmminer,0x5d590,FUN_0005d590,80,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d590_FUN_0005d590.c
+bmminer,0x5d5e0,FUN_0005d5e0,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d5e0_FUN_0005d5e0.c
+bmminer,0x5d670,FUN_0005d670,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d670_FUN_0005d670.c
+bmminer,0x5d6cc,FUN_0005d6cc,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d6cc_FUN_0005d6cc.c
+bmminer,0x5d738,FUN_0005d738,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d738_FUN_0005d738.c
+bmminer,0x5d7d0,FUN_0005d7d0,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d7d0_FUN_0005d7d0.c
+bmminer,0x5d828,FUN_0005d828,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d828_FUN_0005d828.c
+bmminer,0x5d880,FUN_0005d880,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5d880_FUN_0005d880.c
+bmminer,0x5d944,FUN_0005d944,2808,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5d944_FUN_0005d944.c
+bmminer,0x5e44c,FUN_0005e44c,724,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5e44c_FUN_0005e44c.c
+bmminer,0x5e720,FUN_0005e720,172,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5e720_FUN_0005e720.c
+bmminer,0x5e7cc,FUN_0005e7cc,996,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5e7cc_FUN_0005e7cc.c
+bmminer,0x5ebb0,FUN_0005ebb0,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ebb0_FUN_0005ebb0.c
+bmminer,0x5ec78,FUN_0005ec78,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ec78_FUN_0005ec78.c
+bmminer,0x5ecec,FUN_0005ecec,360,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ecec_FUN_0005ecec.c
+bmminer,0x5ee54,FUN_0005ee54,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ee54_FUN_0005ee54.c
+bmminer,0x5eeb0,FUN_0005eeb0,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5eeb0_FUN_0005eeb0.c
+bmminer,0x5ef10,FUN_0005ef10,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ef10_FUN_0005ef10.c
+bmminer,0x5ef80,FUN_0005ef80,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ef80_FUN_0005ef80.c
+bmminer,0x5eff8,FUN_0005eff8,824,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5eff8_FUN_0005eff8.c
+bmminer,0x5f330,FUN_0005f330,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f330_FUN_0005f330.c
+bmminer,0x5f3a0,FUN_0005f3a0,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f3a0_FUN_0005f3a0.c
+bmminer,0x5f438,FUN_0005f438,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f438_FUN_0005f438.c
+bmminer,0x5f494,FUN_0005f494,176,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f494_FUN_0005f494.c
+bmminer,0x5f544,FUN_0005f544,320,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/5f544_FUN_0005f544.c
+bmminer,0x5f684,FUN_0005f684,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f684_FUN_0005f684.c
+bmminer,0x5f6f8,FUN_0005f6f8,180,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f6f8_FUN_0005f6f8.c
+bmminer,0x5f7ac,FUN_0005f7ac,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f7ac_FUN_0005f7ac.c
+bmminer,0x5f7e8,FUN_0005f7e8,192,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f7e8_FUN_0005f7e8.c
+bmminer,0x5f8a8,FUN_0005f8a8,116,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f8a8_FUN_0005f8a8.c
+bmminer,0x5f91c,FUN_0005f91c,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f91c_FUN_0005f91c.c
+bmminer,0x5f9d4,FUN_0005f9d4,240,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5f9d4_FUN_0005f9d4.c
+bmminer,0x5fac4,FUN_0005fac4,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fac4_FUN_0005fac4.c
+bmminer,0x5facc,FUN_0005facc,68,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5facc_FUN_0005facc.c
+bmminer,0x5fb10,FUN_0005fb10,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fb10_FUN_0005fb10.c
+bmminer,0x5fb4c,FUN_0005fb4c,320,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fb4c_FUN_0005fb4c.c
+bmminer,0x5fb54,FUN_0005fb54,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fb54_FUN_0005fb54.c
+bmminer,0x5fbb4,FUN_0005fbb4,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fbb4_FUN_0005fbb4.c
+bmminer,0x5fc18,FUN_0005fc18,272,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fc18_FUN_0005fc18.c
+bmminer,0x5fd28,FUN_0005fd28,144,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fd28_FUN_0005fd28.c
+bmminer,0x5fdb8,FUN_0005fdb8,92,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fdb8_FUN_0005fdb8.c
+bmminer,0x5fe14,FUN_0005fe14,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fe14_FUN_0005fe14.c
+bmminer,0x5fe98,FUN_0005fe98,96,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fe98_FUN_0005fe98.c
+bmminer,0x5fef8,FUN_0005fef8,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5fef8_FUN_0005fef8.c
+bmminer,0x5ff4c,FUN_0005ff4c,280,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/5ff4c_FUN_0005ff4c.c
+bmminer,0x60064,FUN_00060064,228,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/60064_FUN_00060064.c
+bmminer,0x60148,FUN_00060148,292,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/60148_FUN_00060148.c
+bmminer,0x6026c,FUN_0006026c,3176,99_unclassified,0,1,,../analysis/reverse/full/bmminer/decompiled/6026c_FUN_0006026c.c
+bmminer,0x60ed4,FUN_00060ed4,240,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/60ed4_FUN_00060ed4.c
+bmminer,0x60fc4,FUN_00060fc4,676,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/60fc4_FUN_00060fc4.c
+bmminer,0x61268,FUN_00061268,184,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/61268_FUN_00061268.c
+bmminer,0x61320,FUN_00061320,712,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/61320_FUN_00061320.c
+bmminer,0x615e8,FUN_000615e8,384,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/615e8_FUN_000615e8.c
+bmminer,0x618b0,FUN_000618b0,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/618b0_FUN_000618b0.c
+bmminer,0x61954,FUN_00061954,148,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/61954_FUN_00061954.c
+bmminer,0x619e8,FUN_000619e8,568,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/619e8_FUN_000619e8.c
+bmminer,0x61c20,FUN_00061c20,864,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/61c20_FUN_00061c20.c
+bmminer,0x61f80,FUN_00061f80,484,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/61f80_FUN_00061f80.c
+bmminer,0x62164,FUN_00062164,300,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/62164_FUN_00062164.c
+bmminer,0x62290,FUN_00062290,288,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/62290_FUN_00062290.c
+bmminer,0x623b0,FUN_000623b0,4012,11_log_monitor,0,4,"syslog | [%s]the string after is not syslog, stdout or stderr",../analysis/reverse/full/bmminer/decompiled/623b0_FUN_000623b0.c
+bmminer,0x633d0,FUN_000633d0,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/633d0_FUN_000633d0.c
+bmminer,0x634b0,FUN_000634b0,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/634b0_FUN_000634b0.c
+bmminer,0x634fc,FUN_000634fc,228,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/634fc_FUN_000634fc.c
+bmminer,0x635e0,FUN_000635e0,88,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/635e0_FUN_000635e0.c
+bmminer,0x63784,FUN_00063784,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/63784_FUN_00063784.c
+bmminer,0x63b18,FUN_00063b18,84,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/63b18_FUN_00063b18.c
+bmminer,0x63c6c,FUN_00063c6c,200,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/63c6c_FUN_00063c6c.c
+bmminer,0x63f44,FUN_00063f44,196,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/63f44_FUN_00063f44.c
+bmminer,0x64008,FUN_00064008,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64008_FUN_00064008.c
+bmminer,0x6406c,FUN_0006406c,1568,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/6406c_FUN_0006406c.c
+bmminer,0x647d4,FUN_000647d4,232,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/647d4_FUN_000647d4.c
+bmminer,0x648bc,FUN_000648bc,212,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/648bc_FUN_000648bc.c
+bmminer,0x64990,FUN_00064990,532,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64990_FUN_00064990.c
+bmminer,0x64ba4,FUN_00064ba4,288,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64ba4_FUN_00064ba4.c
+bmminer,0x64cc4,FUN_00064cc4,120,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64cc4_FUN_00064cc4.c
+bmminer,0x64d3c,FUN_00064d3c,152,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64d3c_FUN_00064d3c.c
+bmminer,0x64dd4,FUN_00064dd4,192,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64dd4_FUN_00064dd4.c
+bmminer,0x64e94,FUN_00064e94,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64e94_FUN_00064e94.c
+bmminer,0x64f04,FUN_00064f04,164,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64f04_FUN_00064f04.c
+bmminer,0x64fa8,FUN_00064fa8,12,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64fa8_FUN_00064fa8.c
+bmminer,0x64fb4,FUN_00064fb4,276,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/64fb4_FUN_00064fb4.c
+bmminer,0x650c8,FUN_000650c8,216,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/650c8_FUN_000650c8.c
+bmminer,0x651a0,FUN_000651a0,192,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/651a0_FUN_000651a0.c
+bmminer,0x652fc,FUN_000652fc,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/652fc_FUN_000652fc.c
+bmminer,0x65368,FUN_00065368,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65368_FUN_00065368.c
+bmminer,0x653d0,FUN_000653d0,604,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/653d0_FUN_000653d0.c
+bmminer,0x65770,FUN_00065770,72,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65770_FUN_00065770.c
+bmminer,0x657b8,FUN_000657b8,112,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/657b8_FUN_000657b8.c
+bmminer,0x65854,FUN_00065854,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65854_FUN_00065854.c
+bmminer,0x65868,FUN_00065868,64,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65868_FUN_00065868.c
+bmminer,0x658a8,FUN_000658a8,424,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/658a8_FUN_000658a8.c
+bmminer,0x65a50,FUN_00065a50,308,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65a50_FUN_00065a50.c
+bmminer,0x65c20,FUN_00065c20,584,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65c20_FUN_00065c20.c
+bmminer,0x65e68,FUN_00065e68,296,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65e68_FUN_00065e68.c
+bmminer,0x65f90,FUN_00065f90,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65f90_FUN_00065f90.c
+bmminer,0x65fb4,FUN_00065fb4,104,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/65fb4_FUN_00065fb4.c
+bmminer,0x6601c,FUN_0006601c,76,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/6601c_FUN_0006601c.c
+bmminer,0x66068,FUN_00066068,388,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/66068_FUN_00066068.c
+bmminer,0x661ec,FUN_000661ec,620,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/661ec_FUN_000661ec.c
+bmminer,0x66614,FUN_00066614,544,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/66614_FUN_00066614.c
+bmminer,0x66834,FUN_00066834,432,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/66834_FUN_00066834.c
+bmminer,0x669e4,FUN_000669e4,248,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/669e4_FUN_000669e4.c
+bmminer,0x66adc,FUN_00066adc,556,99_unclassified,0,2,,../analysis/reverse/full/bmminer/decompiled/66adc_FUN_00066adc.c
+bmminer,0x66d08,FUN_00066d08,124,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/66d08_FUN_00066d08.c
+bmminer,0x66d84,FUN_00066d84,100,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/66d84_FUN_00066d84.c
+bmminer,0x66de8,FUN_00066de8,936,11_log_monitor,0,4,wrong syslog level[%s],../analysis/reverse/full/bmminer/decompiled/66de8_FUN_00066de8.c
+bmminer,0x67190,FUN_00067190,82,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67190_FUN_00067190.c
+bmminer,0x673ec,FUN_000673ec,26,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/673ec_FUN_000673ec.c
+bmminer,0x67408,FUN_00067408,24,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67408_FUN_00067408.c
+bmminer,0x6740e,FUN_0006740e,108,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/6740e_FUN_0006740e.c
+bmminer,0x6769c,FUN_0006769c,26,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/6769c_FUN_0006769c.c
+bmminer,0x679c4,FUN_000679c4,274,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/679c4_FUN_000679c4.c
+bmminer,0x679d4,FUN_000679d4,90,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/679d4_FUN_000679d4.c
+bmminer,0x67ad0,FUN_00067ad0,60,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67ad0_FUN_00067ad0.c
+bmminer,0x67b0c,FUN_00067b0c,36,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67b0c_FUN_00067b0c.c
+bmminer,0x67b30,FUN_00067b30,42,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67b30_FUN_00067b30.c
+bmminer,0x67b70,FUN_00067b70,278,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67b70_FUN_00067b70.c
+bmminer,0x67c88,FUN_00067c88,52,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67c88_FUN_00067c88.c
+bmminer,0x67cc8,FUN_00067cc8,20,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67cc8_FUN_00067cc8.c
+bmminer,0x67ce4,_DT_FINI,8,99_unclassified,0,0,,../analysis/reverse/full/bmminer/decompiled/67ce4__DT_FINI.c
+bmminer,0xb2e000,pthread_mutex_unlock,1,00_imports_thunks,0,0,,
+bmminer,0xb2e004,calloc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e008,strstr,1,00_imports_thunks,0,0,,
+bmminer,0xb2e00c,raise,1,00_imports_thunks,0,0,,
+bmminer,0xb2e010,sem_wait,1,00_imports_thunks,0,0,,
+bmminer,0xb2e014,fsync,1,00_imports_thunks,0,0,,
+bmminer,0xb2e018,strcmp,1,00_imports_thunks,0,0,,
+bmminer,0xb2e01c,strtol,1,00_imports_thunks,0,0,,
+bmminer,0xb2e020,sem_post,1,00_imports_thunks,0,0,,
+bmminer,0xb2e024,srandom,1,00_imports_thunks,0,0,,
+bmminer,0xb2e02c,setsockopt,1,00_imports_thunks,0,0,,
+bmminer,0xb2e030,strcspn,1,00_imports_thunks,0,0,,
+bmminer,0xb2e034,printf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e038,read,1,00_imports_thunks,0,0,,
+bmminer,0xb2e03c,pthread_mutex_destroy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e040,fflush,1,00_imports_thunks,0,0,,
+bmminer,0xb2e044,memmove,1,00_imports_thunks,0,0,,
+bmminer,0xb2e048,pthread_rwlock_init,1,00_imports_thunks,0,0,,
+bmminer,0xb2e04c,free,1,00_imports_thunks,0,0,,
+bmminer,0xb2e050,fgets,1,00_imports_thunks,0,0,,
+bmminer,0xb2e054,pthread_mutex_lock,1,00_imports_thunks,0,0,,
+bmminer,0xb2e058,pthread_detach,1,00_imports_thunks,0,0,,
+bmminer,0xb2e05c,clock_gettime,1,00_imports_thunks,0,0,,
+bmminer,0xb2e060,pthread_self,1,00_imports_thunks,0,0,,
+bmminer,0xb2e064,memcpy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e068,mmap64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e06c,pthread_mutex_init,1,00_imports_thunks,0,0,,
+bmminer,0xb2e070,time,1,00_imports_thunks,0,0,,
+bmminer,0xb2e074,pthread_mutex_trylock,1,00_imports_thunks,0,0,,
+bmminer,0xb2e078,_IO_getc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e07c,memcmp,1,00_imports_thunks,0,0,,
+bmminer,0xb2e080,inet_ntoa,1,00_imports_thunks,0,0,,
+bmminer,0xb2e084,pthread_attr_setstacksize,1,00_imports_thunks,0,0,,
+bmminer,0xb2e088,sleep,1,00_imports_thunks,0,0,,
+bmminer,0xb2e08c,stpcpy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e090,pthread_rwlock_wrlock,1,00_imports_thunks,0,0,,
+bmminer,0xb2e094,recvfrom,1,00_imports_thunks,0,0,,
+bmminer,0xb2e098,pthread_setcancelstate,1,00_imports_thunks,0,0,,
+bmminer,0xb2e09c,pthread_rwlock_rdlock,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0a0,pthread_cond_init,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0a4,pthread_key_create,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0a8,unlink,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0ac,realloc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0b0,localtime_r,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0b4,pthread_cond_destroy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0b8,strcasecmp,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0bc,perror,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0c0,accept,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0c4,__fxstat64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0c8,sigaction,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0cc,fwrite,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0d0,strcat,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0d4,ioctl,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0d8,lseek64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0dc,strtoll,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0e0,usleep,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0e4,strcpy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0e8,gettimeofday,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0ec,fread,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0f0,sched_yield,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0f4,pthread_create,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0f8,gethostname,1,00_imports_thunks,0,0,,
+bmminer,0xb2e0fc,strtof,1,00_imports_thunks,0,0,,
+bmminer,0xb2e100,open64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e104,getenv,1,00_imports_thunks,0,0,,
+bmminer,0xb2e108,puts,1,00_imports_thunks,0,0,,
+bmminer,0xb2e10c,sysinfo,1,00_imports_thunks,0,0,,
+bmminer,0xb2e110,malloc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e114,__libc_start_main,1,00_imports_thunks,0,0,,
+bmminer,0xb2e118,strerror,1,00_imports_thunks,0,0,,
+bmminer,0xb2e11c,strftime,1,00_imports_thunks,0,0,,
+bmminer,0xb2e120,localtime,1,00_imports_thunks,0,0,,
+bmminer,0xb2e124,__ctype_tolower_loc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e128,__ctype_toupper_loc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e12c,__gmon_start__,1,00_imports_thunks,0,0,,
+bmminer,0xb2e130,sem_trywait,1,00_imports_thunks,0,0,,
+bmminer,0xb2e134,rename,1,00_imports_thunks,0,0,,
+bmminer,0xb2e138,__ctype_b_loc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e13c,getpid,1,00_imports_thunks,0,0,,
+bmminer,0xb2e140,exit,1,00_imports_thunks,0,0,,
+bmminer,0xb2e144,syscall,1,00_imports_thunks,0,0,,
+bmminer,0xb2e148,sem_timedwait,1,00_imports_thunks,0,0,,
+bmminer,0xb2e14c,strtoul,1,00_imports_thunks,0,0,,
+bmminer,0xb2e150,strlen,1,00_imports_thunks,0,0,,
+bmminer,0xb2e154,round,1,00_imports_thunks,0,0,,
+bmminer,0xb2e158,strchr,1,00_imports_thunks,0,0,,
+bmminer,0xb2e15c,pthread_setcanceltype,1,00_imports_thunks,0,0,,
+bmminer,0xb2e160,fprintf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e164,fcntl,1,00_imports_thunks,0,0,,
+bmminer,0xb2e168,sqrt,1,00_imports_thunks,0,0,,
+bmminer,0xb2e16c,pthread_attr_init,1,00_imports_thunks,0,0,,
+bmminer,0xb2e170,__errno_location,1,00_imports_thunks,0,0,,
+bmminer,0xb2e174,strncasecmp,1,00_imports_thunks,0,0,,
+bmminer,0xb2e178,snprintf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e17c,__cxa_atexit,1,00_imports_thunks,0,0,,
+bmminer,0xb2e180,__isoc99_sscanf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e184,__strdup,1,00_imports_thunks,0,0,,
+bmminer,0xb2e188,mkdir,1,00_imports_thunks,0,0,,
+bmminer,0xb2e18c,bind,1,00_imports_thunks,0,0,,
+bmminer,0xb2e190,sem_init,1,00_imports_thunks,0,0,,
+bmminer,0xb2e194,memset,1,00_imports_thunks,0,0,,
+bmminer,0xb2e198,pthread_rwlock_unlock,1,00_imports_thunks,0,0,,
+bmminer,0xb2e19c,strncpy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1a0,pthread_cancel,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1a4,fgetc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1a8,prctl,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1ac,strtod,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1b0,write,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1b4,fileno,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1b8,access,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1bc,fclose,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1c0,munmap,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1c4,strtok,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1c8,glob64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1cc,pthread_cond_timedwait,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1d0,pthread_setspecific,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1d4,sigemptyset,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1d8,popen,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1dc,pthread_rwlock_destroy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1e0,errx,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1e4,strrchr,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1e8,listen,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1ec,vfprintf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1f0,pthread_join,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1f4,lldiv,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1f8,fputc,1,00_imports_thunks,0,0,,
+bmminer,0xb2e1fc,globfree64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e200,syslog,1,00_imports_thunks,0,0,,
+bmminer,0xb2e204,sscanf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e208,localeconv,1,00_imports_thunks,0,0,,
+bmminer,0xb2e20c,sprintf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e210,openlog,1,00_imports_thunks,0,0,,
+bmminer,0xb2e214,vsnprintf,1,00_imports_thunks,0,0,,
+bmminer,0xb2e218,fopen64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e21c,qsort,1,00_imports_thunks,0,0,,
+bmminer,0xb2e220,strpbrk,1,00_imports_thunks,0,0,,
+bmminer,0xb2e224,pthread_cond_wait,1,00_imports_thunks,0,0,,
+bmminer,0xb2e228,socket,1,00_imports_thunks,0,0,,
+bmminer,0xb2e22c,clock_nanosleep,1,00_imports_thunks,0,0,,
+bmminer,0xb2e234,inet_addr,1,00_imports_thunks,0,0,,
+bmminer,0xb2e238,random,1,00_imports_thunks,0,0,,
+bmminer,0xb2e23c,pthread_testcancel,1,00_imports_thunks,0,0,,
+bmminer,0xb2e240,gethostbyname,1,00_imports_thunks,0,0,,
+bmminer,0xb2e244,fseek,1,00_imports_thunks,0,0,,
+bmminer,0xb2e248,strncat,1,00_imports_thunks,0,0,,
+bmminer,0xb2e24c,sem_destroy,1,00_imports_thunks,0,0,,
+bmminer,0xb2e250,__xstat64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e254,isatty,1,00_imports_thunks,0,0,,
+bmminer,0xb2e258,fputs,1,00_imports_thunks,0,0,,
+bmminer,0xb2e25c,strncmp,1,00_imports_thunks,0,0,,
+bmminer,0xb2e260,pthread_cond_signal,1,00_imports_thunks,0,0,,
+bmminer,0xb2e264,abort,1,00_imports_thunks,0,0,,
+bmminer,0xb2e268,recv,1,00_imports_thunks,0,0,,
+bmminer,0xb2e26c,close,1,00_imports_thunks,0,0,,
+bmminer,0xb2e270,__lxstat64,1,00_imports_thunks,0,0,,
+bmminer,0xb2e274,send,1,00_imports_thunks,0,0,,
+bmminer,0xb2e278,connect,1,00_imports_thunks,0,0,,
+bmminer,0xb2e27c,__assert_fail,1,00_imports_thunks,0,0,,
+bmminer,0xb2e280,pthread_getspecific,1,00_imports_thunks,0,0,,
+bmminer,0xb2e284,pclose,1,00_imports_thunks,0,0,,
+cgminer-api,0x105cc,_DT_INIT,12,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/105cc__DT_INIT.c
+cgminer-api,0x105ec,strcmp,12,00_imports_thunks,0,0,,
+cgminer-api,0x10604,printf,12,00_imports_thunks,0,0,,
+cgminer-api,0x10610,realloc,12,00_imports_thunks,0,0,,
+cgminer-api,0x1061c,__rawmemchr,12,00_imports_thunks,0,0,,
+cgminer-api,0x10628,puts,12,00_imports_thunks,0,0,,
+cgminer-api,0x10634,malloc,12,00_imports_thunks,0,0,,
+cgminer-api,0x10640,__libc_start_main,12,00_imports_thunks,0,0,,
+cgminer-api,0x1064c,strerror,12,00_imports_thunks,0,0,,
+cgminer-api,0x10664,__ctype_b_loc,12,00_imports_thunks,0,0,,
+cgminer-api,0x10670,strlen,12,00_imports_thunks,0,0,,
+cgminer-api,0x1067c,strchr,12,00_imports_thunks,0,0,,
+cgminer-api,0x10688,fprintf,12,00_imports_thunks,0,0,,
+cgminer-api,0x10694,__errno_location,12,00_imports_thunks,0,0,,
+cgminer-api,0x106a0,socket,12,00_imports_thunks,0,2,,
+cgminer-api,0x106ac,gethostbyname,12,00_imports_thunks,0,0,,
+cgminer-api,0x106b8,abort,12,00_imports_thunks,0,0,,
+cgminer-api,0x106c4,recv,12,00_imports_thunks,0,2,,
+cgminer-api,0x106d0,close,12,00_imports_thunks,0,0,,
+cgminer-api,0x106dc,send,12,00_imports_thunks,0,2,,
+cgminer-api,0x106e8,connect,12,00_imports_thunks,0,2,,
+cgminer-api,0x10888,entry,36,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10888_entry.c
+cgminer-api,0x108b8,FUN_000108b8,40,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/108b8_FUN_000108b8.c
+cgminer-api,0x108dc,FUN_000108dc,34,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/108dc_FUN_000108dc.c
+cgminer-api,0x10900,FUN_00010900,42,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10900_FUN_00010900.c
+cgminer-api,0x1092c,_FINI_0,24,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/1092c__FINI_0.c
+cgminer-api,0x10944,_INIT_0,2,00_imports_thunks,0,0,,
+cgminer-api,0x109b8,FUN_000109b8,404,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/109b8_FUN_000109b8.c
+cgminer-api,0x10b4c,FUN_00010b4c,592,08_network,0,4,Couldn't get hostname: '%s'\n,../analysis/reverse/full_aux/cgminer-api/decompiled/10b4c_FUN_00010b4c.c
+cgminer-api,0x10d9c,FUN_00010d9c,52,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10d9c_FUN_00010d9c.c
+cgminer-api,0x10ddc,_DT_FINI,8,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10ddc__DT_FINI.c
+cgminer-api,0x23000,strcmp,1,00_imports_thunks,0,0,,
+cgminer-api,0x23004,strtol,1,00_imports_thunks,0,0,,
+cgminer-api,0x23008,printf,1,00_imports_thunks,0,0,,
+cgminer-api,0x2300c,realloc,1,00_imports_thunks,0,0,,
+cgminer-api,0x23010,__rawmemchr,1,00_imports_thunks,0,0,,
+cgminer-api,0x23014,puts,1,00_imports_thunks,0,0,,
+cgminer-api,0x23018,malloc,1,00_imports_thunks,0,0,,
+cgminer-api,0x2301c,__libc_start_main,1,00_imports_thunks,0,0,,
+cgminer-api,0x23020,strerror,1,00_imports_thunks,0,0,,
+cgminer-api,0x23024,__gmon_start__,1,00_imports_thunks,0,0,,
+cgminer-api,0x23028,__ctype_b_loc,1,00_imports_thunks,0,0,,
+cgminer-api,0x2302c,strlen,1,00_imports_thunks,0,0,,
+cgminer-api,0x23030,strchr,1,00_imports_thunks,0,0,,
+cgminer-api,0x23034,fprintf,1,00_imports_thunks,0,0,,
+cgminer-api,0x23038,__errno_location,1,00_imports_thunks,0,0,,
+cgminer-api,0x2303c,socket,1,00_imports_thunks,0,0,,
+cgminer-api,0x23040,gethostbyname,1,00_imports_thunks,0,0,,
+cgminer-api,0x23044,abort,1,00_imports_thunks,0,0,,
+cgminer-api,0x23048,recv,1,00_imports_thunks,0,0,,
+cgminer-api,0x2304c,close,1,00_imports_thunks,0,0,,
+cgminer-api,0x23050,send,1,00_imports_thunks,0,0,,
+cgminer-api,0x23054,connect,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x10024,fpga_mem_open,8,04_asic_chain,0,0,,../analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/10024_fpga_mem_open.c
+fpga_mem_driver.ko,0x1002c,fpga_mem_mmap,96,04_asic_chain,0,0,,../analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/1002c_fpga_mem_mmap.c
+fpga_mem_driver.ko,0x10094,fpga_mem_release,8,04_asic_chain,0,0,,../analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/10094_fpga_mem_release.c
+fpga_mem_driver.ko,0x1009c,init_module,364,04_asic_chain,0,4,fpga mem virtual address is 0x%x\n | Err:failed in creating fpga mem class.\n | In fpga mem driver!\n,../analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/1009c_init_module.c
+fpga_mem_driver.ko,0x10254,cleanup_module,96,04_asic_chain,0,4,Bye Bye fpga mem driver!\n,../analysis/reverse/full_modules/fpga_mem_driver.ko/decompiled/10254_cleanup_module.c
+fpga_mem_driver.ko,0x11000,alloc_chrdev_region,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11004,__class_create,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x1100c,class_destroy,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11010,iounmap,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11014,remap_pfn_range,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11018,kfree,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x1101c,__release_region,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11020,kmem_cache_alloc,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11024,cdev_add,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11028,device_create,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x1102c,ioremap,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11030,printk,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11034,unregister_chrdev_region,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11038,device_destroy,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11044,cdev_init,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x1104c,cdev_del,1,00_imports_thunks,0,0,,
+fpga_mem_driver.ko,0x11050,__request_region,1,00_imports_thunks,0,0,,
+id2mac,0x103a0,_DT_INIT,12,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/103a0__DT_INIT.c
+id2mac,0x103c0,fread,12,00_imports_thunks,0,0,,
+id2mac,0x103cc,getenv,12,00_imports_thunks,0,0,,
+id2mac,0x103d8,puts,12,00_imports_thunks,0,0,,
+id2mac,0x103e4,__libc_start_main,12,00_imports_thunks,0,0,,
+id2mac,0x103fc,strlen,12,00_imports_thunks,0,0,,
+id2mac,0x10408,fclose,12,00_imports_thunks,0,0,,
+id2mac,0x10414,sprintf,12,00_imports_thunks,0,0,,
+id2mac,0x10420,fopen64,12,00_imports_thunks,0,0,,
+id2mac,0x1042c,abort,12,00_imports_thunks,0,0,,
+id2mac,0x10438,FUN_00010438,48,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/10438_FUN_00010438.c
+id2mac,0x10468,entry,36,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/10468_entry.c
+id2mac,0x10498,FUN_00010498,40,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/10498_FUN_00010498.c
+id2mac,0x104bc,FUN_000104bc,34,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/104bc_FUN_000104bc.c
+id2mac,0x104e0,FUN_000104e0,42,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/104e0_FUN_000104e0.c
+id2mac,0x1050c,_FINI_0,24,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/1050c__FINI_0.c
+id2mac,0x10524,_INIT_0,2,00_imports_thunks,0,0,,
+id2mac,0x105b0,FUN_000105b0,280,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/105b0_FUN_000105b0.c
+id2mac,0x106c8,FUN_000106c8,488,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/106c8_FUN_000106c8.c
+id2mac,0x108b0,FUN_000108b0,52,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/108b0_FUN_000108b0.c
+id2mac,0x108f0,_DT_FINI,8,08_network,0,0,,../analysis/reverse/full_aux/id2mac/decompiled/108f0__DT_FINI.c
+id2mac,0x22000,fread,1,00_imports_thunks,0,0,,
+id2mac,0x22004,getenv,1,00_imports_thunks,0,0,,
+id2mac,0x22008,puts,1,00_imports_thunks,0,0,,
+id2mac,0x2200c,__libc_start_main,1,00_imports_thunks,0,0,,
+id2mac,0x22010,__gmon_start__,1,00_imports_thunks,0,0,,
+id2mac,0x22014,strlen,1,00_imports_thunks,0,0,,
+id2mac,0x22018,fclose,1,00_imports_thunks,0,0,,
+id2mac,0x2201c,sprintf,1,00_imports_thunks,0,0,,
+id2mac,0x22020,fopen64,1,00_imports_thunks,0,0,,
+id2mac,0x22024,abort,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x10794,_DT_INIT,12,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10794__DT_INIT.c
+monitor-ipsig,0x107b4,calloc,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x107c0,setsockopt,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x107cc,printf,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x107d8,__isoc99_fscanf,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x107e4,free,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x107f0,memcpy,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x107fc,inet_ntoa,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10808,select,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10814,stpcpy,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10820,recvfrom,12,00_imports_thunks,0,2,,
+monitor-ipsig,0x1082c,perror,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10838,fwrite,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10844,strcat,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10850,ioctl,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x1085c,usleep,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10868,strcpy,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10874,gettimeofday,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10880,puts,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x1088c,__libc_start_main,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10898,system,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108b0,exit,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108bc,strlen,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108c8,bind,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108d4,memset,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108e0,strncpy,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108ec,access,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x108f8,fclose,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10904,sendto,12,00_imports_thunks,0,2,,
+monitor-ipsig,0x10910,sprintf,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x1091c,fopen64,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10928,socket,12,00_imports_thunks,0,2,,
+monitor-ipsig,0x10934,strncmp,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x10940,abort,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x1094c,close,12,00_imports_thunks,0,0,,
+monitor-ipsig,0x109c8,entry,36,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/109c8_entry.c
+monitor-ipsig,0x109f8,FUN_000109f8,40,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/109f8_FUN_000109f8.c
+monitor-ipsig,0x10a1c,FUN_00010a1c,34,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10a1c_FUN_00010a1c.c
+monitor-ipsig,0x10a40,FUN_00010a40,42,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10a40_FUN_00010a40.c
+monitor-ipsig,0x10a6c,_FINI_0,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10a6c__FINI_0.c
+monitor-ipsig,0x10a84,_INIT_0,2,00_imports_thunks,0,0,,
+monitor-ipsig,0x10afc,FUN_00010afc,192,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10afc_FUN_00010afc.c
+monitor-ipsig,0x10bbc,FUN_00010bbc,260,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10bbc_FUN_00010bbc.c
+monitor-ipsig,0x10cc0,FUN_00010cc0,224,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10cc0_FUN_00010cc0.c
+monitor-ipsig,0x10da0,FUN_00010da0,100,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10da0_FUN_00010da0.c
+monitor-ipsig,0x10e04,FUN_00010e04,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10e04_FUN_00010e04.c
+monitor-ipsig,0x10e1c,FUN_00010e1c,316,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10e1c_FUN_00010e1c.c
+monitor-ipsig,0x10f58,FUN_00010f58,144,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10f58_FUN_00010f58.c
+monitor-ipsig,0x10fe8,FUN_00010fe8,260,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10fe8_FUN_00010fe8.c
+monitor-ipsig,0x110ec,FUN_000110ec,304,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/110ec_FUN_000110ec.c
+monitor-ipsig,0x1121c,FUN_0001121c,88,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/1121c_FUN_0001121c.c
+monitor-ipsig,0x11274,FUN_00011274,564,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/11274_FUN_00011274.c
+monitor-ipsig,0x114a8,FUN_000114a8,148,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/114a8_FUN_000114a8.c
+monitor-ipsig,0x1153c,FUN_0001153c,52,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/1153c_FUN_0001153c.c
+monitor-ipsig,0x1157c,_DT_FINI,8,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/1157c__DT_FINI.c
+monitor-ipsig,0x23000,calloc,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23004,setsockopt,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23008,printf,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2300c,__isoc99_fscanf,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23010,free,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23014,memcpy,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23018,inet_ntoa,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2301c,select,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23020,stpcpy,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23024,recvfrom,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23028,perror,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2302c,fwrite,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23030,strcat,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23034,ioctl,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23038,usleep,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2303c,strcpy,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23040,gettimeofday,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23044,puts,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23048,__libc_start_main,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2304c,system,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23050,__gmon_start__,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23054,exit,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23058,strlen,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2305c,bind,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23060,memset,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23064,strncpy,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23068,access,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2306c,fclose,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23070,sendto,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23074,sprintf,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23078,fopen64,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x2307c,socket,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23080,strncmp,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23084,abort,1,00_imports_thunks,0,0,,
+monitor-ipsig,0x23088,close,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x10584,_DT_INIT,12,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10584__DT_INIT.c
+monitor-recobtn,0x105a4,printf,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105b0,__isoc99_fscanf,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105bc,execvp,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105c8,sleep,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105d4,wait,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105e0,fwrite,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105ec,usleep,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x105f8,gettimeofday,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10604,puts,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10610,__libc_start_main,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x1061c,system,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10634,exit,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10640,strlen,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x1064c,memset,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10658,access,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10664,fclose,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10670,fork,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x1067c,sprintf,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10688,fopen64,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x10694,abort,12,00_imports_thunks,0,0,,
+monitor-recobtn,0x106a0,FUN_000106a0,480,11_log_monitor,0,3,monitor-recobtn compile %s--%s\n,../analysis/reverse/full_aux/monitor-recobtn/decompiled/106a0_FUN_000106a0.c
+monitor-recobtn,0x10880,entry,36,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10880_entry.c
+monitor-recobtn,0x108b0,FUN_000108b0,40,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/108b0_FUN_000108b0.c
+monitor-recobtn,0x108d4,FUN_000108d4,34,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/108d4_FUN_000108d4.c
+monitor-recobtn,0x108f8,FUN_000108f8,42,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/108f8_FUN_000108f8.c
+monitor-recobtn,0x10924,_FINI_0,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10924__FINI_0.c
+monitor-recobtn,0x1093c,_INIT_0,2,00_imports_thunks,0,0,,
+monitor-recobtn,0x10940,FUN_00010940,104,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10940_FUN_00010940.c
+monitor-recobtn,0x109a8,FUN_000109a8,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/109a8_FUN_000109a8.c
+monitor-recobtn,0x109c0,FUN_000109c0,312,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/109c0_FUN_000109c0.c
+monitor-recobtn,0x10af8,FUN_00010af8,52,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10af8_FUN_00010af8.c
+monitor-recobtn,0x10b38,_DT_FINI,8,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10b38__DT_FINI.c
+monitor-recobtn,0x22000,printf,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22004,__isoc99_fscanf,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22008,execvp,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x2200c,sleep,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22010,wait,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22014,fwrite,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22018,usleep,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x2201c,gettimeofday,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22020,puts,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22024,__libc_start_main,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22028,system,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x2202c,__gmon_start__,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22030,exit,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22034,strlen,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22038,memset,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x2203c,access,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22040,fclose,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22044,fork,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22048,sprintf,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x2204c,fopen64,1,00_imports_thunks,0,0,,
+monitor-recobtn,0x22050,abort,1,00_imports_thunks,0,0,,
+update-daemon,0x1074c,_DT_INIT,12,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/1074c__DT_INIT.c
+update-daemon,0x1076c,strstr,12,00_imports_thunks,0,0,,
+update-daemon,0x10778,printf,12,00_imports_thunks,0,0,,
+update-daemon,0x10784,read,12,00_imports_thunks,0,0,,
+update-daemon,0x10790,perror,12,00_imports_thunks,0,0,,
+update-daemon,0x1079c,accept,12,00_imports_thunks,0,0,,
+update-daemon,0x107a8,fwrite,12,00_imports_thunks,0,0,,
+update-daemon,0x107b4,strcpy,12,00_imports_thunks,0,0,,
+update-daemon,0x107c0,pthread_create,12,00_imports_thunks,0,4,,
+update-daemon,0x107cc,puts,12,00_imports_thunks,0,0,,
+update-daemon,0x107d8,__libc_start_main,12,00_imports_thunks,0,0,,
+update-daemon,0x107e4,system,12,00_imports_thunks,0,0,,
+update-daemon,0x107fc,exit,12,00_imports_thunks,0,0,,
+update-daemon,0x10808,strlen,12,00_imports_thunks,0,0,,
+update-daemon,0x10814,bind,12,00_imports_thunks,0,0,,
+update-daemon,0x10820,memset,12,00_imports_thunks,0,0,,
+update-daemon,0x1082c,write,12,00_imports_thunks,0,0,,
+update-daemon,0x10838,pthread_exit,12,00_imports_thunks,0,0,,
+update-daemon,0x10844,shutdown,12,00_imports_thunks,0,0,,
+update-daemon,0x10850,listen,12,00_imports_thunks,0,0,,
+update-daemon,0x1085c,sprintf,12,00_imports_thunks,0,0,,
+update-daemon,0x10868,socket,12,00_imports_thunks,0,2,,
+update-daemon,0x10874,inet_addr,12,00_imports_thunks,0,0,,
+update-daemon,0x10880,abort,12,00_imports_thunks,0,0,,
+update-daemon,0x1088c,recv,12,00_imports_thunks,0,2,,
+update-daemon,0x10898,close,12,00_imports_thunks,0,0,,
+update-daemon,0x108a4,send,12,00_imports_thunks,0,2,,
+update-daemon,0x108b0,connect,12,00_imports_thunks,0,2,,
+update-daemon,0x108bc,__assert_fail,12,00_imports_thunks,0,0,,
+update-daemon,0x108c8,FUN_000108c8,588,13_os_service,0,6,pthread_create error!\n,../analysis/reverse/full_aux/update-daemon/decompiled/108c8_FUN_000108c8.c
+update-daemon,0x10b18,entry,36,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b18_entry.c
+update-daemon,0x10b48,FUN_00010b48,40,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b48_FUN_00010b48.c
+update-daemon,0x10b6c,FUN_00010b6c,34,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b6c_FUN_00010b6c.c
+update-daemon,0x10b90,FUN_00010b90,42,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b90_FUN_00010b90.c
+update-daemon,0x10bbc,_FINI_0,24,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10bbc__FINI_0.c
+update-daemon,0x10bd4,_INIT_0,2,00_imports_thunks,0,0,,
+update-daemon,0x10bd8,FUN_00010bd8,76,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10bd8_FUN_00010bd8.c
+update-daemon,0x10c24,FUN_00010c24,404,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10c24_FUN_00010c24.c
+update-daemon,0x10db8,FUN_00010db8,280,01_boot_upgrade,0,2,,../analysis/reverse/full_aux/update-daemon/decompiled/10db8_FUN_00010db8.c
+update-daemon,0x10ed0,FUN_00010ed0,52,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10ed0_FUN_00010ed0.c
+update-daemon,0x10f10,_DT_FINI,8,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10f10__DT_FINI.c
+update-daemon,0x23000,strstr,1,00_imports_thunks,0,0,,
+update-daemon,0x23008,printf,1,00_imports_thunks,0,0,,
+update-daemon,0x2300c,read,1,00_imports_thunks,0,0,,
+update-daemon,0x23010,perror,1,00_imports_thunks,0,0,,
+update-daemon,0x23014,accept,1,00_imports_thunks,0,0,,
+update-daemon,0x23018,fwrite,1,00_imports_thunks,0,0,,
+update-daemon,0x2301c,strcpy,1,00_imports_thunks,0,0,,
+update-daemon,0x23020,pthread_create,1,00_imports_thunks,0,0,,
+update-daemon,0x23024,puts,1,00_imports_thunks,0,0,,
+update-daemon,0x23028,__libc_start_main,1,00_imports_thunks,0,0,,
+update-daemon,0x2302c,system,1,00_imports_thunks,0,0,,
+update-daemon,0x23030,__gmon_start__,1,00_imports_thunks,0,0,,
+update-daemon,0x23034,exit,1,00_imports_thunks,0,0,,
+update-daemon,0x23038,strlen,1,00_imports_thunks,0,0,,
+update-daemon,0x2303c,bind,1,00_imports_thunks,0,0,,
+update-daemon,0x23040,memset,1,00_imports_thunks,0,0,,
+update-daemon,0x23044,write,1,00_imports_thunks,0,0,,
+update-daemon,0x23048,pthread_exit,1,00_imports_thunks,0,0,,
+update-daemon,0x2304c,shutdown,1,00_imports_thunks,0,0,,
+update-daemon,0x23050,listen,1,00_imports_thunks,0,0,,
+update-daemon,0x23054,sprintf,1,00_imports_thunks,0,0,,
+update-daemon,0x23058,socket,1,00_imports_thunks,0,0,,
+update-daemon,0x23060,inet_addr,1,00_imports_thunks,0,0,,
+update-daemon,0x23064,abort,1,00_imports_thunks,0,0,,
+update-daemon,0x23068,recv,1,00_imports_thunks,0,0,,
+update-daemon,0x2306c,close,1,00_imports_thunks,0,0,,
+update-daemon,0x23070,send,1,00_imports_thunks,0,0,,
+update-daemon,0x23074,connect,1,00_imports_thunks,0,0,,
+update-daemon,0x23078,__assert_fail,1,00_imports_thunks,0,0,,

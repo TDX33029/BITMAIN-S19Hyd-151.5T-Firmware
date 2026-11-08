@@ -1,0 +1,3 @@
+# usr\bin\sudoreplay  (43184 B)  libs: libsudo_util.so.0, libpthread.so.0, libdl.so.2, libz.so.1, libc.so.6, ld-linux-armhf.so.3
+00011810  sz=0      _init
+00018070  sz=0      _fini

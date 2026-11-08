@@ -1,0 +1,1466 @@
+# cgminer strings (all, >=5 chars)
+                    
+                                
+ %d instance of %s is  already Running on this machine
+ (default: %s)
+ <arg>
+ Accepted difficulty shares: %1.f
+ Accepted shares: %lld
+ BLOCK!
+ Items worked on: %d
+ Proof: %s
+ Reject ratio: %.1f%%
+ Rejected difficulty shares: %1.f
+ Rejected shares: %lld
+ Share submissions: %lld
+ Stale submissions discarded due to new blocks: %d
+ Submitting work remotely delay occasions: %d
+ Unable to get work from server occasions: %d
+ [%d-%02d-%02d %02d:%02d:%02d.%03d] 
+ app-service:%s Not Found!!!
+ new_total_mhashes_done = %lf
+ total_secs = %lf
+!(opt->type & OPT_SUBTABLE)
+"%s" : "%.1f"
+"%s" : "%d"
+"%s" : "%s"
+"%s" : true
+"balance" : true
+"extranonce-subscribe" : true,
+"load-balance" : true
+"pass" : "%s"
+"pools" : [
+"quota" : "%s%s%s%d;%s",
+"rotate" : "%d"
+"round-robin" : true
+"url" : "%s%s%s%s",
+"user" : "%s",
+#xnsub
+%*.*f%s
+%.2lf
+%.3g%s
+%08lx
+%08lx Diff %s/%llu%s
+%[^;]; %[^;]; %[^;]; %s
+%d Pool(s)
+%d-%d
+%d-%d-%d-%d
+%d/Miner
+%d/RStratum
+%d/SStratum
+%d:%02d:%02d
+%d:%d
+%dmin
+%lu,%s,%s,%s,%s%u,%u,%s,%s
+%s          
+%s %08x midstate %s data %s nonce %s hash %s diff %lld
+%s %08x work %s midstate %s data %s nonce %s hash %s diff %lld
+%s %d
+%s %d duplicate share detected as HW error
+%s %d failure, disabling!
+%s %d: Share above target
+%s %d: invalid nonce - HW error
+%s %s
+%s %s %d: Share above target
+%s error: format error about command
+%s input err: data @ %p, len is %d
+%s is forbidden to start twice, will exit immediately!
+%s near '%s'
+%s near end of file
+%s nonce submited
+%s reg %s return: %d
+%s reg failed wait 5s
+%s trans init failed: %d
+%s%02d.txt
+%s%02d_%02d.txt
+%s%d 
+%s%d: Duplicate nonce %08x
+%s%d: invalid nonce - HW error
+%s%s%s%s%s%s%s
+%s(%d) : %s
+%s() (%s) can't after a null item - from %s %s() line %d in %s %s():%d
+%s() (%s) can't before a null item - from %s %s() line %d in %s %s():%d
+%s.%s
+%s.txt
+%s: %.*s: %s
+%s: Attempting to restart
+%s: Idle for more than 60 seconds, declaring SICK!
+%s: JSON decode of file '%s' failed
+%s: Not responded for more than 10 minutes, declaring DEAD!
+%s: Recovered, declaring WELL!
+%s: after json_load_file
+%s: api bind to port %d failed, trying again in 30sec
+%s: api detect failed.
+%s: bad param
+%s: bitmain_shutdown failed.
+%s: exec accept failed (%s)
+%s: exec getaddrinfo() failed
+%s: exec listen() failed (%s)
+%s: exec socket() failed
+%s: init socket failed
+%s: input bad api param
+%s: input invaild param format
+%s: load data is failed(%s)
+%s: load json failed
+%s: send (%d:%d) failed %s
+%s: send EAGAIN 
+%s: send select failed, ret = %d
+%s: update job failed.
+%s:setsocket SO_RCVTIMEO failed
+%s:setsocket SO_SNDTIMEO failed
+%sLONGPOLL from pool %d detected new block
+%sLONGPOLL from pool %d requested work restart
+%s_diff_%02d.txt
+%x %d %s %s
+%x %d %s %s %s
+%x %s
+%x regist %s
+%x%d%s%s
+%x%d%s%s%s
+%x%s%s
+'%s' is negative
+'%s' is not a number
+'%s' is out of range
+':' expected
+'[' or '{' expected
+']' expected
+'}' expected
+(%ds):%s (1m):%s (5m):%s (15m):%s (avg):%sh/s
+(%ds):%s (avg):%sh/s | A:%.0f R:%.0f HW:%d WU:%.1f/m
+(null)
+(unknown reason)
+*offset == 0
+, new_total_secs = %lf
+-----BEGIN CERTIFICATE-----
+-----END CERTIFICATE-----
+--api-allow
+--api-description
+--api-groups
+--api-host
+--api-listen
+--api-mcast
+--api-mcast-addr
+--api-mcast-code
+--api-mcast-des
+--api-mcast-port
+--api-network
+--api-port
+--balance
+--benchfile
+--benchfile-display
+--benchmark
+--bitmain-user-ip-cat
+--config|-c
+--debug|-D
+--default-config
+--disable-rejecting
+--expiry|-E
+--extranonce-subscribe
+--failover-only
+--fallback-time
+--fix-protocol
+--help|-h
+--hotplug
+--load-balance
+--logfile
+--logfile-openflag
+--logwork
+--logwork-asicnum
+--logwork-diff
+--log|-l
+--lowmem
+--monitor|-m
+--multi-version
+--net-delay
+--no-pool-disable
+--no-submit-stale
+--pass|-p
+--per-device-stats
+--pools
+--protocol-dump|-P
+--queue|-Q
+--quiet|-q
+--quota|-U
+--real-quiet
+--retries
+--retry-pause
+--rotate
+--round-robin
+--scan-time|-s
+--sched-start
+--sched-stop
+--sharelog
+--shares
+--socks-proxy
+--suggest-diff
+--syslog
+--text-only|-T
+--url|-o
+--userpass|-O
+--user|-u
+--verbose
+--version-file
+--version|-V
+--widescreen
+--worktime
+.ARM.attributes
+.ARM.exidx
+.bmminer/
+.data
+.dynamic
+.dynstr
+.dynsym
+.eh_frame
+.fini
+.fini_array
+.gnu.version
+.gnu.version_r
+.hash
+.init
+.init_array
+.interp
+.nicehash.com
+.note.ABI-tag
+.note.gnu.build-id
+.rel.dyn
+.rel.plt
+.rodata
+.shstrtab
+.text
+/bin/bash
+/dev/urandom
+/lib/ld-linux-armhf.so.3
+/nvdata/worklog.txt
+/tmp/warning.log
+/usr/bin
+0-0-0-0
+0.0.0.0
+0000000%c
+000000000
+0000000000000000000000000000000000000000000000000000000000000000
+00000002138cf4b61dff74e3c26b2d80045064e8ab4802521bab2cda000000000000000071eef64a7ef4e47cda16e96673197d36c7235a4aadd23c21a38ce53827d1f8bc536dc4d71900896ce96b0020
+00000002194bb5b4f8ac3392fbd66f3dd3e9dcdb22370e380837fe44000000000000000003bbb250f2dc23717e8192c0b8bec6a175cd059e4089d325006eaee3446254c9536dd39e1900896c16980c60
+00000002194bb5b4f8ac3392fbd66f3dd3e9dcdb22370e380837fe4400000000000000002232a16d38cc0e13e4b16d917bff4c34727deb3b5c50e424fb8453ff9b2adcb4536dd4231900896cbf1002a0
+00000002194bb5b4f8ac3392fbd66f3dd3e9dcdb22370e380837fe44000000000000000027c548815127c125147af91c356c293f0defbd2771f8dc3b1142b367528656db536dd37c1900896c96770ae0
+00000002194bb5b4f8ac3392fbd66f3dd3e9dcdb22370e380837fe440000000000000000a2860471277b4a93fea2a8b6d8c281fab7bde3b78f2acd1bfdc89d464ed3bb3c536dd35e1900896c9d3004b0
+00000002194bb5b4f8ac3392fbd66f3dd3e9dcdb22370e380837fe440000000000000000adef758770bb90c5b13769c5b61affb322b24c747573b38ebe2ee81748d0b557536dd4071900896c29f001f0
+00000002194bb5b4f8ac3392fbd66f3dd3e9dcdb22370e380837fe440000000000000000f370230607998fbbd10275c5890885fcd81b68018ba2373abf0f93a06d02ab28536dd33e1900896c37750bc0
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a4463000000000000000003073385e05c29f0435a6001c8eca9c8d5602890aeff9d4d103d3383cf80dae5536dc57c1900896c821d0040
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a446300000000000000003e3030629ff4258056dc9efaf922bd173a65f65ee799b0c765097d3deeddef10536dc4d81900896c14430060
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a446300000000000000005513c22bb99e9daa9936b0df5dce64d7737e3706be99e5098d112002492cf81b536dc5691900896cd4410070
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a44630000000000000000596fc4aa5da839ba267c36aa1a5b29d813747b2273dc03aa9e404c4da0238e2b536dc4cc1900896c9e7000f0
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a446300000000000000005edbd53fcc64850b5334678199d769514818fbcc79861fc77e572bb4753b7fe2536dc5d91900896c938900e0
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a4463000000000000000064923b63f53c72c04ebe6c1c9140b6377132b6e50865814fe562291bd023d348536dc65a1900896cc52e00b0
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a44630000000000000000c1a174254a6593ffba987f68fe26e716e3c129a7f33a9c43ae7ecf90c8cd0d2c536dc4e61900896c8f810010
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a44630000000000000000ee9817160e35d4410601c8dc741c1a810c485f3b40a0859be5f58f0bf6ef1694536dc6321900896c6e1f00c0
+000000023bf53ef343a50f7599601f849c93ecce63530b0b449a44630000000000000000fe2c6b926468565e524ab7c2f111035dcde7c60955842111930589eccb410f83536dc66b1900896cf4290030
+000000023e91fce7300a792bfbaa0c76e1aa5f9b546c1db582aee4ff000000000000000072e17babd4089b204797cebda7dc6e277950eab1b2908991ae1d72335f82d204536dcf441900896c5f2d0970
+000000023e91fce7300a792bfbaa0c76e1aa5f9b546c1db582aee4ff000000000000000074b39134c2930d2f2e7339f9d502c776c44d6ee599f7efebec6c9bbd04787aae536dce561900896ce2710f30
+000000023e91fce7300a792bfbaa0c76e1aa5f9b546c1db582aee4ff0000000000000000c5b821fb0b26d63b00cc26e7ac4d6cfd1d3fc109b0db188e7e792e3d18342919536dce501900896ced480540
+000000023e91fce7300a792bfbaa0c76e1aa5f9b546c1db582aee4ff0000000000000000f04650a8e748d2e6fde86a8a920b285f3e22398f583700236958323ef9ea8321536dcf431900896cb4570e20
+000000029c6bf469abe4ad37605c097a860cff3cf5c1ef4377618f7400000000000000000e1f0cfdf5ad8248fc4520f3bb0b2040226430348cddeff5ca9181beeb78870d536dd2161900896c0d600f90
+000000029c6bf469abe4ad37605c097a860cff3cf5c1ef4377618f74000000000000000022388b6f022144db134af1bc8e61b385ca37cae038c1d165ae98c496b3b41e8b536dd2101900896ca8ea0e80
+000000029c6bf469abe4ad37605c097a860cff3cf5c1ef4377618f74000000000000000082b1514e7b6565941e5824f084292164ec5f97e7ea20c494bd96e524d478977b536dd2261900896c8b100200
+000000029ca55e5f1bc0328c84f358fddadc13cb232599bc2ca9dbe100000000000000001e514cf738455a54f004ec86edafcfd9fd2022017bb31c245340353911744fb7536dfe1f1900896c265f00d0
+000000029ca55e5f1bc0328c84f358fddadc13cb232599bc2ca9dbe100000000000000005925a624e5c84f96d2c34dce3b6a736addb891724b48a36320c7494435f9c915536dfe621900896c14fb0090
+000000029ca55e5f1bc0328c84f358fddadc13cb232599bc2ca9dbe10000000000000000b5b4d19c20a7fc2b174ff673c006edd2247c4b2336571864df93eb7ec0c8c276536dfe041900896ce63c0050
+00000002c01f502cb3e9fdb053230ec12a4954c1021a6b35862b5e29000000000000000084d1b83ae44057025e8c5b5756b44f04df5fffe4a7a30e5c12d12a97a7a4c2ea536dce431900896cb6d60e00
+00000002c0a2c91fc41254539a5b2a27be28de2a6187e2af3f129d6300000000000000005e45ffc512d5ca3bc4d2063dd3af1669c296ae126a5a2ef896d1e190cedf67b9536dd46b1900896cd55b00d0
+00000002e155f07e652e4d671ca4db51bbde14d2b5ae34ee67ecc74400000000000000001e69f1d6507f4b7b50980930f7d8089834fbe65f0980b8592d53cdda08e50d24536dc7da1900896c5eeb00a0
+00000002e155f07e652e4d671ca4db51bbde14d2b5ae34ee67ecc74400000000000000004af5cffd7e5a7087f1b484b526c7350c86d8389283509ca878502f792115e8dc536dc6ad1900896c999d0080
+00000002e790c23987181950eeb144591c3ac4d06c0705f2801d097600000000000000006e9d94bf5a0ab7b202d39e1200af96074e4f641f4e55e3e9e3aee72aa00a70e9536dd2ae1900896c60f70150
+00000002e790c23987181950eeb144591c3ac4d06c0705f2801d097600000000000000009ebbce2f5f0d6cc0aca284ecb1059c856ef2f7f42e7edd403d246754ee4c905a536dd2a91900896ccfda0310
+000000800000000000000000000000000000000000000000000000000000000000000000000000000000000080020000
+0123456789abcdefbin2hex
+0x%02x
+1 ASC(s)
+127.0.0.1
+224.0.0.75
+3f heart-beats 22027
+4MPAbc+EdPlFIH96hSvJjGSO+27RqiiUwGzA8BSZTa7yXjypGuIhizsjPqQSc7rN
+6vxAKX1XnkIkTakxjJAx1h+i1FCCsuWrO1wwZLgivXnmltcVRxkPkrz7k+XsKfa7
+70HDg1PN1fL6L5pFQhb3NfVonYaVZAbsxMjnXVFGbsTrnc+1IfJ5rTBAbK67Sa2r
+;JFAF8F
+<<<<<<<<<<<<<<<<<<<<exec %s end>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<exec %s start>>>>>>>>>>>>>>>>
+<buffer>
+<callback>
+<stdin>
+<stream>
+<string>
+@BpG8
+@SEND: %s
+API Multicast listen address
+API Multicast listen port
+API one letter groups G:cmd:cmd[,P:cmd:*...] defining the cmds a groups can use
+API thread create failed
+Accepted
+Accepted %s %d benchmark share nonce %08x
+Accepted %s %s %d %s%s
+Accepted %s %s %d pool %d %s%s
+Accepted difficulty shares: %1.f
+Accepted shares: %lld
+Accepted untracked stratum share from pool %d
+Alive
+All devices disabled, cannot mint!
+Allow API (if enabled) to listen on/for any address, default: only 127.0.0.1
+Allow API access only to the given list of [G:]IP[/Prefix] addresses[/subnets]
+Allow log work diff
+Append share log to file
+Attempting to negotiate with %s:%s SOCKS5 proxy
+Attempting to restart %s
+Automatically disable pools that continually reject shares
+Average hashrate: %.1f Mhash/s
+BENCHFILE Failed to open benchfile '%s'
+BENCHFILE Failed to read benchfile '%s'
+BENCHFILE Invalid benchfile NULL
+BENCHFILE Invalid input file line %d - field count is %d but should be %d
+BENCHFILE Invalid input file line %d field %d (%s) length is %d but should be %d
+BENCHFILE Invalid input file line %d field %d (%s) length is %d but should be least %d
+BENCHFILE No work in benchfile '%s'
+BENCHFILE nonce %u=0x%08x for work=%s
+BIO_free
+BIO_new
+BIO_s_mem
+BIO_write
+BITMAIN_OPENSOURCE
+BMMiner
+BTM_SOC
+BTM_SOC%d
+Bad response from %s:%s SOCKS4 server
+Bad response from %s:%s SOCKS5 server
+Balance
+Benchfile
+Benchmark
+Best Share
+Best share difficulty: %s
+Bitmain S9 has to use stratum pools
+Bitmain_SOC
+Blank worker exists.
+Built with bitmain_c5 mining support.
+CGMINER
+CGMiner stats
+CGMiner versions
+CONNECT %s:%s HTTP/1.0
+CONNECT %s:%s HTTP/1.1
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeWq27wElC20BA1ro6WSp/vQkVMJvK
+CURL initialisation failed
+Calls
+Can not connect to pool
+Cannot subscribe to mining.extranonce for pool %d
+Change multipool strategy from failover to even share balance
+Change multipool strategy from failover to quota based balance
+Change multipool strategy from failover to regularly rotate at N minutes
+Change multipool strategy from failover to round robin on failure
+Cleared %d work items due to stratum disconnect on pool %d
+Closing socket for stratum pool %d
+Code expected in the API Multicast message, don't use '-'
+CompileTime
+Configuration file could not be used.
+Connected with %s encryption
+Couldn't read HTTP byte from proxy %s:%s
+Couldn't read from proxy %s:%s after sending CONNECT
+CzAJBgNVBAYTAlNHMRMwEQYDVQQIDApTb21lLVN0YXRlMRAwDgYDVQQKDAdBTlRQ
+DQYJKoZIhvcNAQELBQADggEBAE7SpQFMU8fXKQUKmhYn+LbSLyYUJcYBFfyjicZt
+Deleted block %d from database
+Denied stratum reconnect request for pool without domain '%s'
+Denied stratum reconnect request to non-matching domain url '%s'
+Denied stratum reconnect request to url without domain '%s'
+Description
+Description appended to the API Multicast reply, default: ''
+Description placed in the API status header, default: cgminer version
+Device Elapsed
+Device Hardware%
+Device Rejected%
+Diff zero passed to set_target
+Diff1 Shares
+Diff1 Work
+Difficulty Accepted
+Difficulty Rejected
+Difficulty Stale
+DifficultyBits
+Disable all output
+Disable logging output, display status and errors
+Disabled
+Discard work called with NULL work from %s %s:%d
+Discarded
+Discarded %d stales that didn't match current hash
+Discarded cloned or rolled work
+Discarded queued work item
+Discarded work
+Discarding work from removed pool
+Display each benchfile nonce found
+Display extra work time debug information
+Display version and exit
+Do not redirect to a different getwork protocol (eg. stratum)
+Don't leak work to backup pools when primary pool is lagging
+Don't submit shares if they are detected as stale
+ERR: Asked to memcpy %u bytes from %s %s():%d
+ERR: Asked to memcpy %u bytes from NULL from %s %s():%d
+ERR: Asked to memcpy %u bytes to NULL from %s %s():%d
+Elapsed
+Enable 'extranonce' stratum subscribe for MinToRRo by Zwilla
+Enable API Multicast listener, default: disabled
+Enable API, default: disabled
+Enable bitmain miner to  automatically catch user ip
+Enable debug output
+Enable extranonce subscribe on %d
+Enabled
+End %s function !!!
+Error in configuration file, partially loaded.
+Error: Interface name '%s' is too long. Max length is %d.
+FAILED to retrieve work from pool %u %s
+Failed sock connect
+Failed socket
+Failed to calloc dupdata in %s %s():%d
+Failed to calloc list %s in %s %s():%d
+Failed to calloc lock for list %s in %s %s():%d
+Failed to calloc memb %d size %d from %s %s:%d
+Failed to calloc pool->nonce1bin in %s %s():%d
+Failed to calloc store for %s in %s %s():%d
+Failed to calloc work in make_work
+Failed to connect to stratum on %s:%s
+Failed to convert cb1 to cb1_bin in parse_notify
+Failed to convert cb2 to cb2_bin in parse_notify
+Failed to convert header to header_bin in parse_notify
+Failed to convert merkle to merkle_bin in parse_notify
+Failed to create getq
+Failed to create pool_change_thread
+Failed to create restart thread
+Failed to create socket for IPv4
+Failed to create socket for IPv6
+Failed to create stratum rthread
+Failed to create stratum sthread
+Failed to create stratum_q in stratum_sthread
+Failed to create submit_work_thread
+Failed to find : delimited user info
+Failed to get IP address from interface '%s'.
+Failed to get modified IP address
+Failed to get sessionid in initiate_stratum
+Failed to get sysinfo, errno:%u, reason:%s
+Failed to get valid n2size in initiate_stratum
+Failed to get valid n2size in parse_extranonce
+Failed to get valid nonce1 in initiate_stratum
+Failed to get valid nonce1 in parse_extranonce
+Failed to getaddrinfo for %s:%s
+Failed to malloc null in %s %s():%d
+Failed to malloc size %d from %s %s:%d
+Failed to open %s for share log
+Failed to open fd %u for share log
+Failed to parse a \n terminated string in recv_line
+Failed to pthread_cond_init gws_cond
+Failed to pthread_cond_init in add_pool
+Failed to pthread_cond_init lp_cond
+Failed to pthread_cond_init restart_cond
+Failed to pthread_mutex_init errno=%d in %s %s():%d
+Failed to pthread_rwlock_init errno=%d in %s %s():%d
+Failed to realloc size %d from %s %s:%d
+Failed to recv sock in recv_line
+Failed to resolve (?wrong URL) %s:%s
+Failed to restart application
+Failed to resume stratum, trying afresh
+Failed to retrieve and modify IP address for eth0.
+Failed to sem_init ret=%d errno=%d in %s %s():%d
+Failed to sem_post errno=%d cgsem=0x%p in %s %s():%d
+Failed to sem_timedwait errno=%d cgsem=0x%p in %s %s():%d
+Failed to sem_wait errno=%d cgsem=0x%p in %s %s():%d
+Failed to send in stratum_send
+Failed to send s in initiate_stratum
+Failed to submit stratum share, discarding
+Failover
+Fatal JSON error in configuration file.
+Filtering duplicate share to pool %d
+Filtering high hash share to pool %d
+Force verbose mode and output per-device statistics
+Found Blocks
+Found block for pool %d!
+Free work called with NULL work from %s %s:%d
+GBT coinbase + append support found, switching to GBT protocol
+GBT coinbase without append found, switching to GBT solo protocol
+GHS 30m
+GHS 5s
+GHS av
+GLIBC_2.4
+GLIBC_2.7
+Generated benchfile work
+Generated benchmark work
+Generated stratum header %s
+Generated stratum merkle %s
+Generated stratum work
+Generated target %s
+Get Failures
+Get work blocked for %ld seconds
+Getwork
+Getworks
+Global quota greatest common denominator set to %lu
+Got work from get queue to get work for thread %d
+H6FjmzTqaHApzjj013kwMfKQ5ymWAyDSnf9fwZUTh8jzw9UaRXfvkSkw1OBY3WzH
+HTTP Error from proxy %s:%s - %s
+HTTP/1.0 200
+HTTP/1.1 200
+Hardware Errors
+Hardware errors: %d
+Has GBT
+Has Stratum
+Host: %s:%s
+IOCTL failed to get IP address
+Impose small delays in networking to not overload slow routers
+Initiate stratum failed
+Input pool error, try again
+Interval in seconds between log output
+Invalid IP address specified for socks4 proxy: %s
+Invalid argument '%s'
+Invalid char 0x%x passed to valid_ascii from in %s %s():%d
+Invalid char 0x%x passed to valid_hex from in %s %s():%d
+Invalid command
+Invalid config option %s: %s
+Invalid negative parameter for quota set
+Invalid new list %s with allocate %d must be > 0 in %s %s():%d
+Invalid new list %s with limit %d must be >= 0 in %s %s():%d
+Invalid parameters for set temp cutoff
+Invalid time set, should be HH:MM
+Invalid time set.
+Invalid value
+Invalid value passed to set temp cutoff
+JSON decode failed(%d): %s
+JSON-RPC decode failed: %s
+JSON-RPC method decode failed: %s
+JSON-RPC non method decode failed: %s
+JSON-RPC unexpected mining.configure value: %s
+Killing off API thread
+Killing off mining threads
+Killing off watchdog thread
+Killing off watchpool thread
+Last Share Difficulty
+Last Share Pool
+Last Share Time
+Last Valid Work
+Last getwork
+List %s can't %s() - do_tail is false - from %s %s() line %d in %s %s():%d
+List %s can't %s() a %s item - from %s %s() line %d in %s %s():%d
+List %s can't %s() a store - from %s %s() line %d in %s %s():%d
+List %s can't %s() to a %s list - from %s %s() line %d in %s %s():%d
+List %s data_memory failed to realloc count=%d in %s %s():%d
+List %s failed to calloc %d new items - total was %d, limit was %d in %s %s():%d
+List %s failed to calloc item data in %s %s():%d
+List %s item_memory failed to realloc count=%d in %s %s():%d
+List %s store can't %s() - from %s %s() line %d in %s %s():%d
+Load Balance
+Load a JSON-format configuration file
+Loaded at start and used when saving without a name.
+Loaded configuration file %s
+Local Work
+Log file path: %s Open flag: %s
+Log verbose output to stderr as well as status output
+Log work asic num empty
+Log work asic num must be 1, 32, 64
+Log work open asic %d file %s
+Log work open diff file %s
+Log work open file %s
+Log work path: %s
+Log work path: %s Asic num: %s
+Long Poll
+Lost %d shares due to no stratum share response from pool %d
+Lost %d shares due to stratum disconnect on pool %d
+Lowmem option prevents resubmitting stratum share
+MHS %ds
+MHS av
+MIIC7zCCAdcCFFbqE9PJlIVF9gfzurkXzS6t7SPIMA0GCSqGSIb3DQEBCwUAMDQx
+Maximum number of work items to have queued
+Memory allocation failed
+MerkleRoot
+Method 'subscribe' not found for service 'mining.extranonce'
+Mined %.0f accepted shares of %d requested
+Miner
+Miner compile time: %s type: %s
+Minimise caching of shares for low memory applications
+Missing JSON 'command'
+Most likely you have input the wrong URL, forgotten to add a port, or have not set up workers
+Multi version mining!
+NUL byte in object key not supported
+Need to specify at least one pool server.
+Network Blocks
+Network diff set to %s
+New best share: %s
+New block detected on network
+New block detected on network before pool notification
+New block: %s... diff %s
+New blocks detected on network: %d
+No ASCs
+No GBT coinbase + append support found, pool unusable if it has no stratum
+No Stratum, GBT or Solo support in pool %d %s unable to use
+No login credentials supplied for pool %u %s
+No matching session id for resubmitting stratum share
+No parameter for URL found
+No parameter for quota found
+No pools
+No semicolon separated quota;URL pair found
+No servers could be used! Exiting.
+No servers were found that could be used to get work from.
+No valid pools, please configure them first!
+NonceTime
+Nonces
+Not attempting to submit shares
+Null string passed to valid_ascii from in %s %s():%d
+Null string passed to valid_hex from in %s %s():%d
+OPENSSL_1_1_0
+OPENSSL_init_crypto
+OPENSSL_init_ssl
+Open miner version file %s error
+Option %s: description cannot be NULL
+Option %s: does not begin with '-'
+Option %s: does not take arguments '%s'
+Option %s: invalid long option '--'
+Option %s: invalid short option '%.*s'
+Option %s: unknown entry type %u
+Options for both config file and command line
+Options for command line only
+PEM_read_bio_X509
+POOL %d support ab mode!
+POOLS
+POSIXLY_CORRECT
+PROOF OF WORK RESULT: false (booooo)
+PROOF OF WORK RESULT: true (yay!!!)
+Parsed proc id is: %d
+Parsing JSON option %s: %s
+Password for bitcoin JSON-RPC server
+Pausing execution as per stop time %02d:%02d scheduled
+Please check the details from the list below of the servers you have input
+Pool %d %s alive
+Pool %d %s alive, testing stability
+Pool %d %s failed to return work
+Pool %d %s not responding!
+Pool %d %s stable for >%d seconds
+Pool %d JSON extranonce subscribe failed: %s
+Pool %d asking for inappropriately long nonce2 length %d
+Pool %d coinbase %s
+Pool %d communication resumed, submitting work
+Pool %d confirmed mining.subscribe with extranonce1 %s extran2size %d
+Pool %d difficulty changed to %.1f
+Pool %d difficulty changed to %d
+Pool %d difficulty set to %f
+Pool %d don't support ab!
+Pool %d extranonce change requested
+Pool %d extranonce subscribing enabled.
+Pool %d is tcp pool.
+Pool %d is tls pool.
+Pool %d message: %s
+Pool %d now up to date at height %d
+Pool %d ping
+Pool %d rejected %d sequential shares, disabling!
+Pool %d rolling mask do not match!
+Pool %d stale share detected, discarding
+Pool %d stale share detected, submitting as pool requested
+Pool %d stale share detected, submitting as user requested
+Pool %d stratum session id: %s
+Pool %d stratum share result lag time %d seconds
+Pool %d stratum share submission failure
+Pool %d stratum share submission lag time %d seconds
+Pool %d successfully negotiated resume with the same session ID
+Pool %u slow/down or URL or credentials invalid
+Pool Rejected%
+Pool Stale%
+Pool Stale%%
+Pool setup failed
+Pool support multi version
+Pool: %d  URL: %s  User: %s  Password: %s
+Pool: %s
+Popping work from get queue to get work
+Port number of miner API
+Press any key to exit, or cgminer will wait indefinitely for an alive pool.
+PrevHash
+Print this message
+Priority
+Probing for GBT support
+Probing for an alive pool
+Proxy
+Proxy Type
+Pushing pool %d work to stratum queue
+Pushing sem post to thread %d
+Pushing submit work to work thread
+Pushing work from pool %d to hash queue
+Quit after mining N shares (default: unlimited)
+Quota
+RECVD: %s
+ROJb6MA4nOaahPDvVxoCV/Ypvky17BH0Vkt+p7gs+58dDDRAVg6C5iSueYXHUmAs
+Rate is lower than ideal rate
+Read miner version file %s error %d
+Reaped %d curl%s from pool %d
+Received from proxy %s:%s - %s
+Received kill message
+Reject ratio: %.1f%%
+Rejected
+Rejected %s %s %d %s%s %s%s version 0x%x
+Rejected difficulty shares: %1.f
+Rejected shares: %lld
+Rejected untracked stratum share from pool %d
+Rejecting
+Rejecting pool %d now accepting shares, re-enabling!
+Remote Failures
+Restarting execution as per start time %02d:%02d scheduled
+Retrieving block template from pool %s
+Rotate
+Round Robin
+Run cgminer in benchmark mode - produces no shares
+Run cgminer in benchmark mode using a work file - produces no shares
+Runtime: %d hrs : %d mins : %d secs
+SOLVED %d BLOCK%s!
+SSL error #%d in accept,program terminated
+SSL_CIPHER_get_name
+SSL_CTX_free
+SSL_CTX_get_cert_store
+SSL_CTX_new
+SSL_connect
+SSL_free
+SSL_get_current_cipher
+SSL_get_error
+SSL_get_peer_certificate
+SSL_get_verify_result
+SSL_new
+SSL_read
+SSL_set_fd
+SSL_shutdown
+SSL_write
+START %s
+STATS
+STATUS
+SUMMARY
+SaMtvdVIBDY6lOIPfKMdmYeJxbl5wWtXlXSF2cYvLcZa4s6TsT2ead8lLEy7jVR2
+See example-S7.conf or S9.conf for an example configuration.
+Select timeout/failed connect
+Selecting pool %d for work
+Sending proxy %s:%s - %s
+Set a time of day in HH:MM to start mining (a once off without a stop time)
+Set a time of day in HH:MM to stop mining (will quit without a start time)
+Set log file open flag, default: a+
+Set log file, default: bmminer.log
+Set log work asic num, following: 1, 32, 64
+Set log work file path, following: minertext
+Set miner version file
+Set socks4 proxy (host:port)
+Set time in seconds to fall back to a higher priority pool after period of instability
+Setting pool %d to quota %d
+Share above target
+Share submissions: %lld
+Shutdown signal received.
+Shutting down mining threads
+Socket closed waiting in recv_line
+Solved blocks: %d
+Specify API listen address, default: 0.0.0.0
+Specify the filename of the default config file
+Stale
+Stale data from pool %d at height %d
+Stale submissions discarded due to new blocks: %lld
+Standard output missing for share log
+Start %s function
+Start cgminer with -T to see what failed to load.
+Started %s
+Started at %s
+Status
+Store %s can't %s() the list - from %s %s() line %d in %s %s():%d
+Stratum Active
+Stratum URL
+Stratum authorisation success for pool %d
+Stratum connection to pool %d interrupted
+Stratum connection to pool %d resumed
+Stratum extranonce subscribe for pool %d
+Stratum from pool %d detected new block at height %d
+Stratum from pool %d requested work restart
+Stratum q returned empty work
+Stratum reconnect requested from pool %d to %s
+Stratum select failed on pool %d with value %d
+Stratum send failed due to no pool stratum_active
+Submitting share %08lx to pool %d
+Submitting work remotely delay occasions: %d
+Succeeded delayed connect
+Succeeded immediate connect
+Success negotiating with %s:%s HTTP proxy
+Success negotiating with %s:%s SOCKS5 proxy
+Successfully mined %d accepted shares as requested and exiting.
+Successfully rolled work
+Successfully submitted, adding to stratum_shares db
+Suggest miner difficulty for pool to user (default: none)
+Summary
+Summary of per device statistics:
+Summary of runtime statistics:
+Switching pool %d %s to %s
+Switching to pool %d %s
+Switching to pool %d %s - first alive pool
+T09MMB4XDTI0MDgzMDAyNDAwMloXDTM0MDgyODAyNDAwMlowNDELMAkGA1UEBhMC
+TLS_client_method
+Target: %s
+Temp is too high
+Tenperature
+Terminating execution as planned
+Testing pool %d stratum %s
+Testing pool %s
+Thread %d being disabled
+Thread %d being re-enabled
+Timed out waiting for data on socket_full
+Timed out waiting for response extranonce.subscribe
+Timed out waiting for response in initiate_stratum
+Too many levels of JSON includes (limit 10) or a loop
+Too many values passed to set temp cutoff
+Total MH
+TrgVal? %s
+U0cxEzARBgNVBAgMClNvbWUtU3RhdGUxEDAOBgNVBAoMB0FOVFBPT0wwggEiMA0G
+URL for bitcoin JSON-RPC server
+Unable to get work from server occasions: %d
+Unable to set thread to high priority
+Unable to set thread to low priority
+Unexpected extra commandline arguments
+Unknown
+Unknown address family.
+Unknown stratum msg: %s
+Unrecognized request provided
+Unsupported proxy type for %s:%s
+Upper bound on how many seconds after getting work we consider a share from it stale
+Upper bound on time spent scanning current work, in seconds
+Usage: %s
+Use custom pipe cmd for output messages
+Use extra wide display without toggling
+Use only user + pass or userpass, but not both
+Use system log for output messages (default: standard error)
+Username for bitcoin JSON-RPC server
+Username:Password pair for bitcoin JSON-RPC server
+Utility
+Utility (accepted shares / min): %.2f/min
+VERSION
+Value out of range
+Verbose dump of protocol-level activities
+Verify return code: %ld (%s)
+Version
+WARNING
+WARNING - Mined only %.0f shares of %d requested.
+WTF MUTEX ERROR ON LOCK! errno=%d in %s %s():%d
+WTF MUTEX ERROR ON UNLOCK! errno=%d in %s %s():%d
+WTF No pool %d found!
+WTF RDLOCK ERROR ON LOCK! errno=%d in %s %s():%d
+WTF RWLOCK ERROR ON UNLOCK! errno=%d in %s %s():%d
+WTF WRLOCK ERROR ON LOCK! errno=%d in %s %s():%d
+Waiting for work to be available from pools.
+Waiting on sem in miner thread
+Watchdog
+Watchpool
+Will pause execution as scheduled at %02d:%02d
+Will restart execution as scheduled at %02d:%02d
+Work Utility
+Work Utility (diff1 shares solved / min): %.2f/min
+Work available from pools, resuming.
+Work items generated locally: %d
+Work job_id %s nonce2 %llu ntime %s
+Work stale due to block mismatch
+Work stale due to expiry
+Work stale due to fail only pool mismatch
+Work stale due to stratum inactive
+Work stale due to stratum job_id mismatch
+Work update message received
+Write select failed on pool %d sock
+Wrong number
+X509_STORE_add_cert
+X509_check_host
+X509_check_ip_asc
+X509_free
+X509_verify_cert_error_string
+YES (hash <= target)
+Zero length string passed to valid_ascii from in %s %s():%d
+[%02d:%02d:%02d.%03d]
+[%d-%02d-%02d %02d:%02d:%02d.%03d]
+[%d-%02d-%02d %02d:%02d:%02d]
+[thread %d: %llu hashes, %.1f mhash/sec]
+\u%04X
+\u%04X\u%04X
+\u0000 is not allowed without JSON_ALLOW_NUL
+_ITM_deregisterTMCloneTable
+_ITM_registerTMCloneTable
+__assert_fail
+__ctype_b_loc
+__ctype_tolower_loc
+__errno_location
+__get_queued
+__gmon_start__
+__isoc99_sscanf
+__libc_start_main
+__pthread_register_cancel
+__pthread_unregister_cancel
+__pthread_unwind_next
+__res_init
+__sigsetjmp
+__strdup
+_copy_work
+_k_add_head
+_k_add_tail
+_k_free_list
+_k_free_store
+_k_insert_after
+_k_insert_before
+_k_list_transfer_to_head
+_k_list_transfer_to_tail
+_k_new_list
+_k_unlink_item
+_k_unlink_tail
+`QpG2
+abort
+about to send a flush api semaphore
+about to send detect
+about to send job, size is %d
+about to send shutdown
+accept
+accept error
+accepted
+access
+add_cgpu
+add_cgpu(cgpu)
+add_pool
+add_pool_details
+add_queued
+address_to_pubkeyhash
+aeabi
+after add pool, pool->pool_no = %d, pool->rpc_url = %s
+after reload pool, pool->pool_no = %d, pool->rpc_url = %s
+age_queued_work
+api bind to port %d, failed (%s)
+api_init_socket
+api_new.c
+api_version
+ascdevice
+asic_num
+bbversion: %s
+before add pool, pool->pool_no = %d, pool->rpc_url = %s
+bestshare
+bind error
+bitmain-freq-level
+bitmain-work-mode
+bitmain_api_detect
+bitmain_api_stats
+bitmain_api_status
+bitmain_c5_detect
+bitmain_c5_prepare
+bitmain_c5_scanhash
+bitmain_c5_shutdown
+bitmain_c5_update
+bitmain_flush_api
+bitmain_flush_api fail: send %s, times=%d, ret=%d
+bitmain_shutdown
+bitmain_submit_nonce
+bitmain_update_job
+block_exists
+block_exists OOM
+bmminer init done!!!
+bmminer.conf
+bmminer.log
+c == d
+calc_midstate
+calloc
+cause
+cb_bitmain_api_stats
+cb_bitmain_submit_nonce
+ccan/opt/parse.c
+cert check fail
+cert of pool is verify fail
+cg@%s
+cg_completion_timeout
+cgminer
+cgminer 1.0.0
+cgminer call shutdown
+cgminer restart
+cgminer socket init failes.
+cgminer socket init succeeds.
+cgminer time error total_secs = %f last_total_secs = %f
+cgminer.c
+cgminer_socket_init
+chain
+chain%d
+chain_acn%d
+chain_acs%d
+chain_hw%d
+chain_num
+chain_rate%d
+check no pool and user retry!
+check success, send %s
+check success, send %s, times=%d
+clean: %s
+clear_pool_work
+clear_sock
+clear_stratum_shares
+client.get_version
+client.reconnect
+client.show_message
+clock_gettime
+clock_nanosleep
+clone_queued_work_byid
+clone_queued_work_bymidstate
+close - failed to close read end of pipe for --monitor
+close - failed to close write end of pipe for --monitor
+coinbase1: %s
+coinbase2: %s
+completion_thread
+config too fast, pool is changing, please wait
+connect err:
+connect_addr: %s
+control character 0x%x
+copy_drv
+copy_time
+count >= 2
+cp_prio
+create test_pool_thread pool[%d]
+ct_a/fcb/%d
+ct_a/main
+current_pool
+dOPkWjARKZcz+SE3ruEGo/x/Wqt3uBfzzKlGuae4nbEfBEj1yNl6bCA847RNurV4
+decode_unicode_escape
+diff1
+diffa
+diffr
+diffs
+dirname
+discard
+discard_stale
+discarded
+do_dump
+doesn't allow an argument
+driver-btm-c5_socketa.c
+dump.c
+dup2 - failed to alias stderr to write end of pipe for --monitor
+dup2 - in child, failed to alias read end of pipe to stdin for --monitor
+dupalloc
+duplicate object key
+eeprom
+eeprom_bin
+eeprom_code
+eeprom_freq
+eeprom_ft
+eeprom_loaded
+eeprom_vol
+elapsed
+enable_device
+end == saved_text + lex->saved_text.length
+end == strbuffer->value + strbuffer->length
+end of file expected
+enter_sleep
+error pool input
+error_code
+error_message
+execl
+execl - in child failed to exec user specified command for --monitor
+execv
+false
+fan%d
+fan_num
+fclose
+fcntl
+fdopen
+ffffff
+fflush
+fgetc
+fgets
+fileno
+fill_queue
+find_queued_work_byid
+find_queued_work_bymidstate
+floor
+flush_queue
+fopen64
+fork - failed to fork child process for --monitor
+fputc
+fread
+freeaddrinfo
+freq%d
+freq_avg
+frequency
+func1 func2 func3 func4
+fwrite
+gen_stratum_work
+get_benchmark_work
+get_devices
+get_devs_old
+get_pools
+get_pools_old
+get_proxy
+get_queued
+get_rate
+get_statline
+get_stats
+get_stats_old
+get_summary
+get_summary_old
+get_thread
+get_version_old
+get_warning
+get_work
+get_work_by_nonce2
+getaddrinfo
+getenv
+getnameinfo
+getpid
+getsockopt
+gettimeofday
+getworks
+got nonce sz %d
+hash_driver_work
+hash_pop
+hash_push
+hash_sole_work
+hashmeter
+hex2bin scan failed
+hex2bin str truncated
+http0:
+http:
+http://
+https://
+hw_all
+hwp_total
+i == size
+in %s , pool: %d, pool_url: %s, miner_name: %s
+inc_dev_status
+inc_hw_errors
+inc_hw_errors_with_diff
+inc_work_stats
+include
+incorrect total_control_threads (%d) should be 8
+index
+inet_addr
+inet_ntop
+inited
+initiate_stratum
+invalid Unicode '\u%04X'
+invalid Unicode '\u%04X\u%04X'
+invalid Unicode escape '%.6s'
+invalid escape
+invalid token
+ioctl
+isatty
+isdupnonce
+job buf total len:%d, offset:%d
+job_id: %s
+json_escape
+jsonp_strtod
+judge_load_config
+k_alloc_items
+k_new_store
+klist.c
+lex_scan_number
+lex_scan_string
+lex_unget_unsave
+libc.so.6
+libcrypto.so.1.1
+libm.so.6
+libpthread.so.0
+librt.so.1
+libssl.so.1.1
+libz.so.1
+listen
+listen error
+lldiv
+load.c
+load_conf_info
+load_config
+load_default_config
+load_default_config_without_restart
+load_temp_cutoffs
+localeconv
+localtime
+log10
+logging.c
+lsdiff
+lstime
+make_work
+malloc
+malloc temp job data buf failed: %d
+mask returned by pool is %s, swaped = 0x%x
+maximum parsing depth reached
+memchr
+memcmp
+memcpy
+memmem
+memmove
+memset
+merkle %d: %s
+method
+midstate %s data %s nonce %s hash %s
+midstate %s data %s nonce %s version %s 
+miner-mode
+miner_count
+miner_id
+miner_thread
+miner_version
+mining.configure
+mining.multi_version
+mining.notify
+mining.ping
+mining.set_difficulty
+mining.set_extranonce
+mining.set_version_mask
+mkdir
+mt_disable
+my_log_curses
+nbit: %s
+network
+new_api
+no (false positive; hash > target)
+no_matching_work
+no_name
+noncedup.c
+not support (%s)
+ntime: %s
+numascs
+openlog
+opt_bitmain_user_ip_cat %d 
+params
+parse_config
+parse_diff
+parse_extranonce
+parse_notify
+parse_one
+parse_reconnect
+parse_recv_buf
+parse_stratum_response
+pclose
+perror
+pidof %s
+pidof %s command result is: %s
+pipe - failed to create pipe for --monitor
+pool %d JSON stratum auth failed: %s
+pool change success, send %s
+pool%d, url = %s, user = %s, pass = %s
+pool_tclear
+pool_tset
+pools
+popen
+power_def
+power_max
+power_min
+prctl
+premature end of input
+prev_hash: %s
+prune_stratum_shares
+pthread_attr_init
+pthread_attr_setstacksize
+pthread_cancel
+pthread_cond_broadcast
+pthread_cond_destroy
+pthread_cond_init
+pthread_cond_signal
+pthread_cond_timedwait
+pthread_cond_wait
+pthread_create
+pthread_detach
+pthread_join
+pthread_mutex_destroy
+pthread_mutex_init
+pthread_mutex_lock
+pthread_mutex_trylock
+pthread_mutex_unlock
+pthread_rwlock_destroy
+pthread_rwlock_init
+pthread_rwlock_rdlock
+pthread_rwlock_trywrlock
+pthread_rwlock_unlock
+pthread_rwlock_wrlock
+pthread_self
+pthread_setcancelstate
+pthread_setcanceltype
+pthread_testcancel
+qKr+0Cebblw7X0UxDvr/0LQSZTQj2lF9MZ1O7MyTq6sCQLTIehuUdZj5AgMBAAEw
+qsort
+quota;URL combination for server with load-balance strategy quotas
+raise
+rate_30m
+rate_5s
+rate_array
+rate_avg
+rate_ideal
+rate_real
+rate_unit
+read_version_file
+real mask = 0x%x, bit_num = %d
+real number overflow
+real_miner_type
+realloc
+realloc_strcat
+reap_curl
+rebuild_job_buf
+recalloc_sock
+reg_resp
+regist
+reject
+reject-reason
+rejected
+reload
+reload_config
+requires an argument
+restart_thread
+restart_wait
+result
+ret = 0x%x
+round
+sched_yield
+screen
+select
+sem_destroy
+sem_init
+sem_post
+sem_timedwait
+sem_trywait
+sem_wait
+send_api_result
+ser_string
+series
+set sockopt err
+set_benchmark_work
+set_curblock
+set_start_time_point total_tv_start_sys=%ld total_tv_end_sys=%ld
+set_target
+setlogmask
+setsockopt
+settime notify.ntime successfuly
+settimeofday
+setup_stratum_socket
+setup_url
+share_diff
+share_result
+sharelog
+sharelog fwrite error
+sharelog printf error
+shutdown
+sigaction
+sigemptyset
+signal - failed to edit signal mask for --monitor
+signal_work_update
+sleep
+socket
+socket err:
+socket error
+socketa_api.c
+socks4:
+socks4_negotiate
+socks4a:
+socks5:
+socks5_negotiate
+socks5h:
+sprintf
+stale_work
+start %s
+start ssl connect
+status
+stderr
+stdin
+stdout
+stpcpy
+str[0] == 'u'
+str_text
+stratum+tcp://
+stratum+tls://
+stratum_rthread
+stratum_send
+stratum_sthread
+strcasecmp
+strcat
+strchr
+strcmp
+strconv.c
+strcpy
+strcspn
+stream->buffer[stream->buffer_pos] == c
+stream->buffer_pos > 0
+stream_get
+stream_unget
+strerror
+string or '}' expected
+strlen
+strlen is: %d
+strncasecmp
+strncat
+strncmp
+strncpy
+strpbrk
+strstr
+strtod
+strtof
+strtok
+strtol
+strtoll
+submit_noffset_nonce
+submit_tested_work
+submit_work_async
+suggestion
+summary
+supports_resume
+suspend_stratum
+switch_pools
+sysconf
+sysinfo
+syslog
+t7c4n7pK969hGXi9P77ckBlG69xMKvk4hfDvpJBWxHD9GF7Zi2ntfxkH7lsFiLwK
+tailsprintf buffer overflow in %s %s line %d
+take_queued_work_bymidstate
+temp%d
+temp2_%d
+temp_chip
+temp_chip%d
+temp_max
+temp_num
+temp_pcb
+temp_pcb%d
+temp_pic
+temp_pic%d
+test_pool_thread
+test_work_current
+thr_info_create
+thread %d create failed
+timestamp
+too big integer
+too big negative integer
+total rate
+total_acn
+total_freqavg
+total_hash
+total_mhashes_done = %lf
+total_pools = %d, need to remove %d pools
+total_pools after removed = %d
+total_rateideal
+total_work_inc
+tq_freezethaw
+tq_new
+tq_pop
+tq_push
+uAJMOjhJj0foq2v9TmSVqCjpK++9ToviWuf+8/C7Kc/EJEk=
+unable to connect pool by ssl, connect ret %d
+unable to decode byte 0x%x
+unable to open %s: %s
+unable to parse certificate in memory
+unexpected newline
+unexpected token
+unrecognized option
+update job
+update_work_stats
+usleep
+util.c
+version-rolling
+version-rolling.mask
+vfprintf
+vsnprintf
+wait_lpcurrent
+wake_gws
+warning
+watchdog thread create failed
+watchdog_thread
+watchpool thread create failed
+work diff %lld diffnum %d
+work prepare failed, exiting mining thread %d
+work_completed
+wrong arguments
+xAxis
+zero_stats
+{"id": %d, "method": "mining.authorize", "params": ["%s", "%s"]}
+{"id": %d, "method": "mining.extranonce.subscribe", "params": []}
+{"id": %d, "method": "mining.subscribe", "params": ["%s/%s", "%s"]}
+{"id": %d, "method": "mining.subscribe", "params": ["%s/%s"]}
+{"id": %d, "method": "mining.subscribe", "params": []}
+{"id": %d, "method": "mining.suggest_difficulty", "params": [%d]}
+{"id": %d, "result": "cgminer/1.0.0", "error": null}
+{"id": %d, "result": "pong", "error": null}
+{"id":%d, "method":"mining.configure", "params":[["version-rolling"],{"version-rolling.mask":"%08x","version-rolling.min-bit-count":%d}]}
+{"method": "getwork", "params": [], "id":0}
+{"params": ["%s", "%s", "%s", "%s", "%s", "%08x"], "id": %d, "method": "mining.submit"}
+{"params": ["%s", "%s", "%s", "%s", "%s"], "id": %d, "method": "mining.submit"}

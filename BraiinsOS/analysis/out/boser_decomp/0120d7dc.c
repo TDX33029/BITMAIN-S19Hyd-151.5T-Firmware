@@ -1,0 +1,121 @@
+// FUN_0120d7dc @ 0120d7dc size=688 calls_out=8 calls_in=2
+// strings: boser-unix | log_to_file | log_to_file | LOG_TO_FILE | log-to-file
+
+void FUN_0120d7dc(undefined4 param_1)
+
+{
+  undefined4 uVar1;
+  undefined4 *puVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  undefined4 uVar5;
+  undefined4 uVar6;
+  undefined4 uVar7;
+  undefined4 uVar8;
+  undefined *puVar9;
+  undefined4 uVar10;
+  undefined1 uVar11;
+  undefined1 uVar12;
+  undefined4 *puVar13;
+  undefined1 auStack_578 [104];
+  int local_510;
+  int local_50c;
+  int local_508;
+  char *local_458;
+  undefined4 local_454;
+  undefined4 local_450;
+  undefined4 local_44c;
+  undefined1 local_448;
+  undefined2 uStack_447;
+  undefined1 local_445;
+  undefined4 local_408;
+  undefined4 *local_404;
+  undefined4 local_400;
+  undefined4 local_3fc;
+  undefined4 local_3f8;
+  undefined4 local_3f4;
+  undefined4 local_3f0;
+  undefined4 local_3ec;
+  undefined4 local_3e8;
+  undefined *local_3e4;
+  undefined4 local_3e0;
+  undefined2 local_3dc;
+  undefined2 local_3da;
+  undefined1 auStack_298 [284];
+  uint local_17c;
+  undefined2 local_160 [20];
+  undefined4 local_138 [64];
+  undefined4 local_38;
+  undefined4 local_34;
+  undefined2 uStack_2f;
+  undefined1 local_2d;
+  
+  FUN_012a6adc(auStack_578,"boser-unix",10);
+  local_3dc = 0x100;
+  local_3e4 = &DAT_0056c9e0;
+  local_3e0 = 4;
+  local_3e8 = 0;
+  local_3ec = 4;
+  local_3f0 = 0;
+  local_3f4 = 0;
+  local_3f8 = 4;
+  local_3fc = 0;
+  local_400 = 0;
+  local_404 = (undefined4 *)&SUB_00000004;
+  local_408 = 0;
+  FUN_015f5ab8(&local_408);
+  uVar10 = local_3e0;
+  puVar9 = local_3e4;
+  uVar8 = local_3e8;
+  uVar7 = local_3ec;
+  uVar6 = local_3f0;
+  uVar5 = local_3f4;
+  uVar4 = local_3f8;
+  uVar3 = local_3fc;
+  puVar2 = local_404;
+  uVar1 = local_408;
+  *local_404 = "log_to_file";
+  local_404[1] = 0xb;
+  local_160[0] = local_3da;
+  local_400 = 1;
+  uVar12 = local_3dc._1_1_;
+  uVar11 = (undefined1)local_3dc;
+  if (local_508 == local_510) {
+    FUN_012ba2f4(&local_510);
+  }
+  puVar13 = (undefined4 *)(local_50c + local_508 * 0x30);
+  *puVar13 = uVar1;
+  *(undefined1 *)((int)puVar13 + 0x2d) = uVar12;
+  *(undefined1 *)(puVar13 + 0xb) = uVar11;
+  puVar13[9] = puVar9;
+  puVar13[10] = uVar10;
+  puVar13[2] = 1;
+  puVar13[3] = uVar3;
+  puVar13[4] = uVar4;
+  puVar13[5] = uVar5;
+  puVar13[6] = uVar6;
+  puVar13[7] = uVar7;
+  *(undefined2 *)((int)puVar13 + 0x2e) = local_160[0];
+  local_508 = local_508 + 1;
+  puVar13[8] = uVar8;
+  puVar13[1] = puVar2;
+  FUN_01bed4e2(&local_408,auStack_578,0x16c);
+  FUN_012bae9c(local_160,"log_to_file",0xb);
+  FUN_01bed4e2(auStack_578,local_160,0x134);
+  FUN_012ba3e8(auStack_298,auStack_578,"LOG_TO_FILE",0xb);
+  local_17c = local_17c & 0xfffffffe;
+  FUN_01bed4e2(local_160,auStack_298,0x134);
+  FUN_0120d6d0(local_138);
+  local_138[0] = 0;
+  FUN_01bed4e2(auStack_578,local_160,0x120);
+  uStack_447 = uStack_2f;
+  local_448 = 2;
+  local_454 = 0xb;
+  local_450 = local_38;
+  local_44c = local_34;
+  local_445 = local_2d;
+  local_458 = "log-to-file";
+  FUN_012a6d50(param_1,&local_408,auStack_578);
+  return;
+}
+

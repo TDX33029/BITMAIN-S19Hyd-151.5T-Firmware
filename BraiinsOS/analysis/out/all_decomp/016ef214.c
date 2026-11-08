@@ -1,0 +1,11 @@
+// FUN_016ef214 @ 016ef214 size=60 calls_out=1 calls_in=0
+// strings: 
+
+undefined4 FUN_016ef214(int param_1)
+
+{
+  FUN_01747ef4(*(undefined4 *)(param_1 + 8));
+  *(undefined4 *)(param_1 + 8) = 0;
+  return 0;
+}
+

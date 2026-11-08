@@ -1,0 +1,4 @@
+file,original,functions,commands,files
+updateporc.sh,Unpacked/zynq/minerfs.d/rootfs/usr/sbin/updateporc.sh,checkType;poolUpdate;rootUpdate;mount_update;prepare_ubifs;set_marker,cat;cp;echo;grep;jq;mv;printf;rm;sed;sync;umount,/config/cgminer.conf;/config/sn;/dev/mtd0;/dev/mtd6;/dev/null;/dev/ubi1;/dev/ubi1_0;/dev/ubi_ctrl;/etc/bitmain-adv.pub;/etc/bitmain.pub;/etc/mtab;/etc/sudoers;/tmp/pool;/tmp/root;/tmp/update-mount-err.log;/tmp/updatedata;/tmp/updatedata/;/tmp/updatedata/update.bmu;/usr/bin/FileParser;/usr/bin/fw_version;/usr/bin/isolate_time;/usr/bin/sudo
+Update.sh,Unpacked/zynq/update.d/rootfs/etc/init.d/Update.sh,spliteFile;checkFile;writeToNand;makeSigImg;spliteNandSigImg,,/dev/mtd0;/dev/mtd1;/dev/mtd3;/dev/mtd5;/dev/null;/etc/bitmain.pub;/tmp/256BFF;/tmp/nandBin;/tmp/tmpNand;/tmp/tmpfw;/tmp/tmpfw/;/usr/bin/FileParser
+init,Unpacked/zynq/update.d/rootfs/init,,,/bin/mount;/dev/console;/sbin/init

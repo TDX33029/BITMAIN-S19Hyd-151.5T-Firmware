@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_usertrack.so  (9592 B)  libs: libc.so.6
+00000960  sz=0      _init
+00001274  sz=112    mod_usertrack_plugin_init
+000012e4  sz=0      _fini

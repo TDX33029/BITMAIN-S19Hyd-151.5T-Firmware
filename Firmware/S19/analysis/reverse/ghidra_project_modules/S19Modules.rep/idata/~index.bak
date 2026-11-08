@@ -1,0 +1,7 @@
+VERSION=1
+/
+/ko_bin
+  00000000:bitmain_axi.ko:c0a816ffb4290460825593000
+  00000001:fpga_mem_driver.ko:c0a816ffb4490461482302200
+NEXT-ID:2
+MD5:d41d8cd98f00b204e9800998ecf8427e

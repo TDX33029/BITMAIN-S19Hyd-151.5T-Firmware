@@ -1,0 +1,481 @@
+INFO  Using log config file: jar:file:/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/tools/ghidra_12.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Lenovo\AppData\Roaming\ghidra\ghidra_12.2_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Lenovo\AppData\Roaming\ghidra\ghidra_12.2_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (730 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Loaded 53 trusted CA certificates from the OS trust store. (DefaultTrustManagerFactory)  
+INFO  Loaded 118 trusted CA certificates from the Java default trust store. (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (1867 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (19 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\ghidra_12.2_PUBLIC\Ghidra\Features\Swift\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\reverse\ghidra_project\S19Hydro (HeadlessAnalyzer)  
+INFO  Opening project: D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\reverse\ghidra_project\S19Hydro (HeadlessProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\reverse\ghidra_project\S19Hydro (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/antlogin?MD5=1db4765cb5c79d7f42b19c5f8e4b2faa (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/antlogin?MD5=1db4765cb5c79d7f42b19c5f8e4b2faa...
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'antlogin' to imported libraries...
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/antlogin] - 4 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/antlogin?MD5=1db4765cb5c79d7f42b19c5f8e4b2faa (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[-36, 0, 80, 50, -58, 72, 113, 31, 73, 75, 85, -122, -31, 97, -79, -58, -124, -110, -114, -101], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Packed database cache: C:\Users\Lenovo\AppData\Local\ghidra\packed-db-cache (PackedDatabaseCache)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  No functions detected that make variadic function calls with format strings containing format specifiers (FormatStringAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.022 secs
+    ARM Symbol                                 0.002 secs
+    ASCII Strings                              0.218 secs
+    Apply Data Archives                        0.400 secs
+    Call Convention ID                         0.001 secs
+    Call-Fixup Installer                       0.012 secs
+    Create Address Tables                      0.001 secs
+    Create Function                            0.028 secs
+    DWARF                                      0.008 secs
+    Data Reference                             0.008 secs
+    Decompiler Switch Analysis                 0.739 secs
+    Demangler GNU                              0.030 secs
+    Disassemble                                0.012 secs
+    Disassemble Entry Points                   0.066 secs
+    Embedded Media                             0.002 secs
+    External Entry References                  0.001 secs
+    Function ID                                0.060 secs
+    Function Start Pre Search                  0.007 secs
+    Function Start Search                      0.066 secs
+    Function Start Search After Code           0.001 secs
+    Function Start Search After Data           0.005 secs
+    GCC Exception Handlers                     0.009 secs
+    Non-Returning Functions - Discovered       0.000 secs
+    Non-Returning Functions - Known            0.003 secs
+    Reference                                  0.008 secs
+    Shared Return Calls                        0.003 secs
+    Source Language Support                    0.002 secs
+    Stack                                      0.006 secs
+    Subroutine References                      0.003 secs
+    Variadic Function Signature Override       0.007 secs
+-----------------------------------------------------
+     Total Time   1 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/antlogin?MD5=1db4765cb5c79d7f42b19c5f8e4b2faa (HeadlessAnalyzer)  
+INFO  /aux_bin/antlogin: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/antlogin (S19Hydro:/aux_bin/antlogin) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/cgminer-api?MD5=4475c2944d1f0819efb4b3f38edfa24c (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/cgminer-api?MD5=4475c2944d1f0819efb4b3f38edfa24c...
+ELF Relocation Failure: R_ARM_COPY (20, 0x14) at 00022070 (Symbol = stderr) - Runtime copy not supported (4-bytes)
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'cgminer-api' to imported libraries...
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/cgminer-api] - 22 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/cgminer-api?MD5=4475c2944d1f0819efb4b3f38edfa24c (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[80, -118, 40, 65, -40, 105, -105, 13, 23, -119, 96, 118, 72, -117, -57, 82, 29, 115, 83, -15], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.046 secs
+    ARM Symbol                                 0.000 secs
+    ASCII Strings                              0.005 secs
+    Apply Data Archives                        0.128 secs
+    Call Convention ID                         0.002 secs
+    Call-Fixup Installer                       0.004 secs
+    Create Address Tables                      0.003 secs
+    Create Address Tables - One Time           0.001 secs
+    Create Function                            0.016 secs
+    DWARF                                      0.001 secs
+    Data Reference                             0.013 secs
+    Decompiler Switch Analysis                 0.687 secs
+    Demangler GNU                              0.004 secs
+    Disassemble                                0.025 secs
+    Disassemble Entry Points                   0.017 secs
+    Embedded Media                             0.001 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.000 secs
+    Function Start Pre Search                  0.005 secs
+    Function Start Search                      0.047 secs
+    Function Start Search After Code           0.003 secs
+    Function Start Search After Data           0.005 secs
+    Function Start Search delayed - One Time   0.005 secs
+    GCC Exception Handlers                     0.001 secs
+    Non-Returning Functions - Discovered       0.003 secs
+    Non-Returning Functions - Known            0.003 secs
+    Reference                                  0.016 secs
+    Shared Return Calls                        0.006 secs
+    Source Language Support                    0.000 secs
+    Stack                                      0.015 secs
+    Subroutine References                      0.004 secs
+    Variadic Function Signature Override       1.834 secs
+-----------------------------------------------------
+     Total Time   2 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/cgminer-api?MD5=4475c2944d1f0819efb4b3f38edfa24c (HeadlessAnalyzer)  
+INFO  /aux_bin/cgminer-api: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/cgminer-api (S19Hydro:/aux_bin/cgminer-api) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/FileParser?MD5=58b07e1d46ce079c5bd5b25cb2f9ac2c (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/FileParser?MD5=58b07e1d46ce079c5bd5b25cb2f9ac2c...
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'FileParser' to imported libraries...
+  [libcrypto.so.1.1] -> not found in project
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/FileParser] - 25 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/FileParser?MD5=58b07e1d46ce079c5bd5b25cb2f9ac2c (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[-44, 84, -1, -96, -48, 34, 6, -21, -43, -66, -6, -17, -83, -124, -110, 92, -29, 45, 109, -126], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.063 secs
+    ARM Symbol                                 0.000 secs
+    ASCII Strings                              0.008 secs
+    Apply Data Archives                        0.103 secs
+    Call Convention ID                         0.000 secs
+    Call-Fixup Installer                       0.001 secs
+    Create Address Tables                      0.002 secs
+    Create Address Tables - One Time           0.001 secs
+    Create Function                            0.027 secs
+    DWARF                                      0.001 secs
+    Data Reference                             0.008 secs
+    Decompiler Switch Analysis                 1.278 secs
+    Demangler GNU                              0.003 secs
+    Disassemble                                0.050 secs
+    Disassemble Entry Points                   0.012 secs
+    Embedded Media                             0.000 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.000 secs
+    Function Start Pre Search                  0.007 secs
+    Function Start Search                      0.068 secs
+    Function Start Search After Code           0.004 secs
+    Function Start Search After Data           0.005 secs
+    Function Start Search delayed - One Time   0.004 secs
+    GCC Exception Handlers                     0.000 secs
+    Non-Returning Functions - Discovered       0.003 secs
+    Non-Returning Functions - Known            0.003 secs
+    Reference                                  0.017 secs
+    Shared Return Calls                        0.002 secs
+    Source Language Support                    0.000 secs
+    Stack                                      0.047 secs
+    Subroutine References                      0.006 secs
+    Variadic Function Signature Override       2.717 secs
+-----------------------------------------------------
+     Total Time   4 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/FileParser?MD5=58b07e1d46ce079c5bd5b25cb2f9ac2c (HeadlessAnalyzer)  
+INFO  /aux_bin/FileParser: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/FileParser (S19Hydro:/aux_bin/FileParser) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/id2mac?MD5=9030f3428f76ee8b7e8957c75f9ccc02 (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/id2mac?MD5=9030f3428f76ee8b7e8957c75f9ccc02...
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'id2mac' to imported libraries...
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/id2mac] - 10 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/id2mac?MD5=9030f3428f76ee8b7e8957c75f9ccc02 (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[-46, -119, 105, -83, 105, 112, -58, -49, 22, 53, 104, 15, 78, -49, -98, -24, 98, -13, -126, -114], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.021 secs
+    ARM Symbol                                 0.000 secs
+    ASCII Strings                              0.001 secs
+    Apply Data Archives                        0.086 secs
+    Call Convention ID                         0.001 secs
+    Call-Fixup Installer                       0.002 secs
+    Create Address Tables                      0.001 secs
+    Create Function                            0.010 secs
+    DWARF                                      0.002 secs
+    Data Reference                             0.006 secs
+    Decompiler Switch Analysis                 0.920 secs
+    Demangler GNU                              0.002 secs
+    Disassemble                                0.006 secs
+    Disassemble Entry Points                   0.008 secs
+    Embedded Media                             0.002 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.000 secs
+    Function Start Pre Search                  0.006 secs
+    Function Start Search                      0.042 secs
+    Function Start Search After Code           0.002 secs
+    Function Start Search After Data           0.002 secs
+    Function Start Search delayed - One Time   0.001 secs
+    GCC Exception Handlers                     0.000 secs
+    Non-Returning Functions - Discovered       0.001 secs
+    Non-Returning Functions - Known            0.002 secs
+    Reference                                  0.010 secs
+    Shared Return Calls                        0.002 secs
+    Source Language Support                    0.001 secs
+    Stack                                      0.006 secs
+    Subroutine References                      0.002 secs
+    Variadic Function Signature Override       0.910 secs
+-----------------------------------------------------
+     Total Time   2 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/id2mac?MD5=9030f3428f76ee8b7e8957c75f9ccc02 (HeadlessAnalyzer)  
+INFO  /aux_bin/id2mac: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/id2mac (S19Hydro:/aux_bin/id2mac) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-ipsig?MD5=fc303d74875de809828c6e3998b1253b (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-ipsig?MD5=fc303d74875de809828c6e3998b1253b...
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'monitor-ipsig' to imported libraries...
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/monitor-ipsig] - 35 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-ipsig?MD5=fc303d74875de809828c6e3998b1253b (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[-120, 37, -86, 52, 42, -116, -53, -106, -71, -48, -5, 71, 1, 89, 37, -118, -122, 89, 29, 106], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.037 secs
+    ARM Symbol                                 0.000 secs
+    ASCII Strings                              0.004 secs
+    Apply Data Archives                        0.105 secs
+    Call Convention ID                         0.000 secs
+    Call-Fixup Installer                       0.004 secs
+    Create Address Tables                      0.001 secs
+    Create Function                            0.017 secs
+    DWARF                                      0.001 secs
+    Data Reference                             0.008 secs
+    Decompiler Switch Analysis                 0.677 secs
+    Demangler GNU                              0.004 secs
+    Disassemble                                0.020 secs
+    Disassemble Entry Points                   0.009 secs
+    Embedded Media                             0.002 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.000 secs
+    Function Start Pre Search                  0.008 secs
+    Function Start Search                      0.078 secs
+    Function Start Search After Code           0.004 secs
+    Function Start Search After Data           0.005 secs
+    Function Start Search delayed - One Time   0.001 secs
+    GCC Exception Handlers                     0.000 secs
+    Non-Returning Functions - Discovered       0.004 secs
+    Non-Returning Functions - Known            0.003 secs
+    Reference                                  0.011 secs
+    Shared Return Calls                        0.001 secs
+    Source Language Support                    0.000 secs
+    Stack                                      0.019 secs
+    Subroutine References                      0.007 secs
+    Variadic Function Signature Override       4.521 secs
+-----------------------------------------------------
+     Total Time   5 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-ipsig?MD5=fc303d74875de809828c6e3998b1253b (HeadlessAnalyzer)  
+INFO  /aux_bin/monitor-ipsig: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/monitor-ipsig (S19Hydro:/aux_bin/monitor-ipsig) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-recobtn?MD5=f76770ec16047093e9334f6d53db66f6 (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-recobtn?MD5=f76770ec16047093e9334f6d53db66f6...
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'monitor-recobtn' to imported libraries...
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/monitor-recobtn] - 21 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-recobtn?MD5=f76770ec16047093e9334f6d53db66f6 (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[-31, -30, -126, -78, 88, 15, 114, -4, 5, 29, -43, 87, 119, 35, -25, -21, -2, -84, -37, -68], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.018 secs
+    ARM Symbol                                 0.001 secs
+    ASCII Strings                              0.002 secs
+    Apply Data Archives                        0.083 secs
+    Call Convention ID                         0.000 secs
+    Call-Fixup Installer                       0.003 secs
+    Create Address Tables                      0.000 secs
+    Create Function                            0.037 secs
+    DWARF                                      0.000 secs
+    Data Reference                             0.007 secs
+    Decompiler Switch Analysis                 0.677 secs
+    Demangler GNU                              0.001 secs
+    Disassemble                                0.007 secs
+    Disassemble Entry Points                   0.005 secs
+    Embedded Media                             0.002 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.001 secs
+    Function Start Pre Search                  0.009 secs
+    Function Start Search                      0.087 secs
+    Function Start Search After Code           0.002 secs
+    Function Start Search After Data           0.002 secs
+    Function Start Search delayed - One Time   0.001 secs
+    GCC Exception Handlers                     0.001 secs
+    Non-Returning Functions - Discovered       0.002 secs
+    Non-Returning Functions - Known            0.002 secs
+    Reference                                  0.008 secs
+    Shared Return Calls                        0.001 secs
+    Source Language Support                    0.001 secs
+    Stack                                      0.005 secs
+    Subroutine References                      0.006 secs
+    Variadic Function Signature Override       2.258 secs
+-----------------------------------------------------
+     Total Time   3 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/monitor-recobtn?MD5=f76770ec16047093e9334f6d53db66f6 (HeadlessAnalyzer)  
+INFO  /aux_bin/monitor-recobtn: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/monitor-recobtn (S19Hydro:/aux_bin/monitor-recobtn) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/update-daemon?MD5=d9aff0380de72234da9895f5960fff2c (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: ARM:LE:32:v8:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\windows\SysWOW64, D:\Document\tempPrj\BITMAIN-S19Hyd-151T-Firmware\Firmware\S19\analysis\tools\jdk-25.0.5+8\bin, C:\windows\Sun\Java\bin, C:\windows\system32, C:\windows, C:\Users\Lenovo\bin, C:\Program Files\Git\mingw64\bin, C:\Program Files\Git\usr\local\bin, C:\Program Files\Git\usr\bin, C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin, C:\Program Files (x86)\VMware\VMware Workstation\bin, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0, C:\Windows\System32\OpenSSH, C:\Program Files\Bandizip, C:\Program Files\nodejs, C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\Tools\Binn, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn, C:\Program Files\Microsoft SQL Server\160\DTS\Binn, C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit, C:\Program Files\MATLAB\R2024b\bin, C:\Program Files\Tailscale, C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit, C:\Program Files\Git\cmd, C:\Program Files\Go\bin, C:\Program Files\Graphviz\bin, C:\Program Files\dotnet, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python310, C:\Users\Lenovo\AppData\Local\Programs\OpenAI\Codex\bin, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314\Scripts, C:\Users\Lenovo\AppData\Local\Programs\Python\Python314, C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher, C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps, C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin, C:\Users\Lenovo\AppData\Roaming\npm, C:\Users\Lenovo\AppData\Local\Programs\DockerDesktop\resources\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin, D:\FlutterSDK\flutter\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1, C:\Users\Lenovo\AppData\Local\Programs\Fiddler, C:\Users\Lenovo\go\bin, C:\Users\Lenovo\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin, C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\Lenovo\.dotnet\tools, C:\Program Files\Zcode\resources\tools\ripgrep, C:\Program Files\Zcode\resources\tools\ugrep, C:\Program Files\Git\usr\bin\vendor_perl, C:\Program Files\Git\usr\bin\core_perl] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/update-daemon?MD5=d9aff0380de72234da9895f5960fff2c...
+ELF Relocation Failure: R_ARM_COPY (20, 0x14) at 00022090 (Symbol = stderr) - Runtime copy not supported (4-bytes)
+Setting block .init_array to read-only
+Setting block .fini_array to read-only
+Setting block .dynamic to read-only
+------------------------------------------------
+
+Linking the External Programs of 'update-daemon' to imported libraries...
+  [libpthread.so.0] -> not found in project
+  [libc.so.6] -> not found in project
+------------------------------------------------
+
+Resolving External Symbols of [/aux_bin/update-daemon] - 29 unresolved symbols, no external libraries configured - skipping
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/update-daemon?MD5=d9aff0380de72234da9895f5960fff2c (HeadlessAnalyzer)  
+INFO  DWARF external debug information found: [BuildIdDebugInfo [buildId=[125, 123, -93, 30, -67, 78, 115, 22, -1, -49, -14, -128, 25, 109, -23, -35, 1, 110, -128, 5], objectType=DEBUGINFO, ]] (ExternalDebugFileSectionProvider)  
+INFO  Unable to find DWARF information, skipping DWARF analysis (DWARFAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ARM Constant Reference Analyzer            0.018 secs
+    ARM Symbol                                 0.001 secs
+    ASCII Strings                              0.002 secs
+    Apply Data Archives                        0.084 secs
+    Call Convention ID                         0.001 secs
+    Call-Fixup Installer                       0.004 secs
+    Create Address Tables                      0.002 secs
+    Create Function                            0.014 secs
+    DWARF                                      0.000 secs
+    Data Reference                             0.004 secs
+    Decompiler Switch Analysis                 0.685 secs
+    Demangler GNU                              0.004 secs
+    Disassemble                                0.011 secs
+    Disassemble Entry Points                   0.006 secs
+    Embedded Media                             0.003 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.000 secs
+    Function Start Pre Search                  0.010 secs
+    Function Start Search                      0.078 secs
+    Function Start Search After Code           0.002 secs
+    Function Start Search After Data           0.002 secs
+    Function Start Search delayed - One Time   0.000 secs
+    GCC Exception Handlers                     0.000 secs
+    Non-Returning Functions - Discovered       0.001 secs
+    Non-Returning Functions - Known            0.001 secs
+    Reference                                  0.007 secs
+    Shared Return Calls                        0.002 secs
+    Source Language Support                    0.001 secs
+    Stack                                      0.007 secs
+    Subroutine References                      0.002 secs
+    Variadic Function Signature Override       1.828 secs
+-----------------------------------------------------
+     Total Time   2 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/update-daemon?MD5=d9aff0380de72234da9895f5960fff2c (HeadlessAnalyzer)  
+INFO  /aux_bin/update-daemon: file created (Lenovo) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /aux_bin/update-daemon (S19Hydro:/aux_bin/update-daemon) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  

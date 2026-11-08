@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_TRACE.so  (5420 B)  libs: libxtables.so.12, libc.so.6
+00000458  sz=0      _init
+000004a8  sz=16     libxt_TRACE_init
+0000059c  sz=0      _fini

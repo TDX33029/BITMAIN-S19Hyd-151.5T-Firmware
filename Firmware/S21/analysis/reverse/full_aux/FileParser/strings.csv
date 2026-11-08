@@ -1,0 +1,135 @@
+string_addr,string,from_addr,func_addr,func_name
+"00010154","/lib/ld-linux-armhf.so.3","0001007c",,
+"00010154","/lib/ld-linux-armhf.so.3","_elfSectionHeaders::00000034",,
+"00010431","libcrypto.so.1.1",,,
+"00010442","__gmon_start__",,,
+"00010451","_ITM_deregisterTMCloneTable",,,
+"0001046d","_ITM_registerTMCloneTable",,,
+"00010487","BIO_new_mem_buf",,,
+"00010497","PEM_read_bio_RSA_PUBKEY",,,
+"000104af","ERR_get_error",,,
+"000104bd","ERR_error_string",,,
+"000104ce","SHA256_Init",,,
+"000104da","SHA256_Update",,,
+"000104e8","SHA256_Final",,,
+"000104f5","RSA_verify",,,
+"00010500","RSA_free",,,
+"00010509","BIO_free",,,
+"00010512","libc.so.6",,,
+"0001051c","strcpy",,,
+"00010523","puts",,,
+"00010528","abort",,,
+"0001052e","printf",,,
+"00010535","strlen",,,
+"0001053c","memset",,,
+"00010543","fseek",,,
+"00010549","memcpy",,,
+"00010550","fclose",,,
+"00010557","fwrite",,,
+"0001055e","fread",,,
+"00010564","fopen64",,,
+"0001056c","__libc_start_main",,,
+"0001057e","__xstat64",,,
+"00010588","OPENSSL_1_1_0",,,
+"00010596","GLIBC_2.4",,,
+"00013c48","Useage:\r","0001090c","000108f8","FUN_000108f8"
+"00013c54","	%s [option] [paramaters]\n\n","0001091c","000108f8","FUN_000108f8"
+"00013c70","	Option:{-f} {-s} {-p} {-n} {-x} {-q}\n","00010928","000108f8","FUN_000108f8"
+"00013c98","		-f [minerType] [fileName] [rootPublicKeyFile]: \n			Only Check If Filename was Valided.\n","00010934","000108f8","FUN_000108f8"
+"00013cf4","		-s [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was Valided, and Splite Bmu To ""/tmp/tmpfw/""\n","00010940","000108f8","FUN_000108f8"
+"00013d6c","		-p [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was Valided, and Dump BmuComments\n","0001094c","000108f8","FUN_000108f8"
+"00013dd8","		-x [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was FullSize BMU\n","00010958","000108f8","FUN_000108f8"
+"00013e34","		-n [nandBinFile]: \n			Splite SigImg To Single File To ""/tmp/tmpNand/""\n","00010964","000108f8","FUN_000108f8"
+"00013e80","		-q: \n			Generate A 256Bytes 0xff File To ""/tmp/256BFF""\n","00010970","000108f8","FUN_000108f8"
+"00013ebc","	Returns:","0001097c","000108f8","FUN_000108f8"
+"00013ec8","		0: \n			Well Done!\n","00010988","000108f8","FUN_000108f8"
+"00013ee0","		Others: \n			Something Wrong!\n","00010994","000108f8","FUN_000108f8"
+"00013f04","Load Nand Image File Failed!","00010a14","000109a8","FUN_000109a8"
+"00013f28","Try To Write To File '%s' Failed!\n","00010ae4","000109a8","FUN_000109a8"
+"00013f4c","/tmp/256BFF","00010bb4","00010b9c","FUN_00010b9c"
+"00013f58","GenFile Failed!","00010bd0","00010b9c","FUN_00010b9c"
+"00013f68","OpenSSL error: %s\n","00010cf0","00010c70","FUN_00010c70"
+"00013f68","OpenSSL error: %s\n","00010dc4","00010c70","FUN_00010c70"
+"00013f68","OpenSSL error: %s\n","0001369c","00012c40","FUN_00012c40"
+"00013f68","OpenSSL error: %s\n","00013750","00012c40","FUN_00012c40"
+"00013f7c","Read Root PubK Failed!","00010cfc","00010c70","FUN_00010c70"
+"00013f94","Check miner.pem Failed!","00010dd0","00010c70","FUN_00010c70"
+"00013fac","BOOT.bin","00010f00","00010de8","FUN_00010de8"
+"00013fb8","devicetree.dtb","00010f50","00010de8","FUN_00010de8"
+"00013fc8","uImage","00010fa8","00010de8","FUN_00010de8"
+"00013fd0","minerfs.image.gz","00011000","00010de8","FUN_00010de8"
+"00013fe4","update.image.gz","0001105c","00010de8","FUN_00010de8"
+"00013ff4","crl.tar.gz","000110a8","00010de8","FUN_00010de8"
+"00014000","miner.btm.tar.gz","00011104","00010de8","FUN_00010de8"
+"00014014","reserve","00011158","00010de8","FUN_00010de8"
+"0001401c","datafile","0001119c","00010de8","FUN_00010de8"
+"00014030","fileName:'%s', size:[%d]\r\n","0001121c","00010de8","FUN_00010de8"
+"0001404c","Create File '%s' Failed!\r\n","00011264","00010de8","FUN_00010de8"
+"00014100","File '%s' Not Enough %d, Something Wrong!\n","00012c94","00012c40","FUN_00012c40"
+"0001412c","Read File '%s' Failed!\n","00012ccc","00012c40","FUN_00012c40"
+"00014144","'%s' Not A Btmu File!\n","00012d08","00012c40","FUN_00012c40"
+"0001415c","miner_type %s\n","00012d34","00012c40","FUN_00012c40"
+"0001416c","miner_type_hash %16llx, bmu_hash %16llx\n","00012d80","00012c40","FUN_00012c40"
+"00014198","input miner_type and bmu miner type donot match!","00012da0","00012c40","FUN_00012c40"
+"000141cc","content:%x\n","00012e0c","00012c40","FUN_00012c40"
+"000141d8","This Package Was Not Full Package!","00012e28","00012c40","FUN_00012c40"
+"000141fc","Content Doesn't Match![%d][%d]\n","00012eac","00012c40","FUN_00012c40"
+"0001421c","file[%d] size:[%d]\n","00012ff0","00012c40","FUN_00012c40"
+"00014230","Check FileSize Failed, FileSize Should Be [%d]Bytes, But It Was [%d] Bytes, And Total Says[%d]\n","00013034","00012c40","FUN_00012c40"
+"00014294","Cannot Open Root PublicKey '%s'!\n","00013080","00012c40","FUN_00012c40"
+"000142b8","Check pem payload failed! ret:[%d]\n","00013150","00012c40","FUN_00012c40"
+"000142e0","/usr/bin/fw_version","00013180","00012c40","FUN_00012c40"
+"000142f4","fw version data: %02X %02X %02X %02X %02X %02X %02X %02X\n","00013218","00012c40","FUN_00012c40"
+"00014330","/tmp/tmpfw/miner.pem","00013258","00012c40","FUN_00012c40"
+"00014348","Dump Miner.pem Failed!\r","000132bc","00012c40","FUN_00012c40"
+"00014360","/tmp/tmpfw/miner.pem.sig","0001329c","00012c40","FUN_00012c40"
+"0001437c","Dump Miner.pem.sig Failed!\r","000132f8","00012c40","FUN_00012c40"
+"00014398","Load Pem Failed!","000136a8","00012c40","FUN_00012c40"
+"000143ac","Check File Sig failed!\r","00013728","00012c40","FUN_00012c40"
+"000143c4","All Done!\r","00013780","00012c40","FUN_00012c40"
+"000143d0","This Comment Of This Package:","00013798","00012c40","FUN_00012c40"
+"000143f0","fileName Too Long!","00013950","00013808","FUN_00013808"
+"000143f0","fileName Too Long!","000139a0","00013808","FUN_00013808"
+"000143f0","fileName Too Long!","00013a50","00013808","FUN_00013808"
+"00014404","pemName Too Long!","000139f0","00013808","FUN_00013808"
+"00014418","Param Err!","00013a90","00013808","FUN_00013808"
+"00014424","Command Not Support!","00013bbc","00013808","FUN_00013808"
+"00025080","/tmp/tmpNand/devicetree.dtb.sig",,,
+"00025104","/tmp/unused",,,
+"00025188","/tmp/tmpNand/uImage.sig",,,
+"0002520c","/tmp/unused",,,
+"00025290","/tmp/tmpNand/minerfs.image.gz.sig",,,
+"00025314","/tmp/unused",,,
+"00025398","/tmp/tmpNand/update.image.gz.sig",,,
+"0002541c","/tmp/unused",,,
+"000254a0","/tmp/tmpNand/miner.btm.sig",,,
+"00025524","/tmp/unused",,,
+"000255a8","/tmp/tmpNand/crl.sig",,,
+"0002562c","/tmp/unused",,,
+"000256b0","/tmp/tmpNand/7kreserve",,,
+"00025734","/tmp/tmpNand/miner.btm",,,
+"000257b8","/tmp/tmpNand/crl",,,
+".shstrtab::00000001",".shstrtab",,,
+".shstrtab::0000000b",".interp",,,
+".shstrtab::00000013",".note.ABI-tag",,,
+".shstrtab::00000021",".note.gnu.build-id",,,
+".shstrtab::00000034",".hash",,,
+".shstrtab::0000003a",".dynsym",,,
+".shstrtab::00000042",".dynstr",,,
+".shstrtab::0000004a",".gnu.version",,,
+".shstrtab::00000057",".gnu.version_r",,,
+".shstrtab::00000066",".rel.dyn",,,
+".shstrtab::0000006f",".rel.plt",,,
+".shstrtab::00000078",".init",,,
+".shstrtab::0000007e",".text",,,
+".shstrtab::00000084",".fini",,,
+".shstrtab::0000008a",".rodata",,,
+".shstrtab::00000092",".ARM.exidx",,,
+".shstrtab::0000009d",".eh_frame",,,
+".shstrtab::000000a7",".init_array",,,
+".shstrtab::000000b3",".fini_array",,,
+".shstrtab::000000bf",".dynamic",,,
+".shstrtab::000000c8",".got",,,
+".shstrtab::000000cd",".data",,,
+".shstrtab::000000d3",".bss",,,
+".shstrtab::000000d8",".ARM.attributes",,,

@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_proxy.so  (22060 B)  libs: libc.so.6
+00001094  sz=0      _init
+00003a18  sz=172    mod_proxy_plugin_init
+00003ac4  sz=0      _fini

@@ -1,0 +1,302 @@
+{
+  "source": "FR-1.42(251016-S21e Hyd.).bmu",
+  "size": 31518194,
+  "size_hex": "0x1e0edf2",
+  "sha256": "4c8343588ec93ce2395f0ea2fd2cb1d40d2cb88ff222d4d9f91f556a443ba660",
+  "outer": {
+    "magic": "0xabababab",
+    "count": 2,
+    "entry_size": 172,
+    "data_offset": 16384,
+    "entries": [
+      {
+        "index": 0,
+        "offset": 16384,
+        "size": 18170354,
+        "strings": [
+          "update.bmu",
+          "zynq7007_HHB70801",
+          "Antminer S21e Hyd."
+        ]
+      },
+      {
+        "index": 1,
+        "offset": 18186738,
+        "size": 13331456,
+        "strings": [
+          "update.bmu",
+          "AMLCtrl_H6HB70801",
+          "Antminer S21e Hyd."
+        ]
+      }
+    ]
+  },
+  "zynq": {
+    "outer_entry": {
+      "index": 0,
+      "offset": 16384,
+      "size": 18170354,
+      "strings": [
+        "update.bmu",
+        "zynq7007_HHB70801",
+        "Antminer S21e Hyd."
+      ]
+    },
+    "size": 18170354,
+    "sha256": "2c63387f2d5980f6f70dfcd7da2c3bb46eddfc05ff2748435a7dfcf9315a693d",
+    "header": {
+      "build_id": "2fb476588c1039d0",
+      "field_0a": "0x1fe",
+      "build_date": "20251016",
+      "parts": [
+        [
+          0,
+          2788480
+        ],
+        [
+          1,
+          8014
+        ],
+        [
+          2,
+          4057320
+        ],
+        [
+          3,
+          7030544
+        ],
+        [
+          4,
+          4280343
+        ],
+        [
+          5,
+          552
+        ],
+        [
+          6,
+          1005
+        ]
+      ],
+      "components_offset": 2048,
+      "trailer_size": 2048
+    },
+    "pubkey_verify_root": null,
+    "parts": [
+      {
+        "index": 0,
+        "size": 2788480,
+        "offset": 2048
+      },
+      {
+        "index": 1,
+        "size": 8014,
+        "offset": 2790528
+      },
+      {
+        "index": 2,
+        "size": 4057320,
+        "offset": 2798542
+      },
+      {
+        "index": 3,
+        "size": 7030544,
+        "offset": 6855862
+      },
+      {
+        "index": 4,
+        "size": 4280343,
+        "offset": 13886406
+      },
+      {
+        "index": 5,
+        "size": 552,
+        "offset": 18166749
+      },
+      {
+        "index": 6,
+        "size": 1005,
+        "offset": 18167301
+      }
+    ],
+    "chain": {
+      "pubkey_signed_by_root": true,
+      "components": [
+        {
+          "index": 0,
+          "size": 2788480,
+          "offset": 2048,
+          "verified": true
+        },
+        {
+          "index": 1,
+          "size": 8014,
+          "offset": 2790528,
+          "verified": true
+        },
+        {
+          "index": 2,
+          "size": 4057320,
+          "offset": 2798542,
+          "verified": true
+        },
+        {
+          "index": 3,
+          "size": 7030544,
+          "offset": 6855862,
+          "verified": true
+        },
+        {
+          "index": 4,
+          "size": 4280343,
+          "offset": 13886406,
+          "verified": true
+        },
+        {
+          "index": 5,
+          "size": 552,
+          "offset": 18166749,
+          "verified": true
+        },
+        {
+          "index": 6,
+          "size": 1005,
+          "offset": 18167301,
+          "verified": true
+        }
+      ],
+      "components_end": 18168306
+    },
+    "boot": {
+      "fsbl": {
+        "offset": 5888,
+        "size": 131088
+      },
+      "bitstream": {
+        "offset": 138784,
+        "size": 2085472
+      },
+      "uboot": {
+        "offset": 2224256,
+        "size": 564224,
+        "version": "U-Boot 2016.07-g4c04e6f-dirty"
+      },
+      "uboot_control_dtb": {
+        "offset": 2683280,
+        "size": 8990
+      }
+    },
+    "uImage": {
+      "magic": "0x27051956",
+      "data_size": 4057256,
+      "load": "0x8000",
+      "entry": "0x8000",
+      "os": 5,
+      "arch": 2,
+      "type": 2,
+      "comp": 0,
+      "name": "Linux-4.6.0-xilinx-g03c746f7",
+      "linux_version": "Linux version 4.6.0-xilinx-g03c746f7 (jenkins@nomd-nomd-fwc-bj) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11) ) #1 SMP PREEMPT Wed De",
+      "config_size": 114247,
+      "vmlinux_size": 11750816
+    },
+    "minerfs": {
+      "uimage": {
+        "magic": "0x27051956",
+        "data_size": 7030480,
+        "load": "0x0",
+        "entry": "0x0",
+        "os": 5,
+        "arch": 2,
+        "type": 3,
+        "comp": 1,
+        "name": "ramdisk"
+      },
+      "image_size": 33554432,
+      "ext2_magic": "0xef53",
+      "inodes": 10016,
+      "blocks": 32768,
+      "extract": {
+        "blocks": 32768,
+        "block_size": 1024,
+        "inodes": 10016,
+        "files": 399,
+        "links": 225,
+        "bytes": 15728547
+      }
+    },
+    "update": {
+      "uimage": {
+        "magic": "0x27051956",
+        "data_size": 4280279,
+        "load": "0x0",
+        "entry": "0x0",
+        "os": 5,
+        "arch": 2,
+        "type": 3,
+        "comp": 1,
+        "name": "ramdisk"
+      },
+      "image_size": 33554432,
+      "ext2_magic": "0xef53",
+      "inodes": 10016,
+      "blocks": 32768,
+      "extract": {
+        "blocks": 32768,
+        "block_size": 1024,
+        "inodes": 10016,
+        "files": 80,
+        "links": 187,
+        "bytes": 8956100
+      }
+    }
+  },
+  "aml": {
+    "outer_entry": {
+      "index": 1,
+      "offset": 18186738,
+      "size": 13331456,
+      "strings": [
+        "update.bmu",
+        "AMLCtrl_H6HB70801",
+        "Antminer S21e Hyd."
+      ]
+    },
+    "size": 13331456,
+    "sha256": "8e43272e96d49d3577c35eaae3ce4c84b9895fb0ea024d1610257aaabea6bed7",
+    "header": {
+      "build_id": "2643e757487f797d",
+      "field_0a": "0x102",
+      "build_date": "20251016",
+      "parts": [
+        [
+          9,
+          13328896
+        ]
+      ],
+      "components_offset": 2048,
+      "trailer_size": 512
+    },
+    "pubkey_verify_root": null,
+    "parts": [
+      {
+        "index": 9,
+        "size": 13328896,
+        "offset": 2048
+      }
+    ],
+    "android": {
+      "kernel_size": 6031360,
+      "kernel_addr": "0x1080000",
+      "ramdisk_size": 7264256,
+      "ramdisk_addr": "0x1000000",
+      "second_size": 30720,
+      "second_addr": "0xf00000",
+      "tags_addr": "0x100",
+      "page_size": 2048,
+      "cmdline": "init=/sbin/init",
+      "consumed": 13328384,
+      "extra": 512
+    }
+  }
+}

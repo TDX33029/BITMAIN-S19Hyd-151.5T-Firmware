@@ -1,0 +1,53 @@
+// FUN_00712a9c @ 00712a9c size=228 calls_out=1 calls_in=0
+// strings: StratumJob
+
+void FUN_00712a9c(int param_1,undefined4 param_2)
+
+{
+  int local_64;
+  undefined *local_60;
+  int local_5c;
+  undefined *local_58;
+  int local_54;
+  undefined *local_50;
+  int local_4c;
+  undefined *local_48;
+  int local_44;
+  undefined *local_40;
+  int local_3c;
+  undefined *local_38;
+  int local_34;
+  undefined *local_30;
+  int local_2c;
+  undefined *local_28;
+  int local_24;
+  undefined *local_20;
+  int *local_1c;
+  undefined *local_18;
+  int local_14;
+  
+  local_1c = &local_14;
+  local_24 = param_1 + 0x40;
+  local_2c = param_1 + 0x70;
+  local_34 = param_1 + 0x6c;
+  local_3c = param_1 + 0x20;
+  local_4c = param_1 + 0x68;
+  local_54 = param_1 + 100;
+  local_5c = param_1 + 0x60;
+  local_64 = param_1 + 0x74;
+  local_14 = param_1 + 0x78;
+  local_28 = &DAT_01859a10;
+  local_30 = &DAT_01859a10;
+  local_48 = &DAT_01859a10;
+  local_50 = &DAT_01859a10;
+  local_58 = &DAT_01859a10;
+  local_18 = &DAT_0185c984;
+  local_20 = &DAT_0185c974;
+  local_38 = &DAT_0185c3cc;
+  local_40 = &DAT_0185c3cc;
+  local_60 = &DAT_01859a00;
+  local_44 = param_1;
+  FUN_00fb36b8(param_2,"StratumJob",10,&DAT_0185c994,10,&local_64,10);
+  return;
+}
+

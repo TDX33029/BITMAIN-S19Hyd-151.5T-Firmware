@@ -1,0 +1,3 @@
+# usr\bin\pcregrep  (31376 B)  libs: libpcre.so.1, libpcreposix.so.0, libc.so.6
+00010c5c  sz=0      _init
+00015204  sz=0      _fini

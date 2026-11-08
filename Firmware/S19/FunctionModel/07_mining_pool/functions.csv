@@ -1,0 +1,8 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x2ecf8,stratum_job_recv,1224,07_mining_pool,1,7,"%s, rec job data %p size: %d\n",../analysis/reverse/full/bmminer/decompiled/2ecf8_FUN_0002ecf8.c
+bmminer,0x2d114,stratum_header_build,2516,07_mining_pool,1,4,Generated stratum header %s | Generated stratum merkle %s,../analysis/reverse/full/bmminer/decompiled/2d114_FUN_0002d114.c
+bmminer,0x3777c,send_job,1300,07_mining_pool,1,3,"start to send job, mid_auto_gen = %d",../analysis/reverse/full/bmminer/decompiled/3777c_FUN_0003777c.c
+bmminer,0x2ea24,stratum_job_parse,652,07_mining_pool,1,3,parse job buf len:%d\n,../analysis/reverse/full/bmminer/decompiled/2ea24_FUN_0002ea24.c
+bmminer,0x2ce80,set_target_diff,600,07_mining_pool,1,3,Diff zero passed to set_target,../analysis/reverse/full/bmminer/decompiled/2ce80_FUN_0002ce80.c
+bmminer,0x2bd54,mining_capability,84,07_mining_pool,1,3,%s\nBuilt with bitmain_c5 mining support.\n,../analysis/reverse/full/bmminer/decompiled/2bd54_FUN_0002bd54.c
+bmminer,0x57ae4,FUN_00057ae4,540,05_freq_voltage;07_mining_pool,0,5,"Want freq: %f, Real freq: %f\n",../analysis/reverse/full/bmminer/decompiled/57ae4_FUN_00057ae4.c

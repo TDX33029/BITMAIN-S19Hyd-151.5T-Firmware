@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_TCPOPTSTRIP.so  (5504 B)  libs: libxtables.so.12, libc.so.6
+00000634  sz=0      _init
+000006cc  sz=16     libxt_TCPOPTSTRIP_init
+00000ad0  sz=0      _fini

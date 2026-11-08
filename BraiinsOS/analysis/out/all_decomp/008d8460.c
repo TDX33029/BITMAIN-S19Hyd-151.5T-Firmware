@@ -1,0 +1,37 @@
+// FUN_008d8460 @ 008d8460 size=108 calls_out=2 calls_in=6
+// strings: 
+
+void FUN_008d8460(undefined4 *param_1)
+
+{
+  bool bVar1;
+  int *piVar2;
+  code *pcVar3;
+  int iVar4;
+  undefined4 uVar5;
+  undefined4 *puVar6;
+  
+  uVar5 = *param_1;
+  puVar6 = (undefined4 *)param_1[1];
+  pcVar3 = (code *)*puVar6;
+  if (pcVar3 != (code *)0x0) {
+    (*pcVar3)(uVar5);
+  }
+  if (puVar6[1] != 0) {
+    thunk_FUN_016d3fb4(uVar5);
+  }
+  piVar2 = (int *)param_1[2];
+  DataMemoryBarrier(0xb);
+  do {
+    iVar4 = *piVar2;
+    bVar1 = (bool)hasExclusiveAccess(piVar2);
+  } while (!bVar1);
+  *piVar2 = iVar4 + -1;
+  if (iVar4 == 1) {
+    DataMemoryBarrier(0xb);
+    FUN_008f2b38(param_1[2]);
+    return;
+  }
+  return;
+}
+

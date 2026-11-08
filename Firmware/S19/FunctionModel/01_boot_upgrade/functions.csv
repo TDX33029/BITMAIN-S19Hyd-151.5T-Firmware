@@ -1,0 +1,14 @@
+program,address,name,size,labels,seed,score,evidence,source
+FileParser,0x10de8,FUN_00010de8,1616,01_boot_upgrade;12_crypto,0,6,crl.tar.gz,../analysis/reverse/full_aux/FileParser/decompiled/10de8_FUN_00010de8.c
+FileParser,0x108f8,FUN_000108f8,176,01_boot_upgrade,0,3,"		-s [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was Valided, and Splite Bmu To ""/tmp/tmpfw/""\n | 		-x [minerType] [fileName] [rootPublicKeyFile]: \n			Check If Filename Was FullSize BMU\n",../analysis/reverse/full_aux/FileParser/decompiled/108f8_FUN_000108f8.c
+update-daemon,0x10db8,FUN_00010db8,280,01_boot_upgrade,0,2,,../analysis/reverse/full_aux/update-daemon/decompiled/10db8_FUN_00010db8.c
+update-daemon,0x10c24,FUN_00010c24,404,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10c24_FUN_00010c24.c
+update-daemon,0x10bd8,FUN_00010bd8,76,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10bd8_FUN_00010bd8.c
+update-daemon,0x10ed0,FUN_00010ed0,52,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10ed0_FUN_00010ed0.c
+update-daemon,0x10b90,FUN_00010b90,42,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b90_FUN_00010b90.c
+update-daemon,0x10b48,FUN_00010b48,40,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b48_FUN_00010b48.c
+update-daemon,0x10b18,entry,36,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b18_entry.c
+update-daemon,0x10b6c,FUN_00010b6c,34,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10b6c_FUN_00010b6c.c
+update-daemon,0x10bbc,_FINI_0,24,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10bbc__FINI_0.c
+update-daemon,0x1074c,_DT_INIT,12,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/1074c__DT_INIT.c
+update-daemon,0x10f10,_DT_FINI,8,01_boot_upgrade,0,0,,../analysis/reverse/full_aux/update-daemon/decompiled/10f10__DT_FINI.c

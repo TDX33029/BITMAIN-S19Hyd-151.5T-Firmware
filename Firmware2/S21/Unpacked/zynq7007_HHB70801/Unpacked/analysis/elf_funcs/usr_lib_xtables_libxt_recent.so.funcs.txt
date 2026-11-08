@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_recent.so  (9792 B)  libs: libxtables.so.12, libc.so.6
+00000718  sz=0      _init
+000007a4  sz=20     libxt_recent_init
+00000e80  sz=0      _fini

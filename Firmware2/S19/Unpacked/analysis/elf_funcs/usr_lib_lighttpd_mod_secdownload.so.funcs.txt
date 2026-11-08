@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_secdownload.so  (9576 B)  libs: libc.so.6
+000008ac  sz=0      _init
+00001124  sz=112    mod_secdownload_plugin_init
+00001194  sz=0      _fini

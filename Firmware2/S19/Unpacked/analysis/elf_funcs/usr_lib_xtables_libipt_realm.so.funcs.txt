@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_realm.so  (5516 B)  libs: libxtables.so.12, libc.so.6
+000006a0  sz=0      _init
+00000768  sz=148    libipt_realm_init
+00000b2c  sz=0      _fini

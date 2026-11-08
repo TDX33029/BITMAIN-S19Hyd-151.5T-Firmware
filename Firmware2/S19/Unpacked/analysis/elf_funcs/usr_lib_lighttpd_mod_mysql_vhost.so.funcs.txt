@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_mysql_vhost.so  (5312 B)  libs: libc.so.6
+00000414  sz=0      _init
+00000520  sz=48     mod_mysql_vhost_plugin_init
+00000550  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_NETMAP.so  (5484 B)  libs: libxtables.so.12, libc.so.6
+00000528  sz=0      _init
+00000590  sz=16     libipt_NETMAP_init
+000007c0  sz=0      _fini

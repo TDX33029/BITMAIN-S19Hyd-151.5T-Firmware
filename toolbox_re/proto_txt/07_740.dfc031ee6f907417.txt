@@ -1,0 +1,24 @@
+// toolbox/actions/configure_advanced_settings.proto  package=braiins.toolbox
+  message ConfigureAdvancedSettingsActionInitRequest {
+    message SettingsEntry {
+      optional string key = 1;
+      optional braiins.toolbox.AdvancedSetting value = 2;
+    }
+    optional braiins.toolbox.ActionInitRequest base = 1;
+    repeated braiins.toolbox.ConfigureAdvancedSettingsActionInitRequest.SettingsEntry settings = 2;
+  }
+  message AdvancedSetting {
+    optional google.protobuf.Empty no_change = 1; // oneof 0
+    optional google.protobuf.Empty default = 2; // oneof 0
+    optional google.protobuf.Value value = 3; // oneof 0
+  }
+  message ConfigureAdvancedSettingsActionMetadata {
+    optional braiins.toolbox.ActionMetadata base = 1;
+    optional google.protobuf.Struct schema = 2; // oneof 0
+  }
+service ConfigureAdvancedSettingsActionService {
+  rpc GetMetadata(google.protobuf.Empty) returns (braiins.toolbox.ConfigureAdvancedSettingsActionMetadata);
+  rpc Create(braiins.toolbox.ActionCreateRequest) returns (braiins.toolbox.ActionCreateResponse);
+  rpc Initialize(braiins.toolbox.ConfigureAdvancedSettingsActionInitRequest) returns (braiins.toolbox.ActionInitResponse);
+  rpc Execute(braiins.toolbox.ActionExecRequest) returns (braiins.toolbox.ActionExecResponse);
+}

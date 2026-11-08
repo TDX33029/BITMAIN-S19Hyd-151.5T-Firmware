@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_TEE.so  (5604 B)  libs: libxtables.so.12, libc.so.6
+0000065c  sz=0      _init
+000006f4  sz=20     libxt_TEE_init
+00000a50  sz=0      _fini

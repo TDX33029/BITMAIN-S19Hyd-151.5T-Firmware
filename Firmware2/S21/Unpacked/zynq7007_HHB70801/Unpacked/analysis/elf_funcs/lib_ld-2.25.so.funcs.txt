@@ -1,0 +1,17 @@
+# lib\ld-2.25.so  (122752 B)  libs: 
+000068ad  sz=308    _dl_rtld_di_serinfo
+0000ba89  sz=2      _dl_debug_state
+0000ca49  sz=704    _dl_mcount
+0000d3c1  sz=24     _dl_get_tls_static_info
+0000d43d  sz=444    _dl_allocate_tls_init
+0000d5f9  sz=24     _dl_allocate_tls
+0000d611  sz=88     _dl_deallocate_tls
+0000d805  sz=64     __tls_get_addr
+0000dae9  sz=112    _dl_make_stack_executable
+0000de39  sz=140    _dl_find_dso_for_object
+00010659  sz=196    malloc
+0001071d  sz=54     calloc
+00010755  sz=32     free
+000108b9  sz=84     realloc
+00010b29  sz=340    _dl_signal_error
+00010cf5  sz=120    _dl_catch_error

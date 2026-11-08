@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_comment.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+0000058c  sz=0      _init
+0000060c  sz=16     libxt_comment_init
+000007b0  sz=0      _fini

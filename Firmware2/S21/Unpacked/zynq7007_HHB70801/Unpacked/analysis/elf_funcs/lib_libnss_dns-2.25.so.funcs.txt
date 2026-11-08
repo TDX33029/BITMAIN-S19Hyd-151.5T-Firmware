@@ -1,0 +1,10 @@
+# lib\libnss_dns-2.25.so  (13760 B)  libs: libresolv.so.2, libc.so.6
+00001731  sz=596    _nss_dns_gethostbyname3_r
+00001985  sz=30     _nss_dns_gethostbyname2_r
+000019a5  sz=100    _nss_dns_gethostbyname_r
+00001a09  sz=588    _nss_dns_gethostbyname4_r
+00001c55  sz=744    _nss_dns_gethostbyaddr2_r
+00001f3d  sz=32     _nss_dns_gethostbyaddr_r
+000022f1  sz=220    _nss_dns_getnetbyname_r
+000023cd  sz=436    _nss_dns_getnetbyaddr_r
+00002581  sz=492    _nss_dns_getcanonname_r

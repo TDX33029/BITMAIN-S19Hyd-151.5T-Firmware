@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_accesslog.so  (13716 B)  libs: libc.so.6
+00000b1c  sz=0      _init
+00002664  sz=136    mod_accesslog_plugin_init
+000026ec  sz=0      _fini

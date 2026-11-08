@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_webdav.so  (17980 B)  libs: libc.so.6
+00001070  sz=0      _init
+000036e0  sz=132    mod_webdav_plugin_init
+00003764  sz=0      _fini

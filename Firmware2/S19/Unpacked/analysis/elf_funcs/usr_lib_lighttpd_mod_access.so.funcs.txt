@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_access.so  (5384 B)  libs: libc.so.6
+000005fc  sz=0      _init
+00000b08  sz=120    mod_access_plugin_init
+00000b80  sz=0      _fini

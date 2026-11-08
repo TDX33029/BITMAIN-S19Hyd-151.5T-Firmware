@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_LOG.so  (9596 B)  libs: libxtables.so.12, libc.so.6
+00000678  sz=0      _init
+00000704  sz=16     libipt_LOG_init
+00000d58  sz=0      _fini

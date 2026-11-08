@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_indexfile.so  (5424 B)  libs: libc.so.6
+00000734  sz=0      _init
+00000dc4  sz=112    mod_indexfile_plugin_init
+00000e34  sz=0      _fini

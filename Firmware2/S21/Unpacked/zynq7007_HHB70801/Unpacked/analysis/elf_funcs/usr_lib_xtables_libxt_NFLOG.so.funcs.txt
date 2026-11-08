@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_NFLOG.so  (5508 B)  libs: libxtables.so.12, libc.so.6
+00000634  sz=0      _init
+000006cc  sz=16     libxt_NFLOG_init
+00000a50  sz=0      _fini

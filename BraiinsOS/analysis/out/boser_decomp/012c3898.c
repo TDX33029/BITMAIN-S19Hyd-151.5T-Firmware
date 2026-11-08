@@ -1,0 +1,18 @@
+// FUN_012c3898 @ 012c3898 size=52 calls_out=1 calls_in=4
+// strings: 
+
+undefined8 FUN_012c3898(int *param_1)
+
+{
+  uint uVar1;
+  uint uVar2;
+  
+  uVar1 = param_1[1];
+  uVar2 = param_1[2];
+  if (uVar1 < uVar2) {
+                    /* WARNING: Subroutine does not return */
+    FUN_012faff4(uVar2,uVar1,uVar1,&DAT_01ce2a78);
+  }
+  return CONCAT44(uVar1 - uVar2,*param_1 + uVar2);
+}
+

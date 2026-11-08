@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_icmp.so  (9608 B)  libs: libxtables.so.12, libc.so.6
+00000798  sz=0      _init
+00000854  sz=16     libipt_icmp_init
+00000f44  sz=0      _fini

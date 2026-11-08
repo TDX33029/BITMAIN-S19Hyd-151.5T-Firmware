@@ -1,0 +1,78 @@
+func_addr,func_name,string_addr,string
+0001c8c0,FUN_0001c8c0,00068f68,chain[%d] PIC jump to app 
+0001c8c0,FUN_0001c8c0,00068f84,Check chain[%d] PIC fw version=0x%02x 
+0003670c,FUN_0003670c,0006ecf4,Chain %d PIC reset failed. 
+0003670c,FUN_0003670c,0006ed10,PIC reset failed. 
+0004b7d8,FUN_0004b7d8,0007205c,open_pic
+0004bad0,FUN_0004bad0,00072074,get_pic_version
+0004bad0,FUN_0004bad0,00072074,get_pic_version
+0004bad0,FUN_0004bad0,00072084,_bitmain_pic_get_sw_ver_common
+0004bad0,FUN_0004bad0,00072084,_bitmain_pic_get_sw_ver_common
+0004bad0,FUN_0004bad0,00072084,_bitmain_pic_get_sw_ver_common
+0004bad0,FUN_0004bad0,00072084,_bitmain_pic_get_sw_ver_common
+0004bcd4,FUN_0004bcd4,000720a4,reset_pic
+0004bcd4,FUN_0004bcd4,000720a4,reset_pic
+0004bcd4,FUN_0004bcd4,000720b0,_bitmain_pic_reset_common
+0004bcd4,FUN_0004bcd4,000720b0,_bitmain_pic_reset_common
+0004be78,FUN_0004be78,000720e4,_bitmain_pic_start_app_common
+0004be78,FUN_0004be78,000720e4,_bitmain_pic_start_app_common
+0004be78,FUN_0004be78,000720e4,_bitmain_pic_start_app_common
+0004c050,FUN_0004c050,00072104,enable_dc_dc
+0004c050,FUN_0004c050,00072104,enable_dc_dc
+0004c050,FUN_0004c050,00072114,_bitmain_pic_enable_dc_dc_common
+0004c050,FUN_0004c050,00072114,_bitmain_pic_enable_dc_dc_common
+0004c050,FUN_0004c050,00072114,_bitmain_pic_enable_dc_dc_common
+0004c224,FUN_0004c224,00072138,disable_dc_dc
+0004c224,FUN_0004c224,00072138,disable_dc_dc
+0004c224,FUN_0004c224,00072148,_bitmain_pic_disable_dc_dc_common
+0004c224,FUN_0004c224,00072148,_bitmain_pic_disable_dc_dc_common
+0004c224,FUN_0004c224,00072148,_bitmain_pic_disable_dc_dc_common
+0004c3f0,FUN_0004c3f0,0007216c,send_pic_heart_beat
+0004c3f0,FUN_0004c3f0,0007216c,send_pic_heart_beat
+0004c3f0,FUN_0004c3f0,00072180,_bitmain_pic_heart_beat_common
+0004c3f0,FUN_0004c3f0,00072180,_bitmain_pic_heart_beat_common
+0004c3f0,FUN_0004c3f0,00072180,_bitmain_pic_heart_beat_common
+0004c050,FUN_0004c050,000721a0,"%s: Bad pic param, input chain is %d "
+0004d104,FUN_0004d104,000721a0,"%s: Bad pic param, input chain is %d "
+0004da28,FUN_0004da28,000721a0,"%s: Bad pic param, input chain is %d "
+0004c224,FUN_0004c224,000721a0,"%s: Bad pic param, input chain is %d "
+0004ca78,FUN_0004ca78,000721a0,"%s: Bad pic param, input chain is %d "
+0004bad0,FUN_0004bad0,000721a0,"%s: Bad pic param, input chain is %d "
+0004bcd4,FUN_0004bcd4,000721a0,"%s: Bad pic param, input chain is %d "
+0004ce44,FUN_0004ce44,000721a0,"%s: Bad pic param, input chain is %d "
+0004be78,FUN_0004be78,000721a0,"%s: Bad pic param, input chain is %d "
+0004b7d8,FUN_0004b7d8,000721a0,"%s: Bad pic param, input chain is %d "
+0004c3f0,FUN_0004c3f0,000721a0,"%s: Bad pic param, input chain is %d "
+0004c050,FUN_0004c050,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004d104,FUN_0004d104,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004da28,FUN_0004da28,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004c224,FUN_0004c224,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004ca78,FUN_0004ca78,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004bad0,FUN_0004bad0,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004bcd4,FUN_0004bcd4,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004ce44,FUN_0004ce44,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004be78,FUN_0004be78,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004c3f0,FUN_0004c3f0,00072208,"%s: auto exec open_pic, but chain %d open eeprom failed "
+0004c5c0,FUN_0004c5c0,000722cc,_pic_write_iic
+0004c5c0,FUN_0004c5c0,000722cc,_pic_write_iic
+0004c5c0,FUN_0004c5c0,000722cc,_pic_write_iic
+0004c7d4,FUN_0004c7d4,000722dc,_bitmain_pic_seek_1704
+0004c7d4,FUN_0004c7d4,000722dc,_bitmain_pic_seek_1704
+0004c7d4,FUN_0004c7d4,000722dc,_bitmain_pic_seek_1704
+0004ca78,FUN_0004ca78,000722f4,pic_get_voltage
+0004ca78,FUN_0004ca78,000722f4,pic_get_voltage
+0004ca78,FUN_0004ca78,00072304,_read_an_voltage
+0004ca78,FUN_0004ca78,00072304,_read_an_voltage
+0004ca78,FUN_0004ca78,00072304,_read_an_voltage
+0004ca78,FUN_0004ca78,00072304,_read_an_voltage
+0004ca78,FUN_0004ca78,00072318,_read_an6_voltage
+0004ca78,FUN_0004ca78,00072318,_read_an6_voltage
+0004ca78,FUN_0004ca78,00072318,_read_an6_voltage
+0004ca78,FUN_0004ca78,00072318,_read_an6_voltage
+0004ca78,FUN_0004ca78,0007232c,pic_get_voltage
+0004da28,FUN_0004da28,00072428,pic_read_iic
+0004da28,FUN_0004da28,00072428,pic_read_iic
+0004da28,FUN_0004da28,00072428,pic_read_iic
+0004da28,FUN_0004da28,00072438,_pic_read_iic
+0004da28,FUN_0004da28,00072438,_pic_read_iic
+0004da28,FUN_0004da28,00072438,_pic_read_iic

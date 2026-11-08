@@ -1,0 +1,35 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x623b0,FUN_000623b0,4012,11_log_monitor,0,4,"syslog | [%s]the string after is not syslog, stdout or stderr",../analysis/reverse/full/bmminer/decompiled/623b0_FUN_000623b0.c
+bmminer,0x66de8,FUN_00066de8,936,11_log_monitor,0,4,wrong syslog level[%s],../analysis/reverse/full/bmminer/decompiled/66de8_FUN_00066de8.c
+monitor-recobtn,0x106a0,FUN_000106a0,480,11_log_monitor,0,3,monitor-recobtn compile %s--%s\n,../analysis/reverse/full_aux/monitor-recobtn/decompiled/106a0_FUN_000106a0.c
+monitor-ipsig,0x11274,FUN_00011274,564,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/11274_FUN_00011274.c
+monitor-ipsig,0x110ec,FUN_000110ec,304,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/110ec_FUN_000110ec.c
+monitor-ipsig,0x10bbc,FUN_00010bbc,260,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10bbc_FUN_00010bbc.c
+monitor-ipsig,0x10fe8,FUN_00010fe8,260,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10fe8_FUN_00010fe8.c
+monitor-ipsig,0x10cc0,FUN_00010cc0,224,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10cc0_FUN_00010cc0.c
+monitor-ipsig,0x10afc,FUN_00010afc,192,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10afc_FUN_00010afc.c
+monitor-ipsig,0x1121c,FUN_0001121c,88,11_log_monitor,0,2,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/1121c_FUN_0001121c.c
+monitor-ipsig,0x10e1c,FUN_00010e1c,316,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10e1c_FUN_00010e1c.c
+monitor-recobtn,0x109c0,FUN_000109c0,312,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/109c0_FUN_000109c0.c
+monitor-ipsig,0x114a8,FUN_000114a8,148,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/114a8_FUN_000114a8.c
+monitor-ipsig,0x10f58,FUN_00010f58,144,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10f58_FUN_00010f58.c
+monitor-recobtn,0x10940,FUN_00010940,104,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10940_FUN_00010940.c
+monitor-ipsig,0x10da0,FUN_00010da0,100,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10da0_FUN_00010da0.c
+monitor-ipsig,0x1153c,FUN_0001153c,52,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/1153c_FUN_0001153c.c
+monitor-recobtn,0x10af8,FUN_00010af8,52,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10af8_FUN_00010af8.c
+monitor-ipsig,0x10a40,FUN_00010a40,42,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10a40_FUN_00010a40.c
+monitor-recobtn,0x108f8,FUN_000108f8,42,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/108f8_FUN_000108f8.c
+monitor-ipsig,0x109f8,FUN_000109f8,40,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/109f8_FUN_000109f8.c
+monitor-recobtn,0x108b0,FUN_000108b0,40,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/108b0_FUN_000108b0.c
+monitor-ipsig,0x109c8,entry,36,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/109c8_entry.c
+monitor-recobtn,0x10880,entry,36,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10880_entry.c
+monitor-ipsig,0x10a1c,FUN_00010a1c,34,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10a1c_FUN_00010a1c.c
+monitor-recobtn,0x108d4,FUN_000108d4,34,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/108d4_FUN_000108d4.c
+monitor-ipsig,0x10a6c,_FINI_0,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10a6c__FINI_0.c
+monitor-ipsig,0x10e04,FUN_00010e04,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10e04_FUN_00010e04.c
+monitor-recobtn,0x10924,_FINI_0,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10924__FINI_0.c
+monitor-recobtn,0x109a8,FUN_000109a8,24,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/109a8_FUN_000109a8.c
+monitor-ipsig,0x10794,_DT_INIT,12,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/10794__DT_INIT.c
+monitor-recobtn,0x10584,_DT_INIT,12,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10584__DT_INIT.c
+monitor-ipsig,0x1157c,_DT_FINI,8,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-ipsig/decompiled/1157c__DT_FINI.c
+monitor-recobtn,0x10b38,_DT_FINI,8,11_log_monitor,0,0,,../analysis/reverse/full_aux/monitor-recobtn/decompiled/10b38__DT_FINI.c

@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_simple_vhost.so  (9560 B)  libs: libc.so.6
+000007b0  sz=0      _init
+00001064  sz=116    mod_simple_vhost_plugin_init
+000010d8  sz=0      _fini

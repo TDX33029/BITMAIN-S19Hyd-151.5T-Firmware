@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_TPROXY.so  (5700 B)  libs: libxtables.so.12, libc.so.6
+00000614  sz=0      _init
+00000694  sz=20     libxt_TPROXY_init
+000009d8  sz=0      _fini

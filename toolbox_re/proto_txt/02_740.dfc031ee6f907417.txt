@@ -1,0 +1,42 @@
+// toolbox/pool_presets_service.proto  package=braiins.toolbox
+  message GetPoolPresetsResponse {
+    repeated braiins.toolbox.PoolPreset pool_presets = 1;
+  }
+  message PoolPreset {
+    optional string id = 1;
+    optional google.protobuf.Timestamp created_at = 2;
+    optional google.protobuf.Timestamp updated_at = 3;
+    optional string name = 4;
+    repeated braiins.toolbox.PoolPresetPool pools = 5;
+  }
+  message PoolPresetPool {
+    optional string full_url = 1;
+    optional string display_name = 2;
+    optional uint32 port = 3; // oneof 0
+    optional string username = 4;
+    optional string password = 5; // oneof 1
+    optional string key = 6; // oneof 2
+  }
+  message CreatePoolPresetRequest {
+    optional string name = 3;
+    repeated braiins.toolbox.PoolInput pools = 4;
+  }
+  message UpdatePoolPresetRequest {
+    optional string id = 1;
+    optional string name = 2;
+    repeated braiins.toolbox.PoolInput pools = 3;
+  }
+  message DeletePoolPresetResponse {
+    optional bool success = 1;
+    optional string error_message = 2; // oneof 0
+  }
+  message SavePoolPresetResponse {
+    optional braiins.toolbox.PoolPreset pool_preset = 1; // oneof 0
+    optional string error_message = 2; // oneof 0
+  }
+service PoolPresetsService {
+  rpc List(google.protobuf.Empty) returns (braiins.toolbox.GetPoolPresetsResponse);
+  rpc Create(braiins.toolbox.CreatePoolPresetRequest) returns (braiins.toolbox.SavePoolPresetResponse);
+  rpc Update(braiins.toolbox.UpdatePoolPresetRequest) returns (braiins.toolbox.SavePoolPresetResponse);
+  rpc Delete(google.protobuf.StringValue) returns (braiins.toolbox.DeletePoolPresetResponse);
+}

@@ -1,0 +1,47 @@
+# www/pages (14 entries), cgi-bin (28 scripts)
+
+== pages ==
+404.html
+blog.html
+cgi-bin
+dashboard.html
+favicon.ico
+i18n
+index.html
+ip.html
+js
+list.html
+miner.html
+pwd.html
+static
+update.html
+
+== cgi-bin ==
+T23Hyd_log.cgi
+blink.cgi
+chart.cgi
+create_log_backup.cgi
+dlog.cgi
+get_adjustment_params.cgi
+get_blink_status.cgi
+get_droa.cgi
+get_miner_conf.cgi
+get_network_info.cgi
+get_system_info.cgi
+hlog.cgi
+log.cgi
+miner_type.cgi
+passwd.cgi
+pool_protect.cgi
+pools.cgi
+reboot.cgi
+reset_conf.cgi
+set_miner_conf.cgi
+set_network_conf.cgi
+stats.cgi
+summary.cgi
+ulog_en.cgi
+ulog_zh.cgi
+upgrade.cgi
+upgrade_clear.cgi
+warning.cgi

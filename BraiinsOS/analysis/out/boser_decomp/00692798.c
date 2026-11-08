@@ -1,0 +1,16 @@
+// FUN_00692798 @ 00692798 size=76 calls_out=3 calls_in=1
+// strings: 
+
+void FUN_00692798(int *param_1)
+
+{
+  if (*param_1 == 1) {
+    FUN_0069263c((char)param_1[1],param_1[2]);
+  }
+  else if ((*param_1 == 0) && (param_1[2] != 0)) {
+    thunk_FUN_01be4678(param_1[1]);
+  }
+  thunk_FUN_01be4678(param_1);
+  return;
+}
+

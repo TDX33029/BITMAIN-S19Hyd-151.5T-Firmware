@@ -1,0 +1,13 @@
+// FUN_01baf874 @ 01baf874 size=132 calls_out=2 calls_in=1
+// strings: 
+
+void FUN_01baf874(int param_1,uint param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  if ((uint)(*(int *)(param_1 + 4) + *(int *)(param_1 + 0x1c)) <= param_2) {
+    FUN_01baf6bc(param_1,param_2,5);
+    FUN_01baed58(param_1,param_2,param_3,param_4,5,0);
+  }
+  return;
+}
+

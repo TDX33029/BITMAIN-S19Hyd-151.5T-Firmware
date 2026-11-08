@@ -1,0 +1,352 @@
+#!/bin/sh
+
+# The kernel starts this script as PID 1 with an empty environment, so
+# nothing inherits a usable PATH. Set it before running any command by
+# bare name (busybox applets live in /bin, mtd/ubi tools in /usr/sbin).
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+
+# include file with common static constants
+. /lib/functions/common.sh
+
+MNT_PATH="/mnt"
+ETC_PATH="/etc"
+UPPER_ETC_PATH="${MNT_PATH}/upper/etc"
+UPPER_INIT_PATH="${MNT_PATH}/upper/init"
+
+# This function upgrades init.d scripts and should be called
+# after use of sysupgrade
+function finish_upgrade()
+{
+    local last_version_initd_files=$(cat "$UPPER_INIT_PATH" 2>/dev/null)
+
+    # perform scripts upgrade
+    for f in ${last_version_initd_files}
+    do
+        rm -f "${UPPER_ETC_PATH}/init.d/${f}"
+    done
+
+    # remove firmware-owned files (version stamps, banner, inittab, dnsmasq
+    # config, udhcpc's default script and profile) if they exist, so they are
+    # refreshed from the new rootfs too
+    rm -f "${UPPER_ETC_PATH}/bos_version"
+    rm -f "${UPPER_ETC_PATH}/bos_major"
+    rm -f "${UPPER_ETC_PATH}/bos_build"
+    rm -f "${UPPER_ETC_PATH}/banner"
+    rm -f "${UPPER_ETC_PATH}/inittab"
+    rm -f "${UPPER_ETC_PATH}/dnsmasq.conf"
+    rm -f "${UPPER_ETC_PATH}/udhcpc/default.script"
+    rm -f "${UPPER_ETC_PATH}/profile"
+
+    # update list of init scripts files
+    ls -1 "${ETC_PATH}/init.d" > $UPPER_INIT_PATH
+}
+
+# Wait for a /dev node that UBI has just created in sysfs. The kernel makes
+# the node itself only on devtmpfs; under the mdev fallback nothing re-runs
+# mdev after an attach or a ubimkvol, so nodes created after boot never
+# appear (at boot mdev -s runs before the attach, when ubi_ctrl is the only
+# UBI device there is to find).
+wait_ubi_node() {
+    local node="$1"
+    local i=0
+    while [ ! -c "$node" ] && [ "$i" -lt 5 ]; do
+        mdev -s
+        [ -c "$node" ] && break
+        sleep 1
+        i=$((i + 1))
+    done
+    [ -c "$node" ]
+}
+
+function prepare_ubifs()
+{
+    # Pin the UBI device number with -d. Everything downstream hardcodes
+    # device 0 (BOS_OVERLAY_UBI_NUMBER, /dev/ubi0, /dev/ubi0_0), but a bare
+    # `ubiattach -p` lets UBI pick the LOWEST FREE number — which is only 0
+    # while nothing else is attached. mount_stock_config attaches
+    # the stock config partition as device 2, and if the overlay is ever
+    # attached after some other device already holds 0 (e.g. a re-attach on a
+    # running system, or a boot where a stale attach survived), it lands on a
+    # different number. mdev then names the nodes /dev/ubi0* from the sysfs
+    # class anyway, so the names point at the WRONG device: the ubifs mount
+    # silently attaches the stock config volume instead of the overlay, /etc
+    # is never made writable, dropbear cannot persist a host key and SSH dies
+    # — with no error message anywhere, because /init's stderr is not yet
+    # wired to the console at this point.
+    # Already attached (EEXIST) is NOT corruption - just carry on with it.
+    # This has to be checked before the reformat path below: ubiattach fails
+    # with "File exists" when this MTD is already attached (a warm restart of
+    # the userland with the kernel still up, or anything that re-runs this
+    # function), and treating that as a bad overlay would ERASE a perfectly
+    # good one - silently throwing away all user configuration.
+    if [ -d "/sys/class/ubi/ubi${BOS_OVERLAY_UBI_NUMBER}" ] &&
+        [ "$(cat "/sys/class/ubi/ubi${BOS_OVERLAY_UBI_NUMBER}/mtd_num" 2>/dev/null)" \
+            = "${BOS_OVERLAY_MTD_NUMBER}" ]; then
+        echo "overlay UBI already attached as ubi${BOS_OVERLAY_UBI_NUMBER}"
+    elif ! ubiattach -p "${BOS_OVERLAY_MTD}" -d "${BOS_OVERLAY_UBI_NUMBER}" \
+        -b "${BOS_UBI_MAX_BEB_PER1024}"; then
+        echo "WARNING: overlay UBI attach failed; erasing and re-formatting" \
+            "${BOS_OVERLAY_MTD} - all user configuration will be lost"
+        flash_erase "${BOS_OVERLAY_MTD}" 0 0 || return 1
+        ubiformat "${BOS_OVERLAY_MTD}" -y || return 1
+        # -b must be repeated here: it is an attach-time property, so the
+        # reformat path would otherwise fall back to the default 20/1024.
+        ubiattach -p "${BOS_OVERLAY_MTD}" -d "${BOS_OVERLAY_UBI_NUMBER}" \
+            -b "${BOS_UBI_MAX_BEB_PER1024}" || return 1
+    fi
+    # ubimkvol only takes the device node, so that has to exist first
+    if ! wait_ubi_node "${BOS_OVERLAY_UBI_DEV}"; then
+        echo "ERROR: ${BOS_OVERLAY_UBI_DEV} did not appear after attach;" \
+            "/etc would stay read-only" >&2
+        return 1
+    fi
+    # A freshly installed (or re-formatted) overlay attaches fine but holds no
+    # volume yet. Ask UBI itself rather than testing for the volume node: on
+    # the mdev path that node is missing even when the volume does exist,
+    # which would send us into ubimkvol on an already-populated device.
+    if ! ubinfo -d "${BOS_OVERLAY_UBI_NUMBER}" -N overlay >/dev/null 2>&1; then
+        # `ubimkvol -m` asks for "all available space" and fails outright when
+        # the bad-PEB reserve has eaten it (see BOS_UBI_MAX_BEB_PER1024).
+        # Report the numbers before trying, so the log names the cause instead
+        # of only showing "does not have free logical eraseblocks".
+        local ubi_sys="/sys/class/ubi/ubi${BOS_OVERLAY_UBI_NUMBER}"
+        local avail=$(cat "${ubi_sys}/avail_eraseblocks" 2>/dev/null)
+        local total=$(cat "${ubi_sys}/total_eraseblocks" 2>/dev/null)
+        echo "overlay UBI: ${avail:-?}/${total:-?} eraseblocks available for" \
+            "the new volume"
+        if [ "${avail:-0}" -le 0 ]; then
+            echo "ERROR: overlay UBI has no free eraseblocks (bad-PEB reserve" \
+                "too large for a ${total:-?}-PEB partition); /etc stays" \
+                "READ-ONLY" >&2
+            return 1
+        fi
+        ubimkvol "${BOS_OVERLAY_UBI_DEV}" -N overlay -m || return 1
+    fi
+    # The volume node is a second device, created by ubimkvol just now
+    if ! wait_ubi_node "${BOS_OVERLAY_UBI}"; then
+        echo "ERROR: ${BOS_OVERLAY_UBI} did not appear; /etc stays read-only" >&2
+        return 1
+    fi
+
+    return 0
+}
+
+function etc_init()
+{
+    # can contain version or non-existing file
+    local last_version=$(cat "$UPPER_ETC_PATH/bos_version" 2>/dev/null)
+    # must be always present in system
+    local current_version=$(cat "$ETC_PATH/bos_version" 2>/dev/null)
+    local last_version_initd_files=""
+
+    # Generate list of init script if does not exist, in case of upgrade, it must
+    # contain list of init.d from previous OS version
+    if [ ! -f "$UPPER_INIT_PATH" ]; then
+        ls -1 "${ETC_PATH}/init.d" > $UPPER_INIT_PATH
+    fi
+
+    # if versions are different (for example after sysupgrade), then we must
+    # upgrade init.d scripts
+    if [ "$last_version" != "$current_version" ]; then
+        finish_upgrade
+    fi
+
+    # inittab is firmware-owned and version-gated finish_upgrade misses it
+    # when bos_version matches (e.g. reinstall of the same build over a
+    # surviving overlay); a stale sysvinit-style copy breaks busybox init
+    rm -f "${UPPER_ETC_PATH}/inittab"
+
+    # symlinks into the nix store (/etc/opkg/keys, init.d scripts) are
+    # firmware-owned and their target changes with every build; a persisted
+    # copy would keep pointing at the previous rootfs, so drop them all and
+    # let the copy below re-create the ones the running firmware ships
+    for link in $(/bin/find "${UPPER_ETC_PATH}" -type l); do
+        case "$(/bin/readlink "$link")" in
+            /nix/store/*) /bin/rm -f "$link" ;;
+        esac
+    done
+
+    # recursively copy only missing files
+    yes n | \
+    cp -iar "${ETC_PATH}/"* "${UPPER_ETC_PATH}" 2>/dev/null || return 0
+
+    # change mount point
+    mount --bind "${UPPER_ETC_PATH}" "${ETC_PATH}" || return 0
+    umount -l "${MNT_PATH}"
+}
+
+function upper_init() {
+    mkdir -p "${UPPER_ETC_PATH}" || return 0
+}
+
+function env_tar_unpack() {
+    # read size of tar file with environmental files
+    local env_tar_size=$(printf "0x%x" $(nanddump \
+    -s ${LOCAL_RO_ENV_TAR_LENGTH_OFFSET_BOS_LAYOUT} -q -l 10 ${BOS_SYSTEM_MTD}) 2>/dev/null)
+    # extract env tar to '/tmp' if it has nonzero size
+    if [ "$env_tar_size" != "0x0" ]; then
+        nanddump -s ${LOCAL_RO_ENV_TAR_OFFSET_BOS_LAYOUT} -l ${env_tar_size} ${BOS_SYSTEM_MTD} | \
+        tar -x -C "/tmp"
+    fi
+}
+
+# One-time import of configuration carried over from the legacy LEDE
+# firmware by the transitional sysupgrade. The transition packs selected
+# /etc files as 'etc_migration' into the env tar region. Runs after
+# upper_init but before etc_init populates the squashfs defaults, so the
+# migrated files win over the defaults while files already present in
+# the overlay (user changes) are never overwritten.
+function migrate_legacy_config() {
+    [ -d "/tmp/etc_migration" ] || return 0
+    yes n | \
+    cp -iar "/tmp/etc_migration/"* "${UPPER_ETC_PATH}" 2>/dev/null || true
+}
+
+# Drop 'etc_migration' from the env tar region after the import so it is
+# truly one-shot: without this, a factory reset (which only wipes the
+# overlay) would silently resurrect the legacy password, SSH host keys
+# and pool configuration on the next boot instead of factory defaults.
+# The rest of the env tar content (e.g. bos_factory.json) is kept.
+function forget_legacy_migration() {
+    [ -d "/tmp/etc_migration" ] || return 0
+
+    local repack_dir="/tmp/env_repack"
+    local repack_tar="/tmp/env_repack.tar"
+    local region_size=$((LOCAL_RO_POST_INSTALL_TAR_LENGTH_OFFSET_BOS_LAYOUT - LOCAL_RO_ENV_TAR_LENGTH_OFFSET_BOS_LAYOUT))
+    local block_count=$((region_size / 0x20000))
+
+    mkdir -p "$repack_dir" || return 0
+    for entry in /tmp/*; do
+        case "$entry" in
+        "$repack_dir" | "/tmp/etc_migration") continue ;;
+        esac
+        # only content extracted from the env tar lives in /tmp this
+        # early in boot, before any service is started
+        cp -ar "$entry" "$repack_dir/" 2>/dev/null || return 0
+    done
+    tar -cf "$repack_tar" -C "$repack_dir" . || return 0
+
+    flash_erase "${BOS_SYSTEM_MTD}" \
+        "${LOCAL_RO_ENV_TAR_LENGTH_OFFSET_BOS_LAYOUT}" "$block_count" || return 0
+    printf "0x%.8x\0" "$(wc -c <"$repack_tar")" | \
+    nandwrite -p -s "${LOCAL_RO_ENV_TAR_LENGTH_OFFSET_BOS_LAYOUT}" \
+        "${BOS_SYSTEM_MTD}" -
+    nandwrite -p -s "${LOCAL_RO_ENV_TAR_OFFSET_BOS_LAYOUT}" \
+        "${BOS_SYSTEM_MTD}" "$repack_tar"
+
+    rm -rf "$repack_dir" "$repack_tar" "/tmp/etc_migration"
+}
+
+# Mount the stock config partition ($BOS_ENV_STOCK_CONFIG_MTD_NAME, i.e.
+# antminer_configs) at /mnt/$BOS_ENV_STOCK_CONFIG - the same /mnt/stock_config
+# path the other platforms use, so the shared scripts find it there too.
+# Mounted RW so network settings stay in sync between stock and BOS
+mount_stock_config() {
+    mnt_path="/mnt/$BOS_ENV_STOCK_CONFIG"
+    ubi_number=2
+    mkdir -p ${mnt_path} || return 1
+    # -b for the same reason as the overlay: the default 20/1024 scales off the
+    # 2048-PEB chip and asks for 40 PEBs from this 64-PEB (8 MB) partition,
+    # which the kernel reports as "cannot reserve enough PEBs for bad PEB
+    # handling, reserved 4, need 40". The volume itself was made by the stock
+    # firmware and mounts either way, so this only silences the warning.
+    ubiattach -m ${STOCK_CONFIG_MTD_NUMBER} -d ${ubi_number} \
+        -b "${BOS_UBI_MAX_BEB_PER1024}" || return 1
+    # X19 family stores the stock config in the 'config_data' UBIFS volume
+    # (X17 family used 'configs')
+    mount -t ubifs ubi${ubi_number}:config_data ${mnt_path} || \
+    mount -t ubifs ubi${ubi_number}:configs ${mnt_path} || return 1
+
+    return 0
+}
+
+# Link serial number to /tmp/serial_number
+link_serial_number() {
+    ln -s "/mnt/$BOS_ENV_STOCK_CONFIG/sn" /tmp/serial_number || true
+}
+
+# devtmpfs does not get automounted for initramfs.
+# The squashfs ships only the four static nodes from hardware.nix (null,
+# zero, console, tty), so without a populated /dev nothing else works:
+# no /dev/mtd* (overlay stays unmounted -> /etc read-only), no
+# /dev/urandom (S20urandom exits at its `[ -c /dev/urandom ]` guard and
+# dropbear blocks on entropy), no /dev/ptmx (no PTY for SSH).
+mount -t sysfs sysfs /sys
+mount -t proc proc /proc
+if ! mount -t devtmpfs devtmpfs /dev; then
+    # Kernels built without CONFIG_DEVTMPFS reject the mount with
+    # ENODEV. Fall back to populating /dev from sysfs so the device
+    # still boots to a usable, reachable system instead of silently
+    # coming up with a read-only /etc and no working SSH.
+    echo "WARNING: devtmpfs unavailable (kernel without CONFIG_DEVTMPFS);" \
+        "populating /dev with mdev"
+    mount -t tmpfs tmpfs /dev -o mode=0755
+    # The tmpfs hides the static nodes the squashfs shipped, so recreate
+    # them first: mdev -s only creates what sysfs exports, and console
+    # is needed for any output at all from here on
+    mknod -m 0600 /dev/console c 5 1 2>/dev/null
+    mknod -m 0666 /dev/null c 1 3 2>/dev/null
+    mknod -m 0666 /dev/zero c 1 5 2>/dev/null
+    mknod -m 0666 /dev/tty c 5 0 2>/dev/null
+    if ! mdev -s; then
+        echo "ERROR: mdev -s failed; /dev is incomplete - expect a" \
+            "read-only /etc and no SSH access"
+    fi
+fi
+# NOTE: I order to prevent OOM we need to reduce size of /tmp.
+# Boser, borminer and other processes can take more than half of RAM.
+mount -t tmpfs tmpfs /tmp -o mode=1777,size=70M
+# Mounts matching legacy inittab si2-si3 + fstab (busybox init doesn't
+# reliably run mount -a after the overlay bind-mount of /etc)
+mkdir -p /dev/pts /dev/shm
+mount -t devpts devpts /dev/pts
+mount -t tmpfs tmpfs /dev/shm -o mode=0777
+# ptmx is not exported through sysfs, so mdev never creates it; without
+# it dropbear cannot allocate a PTY and drops every session right after
+# accepting the connection
+[ -e /dev/ptmx ] || mknod -m 0666 /dev/ptmx c 5 2 2>/dev/null
+mount -t tmpfs tmpfs /run -o mode=0755,nosuid,nodev
+# Standard fd symlinks (legacy: inittab si5-si8, root_meta.sh)
+ln -sf /proc/self/fd /dev/fd
+ln -sf /proc/self/fd/0 /dev/stdin
+ln -sf /proc/self/fd/1 /dev/stdout
+ln -sf /proc/self/fd/2 /dev/stderr
+
+# include file with dynamically created constants (partition numbers, local MTD offsets)
+# it must be included after `/proc` is mounted
+. /lib/functions/system.sh
+
+# extract env tarball with system configuration to 'tmp' directory
+env_tar_unpack
+
+# We will use overlay not only for etc, but also for the logs, so we have to limit
+# the number of writes to the flash memory. We will use UBIFS and additional options:
+# noatime - do not update file access time
+# nodiratime - do not update directory access time
+if prepare_ubifs &&
+    mount -t ubifs -o noatime,nodiratime "${BOS_OVERLAY_UBI}" "${MNT_PATH}"; then
+    upper_init
+    migrate_legacy_config
+    etc_init
+    forget_legacy_migration
+else
+    # Do not fail silently. Without the overlay /etc stays the read-only
+    # squashfs, which breaks nearly every init script (dnsmasq, network,
+    # hostname, dropbear's host key -> no SSH at all). That is a fatal
+    # condition for a miner, and it used to produce NO message of its own:
+    # the `&&` chain just skipped the overlay setup, and the only hint was a
+    # pile of "Read-only file system" errors from unrelated scripts later.
+    # Announce it on the kernel ring buffer too, since /init's stderr is not
+    # attached to the console yet (see `exec 0</dev/console` below).
+    echo "ERROR: overlay UBI setup failed - /etc stays READ-ONLY;" \
+        "expect no SSH and broken network configuration" >&2
+    echo "bos-init: overlay UBI setup failed, /etc read-only" > /dev/kmsg 2>/dev/null
+fi
+
+mount_stock_config
+link_serial_number
+
+exec 0</dev/console
+exec 1>/dev/console
+exec 2>/dev/console
+exec /sbin/init "$@"

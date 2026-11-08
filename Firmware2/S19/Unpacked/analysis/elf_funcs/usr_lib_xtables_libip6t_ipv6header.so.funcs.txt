@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_ipv6header.so  (9608 B)  libs: libxtables.so.12, libc.so.6
+000006e4  sz=0      _init
+000007a0  sz=16     libip6t_ipv6header_init
+00000ce0  sz=0      _fini

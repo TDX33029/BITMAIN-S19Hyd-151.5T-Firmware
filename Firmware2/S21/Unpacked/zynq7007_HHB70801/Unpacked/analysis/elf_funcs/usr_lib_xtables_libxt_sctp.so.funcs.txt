@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_sctp.so  (13744 B)  libs: libxtables.so.12, libc.so.6
+00000924  sz=0      _init
+00000a34  sz=16     libxt_sctp_init
+00001a14  sz=0      _fini

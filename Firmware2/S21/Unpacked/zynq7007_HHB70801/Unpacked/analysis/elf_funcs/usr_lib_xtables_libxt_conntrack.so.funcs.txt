@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_conntrack.so  (22924 B)  libs: libxtables.so.12, libc.so.6
+00000ba8  sz=0      _init
+00000cb8  sz=20     libxt_conntrack_init
+00003a40  sz=0      _fini

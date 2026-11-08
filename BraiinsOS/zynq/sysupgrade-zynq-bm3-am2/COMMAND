@@ -1,0 +1,464 @@
+UPGRADE_FW_MAJOR="2026-10-19-0-46be68fe-26.10-plus"
+UPGRADE_FW_VERSION="2026-10-19-0-46be68fe-26.10-plus"
+UPGRADE_FW_REQUIRE="2022-09-13-0-11012d53-22.08-plus"
+# Zynq (bm3-am2) sysupgrade COMMAND
+#
+# This script is sourced by two different consumers:
+#  - the legacy LEDE sysupgrade (transitional LEDE -> nix upgrade):
+#    check_image "$board_name" "$tar_file" and
+#    pre_upgrade "$board_name" "$tar_file" (runs in the upgrade ramfs)
+#  - the BOS nix sysupgrade (steady state nix -> nix upgrade):
+#    check_image "$package_file" and
+#    do_upgrade "$image_file" "$install_partition" "$install_offset"
+#
+# The whole one-shot LEDE -> nix transition lives in the single
+# pre_upgrade() function at the bottom; once upgrades from the legacy
+# LEDE firmware are no longer supported, delete that one function (and
+# the legacy branch in check_image) and nothing else.
+#
+# Downgrading below this firmware's major version (i.e. back to the
+# legacy LEDE firmware) is not supported and is refused by
+# check_fw_version; there is deliberately no nix -> LEDE logic here.
+
+# kernel FIT slot is 8 MiB and rootfs slot is 48 MiB inside `system`
+NAND_KERNEL_BLOCK_COUNT="64"
+NAND_ROOTFS_BLOCK_COUNT="384"
+NAND_UBOOT_BLOCK_COUNT="64"
+NAND_FPGA_BLOCK_COUNT="16"
+NAND_BLOCK_SIZE="0x20000"
+
+current_fw_version() {
+    if ! cat /etc/bos_version 2>/dev/null; then
+        # legacy LEDE firmware tracks the version via the opkg database
+        awk '/Package: /{p=$2} /Version: /{v=$2} /Status: /{if (p == "firmware" && $NF == "installed") print v}' \
+            '/usr/lib/opkg/status'
+    fi
+}
+
+current_fw_major() {
+    cat /etc/bos_major 2>/dev/null || echo unknown
+}
+
+check_fw_version() {
+    echo "Gathering current firmware information..."
+
+    local fw_major=$(current_fw_major)
+    local fw_version=$(current_fw_version)
+
+    echo "version             : $fw_version"
+    echo "major               : $fw_major"
+
+    echo "Checking compatibility..."
+
+    if [ "$UPGRADE_FW_VERSION" ">" "$fw_version" ]; then
+        # firmware upgrade
+        if [ "$UPGRADE_FW_REQUIRE" ">" "$fw_version" ]; then
+            echo "Firmware upgrade to '$UPGRADE_FW_VERSION' is not possible!"
+            echo "Firmware version '$UPGRADE_FW_REQUIRE' is required before upgrading to this version."
+            return 1
+        fi
+    elif [ "$UPGRADE_FW_VERSION" "<" "$fw_version" ]; then
+        # firmware downgrade
+        if [ "$UPGRADE_FW_MAJOR" != "$fw_major" ]; then
+            echo "Firmware downgrade to '$UPGRADE_FW_VERSION' is not possible!"
+            echo "Downgrade is only possible among firmwares with major version '$UPGRADE_FW_MAJOR'."
+            echo "Do the factory reset and try to upgrade to this version."
+            return 1
+        fi
+    fi
+
+    return 0
+}
+
+check_image() {
+    # Legacy LEDE only (recent LEDE builds ship /etc/bos_version too, so
+    # detect LEDE by its OpenWrt release file): the transition extracts the
+    # images (kernel + rootfs + uboot + stock uImage conversion) to /tmp,
+    # so require 64 MB free there. Delete this branch together with
+    # pre_upgrade when LEDE upgrades are dropped.
+    if [ -f /etc/openwrt_release ]; then
+        local available=$(df -k /tmp | awk 'NR==2 {print $4}')
+        if [ "$available" -lt 65536 ]; then
+            echo "Error: Less than 64MB available in /tmp ($available KB free)" >&2
+            return 1
+        fi
+    fi
+    check_fw_version
+}
+
+# Get file size in decimal number if second parameter is 10
+# otherwise return files size in hexadecimal number
+file_size() {
+    number_base=$2
+    decimal_file_size="$(wc -c < "$1")"
+    if [ "$number_base" = "10" ]; then
+        echo "$decimal_file_size"
+        return 0
+    fi
+    printf "0x%x" "$decimal_file_size"
+}
+
+# Erase + write + read-back verify; retries once. Same helper as in
+# common.sh, duplicated because pre_upgrade runs in the LEDE upgrade ramfs
+# where only this file (extracted from the tarball) exists.
+nand_write_verified() {
+    local file="$1"
+    local mtd="$2"
+    local offset="$3"
+    local block_count="$4"
+    local size checksum attempt
+
+    size=$(file_size "$file" 10)
+    checksum="/tmp/nand_write.checksum"
+    sha256sum <"$file" >"$checksum"
+
+    for attempt in 1 2; do
+        flash_erase "$mtd" "$offset" "$block_count" || continue
+        nandwrite -p -s "$offset" "$mtd" "$file" || continue
+        # mtd-utils 1.5 nanddump pads -l up to a whole page, so cut the read-back
+        # to the file size before hashing
+        if nanddump -s "$offset" -q -l "$size" "$mtd" 2>/dev/null | head -c "$size" |
+            sha256sum -c "$checksum" >/dev/null 2>&1; then
+            rm -f "$checksum"
+            return 0
+        fi
+        echo "Error: verification of NAND write at $mtd:$offset failed (attempt $attempt)" >&2
+    done
+
+    rm -f "$checksum"
+    return 1
+}
+
+# Skip the write when NAND already holds the file's content, otherwise
+# erase + write + verify
+nand_write_if_different() {
+    local file="$1"
+    local mtd="$2"
+    local offset="$3"
+    local block_count="$4"
+    local size checksum
+
+    size=$(file_size "$file" 10)
+    checksum="/tmp/nand_write.checksum"
+
+    sha256sum <"$file" >"$checksum"
+    # mtd-utils 1.5 nanddump pads -l up to a whole page, so cut the read-back
+    # to the file size before hashing
+    if nanddump -s "$offset" -q -l "$size" "$mtd" 2>/dev/null | head -c "$size" |
+        sha256sum -c "$checksum" >/dev/null 2>&1; then
+        rm -f "$checksum"
+        return 0
+    fi
+    rm -f "$checksum"
+
+    nand_write_verified "$file" "$mtd" "$offset" "$block_count"
+}
+
+# BOS nix -> nix upgrade; called by the BOS sysupgrade script which
+# sources common.sh + system.sh beforehand (partition + offset vars)
+do_upgrade() {
+    local image_file="$1"
+    local install_partition="$2"
+    local install_offset="$3"
+    # Get the package root directory from the image file path
+    local package_root="$(dirname "$image_file")"
+
+    # Load constants "$BOS_KERNEL_FILE", "$BOS_ENV_FILE", ...
+    . /lib/functions/common.sh
+
+    # The caller runs do_upgrade in an AND/OR list, which disables `set -e`
+    # inside the whole function - every required erase/write must propagate
+    # its failure explicitly, otherwise a failed write is reported as a
+    # successful upgrade and the miner reboots with incomplete images.
+
+    # kernel FIT
+    flash_erase "$install_partition" "$LOCAL_BOS_KERNEL_OFFSET_BOS_LAYOUT" \
+        "$NAND_KERNEL_BLOCK_COUNT" || return 1
+    nandwrite -p -s "$LOCAL_BOS_KERNEL_OFFSET_BOS_LAYOUT" "$install_partition" \
+        "$package_root/$BOS_KERNEL_FILE" || return 1
+
+    # rootfs (squashfs ramdisk)
+    flash_erase "$install_partition" "$install_offset" "$NAND_ROOTFS_BLOCK_COUNT" || return 1
+    nandwrite -p -s "$install_offset" "$install_partition" "$image_file" || return 1
+
+    # FPGA bitstream + U-Boot FIT + saved environment only when changed
+    if [ -f "$package_root/fpga" ]; then
+        nand_write_if_different "$package_root/fpga" "$BOS_FPGA1_MTD" 0 \
+            "$NAND_FPGA_BLOCK_COUNT" || return 1
+    fi
+    if [ -f "$package_root/uboot" ]; then
+        nand_write_if_different "$package_root/uboot" "$BOS_UBOOT_MTD" \
+            "$LOCAL_BOS_UBOOT_OFFSET_BOS_LAYOUT" "$NAND_UBOOT_BLOCK_COUNT" || return 1
+    fi
+    if [ -f "$package_root/$BOS_ENV_FILE" ]; then
+        nand_write_if_different "$package_root/$BOS_ENV_FILE" "$BOS_UBOOT_ENV_MTD" 0 4 ||
+            return 1
+    fi
+
+    return 0
+}
+
+# ---------------------------------------------------------------------
+# One-shot LEDE -> nix transition. This single function is the whole
+# transitional upgrade path: delete it (plus the legacy branch in
+# check_image) once upgrades from the legacy LEDE firmware are dropped.
+# ---------------------------------------------------------------------
+# Runs inside the LEDE upgrade ramfs (called from zynq_command_pre_upgrade
+# in platform_nand_pre_upgrade after the pivot); available tools are the
+# ramfs busybox + nanddump/nandwrite/flash_erase/fw_setenv/sha256sum.
+# It takes over the whole upgrade and never returns (reboot -f).
+pre_upgrade() {
+    local board_name="$1"
+    local tar_file="$2"
+    local folder="sysupgrade-$board_name"
+    local work="/tmp/bos_transition"
+
+    # Abort the transitional upgrade. A plain exit would leave the miner
+    # in the LEDE upgrade ramfs with every daemon killed (ping answers,
+    # nothing listens) until someone power-cycles it, and farm miners have
+    # no UART to read the console. Record the error and the tail of the
+    # trace in the legacy U-Boot environment (readable with fw_printenv
+    # after the reboot, replaced by the BOS environment on success) and
+    # reboot: before the point of no return the legacy firmware boots
+    # again, after it the miner is unbootable either way.
+    transition_die() {
+        # fd 3 is the console, fd 2 the trace file (see below)
+        echo "ERROR: $*" >&3
+        tail -c 2000 "$TRANSITION_LOG" >&3 2>/dev/null
+        fw_setenv bos_transition_error "$*"
+        # busybox on LEDE has no tr applet; awk is in the ramfs set
+        fw_setenv bos_transition_log \
+            "$(tail -c 2000 "$TRANSITION_LOG" 2>/dev/null | awk '{ printf "%s|", $0 }')"
+        sync
+        reboot -f
+        exit 1
+    }
+
+    # LEDE mtdparts view of the flash (absolute offsets in comments):
+    # mtd4 uboot_env, mtd6 recovery (BOS U-Boot FIT at +0x700000 =
+    # 0x2000000, stock uImage backup at +0x3A00000 = 0x5300000),
+    # mtd7 firmware1 (0x7000000 = new `system` start: kernel at +0x0,
+    # rootfs at +0x800000), mtd8 firmware2 (0xA900000; env tar region
+    # 0xB400000 = +0xB00000, nand_env backup 0xC200000 = +0x1900000,
+    # recovery flags 0xC300000 = +0x1A00000), the new 60 MiB `overlay`
+    # partition (0xC400000-0x10000000) spans the firmware2 tail + mtd9
+    # factory and is left erased (first BOS boot UBI-formats it)
+    local ENV_MTD="/dev/mtd4"
+    local UBOOT_MTD="/dev/mtd6"
+    local UBOOT_OFF=0x700000
+    local BACKUP_MTD="/dev/mtd6"
+    local BACKUP_OFF=0x3A00000
+    local BACKUP_LEN=0x800000
+    local FW1_MTD="/dev/mtd7"
+    local KERNEL_OFF=0x0
+    local ROOTFS_OFF=0x800000
+    local FW2_MTD="/dev/mtd8"
+    local ENV_TAR_LENGTH_OFF=0xB00000
+    local ENV_TAR_OFF=0xB10000
+    local FACTORY_MTD="/dev/mtd9"
+    local NAND_ENV_BACKUP_OFF=0x1900000
+    local FLAGS_OFF=0x1A00000
+    local RECOVERY_FLAG_INSTALLED=0x1
+
+    echo "Starting transitional LEDE -> BOS nix upgrade..."
+    # Trace into a file (busybox ash has no process substitution to tee
+    # it) so transition_die can persist its tail; stdout stays on the
+    # console, the console copy of stderr is kept as fd 3
+    TRANSITION_LOG="/tmp/transition.log"
+    exec 3>&2 2>"$TRANSITION_LOG"
+    set -x
+
+    # The legacy sysupgrade calls pre_upgrade in an AND/OR list, so `set -e`
+    # is disabled here - every mandatory operation propagates its failure
+    # explicitly via transition_die; only the deliberate optional cases
+    # (missing sysupgrade.tgz, zcat NAND-padding complaint) are tolerated
+    mkdir -p "$work"
+    tar -xf "$tar_file" -C "$work" \
+        "$folder/kernel" "$folder/rootfs.img" "$folder/uboot" "$folder/nand_env" ||
+        transition_die "extraction of the upgrade images failed"
+    # /tmp is a 100 MB tmpfs shared with whatever the user left there
+    # (a previous firmware upload is typical) and `sysupgrade -F` skips
+    # the check_image free-space test: the tar is fully consumed now, so
+    # drop it before the extracted images and the stock uImage conversion
+    # below need their own room
+    rm -f "$tar_file"
+
+    # 0. Neutralize the legacy A/B machinery first so a power cut cannot
+    # make auto_recovery flip the firmware slot mid-transition
+    fw_setenv --script - <<-EOF || transition_die "neutralizing the legacy A/B environment failed"
+	# stop the legacy auto_recovery upgrade staging
+	upgrade_stage
+	# prevent uenv_reset from erasing the environment mid-transition
+	factory_reset
+	# skip SD uEnv.txt interference on the next boot
+	first_boot yes
+	EOF
+
+    # 1. Preserve the user configuration from LEDE's own config backup
+    # (/etc/sysupgrade.conf + /lib/upgrade/keep.d/* + changed conffiles,
+    # saved as /tmp/sysupgrade.tgz before the pivot into this ramfs). Only
+    # the entries listed below are taken, so the new firmware controls what
+    # it inherits regardless of what the legacy packages happened to keep.
+    # BOS init extracts the env tar to /tmp on every boot and imports
+    # etc_migration/* into the fresh overlay once.
+    local env_dir="$work/env"
+    local env_tar="$work/env.tar"
+    mkdir -p "$env_dir/etc_migration" || transition_die "creating the env tar staging failed"
+    if [ -f "/tmp/sysupgrade.tgz" ]; then
+        local mig="$work/mig"
+        mkdir -p "$mig"
+        # `gzip -d` rather than `zcat`: the LEDE sysupgrade ramfs ships
+        # busybox with a fixed symlink set (RAMFS_COPY_BIN) that has gzip
+        # but no zcat, and a missing decompressor here would silently
+        # migrate nothing (empty pipe + `|| true`)
+        gzip -dc "/tmp/sysupgrade.tgz" | tar -x -C "$mig" \
+            || echo "WARNING: unpacking the LEDE config backup failed;" \
+                    "password, SSH keys and pool config will NOT migrate" >&2
+        # What the nix firmware consumes: root password hash and SSH keys,
+        # bosminer config + state (pools, flags, pause marker, tuner caches,
+        # stock model id, license session), custom contract and referral
+        # files, boser config. Everything else in the backup is either
+        # owned by the nix firmware (passwd, group, inittab, profile,
+        # opkg keys, miner_hwid, ...) or only read by LEDE components (UCI
+        # config, crontabs, fw_env.config, luci, uhttpd, bos_mgmt_*).
+        local f
+        for f in shadow dropbear \
+            bosminer.toml bosminer.toml.orig bosminer.toml.backups \
+            bosminer-experimental.toml bosminer-power-meter.toml \
+            bosminer-autotune.json bosminer-mri bosminer_paused \
+            bosminer-profile-grid.json stock_model_id bos_license_session \
+            bos_custom_contract_key bos_contract.toml bos_refid bos_ref.cfg \
+            boser.toml boser_api_usage_state.json; do
+            [ -e "$mig/etc/$f" ] || continue
+            cp -a "$mig/etc/$f" "$env_dir/etc_migration/" ||
+                transition_die "copying $f from the LEDE config backup failed"
+        done
+        rm -rf "$mig"
+    else
+        echo "WARNING: no LEDE config backup found; password, SSH keys" \
+            "and pool config will NOT migrate" >&2
+    fi
+
+    # The legacy firmware keeps the network configuration in the U-Boot
+    # environment (net_* read by board.d/02_network via bos_get_config);
+    # the new firmware reads /etc/network.conf only. Synthesize it into
+    # the migration set - S38network's restore_config then persists it
+    # into the stock antminer_configs partition on the first BOS boot -
+    # so a static IP / user hostname survives the transition.
+    #
+    # The kernel hostname is what the legacy board.d/01_system set at boot
+    # (the user's net_hostname, else the runtime default miner-<last 3 MAC
+    # bytes>) and it survives the ramfs pivot. It is persisted
+    # unconditionally on purpose: fleet tooling identifies miners by
+    # hostname, so the default name gets frozen into network.conf rather
+    # than recomputed. Consequence: after the transition the name behaves
+    # as user-configured - a later network-config reset will not bring
+    # per-MAC naming back.
+    local net_ip net_hostname
+    net_ip=$(fw_printenv -n net_ip 2>/dev/null)
+    net_hostname=$(cat /proc/sys/kernel/hostname 2>/dev/null)
+    {
+        if [ -n "$net_ip" ]; then
+            echo "ipaddress=$net_ip"
+            echo "netmask=$(fw_printenv -n net_mask 2>/dev/null)"
+            echo "gateway=$(fw_printenv -n net_gateway 2>/dev/null)"
+            local net_dns=$(fw_printenv -n net_dns_servers 2>/dev/null)
+            # shellcheck disable=SC2086  # intentional split on IFS=,
+            echo "dnsservers=$(IFS=,; set -- $net_dns; IFS=' '; echo "$*")"
+        else
+            echo "dhcp=true"
+        fi
+        [ -n "$net_hostname" ] && echo "hostname=$net_hostname"
+    } >"$env_dir/etc_migration/network.conf"
+
+    # Transitioned devices never ran the stock install flow, so provide
+    # the default factory configuration (same content bos-tools
+    # create-factory-conf emits without a stock config); the user's real
+    # pool configuration travels in the migrated bosminer.toml
+    printf '{\n  "version": "1.0",\n  "env": {\n    "miner_psu_power_limit": "default"\n  }\n}' \
+        >"$env_dir/bos_factory.json"
+
+    tar -cf "$env_tar" -C "$env_dir" . || transition_die "packing the env tar failed"
+    # The env tar region is 4 MiB minus the length header; the tuner caches
+    # are the only entries that can grow (profile grid ~20 KB per cell, no
+    # cap), so drop them rather than overflow into the post_install region
+    local env_tar_max=$((0x400000 - 0x10000))
+    if [ "$(wc -c <"$env_tar")" -gt "$env_tar_max" ]; then
+        echo "WARNING: migrated configuration exceeds $env_tar_max bytes;" \
+            "dropping the tuner caches (they are rebuilt by tuning)" >&2
+        rm -rf "$env_dir/etc_migration/bosminer-profile-grid.json" \
+            "$env_dir/etc_migration/bosminer-autotune.json" \
+            "$env_dir/etc_migration/bosminer.toml.backups"
+        tar -cf "$env_tar" -C "$env_dir" . || transition_die "packing the env tar failed"
+        [ "$(wc -c <"$env_tar")" -le "$env_tar_max" ] ||
+            transition_die "migrated configuration does not fit the env tar region"
+    fi
+
+    # 2. Convert the stock uImage backup from gzip (legacy install format)
+    # to raw so the new U-Boot fallback can nand read + bootm it directly.
+    # zcat complains about trailing NAND padding after the gzip stream,
+    # so ignore its exit code and validate the size instead.
+    local stock_raw="$work/stock_uimage"
+    # the ramfs has no df symlink, call the applet through busybox
+    local tmp_free_kb=$(busybox df -k /tmp | awk 'NR == 2 { print $4 }')
+    if [ "${tmp_free_kb:-0}" -lt $((BACKUP_LEN / 1024 + 2048)) ]; then
+        transition_die "not enough space in /tmp for the stock uImage conversion" \
+            "(${tmp_free_kb} KB free, $((BACKUP_LEN / 1024 + 2048)) KB needed)"
+    fi
+    # streamed: no 8 MB gzip intermediate next to the 8 MB raw image
+    nanddump -s "$BACKUP_OFF" -q -l "$BACKUP_LEN" "$BACKUP_MTD" 2>/dev/null |
+        zcat >"$stock_raw" 2>/dev/null || true
+    if [ "$(wc -c <"$stock_raw")" != "$((BACKUP_LEN))" ]; then
+        transition_die "stock uImage backup conversion failed" \
+            "($(wc -c <"$stock_raw") of $((BACKUP_LEN)) bytes)"
+    fi
+    flash_erase "$BACKUP_MTD" "$BACKUP_OFF" 64 ||
+        transition_die "erasing the stock uImage backup region failed"
+    nandwrite -p -s "$BACKUP_OFF" "$BACKUP_MTD" "$stock_raw" ||
+        transition_die "writing the raw stock uImage backup failed"
+    rm -f "$stock_raw"
+
+    # 3. Dismantle the legacy A/B UBI layout and write the new content;
+    # the running rootfs was left behind by the ramfs pivot
+    sync
+    ubidetach -d 0 2>/dev/null || true
+    flash_erase "$FW1_MTD" 0 0 || transition_die "erasing firmware1 failed"
+    flash_erase "$FW2_MTD" 0 0 || transition_die "erasing firmware2 failed"
+    flash_erase "$FACTORY_MTD" 0 0 || transition_die "erasing factory failed"
+
+    nandwrite -p -s "$KERNEL_OFF" "$FW1_MTD" "$work/$folder/kernel" ||
+        transition_die "writing the kernel FIT failed"
+    nandwrite -p -s "$ROOTFS_OFF" "$FW1_MTD" "$work/$folder/rootfs.img" ||
+        transition_die "writing the rootfs failed"
+
+    # env tar with migrated configuration (length header + data)
+    printf "0x%.8x\0" "$(wc -c <"$env_tar")" |
+        nandwrite -p -s "$ENV_TAR_LENGTH_OFF" "$FW2_MTD" - ||
+        transition_die "writing the env tar length header failed"
+    nandwrite -p -s "$ENV_TAR_OFF" "$FW2_MTD" "$env_tar" ||
+        transition_die "writing the env tar failed"
+
+    # backup of the BOS default environment + recovery flag INSTALLED
+    nandwrite -p -s "$NAND_ENV_BACKUP_OFF" "$FW2_MTD" "$work/$folder/nand_env" ||
+        transition_die "writing the nand_env backup failed"
+    # shellcheck disable=SC2059  # command substitution generates the flag byte
+    printf "$(printf '\\x%x' "$RECOVERY_FLAG_INSTALLED")" |
+        nandwrite -p -s "$FLAGS_OFF" "$FW2_MTD" - ||
+        transition_die "writing the recovery flag failed"
+
+    # 4. Write the BOS U-Boot FIT (replaces the legacy U-Boot + recovery
+    # FIT at the same offset) and the new environment LAST; until this
+    # point the legacy U-Boot + env were still bootable
+    nand_write_verified "$work/$folder/uboot" "$UBOOT_MTD" "$UBOOT_OFF" 64 ||
+        transition_die "writing the BOS U-Boot FIT failed"
+
+    flash_erase "$ENV_MTD" 0 4 ||
+        transition_die "erasing the U-Boot environment failed"
+    nandwrite -p -s 0 "$ENV_MTD" "$work/$folder/nand_env" ||
+        transition_die "writing the BOS environment failed"
+
+    sync
+    echo "Transitional upgrade finished, rebooting to BOS..."
+    reboot -f
+    exit 0
+}

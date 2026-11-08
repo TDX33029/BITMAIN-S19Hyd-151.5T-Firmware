@@ -1,0 +1,7 @@
+# usr\libexec\sudo\sudoers.so  (314052 B)  libs: libcrypt.so.1, libsudo_util.so.0, libpthread.so.0, libdl.so.2, libz.so.1, libc.so.6, ld-linux-armhf.so.3
+0000395c  sz=0      _init
+0002f08c  sz=120    sudo_gr_addref
+0002f104  sz=116    sudo_gr_delref
+0002f178  sz=984    sudo_getgrgid
+0002f550  sz=988    sudo_getgrnam
+00039eac  sz=0      _fini

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_LED.so  (5504 B)  libs: libxtables.so.12, libc.so.6
+000005dc  sz=0      _init
+00000674  sz=16     libxt_LED_init
+0000099c  sz=0      _fini

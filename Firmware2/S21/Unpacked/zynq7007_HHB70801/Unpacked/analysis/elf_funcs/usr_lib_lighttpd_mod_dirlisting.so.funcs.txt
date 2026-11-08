@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_dirlisting.so  (18024 B)  libs: libpcre.so.1, libc.so.6
+00000d90  sz=0      _init
+00002aa0  sz=112    mod_dirlisting_plugin_init
+00002b10  sz=0      _fini

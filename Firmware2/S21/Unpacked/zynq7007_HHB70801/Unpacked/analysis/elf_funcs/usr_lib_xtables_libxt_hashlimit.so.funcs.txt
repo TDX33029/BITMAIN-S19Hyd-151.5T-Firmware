@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_hashlimit.so  (26756 B)  libs: libxtables.so.12, libc.so.6
+00000c28  sz=0      _init
+00000d80  sz=20     libxt_hashlimit_init
+00003c34  sz=0      _fini

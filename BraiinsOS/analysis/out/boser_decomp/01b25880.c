@@ -1,0 +1,188 @@
+// FUN_01b25880 @ 01b25880 size=1908 calls_out=3 calls_in=8
+// strings: 
+
+undefined8 FUN_01b25880(undefined1 *param_1,int *param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  uint uVar11;
+  uint uVar12;
+  uint uVar13;
+  uint uVar14;
+  uint uVar15;
+  int iVar16;
+  int iVar17;
+  int iVar18;
+  uint uVar19;
+  int iVar20;
+  uint uVar21;
+  int iVar22;
+  int iVar23;
+  uint uVar24;
+  uint uVar25;
+  int iVar26;
+  int iVar27;
+  int iVar28;
+  uint uVar29;
+  uint uVar30;
+  uint uVar31;
+  int iVar32;
+  uint uVar33;
+  int iVar34;
+  uint local_30;
+  int local_2c;
+  
+  local_2c = DAT_01d53560;
+  FUN_01b257dc(param_1,0,0x44);
+  iVar27 = *param_2;
+  uVar24 = (param_2[1] - (-((int)(iVar27 + 0xf0000001U) >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar21 = (param_2[2] - (-((int)uVar24 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar19 = (param_2[3] - (-((int)uVar21 >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar29 = (param_2[4] - (-((int)uVar19 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar30 = (param_2[5] - (-((int)uVar29 >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar3 = (param_2[6] - (-((int)uVar30 >> 0x1b) & 0xffU)) + 0xf8000001;
+  uVar4 = (param_2[7] - (-((int)uVar3 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar5 = (param_2[8] - (-((int)uVar4 >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar6 = (param_2[9] - (-((int)uVar5 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar7 = (param_2[10] - (-((int)uVar6 >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar8 = (param_2[0xb] - (-((int)uVar7 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar9 = (param_2[0xc] - (-((int)uVar8 >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar10 = (param_2[0xd] - (-((int)uVar9 >> 0x1b) & 0xffU)) + 0xf8000001;
+  uVar11 = (param_2[0xe] - (-((int)uVar10 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar12 = (param_2[0xf] - (-((int)uVar11 >> 0x1c) & 0xffU)) + 0xf8000001;
+  uVar13 = (param_2[0x10] - (-((int)uVar12 >> 0x1b) & 0xffU)) + 0xf0000001;
+  uVar14 = (param_2[0x11] - (-((int)uVar13 >> 0x1c) & 0xffU)) + 0xf8000001;
+  iVar17 = (param_2[0x12] - (-((int)uVar14 >> 0x1b) & 0xffU)) + -0x7ffffff;
+  FUN_01b0cfb8(&local_30,-(iVar17 >> 0x1b) & 0xff,0,0xffffffff);
+  uVar15 = local_30 & 0xfffffff;
+  local_30 = local_30 & 0x7ffffff;
+  uVar31 = (iVar27 + 0xf0000001U & 0xfffffff) + uVar15;
+  uVar1 = uVar31 & 0xfffffff;
+  uVar24 = local_30 + (uVar31 >> 0x1c) + (uVar24 & 0x7ffffff);
+  uVar25 = uVar15 + (uVar24 >> 0x1b) + (uVar21 & 0xfffffff);
+  uVar24 = uVar24 * 0x10 & 0x7ffffff0;
+  iVar32 = uVar24 + ((uVar31 & 0xfffffff) >> 0x18);
+  uVar24 = uVar24 >> 0x18;
+  uVar19 = local_30 + (uVar25 >> 0x1c) + (uVar19 & 0x7ffffff);
+  uVar31 = uVar15 + (uVar19 >> 0x1b) + (uVar29 & 0xfffffff);
+  uVar21 = local_30 + (uVar31 >> 0x1c) + (uVar30 & 0x7ffffff);
+  uVar3 = local_30 + (uVar21 >> 0x1b) + (uVar3 & 0x7ffffff);
+  uVar30 = uVar15 + (uVar3 >> 0x1b) + (uVar4 & 0xfffffff);
+  uVar4 = uVar30 & 0xfffffff;
+  uVar5 = local_30 + (uVar30 >> 0x1c) + (uVar5 & 0x7ffffff);
+  uVar29 = uVar15 + (uVar5 >> 0x1b) + (uVar6 & 0xfffffff);
+  uVar6 = local_30 + (uVar29 >> 0x1c) + (uVar7 & 0x7ffffff);
+  uVar33 = uVar15 + (uVar6 >> 0x1b) + (uVar8 & 0xfffffff);
+  iVar27 = uVar25 * 0x80 + uVar24;
+  uVar7 = local_30 + (uVar33 >> 0x1c) + (uVar9 & 0x7ffffff);
+  uVar8 = local_30 + (uVar7 >> 0x1b) + (uVar10 & 0x7ffffff);
+  uVar9 = uVar15 + (uVar8 >> 0x1b) + (uVar11 & 0xfffffff);
+  uVar11 = uVar9 & 0xfffffff;
+  uVar12 = local_30 + (uVar9 >> 0x1c) + (uVar12 & 0x7ffffff);
+  uVar25 = (uVar19 & 0x7ffffff) * 8 +
+           ((uVar25 & 0xfffffff) >> 0x19) + (uint)CARRY4(uVar25 * 0x80,uVar24);
+  uVar10 = uVar15 + (uVar12 >> 0x1b) + (uVar13 & 0xfffffff);
+  iVar22 = uVar31 * 0x40 + (uVar25 >> 0x18);
+  uVar13 = local_30 + (uVar10 >> 0x1c) + (uVar14 & 0x7ffffff);
+  uVar19 = (uVar21 & 0x7ffffff) * 4 +
+           ((uVar31 & 0xfffffff) >> 0x1a) + (uint)CARRY4(uVar31 * 0x40,uVar25 >> 0x18);
+  iVar23 = (uVar19 >> 0x18) + uVar3 * 0x20;
+  iVar28 = (uVar5 & 0x7ffffff) * 0x10 + ((uVar30 & 0xfffffff) >> 0x18);
+  uVar24 = (uVar5 & 0x7ffffff) >> 0x14;
+  iVar20 = uVar29 * 0x80 + uVar24;
+  uVar3 = (uVar6 & 0x7ffffff) * 8 +
+          ((uVar29 & 0xfffffff) >> 0x19) + (uint)CARRY4(uVar29 * 0x80,uVar24);
+  iVar34 = uVar33 * 0x40 + (uVar3 >> 0x18);
+  uVar5 = (uVar7 & 0x7ffffff) * 4 +
+          ((uVar33 & 0xfffffff) >> 0x1a) + (uint)CARRY4(uVar33 * 0x40,uVar3 >> 0x18);
+  iVar26 = (uVar5 >> 0x18) + uVar8 * 0x20;
+  iVar2 = (uVar12 & 0x7ffffff) * 0x10 + ((uVar9 & 0xfffffff) >> 0x18);
+  uVar24 = (uVar12 & 0x7ffffff) >> 0x14;
+  iVar16 = uVar10 * 0x80 + uVar24;
+  uVar21 = (uVar13 * 8 & 0x3ffffff8) +
+           ((uVar10 & 0xfffffff) >> 0x19) + (uint)CARRY4(uVar10 * 0x80,uVar24);
+  iVar17 = iVar17 + local_30 + (uVar13 >> 0x1b);
+  uVar24 = iVar17 * 0x40;
+  iVar18 = uVar24 + (uVar21 >> 0x18);
+  *param_1 = (char)uVar1;
+  param_1[1] = (char)(uVar1 >> 8);
+  param_1[2] = (char)(uVar1 >> 0x10);
+  param_1[3] = (char)iVar32;
+  param_1[4] = (char)((uint)iVar32 >> 8);
+  param_1[5] = (char)((uint)iVar32 >> 0x10);
+  param_1[6] = (char)iVar27;
+  param_1[7] = (char)((uint)iVar27 >> 8);
+  param_1[8] = (char)((uint)iVar27 >> 0x10);
+  param_1[9] = (char)((uint)iVar27 >> 0x18);
+  param_1[10] = (char)uVar25;
+  param_1[0xc] = (char)(uVar25 >> 0x10);
+  param_1[0xd] = (char)iVar22;
+  param_1[0xe] = (char)((uint)iVar22 >> 8);
+  param_1[0x11] = (char)uVar19;
+  param_1[0xf] = (char)((uint)iVar22 >> 0x10);
+  param_1[0x14] = (char)iVar23;
+  param_1[0xb] = (char)(uVar25 >> 8);
+  param_1[0x10] = (char)((uint)iVar22 >> 0x18);
+  param_1[0x13] = (char)(uVar19 >> 0x10);
+  param_1[0x15] = (char)((uint)iVar23 >> 8);
+  param_1[0x16] = (char)((uint)iVar23 >> 0x10);
+  param_1[0x18] = (char)uVar4;
+  param_1[0x12] = (char)(uVar19 >> 8);
+  param_1[0x19] = (char)(uVar4 >> 8);
+  param_1[0x17] = (char)((uint)iVar23 >> 0x18);
+  param_1[0x1a] = (char)(uVar4 >> 0x10);
+  param_1[0x1b] = (char)iVar28;
+  param_1[0x1c] = (char)((uint)iVar28 >> 8);
+  param_1[0x1d] = (char)((uint)iVar28 >> 0x10);
+  param_1[0x1e] = (char)iVar20;
+  param_1[0x1f] = (char)((uint)iVar20 >> 8);
+  param_1[0x20] = (char)((uint)iVar20 >> 0x10);
+  param_1[0x33] = (char)iVar2;
+  param_1[0x22] = (char)uVar3;
+  param_1[0x21] = (char)((uint)iVar20 >> 0x18);
+  param_1[0x23] = (char)(uVar3 >> 8);
+  param_1[0x25] = (char)iVar34;
+  param_1[0x26] = (char)((uint)iVar34 >> 8);
+  param_1[0x29] = (char)uVar5;
+  param_1[0x27] = (char)((uint)iVar34 >> 0x10);
+  param_1[0x2c] = (char)iVar26;
+  param_1[0x37] = (char)((uint)iVar16 >> 8);
+  param_1[0x28] = (char)((uint)iVar34 >> 0x18);
+  param_1[0x2a] = (char)(uVar5 >> 8);
+  param_1[0x2d] = (char)((uint)iVar26 >> 8);
+  param_1[0x2e] = (char)((uint)iVar26 >> 0x10);
+  param_1[0x30] = (char)uVar11;
+  param_1[0x24] = (char)(uVar3 >> 0x10);
+  param_1[0x31] = (char)(uVar11 >> 8);
+  param_1[0x2b] = (char)(uVar5 >> 0x10);
+  param_1[0x2f] = (char)((uint)iVar26 >> 0x18);
+  param_1[0x32] = (char)(uVar11 >> 0x10);
+  param_1[0x35] = (char)((uint)iVar2 >> 0x10);
+  param_1[0x36] = (char)iVar16;
+  param_1[0x34] = (char)((uint)iVar2 >> 8);
+  param_1[0x38] = (char)((uint)iVar16 >> 0x10);
+  param_1[0x39] = (char)((uint)iVar16 >> 0x18);
+  param_1[0x3a] = (char)uVar21;
+  param_1[0x3c] = (char)(uVar21 >> 0x10);
+  param_1[0x3d] = (char)iVar18;
+  param_1[0x3f] = (char)((uint)iVar18 >> 0x10);
+  param_1[0x40] = (char)((uint)iVar18 >> 0x18);
+  param_1[0x3e] = (char)((uint)iVar18 >> 8);
+  param_1[0x3b] = (char)(uVar21 >> 8);
+  param_1[0x41] = CARRY4(uVar24,uVar21 >> 0x18) - (char)(iVar17 * 0x20 >> 0x1f);
+  if (local_2c != DAT_01d53560) {
+                    /* WARNING: Subroutine does not return */
+    FUN_01be31f4();
+  }
+  return 0;
+}
+

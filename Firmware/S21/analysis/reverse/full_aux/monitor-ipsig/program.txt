@@ -1,0 +1,9 @@
+name=monitor-ipsig
+executable_path=/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S21/analysis/reverse/aux_bin/monitor-ipsig
+language=ARM:LE:32:v8
+functions=90
+decompiled=20
+failed=0
+skipped=70
+strings=89
+call_edges=116

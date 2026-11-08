@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_trigger_b4_dl.so  (9608 B)  libs: libpcre.so.1, libc.so.6
+0000078c  sz=0      _init
+00000f44  sz=112    mod_trigger_b4_dl_plugin_init
+00000fb4  sz=0      _fini

@@ -1,0 +1,23 @@
+// FUN_00fe34b0 @ 00fe34b0 size=108 calls_out=2 calls_in=1
+// strings: 
+
+void FUN_00fe34b0(undefined4 *param_1,int *param_2)
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  undefined1 local_20 [16];
+  
+  local_20[0] = 0xd;
+  uVar1 = FUN_01967538(local_20,&DAT_01c252ec,&DAT_01d064b8);
+  iVar2 = *param_2;
+  param_1[1] = 0;
+  *param_1 = 2;
+  param_1[2] = uVar1;
+  if (iVar2 == 4 || iVar2 == 2) {
+    FUN_019bb7e0(param_2[2],param_2[3]);
+    return;
+  }
+  return;
+}
+

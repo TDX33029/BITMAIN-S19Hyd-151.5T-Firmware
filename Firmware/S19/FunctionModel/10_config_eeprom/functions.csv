@@ -1,0 +1,27 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x12650,config_parse_chain_topology,6360,04_asic_chain;10_config_eeprom,1,10,get domain failed\n | parse chain domain failed\n | domain:\n | domain,../analysis/reverse/full/bmminer/decompiled/12650_FUN_00012650.c
+bmminer,0x39544,freq_voltage_mode_init,2548,05_freq_voltage;10_config_eeprom,1,10,fixed frequency is %d\n | press any key to start rising frequency...,../analysis/reverse/full/bmminer/decompiled/39544_FUN_00039544.c
+bmminer,0x19dc8,vol_freq_config_load,1024,05_freq_voltage;10_config_eeprom,1,10,"level %d, voltage = %d frequency = %d",../analysis/reverse/full/bmminer/decompiled/19dc8_FUN_00019dc8.c
+bmminer,0x1eba4,config_parse_topol_conf,5208,04_asic_chain;10_config_eeprom,1,9,Chain [%d] BOM Version: 0x%04x\n | parse chain failed\n,../analysis/reverse/full/bmminer/decompiled/1eba4_FUN_0001eba4.c
+bmminer,0x1a1cc,FUN_0001a1cc,2776,10_config_eeprom,0,8,"Fixture CRC check fail.fixture_crc = 0x%x, len = 0x%x, crc = 0x%x\n",../analysis/reverse/full/bmminer/decompiled/1a1cc_FUN_0001a1cc.c
+bmminer,0x303a0,FUN_000303a0,616,04_asic_chain;10_config_eeprom,0,6,!!! REG_TYPE = 1.%08x from chain:%d asic:%d\n,../analysis/reverse/full/bmminer/decompiled/303a0_FUN_000303a0.c
+bmminer,0x1ad34,FUN_0001ad34,468,10_config_eeprom;04_asic_chain,0,5,"[chain %d] Update miner info in eeprom.\n | [chain %d] Update miner info Failed, EEPROM does not have enough space.\n",../analysis/reverse/full/bmminer/decompiled/1ad34_FUN_0001ad34.c
+bmminer,0x49c10,FUN_00049c10,348,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | fail to read eeprom by iic, chain: %d, addr: %d\n | %s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/49c10_FUN_00049c10.c
+bmminer,0x49ab4,FUN_00049ab4,344,10_config_eeprom;04_asic_chain,0,5,"%s: auto exec eeprom_open, but chain %d open eeprom failed\n | fail to write eeprom by iic, chain:%d, addr: %d | %s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/49ab4_FUN_00049ab4.c
+bmminer,0x1c0c0,FUN_0001c0c0,284,10_config_eeprom,0,5,EEPROM does not have enough space\n,../analysis/reverse/full/bmminer/decompiled/1c0c0_FUN_0001c0c0.c
+bmminer,0x226c4,FUN_000226c4,208,10_config_eeprom,0,5,eeprom,../analysis/reverse/full/bmminer/decompiled/226c4_FUN_000226c4.c
+bmminer,0x361d4,FUN_000361d4,184,10_config_eeprom;02_power_psu,0,5,max voltage in eeprom = %d\n,../analysis/reverse/full/bmminer/decompiled/361d4_FUN_000361d4.c
+bmminer,0x1c4f4,FUN_0001c4f4,168,10_config_eeprom,0,5,"EEPROM write data is not 32-bit aligned, FAIL ENC/DEC!\n",../analysis/reverse/full/bmminer/decompiled/1c4f4_FUN_0001c4f4.c
+bmminer,0x4994c,FUN_0004994c,80,10_config_eeprom;04_asic_chain,0,5,"%s: Bad eeprom param, input chain is %d\n",../analysis/reverse/full/bmminer/decompiled/4994c_FUN_0004994c.c
+FileParser,0x11ec4,FUN_00011ec4,800,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/11ec4_FUN_00011ec4.c
+FileParser,0x109a8,FUN_000109a8,500,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/109a8_FUN_000109a8.c
+FileParser,0x10b9c,FUN_00010b9c,212,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10b9c_FUN_00010b9c.c
+FileParser,0x12230,FUN_00012230,52,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/12230_FUN_00012230.c
+FileParser,0x108b0,FUN_000108b0,42,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/108b0_FUN_000108b0.c
+FileParser,0x10868,FUN_00010868,40,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10868_FUN_00010868.c
+FileParser,0x10838,entry,36,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/10838_entry.c
+FileParser,0x1088c,FUN_0001088c,34,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/1088c_FUN_0001088c.c
+FileParser,0x108dc,_FINI_0,24,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/108dc__FINI_0.c
+FileParser,0x106e8,_DT_INIT,12,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/106e8__DT_INIT.c
+FileParser,0x12270,FUN_00012270,12,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/12270_FUN_00012270.c
+FileParser,0x1227c,_DT_FINI,8,10_config_eeprom,0,0,,../analysis/reverse/full_aux/FileParser/decompiled/1227c__DT_FINI.c

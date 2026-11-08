@@ -1,0 +1,15 @@
+// FUN_0136b058 @ 0136b058 size=112 calls_out=1 calls_in=0
+// strings: Queue | indicesis_countedref_countnext_pending_sendis_pending_sendsend_flowrequested_send_capacitybuffered_send_datasend_taskpending_sendnext_pending_send_capacityis_pending_send_capacitysend_capacity_incnext_openis_pending_openis_pending_pushnext_pending_acceptis_pending_acceptrecv_flowin_flight_recv_datanext_window_updateis_pending_window_updatenext_reset_expirepending_recvis_recvrecv_taskpending_push_promisescontent_length
+
+void FUN_0136b058(int param_1,undefined4 param_2)
+
+{
+  int local_1c;
+  
+  local_1c = param_1 + 0x14;
+  FUN_01303d90(param_2,"Queue",5,
+               "indicesis_countedref_countnext_pending_sendis_pending_sendsend_flowrequested_send_capacitybuffered_send_datasend_taskpending_sendnext_pending_send_capacityis_pending_send_capacitysend_capacity_incnext_openis_pending_openis_pending_pushnext_pending_acceptis_pending_acceptrecv_flowin_flight_recv_datanext_window_updateis_pending_window_updatenext_reset_expirepending_recvis_recvrecv_taskpending_push_promisescontent_length"
+               ,7,param_1,FUN_0136b0dc,"_p",2,&local_1c,FUN_013b258c);
+  return;
+}
+

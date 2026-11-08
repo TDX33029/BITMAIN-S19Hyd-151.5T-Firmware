@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_compress.so  (13736 B)  libs: libc.so.6
+00000b58  sz=0      _init
+00001b5c  sz=116    mod_compress_plugin_init
+00001fb0  sz=0      _fini

@@ -1,0 +1,32 @@
+program,address,name,size,labels,seed,score,evidence,source
+bmminer,0x30750,api_get_miner_freq_adjust_info,724,09_web_api;05_freq_voltage,1,1,,../analysis/reverse/full/bmminer/decompiled/30750_FUN_00030750.c
+bmminer,0x2f224,api_miner_chain_asic_status,240,04_asic_chain;09_web_api,1,0,,../analysis/reverse/full/bmminer/decompiled/2f224_FUN_0002f224.c
+bmminer,0x2f160,api_miner_chain_asic_num,192,04_asic_chain;09_web_api,1,0,,../analysis/reverse/full/bmminer/decompiled/2f160_FUN_0002f160.c
+cgminer,0x12d28,FUN_00012d28,14404,07_mining_pool;11_log_monitor;09_web_api,0,13,Blank worker exists.\n,../analysis/reverse/full_aux/cgminer/decompiled/12d28_FUN_00012d28.c
+bmminer,0x36b08,FUN_00036b08,1244,10_config_eeprom;09_web_api,0,7,serialize input miner conf failed | open /cofig/cgminer.conf failed | serialize local  miner conf failed | invalid set miner conf param,../analysis/reverse/full/bmminer/decompiled/36b08_FUN_00036b08.c
+bmminer,0x3c5e4,FUN_0003c5e4,1348,09_web_api,0,4,http:// | GET /%s HTTP/1.1\r\nHOST: %s:%d\r\nAccept: */*\r\n\r\n,../analysis/reverse/full/bmminer/decompiled/3c5e4_FUN_0003c5e4.c
+cgminer,0x1ed70,FUN_0001ed70,1204,09_web_api,0,4,HTTP/1.0 200 | HTTP/1.1 200 | CONNECT %s:%s HTTP/1.1\r\nHost: %s:%s\r\n\r\n | HTTP Error from proxy %s:%s - %s,../analysis/reverse/full_aux/cgminer/decompiled/1ed70_FUN_0001ed70.c
+bmminer,0x24cb0,FUN_00024cb0,588,09_web_api,0,4,http get failed\n | http://%s:%d/power/%s,../analysis/reverse/full/bmminer/decompiled/24cb0_FUN_00024cb0.c
+bmminer,0x3c4b0,FUN_0003c4b0,308,09_web_api;13_os_service,0,4,start the http server\n,../analysis/reverse/full/bmminer/decompiled/3c4b0_FUN_0003c4b0.c
+cgminer,0x2a4dc,FUN_0002a4dc,220,07_mining_pool;09_web_api,0,4,stratum+tcp://,../analysis/reverse/full_aux/cgminer/decompiled/2a4dc_FUN_0002a4dc.c
+bmminer,0x3b5d0,FUN_0003b5d0,152,09_web_api,0,4,HTTP/1.1 %d %s\r\nDate: %s\r\n,../analysis/reverse/full/bmminer/decompiled/3b5d0_FUN_0003b5d0.c
+cgminer,0x4785c,FUN_0004785c,1188,09_web_api,0,3,invalid token | unexpected token,../analysis/reverse/full_aux/cgminer/decompiled/4785c_FUN_0004785c.c
+bmminer,0x7cdf8,FUN_0007cdf8,620,09_web_api,0,3,invalid token | unexpected token,../analysis/reverse/full/bmminer/decompiled/7cdf8_FUN_0007cdf8.c
+bmminer,0x3c320,FUN_0003c320,168,09_web_api,0,3,session != NULL,../analysis/reverse/full/bmminer/decompiled/3c320_FUN_0003c320.c
+cgminer-api,0x109f0,FUN_000109f0,404,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/109f0_FUN_000109f0.c
+antlogin,0x10410,FUN_00010410,52,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10410_FUN_00010410.c
+cgminer-api,0x10e5c,FUN_00010e5c,52,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10e5c_FUN_00010e5c.c
+antlogin,0x103c8,FUN_000103c8,42,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/103c8_FUN_000103c8.c
+cgminer-api,0x10938,FUN_00010938,42,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10938_FUN_00010938.c
+antlogin,0x10380,FUN_00010380,40,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10380_FUN_00010380.c
+cgminer-api,0x108f0,FUN_000108f0,40,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/108f0_FUN_000108f0.c
+antlogin,0x10350,entry,36,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10350_entry.c
+cgminer-api,0x108c0,entry,36,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/108c0_entry.c
+antlogin,0x103a4,FUN_000103a4,34,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/103a4_FUN_000103a4.c
+cgminer-api,0x10914,FUN_00010914,34,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10914_FUN_00010914.c
+antlogin,0x103f4,_FINI_0,24,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/103f4__FINI_0.c
+cgminer-api,0x10964,_FINI_0,24,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10964__FINI_0.c
+antlogin,0x102c4,_DT_INIT,12,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/102c4__DT_INIT.c
+cgminer-api,0x105f8,_DT_INIT,12,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/105f8__DT_INIT.c
+antlogin,0x10450,_DT_FINI,8,09_web_api,0,0,,../analysis/reverse/full_aux/antlogin/decompiled/10450__DT_FINI.c
+cgminer-api,0x10e9c,_DT_FINI,8,09_web_api,0,0,,../analysis/reverse/full_aux/cgminer-api/decompiled/10e9c__DT_FINI.c

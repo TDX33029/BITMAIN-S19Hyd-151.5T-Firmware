@@ -1,0 +1,9 @@
+name=antlogin
+executable_path=/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S19/analysis/reverse/aux_bin/antlogin
+language=ARM:LE:32:v8
+functions=16
+decompiled=8
+failed=0
+skipped=8
+strings=32
+call_edges=11

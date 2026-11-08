@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_alias.so  (5396 B)  libs: libc.so.6
+0000068c  sz=0      _init
+00000d30  sz=112    mod_alias_plugin_init
+00000da0  sz=0      _fini

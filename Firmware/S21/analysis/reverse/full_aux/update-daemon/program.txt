@@ -1,0 +1,9 @@
+name=update-daemon
+executable_path=/D:/Document/tempPrj/BITMAIN-S19Hyd-151T-Firmware/Firmware/S21/analysis/reverse/aux_bin/update-daemon
+language=ARM:LE:32:v8
+functions=74
+decompiled=12
+failed=0
+skipped=62
+strings=89
+call_edges=76

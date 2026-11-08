@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_quota.so  (5484 B)  libs: libxtables.so.12, libc.so.6
+00000538  sz=0      _init
+000005ac  sz=16     libxt_quota_init
+00000764  sz=0      _fini

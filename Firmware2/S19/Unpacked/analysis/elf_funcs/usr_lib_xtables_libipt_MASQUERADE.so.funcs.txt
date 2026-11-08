@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_MASQUERADE.so  (5500 B)  libs: libxtables.so.12, libc.so.6
+000005e0  sz=0      _init
+0000066c  sz=16     libipt_MASQUERADE_init
+00000b44  sz=0      _fini

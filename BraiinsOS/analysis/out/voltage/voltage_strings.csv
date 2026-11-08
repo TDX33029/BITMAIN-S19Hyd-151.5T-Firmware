@@ -1,0 +1,18 @@
+va,string
+0x003447e8,"(), voltage verification will be disabled"
+0x0034dbdf,ectIdentVal2TooLargeNotStartedNormalModeRestrictedModetest_nameTEST_NAMEtest-nametest_frequencyTEST_FREQUENCYtest-frequencytest_voltageTEST_VOLTAGEtest-voltageforce_dummyFORCE_DUMMYforce-dummy-backend
+0x0034e9c5,hreshold voltageTuner disabledBUG: must existTuner is disabledBUG: no results generatedBUG: multi registry without a config but 'Done' result was indicatedBUG: voltage not foundtuning individual chips
+0x00352c5a,efore you start manipulating individual chains (start/stop/set voltage/set frequency) you have to stop the tuner.Halt the whole miner; similar effect as Ctrl-CShow the fan control configurationMinfans
+0x00352eb4,Example: `tempmode 80 90` sets hot to 80 and dangerous to 90 degrees CelsiusShow the miner status as unintelligible structure dumpVOLTAGE
+0x00352fd1,"Example: `v 13.4` ramps the voltage to 13.4 V, `v` shows the current oneramp_vMHZHASHBOARD"
+0x00356fb8,<Missing voltage>
+0x00359293,obversions_per_workcurr_rangebase_versionManualhashchain_addressmin_frequencymax_frequencyvoltage_rangedefault_temp_control_modedefault_temperaturedefault_fan_speedshared_voltage_controlpause_fan_mode
+0x0035a63a,tionheat_directionchip_chainapproximateallow_disabling_hashboards_on_nopic_minersallow_missing_voltage_feedbackdisable_bootstrap_checksend_dummy_telemetry_on_startupmin_fan_pwmenable_continuous_tuning
+0x0038ac88,version-rollinghandle_set_version_maskhandle_setup_connectionhandle_subscribe_result
+0x00564060,NamedBackrefOnlyOutOfBoundsErrorPSU undervoltageWaitingWhileColdbosminer_versiondependentSchemas.debug_macro.dwophp_class_prefix
+0x0056af74,open/bosminer/bosminer-units/src/voltage.rs
+0x00570797,: Voltage controller reset
+0x00576939,C - PSU overcurrent protection switched voltage off or short circuit
+0x0057ba31,(: Voltage controller application started
+0x00598f54, voltage
+0x005a4e52, voltage domains unbootable

@@ -1,0 +1,4 @@
+# usr\lib\xtables\libipt_DNAT.so  (9736 B)  libs: libxtables.so.12, libc.so.6
+00000788  sz=0      _init
+00000874  sz=20     libipt_DNAT_init
+0000190c  sz=0      _fini

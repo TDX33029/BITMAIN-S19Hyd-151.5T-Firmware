@@ -1,0 +1,4 @@
+# usr\lib\lighttpd\mod_rewrite.so  (5440 B)  libs: libc.so.6
+00000530  sz=0      _init
+00000828  sz=72     mod_rewrite_plugin_init
+00000870  sz=0      _fini

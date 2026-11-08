@@ -1,0 +1,37 @@
+// FUN_011331bc @ 011331bc size=168 calls_out=3 calls_in=1
+// strings: a Display implementation returned an error unexpectedly
+
+void FUN_011331bc(undefined4 *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  undefined4 local_30;
+  undefined4 local_2c;
+  undefined4 local_28;
+  undefined4 *local_24;
+  undefined *local_20;
+  undefined1 *local_1c;
+  undefined4 local_18;
+  undefined1 uStack_11;
+  
+  local_20 = &DAT_0188863c;
+  local_24 = &local_30;
+  local_28 = 0;
+  local_30 = 0;
+  local_18 = 0;
+  local_2c = 1;
+  local_1c = &DAT_60000020;
+  iVar1 = FUN_011332a4(param_2,&local_24);
+  if (iVar1 != 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_00fb74f8("a Display implementation returned an error unexpectedly",0x37,&uStack_11,
+                 &DAT_01888654,&DAT_018af130);
+  }
+  *param_1 = 1;
+  param_1[1] = local_30;
+  param_1[2] = local_2c;
+  param_1[3] = local_28;
+  FUN_011335d0(param_2);
+  return;
+}
+

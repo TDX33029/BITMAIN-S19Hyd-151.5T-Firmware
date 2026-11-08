@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_owner.so  (13904 B)  libs: libxtables.so.12, libc.so.6
+0000073c  sz=0      _init
+000007f8  sz=20     libxt_owner_init
+00001954  sz=0      _fini

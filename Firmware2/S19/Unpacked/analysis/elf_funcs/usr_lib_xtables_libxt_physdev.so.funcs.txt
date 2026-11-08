@@ -1,0 +1,4 @@
+# usr\lib\xtables\libxt_physdev.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000590  sz=0      _init
+00000604  sz=16     libxt_physdev_init
+00000b1c  sz=0      _fini

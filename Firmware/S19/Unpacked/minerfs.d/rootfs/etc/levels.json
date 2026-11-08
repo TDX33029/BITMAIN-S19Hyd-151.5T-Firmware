@@ -1,0 +1,161 @@
+{
+    "miner": "S19 Hydro",
+    "levels": [
+        {
+            "frequency": 650,
+            "voltage": 1880
+        },
+        {
+            "frequency": 650,
+            "voltage": 1920
+        },
+        {
+            "frequency": 650,
+            "voltage": 1960
+        },
+        {
+            "frequency": 625,
+            "voltage": 1880
+        },
+        {
+            "frequency": 625,
+            "voltage": 1920
+        },
+        {
+            "frequency": 625,
+            "voltage": 1960
+        },
+        {
+            "frequency": 625,
+            "voltage": 1980
+        },
+        {
+            "frequency": 625,
+            "voltage": 2000
+        },
+        {
+            "frequency": 600,
+            "voltage": 1880
+        },
+        {
+            "frequency": 600,
+            "voltage": 1900
+        },
+        {
+            "frequency": 600,
+            "voltage": 1920
+        },
+        {
+            "frequency": 600,
+            "voltage": 1940
+        },
+        {
+            "frequency": 600,
+            "voltage": 1960
+        },
+        {
+            "frequency": 600,
+            "voltage": 1980
+        },
+        {
+            "frequency": 600,
+            "voltage": 2020
+        },
+        {
+            "frequency": 600,
+            "voltage": 2040
+        },
+        {
+            "frequency": 575,
+            "voltage": 1880
+        },
+        {
+            "frequency": 575,
+            "voltage": 1900
+        },
+        {
+            "frequency": 575,
+            "voltage": 1920
+        },
+        {
+            "frequency": 575,
+            "voltage": 1940
+        },
+        {
+            "frequency": 575,
+            "voltage": 1960
+        },
+        {
+            "frequency": 575,
+            "voltage": 1980
+        },
+        {
+            "frequency": 575,
+            "voltage": 2020
+        },
+        {
+            "frequency": 575,
+            "voltage": 2060
+        },
+        {
+            "frequency": 550,
+            "voltage": 1880
+        },
+        {
+            "frequency": 550,
+            "voltage": 1900
+        },
+        {
+            "frequency": 550,
+            "voltage": 1920
+        },
+        {
+            "frequency": 550,
+            "voltage": 1940
+        },
+        {
+            "frequency": 550,
+            "voltage": 1980
+        },
+        {
+            "frequency": 550,
+            "voltage": 2000
+        },
+        {
+            "frequency": 550,
+            "voltage": 2020
+        },
+        {
+            "frequency": 550,
+            "voltage": 2040
+        },
+        {
+            "frequency": 525,
+            "voltage": 1940
+        },
+        {
+            "frequency": 525,
+            "voltage": 1960
+        },
+        {
+            "frequency": 525,
+            "voltage": 1980
+        },
+        {
+            "frequency": 525,
+            "voltage": 2020
+        },
+        {
+            "frequency": 525,
+            "voltage": 2040
+        },
+        {
+            "frequency": 500,
+            "voltage": 2020
+        },
+        {
+            "frequency": 600,
+            "voltage": 2000
+        }
+    ]
+}

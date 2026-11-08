@@ -1,0 +1,33 @@
+# /etc/inittab — busybox-init format
+#
+# Format: <id>:<runlevels>:<action>:<command>
+#   id         — tty device name (without "/dev/" prefix). EMPTY means
+#                "inherit init's stdio" (~= /dev/console). A symbolic
+#                id (sysvinit style: "si0", "rcS", ...) makes
+#                busybox-init try to open /dev/si0 etc., fail, and
+#                SKIP the entry — rcS would never run.
+#   runlevels  — ignored by busybox-init; "initdefault" is rejected as
+#                a bad entry.
+#
+# Pre-init mounts and /dev symlinks are handled in
+# firmware/devices/bm3-am2/rootfs/init (devtmpfs, sysfs, proc, devpts,
+# tmpfs on /tmp+/run, fd symlinks, UBI/UBIFS overlay setup) before
+# `exec /sbin/init` hands off to busybox-init, so this inittab does
+# not need a sysinit chain for them. Hostname is set by
+# /etc/init.d/S38network during rcS.
+
+# Boot — run /etc/init.d/S??* (board setup, network, dropbear, boser,
+# bosminer, …).
+::sysinit:/etc/init.d/rcS
+
+# Serial console login (leading "-" gives the session a proper
+# controlling tty for job control / Ctrl+C).
+ttyPS0::respawn:-/bin/login
+
+# Reboot on Ctrl+Alt+Del.
+::ctrlaltdel:/sbin/reboot
+
+# Halt/reboot sequence (busybox-init runs `shutdown` actions on
+# SIGUSR1/SIGUSR2/SIGTERM, then halts or reboots itself).
+::shutdown:/etc/init.d/rcK
+::shutdown:/bin/umount -a -r

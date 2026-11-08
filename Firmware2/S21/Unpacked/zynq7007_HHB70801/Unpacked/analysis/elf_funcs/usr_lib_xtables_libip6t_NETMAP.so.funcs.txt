@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_NETMAP.so  (5488 B)  libs: libxtables.so.12, libc.so.6
+00000558  sz=0      _init
+000005cc  sz=16     libip6t_NETMAP_init
+00000810  sz=0      _fini

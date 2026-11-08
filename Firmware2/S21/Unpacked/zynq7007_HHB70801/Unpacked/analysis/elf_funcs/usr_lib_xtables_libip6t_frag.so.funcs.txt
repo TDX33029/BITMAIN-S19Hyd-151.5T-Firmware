@@ -1,0 +1,4 @@
+# usr\lib\xtables\libip6t_frag.so  (9580 B)  libs: libxtables.so.12, libc.so.6
+0000056c  sz=0      _init
+000005e0  sz=16     libip6t_frag_init
+00000c5c  sz=0      _fini
