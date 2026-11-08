@@ -1,0 +1,120 @@
+{
+  "A_baseline": {
+    "before": {
+      "hash": "",
+      "rate5s": "151253.75GH/s",
+      "elapsed": "矿池拒绝率 矿池拒绝率0.96%矿机运行时间 0天 1小时 0分 35秒",
+      "refreshTime": "2026-11-08 12:01:45",
+      "chainRows": 3,
+      "contentLen": 8903,
+      "intervals": [
+        {
+          "ms": 15000,
+          "fn": "function(){n()}"
+        },
+        {
+          "ms": 15000,
+          "fn": "function(){document.hidden||t.__tick()}"
+        }
+      ],
+      "vueInstances": 1
+    },
+    "after": {
+      "hash": "",
+      "rate5s": "151326.25GH/s",
+      "elapsed": "矿池拒绝率 矿池拒绝率0.95%矿机运行时间 0天 1小时 0分 45秒",
+      "refreshTime": "2026-11-08 12:02:00",
+      "chainRows": 3,
+      "contentLen": 8903,
+      "intervals": [
+        {
+          "ms": 15000,
+          "fn": "function(){n()}"
+        },
+        {
+          "ms": 15000,
+          "fn": "function(){document.hidden||t.__tick()}"
+        }
+      ],
+      "vueInstances": 1
+    },
+    "rateChanged": true,
+    "refreshTimeChanged": true,
+    "summaryCallsIn17s": 1,
+    "statsCallsIn17s": 1,
+    "poolsCallsIn17s": 1,
+    "chartCallsIn17s": 1,
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  "B_on_miner_page": {
+    "hash": "#miner",
+    "statsCallsIn16s_while_on_miner_page": 0,
+    "summaryCallsIn16s_while_on_miner_page": 0,
+    "liveIntervals": [
+      {
+        "ms": 15000,
+        "fn": "function(){n()}"
+      }
+    ],
+    "pageErrors": []
+  },
+  "C_back_to_dashboard": {
+    "liveIntervalsAfterReturn": [
+      {
+        "ms": 15000,
+        "fn": "function(){n()}"
+      },
+      {
+        "ms": 15000,
+        "fn": "function(){document.hidden||t.__tick()}"
+      }
+    ],
+    "statsCallsIn16s": 1,
+    "summaryCallsIn16s": 1,
+    "chainRows": 3,
+    "pageErrors": []
+  },
+  "D_stats_failure": {
+    "statsMode": "fail (summary.cgi still healthy)",
+    "before": {
+      "rate5s": "151159.50GH/s",
+      "elapsed": "矿池拒绝率 矿池拒绝率0.92%矿机运行时间 0天 1小时 1分 12秒",
+      "refreshTime": "2026-11-08 12:02:45"
+    },
+    "after": {
+      "rate5s": "151195.75GH/s",
+      "elapsed": "矿池拒绝率 矿池拒绝率0.92%矿机运行时间 0天 1小时 1分 17秒",
+      "refreshTime": "2026-11-08 12:03:00"
+    },
+    "summaryCalls": 1,
+    "ratePanelChanged": true,
+    "pageErrors": [],
+    "consoleErrors": []
+  },
+  "E_chart_failure_on_load": {
+    "snapshot": {
+      "hash": "#dashboard",
+      "rate5s": "151116.00GH/s",
+      "elapsed": "矿池拒绝率 矿池拒绝率0.89%矿机运行时间 0天 1小时 1分 56秒",
+      "refreshTime": "2026-11-08 12:03:02",
+      "chainRows": 3,
+      "contentLen": 8409,
+      "intervals": [
+        {
+          "ms": 15000,
+          "fn": "function(){n()}"
+        },
+        {
+          "ms": 15000,
+          "fn": "function(){document.hidden||t.__tick()}"
+        }
+      ],
+      "vueInstances": 1
+    },
+    "pageErrors": [],
+    "consoleErrors": []
+  }
+}

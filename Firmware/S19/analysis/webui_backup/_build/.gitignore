@@ -1,0 +1,4 @@
+# 构建产物（体积大，可由 make_image.py / patch_ext2.sh 重新生成）
+*.ext2
+*.image.gz
+sdcard/
